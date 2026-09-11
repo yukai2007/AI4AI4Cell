@@ -1,0 +1,38 @@
+\section*{3. Method: evidence-gated loop research}
+\subsection*{3.1 Research state and hypothesis execution}
+Across tasks, the research loop is unchanged in purpose: it proposes, implements, evaluates, decides, and carries evidence forward; the task adapter specifies the writable artifact, fitter, scorer, and data roles. At round t, the shared research state consists of a task contract, an incumbent source artifact, its visible evaluation, and a lineage of previous attempts. The production proposer conditions on this state and a public research agenda to identify a specific change and an expected measurable consequence. An implementation stage writes only the permitted source file. Compilation, interface checks, mutation-scope checks, and the task validator precede the fixed evaluator. Invalid implementations can trigger native repair calls, which consume the same resource ceiling as proposals and analyses.
+
+The distinction between intention and effect is explicit. A hypothesis records why a change may work; the source diff records what changed; the evaluator records the effect under its data contract. Promotion requires the native numerical and soundness checks. A rejected candidate remains in the audit history but does not replace the incumbent. Subsequent research consumes both retained and failed evidence. The language model is not fine-tuned during these experiments: learning occurs in the executable policy, fitted task model, and research state. Figure 1 summarizes the execution and feedback boundary.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{assets/method_diagram.pdf}
+\caption{Executable artifacts connect research, local evaluation, and evidence-guided updates. Cell federation and DTI execution isolation are distinct implementations of the depicted data flow.}
+\label{fig:research-interface}
+\end{figure}
+\begin{center}\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{>{\hsize=1.200\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.900\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.900\hsize\linewidth=\hsize\raggedright\arraybackslash}X}
+\toprule
+Stage & Executed object & Auditable evidence \\
+\midrule
+Propose & One stated change and testable expectation & Prompt, model/version, hypothesis fields, parent artifact \\
+Implement & Allowed policy or BAN source file & Full source, diff, content hash, validation/repair records \\
+Evaluate & Fixed scorer and data contract & Data/scorer hashes, seed, predictions, metrics, failures \\
+Decide & Native incumbent retention or rollback & Measured scores, guard outcome, selected parent/child \\
+Transfer & A versioned artifact and bounded evidence & Artifact identity, client/round provenance, message size \\
+\bottomrule
+\end{tabularx}
+\end{center}
+These records support inspection, not an assumption that a model's explanation is faithful. A valid audit can reveal that a hypothesis failed, that a change ignored feedback, or that a selected source implements a different mechanism than its textual description.
+
+\subsection*{3.2 Federated evidence and information availability}
+The cell federation distributes a fixed policy to ten deterministic development-set shards. Each shard computes task-local metrics and bounded residual or mixture diagnostics; the coordinator receives numeric cards with policy hash, round, sample count, and fixed fields. A card is limited to 2,048 bytes and contains no expression matrix, per-sample identifier, or free-form text. The proposal consumes the cards, and the ordinary harness evaluates any resulting policy change. This interface targets collaborations in which a partner can evaluate code on local measurements but cannot transfer the measurements themselves: shared code and its evaluation lineage become the coordination objects. Its biological motivation is complementary institutional data under sharing constraints \citep{Sheller2020}; the experiment below tests simulated data flow and calibration access, not real institutional participation.
+
+This is an offline diagnostic-information condition. Some local diagnostics use labeled development responses beyond the responses revealed by the sequential policy's three chosen experiments. The main federation also shares candidate/calibration panels in the Norman tasks and retains the same total archive size as the non-federated arm. We therefore do not interpret its score difference as a pure distributed-organization effect, or call the shards ten independent laboratories.
+
+A separate fixed-policy replay tests information availability. For each residual coordinate, a client returns the count n, sum S1, and squared sum S2. The coordinator sums these values and reconstructs the pooled population variance as S2/N - (S1/N)\textsuperscript{2}. Applying the already selected shrinkage and Mahalanobis policy to this variance gives the same computation as the corresponding centralized replay, up to floating-point error. Here the transmitted vectors are different from the main experiment's scalar cards. Both are explicitly scoped protocols rather than general guarantees for arbitrary federated metrics; in particular, a weighted mean of client AUROCs is not pooled AUROC.
+
+\subsection*{3.3 Access boundary and threat model}
+The coordinator, fixed scorer, and local trainer are trusted. Candidate code is untrusted with respect to file and network I/O in the DTI evaluator: dependencies, permitted data, and CUDA kernels are initialized first, then a process-wide Linux seccomp filter denies file opens, networking, and new processes before candidate import. Only preopened output handles remain. The native harness import probe uses the same restricted import boundary. The trusted parent recomputes visible scores from aligned predictions and verifies checkpoint hashes.
+
+This boundary does not establish security against arbitrary tensor-library exploits, denial of service, training-label introspection, or encoded information in model parameters. The cell federation is a trusted, same-host simulation and does not inherit the DTI worker's isolation guarantees. Raw-data exclusion from recorded model prompts, bounded outputs, and reproducible artifacts are the demonstrated properties. Formal privacy and real cross-institutional deployment remain separate work.

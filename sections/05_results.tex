@@ -1,0 +1,94 @@
+\section*{5. Results}
+\subsection*{5.1 Four-arm cell-policy comparison}
+\begin{center}\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{>{\hsize=1.600\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.800\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.800\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.800\hsize\linewidth=\hsize\raggedright\arraybackslash}X}
+\toprule
+Method & Reverse-ID Top-1 \(\uparrow\) & Sequential AUC3 \(\uparrow\) & CEX AURB3 \(\uparrow\) \\
+\midrule
+Our harness & 0.803922 & 0.723917 & 0.096127 \\
+Our harness + federated evidence & 0.725490 & 0.723470 & 0.096127 \\
+Harness-free & 0.764706 & 0.719532 & 0.096127 \\
+Cosine baseline & 0.705882 & 0.721687 & N/A \\
+\bottomrule
+\end{tabularx}
+\end{center}
+Table 1. Exploratory cell-policy diagnostics, one campaign per task/method. The three metrics have different meanings and are not averaged.
+
+Our harness records 41/51 reverse-identification hits, compared with 39/51 for direct and 36/51 for cosine. Sequential AUC3 improves by 0.004386 over direct, while the CEX learning arms have identical scores and executed-action hashes. The original Sequential confidence intervals compare policies with locked cosine, not harness with direct, and include zero for every learning arm. CEX's raw-PG reference is -0.007481; the shared learning-arm gain is 0.103608, with an original-scorer query-bootstrap 95\% interval of [0.068579, 0.139368]. This relative-objective improvement is shared by all three learning arms and is not harness-specific. Its absolute-response secondary objective worsens, so the result does not establish uniform drug-response benefit. Query-level replay intervals do not quantify variation across independent searches or biological laboratories.
+
+The same-data federated variant does not outperform our non-federated harness. Across the three tasks, the latter uses 79 model calls and scores 17/18 candidates; the federated arm uses 87 calls and also scores 17/18; direct uses 18 calls and scores 9/18, with its other generations timing out at 900 seconds. These differences motivate the controlled DTI comparison, rather than an unsupported attribution of all score gains to research organization.
+
+\subsection*{5.2 DTI held-out comparison}
+\begin{center}\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{>{\hsize=1.600\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.800\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.800\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.800\hsize\linewidth=\hsize\raggedright\arraybackslash}X}
+\toprule
+Method & Random AUROC & Unseen-drug AUROC & Unseen-protein AUROC \\
+\midrule
+DrugBAN & 0.8942 \(\pm\) 0.0230 & 0.8850 \(\pm\) 0.0317 & 0.8008 \(\pm\) 0.0734 \\
+Released DrugBAN-Evo & 0.8715 \(\pm\) 0.0253 & 0.8612 \(\pm\) 0.0334 & 0.7181 \(\pm\) 0.0777 \\
+Harness-free & 0.8950 \(\pm\) 0.0270 & 0.8853 \(\pm\) 0.0382 & 0.7958 \(\pm\) 0.0917 \\
+Native DrugEvolve & 0.8963 \(\pm\) 0.0217 & 0.8865 \(\pm\) 0.0329 & 0.7975 \(\pm\) 0.0726 \\
+Our harness & 0.9005 \(\pm\) 0.0207 & 0.8922 \(\pm\) 0.0299 & 0.8098 \(\pm\) 0.0678 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+Table 2. Fixed twelve-epoch refit and held-out test, mean \(\pm\) sample SD over seeds 42--46. Each searched row has five independent campaigns; fixed references have five training seeds. All three test sets are scored after the architecture-selection seal. All selected architectures completed the fixed refit without baseline fallback.
+
+Our harness attains mean AUROCs of 0.9005, 0.8922, 0.8098 on random, unseen-drug, and unseen-protein tests, respectively. These are the highest observed means among the five evaluated methods. Against native DrugEvolve, the primary paired differences comprise 3 positive, 1 negative, and 1 tied seeds. Against harness-free generation, the primary paired differences comprise 2 positive, 2 negative, and 1 tied seeds. Both primary mean differences are below the predeclared 0.01 AUROC practical threshold. Neither primary comparison meets the predeclared superiority criterion. The positive means therefore describe a small, seed-dependent gain under this budget.
+
+\begin{center}\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{>{\hsize=1.600\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.850\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.850\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.850\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.850\hsize\linewidth=\hsize\raggedright\arraybackslash}X}
+\toprule
+Primary paired contrast & AUROC delta & 95\% bootstrap interval & Exact p & Holm p \\
+\midrule
+Our harness - Native DrugEvolve & +0.0057 & [-0.0174, +0.0280] & 0.6250 & 1.0000 \\
+Our harness - Harness-free & +0.0069 & [-0.0147, +0.0326] & 0.7500 & 1.0000 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+Table 3. Predeclared unseen-drug endpoint; paired campaign bootstrap and two-sided exact sign-flip tests (n=5).
+
+The units in these intervals are complete paired search/refit campaigns, not candidate models or individual test pairs. The fixed-model references report training-seed variation, whereas the searched methods include both uncontrolled model-generation variation and paired training variation. The secondary split results show where a search-time choice transfers; they are not additional independent task families.
+
+\subsection*{5.3 Resource use and search reliability}
+\begin{center}\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{>{\hsize=1.600\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.880\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.880\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.880\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.880\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.880\hsize\linewidth=\hsize\raggedright\arraybackslash}X}
+\toprule
+Search method & Calls / campaign & New fits / 15 slots & Input tokens & Output tokens & Initial model retained \\
+\midrule
+Harness-free & 3.2 & 15/15 & 253,432 & 67,429 & 2/5 \\
+Native DrugEvolve & 21.6 & 15/15 & 1,995,717 & 178,295 & 1/5 \\
+Our harness & 13.2 & 15/15 & 1,090,239 & 87,558 & 1/5 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+Table 4. Resource ceilings are common; actual usage need not match. Input token totals include cached/context tokens. The final column counts campaigns selecting the original architecture, not failed final refits; complete per-seed costs accompany the table.
+
+Harness-free generation uses 16 calls for 15 completed new fits across five campaigns. Native DrugEvolve uses 108 calls for 15 completed new fits across five campaigns. Our harness uses 66 calls for 15 completed new fits across five campaigns. Excluding failed invocations, the completed-call counts are harness-free generation 15; native DrugEvolve 105; our harness 66; all failed invocations remain charged in Table 4. Initial-model retention means that search kept the original architecture; it is distinct from a final-refit runtime failure and does not imply one. Token usage is unavailable for 4 calls, so the token totals are observed lower bounds.
+
+Each exact-repeat evaluator cache hit is separately logged. Retries, novelty checks, judging, and analysis remain part of the native methods' measured cost. A controller's terminal baseline fallback remains in the result set; neither failed seeds nor inconvenient negative-transfer outcomes are discarded. Observed elapsed times include shared-host/GPU contention and, for recovered campaigns, interruption and recovery delays; they are not a hardware-normalized speed benchmark.
+
+\subsection*{5.4 Calibration-information replay and audit cases}
+\begin{center}\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{>{\hsize=1.200\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.900\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.900\hsize\linewidth=\hsize\raggedright\arraybackslash}X}
+\toprule
+Fixed policy and accessible calibration information & Dev Top-1 & Gate Top-1 \\
+\midrule
+One client, 3 conditions: mean over all ten clients & 0.750000 & 0.603922 \\
+One-client range & 0.673913--0.782609 & 0.549020--0.647059 \\
+Ten clients, 30 conditions: sufficient-statistic aggregation & 0.826087 & 0.647059 \\
+Centralized replay, the same 30 conditions & 0.826087 & 0.647059 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+The gate gain over the mean single-client replay is 4.31 percentage points; the aggregate ties the strongest single client rather than beating every client. Aggregated and centralized variance differ by at most 6.66\(\times\)10\textsuperscript{-16}, and scores agree exactly. Binary statistic payloads total 479,760 bytes per fold, excluding transport/security overhead. This is a post-search fixed-algorithm information replay, not fifteen additional federated campaigns or a measured tenfold change in real laboratories' willingness to participate.
+
+The cell audit contains both a useful implementation and a refuted hypothesis. A retained reverse-identification policy uses shrunk residual variances in a Mahalanobis distance. A visible 2\(\times\)2 replay shows no gain from an unweighted Euclidean substitution alone, while reliability weighting helps both cosine and amplitude-sensitive distances. In a separate federated engineering run, client cards motivate conditional residual transfer; its executed development score falls and the native system rolls it back. The latter demonstrates consumption and refutation of evidence, not a positive treatment effect. Sequential/CEX feedback-counterfactual action changes are zero for the retained non-federated policies, so those policies do not demonstrate within-episode feedback adaptation.
+
+Audit coverage: 15/15 formal search campaigns have terminal receipts. Only visible development/selection feedback is used; no final-test predictions or labels are read. Engineering canaries are excluded.
+
+Retained case (our native harness, seed 42, item 3; source `49d2a9be7d10`). Recorded rationale: Per-example, per-head RMS normalization produced the strongest retained gain (+0.02804 development AUROC), but unconditional summation still assumes both normalized heads are equally useful; learning two global softmax gates, initialized uniformly and multiplied by two to preserve the original sum at initialization, should suppress redundant head signals and improve development\_auroc. Intervention: ban.py head aggregation: unconditional head sum -> learned scale-preserving simplex-weighted head sum. Development AUROC changed from 0.8887 to 0.8905; visible-selection AUROC changed from 0.8904 to 0.8975. The respective deltas were +0.001858 and +0.007132. The actual native decision was `keep`. It remains the terminal selected source. Finalization replayed pre-interruption responses externally; unavailable transient trajectory fields were left unreconstructed.
+
+Rejected case (our native harness, seed 42, item 2; source `62016ac3a51b`). Recorded rationale: Starting from RMS-normalized attention maps, adding a parameter-light residual interaction formed by the elementwise product of attention-marginal-pooled drug and protein projections will preserve complementary first-order agreement signals and increase development\_auroc. Intervention: normalized bilinear interaction alone -> normalized bilinear interaction plus attention-conditioned Hadamard residual. Development AUROC changed from 0.8887 to 0.8970; visible-selection AUROC changed from 0.8904 to 0.8885. The respective deltas were +0.008347 and -0.001903. The actual native decision was `discard`. The candidate was not promoted.
+
+Matched source hashes, attested evaluations and native trajectories verify both decisions. Persisted follow-up memory is agent-generated interpretation, not an independently established mechanism. Cases follow fixed method/seed/item order, not effect-size ranking. Full hypotheses, feedback, stage counts, costs and recovery receipts remain in the machine-readable audit. External recovery is not evidence of native automatic fault tolerance.

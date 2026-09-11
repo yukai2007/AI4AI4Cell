@@ -1,0 +1,32 @@
+\section*{Appendix A. Secondary ranking metric and complete primary seed values}
+\begin{center}\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{>{\hsize=1.600\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.800\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.800\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.800\hsize\linewidth=\hsize\raggedright\arraybackslash}X}
+\toprule
+Method & Random AP & Unseen-drug AP & Unseen-protein AP \\
+\midrule
+DrugBAN & 0.8836 \(\pm\) 0.0247 & 0.9024 \(\pm\) 0.0266 & 0.7756 \(\pm\) 0.1030 \\
+Released DrugBAN-Evo & 0.8658 \(\pm\) 0.0255 & 0.8888 \(\pm\) 0.0264 & 0.6779 \(\pm\) 0.1033 \\
+Harness-free & 0.8884 \(\pm\) 0.0253 & 0.9063 \(\pm\) 0.0290 & 0.7963 \(\pm\) 0.0957 \\
+Native DrugEvolve & 0.8866 \(\pm\) 0.0244 & 0.9048 \(\pm\) 0.0278 & 0.7793 \(\pm\) 0.0889 \\
+Our harness & 0.8922 \(\pm\) 0.0202 & 0.9107 \(\pm\) 0.0229 & 0.8070 \(\pm\) 0.0727 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+Table A1. Non-interpolated average precision (AP), mean \(\pm\) sample SD. AP is not trapezoidal precision--recall area. These outcomes are secondary and do not replace the predeclared unseen-drug AUROC contrast.
+
+\begin{center}\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{>{\hsize=1.600\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.880\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.880\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.880\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.880\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.880\hsize\linewidth=\hsize\raggedright\arraybackslash}X}
+\toprule
+Method & Seed 42 & Seed 43 & Seed 44 & Seed 45 & Seed 46 \\
+\midrule
+DrugBAN & 0.8614 & 0.8462 & 0.9150 & 0.8849 & 0.9175 \\
+Released DrugBAN-Evo & 0.9052 & 0.8336 & 0.8681 & 0.8227 & 0.8763 \\
+Harness-free & 0.8969 & 0.8721 & 0.9150 & 0.8251 & 0.9175 \\
+Native DrugEvolve & 0.8635 & 0.8413 & 0.8975 & 0.9126 & 0.9175 \\
+Our harness & 0.9088 & 0.8454 & 0.9099 & 0.8794 & 0.9175 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+Table A2. All five unseen-drug AUROC values. The machine-readable release also reports MCC, accuracy, log loss, source/checkpoint identities, and row-aligned probabilities for each test split and method/seed.
+
+\clearpage

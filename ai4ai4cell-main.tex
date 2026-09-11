@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{iclr2027_conference}
+\usepackage{fontspec}
+\setmainfont{texgyretermes-regular.otf}[Path=fonts/,BoldFont=texgyretermes-bold.otf,ItalicFont=texgyretermes-italic.otf,BoldItalicFont=texgyretermes-bolditalic.otf]
+\usepackage{amsmath,amssymb,booktabs,tabularx,longtable,etoolbox,xurl,graphicx}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\usepackage{microtype}
+\setlength{\parskip}{0.25em}
+\setlength{\parindent}{0pt}
+\makeatletter
+\patchcmd{\@maketitle}{Under review as a conference paper at ICLR 2027}{Manuscript draft in ICLR 2027 format}{}{}
+\patchcmd{\@maketitle}{Paper under double-blind review}{Draft prepared for anonymous review}{}{}
+\makeatother
+\begin{document}
+% Build with Tectonic 0.16.0 or XeLaTeX/BibTeX. No acceptance or submission is implied.
+\title{AI4AI4Cell: An Auditable Harness for Evidence-Gated Agentic Research in Cell Biology}
+\author{Anonymous}
+\date{}
+\maketitle
+\begin{abstract}
+We study AI4AI4Cell, an executable research interface for biological algorithm search: hypotheses produce versioned code, fixed local evaluators guide retention, and subsequent proposals consume the resulting evidence. Its federated-evidence extension contributes local diagnostics without changing language-model weights or placing raw measurement matrices in the model prompt. In exploratory cell-policy comparisons, the production harness attains 41/51 reverse-identification hits versus 39/51 for direct generation, a small sequential-score increase, and a tie on a third task; the same-data federated variant does not improve the non-federated result. A fixed-policy replay isolates calibration-information access: 30 rather than 3 conditions improves visible-gate accuracy by 4.31 percentage points over the mean single-client result, with numerical agreement between aggregated and centralized sufficient statistics. We then compare harness-free generation, native DrugEvolve, and our native harness on drug-target interaction prediction using five campaigns per method, a common research agenda and resource ceilings, and three held-out evaluation regimes. On the predeclared unseen-drug endpoint, our harness reaches AUROC 0.8922; its paired mean differences are +0.0057 versus native DrugEvolve; +0.0069 versus harness-free generation. Both paired confidence intervals include zero. These experiments separate measured utility, information access, and traceability; the local-data interface does not itself provide a formal privacy guarantee.
+
+\end{abstract}
+
+\input{sections/01_introduction}
+
+\input{sections/02_related_work}
+
+\input{sections/03_method}
+
+\input{sections/04_experimental_design}
+
+\input{sections/05_results}
+
+\input{sections/06_discussion}
+
+\input{sections/07_conclusion}
+
+\input{sections/08_reproducibility}
+
+\input{sections/09_appendix_metrics}
+
+\input{sections/10_appendix_recovery}
+
+\end{document}
