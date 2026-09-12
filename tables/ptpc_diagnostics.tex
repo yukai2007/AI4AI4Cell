@@ -1,0 +1,33 @@
+% Generated only from the verified post-final descriptive JSON.
+% source_sha256=0ae97bb895258bb5a615f82515ed4f3128cf4f6e2f254eefc2d49ea8066ba860
+\section*{Appendix J. PTPC label balance and fixed-head diagnostics}
+\label{app:ptpc-diagnostics}
+These are post-final descriptions of existing receipts and saved predictions; no additional training, inference, hypothesis tests, threshold tuning or selection was performed.
+\begin{center}\small\setlength{\tabcolsep}{8pt}
+\begin{tabular}{lrrr}\toprule
+Role & Conditions & Positives & Positive fraction \\
+\midrule
+Train & 491 & 86 & 17.52\% \\
+Development & 96 & 8 & 8.33\% \\
+Visible gate & 90 & 9 & 10.00\% \\
+Partner evidence & 154 & 19 & 12.34\% \\
+Final & 148 & 22 & 14.86\% \\
+\bottomrule\end{tabular}\end{center}
+Table J1. Labeled conditions in the frozen compound-disjoint roles. The five partner clients together contribute the partner-evidence row; they do not enlarge the task-model training set.
+\begin{center}\small\setlength{\tabcolsep}{6pt}
+\begin{tabular}{lrrr}\toprule
+Role & AP & AUROC & BCE \\
+\midrule
+Development & $0.1081 \pm 0.0079$ & $0.4435 \pm 0.0148$ & $0.8924 \pm 0.0676$ \\
+Visible gate & $0.5836 \pm 0.0567$ & $0.7941 \pm 0.0083$ & $0.4221 \pm 0.0509$ \\
+Final & $0.1589 \pm 0.0060$ & $0.4918 \pm 0.0224$ & $1.3719 \pm 0.0933$ \\
+\bottomrule\end{tabular}\end{center}
+Table J2. Fixed-head metrics, mean $\pm$ sample SD across the eight predeclared seeds. These are not additional independently sampled biological test sets.
+
+For every seed, the four arms have identical baseline checkpoint hashes, online loss histories and visible metrics. The mean recorded epoch loss decreases from 0.5602 at epoch 1 to 0.04064 at epoch 100. This is online minibatch BCE while weights are updated, not fixed-checkpoint training BCE. Training AP, AUROC and accuracy were not recorded; no train-set predictions were added.
+
+At threshold 0.5, logistic predicts all 148 final conditions as negative (TP=0, FP=0, FN=22, TN=126). Its accuracy 0.85135 is exactly the all-negative reference, not positive-case detection. Its AUROC 0.6385 nevertheless describes continuous-score ranking, not thresholded decisions.
+
+The fixed head's strong gate ranking does not transfer to development or final, despite low late-epoch training loss. Role prevalences also differ. These observations establish a generalization warning, not a unique causal explanation; no causal attribution to prevalence, overfitting or biological heterogeneity is established here.
+
+\noindent\footnotesize Public aggregate values: \texttt{tables/ptpc\_diagnostics.csv}. Source SHA256: \texttt{0ae97bb895258bb5\ldots}; the complete hash is in \texttt{ptpc\_diagnostics.provenance.json}.\normalsize

@@ -1,0 +1,238 @@
+% Review contract, cutoff 2026-09-11: one executable PTPC task adaptation for
+% manuscript authors/reviewers, not a broad proteomics survey or final-results section.
+% Include: Sun2026ProteinTalks Methods pp.14--15; official PTV-1 code at
+% 1223e9401cc11ca2d2252ad0522fcf9604f0d305; our immutable release/study records.
+% Exclude: author benchmark scores, full-PTDS claims, unpublished final PTPC outcomes.
+% Comparison axes fixed before drafting: inputs/labels, compound roles, fitted
+% transformations, editable object, evidence availability, gate, cost, final seal.
+% Existing review plan/primary-source ledger/claim matrix:
+% references/proteomics/{review-plan.md,research/source-ledger.csv,
+% research/claim-evidence-matrix.csv}; source IDs PTPAPER/PTCODE, claims PTM01--06.
+% Additional local claim map (implemented/derived, not attributed to Sun et al.):
+% C1 intake/role counts: data/proteomics/ptpc_prepared_20260911/qa_summary.json;
+% data/proteomics/ptpc_release_20260911/audit/{conditions,release_audit}.json;
+% extensions/proteomics/ptpc_release.py: chemistry_policy, make_role_manifest.
+% C2 model/preprocessing/fit: ptpc_model.py, ptpc_training.py, ptpc_baselines.py.
+% C3 frozen design/statistics: results/ptpc_matched_20260911/study.json: protocol.
+% C4 controller/gate/egress: ptpc_campaigns.py; native_adapter/{installer,selector}.py;
+% ptpc_service.py; extensions/research_contract/{evidence,gate,budget}.py.
+% C5 seals/deployment: ptpc_final_eval.py: create_selection_seal,
+% create_refit_resolution, verify_seals, load_final, final_worker, evaluate_final.
+% C6 bounded engineering replay: results/ptpc_topology_replay_20260911/report.json.
+% Only this section file is edited. Missing sibling paper-writing/general-writing
+% skill packages were replaced by manual sentence/citation/claim verification.
+
+\section*{Appendix C. PTPC observed-response protocol}
+\label{app:ptpc-protocol}
+
+\paragraph{Task and source boundary.}
+We adapt the publicly available PTPC data in Supplementary Table~8 of
+\citet{Sun2026ProteinTalks}. The input is a single compound's \emph{observed}
+6-hour and 24-hour protein profiles, together with its molecular fingerprint;
+the output is a probability of binary drug efficacy. This follows the PTPC
+observed-timepoint setting, not a forecast from untreated cells. Our
+ProteinTalks-derived efficacy head is not the full neural-ODE ProteinTalks
+model, its pretrained checkpoint, or a reproduction of the authors' few-shot
+split. The public subdataset was chosen for input/annotation completeness,
+before model comparison. No original-paper score is used as our baseline.
+
+\paragraph{Condition integrity and compound-disjoint roles.}
+The adapter checks the complete metadata/matrix row sequence and preserves
+the original 5,171 protein features. A condition is a cell line--perturbation
+pair with usable unmarked observations at both times and consistent known
+efficacy. Controls and marked technical/biological repeats are excluded from
+inputs but retained in provenance. Unknown outcomes are excluded, never
+converted to negative labels; the adapter explicitly maps Y/N to 1/0.
+Forty of 1,019 noncontrol conditions fail the admission rules, leaving 979.
+Repeated sample identifiers retain source-row identities rather than being
+joined many-to-many.
+
+RDKit 2026.03.5 normalizes molecular representations, selects the largest
+organic fragment and uncharges it, then writes canonical isomeric SMILES.
+Coordination-metal/inorganic compounds retain their complete cleaned
+representation; stereochemistry and isotopes are preserved, and tautomers
+are not merged. The admitted data contain 666 standardized compound groups.
+One label-independent compound hash assigns all equivalent perturbation IDs,
+cell lines and timepoints to a single role, using target fractions
+50/10/10/15/15\%. Thus the held-out unit is compound identity, not a row;
+scaffold disjointness is not claimed. Initial schema inspection exposed a
+few labels before role assignment. The complete chemical closure of exposed
+perturbations 101 and 102---ten admitted conditions---is forced into training.
+We therefore do not claim zero preflight label access. No class balancing or
+outcome-dependent reassignment is performed.
+
+\begin{center}\small
+\begin{tabular}{lrrrrr}
+\toprule
+Role & Train & Development & Visible gate & Partner evidence & Final \\
+\midrule
+Conditions & 491 & 96 & 90 & 154 & 148 \\
+Compound groups & 333 & 69 & 70 & 102 & 92 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Fixed inputs, preprocessing and fitted models.}
+Each condition supplies a $2\times5{,}171$ float32 protein array with NaNs and
+an observation mask, and a 2,048-bit radius-2 chiral Morgan fingerprint.
+These fingerprints replace, rather than reproduce, ProteinTalks' original
+935-dimensional drug representation \citep{Sun2026ProteinTalks}.
+Each observed time profile undergoes log1p and within-profile min--max
+normalization. Missing entries are filled by time--protein medians fitted
+only on the 491 training conditions; an entirely unobserved training feature
+uses zero. Query normalization uses only that query's observed inputs.
+Masks determine these operations but are not extra head channels.
+
+The fixed head uses protein and drug Conv1d/ReLU branches of width 32,
+duplicates the single-drug vector in its two drug slots, and applies
+a $64\!\rightarrow\!32\!\rightarrow\!1$ ReLU classifier
+(464,193 parameters). This inherits the phenotype path, not the ODE or
+proteome-reconstruction objective \citep{Sun2026ProteinTalks}.
+Every candidate is fitted from scratch with unweighted binary
+cross-entropy, AdamW, learning rate $5\times10^{-4}$, weight decay $10^{-4}$,
+batch size 64, gradient-norm clipping at 1, and exactly 100 epochs.
+The last checkpoint is used: no early stopping, validation-selected epoch,
+SWAG, pretrained weights or partner-data fitting. The editable artifact is
+the complete head module with a fixed protein/drug-to-logit API and a
+two-million-parameter ceiling; the trainer, inputs, preprocessing and scorer
+are not editable. All neural arms start from the same fixed-head source.
+Separate references are this fixed architecture at each training seed,
+cosine 5-nearest-neighbor label averaging, and L2 logistic regression
+($C=1$). The latter two use the same train-fitted preprocessing and equally
+weighted, separately L2-normalized protein and drug blocks, with no tuning.
+
+\paragraph{Matched research protocol and resource accounting.}
+The four arms are direct+pooled, loop+pooled, direct+cards and loop+cards,
+each with eight paired training seeds, 142--149: 32 campaigns on one fixed
+data split. All receive the same initial source, public research agenda,
+evaluation interface and evidence projection for their assigned mode.
+The research backend is gpt-5.6-sol with ultra reasoning. Pairing controls
+task-training seeds, not identical language-model samples.
+Direct generation emits one complete source file per opportunity from the
+incumbent and feedback; it has no separate proposal, implementation, repair
+or analysis roles. Loop runs the existing production propose/apply/run/finalize
+flow (b583291 lineage with the recorded 23f5833 finalizer fix), with an
+explicitly installed matched-contract adapter. It retains
+hypotheses, source changes, failures, decisions and parent lineage.
+It is not an unchanged native-system run: native focus, novelty and
+soundness opinions are recorded as advisory, not extra promotion vetoes.
+Both arms use the same executable validity checks and selector:
+\[
+\begin{aligned}
+\operatorname{keep}(c,p)\iff{}&\operatorname{valid}(c)\ \land\
+\operatorname{AP}_{\rm dev}(c)>\operatorname{AP}_{\rm dev}(p)+10^{-4}\ \land{}\\
+&\operatorname{AP}_{\rm gate}(c)>\operatorname{AP}_{\rm gate}(p)+10^{-4}.
+\end{aligned}
+\]
+The visible gate is selection data, not the final test. AP is sklearn's
+non-interpolated average precision, matching the official trainer's metric;
+it is not trapezoidal PR area. Undefined one-class AP is explicit, not an
+invented score. Rejected or failed candidates retain the last valid parent.
+
+Each campaign has three new-candidate opportunities, at most 24 LLM calls,
+four biological fits/evaluations including its baseline, and 20 partner
+evaluations (five clients per fitted candidate). Fits use one CPU thread
+and a 300-second worker ceiling; partner workers have 60 seconds each.
+Scheduled opportunities are reserved at launch, and failures consume their
+reserved resources. Only a verified completed fit with the identical
+source/data/seed/recipe may be cached within that campaign; another arm
+cannot donate a free search fit. Synthetic runtime warm-up is recorded
+separately. These are common ceilings, not equal realized calls, tokens or
+runtime: in particular, direct uses one generation call per opportunity.
+Native prompt composition also differs. The contrast concerns the
+research workflow under shared interfaces, not an isolated causal effect
+of a hypothesis field or perfectly token-matched reasoning.
+
+The original interactive scheduler exited with signal status 143 after
+six dispatch returns; two detached workers subsequently completed normally.
+An administrative resume preserved all eight terminal campaigns, checked
+their closed ledgers and every frozen runtime/configuration hash, and
+dispatched only the 24 untouched campaigns in the original seed blocks and
+rotated arm order. The original six return codes remain intact; the two
+orphan completions have explicitly unknown process return codes and verified
+scientific terminal receipts. No candidate, fit, seed or opportunity was
+repeated or added. This operational recovery is recorded separately from
+the frozen scientific runtime.
+
+\paragraph{What partners contribute and what learns.}
+The partner role is partitioned into five simulated clients by cell line:
+A375, HCT116, NCI-H1975, NCI-H2170 and Panc1005, containing respectively
+16, 88, 16, 18 and 16 conditions. They are cellular sources within one public
+dataset, not independently participating laboratories. Every evaluated
+checkpoint is sent to the same five local evaluators in every arm.
+A client returns count, Brier score, binary log loss, accuracy, mean
+prediction, positive fraction, AP and AUROC, bound to model/data/assignment,
+seed and round identities. Cards use six-decimal rounding, at least eight
+observations, a 2,048-byte cap and no free text or sample-level arrays.
+Pooled mode exposes count-weighted aggregates of the five observation-mean
+diagnostics; cards mode additionally exposes the per-client diagnostics.
+Client AP/AUROC are explicitly \emph{not poolable}: their average is not
+the pooled ranking metric. Public development/gate AP is instead computed
+exactly from aligned predictions by the trusted evaluator.
+
+Thus cards versus pooled changes diagnostic resolution, including access
+to local ranking diagnostics, on the \emph{same} 154 conditions; it neither
+adds tenfold data nor isolates execution topology alone. Direct has the
+same local-data interface and can consume cards. The research LLM's weights
+never change. Research updates executable model designs and audit state;
+the common trainer learns task weights from the authorized training pool;
+partners evaluate those weights but do not train or average them. We call
+this federated evidence collaboration, not FedAvg. Its biological motivation
+is the possibility of contributing local experimental evidence under
+measurement-sharing constraints, not an assertion that direct generation
+cannot use local data \citep{Sheller2020}.
+
+\paragraph{Execution boundary and audit scope.}
+Controllers receive code, scalar scores and evidence packets, not release
+arrays. A trusted fit worker preloads train/development/gate data; the
+training API uses only training labels. Each partner worker preloads only
+its own shard. Dependencies and output handles are initialized before
+candidate execution under a process-wide Linux seccomp boundary denying
+file opens, network access and new processes. The coordinator checks
+identities, row alignment, metrics and durable decisions. Native promotion
+must appear in the retained research-branch commit with the matching
+decision and selected-source hashes, not merely a database intention.
+This supports inspection of what was evaluated and retained, not proof
+that a textual hypothesis caused an improvement. The coordinator and local
+services are trusted; in-memory label introspection, tensor-library exploits,
+denial of service and information encoded in weights/diagnostics are not
+ruled out. No differential privacy, secure aggregation or real-institution
+deployment is claimed.
+
+A separate engineering check replays one allowlisted baseline checkpoint
+centrally, with the identical five partner shards, stored preprocessor and
+per-client inference. All 35 rounded diagnostic fields and five card hashes
+match the local-worker receipts. This is fixed-input/model execution
+equivalence, not a final efficacy result or federation advantage; it does
+not reseal the historical campaign or benchmark communication latency.
+
+\paragraph{Final access, deployment and statistical interpretation.}
+The frozen protocol requires all 32 campaigns to reach terminal states,
+then seals every selected source, checkpoint, receipt and budget.
+An unresolved reservation, invalid baseline or integrity failure blocks
+final evaluation; failed candidates remain in the campaign summaries.
+A second deployment seal explicitly aliases the selected last-epoch
+checkpoints because search and deployment have identical train/seed/recipe
+contracts. No additional neural refit or partner-data training is implied.
+The same-seed fixed-head references are identified baseline aliases;
+cosine/logistic are fitted once on training data, not presented as eight
+independent replicates. Only after both seals are verified is the final
+loader enabled. Final candidate workers receive label-free features;
+the trusted parent scores aligned predictions. A single recorded dispatch
+prevents score-dependent reruns or post-test candidate replacement.
+
+The specified primary endpoint is final AP. The two primary paired
+contrasts are loop+cards minus direct+cards, and loop+cards minus loop+pooled.
+We report all eight seed values, means/sample SDs, paired differences,
+and descriptive 95\% paired campaign-bootstrap intervals (10,000 draws).
+Two-sided exact sign-flip tests enumerate $2^8$ assignments, with Holm
+correction across the two contrasts at $\alpha=0.05$; the predeclared
+practical AP difference is 0.02. Sign-flip inference assumes exchangeable,
+sign-symmetric paired differences. Intervals describe campaign variation
+conditional on this fixed compound split, not uncertainty across future
+laboratories, cell lines or chemical populations. AUROC, accuracy at 0.5
+and log loss are secondary. No seeds, splits or endpoints are changed in
+response to final outcomes. All 32 campaigns and 42 final method/seed
+records completed. The results in Section 5.3 do not support either
+predeclared superiority claim; the engineering checks are reported
+separately from that outcome.

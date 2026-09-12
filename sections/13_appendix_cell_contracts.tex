@@ -1,0 +1,79 @@
+% Implemented metric definitions, checked against the unchanged task run.py
+% and README/PROVENANCE contracts on 2026-09-11. No new evaluation is performed.
+\section*{Appendix I. Cell-task inputs and exact scoring}
+
+\paragraph{Shared Norman archive and distinct objectives.}
+The two Norman tasks use released scDEBART predictions and condition-level,
+scVI-derived response estimates \citep{sung2026scdebart} from K562
+single/combinatorial CRISPRa experiments \citep{norman2019genetic}.
+These are archived endpoints, not new observations or longitudinal data. The three source
+archives contain 124/124/129 conditions. Removing all 81 directly targeted
+genes leaves 2,998 downstream expression coordinates. Thirty known
+prediction--response pairs provide calibration; the query-label roles
+contain 46 development, 51 visible-gate and 51 loop-excluded diagnostic
+conditions. These roles overlap in biological context and component genes;
+the last archive was inspected during environment construction.
+
+\paragraph{Reverse identification.}
+The policy receives a query's downstream response and a library of frozen
+predicted responses, and ranks the eligible interventions. The exact source
+is present once; the 30 calibration interventions are excluded, leaving
+94/94/99 candidates across the three roles. For $Q$ queries, the primary
+score is $Q^{-1}\sum_q\mathbf{1}[\widehat a_q=a_q^\star]$.
+An exact two-gene intervention is one label: recovering just one component
+does not receive partial primary credit. Table~1 uses the 51-query diagnostic
+role. This is closed-library identification, not open-set causal discovery
+or a reproduction of scDEBART's differently constructed reverse benchmark.
+
+\paragraph{Sequential phenocopy search.}
+Here the source intervention is removed as well, leaving 93/93/98
+alternatives. A deterministic policy chooses three distinct actions;
+each query reveals that action's archived response for the next choice.
+The initial features are the desired response, frozen candidate predictions
+and the same 30 historical pairs. Let $z_q$ be the desired downstream
+response and $y_{qa_{qj}}$ the revealed response of action $a_{qj}$.
+The reported metric is
+\[
+\operatorname{AUC3}=\frac{1}{3Q}\sum_{q=1}^{Q}\sum_{t=1}^{3}
+ \max_{j\leq t}\operatorname{cos}(z_q,y_{qa_{qj}}).
+\]
+It averages best-so-far observed similarity over the three steps, then over
+queries; it is not ROC-AUC, classification accuracy or an early-stopping
+policy. The locked cosine reference orders candidates by predicted
+similarity before observing their responses. Alternatives may share a
+component gene with the source, so success is not necessarily a new
+mechanism. The retained policies' zero feedback-action-change diagnostic
+limits any claim of within-episode adaptation.
+
+\paragraph{CEX cold-cell virtual screening.}
+This custom cold-cell/known-drug replay uses GDSC1-derived measurements
+\citep{yang2013gdsc} and frozen out-of-fold PGBridge/chemical predictions. It has
+389 unique cell-context identifiers (the upstream field is named
+\texttt{PatientID}), 149 structure representatives and 48,376 measured
+context--action rows; each episode offers 16--149 actions. The
+calibration/development/visible-gate/diagnostic roles contain 78/117/97/97
+contexts. Calibration contains 9,573 already-observed outcomes. Every
+prediction contributing to an out-of-fold mean held that context out of
+its own outer training split. The intermediate predictions and split
+manifests are required dependencies, not reconstructed by the loop.
+Inherited provenance omits the exact GDSC release; the resource citation
+does not establish this custom split or scorer.
+
+Write $r_{qa}$ for measured drug-response AUC (lower means greater
+sensitivity), and $\tau_{qa}=\min(0.70,\overline{q25}^{\,\mathrm{train}}_{qa})$
+for the fixed pair-specific threshold. The latter averages the appropriate
+outer models' training-only 25th-percentile thresholds. For the three
+distinct selected actions,
+\[
+\operatorname{AURB3}=\frac{1}{3Q}\sum_{q=1}^{Q}\sum_{t=1}^{3}
+ \max_{j\leq t}\bigl(\tau_{qa_{qj}}-r_{qa_{qj}}\bigr).
+\]
+Margins remain signed, including negative values; they are not clipped to
+zero. The reference selects ascending frozen raw-PG predicted AUC, not
+cosine similarity. A separate absolute-response diagnostic averages
+$1-\min_{j\leq t}r_{qa_{qj}}$. Relative-threshold improvement need not improve
+this absolute objective, nor establish efficacy, safety or clinical benefit.
+
+Sequential bootstrap intervals compare fixed policies over queries, not
+independent campaigns. All Cell results are retrospective; DTI and PTPC
+use their separately stated campaign-level analyses.

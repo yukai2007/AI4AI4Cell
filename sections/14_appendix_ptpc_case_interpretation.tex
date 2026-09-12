@@ -1,0 +1,33 @@
+\paragraph{Source-level interpretation of the native pair.}
+For the retained round-1 source \texttt{07ba285c6b6c}, let $x_6,x_{24}$ be
+the fixed preprocessed protein inputs, not raw fold changes. The implemented
+protein representation is
+\[
+\begin{aligned}
+z_t&=\operatorname{ReLU}(W x_t+b),\qquad
+d=\operatorname{ReLU}(V(x_{24}-x_6)+c),\\
+g&=\operatorname{sigmoid}(G[z_6,z_{24},d]+a),\\
+h&=g\odot(z_6+z_{24})/2+(1-g)\odot d.
+\end{aligned}
+\]
+The shared per-time and difference encoders each produce 32 features;
+the gate maps 96 to 32. The unchanged drug branch produces another 32
+features, and the unchanged output head classifies their concatenation
+with $h$. This is an architectural use of two observed profiles, not a
+learned physical time derivative or evidence of a causal biological mechanism.
+
+The rejected source \texttt{55c3487863c5} adds the existing drug embedding
+to the gate input, changing $G$ from a 96-to-32 to a 128-to-32 map and
+adding 1,024 weights. The other encoders, latent widths and output head
+are unchanged. Its visible AP changes are $-0.021498$ on development and
+$-0.024306$ on the gate; the fixed selector therefore retains the previous
+model. These are measured diagnostic differences, not significance tests.
+
+The sealed round-3 hypothesis context contains the preceding rejection
+and its decision identity. Its new proposal references the decline in both
+visible AP measures and proposes dropout of 0.2 in the prediction head.
+The next candidate record binds the retained source \texttt{07ba285c6b6c}
+to evidence \texttt{578bdbdafc1c}; its own record identity is
+\texttt{1f6213b18420}. This verifies that the failed attempt is available
+in an actually executed subsequent proposal, while avoiding the stronger
+claim that the feedback caused that proposal or improved final outcomes.

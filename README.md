@@ -2,7 +2,7 @@
 
 Title: **AI4AI4Cell: An Auditable Harness for Evidence-Gated Agentic Research in Cell Biology**.
 
-This is an editable research draft, not a submitted/accepted article or a claim that every planned experiment is complete. It preserves the completed Cell and native-system DTI results from the 2026-09-11 V3 study. Official public supplementary proteomics datasets have now been obtained; task harmonization and prospective evaluation remain unfinished, and contribute no results to this manuscript.
+This is an editable, result-bearing research draft, not a submitted/accepted article. It preserves the Cell and native-system DTI results from the 2026-09-11 V3 study, adds an independently rescored cosine reference and complete DTI metrics, and reports the completed public ProteinTalks-derived PTPC study: four arms/eight seeds, all 32 campaigns and all 42 sealed final method/seed records. The two PTPC primary comparisons do not support the intended harness/client-card advantage; the negative results and weak neural final discrimination are included, not replaced by selected positive runs.
 
 ## Editing and compiling
 
@@ -15,7 +15,7 @@ This is an editable research draft, not a submitted/accepted article or a claim 
 
 ## Scope and source migration
 
-The source was migrated from the legacy `paper/final_study/final_20260911_v3` release without changing any of its eight inline tables. The title and methodological wording were clarified; a future-extension paragraph and the supplied Sun et al. paper citation were added. DrugEvolve is a native controller comparison with disclosed promotion differences, not a same-selector or equal-token causal experiment. Federated evidence updates research artifacts while leaving the research LLM fixed; it is not FedAvg or a privacy guarantee.
+The source was initially migrated from the legacy `paper/final_study/final_20260911_v3` release. All 28 historical numeric table rows remain unchanged; some protocol and audit material now lives in appendices, alongside complete DTI/PTPC metrics, the frozen PTPC protocol, full research costs, and source-checked keep/discard/next-context cases. DrugEvolve is a native controller comparison with disclosed promotion differences, not a same-selector or equal-token causal experiment. PTPC uses a common numerical selector and equal partner-data access; cards add a richer diagnostic package including local AP/AUROC. Federated evidence updates research artifacts while leaving the research LLM fixed; it is not FedAvg or a privacy guarantee.
 
 Detailed local migration, claim/evidence records, compilation and visual-review receipts live outside this paper-only project under `docs/overleaf/`. Full experiment/data manifests remain in the parent project's `results/` and `runtime/`; they are deliberately absent from this source bundle. Do not overwrite the frozen historical results to match future protocols.
 
