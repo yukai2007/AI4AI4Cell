@@ -1,0 +1,46 @@
+[
+  {
+    "bootstrap_95_percentile": [
+      0.0021373902299954397,
+      0.016126968272653787
+    ],
+    "comparator": "drugevolve_native",
+    "endpoint": "unseen_drug",
+    "holm_p": 0.25,
+    "interpretation": "Descriptive training/search-seed variation on fixed public tests; not population uncertainty or new blind confirmation.",
+    "mean_difference": 0.009132179251324613,
+    "method": "our_harness",
+    "metric": "auroc",
+    "n_pairs": 5,
+    "paired_seed_differences": [
+      0.014738015683330219,
+      0.0011757684678885827,
+      0.008335414214200032,
+      0.02141169789120423,
+      0.0
+    ],
+    "two_sided_sign_flip_p": 0.125
+  },
+  {
+    "bootstrap_95_percentile": [
+      -0.0009743052264366226,
+      0.010317969920937854
+    ],
+    "comparator": "harness_free",
+    "endpoint": "unseen_drug",
+    "holm_p": 0.25,
+    "interpretation": "Descriptive training/search-seed variation on fixed public tests; not population uncertainty or new blind confirmation.",
+    "mean_difference": 0.005061636540607784,
+    "method": "our_harness",
+    "metric": "auroc",
+    "n_pairs": 5,
+    "paired_seed_differences": [
+      0.009403033499634006,
+      0.012007107269833228,
+      0.008769568065754796,
+      -0.004871526132183113,
+      0.0
+    ],
+    "two_sided_sign_flip_p": 0.25
+  }
+]

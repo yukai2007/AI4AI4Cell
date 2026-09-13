@@ -1,0 +1,149 @@
+{
+  "additional_cosine_hashes": {
+    "administrative_io_recovery.json": "67238d7f9a68d6203da760b476d5359f9ee34806073f0d24c612058e8334663c",
+    "completion.json": "5906f54c1a8fe13a95f60a0289e413a2e7115196cfa1038e41e33962c7687ddd",
+    "manifest.json": "6a205f27386d1530d17ec48268a77501fb4f782fe51db4e134eaa4b14d449f83",
+    "results.json": "a9ba63bdbf8dce9f7c7244dc346d1a82465005474a365e07fdf48c432f2cb5a8"
+  },
+  "output_hashes": {
+    "federated_research.tex": "bfd91c433ac8e8ff0faf31c8682aca15434bab63fce36a3b54983ecc90a0ad8a",
+    "federated_research_aggregates.csv": "9cbdb24f648c5087b369abea7d53a17af9c968e6e749cd83444cd24111579b63",
+    "federated_research_seeds.csv": "0f4fa4473170977deaf90134c1fa5add4d7642cd9d2bfee80a1ed55bcd978bc1"
+  },
+  "primary_contrasts": [
+    {
+      "bootstrap95_descriptive": [
+        -0.05451240087861999,
+        -0.008339398949607169
+      ],
+      "differences": [
+        -0.015278855137178915,
+        -0.008892575074971154,
+        -0.00431649473045731,
+        -0.031466600288621915,
+        -0.07892630312467358
+      ],
+      "left": "loop_k10",
+      "mean": -0.027776165671180575,
+      "metric": "ap",
+      "p_exact_two_sided": 0.0625,
+      "p_holm": 0.125,
+      "right": "direct_k10",
+      "sd": 0.03038537803867335
+    },
+    {
+      "bootstrap95_descriptive": [
+        -0.03578553479369204,
+        0.055426183973571796
+      ],
+      "differences": [
+        0.042615288217235814,
+        0.08279137790100527,
+        0.026317587631376815,
+        -0.03289886972300565,
+        -0.06288136415423012
+      ],
+      "left": "loop_k10",
+      "mean": 0.011188803974476424,
+      "metric": "ap",
+      "p_exact_two_sided": 0.6875,
+      "p_holm": 0.6875,
+      "right": "loop_k1",
+      "sd": 0.05868037444148648
+    }
+  ],
+  "scope": "Same-host local-client optimization; no DP or secure aggregation. Previously exposed public final role; all new selections closed before reuse.",
+  "source_hashes": {
+    "all_metrics.csv": "da217cd627905efab549081b1d6e8a9dbf7df38210d1da29a7b4d39243768fa3",
+    "completion.json": "a8b73e2fd3ee19810bd0ea41d87f4fd0256ee86cd74758d9d457b8e57dae7b87",
+    "deployment_seal.json": "801eb6f0774955ea186b37d579eecc8c3c5797ad3fa381ea9c79ee0f11f0ed4b",
+    "postrun_verification.json": "176df5a2cffde26fc5c1223730833c4258fdb1c0bee6f552c3942ee8df8a2330",
+    "study_seal.json": "89614e6f93c64c0cd063535a8541eff79867010a93435c420528e1f938352e01",
+    "summary.json": "87f0e66bbb2035148c86a39baac8d76ce10e73b2c2de567048c7752bee3d6bc3"
+  },
+  "study": "ptpc-federated-feature-research-20260913",
+  "verified_aggregate_costs": {
+    "communication_scope": "serialized application payloads, not network traffic or savings",
+    "failed_fits": 1,
+    "failed_llm_calls": 0,
+    "llm_calls_by_arm": {
+      "direct_k1": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "direct_k10": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "loop_k1": [
+        12,
+        12,
+        13,
+        13,
+        13
+      ],
+      "loop_k10": [
+        13,
+        14,
+        14,
+        15,
+        17
+      ]
+    },
+    "n_campaigns": 20,
+    "n_final_vectors_rescored": 30,
+    "n_unique_final_prediction_identities": 24,
+    "native_implementation_repair_calls": 17,
+    "native_persisted_rounds": 30,
+    "observed_token_totals": {
+      "cached_input_tokens": 2051712,
+      "input_tokens": 3089798,
+      "output_tokens": 340968,
+      "reasoning_output_tokens": 295285
+    },
+    "rpc_reply_messages": 12569,
+    "rpc_reply_payload_bytes": 1543653598,
+    "rpc_request_payload_bytes": 1542861751,
+    "scorer_sha256": "f5e8e19f7b4265a0c305c3c26ac2875c4db3a29655aae47e1e3beb02a0d80296",
+    "study_elapsed_seconds": 3251.1814687252045,
+    "successful_fits": 75,
+    "total_resource_use": {
+      "candidate_evaluations": 76,
+      "candidate_opportunities": 60,
+      "evidence_queries": 0,
+      "llm_calls": 166,
+      "training_attempts": 76
+    },
+    "verdicts": {
+      "discard": 36,
+      "failed": 5,
+      "keep": 19
+    },
+    "verdicts_by_arm": {
+      "direct_k1": {
+        "discard": 7,
+        "failed": 2,
+        "keep": 6
+      },
+      "direct_k10": {
+        "discard": 6,
+        "failed": 3,
+        "keep": 6
+      },
+      "loop_k1": {
+        "discard": 10,
+        "keep": 5
+      },
+      "loop_k10": {
+        "discard": 13,
+        "keep": 2
+      }
+    }
+  }
+}

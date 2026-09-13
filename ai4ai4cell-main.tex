@@ -13,13 +13,12 @@
 \makeatother
 \begin{document}
 % Build with Tectonic 0.16.0 or XeLaTeX/BibTeX. No acceptance or submission is implied.
-\title{AI4AI4Cell: An Auditable Harness for Evidence-Gated Agentic Research in Cell Biology}
+\title{AI4AI4Cell: Federated Evidence-Guided Research for Biological Model Improvement}
 \author{Anonymous}
 \date{}
 \maketitle
 \begin{abstract}
-We study whether structured research loops and local biological diagnostics improve executable models under auditable evaluation contracts. AI4AI4Cell connects hypotheses, versioned code, fixed evaluators, retention decisions and subsequent proposals. Its federated-evidence interface lets partners evaluate artifacts locally and return bounded diagnostics while the research language model remains fixed. We evaluate five tasks across cell policies, drug--target interaction prediction and observed-response proteomics. Exploratory cell results show small harness gains but no additional same-data federation benefit. In a five-seed native DTI comparison, our harness attains unseen-drug AUROC 0.8922; its differences from DrugEvolve and direct generation are positive but uncertain. A prospectively frozen proteomics study crosses direct/loop research with pooled/client-resolved evidence across 32 campaigns, holding training, partner observations and the numerical selector fixed. All 42 deployment records are evaluated after selection is sealed. Our harness with client cards attains AP 0.1652 versus 0.2002 for direct generation with the same cards, a paired difference of $-0.0349$ (Holm $p=0.125$). Neither primary contrast supports a loop or diagnostic-package advantage; logistic regression also outperforms the neural methods on AUROC and log loss. Complete decision chains and 128 successful fits establish executable traceability, while the measured outcomes expose its separation from predictive utility. Local-data execution is not a formal privacy guarantee.
-
+Biological model improvement requires learning from fragmented experimental data and translating research ideas into reusable computational designs. We present AI4AI4Cell, a federated research framework connecting hypothesis-driven source revision to client-local model fitting. A fixed language model proposes and implements targeted changes; measured outcomes determine retention and inform subsequent revisions. Local trainers fit task weights through objective and gradient aggregation, while evaluation summaries inform the research loop. On the original DrugEvolve DTI splits, 100-epoch refits of our selected architectures improve mean unseen-drug AUROC by 0.0091 over native DrugEvolve. Frozen prediction programs selected with DrugBAN further transfer to TAPB without additional training or search, raising unseen-drug/unseen-protein AUROC from 0.9328/0.8868 to 0.9512/0.9149. In observed-response proteomics, expanding unchanged-model access from one to ten simulated clients raises mean final AP from 0.2431 to 0.2783; CV-guided loop research reaches 0.3111. Matched controls attribute most program-transfer gains to predictor combination and show that loop organization does not consistently outperform direct generation. Across these tasks and exploratory cell policies, AI4AI4Cell makes model-design changes transferable and enables locally held measurements to contribute to their training and evaluation.
 \end{abstract}
 
 \input{sections/01_introduction}
@@ -51,7 +50,7 @@ We study whether structured research loops and local biological diagnostics impr
 \input{sections/12_appendix_dti_protocol}
 
 \clearpage
-\section*{Appendix F. Complete DTI metrics}
+\section*{Appendix F. Complete historical twelve-epoch DTI metrics}
 \input{tables/dti_full_metrics}
 
 \clearpage
@@ -67,5 +66,20 @@ We study whether structured research loops and local biological diagnostics impr
 
 \clearpage
 \input{tables/ptpc_diagnostics}
+
+\clearpage
+\input{sections/15_appendix_federated_training}
+
+\clearpage
+\input{sections/16_appendix_full_training}
+
+\clearpage
+\input{sections/17_appendix_program_search}
+
+\clearpage
+\input{sections/18_appendix_historical_studies}
+
+\clearpage
+\input{sections/19_appendix_federated_cv}
 
 \end{document}

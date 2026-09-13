@@ -1,0 +1,913 @@
+{
+  "administrative_reporting": {
+    "analysis_source_sha256": "8ae146149e58ba2432c72d8aba746885c2d3fd72429dc928ae7ea33222750c8c",
+    "candidate_cost_by_arm": {
+      "direct": {
+        "charged_candidate_opportunities": 24,
+        "charged_cv_evaluations_including_baseline": 32,
+        "failed_charged_cv_evaluations": 0,
+        "uncharged_candidate_opportunities": 0
+      },
+      "helmsman": {
+        "charged_candidate_opportunities": 7,
+        "charged_cv_evaluations_including_baseline": 15,
+        "failed_charged_cv_evaluations": 0,
+        "uncharged_candidate_opportunities": 17
+      },
+      "loop": {
+        "charged_candidate_opportunities": 24,
+        "charged_cv_evaluations_including_baseline": 32,
+        "failed_charged_cv_evaluations": 1,
+        "uncharged_candidate_opportunities": 0
+      }
+    },
+    "candidate_cost_by_campaign": [
+      {
+        "arm": "direct",
+        "campaign_id": "run_642_direct",
+        "charged_candidate_opportunities": 3,
+        "charged_cv_evaluations_including_baseline": 4,
+        "failed_charged_cv_evaluations": 0,
+        "index": 642,
+        "uncharged_candidate_opportunities": 0
+      },
+      {
+        "arm": "loop",
+        "campaign_id": "run_642_loop",
+        "charged_candidate_opportunities": 3,
+        "charged_cv_evaluations_including_baseline": 4,
+        "failed_charged_cv_evaluations": 0,
+        "index": 642,
+        "uncharged_candidate_opportunities": 0
+      },
+      {
+        "arm": "helmsman",
+        "campaign_id": "run_642_helmsman",
+        "charged_candidate_opportunities": 1,
+        "charged_cv_evaluations_including_baseline": 2,
+        "failed_charged_cv_evaluations": 0,
+        "index": 642,
+        "uncharged_candidate_opportunities": 2
+      },
+      {
+        "arm": "direct",
+        "campaign_id": "run_643_direct",
+        "charged_candidate_opportunities": 3,
+        "charged_cv_evaluations_including_baseline": 4,
+        "failed_charged_cv_evaluations": 0,
+        "index": 643,
+        "uncharged_candidate_opportunities": 0
+      },
+      {
+        "arm": "loop",
+        "campaign_id": "run_643_loop",
+        "charged_candidate_opportunities": 3,
+        "charged_cv_evaluations_including_baseline": 4,
+        "failed_charged_cv_evaluations": 0,
+        "index": 643,
+        "uncharged_candidate_opportunities": 0
+      },
+      {
+        "arm": "helmsman",
+        "campaign_id": "run_643_helmsman",
+        "charged_candidate_opportunities": 1,
+        "charged_cv_evaluations_including_baseline": 2,
+        "failed_charged_cv_evaluations": 0,
+        "index": 643,
+        "uncharged_candidate_opportunities": 2
+      },
+      {
+        "arm": "direct",
+        "campaign_id": "run_644_direct",
+        "charged_candidate_opportunities": 3,
+        "charged_cv_evaluations_including_baseline": 4,
+        "failed_charged_cv_evaluations": 0,
+        "index": 644,
+        "uncharged_candidate_opportunities": 0
+      },
+      {
+        "arm": "loop",
+        "campaign_id": "run_644_loop",
+        "charged_candidate_opportunities": 3,
+        "charged_cv_evaluations_including_baseline": 4,
+        "failed_charged_cv_evaluations": 0,
+        "index": 644,
+        "uncharged_candidate_opportunities": 0
+      },
+      {
+        "arm": "helmsman",
+        "campaign_id": "run_644_helmsman",
+        "charged_candidate_opportunities": 0,
+        "charged_cv_evaluations_including_baseline": 1,
+        "failed_charged_cv_evaluations": 0,
+        "index": 644,
+        "uncharged_candidate_opportunities": 3
+      },
+      {
+        "arm": "direct",
+        "campaign_id": "run_645_direct",
+        "charged_candidate_opportunities": 3,
+        "charged_cv_evaluations_including_baseline": 4,
+        "failed_charged_cv_evaluations": 0,
+        "index": 645,
+        "uncharged_candidate_opportunities": 0
+      },
+      {
+        "arm": "loop",
+        "campaign_id": "run_645_loop",
+        "charged_candidate_opportunities": 3,
+        "charged_cv_evaluations_including_baseline": 4,
+        "failed_charged_cv_evaluations": 0,
+        "index": 645,
+        "uncharged_candidate_opportunities": 0
+      },
+      {
+        "arm": "helmsman",
+        "campaign_id": "run_645_helmsman",
+        "charged_candidate_opportunities": 1,
+        "charged_cv_evaluations_including_baseline": 2,
+        "failed_charged_cv_evaluations": 0,
+        "index": 645,
+        "uncharged_candidate_opportunities": 2
+      },
+      {
+        "arm": "direct",
+        "campaign_id": "run_646_direct",
+        "charged_candidate_opportunities": 3,
+        "charged_cv_evaluations_including_baseline": 4,
+        "failed_charged_cv_evaluations": 0,
+        "index": 646,
+        "uncharged_candidate_opportunities": 0
+      },
+      {
+        "arm": "loop",
+        "campaign_id": "run_646_loop",
+        "charged_candidate_opportunities": 3,
+        "charged_cv_evaluations_including_baseline": 4,
+        "failed_charged_cv_evaluations": 0,
+        "index": 646,
+        "uncharged_candidate_opportunities": 0
+      },
+      {
+        "arm": "helmsman",
+        "campaign_id": "run_646_helmsman",
+        "charged_candidate_opportunities": 1,
+        "charged_cv_evaluations_including_baseline": 2,
+        "failed_charged_cv_evaluations": 0,
+        "index": 646,
+        "uncharged_candidate_opportunities": 2
+      },
+      {
+        "arm": "direct",
+        "campaign_id": "run_647_direct",
+        "charged_candidate_opportunities": 3,
+        "charged_cv_evaluations_including_baseline": 4,
+        "failed_charged_cv_evaluations": 0,
+        "index": 647,
+        "uncharged_candidate_opportunities": 0
+      },
+      {
+        "arm": "loop",
+        "campaign_id": "run_647_loop",
+        "charged_candidate_opportunities": 3,
+        "charged_cv_evaluations_including_baseline": 4,
+        "failed_charged_cv_evaluations": 0,
+        "index": 647,
+        "uncharged_candidate_opportunities": 0
+      },
+      {
+        "arm": "helmsman",
+        "campaign_id": "run_647_helmsman",
+        "charged_candidate_opportunities": 1,
+        "charged_cv_evaluations_including_baseline": 2,
+        "failed_charged_cv_evaluations": 0,
+        "index": 647,
+        "uncharged_candidate_opportunities": 2
+      },
+      {
+        "arm": "direct",
+        "campaign_id": "run_648_direct",
+        "charged_candidate_opportunities": 3,
+        "charged_cv_evaluations_including_baseline": 4,
+        "failed_charged_cv_evaluations": 0,
+        "index": 648,
+        "uncharged_candidate_opportunities": 0
+      },
+      {
+        "arm": "loop",
+        "campaign_id": "run_648_loop",
+        "charged_candidate_opportunities": 3,
+        "charged_cv_evaluations_including_baseline": 4,
+        "failed_charged_cv_evaluations": 1,
+        "index": 648,
+        "uncharged_candidate_opportunities": 0
+      },
+      {
+        "arm": "helmsman",
+        "campaign_id": "run_648_helmsman",
+        "charged_candidate_opportunities": 1,
+        "charged_cv_evaluations_including_baseline": 2,
+        "failed_charged_cv_evaluations": 0,
+        "index": 648,
+        "uncharged_candidate_opportunities": 2
+      },
+      {
+        "arm": "direct",
+        "campaign_id": "run_649_direct",
+        "charged_candidate_opportunities": 3,
+        "charged_cv_evaluations_including_baseline": 4,
+        "failed_charged_cv_evaluations": 0,
+        "index": 649,
+        "uncharged_candidate_opportunities": 0
+      },
+      {
+        "arm": "loop",
+        "campaign_id": "run_649_loop",
+        "charged_candidate_opportunities": 3,
+        "charged_cv_evaluations_including_baseline": 4,
+        "failed_charged_cv_evaluations": 0,
+        "index": 649,
+        "uncharged_candidate_opportunities": 0
+      },
+      {
+        "arm": "helmsman",
+        "campaign_id": "run_649_helmsman",
+        "charged_candidate_opportunities": 1,
+        "charged_cv_evaluations_including_baseline": 2,
+        "failed_charged_cv_evaluations": 0,
+        "index": 649,
+        "uncharged_candidate_opportunities": 2
+      }
+    ],
+    "candidate_cost_scope": "Charged slots from closed ledgers, including failed evaluations; not counts inferred from retained history. Uncharged slots are ceiling minus charged slots. Native history can omit a failed candidate; its history-derived unused count is not used.",
+    "candidate_cost_totals": {
+      "charged_candidate_opportunities": 55,
+      "charged_cv_evaluations_including_baseline": 79,
+      "failed_charged_cv_evaluations": 1,
+      "uncharged_candidate_opportunities": 17
+    },
+    "cost_units": {
+      "actual_spawned": "generation CLI process created, not a guarantee a remote model turn started",
+      "charged_attempts": "terminal LLM ledger units including pre-spawn failures",
+      "completed": "successful generation receipt with valid output and returncode0",
+      "failed_before_spawn": "narrowly proven Popen E2BIG; do not infer from empty events alone"
+    },
+    "interpretation": "All-eight primary ITT remains unchanged. Secondary results condition on absence of narrowly proven pre-spawn E2BIG; they do not establish intrinsic research superiority. No raw prompts, arrays or error tracebacks are exported.",
+    "llm_cost_by_arm": {
+      "direct": {
+        "actual_spawned": 24,
+        "charged_attempts": 24,
+        "completed": 24,
+        "failed_before_spawn": 0,
+        "spawned_failed": 0,
+        "unknown_launch_status": 0
+      },
+      "helmsman": {
+        "actual_spawned": 122,
+        "charged_attempts": 123,
+        "completed": 122,
+        "failed_before_spawn": 1,
+        "spawned_failed": 0,
+        "unknown_launch_status": 0
+      },
+      "loop": {
+        "actual_spawned": 93,
+        "charged_attempts": 93,
+        "completed": 93,
+        "failed_before_spawn": 0,
+        "spawned_failed": 0,
+        "unknown_launch_status": 0
+      }
+    },
+    "llm_cost_by_campaign": [
+      {
+        "actual_spawned": 3,
+        "arm": "direct",
+        "campaign_id": "run_642_direct",
+        "charged_attempts": 3,
+        "completed": 3,
+        "failed_before_spawn": 0,
+        "index": 642,
+        "spawned_failed": 0,
+        "unknown_launch_status": 0
+      },
+      {
+        "actual_spawned": 11,
+        "arm": "loop",
+        "campaign_id": "run_642_loop",
+        "charged_attempts": 11,
+        "completed": 11,
+        "failed_before_spawn": 0,
+        "index": 642,
+        "spawned_failed": 0,
+        "unknown_launch_status": 0
+      },
+      {
+        "actual_spawned": 16,
+        "arm": "helmsman",
+        "campaign_id": "run_642_helmsman",
+        "charged_attempts": 16,
+        "completed": 16,
+        "failed_before_spawn": 0,
+        "index": 642,
+        "spawned_failed": 0,
+        "unknown_launch_status": 0
+      },
+      {
+        "actual_spawned": 3,
+        "arm": "direct",
+        "campaign_id": "run_643_direct",
+        "charged_attempts": 3,
+        "completed": 3,
+        "failed_before_spawn": 0,
+        "index": 643,
+        "spawned_failed": 0,
+        "unknown_launch_status": 0
+      },
+      {
+        "actual_spawned": 13,
+        "arm": "loop",
+        "campaign_id": "run_643_loop",
+        "charged_attempts": 13,
+        "completed": 13,
+        "failed_before_spawn": 0,
+        "index": 643,
+        "spawned_failed": 0,
+        "unknown_launch_status": 0
+      },
+      {
+        "actual_spawned": 16,
+        "arm": "helmsman",
+        "campaign_id": "run_643_helmsman",
+        "charged_attempts": 16,
+        "completed": 16,
+        "failed_before_spawn": 0,
+        "index": 643,
+        "spawned_failed": 0,
+        "unknown_launch_status": 0
+      },
+      {
+        "actual_spawned": 3,
+        "arm": "direct",
+        "campaign_id": "run_644_direct",
+        "charged_attempts": 3,
+        "completed": 3,
+        "failed_before_spawn": 0,
+        "index": 644,
+        "spawned_failed": 0,
+        "unknown_launch_status": 0
+      },
+      {
+        "actual_spawned": 11,
+        "arm": "loop",
+        "campaign_id": "run_644_loop",
+        "charged_attempts": 11,
+        "completed": 11,
+        "failed_before_spawn": 0,
+        "index": 644,
+        "spawned_failed": 0,
+        "unknown_launch_status": 0
+      },
+      {
+        "actual_spawned": 6,
+        "arm": "helmsman",
+        "campaign_id": "run_644_helmsman",
+        "charged_attempts": 7,
+        "completed": 6,
+        "failed_before_spawn": 1,
+        "index": 644,
+        "spawned_failed": 0,
+        "unknown_launch_status": 0
+      },
+      {
+        "actual_spawned": 3,
+        "arm": "direct",
+        "campaign_id": "run_645_direct",
+        "charged_attempts": 3,
+        "completed": 3,
+        "failed_before_spawn": 0,
+        "index": 645,
+        "spawned_failed": 0,
+        "unknown_launch_status": 0
+      },
+      {
+        "actual_spawned": 12,
+        "arm": "loop",
+        "campaign_id": "run_645_loop",
+        "charged_attempts": 12,
+        "completed": 12,
+        "failed_before_spawn": 0,
+        "index": 645,
+        "spawned_failed": 0,
+        "unknown_launch_status": 0
+      },
+      {
+        "actual_spawned": 16,
+        "arm": "helmsman",
+        "campaign_id": "run_645_helmsman",
+        "charged_attempts": 16,
+        "completed": 16,
+        "failed_before_spawn": 0,
+        "index": 645,
+        "spawned_failed": 0,
+        "unknown_launch_status": 0
+      },
+      {
+        "actual_spawned": 3,
+        "arm": "direct",
+        "campaign_id": "run_646_direct",
+        "charged_attempts": 3,
+        "completed": 3,
+        "failed_before_spawn": 0,
+        "index": 646,
+        "spawned_failed": 0,
+        "unknown_launch_status": 0
+      },
+      {
+        "actual_spawned": 12,
+        "arm": "loop",
+        "campaign_id": "run_646_loop",
+        "charged_attempts": 12,
+        "completed": 12,
+        "failed_before_spawn": 0,
+        "index": 646,
+        "spawned_failed": 0,
+        "unknown_launch_status": 0
+      },
+      {
+        "actual_spawned": 16,
+        "arm": "helmsman",
+        "campaign_id": "run_646_helmsman",
+        "charged_attempts": 16,
+        "completed": 16,
+        "failed_before_spawn": 0,
+        "index": 646,
+        "spawned_failed": 0,
+        "unknown_launch_status": 0
+      },
+      {
+        "actual_spawned": 3,
+        "arm": "direct",
+        "campaign_id": "run_647_direct",
+        "charged_attempts": 3,
+        "completed": 3,
+        "failed_before_spawn": 0,
+        "index": 647,
+        "spawned_failed": 0,
+        "unknown_launch_status": 0
+      },
+      {
+        "actual_spawned": 12,
+        "arm": "loop",
+        "campaign_id": "run_647_loop",
+        "charged_attempts": 12,
+        "completed": 12,
+        "failed_before_spawn": 0,
+        "index": 647,
+        "spawned_failed": 0,
+        "unknown_launch_status": 0
+      },
+      {
+        "actual_spawned": 16,
+        "arm": "helmsman",
+        "campaign_id": "run_647_helmsman",
+        "charged_attempts": 16,
+        "completed": 16,
+        "failed_before_spawn": 0,
+        "index": 647,
+        "spawned_failed": 0,
+        "unknown_launch_status": 0
+      },
+      {
+        "actual_spawned": 3,
+        "arm": "direct",
+        "campaign_id": "run_648_direct",
+        "charged_attempts": 3,
+        "completed": 3,
+        "failed_before_spawn": 0,
+        "index": 648,
+        "spawned_failed": 0,
+        "unknown_launch_status": 0
+      },
+      {
+        "actual_spawned": 11,
+        "arm": "loop",
+        "campaign_id": "run_648_loop",
+        "charged_attempts": 11,
+        "completed": 11,
+        "failed_before_spawn": 0,
+        "index": 648,
+        "spawned_failed": 0,
+        "unknown_launch_status": 0
+      },
+      {
+        "actual_spawned": 16,
+        "arm": "helmsman",
+        "campaign_id": "run_648_helmsman",
+        "charged_attempts": 16,
+        "completed": 16,
+        "failed_before_spawn": 0,
+        "index": 648,
+        "spawned_failed": 0,
+        "unknown_launch_status": 0
+      },
+      {
+        "actual_spawned": 3,
+        "arm": "direct",
+        "campaign_id": "run_649_direct",
+        "charged_attempts": 3,
+        "completed": 3,
+        "failed_before_spawn": 0,
+        "index": 649,
+        "spawned_failed": 0,
+        "unknown_launch_status": 0
+      },
+      {
+        "actual_spawned": 11,
+        "arm": "loop",
+        "campaign_id": "run_649_loop",
+        "charged_attempts": 11,
+        "completed": 11,
+        "failed_before_spawn": 0,
+        "index": 649,
+        "spawned_failed": 0,
+        "unknown_launch_status": 0
+      },
+      {
+        "actual_spawned": 20,
+        "arm": "helmsman",
+        "campaign_id": "run_649_helmsman",
+        "charged_attempts": 20,
+        "completed": 20,
+        "failed_before_spawn": 0,
+        "index": 649,
+        "spawned_failed": 0,
+        "unknown_launch_status": 0
+      }
+    ],
+    "llm_cost_totals": {
+      "actual_spawned": 239,
+      "charged_attempts": 240,
+      "completed": 239,
+      "failed_before_spawn": 1,
+      "spawned_failed": 0,
+      "unknown_launch_status": 0
+    },
+    "primary_analysis_unchanged": true,
+    "protocol_sha256": "ed2bf70b2cb52e51fb8c42cf78a3c95f0c3807834bc158ef9a60f6c758d97b80",
+    "report_sha256": "b35917771a0b3f21fc15e0b49f61f32883c77f203c91af82061304aeaf912471",
+    "schema": "cv-v2-verified-administrative-publication-v1",
+    "secondary_sensitivity": [
+      {
+        "bootstrap95_descriptive": [
+          -0.04316973790517919,
+          0.02640675073236344
+        ],
+        "differences": [
+          -0.08588633846955918,
+          -0.00448754273241736,
+          -0.03655858146315538,
+          0.009281107726016147,
+          0.004085766190067064,
+          0.06232975563506016,
+          0.05786900873214046,
+          -0.0686663335501706
+        ],
+        "excluded_paired_indices": [],
+        "left": "loop",
+        "mean": -0.007754144741502336,
+        "metric": "ap",
+        "n_pairs": 8,
+        "p_exact_two_sided": 0.6796875,
+        "p_holm_secondary_family": 0.6796875,
+        "retained_paired_indices": [
+          642,
+          643,
+          644,
+          645,
+          646,
+          647,
+          648,
+          649
+        ],
+        "right": "direct",
+        "sd": 0.053856735070364134,
+        "signflip_assignments": 256,
+        "status": "conditional_secondary_sensitivity_not_primary"
+      },
+      {
+        "bootstrap95_descriptive": [
+          -0.010732780101348443,
+          0.05140430269573641
+        ],
+        "differences": [
+          0.0001031577118533189,
+          0.001197325747028688,
+          -0.0014331572496632528,
+          0.09234666467657471,
+          0.018699114192606947,
+          0.06432684215045836,
+          -0.04536321445004249
+        ],
+        "excluded_paired_indices": [
+          644
+        ],
+        "left": "loop",
+        "mean": 0.018553818968402327,
+        "metric": "ap",
+        "n_pairs": 7,
+        "p_exact_two_sided": 0.328125,
+        "p_holm_secondary_family": 0.65625,
+        "retained_paired_indices": [
+          642,
+          643,
+          645,
+          646,
+          647,
+          648,
+          649
+        ],
+        "right": "helmsman",
+        "sd": 0.04594764407587722,
+        "signflip_assignments": 128,
+        "status": "conditional_secondary_sensitivity_not_primary"
+      }
+    ],
+    "technical_failures": [
+      {
+        "arm": "helmsman",
+        "campaign_id": "run_644_helmsman",
+        "failure_type": "pre_spawn_E2BIG_single_argv",
+        "index": 644,
+        "original_receipt_sha256": "41432d72d537aefe64fc25d8e07d450eac4658b39f488fe6821939923370f9fc",
+        "original_recorded_status": "running",
+        "sent_prompt_bytes": 146084
+      }
+    ]
+  },
+  "output_hashes": {
+    "federated_cv_v2.tex": "57ef1fe619086b5d4e1d1e889b25eb141f3ad6d5576afc749663820a3e53a8e9",
+    "federated_cv_v2_aggregates.csv": "a8669815a5d45adbffcde96fc7755a38a6fea3472fb0098b03baf64bd2ad5737",
+    "federated_cv_v2_indices.csv": "227e102cf786e811a4dc07dd9df9b0c8101bfac5835ab4badeecfc31b923172c"
+  },
+  "primary_contrasts": [
+    {
+      "bootstrap95_descriptive": [
+        -0.04316973790517919,
+        0.02640675073236344
+      ],
+      "differences": [
+        -0.08588633846955918,
+        -0.00448754273241736,
+        -0.03655858146315538,
+        0.009281107726016147,
+        0.004085766190067064,
+        0.06232975563506016,
+        0.05786900873214046,
+        -0.0686663335501706
+      ],
+      "indices": [
+        642,
+        643,
+        644,
+        645,
+        646,
+        647,
+        648,
+        649
+      ],
+      "left": "loop",
+      "mean": -0.007754144741502336,
+      "metric": "ap",
+      "p_exact_two_sided": 0.6796875,
+      "p_holm_2": 0.6796875,
+      "right": "direct",
+      "sd": 0.053856735070364134,
+      "signflip_assignments": 256
+    },
+    {
+      "bootstrap95_descriptive": [
+        -0.007234416205979269,
+        0.04727339854304134
+      ],
+      "differences": [
+        0.0001031577118533189,
+        0.001197325747028688,
+        0.017208465146347662,
+        -0.0014331572496632528,
+        0.09234666467657471,
+        0.018699114192606947,
+        0.06432684215045836,
+        -0.04536321445004249
+      ],
+      "indices": [
+        642,
+        643,
+        644,
+        645,
+        646,
+        647,
+        648,
+        649
+      ],
+      "left": "loop",
+      "mean": 0.018385649740645493,
+      "metric": "ap",
+      "p_exact_two_sided": 0.2890625,
+      "p_holm_2": 0.578125,
+      "right": "helmsman",
+      "sd": 0.04254191161420224,
+      "signflip_assignments": 256
+    }
+  ],
+  "recorded_history_counts_only": {
+    "direct": {
+      "campaigns": 8,
+      "discard": 14,
+      "history_opportunities": 24,
+      "keep": 10
+    },
+    "helmsman": {
+      "campaigns": 8,
+      "history_opportunities": 7,
+      "keep": 7
+    },
+    "loop": {
+      "campaigns": 8,
+      "discard": 16,
+      "history_opportunities": 23,
+      "keep": 7
+    }
+  },
+  "scope": "Same-host simulation; fixed train/client/fold data; research indices are not LLM RNG seeds. Historical public final exposure; no formal privacy or new blind-validation claim.",
+  "scorer_sha256": "f5e8e19f7b4265a0c305c3c26ac2875c4db3a29655aae47e1e3beb02a0d80296",
+  "source_hashes": {
+    "completion.json": "8fa920c3db9ed5f24ebcd15ddd99af505da173bf38cb22c5dd4c90adf0517207",
+    "deployment_seal.json": "764651965b6b2704a20b5bfe9a329163eab17015095224836b817fe9742e9713",
+    "final_results.json": "bad00409bccd1147f082ee0453b75dbb233c051a9e83723f06c6ea2e2b0bc90a",
+    "postrun_verification.json": "604181bd0fcd09b5f4409bc6dc83aa8e2e933ab9376fa5d7c5b7a1d946512ee3",
+    "selection_seal.json": "238a5f312407e7ac761111a92d54fa4b1192765d26e36039906e846bf38351cc",
+    "study_seal.json": "392c95991562ac24680555e5945ca3a3eba8552899af78526a80007d3964b4df",
+    "summary.json": "72b23193f91e91d8ededa2afa710e3b473082e91a0cc84ddc49b1f8c97f04278"
+  },
+  "status": "verified_complete_publication",
+  "verified_costs": {
+    "actual_cv_fold_fit_attempts": 235,
+    "actual_cv_fold_fit_successes": 234,
+    "actual_full_training_deployment_fits": 21,
+    "calls_by_arm": {
+      "direct": [
+        {
+          "calls": 3,
+          "failed": 0,
+          "index": 642
+        },
+        {
+          "calls": 3,
+          "failed": 0,
+          "index": 643
+        },
+        {
+          "calls": 3,
+          "failed": 0,
+          "index": 644
+        },
+        {
+          "calls": 3,
+          "failed": 0,
+          "index": 645
+        },
+        {
+          "calls": 3,
+          "failed": 0,
+          "index": 646
+        },
+        {
+          "calls": 3,
+          "failed": 0,
+          "index": 647
+        },
+        {
+          "calls": 3,
+          "failed": 0,
+          "index": 648
+        },
+        {
+          "calls": 3,
+          "failed": 0,
+          "index": 649
+        }
+      ],
+      "helmsman": [
+        {
+          "calls": 16,
+          "failed": 0,
+          "index": 642
+        },
+        {
+          "calls": 16,
+          "failed": 0,
+          "index": 643
+        },
+        {
+          "calls": 7,
+          "failed": 1,
+          "index": 644
+        },
+        {
+          "calls": 16,
+          "failed": 0,
+          "index": 645
+        },
+        {
+          "calls": 16,
+          "failed": 0,
+          "index": 646
+        },
+        {
+          "calls": 16,
+          "failed": 0,
+          "index": 647
+        },
+        {
+          "calls": 16,
+          "failed": 0,
+          "index": 648
+        },
+        {
+          "calls": 20,
+          "failed": 0,
+          "index": 649
+        }
+      ],
+      "loop": [
+        {
+          "calls": 11,
+          "failed": 0,
+          "index": 642
+        },
+        {
+          "calls": 13,
+          "failed": 0,
+          "index": 643
+        },
+        {
+          "calls": 11,
+          "failed": 0,
+          "index": 644
+        },
+        {
+          "calls": 12,
+          "failed": 0,
+          "index": 645
+        },
+        {
+          "calls": 12,
+          "failed": 0,
+          "index": 646
+        },
+        {
+          "calls": 12,
+          "failed": 0,
+          "index": 647
+        },
+        {
+          "calls": 11,
+          "failed": 0,
+          "index": 648
+        },
+        {
+          "calls": 11,
+          "failed": 0,
+          "index": 649
+        }
+      ]
+    },
+    "charged_budget_units": {
+      "candidate_evaluations": 79,
+      "candidate_opportunities": 55,
+      "evidence_queries": 0,
+      "llm_calls": 240,
+      "training_attempts": 237
+    },
+    "n_cv_vectors_rescored": 312,
+    "n_final_reported_vectors_rescored": 25,
+    "rpc": {
+      "reply_messages": 75820,
+      "reply_payload_bytes": 9908009320,
+      "request_payload_bytes": 9903232660
+    },
+    "rpc_scope": "Application serialized payloads, not network traffic or savings",
+    "tokens": {
+      "cached_input_tokens": 3028096,
+      "input_tokens": 5021772,
+      "output_tokens": 654498,
+      "reasoning_output_tokens": 507894
+    },
+    "unique_final_identities": 21,
+    "verdicts": {
+      "discard": 30,
+      "keep": 24
+    }
+  }
+}

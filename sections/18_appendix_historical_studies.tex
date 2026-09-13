@@ -1,0 +1,128 @@
+\section*{Appendix N. Historical low-budget and evidence-only studies}
+The following protocols and results are retained in full to distinguish exploratory development from the later full-training and actual local-gradient studies. The DTI table in this appendix uses 8,192 training rows and twelve epochs; it is not the full-data comparison. The neural PTPC partner arm returns evaluation evidence and does not train weights at clients. All numerical rows remain unchanged from the historical release.
+
+\subsection*{N.1 Historical experimental design}
+\paragraph{N.1.1 Exploratory cell-policy study}
+We compare our harness, our harness+federated evidence, harness-free generation and cosine using the collaborator's unchanged Norman reverse-identification and sequential scorers, plus the existing CEX scorer. CEX uses raw-PG, not cosine, as its applicable fixed reference. Each learning arm runs one six-opportunity campaign per task with gpt-5.6-sol/ultra. The production harness is pinned to the collaborator's b583291 lineage and recorded 23f5833 finalizer fix.
+
+The Norman tasks use scDEBART's derived response archive from the original K562 CRISPRa experiments \citep{norman2019genetic,sung2026scdebart}. Reverse identification retrieves the exact intervention; sequential phenocopy search removes that source and tests three alternatives. CEX is our three-choice cold-cell replay built on GDSC-derived intermediates \citep{yang2013gdsc}. AUC3 averages best-so-far cosine matches; AURB3 averages signed response margins relative to training-derived thresholds. Neither is ROC-AUC (Appendix I). These are retrospective full-system diagnostics: the harness received extra research directions, resource ceilings were not matched, and audit partitions had been inspected during development. They motivate, but do not replace, the controlled studies below.
+
+\paragraph{N.1.2 DTI native-system comparison}
+We pin DrugEvolve to e945c7d and DrugBAN to 9923f8c. After deduplication and contradictory-label rejection, a label-independent hash allocates 2,048 training, 512 development and 512 visible-selection pairs from the original BindingDB training CSV. The full random/unseen-drug/unseen-protein tests contain 5,505/3,791/2,507 pairs, without training-pair overlap or the corresponding cold-identity overlap. Coldness is exact molecular/protein-string identity, not scaffold or homology separation.
+
+Harness-free generation, native DrugEvolve and our production harness receive the same starting BAN source, public agenda, training interface and visible scores. Each runs five campaigns (seeds 42--46), with three new-candidate slots, 24 LLM-call and four-fit ceilings including baseline. All failed calls and fits remain charged. Only the BAN implementation is editable; encoder, attention and classifier weights are trained end-to-end for three search epochs. Identical seeded encoder/classifier initialization is shared. Native search, repair and analysis stages are executed, not replaced by handwritten approximations.
+
+This is a native-system comparison: direct and our harness require dual visible-score improvement above $10^{-4}$, our harness retains additional native checks, and DrugEvolve maximizes scalar selection AUROC with zero weight on LLM judging. Prompt composition and realized costs differ. The text bridge and task adaptation are disclosed in Appendix E; no full-publication reproduction or component-level causal isolation is claimed. There is no DTI federated-search arm.
+
+\paragraph{N.1.3 DTI deployment and inference}
+All fifteen campaigns terminate and seal their selected architectures before final scoring. The five searched/fixed method labels use paired seeds and a fixed twelve-epoch, last-checkpoint refit on the same 8,192 authorized training pairs, excluding search dev/selection. Exact source/seed/recipe duplicates have explicit checkpoint aliases; seeds never share checkpoints. All refits completed without fallback. Unseen-drug AUROC is primary; AP, MCC, accuracy at 0.5, log loss and the other splits are secondary.
+
+The two primary harness contrasts use paired campaign-bootstrap intervals and exact two-sided sign-flip tests, Holm-corrected at 0.05, with a 0.01 AUROC practical threshold. At five pairs, the smallest possible exact two-sided p-value is 0.0625; this design estimates effect direction and uncertainty but cannot certify significance at 0.05. No extra seeds are added after outcomes. Full contracts and seed values remain in the appendices.
+
+The added deterministic cosine 5-NN uses the identical 8,192-pair pool, Morgan drug features and amino-acid/dipeptide composition of the same first 1,200 residues, with equal L2-normalized blocks and fixed ties. It is a retrospective reference added after the original tests, with no feature, k or threshold tuning on them.
+
+\paragraph{N.1.4 Matched PTPC observed-response study}
+We adapt the public ProteinTalks PTPC supplement \citep{Sun2026ProteinTalks}: measured 6-hour and 24-hour proteomes plus compound features predict binary efficacy. The 979 admitted conditions retain 5,171 proteins. This is a ProteinTalks-derived efficacy head trained from scratch, not the complete pretrained neural-ODE model or an author-benchmark reproduction. Label-independent standardized-compound grouping assigns 491/96/90/154/148 conditions to train/development/visible-gate/partner/final roles. All ten conditions in the chemical closure of preflight-exposed perturbations are training-only. Appendix C specifies the admission, chemical and preprocessing rules.
+
+The factorial study runs direct+pooled, loop+pooled, direct+cards and loop+cards with eight paired task-training seeds (142--149). All arms share their starting head, inputs, agenda, evidence service and strict dual-AP selector: a valid candidate must improve both development and visible-gate AP by more than $10^{-4}$. The production loop retains its original research stages through an explicit matched-contract adapter; native focus/novelty/soundness opinions are advisory here. Three candidate opportunities, 24 model calls and four biological fits including baseline are common ceilings. All fits use 100 epochs and the last checkpoint; no partner examples enter training. Actual calls and tokens remain distinct costs.
+
+All 32 campaigns must terminate before selection and deployment are sealed and final labels become available to the scorer. Because search and deployment use exactly the same train/seed/recipe, deployment reuses the selected checkpoint through an explicit alias rather than implying an extra refit. Eight same-seed fixed-head references and deterministic cosine/logistic references supplement the four searched arms. The primary endpoint is final AP; the two predeclared paired contrasts are loop+cards minus direct+cards and loop+cards minus loop+pooled. We use two-sided exact sign-flip tests with Holm correction, a 0.02 AP practical threshold and 10,000-draw paired campaign-bootstrap intervals. These intervals condition on the one fixed compound split; they do not measure laboratory-population uncertainty.
+
+\begingroup
+\renewcommand{\thetable}{N.\arabic{table}}
+\renewcommand{\theHtable}{N.\arabic{table}}
+\setcounter{table}{3}
+\subsection*{N.2 Historical results}
+\paragraph{N.2.1 Four-arm cell-policy comparison}
+\begin{center}\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{>{\hsize=1.600\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.800\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.800\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.800\hsize\linewidth=\hsize\raggedright\arraybackslash}X}
+\toprule
+Method & Reverse-ID Top-1 \(\uparrow\) & Sequential AUC3 \(\uparrow\) & CEX AURB3 \(\uparrow\) \\
+\midrule
+Our harness & 0.803922 & 0.723917 & 0.096127 \\
+Our harness + federated evidence & 0.725490 & 0.723470 & 0.096127 \\
+Harness-free & 0.764706 & 0.719532 & 0.096127 \\
+Cosine baseline & 0.705882 & 0.721687 & N/A \\
+\bottomrule
+\end{tabularx}
+\end{center}
+Table N.1. Exploratory cell-policy diagnostics, one campaign per task/method. The three metrics have different meanings and are not averaged.
+
+Our harness records 41/51 reverse-identification hits, compared with 39/51 for direct and 36/51 for cosine. Sequential AUC3 improves by 0.004386 over direct, while the CEX learning arms have identical scores and executed-action hashes. The original Sequential confidence intervals compare policies with locked cosine, not harness with direct, and include zero for every learning arm. CEX's raw-PG reference is -0.007481; the shared learning-arm gain is 0.103608, with an original-scorer query-bootstrap 95\% interval of [0.068579, 0.139368]. This relative-objective improvement is shared by all three learning arms and is not harness-specific. Its absolute-response secondary objective worsens, so the result does not establish uniform drug-response benefit. Query-level replay intervals do not quantify variation across independent searches or biological laboratories.
+
+The same-data federated variant does not outperform our non-federated harness. Across the three tasks, the latter uses 79 model calls and scores 17/18 candidates; the federated arm uses 87 calls and also scores 17/18; direct uses 18 calls and scores 9/18, with its other generations timing out at 900 seconds. These differences motivate the controlled DTI comparison, rather than an unsupported attribution of all score gains to research organization.
+
+\paragraph{N.2.2 DTI held-out comparison}
+\begin{center}\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{>{\hsize=1.600\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.800\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.800\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.800\hsize\linewidth=\hsize\raggedright\arraybackslash}X}
+\toprule
+Method & Random AUROC & Unseen-drug AUROC & Unseen-protein AUROC \\
+\midrule
+DrugBAN & 0.8942 \(\pm\) 0.0230 & 0.8850 \(\pm\) 0.0317 & 0.8008 \(\pm\) 0.0734 \\
+Released DrugBAN-Evo & 0.8715 \(\pm\) 0.0253 & 0.8612 \(\pm\) 0.0334 & 0.7181 \(\pm\) 0.0777 \\
+Harness-free & 0.8950 \(\pm\) 0.0270 & 0.8853 \(\pm\) 0.0382 & 0.7958 \(\pm\) 0.0917 \\
+Native DrugEvolve & 0.8963 \(\pm\) 0.0217 & 0.8865 \(\pm\) 0.0329 & 0.7975 \(\pm\) 0.0726 \\
+Our harness & 0.9005 \(\pm\) 0.0207 & 0.8922 \(\pm\) 0.0299 & 0.8098 \(\pm\) 0.0678 \\
+Cosine 5-NN (additional reference) & 0.8843 & 0.8719 & 0.7813 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+Table N.2. Neural rows use the fixed twelve-epoch refit, mean \(\pm\) sample SD over seeds 42--46; each searched row has five campaigns. All selected architectures completed refit without fallback and were sealed before testing. The additional deterministic cosine reference uses the identical 8,192 training pairs but was added retrospectively after the original tests; it has no training-seed SD.
+
+Our harness has the highest observed mean AUROC on all three splits, above the fixed cosine reference. Primary differences are positive/negative/tied in 3/1/1 seeds against native DrugEvolve and 2/2/1 against direct generation. Both mean differences are below the predeclared 0.01 AUROC practical threshold, with intervals crossing zero (Table N.3): a small, seed-dependent gain, not established superiority.
+
+\begin{center}\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{>{\hsize=1.600\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.850\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.850\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.850\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.850\hsize\linewidth=\hsize\raggedright\arraybackslash}X}
+\toprule
+Primary paired contrast & AUROC delta & 95\% bootstrap interval & Exact p & Holm p \\
+\midrule
+Our harness - Native DrugEvolve & +0.0057 & [-0.0174, +0.0280] & 0.6250 & 1.0000 \\
+Our harness - Harness-free & +0.0069 & [-0.0147, +0.0326] & 0.7500 & 1.0000 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+Table N.3. Predeclared unseen-drug endpoint; paired campaign bootstrap and two-sided exact sign-flip tests (n=5).
+
+Fixed-model variation reflects training seeds; searched-method variation also includes uncontrolled model generation. Secondary splits test transfer of selected architectures, not additional independent task families. Actual costs and fixed-order audit cases appear in Appendix D; Table D1 separates common ceilings from realized usage.
+
+\paragraph{N.2.3 Matched proteomics results}
+All 42 declared method/seed records are evaluated after both seals, with
+35 unique prediction artifacts and no omitted seed or final-inference failure.
+The final role contains 148 conditions, including 22 positives. Table N.4
+reports every searched arm and fixed reference; Appendix G gives all seed
+values and secondary metrics.
+
+\begin{table}[t]
+\input{tables/ptpc_primary}
+\end{table}
+
+Harness-free+cards has the highest mean AP, 0.2002, compared with 0.1652
+for our harness+cards. Their paired difference is $-0.0349$, with five
+negative, two positive and one tied seed. Adding cards to our harness
+also gives a negative mean difference, $-0.0170$. Neither predeclared
+contrast supports the intended benefit (Table N.5). The first descriptive
+bootstrap interval is negative, but the exact Holm-adjusted test has
+$p=0.125$; it does not establish multiplicity-corrected inferiority.
+
+\begin{table}[t]
+\input{tables/ptpc_contrasts}
+\end{table}
+
+Absolute prediction quality is also limited. The neural methods' mean
+AUROCs range from 0.4918 to 0.5487; logistic regression attains 0.6385
+and BCE 0.4115, versus neural BCEs of 1.3719--1.4964. Logistic AP is
+0.1903, above both loop variants. The final majority-class fraction is
+126/148 (0.8514). Logistic attains exactly that accuracy by predicting every
+condition negative at threshold 0.5; its ranking metrics use continuous
+probabilities (Appendix J). Thus approximately 0.83 accuracy is not evidence
+of strong efficacy discrimination. These results establish a completed observed-response
+comparison with weak neural generalization, not an improvement over
+ProteinTalks or a validated benefit from the federated diagnostic package.
+
+\paragraph{N.2.4 Research cost and observed evidence transfer}
+All 32 PTPC campaigns complete, with 128 successful fits, 640 client-worker receipts, 29 promotions and 67 rejections. Seven campaigns retain their starting head. Direct uses 24 calls per evidence mode; loop uses 85 with pooled diagnostics and 87 with cards. All input/output usage is observed. Loop therefore uses more calls and input tokens under the common ceilings; Tables H1--H2 report these costs separately from performance.
+
+The fixed first-native cases give an executable example (Appendix H). In loop+pooled, seed 142, round 1, the proposal expects an explicit 24h-minus-6h representation to improve ranking. The code introduces shared per-time encoders, a difference branch and gated fusion. Visible dev/gate AP changes from 0.111316/0.630056 to 0.121785/0.752047, so the candidate is retained. Round 2 adds the drug embedding to the gate, expanding its input from 96 to 128; both AP values decrease, to 0.100287/0.727741, and the change is rejected. Round 3 inherits the retained source and explicitly cites the failed drug-conditioned gate before proposing head dropout. Source, decision, native-commit and next-context identities verify this sequence. It demonstrates recorded evidence transfer; held-out performance, rather than the generated explanation, determines method-level utility.
+
+\endgroup
+
