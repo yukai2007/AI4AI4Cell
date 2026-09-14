@@ -1,4 +1,6 @@
-\section*{Appendix E. Full DTI search, refit and statistical contract}
+\section*{Appendix E. Historical DTI architecture search and low-budget refits}
+This is the contract for the historical study in Appendix N. The full-data, 100-epoch refit protocol is in Appendix L.
+
 \subsection*{E.1 Task and controllers}
 We pin DrugEvolve to e945c7d and DrugBAN to 9923f8c. The shared search release uses only the original BindingDB training CSV: exact drug--protein pairs are deduplicated, contradictory labels are rejected, and a label-independent hash ordering with subset seed 20260911 allocates 2,048 training, 512 development, and 512 visible-selection pairs. The supplied validation CSV is excluded. The full final test sets contain 5,505 random, 3,791 unseen-drug, and 2,507 unseen-protein pairs. They have no exact pair overlap with the original training data; the respective cold identities are also disjoint. Coldness means supplied SMILES/protein-string identity, not scaffold or homology separation.
 

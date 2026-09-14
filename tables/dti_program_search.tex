@@ -1,0 +1,15 @@
+% Generated from all 39 verified fixed-predictor final records.
+\centering\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{Xrrr}
+\toprule
+Method & Random AUROC & Unseen-drug AUROC & Unseen-protein AUROC \\
+\midrule
+Our loop + fixed predictors & \(0.9589 \pm 0.0006\) & \(0.9438 \pm 0.0008\) & \(0.8849 \pm 0.0017\) \\
+Harness-free + fixed predictors & \(0.9592 \pm 0.0003\) & \(0.9442 \pm 0.0004\) & \(0.8858 \pm 0.0011\) \\
+Fixed 0.7 BAN + 0.3 cosine & \(0.9582\) & \(0.9430\) & \(0.8832\) \\
+Fixed DrugBAN & \(0.9452\) & \(0.9271\) & \(0.8484\) \\
+Fixed cosine 5-NN & \(0.9142\) & \(0.8893\) & \(0.8095\) \\
+\bottomrule
+\end{tabularx}
+\caption{DTI program search over the same fixed DrugBAN and cosine predictors. Mean and sample SD cover five research trajectories, not five base-model fits. All base training uses 50,149 rows. The manual starting combiner is shown separately; no new task weights are trained by either controller.}
+\label{tab:dti-program-search}

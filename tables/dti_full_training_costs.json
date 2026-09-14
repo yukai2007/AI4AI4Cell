@@ -1,0 +1,411 @@
+{
+  "schema": "complete-dti-tapb-measured-fit-costs-v1",
+  "status": "complete",
+  "created_utc": "2026-09-13T15:32:21.384244+00:00",
+  "manifest_sha256": "9dda7cbc817d004a36719d62b21b0606cc08ebe4fdcd26583078ab1fed82559a",
+  "tapb_study_sha256": "42bcfbd1cf05105c1f39a27641d2c3f2ee19091c7467c998d3d9a51fa7492e23",
+  "queue_plan_sha256": "9eb742fc704460e39d42318c3dbd466e8bf5e010c29038700f5cde7055e89a26",
+  "records": [
+    {
+      "family": "BAN",
+      "job_id": "fit342_bd82dd73b9d0",
+      "fit_seed": 342,
+      "method_aliases": [
+        "drugban"
+      ],
+      "summary_sha256": "0a8cb61d4e2a5ceb6b7a0d405aa5f6e1ee34c07eec68d0d547da3415a6716580",
+      "epochs": 100,
+      "optimizer_updates": 78300,
+      "training_seconds": 7241.431216565426,
+      "measured_epoch_seconds": 7619.2790919938125,
+      "peak_cuda_reserved_bytes": 2657091584
+    },
+    {
+      "family": "BAN",
+      "job_id": "fit342_5b5a631e8182",
+      "fit_seed": 342,
+      "method_aliases": [
+        "drugban_evo"
+      ],
+      "summary_sha256": "a1967aa00d8f83fc0346cae5abf214812d83691475fedd4c61760e8f5f343d5e",
+      "epochs": 100,
+      "optimizer_updates": 78300,
+      "training_seconds": 8144.666812137701,
+      "measured_epoch_seconds": 8578.34279639041,
+      "peak_cuda_reserved_bytes": 5098176512
+    },
+    {
+      "family": "BAN",
+      "job_id": "fit342_764a6de0bdfe",
+      "fit_seed": 342,
+      "method_aliases": [
+        "harness_free"
+      ],
+      "summary_sha256": "c8484c0625f4dd374d883488bd478eadc523aa7594f6f39c03c53a2e085f5065",
+      "epochs": 100,
+      "optimizer_updates": 78300,
+      "training_seconds": 6659.772189694457,
+      "measured_epoch_seconds": 7012.681977649219,
+      "peak_cuda_reserved_bytes": 2569011200
+    },
+    {
+      "family": "BAN",
+      "job_id": "fit342_1d1c8b9af99e",
+      "fit_seed": 342,
+      "method_aliases": [
+        "drugevolve_native"
+      ],
+      "summary_sha256": "e6075b5bc19bad10aa3511fe5db77efd4d682b1abe4aea28b97a0369dfdfaa2b",
+      "epochs": 100,
+      "optimizer_updates": 78300,
+      "training_seconds": 7342.855191110633,
+      "measured_epoch_seconds": 7724.465768800583,
+      "peak_cuda_reserved_bytes": 2921332736
+    },
+    {
+      "family": "BAN",
+      "job_id": "fit342_49d2a9be7d10",
+      "fit_seed": 342,
+      "method_aliases": [
+        "our_harness"
+      ],
+      "summary_sha256": "9800dfe99f68771af629e6c25cf80ff2e58f866312f0b3c384f50a0f89f2cf4e",
+      "epochs": 100,
+      "optimizer_updates": 78300,
+      "training_seconds": 7357.784336724784,
+      "measured_epoch_seconds": 7740.118555400521,
+      "peak_cuda_reserved_bytes": 2921332736
+    },
+    {
+      "family": "BAN",
+      "job_id": "fit343_bd82dd73b9d0",
+      "fit_seed": 343,
+      "method_aliases": [
+        "drugban"
+      ],
+      "summary_sha256": "d8e441e2db02bdc30c26511e15da5211b8cf877e9cffb36b155225060576c727",
+      "epochs": 100,
+      "optimizer_updates": 78300,
+      "training_seconds": 6852.250959365163,
+      "measured_epoch_seconds": 7216.626977344975,
+      "peak_cuda_reserved_bytes": 2657091584
+    },
+    {
+      "family": "BAN",
+      "job_id": "fit343_5b5a631e8182",
+      "fit_seed": 343,
+      "method_aliases": [
+        "drugban_evo"
+      ],
+      "summary_sha256": "87fc440c47db263c57650004d0802d42d1f58c39f9aebf5ac7692748956714c3",
+      "epochs": 100,
+      "optimizer_updates": 78300,
+      "training_seconds": 10689.636495559476,
+      "measured_epoch_seconds": 11230.98668936314,
+      "peak_cuda_reserved_bytes": 5098176512
+    },
+    {
+      "family": "BAN",
+      "job_id": "fit343_54f42dd3fe43",
+      "fit_seed": 343,
+      "method_aliases": [
+        "harness_free"
+      ],
+      "summary_sha256": "1bdc8071bb1e040e28e83343fa67cac67510368b1e234091e759f90bd37f719f",
+      "epochs": 100,
+      "optimizer_updates": 78300,
+      "training_seconds": 8779.656723208725,
+      "measured_epoch_seconds": 9236.408262737095,
+      "peak_cuda_reserved_bytes": 2657091584
+    },
+    {
+      "family": "BAN",
+      "job_id": "fit343_df2ca8511a05",
+      "fit_seed": 343,
+      "method_aliases": [
+        "drugevolve_native"
+      ],
+      "summary_sha256": "6e7efd2b2d2aa7877ee8d7a14322ae4b4ef09c716c17db49ba72978d4ba857e0",
+      "epochs": 100,
+      "optimizer_updates": 78300,
+      "training_seconds": 9530.438518445008,
+      "measured_epoch_seconds": 10013.536351017654,
+      "peak_cuda_reserved_bytes": 3126853632
+    },
+    {
+      "family": "BAN",
+      "job_id": "fit343_f113150a74c4",
+      "fit_seed": 343,
+      "method_aliases": [
+        "our_harness"
+      ],
+      "summary_sha256": "e6e4704e31b611dd4ad089ece4537a262dfbb69cdb31d3bd480e06d78b3de5aa",
+      "epochs": 100,
+      "optimizer_updates": 78300,
+      "training_seconds": 7486.63604363706,
+      "measured_epoch_seconds": 7892.5263662491925,
+      "peak_cuda_reserved_bytes": 2921332736
+    },
+    {
+      "family": "BAN",
+      "job_id": "fit344_bd82dd73b9d0",
+      "fit_seed": 344,
+      "method_aliases": [
+        "drugban",
+        "harness_free"
+      ],
+      "summary_sha256": "d93b3a2969d9c6016c44cd319a0d03c4efaf4cb2bdfe749a3b874a61089e2b40",
+      "epochs": 100,
+      "optimizer_updates": 78300,
+      "training_seconds": 8885.457011179999,
+      "measured_epoch_seconds": 9352.303703630343,
+      "peak_cuda_reserved_bytes": 2657091584
+    },
+    {
+      "family": "BAN",
+      "job_id": "fit344_5b5a631e8182",
+      "fit_seed": 344,
+      "method_aliases": [
+        "drugban_evo"
+      ],
+      "summary_sha256": "7e97c4b1c24f1eac0d0592f36ffd0f77934c89c3313dab982395b4871f328b7e",
+      "epochs": 100,
+      "optimizer_updates": 78300,
+      "training_seconds": 10662.21771451179,
+      "measured_epoch_seconds": 11199.241801836528,
+      "peak_cuda_reserved_bytes": 5098176512
+    },
+    {
+      "family": "BAN",
+      "job_id": "fit344_fceaef449826",
+      "fit_seed": 344,
+      "method_aliases": [
+        "drugevolve_native"
+      ],
+      "summary_sha256": "c998f2f212e319d316d9b1aa477e5ee1b25d6322b42967897366c11849a0938a",
+      "epochs": 100,
+      "optimizer_updates": 78300,
+      "training_seconds": 8649.034486486576,
+      "measured_epoch_seconds": 9117.327933717985,
+      "peak_cuda_reserved_bytes": 2657091584
+    },
+    {
+      "family": "BAN",
+      "job_id": "fit344_90ff4ffa9a7b",
+      "fit_seed": 344,
+      "method_aliases": [
+        "our_harness"
+      ],
+      "summary_sha256": "362c453de2778173bf8d9f49f5b4f6b59aa91563b0f04976ebd6144edb61b464",
+      "epochs": 100,
+      "optimizer_updates": 78300,
+      "training_seconds": 9903.51616932312,
+      "measured_epoch_seconds": 10371.368716192897,
+      "peak_cuda_reserved_bytes": 2921332736
+    },
+    {
+      "family": "BAN",
+      "job_id": "fit345_bd82dd73b9d0",
+      "fit_seed": 345,
+      "method_aliases": [
+        "drugban"
+      ],
+      "summary_sha256": "4741be24ea387ba9b4348f2a535b0233bf948e65b652cf75023a4263b30835b9",
+      "epochs": 100,
+      "optimizer_updates": 78300,
+      "training_seconds": 8936.417905328795,
+      "measured_epoch_seconds": 9410.990218479186,
+      "peak_cuda_reserved_bytes": 2657091584
+    },
+    {
+      "family": "BAN",
+      "job_id": "fit345_5b5a631e8182",
+      "fit_seed": 345,
+      "method_aliases": [
+        "drugban_evo"
+      ],
+      "summary_sha256": "3ba52472c3f0dcf78421ceda832113122dc40a8cb59b5a1540343e112d657175",
+      "epochs": 100,
+      "optimizer_updates": 78300,
+      "training_seconds": 10004.670421617106,
+      "measured_epoch_seconds": 10572.870009918697,
+      "peak_cuda_reserved_bytes": 5098176512
+    },
+    {
+      "family": "BAN",
+      "job_id": "fit345_482b4cf5bdb1",
+      "fit_seed": 345,
+      "method_aliases": [
+        "harness_free"
+      ],
+      "summary_sha256": "5c3ee56d5893ffcf7dbedbc08f277d2b407b100e9488de9e32c2229b6aa62612",
+      "epochs": 100,
+      "optimizer_updates": 78300,
+      "training_seconds": 8990.584245250095,
+      "measured_epoch_seconds": 9471.270259156823,
+      "peak_cuda_reserved_bytes": 3183476736
+    },
+    {
+      "family": "BAN",
+      "job_id": "fit345_33e0984cbbe9",
+      "fit_seed": 345,
+      "method_aliases": [
+        "drugevolve_native"
+      ],
+      "summary_sha256": "ba4855c036ed2140ca7278e21c41bd823047602f3f76c1f045946627b8b38103",
+      "epochs": 100,
+      "optimizer_updates": 78300,
+      "training_seconds": 6660.767644090112,
+      "measured_epoch_seconds": 7019.66797925625,
+      "peak_cuda_reserved_bytes": 2657091584
+    },
+    {
+      "family": "BAN",
+      "job_id": "fit345_322bbc3bd77d",
+      "fit_seed": 345,
+      "method_aliases": [
+        "our_harness"
+      ],
+      "summary_sha256": "aef8d0a11051355760995ea61f390474b8840457c97b36410d4ea082d5a259e3",
+      "epochs": 100,
+      "optimizer_updates": 78300,
+      "training_seconds": 8307.40962376725,
+      "measured_epoch_seconds": 8739.832703413907,
+      "peak_cuda_reserved_bytes": 2657091584
+    },
+    {
+      "family": "BAN",
+      "job_id": "fit346_bd82dd73b9d0",
+      "fit_seed": 346,
+      "method_aliases": [
+        "drugban",
+        "harness_free",
+        "drugevolve_native",
+        "our_harness"
+      ],
+      "summary_sha256": "47ced4fb0845aab6ec882a35d7e79148d1a379741ef4a065f6764a1cc4115bd1",
+      "epochs": 100,
+      "optimizer_updates": 78300,
+      "training_seconds": 7966.7033182545565,
+      "measured_epoch_seconds": 8379.08231447963,
+      "peak_cuda_reserved_bytes": 2657091584
+    },
+    {
+      "family": "BAN",
+      "job_id": "fit346_5b5a631e8182",
+      "fit_seed": 346,
+      "method_aliases": [
+        "drugban_evo"
+      ],
+      "summary_sha256": "eff027fc64af8f0952b6940f681962eb593e2c28955fa91864cee2ad3c6f9286",
+      "epochs": 100,
+      "optimizer_updates": 78300,
+      "training_seconds": 8786.500488113612,
+      "measured_epoch_seconds": 9230.681004310027,
+      "peak_cuda_reserved_bytes": 5098176512
+    },
+    {
+      "family": "TAPB",
+      "job_id": "tapb_seed342",
+      "fit_seed": 342,
+      "method_aliases": [
+        "tapb"
+      ],
+      "summary_sha256": "e4270c482fface3442e770922dedeb0032cab520620291a91b0e1cec883a228c",
+      "epochs": 100,
+      "optimizer_updates": 83600,
+      "training_seconds": 17039.607175440062,
+      "measured_epoch_seconds": 18260.929817690514,
+      "peak_cuda_reserved_bytes": 7981760512
+    },
+    {
+      "family": "TAPB",
+      "job_id": "tapb_seed343",
+      "fit_seed": 343,
+      "method_aliases": [
+        "tapb"
+      ],
+      "summary_sha256": "90ca740d3e6546d045abee3c5bf7a4fa571cf9ca1dc2fbdffa47615a8afb9f9f",
+      "epochs": 100,
+      "optimizer_updates": 83600,
+      "training_seconds": 16635.297414890025,
+      "measured_epoch_seconds": 17816.32367669046,
+      "peak_cuda_reserved_bytes": 9529458688
+    },
+    {
+      "family": "TAPB",
+      "job_id": "tapb_seed344",
+      "fit_seed": 344,
+      "method_aliases": [
+        "tapb"
+      ],
+      "summary_sha256": "c75a93ff7932af87adf56b60648f4b42eb5241777fc3816ee2f308497a6f107c",
+      "epochs": 100,
+      "optimizer_updates": 83600,
+      "training_seconds": 14792.934383528773,
+      "measured_epoch_seconds": 15868.535614514258,
+      "peak_cuda_reserved_bytes": 8998879232
+    },
+    {
+      "family": "TAPB",
+      "job_id": "tapb_seed345",
+      "fit_seed": 345,
+      "method_aliases": [
+        "tapb"
+      ],
+      "summary_sha256": "fe59dab4553f5a993f6069ec4c1cb174f5df43cb14c3d5ddc46d3752561039dc",
+      "epochs": 100,
+      "optimizer_updates": 83600,
+      "training_seconds": 16786.419108279515,
+      "measured_epoch_seconds": 17976.70007545408,
+      "peak_cuda_reserved_bytes": 11962155008
+    },
+    {
+      "family": "TAPB",
+      "job_id": "tapb_seed346",
+      "fit_seed": 346,
+      "method_aliases": [
+        "tapb"
+      ],
+      "summary_sha256": "f0d06865072723f207681e8db445c99886d469025c8cc64a52b2b4d76a65f926",
+      "epochs": 100,
+      "optimizer_updates": 83600,
+      "training_seconds": 15408.362097259145,
+      "measured_epoch_seconds": 16540.720775882248,
+      "peak_cuda_reserved_bytes": 9447669760
+    }
+  ],
+  "groups": {
+    "BAN": {
+      "actual_fits": 21,
+      "total_epochs": 2100,
+      "optimizer_updates": 1644300,
+      "summed_worker_training_hours": 49.39955764288096,
+      "summed_worker_epoch_hours": 51.98044707814969,
+      "worker_epoch_hours_range": [
+        1.947967216013672,
+        3.1197185248230945
+      ]
+    },
+    "TAPB": {
+      "actual_fits": 5,
+      "total_epochs": 500,
+      "optimizer_updates": 418000,
+      "summed_worker_training_hours": 22.406283383165977,
+      "summed_worker_epoch_hours": 24.017558322286543,
+      "worker_epoch_hours_range": [
+        4.407926559587294,
+        5.072480504914032
+      ]
+    }
+  },
+  "shared_development_protein_encoding": {
+    "feature_manifest_sha256": "d8f4c89a320b72fa034463e3f407035c75cb1aad6982c6d5bb6bcb8f5422e7f8",
+    "n_proteins": 803,
+    "seconds_after_model_load": 189.69135285774246
+  },
+  "interpretation": "Each physical fit is counted once; aliases do not add cost. These are sums of per-worker elapsed timers under shared GPUs, not GPU-device hours, energy, or controlled speed comparisons. BAN measured epochs sum training plus validation/scoring/checkpoint time; TAPB measured epoch time also includes validation/scoring/checkpoint writing. Startup, final inference, asset downloads, dictionary preparation, and historical research are not included in these fit timers. The development encoder timer starts after model loading; test encoding is separate. No new training, inference, or selection is performed by this cost calculation.",
+  "full93_export_receipt_sha256": "386369c78306f988e0217ed47df10d4b3f73c2ac589d788bb49bd499f48586ac",
+  "publication_completed_utc": "2026-09-13T15:40:19.673Z",
+  "calculation": "For all21 manifest jobs use the final queue verification directory and require summary SHA equality; for all5 TAPB seeds require complete summary. Require exactly epochs1..100 and correct seed. Sum epoch.train_seconds and require exact resources.training_seconds equality. BAN epoch time is sum(train_seconds+validation_seconds); TAPB uses sum(epoch_seconds), both checked against resource totals. Divide sums by3600 for worker hours; count each unique fit once. Fixed update totals use783*100 per BAN fit and ceil(50149/60)*100 per TAPB fit."
+}

@@ -1,0 +1,176 @@
+{
+  "aggregate_only_allowlist": [
+    "dti_tapb_program_transfer.tex",
+    "dti_tapb_program_transfer_records.csv",
+    "dti_tapb_program_transfer_aggregates.csv",
+    "dti_tapb_program_transfer_contrasts.json",
+    "dti_tapb_program_transfer_provenance.json"
+  ],
+  "all_metrics_sha256": "0d93c91cef4119640db9c430386273959119ee43d9973af8ef95bfe033c6a51f",
+  "application_seconds": 4.573856181930751,
+  "completed_utc": "2026-09-13T14:49:56.258161+00:00",
+  "exporter_sha256": "ef775a5a4ff0de844a2e5160dfe7cca204182eeffe8c3dd1accd0958dedb9dea",
+  "identical_prediction_artifact_groups": [
+    [
+      {
+        "fit_seed": 342,
+        "method": "transferred_loop"
+      },
+      {
+        "fit_seed": 342,
+        "method": "fixed_manual_0.7_0.3"
+      }
+    ],
+    [
+      {
+        "fit_seed": 342,
+        "method": "transferred_loop"
+      },
+      {
+        "fit_seed": 342,
+        "method": "fixed_manual_0.7_0.3"
+      }
+    ],
+    [
+      {
+        "fit_seed": 342,
+        "method": "transferred_loop"
+      },
+      {
+        "fit_seed": 342,
+        "method": "fixed_manual_0.7_0.3"
+      }
+    ]
+  ],
+  "manifest_sha256": "c4ae4ec5a4779b8a72fff177513582fa1d246090bf445c2a7bd74f8606a1ebc5",
+  "new_application_labels": 45,
+  "pairing": [
+    {
+      "controller": "direct",
+      "fit_seed": 342,
+      "research_seed": 542,
+      "source_sha256": "e3cb58b6331c3961fb897c0cab04b383f8dfee9eaa54badebe4d6864e41012de"
+    },
+    {
+      "controller": "loop",
+      "fit_seed": 342,
+      "research_seed": 542,
+      "source_sha256": "2fb06ef4e8dd0fb6fcb18965852fdb692cfb6542da194d8904a6ed55b9a773b9"
+    },
+    {
+      "controller": "direct",
+      "fit_seed": 343,
+      "research_seed": 543,
+      "source_sha256": "86ef25ae95e9519fa752a2aaf2c5e60ddb606cb5511e71b7261847e47e36f9aa"
+    },
+    {
+      "controller": "loop",
+      "fit_seed": 343,
+      "research_seed": 543,
+      "source_sha256": "2aa37201eae3f1a13d6c815d26d1be97fb718e0935a0d1458e146aff4a77bd6b"
+    },
+    {
+      "controller": "direct",
+      "fit_seed": 344,
+      "research_seed": 544,
+      "source_sha256": "48a0ae9f5ab019b035b20699c1703e12ea103de947c409e6795c92a663c53e82"
+    },
+    {
+      "controller": "loop",
+      "fit_seed": 344,
+      "research_seed": 544,
+      "source_sha256": "a392b3084a6655a0e4cb15a9279fbb4d951f54379e5333e301d1286af5653714"
+    },
+    {
+      "controller": "direct",
+      "fit_seed": 345,
+      "research_seed": 545,
+      "source_sha256": "bab49407a0f843eaf4a9447b4301ed645893b71ad7f7cd1bfe79e06768065858"
+    },
+    {
+      "controller": "loop",
+      "fit_seed": 345,
+      "research_seed": 545,
+      "source_sha256": "6ecbe8dfc92d1e1c01159b704afe546f6b2a3c08e657c9a7130ccdc28fb4b31b"
+    },
+    {
+      "controller": "direct",
+      "fit_seed": 346,
+      "research_seed": 546,
+      "source_sha256": "5f5a4a2bb204cae3c139b9a291e257e8757c7fbc6a0cdac1971b89a0e0b37427"
+    },
+    {
+      "controller": "loop",
+      "fit_seed": 346,
+      "research_seed": 546,
+      "source_sha256": "8c4ee910b64caad5392c45ced5f406453dc8df4f15e6f03c1ca25c217d5d9687"
+    }
+  ],
+  "prediction_rows_exported": 0,
+  "protocol": {
+    "adapter_clipping": false,
+    "aggregation": "Mean and sample SD over five fixed research/fit pairings; no success-only aggregate if any pair fails.",
+    "failure_policy": "Keep every declared row. Failed application has null metrics; never substitute another source/predictor.",
+    "fallback_or_retry": false,
+    "first_argument": "Corresponding TAPB probability replaces DrugBAN probability; source bytes/argument names unchanged",
+    "fixed_threshold": 0.5,
+    "global_sota_prespecified": false,
+    "manual": "Original fixed 0.7 * first + 0.3 * cosine source, no retuning",
+    "minimum_complete_tapb_records_before_access": 15,
+    "multiplicity": "Two transfer primary contrasts with Holm2; all other endpoints/metrics descriptive, not a new confirmatory campaign.",
+    "new_application_records": 45,
+    "new_llm_calls": 0,
+    "new_program_searches": 0,
+    "new_weight_fits": 0,
+    "primary_contrasts": [
+      "Transferred loop minus fixed TAPB, unseen_drug AUROC",
+      "Transferred loop minus transferred direct, unseen_drug AUROC"
+    ],
+    "program_reselection": false,
+    "prospective_boundary": "Some TAPB test predictions already existed from the reference watcher before this transfer declaration; root/adapter author did not inspect their scores to select programs, pairings or tuning. Freeze precedes this extension accessing those predictions.",
+    "public_tests_previously_exposed": true,
+    "record_count_semantics": "63 reported method/seed/endpoint labels, not 63 unique inference outputs; existing source/prediction aliases retained. 45 declared program endpoint applications plus 18 existing references.",
+    "records": 63,
+    "referenced_records": 18,
+    "scope": "Retrospective transfer of already selected DrugBAN-based programs to five existing TAPB fits; NOT harness research on TAPB, not ten independently trained TAPB models.",
+    "second_argument": "Same fixed full-50149-training-row k5 cosine probability",
+    "source_internal_operations": "Any original clipping/branching remains byte-identical",
+    "statistics": "Five fixed pairs; exact 32 two-sided sign-flips, 10000 paired bootstrap draws with RNG seed 20260913; Holm across exactly two primary contrasts."
+  },
+  "raw_data_or_model_weights_exported": false,
+  "referenced_labels": 18,
+  "reported_labels": 63,
+  "scorer_sha256": "2ec1689fecea7c12bdfd3b84a235883a43abaa5d1668da94bd0cfa252dc81216",
+  "source_selection_seal_sha256": "bd5d3e8dbffb6ffa813e95c21ae6e7d1066462c4b0524477d55e596afda1aba4",
+  "status": "complete",
+  "summary_sha256": "0af91c7a18fcd0165b9b2c1952708dacadacf2d54dace3b3664e941a5bb76554",
+  "tapb_final_summary_sha256": "fcf75e7c5dbed17fb5668ee5c5ae65be35c8f9eebc931512219d1cc1b2c86ed6",
+  "tapb_study_sha256": "42bcfbd1cf05105c1f39a27641d2c3f2ee19091c7467c998d3d9a51fa7492e23",
+  "unique_prediction_artifact_hashes": 60,
+  "verification": {
+    "new_application_prediction_roundtrips": 45,
+    "no_training_or_new_prediction_execution_in_export": true,
+    "original_threshold": 0.5,
+    "reported_rows_checked": 63,
+    "source_and_pairing_hashes_checked": true,
+    "status": "pass",
+    "unchanged_reference_roundtrips": 18,
+    "worker_artifact_hashes": {
+      "fit342_fixed_manual_0.7_0.3.json": "acc4b4357867993f05cfcc8dca33250a4442e94ee91b72f9fc538d0a0c6dd628",
+      "fit342_transferred_direct.json": "09cba125fa43ed1557f25fa757eec0882d37ec07d3da68beaf103fc0181a8eff",
+      "fit342_transferred_loop.json": "acc4b4357867993f05cfcc8dca33250a4442e94ee91b72f9fc538d0a0c6dd628",
+      "fit343_fixed_manual_0.7_0.3.json": "950e11d3b242ff65acaa597e696ad0f764a24cb7c6cc4ee6fa2b4e8669a55f89",
+      "fit343_transferred_direct.json": "198f1badca695db27a83c9ae4e50ce89a5a7a465b856baccda5e02ea9a838e7f",
+      "fit343_transferred_loop.json": "28f47305ad92f4a15b79d5f8b1e853a84bc55127c55f127a33fed75b12bd3a1b",
+      "fit344_fixed_manual_0.7_0.3.json": "3a39e4c43047403f95c23901a89a7dfd7cfae498b9b80230006178c78c844cce",
+      "fit344_transferred_direct.json": "513ec2259084fec39f4408cc92af2e5d4119c37caabca04d43a445f69181a0b2",
+      "fit344_transferred_loop.json": "38c6fbc664fa08f390a87e8b89a46079a36c53b42b92c14998d6856c54abc166",
+      "fit345_fixed_manual_0.7_0.3.json": "a3cdd581c858d17fe864c217c1fcc7be5fdc7e93b2499be52a4cc41b2b4a94de",
+      "fit345_transferred_direct.json": "508efd17208453886415753627ab464b68fe5537c2e34c20970b6a685188695f",
+      "fit345_transferred_loop.json": "87b0fbeefe30ca9440f46eb208beba5e38eba12d805638e29f874c0993e299de",
+      "fit346_fixed_manual_0.7_0.3.json": "fbdb96fe866750132f9594b1138e72fc01faa87a1c561282def0abf779ced719",
+      "fit346_transferred_direct.json": "37b0267ec6d88dbdf173ab40de34cf92f7ab03d1531dbf9e6aef7be0b03b3f02",
+      "fit346_transferred_loop.json": "3dbb769a3e63ecc64ec985d6158c569fad8112efcf5661b3bddcbd69b6e9ed3d"
+    }
+  }
+}

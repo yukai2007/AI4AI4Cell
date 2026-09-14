@@ -1,91 +1,47 @@
 \section*{5. Results}
-\subsection*{5.1 Four-arm cell-policy comparison}
-\begin{center}\footnotesize\setlength{\tabcolsep}{3pt}
-\begin{tabularx}{\linewidth}{>{\hsize=1.600\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.800\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.800\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.800\hsize\linewidth=\hsize\raggedright\arraybackslash}X}
-\toprule
-Method & Reverse-ID Top-1 \(\uparrow\) & Sequential AUC3 \(\uparrow\) & CEX AURB3 \(\uparrow\) \\
-\midrule
-Our harness & 0.803922 & 0.723917 & 0.096127 \\
-Our harness + federated evidence & 0.725490 & 0.723470 & 0.096127 \\
-Harness-free & 0.764706 & 0.719532 & 0.096127 \\
-Cosine baseline & 0.705882 & 0.721687 & N/A \\
-\bottomrule
-\end{tabularx}
-\end{center}
-Table 1. Exploratory cell-policy diagnostics, one campaign per task/method. The three metrics have different meanings and are not averaged.
-
-Our harness records 41/51 reverse-identification hits, compared with 39/51 for direct and 36/51 for cosine. Sequential AUC3 improves by 0.004386 over direct, while the CEX learning arms have identical scores and executed-action hashes. The original Sequential confidence intervals compare policies with locked cosine, not harness with direct, and include zero for every learning arm. CEX's raw-PG reference is -0.007481; the shared learning-arm gain is 0.103608, with an original-scorer query-bootstrap 95\% interval of [0.068579, 0.139368]. This relative-objective improvement is shared by all three learning arms and is not harness-specific. Its absolute-response secondary objective worsens, so the result does not establish uniform drug-response benefit. Query-level replay intervals do not quantify variation across independent searches or biological laboratories.
-
-The same-data federated variant does not outperform our non-federated harness. Across the three tasks, the latter uses 79 model calls and scores 17/18 candidates; the federated arm uses 87 calls and also scores 17/18; direct uses 18 calls and scores 9/18, with its other generations timing out at 900 seconds. These differences motivate the controlled DTI comparison, rather than an unsupported attribution of all score gains to research organization.
-
-\subsection*{5.2 DTI held-out comparison}
-\begin{center}\footnotesize\setlength{\tabcolsep}{3pt}
-\begin{tabularx}{\linewidth}{>{\hsize=1.600\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.800\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.800\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.800\hsize\linewidth=\hsize\raggedright\arraybackslash}X}
-\toprule
-Method & Random AUROC & Unseen-drug AUROC & Unseen-protein AUROC \\
-\midrule
-DrugBAN & 0.8942 \(\pm\) 0.0230 & 0.8850 \(\pm\) 0.0317 & 0.8008 \(\pm\) 0.0734 \\
-Released DrugBAN-Evo & 0.8715 \(\pm\) 0.0253 & 0.8612 \(\pm\) 0.0334 & 0.7181 \(\pm\) 0.0777 \\
-Harness-free & 0.8950 \(\pm\) 0.0270 & 0.8853 \(\pm\) 0.0382 & 0.7958 \(\pm\) 0.0917 \\
-Native DrugEvolve & 0.8963 \(\pm\) 0.0217 & 0.8865 \(\pm\) 0.0329 & 0.7975 \(\pm\) 0.0726 \\
-Our harness & 0.9005 \(\pm\) 0.0207 & 0.8922 \(\pm\) 0.0299 & 0.8098 \(\pm\) 0.0678 \\
-Cosine 5-NN (additional reference) & 0.8843 & 0.8719 & 0.7813 \\
-\bottomrule
-\end{tabularx}
-\end{center}
-Table 2. Neural rows use the fixed twelve-epoch refit, mean \(\pm\) sample SD over seeds 42--46; each searched row has five campaigns. All selected architectures completed refit without fallback and were sealed before testing. The additional deterministic cosine reference uses the identical 8,192 training pairs but was added retrospectively after the original tests; it has no training-seed SD.
-
-Our harness has the highest observed mean AUROC on all three splits, above the fixed cosine reference. Primary differences are positive/negative/tied in 3/1/1 seeds against native DrugEvolve and 2/2/1 against direct generation. Both mean differences are below the predeclared 0.01 AUROC practical threshold, with intervals crossing zero (Table 3): a small, seed-dependent gain, not established superiority.
-
-\begin{center}\footnotesize\setlength{\tabcolsep}{3pt}
-\begin{tabularx}{\linewidth}{>{\hsize=1.600\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.850\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.850\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.850\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.850\hsize\linewidth=\hsize\raggedright\arraybackslash}X}
-\toprule
-Primary paired contrast & AUROC delta & 95\% bootstrap interval & Exact p & Holm p \\
-\midrule
-Our harness - Native DrugEvolve & +0.0057 & [-0.0174, +0.0280] & 0.6250 & 1.0000 \\
-Our harness - Harness-free & +0.0069 & [-0.0147, +0.0326] & 0.7500 & 1.0000 \\
-\bottomrule
-\end{tabularx}
-\end{center}
-Table 3. Predeclared unseen-drug endpoint; paired campaign bootstrap and two-sided exact sign-flip tests (n=5).
-
-Fixed-model variation reflects training seeds; searched-method variation also includes uncontrolled model generation. Secondary splits test transfer of selected architectures, not additional independent task families. Actual costs and fixed-order audit cases appear in Appendix D; Table D1 separates common ceilings from realized usage.
-
-\subsection*{5.3 Matched proteomics results}
-All 42 declared method/seed records are evaluated after both seals, with
-35 unique prediction artifacts and no omitted seed or final-inference failure.
-The final role contains 148 conditions, including 22 positives. Table 4
-reports every searched arm and fixed reference; Appendix G gives all seed
-values and secondary metrics.
-
+\subsection*{5.1 Full-training gains and transferable predictor improvement}
 \begin{table}[t]
-\input{tables/ptpc_primary}
+\input{tables/dti_complete_overview}
 \end{table}
 
-Harness-free+cards has the highest mean AP, 0.2002, compared with 0.1652
-for our harness+cards. Their paired difference is $-0.0349$, with five
-negative, two positive and one tied seed. Adding cards to our harness
-also gives a negative mean difference, $-0.0170$. Neither predeclared
-contrast supports the intended benefit (Table 5). The first descriptive
-bootstrap interval is negative, but the exact Holm-adjusted test has
-$p=0.125$; it does not establish multiplicity-corrected inferiority.
+After 100-epoch full-data refitting, our harness-selected architectures have the highest mean AUROC on all three splits within the five-method DrugBAN family (Table~\ref{tab:dti-complete-overview}). Unseen-drug AUROC is 0.9330, versus 0.9239 for native DrugEvolve and 0.9280 for harness-free generation. The paired gains are $+0.00913$ and $+0.00506$, respectively; both Holm-adjusted exact $p$-values are 0.25. Thus the complete roster supports a positive mean effect, with limited five-pair resolution. TAPB is stronger on random and unseen-protein tests, motivating the unchanged-program transfer below. All 21 BAN-family and five TAPB fits finish 100 epochs; Appendix L provides all 93 records, secondary metrics, source aliases and measured costs.
 
+\paragraph{Researching executable probability programs.}
+With the shared DrugBAN predictor, loop-selected probability programs reach unseen-drug/unseen-protein AUROC 0.9438/0.8849, versus 0.9271/0.8484 for DrugBAN and 0.9430/0.8832 for the common manual mixture. Direct generation is slightly higher on all three splits; the primary loop-minus-direct difference is $-0.000385$ (exact $p=0.5625$). Appendix M reports all 39 final records and the 15 direct versus 61 loop model calls. This separates predictor complementarity from the small incremental contribution of source research.
+
+The source changes are interpretable probability rules, not opaque descriptions. For example, one retained program sets cosine weight to
+\[
+w=0.3+0.05\bigl(|2p_{\rm cosine}-1|-|2p_{\rm BAN}-1|\bigr),
+\quad \hat p=(1-w)p_{\rm BAN}+wp_{\rm cosine}.
+\]
+It adjusts the manual mixture using probability distance from 0.5. This distance is not an independently validated reliability estimate. A later increase of the coefficient to 0.075 fails the minimum visible-improvement rule and is rejected. Appendix M reports all programs and starting-point controls.
+
+\paragraph{Transfer to a stronger backbone without retraining.}
+Applied unchanged to TAPB, the loop-selected programs reach random/unseen-drug/unseen-protein AUROC $0.9669/0.9512/0.9149$, versus $0.9545/0.9328/0.8868$ for TAPB alone. The unseen-drug gain is positive in all five pairs: mean $+0.01834$, descriptive 95\% interval $[+0.01407,+0.02293]$, exact $p=0.0625$ and Holm $p=0.125$. Manual fusion reaches $0.9666/0.9507/0.9143$, and transferred direct programs reach $0.9672/0.9515/0.9158$. Thus the reusable interface preserves useful predictor complementarity across backbones, while the incremental loop-minus-direct contrast remains small ($-0.000371$, Holm $p=0.375$). All 45 new program applications succeed, with no new weight fits or model calls; the 63 reported records include 18 existing references. Appendix M gives complete scores and fixed source-to-fit mapping.
+
+The weaker cosine predictor contributes complementary order information. A post-final decomposition of all saved predictions shows that manual fusion repairs 2.6865 AUROC percentage points of positive--negative pair credit on unseen drugs while breaking 0.8984, giving the observed net gain of 1.7881 points. Ties receive half credit. This explains the fixed mixture's ranking gain without introducing another fitted model or attributing it to a biological mechanism (Appendix M.3).
+
+\subsection*{5.2 Separating local-data access from the research controller}
 \begin{table}[t]
-\input{tables/ptpc_contrasts}
+\input{tables/federated_research}
 \end{table}
 
-Absolute prediction quality is also limited. The neural methods' mean
-AUROCs range from 0.4918 to 0.5487; logistic regression attains 0.6385
-and BCE 0.4115, versus neural BCEs of 1.3719--1.4964. Logistic AP is
-0.1903, above both loop variants. The final majority-class fraction is
-126/148 (0.8514). Logistic attains exactly that accuracy by predicting every
-condition negative at threshold 0.5; its ranking metrics use continuous
-probabilities (Appendix J). Thus approximately 0.83 accuracy is not evidence
-of strong efficacy discrimination. These results establish a completed observed-response
-comparison with weak neural generalization, not an improvement over
-ProteinTalks or a validated benefit from the federated diagnostic package.
+Increasing data access improves the unchanged logistic predictor: ten-client AP/AUROC are 0.2783/0.7273, compared with one-client means 0.2431/0.6574. The same-data centralized/distributed coefficient discrepancy is at most $3.162\times10^{-9}$. The predictive change thus reflects the available training examples, not a different objective or a claimed superiority of a new federated optimizer.
 
-\subsection*{5.4 Research cost and observed evidence transfer}
-All 32 PTPC campaigns complete, with 128 successful fits, 640 client-worker receipts, 29 promotions and 67 rejections. Seven campaigns retain their starting head. Direct uses 24 calls per evidence mode; loop uses 85 with pooled diagnostics and 87 with cards. All input/output usage is observed. Loop therefore uses more calls and input tokens under the common ceilings; Tables H1--H2 report these costs separately from performance.
+Both research controllers can exploit the ten-client interface. Direct generation reaches AP 0.2974, compared with 0.2696 for the development-gated loop. Their primary paired difference is $-0.0278$ (95\% interval $[-0.0545,-0.0083]$; exact $p=0.0625$, Holm $p=0.125$). Loop ten-minus-one-client AP is $+0.0112$, with interval $[-0.0358,+0.0554]$. The factorial comparison supports the practical value of local-data access for the fixed model, but does not establish that the iterative controller is responsible for that benefit.
 
-The fixed first-native cases give an executable example (Appendix H). In loop+pooled, seed 142, round 1, the proposal expects an explicit 24h-minus-6h representation to improve ranking. The code introduces shared per-time encoders, a difference branch and gated fusion. Visible dev/gate AP changes from 0.111316/0.630056 to 0.121785/0.752047, so the candidate is retained. Round 2 adds the drug embedding to the gate, expanding its input from 96 to 128; both AP values decrease, to 0.100287/0.727741, and the change is rejected. Round 3 inherits the retained source and explicitly cites the failed drug-conditioned gate before proposing head dropout. Source, decision, native-commit and next-context identities verify this sequence. It demonstrates recorded evidence transfer; held-out performance, rather than the generated explanation, determines method-level utility.
+The same full-pool cosine reference attains AP 0.1996 and AUROC 0.6153. All thirty logistic final records predict every condition negative at threshold 0.5: accuracy 0.8514 is exactly the majority-class value, so ranking and calibration metrics carry the predictive comparison. The five full-pool fixed-model records reuse the same data objective; their zero SD is not evidence from five independent laboratories.
+
+\subsection*{5.3 Training-only cross-validation and native research controls}
+\begin{table}[t]
+\input{tables/federated_cv_v2}
+\end{table}
+
+With training-only CV, our loop reaches final AP $0.3111\pm0.0406$, versus $0.3189\pm0.0378$ for direct generation, $0.2927\pm0.0281$ for native Helmsman and 0.2783 for the unchanged model (Table~\ref{tab:federated-cv-v2}). The loop has the highest mean AUROC, 0.7314, and lowest mean BCE, 0.3892, among these four arms, but not the highest primary AP. Loop-minus-direct AP is $-0.00775$ (95\% interval $[-0.04317,+0.02641]$, Holm $p=0.6797$); loop-minus-Helmsman is $+0.01839$ ($[-0.00723,+0.04727]$, Holm $p=0.5781$). These results support useful representation changes with local training, not a statistically established controller ranking.
+
+All 24 research trajectories close before 21 unique full-data fits produce the 25 final labels. There are 240 charged call attempts, 239 completed generations, and one native Helmsman pre-launch argument-length failure. The failed trajectory retains baseline and stays in the primary comparison. The predeclared secondary comparison excluding its paired index remains inconclusive. One loop candidate fails the row-invariance contract; its charged evaluation and feedback are retained. Appendix O reports all costs, failures and the fixed first-index source trace. The higher AP than in the development-gated study is descriptive: this follow-up is not a randomized selector ablation.
+
+\subsection*{5.4 What the loop learns and transmits}
+A fixed first-campaign case shows the actual feedback path (Appendix K.3). Starting from flattened temporal profiles, the loop proposes separately normalized temporal mean and 24h-minus-6h difference blocks. Development/gate AP increases from 0.24592/0.25444 to 0.25532/0.34565, so this source becomes the incumbent. Increasing the difference weight from 1 to 1.5 lowers both scores and is rejected. The next proposal explicitly cites that failure, returns to the retained parent, and reduces the weight to 0.75; AP rises to 0.26515/0.35693.
+
+Thus a concrete representation change is sent to local workers, locally fitted coefficients produce ranking evidence, and the next code revision uses both acceptance and rejection. Source-parent identities and native history records verify this sequence. It illustrates research-memory behavior, not a biological causal mechanism or a substitute for the all-campaign performance test. Across the completed twenty-campaign study, 75 successful and one failed fit produce 19 retained changes, 36 rejections and five failed candidates. All 30 native decisions persist; all final vectors reproduce the unchanged scorer.
