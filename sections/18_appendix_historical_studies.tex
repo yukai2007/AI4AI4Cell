@@ -52,6 +52,15 @@ Our harness records 41/51 reverse-identification hits, compared with 39/51 for d
 
 The same-data federated variant does not outperform our non-federated harness. Across the three tasks, the latter uses 79 model calls and scores 17/18 candidates; the federated arm uses 87 calls and also scores 17/18; direct uses 18 calls and scores 9/18, with its other generations timing out at 900 seconds. These differences motivate the controlled DTI comparison, rather than an unsupported attribution of all score gains to research organization.
 
+\newpage
+\paragraph{Separate fixed no-LLM calibration control.}
+We independently reconstruct the fixed B-NM formula supplied with the historical Norman comparison. For existing model predictions $P$ and 30 calibration predictions/observations $(C,Y_C)$, it ranks candidates by cosine similarity to corrected profiles
+\[
+\widetilde P=P+0.5(\bar P\bar C^\top)
+(\bar C\bar C^\top+0.01I)^{-1}(Y_C-C),
+\]
+where bars denote row-wise L2 normalization with a $10^{-12}$ norm floor. The calibration hyperparameters are fixed, not searched in this reconstruction. It calls no LLM and ignores within-episode feedback, but still uses precomputed model predictions; it is distinct from the harness-free LLM arm in Table N.1. With the unchanged original scorers, audit Reverse-ID is 38/51 (0.745098), versus cosine's 36/51; Sequential AUC3 is 0.723634, versus 0.721687. The Sequential candidate-minus-cosine interval is $[-0.004493,+0.009715]$, not a contrast with our harness. This retrospective formula control shows that numerical calibration alone can supply part of a policy improvement. All three data roles were already public to the collaborators, and the originally submitted policy bytes are unavailable; this is neither a new blind test nor their byte-for-byte replay. The scalar record \path{tables/historical_bnm_control.json} preserves all three role scores separately. No value in Table N.1 is replaced by an older reference policy.
+
 \paragraph{N.2.2 DTI held-out comparison}
 \begin{center}\footnotesize\setlength{\tabcolsep}{3pt}
 \begin{tabularx}{\linewidth}{>{\hsize=1.600\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.800\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.800\hsize\linewidth=\hsize\raggedright\arraybackslash}X>{\hsize=0.800\hsize\linewidth=\hsize\raggedright\arraybackslash}X}
@@ -125,4 +134,3 @@ All 32 PTPC campaigns complete, with 128 successful fits, 640 client-worker rece
 The fixed first-native cases give an executable example (Appendix H). In loop+pooled, seed 142, round 1, the proposal expects an explicit 24h-minus-6h representation to improve ranking. The code introduces shared per-time encoders, a difference branch and gated fusion. Visible dev/gate AP changes from 0.111316/0.630056 to 0.121785/0.752047, so the candidate is retained. Round 2 adds the drug embedding to the gate, expanding its input from 96 to 128; both AP values decrease, to 0.100287/0.727741, and the change is rejected. Round 3 inherits the retained source and explicitly cites the failed drug-conditioned gate before proposing head dropout. Source, decision, native-commit and next-context identities verify this sequence. It demonstrates recorded evidence transfer; held-out performance, rather than the generated explanation, determines method-level utility.
 
 \endgroup
-
