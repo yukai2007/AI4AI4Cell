@@ -1,0 +1,14 @@
+% Presentation-only view; underlying published scalars are unchanged.
+\centering\small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.10}
+\begin{tabularx}{\linewidth}{@{}Xrrr@{}}
+\toprule
+Method & AP $\uparrow$ & AUROC $\uparrow$ & BCE $\downarrow$ \\
+\midrule
+Our harness & $0.3111\,\pm\,0.0406$ & $\mathbf{0.7314}\,\pm\,0.0053$ & $\mathbf{0.3892}\,\pm\,0.0011$ \\
+Harness-free & $\mathbf{0.3189}\,\pm\,0.0378$ & $0.7229\,\pm\,0.0088$ & $0.3899\,\pm\,0.0017$ \\
+Native Helmsman & $0.2927\,\pm\,0.0281$ & $0.7269\,\pm\,0.0087$ & $0.3898\,\pm\,0.0020$ \\
+Fixed logistic & $0.2783$ & $0.7273$ & $0.3905$ \\
+\bottomrule
+\end{tabularx}
+\caption{Training-only CV: mean $\pm$ sample SD over eight trajectories/controller, with identical 491 training rows, ten simulated clients and three folds. \textbf{Bold}: best column mean (display ties included). The single fixed reference has no seed SD. Helmsman retains its first-valid-execution stop. All 24 selections, 25 final labels and costs: Appendix O.}
+\label{tab:federated-cv-v2}

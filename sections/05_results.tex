@@ -1,7 +1,7 @@
 \section*{5. Results}
 \subsection*{5.1 Full-training gains and transferable predictor improvement}
 \begin{table}[t]
-\input{tables/dti_complete_overview}
+\input{tables/display/main_dti}
 \end{table}
 
 After 100-epoch full-data refitting, our harness-selected architectures have the highest mean AUROC on all three splits within the five-method DrugBAN family (Table~\ref{tab:dti-complete-overview}). Unseen-drug AUROC is 0.9330, versus 0.9239 for native DrugEvolve and 0.9280 for harness-free generation. The paired gains are $+0.00913$ and $+0.00506$, respectively; both Holm-adjusted exact $p$-values are 0.25. Thus the complete roster supports a positive mean effect, with limited five-pair resolution. TAPB is stronger on random and unseen-protein tests, motivating the unchanged-program transfer below. All 21 BAN-family and five TAPB fits finish 100 epochs; Appendix L provides all 93 records, secondary metrics, source aliases and measured costs.
@@ -23,7 +23,7 @@ The weaker cosine predictor contributes complementary order information. A post-
 
 \subsection*{5.2 Separating local-data access from the research controller}
 \begin{table}[t]
-\input{tables/federated_research}
+\input{tables/display/main_federated}
 \end{table}
 
 Increasing data access improves the unchanged logistic predictor: ten-client AP/AUROC are 0.2783/0.7273, compared with one-client means 0.2431/0.6574. The same-data centralized/distributed coefficient discrepancy is at most $3.162\times10^{-9}$. The predictive change thus reflects the available training examples, not a different objective or a claimed superiority of a new federated optimizer.
@@ -34,7 +34,7 @@ The same full-pool cosine reference attains AP 0.1996 and AUROC 0.6153. All thir
 
 \subsection*{5.3 Training-only cross-validation and native research controls}
 \begin{table}[t]
-\input{tables/federated_cv_v2}
+\input{tables/display/main_federated_cv}
 \end{table}
 
 With training-only CV, our loop reaches final AP $0.3111\pm0.0406$, versus $0.3189\pm0.0378$ for direct generation, $0.2927\pm0.0281$ for native Helmsman and 0.2783 for the unchanged model (Table~\ref{tab:federated-cv-v2}). The loop has the highest mean AUROC, 0.7314, and lowest mean BCE, 0.3892, among these four arms, but not the highest primary AP. Loop-minus-direct AP is $-0.00775$ (95\% interval $[-0.04317,+0.02641]$, Holm $p=0.6797$); loop-minus-Helmsman is $+0.01839$ ($[-0.00723,+0.04727]$, Holm $p=0.5781$). These results support useful representation changes with local training, not a statistically established controller ranking.

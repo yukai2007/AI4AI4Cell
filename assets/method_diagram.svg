@@ -1,62 +1,61 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="720pt" height="340pt" viewBox="0 0 720 340" role="img" aria-labelledby="title description">
+<svg xmlns="http://www.w3.org/2000/svg" width="660pt" height="312pt" viewBox="0 0 660 312" role="img" aria-labelledby="title description">
 <title id="title">Federated research: code updates outside, local training inside</title>
 <desc id="description">A fixed research language model proposes code and uses measured outcomes to select the next artifact. In the federated-training implementation, clients evaluate a shared parameter vector on local rows and return summed loss and gradients to a trusted optimizer. Separate role workers evaluate fitted candidates. Only scores and diagnostics reach the research context; raw rows and training gradients do not. Earlier evidence-only studies do not run the inner federated optimizer.</desc>
-<rect width="720" height="340" fill="#FFFFFF"/>
-<rect x="16" y="10" width="688" height="130" rx="10" fill="#F4F7FA" stroke="#CFD9E1" stroke-width="1"/>
-<text x="29" y="28" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.5" font-weight="700" fill="#566570" text-anchor="start">CONTROLLER + SHARED RESEARCH STATE</text>
-<rect x="16" y="174" width="688" height="126" rx="10" fill="#F0F7F4" stroke="#BFD4CD" stroke-width="1"/>
-<text x="29" y="190" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.2" font-weight="700" fill="#30766C" text-anchor="start">LOCAL FITTING + FIXED EVALUATION</text>
-<polyline points="620,66 620,48 100,48 100,66" fill="none" stroke="#566570" stroke-width="1.5" stroke-linejoin="round" stroke-dasharray="4 3"/>
-<polygon points="100.000,66.000 103.200,59.700 96.800,59.700" fill="#566570"/>
-<text x="360" y="42" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.4" font-weight="400" fill="#566570" text-anchor="middle">recorded outcomes inform the next hypothesis</text>
-<polyline points="170,97 199,97" fill="none" stroke="#395E7A" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="199.000,97.000 192.700,93.800 192.700,100.200" fill="#395E7A"/>
-<polyline points="521,97 551,97" fill="none" stroke="#395E7A" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="551.000,97.000 544.700,93.800 544.700,100.200" fill="#395E7A"/>
-<polyline points="271.5,127 271.5,158 356,158 356,209" fill="none" stroke="#395E7A" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="356.000,209.000 359.200,202.700 352.800,202.700" fill="#395E7A"/>
-<text x="258" y="161" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.4" font-weight="400" fill="#395E7A" text-anchor="end">candidate source</text>
-<polyline points="590,209 590,158 455.5,158 455.5,127" fill="none" stroke="#30766C" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="455.500,127.000 452.300,133.300 458.700,133.300" fill="#30766C"/>
-<text x="600" y="162" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.4" font-weight="400" fill="#30766C" text-anchor="start">scores</text>
-<rect x="30" y="66" width="140" height="61" rx="8" fill="white" stroke="#395E7A" stroke-width="1"/>
-<text x="100.0" y="88" font-family="DejaVu Sans, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#395E7A" text-anchor="middle">1 Hypothesis</text>
-<text x="100.0" y="107" font-family="DejaVu Sans, Arial, sans-serif" font-size="11.3" font-weight="400" fill="#243746" text-anchor="middle">testable change</text>
-<text x="100.0" y="122" font-family="DejaVu Sans, Arial, sans-serif" font-size="11.3" font-weight="400" fill="#243746" text-anchor="middle">expected effect</text>
-<rect x="199" y="66" width="145" height="61" rx="8" fill="white" stroke="#395E7A" stroke-width="1"/>
-<text x="271.5" y="88" font-family="DejaVu Sans, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#395E7A" text-anchor="middle">2 Implementation</text>
-<text x="271.5" y="107" font-family="DejaVu Sans, Arial, sans-serif" font-size="11.3" font-weight="400" fill="#243746" text-anchor="middle">feature map / policy</text>
-<text x="271.5" y="122" font-family="DejaVu Sans, Arial, sans-serif" font-size="11.3" font-weight="400" fill="#243746" text-anchor="middle">task-specific module</text>
-<rect x="390" y="66" width="131" height="61" rx="8" fill="white" stroke="#99723B" stroke-width="1"/>
-<text x="455.5" y="88" font-family="DejaVu Sans, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#99723B" text-anchor="middle">4 Keep / discard</text>
-<text x="455.5" y="107" font-family="DejaVu Sans, Arial, sans-serif" font-size="11.3" font-weight="400" fill="#243746" text-anchor="middle">declared score gate</text>
-<text x="455.5" y="122" font-family="DejaVu Sans, Arial, sans-serif" font-size="11.3" font-weight="400" fill="#243746" text-anchor="middle">retain or roll back</text>
-<rect x="551" y="66" width="139" height="61" rx="8" fill="white" stroke="#395E7A" stroke-width="1"/>
-<text x="620.5" y="88" font-family="DejaVu Sans, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#395E7A" text-anchor="middle">5 Memory / transfer</text>
-<text x="620.5" y="107" font-family="DejaVu Sans, Arial, sans-serif" font-size="11.3" font-weight="400" fill="#243746" text-anchor="middle">artifact + lineage</text>
-<text x="620.5" y="122" font-family="DejaVu Sans, Arial, sans-serif" font-size="11.3" font-weight="400" fill="#243746" text-anchor="middle">retained / failed</text>
-<rect x="30" y="209" width="166" height="63" rx="8" fill="white" stroke="#30766C" stroke-width="1"/>
-<text x="113.0" y="231" font-family="DejaVu Sans, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#30766C" text-anchor="middle">Local training clients</text>
-<text x="113.0" y="250" font-family="DejaVu Sans, Arial, sans-serif" font-size="11.3" font-weight="400" fill="#243746" text-anchor="middle">private rows stay local</text>
-<text x="113.0" y="265" font-family="DejaVu Sans, Arial, sans-serif" font-size="11.3" font-weight="400" fill="#243746" text-anchor="middle">one shared feature map</text>
-<rect x="278" y="209" width="156" height="63" rx="8" fill="white" stroke="#30766C" stroke-width="1"/>
-<text x="356.0" y="231" font-family="DejaVu Sans, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#30766C" text-anchor="middle">3a Fit task weights</text>
-<text x="356.0" y="250" font-family="DejaVu Sans, Arial, sans-serif" font-size="11.3" font-weight="400" fill="#243746" text-anchor="middle">sum local objectives</text>
-<text x="356.0" y="265" font-family="DejaVu Sans, Arial, sans-serif" font-size="11.3" font-weight="400" fill="#243746" text-anchor="middle">fixed optimizer</text>
-<rect x="526" y="209" width="164" height="63" rx="8" fill="white" stroke="#30766C" stroke-width="1"/>
-<text x="608.0" y="231" font-family="DejaVu Sans, Arial, sans-serif" font-size="11.5" font-weight="700" fill="#30766C" text-anchor="middle">3b Measure candidate</text>
-<text x="608.0" y="250" font-family="DejaVu Sans, Arial, sans-serif" font-size="11.3" font-weight="400" fill="#243746" text-anchor="middle">separate role workers</text>
-<text x="608.0" y="265" font-family="DejaVu Sans, Arial, sans-serif" font-size="11.3" font-weight="400" fill="#243746" text-anchor="middle">original task scorer</text>
-<polyline points="278,226 196,226" fill="none" stroke="#395E7A" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="196.000,226.000 202.300,229.200 202.300,222.800" fill="#395E7A"/>
-<text x="237" y="218" font-family="DejaVu Sans, Arial, sans-serif" font-size="9.2" font-weight="400" fill="#395E7A" text-anchor="middle">code / weights</text>
-<polyline points="196,258 278,258" fill="none" stroke="#30766C" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="278.000,258.000 271.700,254.800 271.700,261.200" fill="#30766C"/>
-<text x="237" y="249" font-family="DejaVu Sans, Arial, sans-serif" font-size="8.6" font-weight="400" fill="#30766C" text-anchor="middle">loss / gradient</text>
-<polyline points="434,238 526,238" fill="none" stroke="#30766C" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="526.000,238.000 519.700,234.800 519.700,241.200" fill="#30766C"/>
-<text x="480" y="230" font-family="DejaVu Sans, Arial, sans-serif" font-size="9.2" font-weight="400" fill="#30766C" text-anchor="middle">fitted model</text>
-<text x="360" y="288" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.0" font-weight="400" fill="#30766C" text-anchor="middle">Inner optimization changes task weights; outer research changes executable designs.</text>
-<text x="360" y="316" font-family="DejaVu Sans, Arial, sans-serif" font-size="10.4" font-weight="400" fill="#243746" text-anchor="middle">Research context receives artifacts and diagnostics, not raw rows or training gradients.</text>
-<text x="360" y="332" font-family="DejaVu Sans, Arial, sans-serif" font-size="9.7" font-weight="400" fill="#566570" text-anchor="middle">Local optimization is used in the federated-training extension; clients are simulated.</text>
+<rect width="660" height="312" fill="#FFFFFF"/>
+<rect x="10" y="8" width="640" height="128" rx="10" fill="#F4F7FA" stroke="#CFD9E1" stroke-width="1"/>
+<text x="22" y="26" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" fill="#395E7A" text-anchor="start">A  RESEARCH LOOP: UPDATE THE DESIGN</text>
+<text x="638" y="26" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#566570" text-anchor="end">fixed LLM</text>
+<rect x="10" y="174" width="640" height="112" rx="10" fill="#F0F7F4" stroke="#BFD4CD" stroke-width="1"/>
+<text x="22" y="193" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" fill="#30766C" text-anchor="start">B  LOCAL FITTING: UPDATE TASK WEIGHTS</text>
+<polyline points="572,64 572,51 92,51 92,64" fill="none" stroke="#395E7A" stroke-width="1.5" stroke-linejoin="round" stroke-dasharray="4 3"/>
+<polygon points="92.000,64.000 95.200,57.700 88.800,57.700" fill="#395E7A"/>
+<text x="334" y="46" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#395E7A" text-anchor="middle">Retained code, outcomes and failures guide the next round.</text>
+<polyline points="162,97 180,97" fill="none" stroke="#395E7A" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="180.000,97.000 173.700,93.800 173.700,100.200" fill="#395E7A"/>
+<polyline points="490,97 506,97" fill="none" stroke="#395E7A" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="506.000,97.000 499.700,93.800 499.700,100.200" fill="#395E7A"/>
+<polyline points="252.5,130 252.5,155 371,155 371,207" fill="none" stroke="#395E7A" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="371.000,207.000 374.200,200.700 367.800,200.700" fill="#395E7A"/>
+<text x="240" y="160" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#395E7A" text-anchor="end">candidate code</text>
+<polyline points="565,207 565,155 420,155 420,130" fill="none" stroke="#30766C" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="420.000,130.000 416.800,136.300 423.200,136.300" fill="#30766C"/>
+<text x="576" y="160" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#30766C" text-anchor="start">scores</text>
+<rect x="22" y="64" width="140" height="66" rx="8" fill="white" stroke="#395E7A" stroke-width="1"/>
+<text x="92.0" y="85" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" fill="#395E7A" text-anchor="middle">1 Hypothesis</text>
+<text x="92.0" y="105" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">testable change</text>
+<text x="92.0" y="122" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">expected effect</text>
+<rect x="180" y="64" width="145" height="66" rx="8" fill="white" stroke="#395E7A" stroke-width="1"/>
+<text x="252.5" y="85" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" fill="#395E7A" text-anchor="middle">2 Source change</text>
+<text x="252.5" y="105" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">edit task code</text>
+<text x="252.5" y="122" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">feature / policy</text>
+<rect x="350" y="64" width="140" height="66" rx="8" fill="white" stroke="#99723B" stroke-width="1"/>
+<text x="420.0" y="85" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" fill="#99723B" text-anchor="middle">4 Selection</text>
+<text x="420.0" y="105" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">score gate</text>
+<text x="420.0" y="122" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">keep / discard</text>
+<rect x="506" y="64" width="132" height="66" rx="8" fill="white" stroke="#395E7A" stroke-width="1"/>
+<text x="572.0" y="85" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" fill="#395E7A" text-anchor="middle">5 Next round</text>
+<text x="572.0" y="105" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">source + scores</text>
+<text x="572.0" y="122" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">failed attempts</text>
+<rect x="22" y="207" width="162" height="66" rx="8" fill="white" stroke="#30766C" stroke-width="1"/>
+<text x="103.0" y="228" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" fill="#30766C" text-anchor="middle">Simulated clients</text>
+<text x="103.0" y="248" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">shared code</text>
+<text x="103.0" y="265" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">rows stay local</text>
+<rect x="298" y="207" width="146" height="66" rx="8" fill="white" stroke="#30766C" stroke-width="1"/>
+<text x="371.0" y="228" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" fill="#30766C" text-anchor="middle">3a Fit weights</text>
+<text x="371.0" y="248" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">local objectives</text>
+<text x="371.0" y="265" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">fixed optimizer</text>
+<rect x="492" y="207" width="146" height="66" rx="8" fill="white" stroke="#30766C" stroke-width="1"/>
+<text x="565.0" y="228" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" fill="#30766C" text-anchor="middle">3b Measure</text>
+<text x="565.0" y="248" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">role workers</text>
+<text x="565.0" y="265" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">task scorer</text>
+<polyline points="298,227 184,227" fill="none" stroke="#395E7A" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="184.000,227.000 190.300,230.200 190.300,223.800" fill="#395E7A"/>
+<text x="241" y="219" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#395E7A" text-anchor="middle">code / weights</text>
+<polyline points="184,264 298,264" fill="none" stroke="#30766C" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="298.000,264.000 291.700,260.800 291.700,267.200" fill="#30766C"/>
+<text x="241" y="256" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#30766C" text-anchor="middle">loss / grad / n</text>
+<polyline points="444,248 492,248" fill="none" stroke="#30766C" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="492.000,248.000 485.700,244.800 485.700,251.200" fill="#30766C"/>
+<text x="468" y="239" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#30766C" text-anchor="middle">model</text>
+<text x="330" y="305" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">The research LLM receives scores and diagnostics, not rows or training gradients.</text>
 </svg>

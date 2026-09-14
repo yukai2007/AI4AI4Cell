@@ -8,6 +8,8 @@ This is an editable, result-bearing research draft, not a submitted/accepted art
 
 The 14 September coauthor integration sharpens the two-level method and retained-source/failure-feedback case, adds biological-FL and Chiron related work, and distinguishes a reconstructed historical no-LLM calibration reference from direct LLM generation. Existing scientific tables and selected experimental artifacts are unchanged. Unverified coauthor FL scores are not included.
 
+The main tables use readable presentation views under `tables/display/`: bold marks the best mean within each labeled comparison panel, including ties at the displayed precision; lower BCE is better. DTI underlines the best of the five BAN-family rows separately. These marks describe rankings, not significance. The display provenance binds every value to the unchanged scalar publications; original tables are retained. The method figure uses enlarged labels at the same page footprint.
+
 - Select `main.tex` as the Overleaf main document and **XeLaTeX** as compiler.
 - The bundled `latexmkrc` also redirects the default pdfLaTeX command to XeLaTeX, so a newly synchronized project with its old pdfLaTeX setting can load `fontspec` and the bundled OpenType fonts. This uses Overleaf's supported project-level command configuration, not a change to the web UI's compiler setting. If needed, explicitly select XeLaTeX and use Recompile from scratch. Local Perl configuration checks passed; the current remote Overleaf compilation has not been independently verified.
 - `main.tex` is a compatibility entry. Edit the descriptive `ai4ai4cell-main.tex` orchestration file and prose under `sections/`.

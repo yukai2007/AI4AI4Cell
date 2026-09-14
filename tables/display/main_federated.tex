@@ -1,0 +1,21 @@
+% Presentation-only view; underlying published scalars are unchanged.
+\centering\small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.10}
+\begin{tabularx}{\linewidth}{@{}Xrrr@{}}
+\toprule
+Method & AP $\uparrow$ & AUROC $\uparrow$ & BCE $\downarrow$ \\
+\midrule
+\multicolumn{4}{@{}l}{\textit{A. One-client training pool: 44--59 conditions}} \\[2pt]
+Our harness & $0.2584\,\pm\,0.0559$ & $0.6556\,\pm\,0.0235$ & $\mathbf{0.4229}\,\pm\,0.0164$ \\
+Harness-free & $\mathbf{0.2663}\,\pm\,0.0380$ & $\mathbf{0.6752}\,\pm\,0.0222$ & $0.4232\,\pm\,0.0163$ \\
+Fixed logistic & $0.2431\,\pm\,0.0492$ & $0.6574\,\pm\,0.0404$ & $0.4236\,\pm\,0.0153$ \\
+Cosine 5-NN & $0.2127\,\pm\,0.0542$ & $0.6163\,\pm\,0.0550$ & $1.2110\,\pm\,0.2036$ \\
+\midrule
+\multicolumn{4}{@{}l}{\textit{B. Ten-client training pool: 491 conditions}} \\[2pt]
+Our harness & $0.2696\,\pm\,0.0137$ & $0.7219\,\pm\,0.0091$ & $0.3914\,\pm\,0.0015$ \\
+Harness-free & $\mathbf{0.2974}\,\pm\,0.0336$ & $0.7236\,\pm\,0.0104$ & $\mathbf{0.3903}\,\pm\,0.0032$ \\
+Fixed logistic & $0.2783\,\pm\,0.0000$ & $\mathbf{0.7273}\,\pm\,0.0000$ & $0.3905\,\pm\,0.0000$ \\
+Cosine 5-NN & $0.1996\,\pm\,0.0000$ & $0.6153\,\pm\,0.0000$ & $1.3152\,\pm\,0.0000$ \\
+\bottomrule
+\end{tabularx}
+\caption{Local training on 148 final conditions (22 positives); mean $\pm$ sample SD over five compound partitions. \textbf{Bold}: best mean within each client-count panel (display ties included). Training access is identical within panels. Zero fixed-ten-client SD reflects one pooled objective. Cosine is an untuned retrospective centralized reference with matching pools/features. Protocol: Appendix K.}
+\label{tab:federated-research}
