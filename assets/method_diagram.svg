@@ -1,12 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="660pt" height="312pt" viewBox="0 0 660 312" role="img" aria-labelledby="title description">
-<title id="title">Federated research: code updates outside, local training inside</title>
-<desc id="description">A fixed research language model proposes code and uses measured outcomes to select the next artifact. In the federated-training implementation, clients evaluate a shared parameter vector on local rows and return summed loss and gradients to a trusted optimizer. Separate role workers evaluate fitted candidates. Only scores and diagnostics reach the research context; raw rows and training gradients do not. Earlier evidence-only studies do not run the inner federated optimizer.</desc>
-<rect width="660" height="312" fill="#FFFFFF"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="660pt" height="458pt" viewBox="0 0 660 458" role="img" aria-labelledby="title description">
+<title id="title">AI4AI4Cell: research loop, federated execution and downstream tasks</title>
+<desc id="description">A fixed research language model proposes a hypothesis, implements source, and selects the next design using measured outcomes and failed attempts. A shared task contract routes validated source to task-specific training and scoring. The expanded proteomics adapter depicts simulated laboratory clients with separate local datasets: code and weights are distributed, losses, gradients and counts return to a trusted coordinator, and evaluation scores return to the research loop. Only summaries reach the research language model. Three downstream task families are drug-target interaction prediction with central training or frozen-program transfer, observed-response proteomic efficacy classification with federated fitting, and exploratory cell policies with archived-response replay. The federation is a same-host simulation, not deployed independent laboratories.</desc>
+<rect width="660" height="458" fill="#FFFFFF"/>
 <rect x="10" y="8" width="640" height="128" rx="10" fill="#F4F7FA" stroke="#CFD9E1" stroke-width="1"/>
 <text x="22" y="26" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" fill="#395E7A" text-anchor="start">A  RESEARCH LOOP: UPDATE THE DESIGN</text>
 <text x="638" y="26" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#566570" text-anchor="end">fixed LLM</text>
-<rect x="10" y="174" width="640" height="112" rx="10" fill="#F0F7F4" stroke="#BFD4CD" stroke-width="1"/>
-<text x="22" y="193" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" fill="#30766C" text-anchor="start">B  LOCAL FITTING: UPDATE TASK WEIGHTS</text>
 <polyline points="572,64 572,51 92,51 92,64" fill="none" stroke="#395E7A" stroke-width="1.5" stroke-linejoin="round" stroke-dasharray="4 3"/>
 <polygon points="92.000,64.000 95.200,57.700 88.800,57.700" fill="#395E7A"/>
 <text x="334" y="46" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#395E7A" text-anchor="middle">Retained code, outcomes and failures guide the next round.</text>
@@ -14,12 +12,6 @@
 <polygon points="180.000,97.000 173.700,93.800 173.700,100.200" fill="#395E7A"/>
 <polyline points="490,97 506,97" fill="none" stroke="#395E7A" stroke-width="1.5" stroke-linejoin="round"/>
 <polygon points="506.000,97.000 499.700,93.800 499.700,100.200" fill="#395E7A"/>
-<polyline points="252.5,130 252.5,155 371,155 371,207" fill="none" stroke="#395E7A" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="371.000,207.000 374.200,200.700 367.800,200.700" fill="#395E7A"/>
-<text x="240" y="160" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#395E7A" text-anchor="end">candidate code</text>
-<polyline points="565,207 565,155 420,155 420,130" fill="none" stroke="#30766C" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="420.000,130.000 416.800,136.300 423.200,136.300" fill="#30766C"/>
-<text x="576" y="160" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#30766C" text-anchor="start">scores</text>
 <rect x="22" y="64" width="140" height="66" rx="8" fill="white" stroke="#395E7A" stroke-width="1"/>
 <text x="92.0" y="85" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" fill="#395E7A" text-anchor="middle">1 Hypothesis</text>
 <text x="92.0" y="105" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">testable change</text>
@@ -36,26 +28,80 @@
 <text x="572.0" y="85" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" fill="#395E7A" text-anchor="middle">5 Next round</text>
 <text x="572.0" y="105" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">source + scores</text>
 <text x="572.0" y="122" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">failed attempts</text>
-<rect x="22" y="207" width="162" height="66" rx="8" fill="white" stroke="#30766C" stroke-width="1"/>
-<text x="103.0" y="228" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" fill="#30766C" text-anchor="middle">Simulated clients</text>
-<text x="103.0" y="248" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">shared code</text>
-<text x="103.0" y="265" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">rows stay local</text>
-<rect x="298" y="207" width="146" height="66" rx="8" fill="white" stroke="#30766C" stroke-width="1"/>
-<text x="371.0" y="228" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" fill="#30766C" text-anchor="middle">3a Fit weights</text>
-<text x="371.0" y="248" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">local objectives</text>
-<text x="371.0" y="265" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">fixed optimizer</text>
-<rect x="492" y="207" width="146" height="66" rx="8" fill="white" stroke="#30766C" stroke-width="1"/>
-<text x="565.0" y="228" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" fill="#30766C" text-anchor="middle">3b Measure</text>
-<text x="565.0" y="248" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">role workers</text>
-<text x="565.0" y="265" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">task scorer</text>
-<polyline points="298,227 184,227" fill="none" stroke="#395E7A" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="184.000,227.000 190.300,230.200 190.300,223.800" fill="#395E7A"/>
-<text x="241" y="219" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#395E7A" text-anchor="middle">code / weights</text>
-<polyline points="184,264 298,264" fill="none" stroke="#30766C" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="298.000,264.000 291.700,260.800 291.700,267.200" fill="#30766C"/>
-<text x="241" y="256" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#30766C" text-anchor="middle">loss / grad / n</text>
-<polyline points="444,248 492,248" fill="none" stroke="#30766C" stroke-width="1.5" stroke-linejoin="round"/>
-<polygon points="492.000,248.000 485.700,244.800 485.700,251.200" fill="#30766C"/>
-<text x="468" y="239" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#30766C" text-anchor="middle">model</text>
-<text x="330" y="305" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">The research LLM receives scores and diagnostics, not rows or training gradients.</text>
+<polyline points="252,130 252,165" fill="none" stroke="#395E7A" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="252.000,165.000 255.200,158.700 248.800,158.700" fill="#395E7A"/>
+<text x="239" y="154" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#395E7A" text-anchor="end">validate source</text>
+<rect x="22" y="165" width="616" height="27" rx="5" fill="#F4F7FA" stroke="#CFD9E1" stroke-width="1"/>
+<text x="330" y="183" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">Task contract: writable code | fixed trainer + scorer | roles + budgets</text>
+<rect x="10" y="211" width="640" height="126" rx="10" fill="#F0F7F4" stroke="#BFD4CD" stroke-width="1"/>
+<text x="22" y="229" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" fill="#30766C" text-anchor="start">B  FEDERATED EXECUTION</text>
+<text x="638" y="229" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#30766C" text-anchor="end">PTPC: 1 or 10 simulated clients</text>
+<polyline points="401,192 401,240" fill="none" stroke="#395E7A" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="401.000,240.000 404.200,233.700 397.800,233.700" fill="#395E7A"/>
+<rect x="22" y="240" width="72" height="80" rx="6" fill="white" stroke="#30766C" stroke-width="1"/>
+<text x="58" y="257" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" fill="#30766C" text-anchor="middle">Lab 1</text>
+<rect x="34" y="263" width="48" height="25" rx="5" fill="#E2F0EB" stroke="#30766C" stroke-width="1"/>
+<polyline points="37,268 79,268" fill="none" stroke="#30766C" stroke-width="0.7" stroke-linejoin="round"/>
+<text x="58" y="284" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#30766C" text-anchor="middle">D1</text>
+<text x="58" y="310" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">loss/grad</text>
+<polyline points="58,320 58,329" fill="none" stroke="#30766C" stroke-width="1.2" stroke-linejoin="round"/>
+<rect x="106" y="240" width="72" height="80" rx="6" fill="white" stroke="#30766C" stroke-width="1"/>
+<text x="142" y="257" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" fill="#30766C" text-anchor="middle">Lab 2</text>
+<rect x="118" y="263" width="48" height="25" rx="5" fill="#E2F0EB" stroke="#30766C" stroke-width="1"/>
+<polyline points="121,268 163,268" fill="none" stroke="#30766C" stroke-width="0.7" stroke-linejoin="round"/>
+<text x="142" y="284" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#30766C" text-anchor="middle">D2</text>
+<text x="142" y="310" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">loss/grad</text>
+<polyline points="142,320 142,329" fill="none" stroke="#30766C" stroke-width="1.2" stroke-linejoin="round"/>
+<rect x="190" y="240" width="72" height="80" rx="6" fill="white" stroke="#30766C" stroke-width="1"/>
+<text x="226" y="257" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" fill="#30766C" text-anchor="middle">Lab K</text>
+<rect x="202" y="263" width="48" height="25" rx="5" fill="#E2F0EB" stroke="#30766C" stroke-width="1"/>
+<polyline points="205,268 247,268" fill="none" stroke="#30766C" stroke-width="0.7" stroke-linejoin="round"/>
+<text x="226" y="284" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#30766C" text-anchor="middle">DK</text>
+<text x="226" y="310" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">loss/grad</text>
+<polyline points="226,320 226,329" fill="none" stroke="#30766C" stroke-width="1.2" stroke-linejoin="round"/>
+<polyline points="58,329 282,329 282,260" fill="none" stroke="#30766C" stroke-width="1.2" stroke-linejoin="round"/>
+<polyline points="366,260 282,260" fill="none" stroke="#395E7A" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="282.000,260.000 288.300,263.200 288.300,256.800" fill="#395E7A"/>
+<text x="324" y="252" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#395E7A" text-anchor="middle">code + w</text>
+<polyline points="282,310 366,310" fill="none" stroke="#30766C" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="366.000,310.000 359.700,306.800 359.700,313.200" fill="#30766C"/>
+<text x="324" y="291" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#30766C" text-anchor="middle">loss, grad</text>
+<text x="324" y="306" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#30766C" text-anchor="middle">count</text>
+<rect x="366" y="240" width="130" height="80" rx="8" fill="white" stroke="#30766C" stroke-width="1"/>
+<text x="431.0" y="261" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" fill="#30766C" text-anchor="middle">3a Coordinator</text>
+<text x="431.0" y="281" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">sum objectives</text>
+<text x="431.0" y="298" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">fit weights w</text>
+<rect x="523" y="251" width="115" height="66" rx="8" fill="white" stroke="#30766C" stroke-width="1"/>
+<text x="580.5" y="272" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" fill="#30766C" text-anchor="middle">3b Evaluate</text>
+<text x="580.5" y="292" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">dev / CV</text>
+<text x="580.5" y="309" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">fixed scorer</text>
+<polyline points="496,284 523,284" fill="none" stroke="#30766C" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="523.000,284.000 516.700,280.800 516.700,287.200" fill="#30766C"/>
+<polyline points="580,251 652,251 652,152 420,152 420,130" fill="none" stroke="#30766C" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="420.000,130.000 416.800,136.300 423.200,136.300" fill="#30766C"/>
+<text x="536" y="147" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#30766C" text-anchor="middle">scores + diagnostics</text>
+<text x="22" y="357" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" fill="#395E7A" text-anchor="start">C  DOWNSTREAM TASKS</text>
+<text x="638" y="357" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#566570" text-anchor="end">same interface; different adapters</text>
+<polyline points="22,178 5,178 5,366 540,366" fill="none" stroke="#395E7A" stroke-width="1.2" stroke-linejoin="round"/>
+<polyline points="120,366 120,374" fill="none" stroke="#395E7A" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="120.000,374.000 123.200,367.700 116.800,367.700" fill="#395E7A"/>
+<polyline points="330,366 330,374" fill="none" stroke="#395E7A" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="330.000,374.000 333.200,367.700 326.800,367.700" fill="#395E7A"/>
+<polyline points="540,366 540,374" fill="none" stroke="#395E7A" stroke-width="1.5" stroke-linejoin="round"/>
+<polygon points="540.000,374.000 543.200,367.700 536.800,367.700" fill="#395E7A"/>
+<rect x="22" y="374" width="196" height="78" rx="6" fill="white" stroke="#395E7A" stroke-width="1"/>
+<text x="120" y="392" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" fill="#395E7A" text-anchor="middle">Drug-target interaction</text>
+<text x="120" y="410" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">drug + protein -&gt; binding</text>
+<text x="120" y="427" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">central fit / frozen transfer</text>
+<text x="120" y="444" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">AUROC, AP</text>
+<rect x="232" y="374" width="196" height="78" rx="6" fill="white" stroke="#30766C" stroke-width="1"/>
+<text x="330" y="392" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" fill="#30766C" text-anchor="middle">Proteomic efficacy</text>
+<text x="330" y="410" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">6h/24h proteomes + drug</text>
+<text x="330" y="427" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">federated logistic fitting</text>
+<text x="330" y="444" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">AP, AUROC, BCE</text>
+<rect x="442" y="374" width="196" height="78" rx="6" fill="white" stroke="#99723B" stroke-width="1"/>
+<text x="540" y="392" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" fill="#99723B" text-anchor="middle">Cell policies</text>
+<text x="540" y="410" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">ID / phenocopy / CEX</text>
+<text x="540" y="427" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">exploratory replay</text>
+<text x="540" y="444" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="400" fill="#243746" text-anchor="middle">Top-1, AUC3, AURB3</text>
 </svg>
