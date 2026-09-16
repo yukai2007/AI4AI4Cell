@@ -1,0 +1,34 @@
+[
+  {
+    "task": "dti",
+    "arm": "direct",
+    "calls": 15,
+    "successful_calls": 15,
+    "input_tokens": 237835,
+    "output_tokens": 25617
+  },
+  {
+    "task": "dti",
+    "arm": "loop",
+    "calls": 45,
+    "successful_calls": 45,
+    "input_tokens": 844746,
+    "output_tokens": 39468
+  },
+  {
+    "task": "ptpc",
+    "arm": "direct",
+    "calls": 15,
+    "successful_calls": 15,
+    "input_tokens": 243994,
+    "output_tokens": 27716
+  },
+  {
+    "task": "ptpc",
+    "arm": "loop",
+    "calls": 66,
+    "successful_calls": 66,
+    "input_tokens": 1291055,
+    "output_tokens": 62754
+  }
+]

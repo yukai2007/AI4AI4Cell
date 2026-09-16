@@ -1,0 +1,1326 @@
+{
+  "dti": [
+    {
+      "arm": "direct",
+      "endpoint": "random",
+      "fit_seed": 342,
+      "scores": {
+        "accuracy": 0.8946412352406903,
+        "auroc": 0.9657550831792976,
+        "average_precision": 0.9653663223964529,
+        "log_loss": 0.24613725182195853,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.7893248648194262,
+        "n_negative": 2800,
+        "n_positive": 2705,
+        "n_samples": 5505,
+        "threshold": 0.5
+      },
+      "seed": 742,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "complete"
+    },
+    {
+      "arm": "direct",
+      "endpoint": "unseen_drug",
+      "fit_seed": 342,
+      "scores": {
+        "accuracy": 0.868108678448958,
+        "auroc": 0.9489759518118951,
+        "average_precision": 0.959163851550284,
+        "log_loss": 0.2938160628678874,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.7314699130908701,
+        "n_negative": 1649,
+        "n_positive": 2142,
+        "n_samples": 3791,
+        "threshold": 0.5
+      },
+      "seed": 742,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "complete"
+    },
+    {
+      "arm": "direct",
+      "endpoint": "unseen_protein",
+      "fit_seed": 342,
+      "scores": {
+        "accuracy": 0.8141204627044276,
+        "auroc": 0.9079766197695835,
+        "average_precision": 0.9094549376952112,
+        "log_loss": 0.3987749066945028,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.6282454804065993,
+        "n_negative": 1258,
+        "n_positive": 1249,
+        "n_samples": 2507,
+        "threshold": 0.5
+      },
+      "seed": 742,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "complete"
+    },
+    {
+      "arm": "loop",
+      "endpoint": "random",
+      "fit_seed": 342,
+      "scores": {
+        "accuracy": 0.8946412352406903,
+        "auroc": 0.9657550831792976,
+        "average_precision": 0.9653663223964529,
+        "log_loss": 0.24613725182195853,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.7893248648194262,
+        "n_negative": 2800,
+        "n_positive": 2705,
+        "n_samples": 5505,
+        "threshold": 0.5
+      },
+      "seed": 742,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "complete"
+    },
+    {
+      "arm": "loop",
+      "endpoint": "unseen_drug",
+      "fit_seed": 342,
+      "scores": {
+        "accuracy": 0.868108678448958,
+        "auroc": 0.9489759518118951,
+        "average_precision": 0.959163851550284,
+        "log_loss": 0.2938160628678874,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.7314699130908701,
+        "n_negative": 1649,
+        "n_positive": 2142,
+        "n_samples": 3791,
+        "threshold": 0.5
+      },
+      "seed": 742,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "complete"
+    },
+    {
+      "arm": "loop",
+      "endpoint": "unseen_protein",
+      "fit_seed": 342,
+      "scores": {
+        "accuracy": 0.8141204627044276,
+        "auroc": 0.9079766197695835,
+        "average_precision": 0.9094549376952112,
+        "log_loss": 0.3987749066945028,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.6282454804065993,
+        "n_negative": 1258,
+        "n_positive": 1249,
+        "n_samples": 2507,
+        "threshold": 0.5
+      },
+      "seed": 742,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "complete"
+    },
+    {
+      "arm": "direct",
+      "endpoint": "random",
+      "fit_seed": 343,
+      "scores": {
+        "accuracy": 0.911716621253406,
+        "auroc": 0.9700669395299709,
+        "average_precision": 0.9707032815205429,
+        "log_loss": 0.2365631171080271,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.8238778937682091,
+        "n_negative": 2800,
+        "n_positive": 2705,
+        "n_samples": 5505,
+        "threshold": 0.5
+      },
+      "seed": 743,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "complete"
+    },
+    {
+      "arm": "direct",
+      "endpoint": "unseen_drug",
+      "fit_seed": 343,
+      "scores": {
+        "accuracy": 0.8918491163281456,
+        "auroc": 0.9580055592077138,
+        "average_precision": 0.9673718809658903,
+        "log_loss": 0.2773984179780013,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.7794595760390066,
+        "n_negative": 1649,
+        "n_positive": 2142,
+        "n_samples": 3791,
+        "threshold": 0.5
+      },
+      "seed": 743,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "complete"
+    },
+    {
+      "arm": "direct",
+      "endpoint": "unseen_protein",
+      "fit_seed": 343,
+      "scores": {
+        "accuracy": 0.8532110091743119,
+        "auroc": 0.9279690843294669,
+        "average_precision": 0.9352825407025771,
+        "log_loss": 0.37374511862835247,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.707022810562417,
+        "n_negative": 1258,
+        "n_positive": 1249,
+        "n_samples": 2507,
+        "threshold": 0.5
+      },
+      "seed": 743,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "complete"
+    },
+    {
+      "arm": "loop",
+      "endpoint": "random",
+      "fit_seed": 343,
+      "scores": {
+        "accuracy": 0.911716621253406,
+        "auroc": 0.9700669395299709,
+        "average_precision": 0.9707032815205429,
+        "log_loss": 0.2365631171080271,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.8238778937682091,
+        "n_negative": 2800,
+        "n_positive": 2705,
+        "n_samples": 5505,
+        "threshold": 0.5
+      },
+      "seed": 743,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "complete"
+    },
+    {
+      "arm": "loop",
+      "endpoint": "unseen_drug",
+      "fit_seed": 343,
+      "scores": {
+        "accuracy": 0.8918491163281456,
+        "auroc": 0.9580055592077138,
+        "average_precision": 0.9673718809658903,
+        "log_loss": 0.2773984179780013,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.7794595760390066,
+        "n_negative": 1649,
+        "n_positive": 2142,
+        "n_samples": 3791,
+        "threshold": 0.5
+      },
+      "seed": 743,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "complete"
+    },
+    {
+      "arm": "loop",
+      "endpoint": "unseen_protein",
+      "fit_seed": 343,
+      "scores": {
+        "accuracy": 0.8532110091743119,
+        "auroc": 0.9279690843294669,
+        "average_precision": 0.9352825407025771,
+        "log_loss": 0.37374511862835247,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.707022810562417,
+        "n_negative": 1258,
+        "n_positive": 1249,
+        "n_samples": 2507,
+        "threshold": 0.5
+      },
+      "seed": 743,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "complete"
+    },
+    {
+      "arm": "direct",
+      "endpoint": "random",
+      "fit_seed": 344,
+      "scores": {
+        "accuracy": 0.9222524977293369,
+        "auroc": 0.9750320834433588,
+        "average_precision": 0.9748156002046493,
+        "log_loss": 0.22776364936227267,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.8454669144209322,
+        "n_negative": 2800,
+        "n_positive": 2705,
+        "n_samples": 5505,
+        "threshold": 0.5
+      },
+      "seed": 744,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "complete"
+    },
+    {
+      "arm": "direct",
+      "endpoint": "unseen_drug",
+      "fit_seed": 344,
+      "scores": {
+        "accuracy": 0.9079398575573727,
+        "auroc": 0.9656326245881414,
+        "average_precision": 0.9722511408456533,
+        "log_loss": 0.25995535239820017,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.8126401022950018,
+        "n_negative": 1649,
+        "n_positive": 2142,
+        "n_samples": 3791,
+        "threshold": 0.5
+      },
+      "seed": 744,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "complete"
+    },
+    {
+      "arm": "direct",
+      "endpoint": "unseen_protein",
+      "fit_seed": 344,
+      "scores": {
+        "accuracy": 0.8887116074990028,
+        "auroc": 0.9493547142960792,
+        "average_precision": 0.9521079334524681,
+        "log_loss": 0.3360986940075264,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.779182463531701,
+        "n_negative": 1258,
+        "n_positive": 1249,
+        "n_samples": 2507,
+        "threshold": 0.5
+      },
+      "seed": 744,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "complete"
+    },
+    {
+      "arm": "loop",
+      "endpoint": "random",
+      "fit_seed": 344,
+      "scores": {
+        "accuracy": 0.9222524977293369,
+        "auroc": 0.9750320834433588,
+        "average_precision": 0.9748156002046493,
+        "log_loss": 0.22776364936227267,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.8454669144209322,
+        "n_negative": 2800,
+        "n_positive": 2705,
+        "n_samples": 5505,
+        "threshold": 0.5
+      },
+      "seed": 744,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "complete"
+    },
+    {
+      "arm": "loop",
+      "endpoint": "unseen_drug",
+      "fit_seed": 344,
+      "scores": {
+        "accuracy": 0.9079398575573727,
+        "auroc": 0.9656326245881414,
+        "average_precision": 0.9722511408456533,
+        "log_loss": 0.25995535239820017,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.8126401022950018,
+        "n_negative": 1649,
+        "n_positive": 2142,
+        "n_samples": 3791,
+        "threshold": 0.5
+      },
+      "seed": 744,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "complete"
+    },
+    {
+      "arm": "loop",
+      "endpoint": "unseen_protein",
+      "fit_seed": 344,
+      "scores": {
+        "accuracy": 0.8887116074990028,
+        "auroc": 0.9493547142960792,
+        "average_precision": 0.9521079334524681,
+        "log_loss": 0.3360986940075264,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.779182463531701,
+        "n_negative": 1258,
+        "n_positive": 1249,
+        "n_samples": 2507,
+        "threshold": 0.5
+      },
+      "seed": 744,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "complete"
+    },
+    {
+      "arm": "direct",
+      "endpoint": "random",
+      "fit_seed": 345,
+      "scores": {
+        "accuracy": 0.9160762942779291,
+        "auroc": 0.9724972273567467,
+        "average_precision": 0.971932086594572,
+        "log_loss": 0.22941203676316205,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.8321161958035944,
+        "n_negative": 2800,
+        "n_positive": 2705,
+        "n_samples": 5505,
+        "threshold": 0.5
+      },
+      "seed": 745,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "complete"
+    },
+    {
+      "arm": "direct",
+      "endpoint": "unseen_drug",
+      "fit_seed": 345,
+      "scores": {
+        "accuracy": 0.8968609865470852,
+        "auroc": 0.9604884605954773,
+        "average_precision": 0.9679096856819512,
+        "log_loss": 0.2701508367470726,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.79073537263699,
+        "n_negative": 1649,
+        "n_positive": 2142,
+        "n_samples": 3791,
+        "threshold": 0.5
+      },
+      "seed": 745,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "complete"
+    },
+    {
+      "arm": "direct",
+      "endpoint": "unseen_protein",
+      "fit_seed": 345,
+      "scores": {
+        "accuracy": 0.8635819704826486,
+        "auroc": 0.9377237879333673,
+        "average_precision": 0.9402889023914656,
+        "log_loss": 0.3543013616509911,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.7277940944730424,
+        "n_negative": 1258,
+        "n_positive": 1249,
+        "n_samples": 2507,
+        "threshold": 0.5
+      },
+      "seed": 745,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "complete"
+    },
+    {
+      "arm": "loop",
+      "endpoint": "random",
+      "fit_seed": 345,
+      "scores": {
+        "accuracy": 0.9160762942779291,
+        "auroc": 0.9724972273567467,
+        "average_precision": 0.971932086594572,
+        "log_loss": 0.22941203676316205,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.8321161958035944,
+        "n_negative": 2800,
+        "n_positive": 2705,
+        "n_samples": 5505,
+        "threshold": 0.5
+      },
+      "seed": 745,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "complete"
+    },
+    {
+      "arm": "loop",
+      "endpoint": "unseen_drug",
+      "fit_seed": 345,
+      "scores": {
+        "accuracy": 0.8968609865470852,
+        "auroc": 0.9604884605954773,
+        "average_precision": 0.9679096856819512,
+        "log_loss": 0.2701508367470726,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.79073537263699,
+        "n_negative": 1649,
+        "n_positive": 2142,
+        "n_samples": 3791,
+        "threshold": 0.5
+      },
+      "seed": 745,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "complete"
+    },
+    {
+      "arm": "loop",
+      "endpoint": "unseen_protein",
+      "fit_seed": 345,
+      "scores": {
+        "accuracy": 0.8635819704826486,
+        "auroc": 0.9377237879333673,
+        "average_precision": 0.9402889023914656,
+        "log_loss": 0.3543013616509911,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.7277940944730424,
+        "n_negative": 1258,
+        "n_positive": 1249,
+        "n_samples": 2507,
+        "threshold": 0.5
+      },
+      "seed": 745,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "complete"
+    },
+    {
+      "arm": "direct",
+      "endpoint": "random",
+      "fit_seed": 346,
+      "scores": {
+        "accuracy": 0.9184377838328792,
+        "auroc": 0.9716655003960919,
+        "average_precision": 0.9715460701007316,
+        "log_loss": 0.22558911936004786,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.8369617838664163,
+        "n_negative": 2800,
+        "n_positive": 2705,
+        "n_samples": 5505,
+        "threshold": 0.5
+      },
+      "seed": 746,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "complete"
+    },
+    {
+      "arm": "direct",
+      "endpoint": "unseen_drug",
+      "fit_seed": 346,
+      "scores": {
+        "accuracy": 0.8994988129781061,
+        "auroc": 0.9607438285603306,
+        "average_precision": 0.9684893758395403,
+        "log_loss": 0.26343297054615444,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.7953098514550472,
+        "n_negative": 1649,
+        "n_positive": 2142,
+        "n_samples": 3791,
+        "threshold": 0.5
+      },
+      "seed": 746,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "complete"
+    },
+    {
+      "arm": "direct",
+      "endpoint": "unseen_protein",
+      "fit_seed": 346,
+      "scores": {
+        "accuracy": 0.8675708017550857,
+        "auroc": 0.9354236966679862,
+        "average_precision": 0.9392800844934801,
+        "log_loss": 0.3493586495671953,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.7351592303202319,
+        "n_negative": 1258,
+        "n_positive": 1249,
+        "n_samples": 2507,
+        "threshold": 0.5
+      },
+      "seed": 746,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "complete"
+    },
+    {
+      "arm": "loop",
+      "endpoint": "random",
+      "fit_seed": 346,
+      "scores": {
+        "accuracy": 0.9184377838328792,
+        "auroc": 0.9716655003960919,
+        "average_precision": 0.9715460701007316,
+        "log_loss": 0.22558911936004786,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.8369617838664163,
+        "n_negative": 2800,
+        "n_positive": 2705,
+        "n_samples": 5505,
+        "threshold": 0.5
+      },
+      "seed": 746,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "complete"
+    },
+    {
+      "arm": "loop",
+      "endpoint": "unseen_drug",
+      "fit_seed": 346,
+      "scores": {
+        "accuracy": 0.8994988129781061,
+        "auroc": 0.9607438285603306,
+        "average_precision": 0.9684893758395403,
+        "log_loss": 0.26343297054615444,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.7953098514550472,
+        "n_negative": 1649,
+        "n_positive": 2142,
+        "n_samples": 3791,
+        "threshold": 0.5
+      },
+      "seed": 746,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "complete"
+    },
+    {
+      "arm": "loop",
+      "endpoint": "unseen_protein",
+      "fit_seed": 346,
+      "scores": {
+        "accuracy": 0.8675708017550857,
+        "auroc": 0.9354236966679862,
+        "average_precision": 0.9392800844934801,
+        "log_loss": 0.3493586495671953,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.7351592303202319,
+        "n_negative": 1258,
+        "n_positive": 1249,
+        "n_samples": 2507,
+        "threshold": 0.5
+      },
+      "seed": 746,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "complete"
+    },
+    {
+      "arm": "fixed_strong_start",
+      "endpoint": "random",
+      "fit_seed": 342,
+      "scores": {
+        "accuracy": 0.8946412352406903,
+        "auroc": 0.9657550831792976,
+        "average_precision": 0.9653663223964529,
+        "log_loss": 0.24613725182195853,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.7893248648194262,
+        "n_negative": 2800,
+        "n_positive": 2705,
+        "n_samples": 5505,
+        "threshold": 0.5
+      },
+      "seed": 742,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "fixed"
+    },
+    {
+      "arm": "fixed_strong_start",
+      "endpoint": "unseen_drug",
+      "fit_seed": 342,
+      "scores": {
+        "accuracy": 0.868108678448958,
+        "auroc": 0.9489759518118951,
+        "average_precision": 0.959163851550284,
+        "log_loss": 0.2938160628678874,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.7314699130908701,
+        "n_negative": 1649,
+        "n_positive": 2142,
+        "n_samples": 3791,
+        "threshold": 0.5
+      },
+      "seed": 742,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "fixed"
+    },
+    {
+      "arm": "fixed_strong_start",
+      "endpoint": "unseen_protein",
+      "fit_seed": 342,
+      "scores": {
+        "accuracy": 0.8141204627044276,
+        "auroc": 0.9079766197695835,
+        "average_precision": 0.9094549376952112,
+        "log_loss": 0.3987749066945028,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.6282454804065993,
+        "n_negative": 1258,
+        "n_positive": 1249,
+        "n_samples": 2507,
+        "threshold": 0.5
+      },
+      "seed": 742,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "fixed"
+    },
+    {
+      "arm": "fixed_strong_start",
+      "endpoint": "random",
+      "fit_seed": 343,
+      "scores": {
+        "accuracy": 0.911716621253406,
+        "auroc": 0.9700669395299709,
+        "average_precision": 0.9707032815205429,
+        "log_loss": 0.2365631171080271,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.8238778937682091,
+        "n_negative": 2800,
+        "n_positive": 2705,
+        "n_samples": 5505,
+        "threshold": 0.5
+      },
+      "seed": 743,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "fixed"
+    },
+    {
+      "arm": "fixed_strong_start",
+      "endpoint": "unseen_drug",
+      "fit_seed": 343,
+      "scores": {
+        "accuracy": 0.8918491163281456,
+        "auroc": 0.9580055592077138,
+        "average_precision": 0.9673718809658903,
+        "log_loss": 0.2773984179780013,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.7794595760390066,
+        "n_negative": 1649,
+        "n_positive": 2142,
+        "n_samples": 3791,
+        "threshold": 0.5
+      },
+      "seed": 743,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "fixed"
+    },
+    {
+      "arm": "fixed_strong_start",
+      "endpoint": "unseen_protein",
+      "fit_seed": 343,
+      "scores": {
+        "accuracy": 0.8532110091743119,
+        "auroc": 0.9279690843294669,
+        "average_precision": 0.9352825407025771,
+        "log_loss": 0.37374511862835247,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.707022810562417,
+        "n_negative": 1258,
+        "n_positive": 1249,
+        "n_samples": 2507,
+        "threshold": 0.5
+      },
+      "seed": 743,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "fixed"
+    },
+    {
+      "arm": "fixed_strong_start",
+      "endpoint": "random",
+      "fit_seed": 344,
+      "scores": {
+        "accuracy": 0.9222524977293369,
+        "auroc": 0.9750320834433588,
+        "average_precision": 0.9748156002046493,
+        "log_loss": 0.22776364936227267,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.8454669144209322,
+        "n_negative": 2800,
+        "n_positive": 2705,
+        "n_samples": 5505,
+        "threshold": 0.5
+      },
+      "seed": 744,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "fixed"
+    },
+    {
+      "arm": "fixed_strong_start",
+      "endpoint": "unseen_drug",
+      "fit_seed": 344,
+      "scores": {
+        "accuracy": 0.9079398575573727,
+        "auroc": 0.9656326245881414,
+        "average_precision": 0.9722511408456533,
+        "log_loss": 0.25995535239820017,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.8126401022950018,
+        "n_negative": 1649,
+        "n_positive": 2142,
+        "n_samples": 3791,
+        "threshold": 0.5
+      },
+      "seed": 744,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "fixed"
+    },
+    {
+      "arm": "fixed_strong_start",
+      "endpoint": "unseen_protein",
+      "fit_seed": 344,
+      "scores": {
+        "accuracy": 0.8887116074990028,
+        "auroc": 0.9493547142960792,
+        "average_precision": 0.9521079334524681,
+        "log_loss": 0.3360986940075264,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.779182463531701,
+        "n_negative": 1258,
+        "n_positive": 1249,
+        "n_samples": 2507,
+        "threshold": 0.5
+      },
+      "seed": 744,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "fixed"
+    },
+    {
+      "arm": "fixed_strong_start",
+      "endpoint": "random",
+      "fit_seed": 345,
+      "scores": {
+        "accuracy": 0.9160762942779291,
+        "auroc": 0.9724972273567467,
+        "average_precision": 0.971932086594572,
+        "log_loss": 0.22941203676316205,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.8321161958035944,
+        "n_negative": 2800,
+        "n_positive": 2705,
+        "n_samples": 5505,
+        "threshold": 0.5
+      },
+      "seed": 745,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "fixed"
+    },
+    {
+      "arm": "fixed_strong_start",
+      "endpoint": "unseen_drug",
+      "fit_seed": 345,
+      "scores": {
+        "accuracy": 0.8968609865470852,
+        "auroc": 0.9604884605954773,
+        "average_precision": 0.9679096856819512,
+        "log_loss": 0.2701508367470726,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.79073537263699,
+        "n_negative": 1649,
+        "n_positive": 2142,
+        "n_samples": 3791,
+        "threshold": 0.5
+      },
+      "seed": 745,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "fixed"
+    },
+    {
+      "arm": "fixed_strong_start",
+      "endpoint": "unseen_protein",
+      "fit_seed": 345,
+      "scores": {
+        "accuracy": 0.8635819704826486,
+        "auroc": 0.9377237879333673,
+        "average_precision": 0.9402889023914656,
+        "log_loss": 0.3543013616509911,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.7277940944730424,
+        "n_negative": 1258,
+        "n_positive": 1249,
+        "n_samples": 2507,
+        "threshold": 0.5
+      },
+      "seed": 745,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "fixed"
+    },
+    {
+      "arm": "fixed_strong_start",
+      "endpoint": "random",
+      "fit_seed": 346,
+      "scores": {
+        "accuracy": 0.9184377838328792,
+        "auroc": 0.9716655003960919,
+        "average_precision": 0.9715460701007316,
+        "log_loss": 0.22558911936004786,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.8369617838664163,
+        "n_negative": 2800,
+        "n_positive": 2705,
+        "n_samples": 5505,
+        "threshold": 0.5
+      },
+      "seed": 746,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "fixed"
+    },
+    {
+      "arm": "fixed_strong_start",
+      "endpoint": "unseen_drug",
+      "fit_seed": 346,
+      "scores": {
+        "accuracy": 0.8994988129781061,
+        "auroc": 0.9607438285603306,
+        "average_precision": 0.9684893758395403,
+        "log_loss": 0.26343297054615444,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.7953098514550472,
+        "n_negative": 1649,
+        "n_positive": 2142,
+        "n_samples": 3791,
+        "threshold": 0.5
+      },
+      "seed": 746,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "fixed"
+    },
+    {
+      "arm": "fixed_strong_start",
+      "endpoint": "unseen_protein",
+      "fit_seed": 346,
+      "scores": {
+        "accuracy": 0.8675708017550857,
+        "auroc": 0.9354236966679862,
+        "average_precision": 0.9392800844934801,
+        "log_loss": 0.3493586495671953,
+        "log_loss_epsilon": 1e-15,
+        "mcc": 0.7351592303202319,
+        "n_negative": 1258,
+        "n_positive": 1249,
+        "n_samples": 2507,
+        "threshold": 0.5
+      },
+      "seed": 746,
+      "source_sha256": "983a04fceab5823cd5f9035b8c367c47d8e5a46c49c86bfd7661543f790ef7e2",
+      "status": "fixed"
+    }
+  ],
+  "ptpc": [
+    {
+      "arm": "direct",
+      "scores": {
+        "accuracy_at_0_5": 0.8513513513513513,
+        "ap": 0.3758856432206177,
+        "auroc": 0.7211399711399711,
+        "bce": 0.38048823788366715,
+        "n_labeled": 148,
+        "n_missing_label": 0,
+        "n_positive": 22,
+        "n_rows": 148,
+        "undefined_reason": null
+      },
+      "seed": 742,
+      "source_sha256": "0fec915020294b8abb26f16e084457d94ed170bd121a9a9aa39391c16c5e2566",
+      "status": "complete"
+    },
+    {
+      "arm": "loop",
+      "scores": {
+        "accuracy_at_0_5": 0.8513513513513513,
+        "ap": 0.3758125181474926,
+        "auroc": 0.7207792207792207,
+        "bce": 0.38047324264989096,
+        "n_labeled": 148,
+        "n_missing_label": 0,
+        "n_positive": 22,
+        "n_rows": 148,
+        "undefined_reason": null
+      },
+      "seed": 742,
+      "source_sha256": "9be2567a473a131c32483f56b6c9e0f7350590cd4181c3768b0f12b2ea9364a8",
+      "status": "complete"
+    },
+    {
+      "arm": "direct",
+      "scores": {
+        "accuracy_at_0_5": 0.8513513513513513,
+        "ap": 0.37519641067699405,
+        "auroc": 0.7287157287157288,
+        "bce": 0.37720031636746265,
+        "n_labeled": 148,
+        "n_missing_label": 0,
+        "n_positive": 22,
+        "n_rows": 148,
+        "undefined_reason": null
+      },
+      "seed": 743,
+      "source_sha256": "003f738ac64ac0b7ef5157c715f9ff9c0c9ebcba1b45c5e45c581b8d473b1e24",
+      "status": "complete"
+    },
+    {
+      "arm": "loop",
+      "scores": {
+        "accuracy_at_0_5": 0.8513513513513513,
+        "ap": 0.3780387674537392,
+        "auroc": 0.7290764790764792,
+        "bce": 0.3756121230617236,
+        "n_labeled": 148,
+        "n_missing_label": 0,
+        "n_positive": 22,
+        "n_rows": 148,
+        "undefined_reason": null
+      },
+      "seed": 743,
+      "source_sha256": "98aafe3c5af2665b29cf95753c04b2c43c5c72f911a680fd32beabbc97812c93",
+      "status": "complete"
+    },
+    {
+      "arm": "direct",
+      "scores": {
+        "accuracy_at_0_5": 0.8513513513513513,
+        "ap": 0.3758856432206177,
+        "auroc": 0.7211399711399711,
+        "bce": 0.38048823788366715,
+        "n_labeled": 148,
+        "n_missing_label": 0,
+        "n_positive": 22,
+        "n_rows": 148,
+        "undefined_reason": null
+      },
+      "seed": 744,
+      "source_sha256": "641841da225cdc1daa883cdb7ebc4282ffefa897e041f83ddf3cc23a5d314457",
+      "status": "complete"
+    },
+    {
+      "arm": "loop",
+      "scores": {
+        "accuracy_at_0_5": 0.8445945945945946,
+        "ap": 0.3698997986438978,
+        "auroc": 0.7301587301587301,
+        "bce": 0.3740949435781077,
+        "n_labeled": 148,
+        "n_missing_label": 0,
+        "n_positive": 22,
+        "n_rows": 148,
+        "undefined_reason": null
+      },
+      "seed": 744,
+      "source_sha256": "1bc39b9f41d3b5eb60f74bbf0792d804ec7fcf06496c01d6fcedae662720a831",
+      "status": "complete"
+    },
+    {
+      "arm": "direct",
+      "scores": {
+        "accuracy_at_0_5": 0.8513513513513513,
+        "ap": 0.3654825659550904,
+        "auroc": 0.7258297258297258,
+        "bce": 0.3759916962170836,
+        "n_labeled": 148,
+        "n_missing_label": 0,
+        "n_positive": 22,
+        "n_rows": 148,
+        "undefined_reason": null
+      },
+      "seed": 745,
+      "source_sha256": "58f80a25e066fb5889a041122bdd451daa7430a63c80968d5dba9847f1c7de7a",
+      "status": "complete"
+    },
+    {
+      "arm": "loop",
+      "scores": {
+        "accuracy_at_0_5": 0.8445945945945946,
+        "ap": 0.3698997986438978,
+        "auroc": 0.7301587301587301,
+        "bce": 0.3740949435781077,
+        "n_labeled": 148,
+        "n_missing_label": 0,
+        "n_positive": 22,
+        "n_rows": 148,
+        "undefined_reason": null
+      },
+      "seed": 745,
+      "source_sha256": "1bc39b9f41d3b5eb60f74bbf0792d804ec7fcf06496c01d6fcedae662720a831",
+      "status": "complete"
+    },
+    {
+      "arm": "direct",
+      "scores": {
+        "accuracy_at_0_5": 0.8513513513513513,
+        "ap": 0.3657531287256532,
+        "auroc": 0.7261904761904762,
+        "bce": 0.3758269948319424,
+        "n_labeled": 148,
+        "n_missing_label": 0,
+        "n_positive": 22,
+        "n_rows": 148,
+        "undefined_reason": null
+      },
+      "seed": 746,
+      "source_sha256": "e6c7d6d3dc6fbb3bbe5ca4ed1038ecc54449dca8fa360c9e684c2d3155b634e2",
+      "status": "complete"
+    },
+    {
+      "arm": "loop",
+      "scores": {
+        "accuracy_at_0_5": 0.8445945945945946,
+        "ap": 0.3698997986438978,
+        "auroc": 0.7301587301587301,
+        "bce": 0.3740949435781077,
+        "n_labeled": 148,
+        "n_missing_label": 0,
+        "n_positive": 22,
+        "n_rows": 148,
+        "undefined_reason": null
+      },
+      "seed": 746,
+      "source_sha256": "1bc39b9f41d3b5eb60f74bbf0792d804ec7fcf06496c01d6fcedae662720a831",
+      "status": "complete"
+    },
+    {
+      "arm": "fixed_strong_start",
+      "scores": {
+        "accuracy_at_0_5": 0.8445945945945946,
+        "ap": 0.3698997986438978,
+        "auroc": 0.7301587301587301,
+        "bce": 0.3740949435781077,
+        "n_labeled": 148,
+        "n_missing_label": 0,
+        "n_positive": 22,
+        "n_rows": 148,
+        "undefined_reason": null
+      },
+      "seed": null,
+      "source_sha256": "1bc39b9f41d3b5eb60f74bbf0792d804ec7fcf06496c01d6fcedae662720a831",
+      "status": "fixed"
+    }
+  ],
+  "primary_contrasts": [
+    {
+      "exact_p": 1.0,
+      "holm_p": 1.0,
+      "mean": 0.0,
+      "metric": "auroc",
+      "paired_deltas": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "task": "dti"
+    },
+    {
+      "exact_p": 0.625,
+      "holm_p": 1.0,
+      "mean": 0.0010694579467904642,
+      "metric": "ap",
+      "paired_deltas": [
+        -7.312507312506877e-05,
+        0.0028423567767451585,
+        -0.0059858445767198565,
+        0.004417232688807449,
+        0.004146669918244639
+      ],
+      "task": "ptpc"
+    }
+  ],
+  "costs": [
+    {
+      "arm": "direct",
+      "calls": 3,
+      "input_tokens": 49122,
+      "output_tokens": 6170,
+      "seed": 742,
+      "status": "complete",
+      "successful_calls": 3,
+      "task": "ptpc"
+    },
+    {
+      "arm": "loop",
+      "calls": 12,
+      "input_tokens": 232545,
+      "output_tokens": 16115,
+      "seed": 742,
+      "status": "complete",
+      "successful_calls": 12,
+      "task": "ptpc"
+    },
+    {
+      "arm": "direct",
+      "calls": 3,
+      "input_tokens": 48814,
+      "output_tokens": 5426,
+      "seed": 743,
+      "status": "complete",
+      "successful_calls": 3,
+      "task": "ptpc"
+    },
+    {
+      "arm": "loop",
+      "calls": 13,
+      "input_tokens": 253004,
+      "output_tokens": 10131,
+      "seed": 743,
+      "status": "complete",
+      "successful_calls": 13,
+      "task": "ptpc"
+    },
+    {
+      "arm": "direct",
+      "calls": 3,
+      "input_tokens": 48616,
+      "output_tokens": 4498,
+      "seed": 744,
+      "status": "complete",
+      "successful_calls": 3,
+      "task": "ptpc"
+    },
+    {
+      "arm": "loop",
+      "calls": 14,
+      "input_tokens": 275521,
+      "output_tokens": 12244,
+      "seed": 744,
+      "status": "complete",
+      "successful_calls": 14,
+      "task": "ptpc"
+    },
+    {
+      "arm": "direct",
+      "calls": 3,
+      "input_tokens": 48820,
+      "output_tokens": 6245,
+      "seed": 745,
+      "status": "complete",
+      "successful_calls": 3,
+      "task": "ptpc"
+    },
+    {
+      "arm": "loop",
+      "calls": 13,
+      "input_tokens": 254304,
+      "output_tokens": 9291,
+      "seed": 745,
+      "status": "complete",
+      "successful_calls": 13,
+      "task": "ptpc"
+    },
+    {
+      "arm": "direct",
+      "calls": 3,
+      "input_tokens": 48622,
+      "output_tokens": 5377,
+      "seed": 746,
+      "status": "complete",
+      "successful_calls": 3,
+      "task": "ptpc"
+    },
+    {
+      "arm": "loop",
+      "calls": 14,
+      "input_tokens": 275681,
+      "output_tokens": 14973,
+      "seed": 746,
+      "status": "complete",
+      "successful_calls": 14,
+      "task": "ptpc"
+    },
+    {
+      "arm": "direct",
+      "calls": 3,
+      "input_tokens": 47569,
+      "output_tokens": 4164,
+      "seed": 742,
+      "status": "complete",
+      "successful_calls": 3,
+      "task": "dti"
+    },
+    {
+      "arm": "loop",
+      "calls": 4,
+      "input_tokens": 66542,
+      "output_tokens": 4249,
+      "seed": 742,
+      "status": "complete",
+      "successful_calls": 4,
+      "task": "dti"
+    },
+    {
+      "arm": "direct",
+      "calls": 3,
+      "input_tokens": 47616,
+      "output_tokens": 3317,
+      "seed": 743,
+      "status": "complete",
+      "successful_calls": 3,
+      "task": "dti"
+    },
+    {
+      "arm": "loop",
+      "calls": 11,
+      "input_tokens": 209831,
+      "output_tokens": 7963,
+      "seed": 743,
+      "status": "complete",
+      "successful_calls": 11,
+      "task": "dti"
+    },
+    {
+      "arm": "direct",
+      "calls": 3,
+      "input_tokens": 47420,
+      "output_tokens": 3235,
+      "seed": 744,
+      "status": "complete",
+      "successful_calls": 3,
+      "task": "dti"
+    },
+    {
+      "arm": "loop",
+      "calls": 10,
+      "input_tokens": 187663,
+      "output_tokens": 8309,
+      "seed": 744,
+      "status": "complete",
+      "successful_calls": 10,
+      "task": "dti"
+    },
+    {
+      "arm": "direct",
+      "calls": 3,
+      "input_tokens": 47616,
+      "output_tokens": 5449,
+      "seed": 745,
+      "status": "complete",
+      "successful_calls": 3,
+      "task": "dti"
+    },
+    {
+      "arm": "loop",
+      "calls": 9,
+      "input_tokens": 170372,
+      "output_tokens": 10165,
+      "seed": 745,
+      "status": "complete",
+      "successful_calls": 9,
+      "task": "dti"
+    },
+    {
+      "arm": "direct",
+      "calls": 3,
+      "input_tokens": 47614,
+      "output_tokens": 9452,
+      "seed": 746,
+      "status": "complete",
+      "successful_calls": 3,
+      "task": "dti"
+    },
+    {
+      "arm": "loop",
+      "calls": 11,
+      "input_tokens": 210338,
+      "output_tokens": 8782,
+      "seed": 746,
+      "status": "complete",
+      "successful_calls": 11,
+      "task": "dti"
+    }
+  ],
+  "status": "complete"
+}

@@ -21,6 +21,9 @@ Five label-independent compound partitions (seeds 442--446) divide the original 
 \renewcommand{\theHtable}{K.\arabic{table}}
 \setcounter{table}{0}
 \input{tables/federated_development}
+\begin{table}[ht]
+\input{tables/display/main_federated}
+\end{table}
 \endgroup
 
 The original scorer is recomputed on all 30 saved development prediction vectors without numerical discrepancy. Ten-client AP exceeds one-client AP in four of five partitions, with mean paired increase 0.1669; the realized training-row ratio is 8.32--11.16, not exactly ten. All ten-client fits share the full training pool, so their zero AP variance does not represent five independent datasets. AUROC is not monotone in client count. The development role contains only eight positives among 96 conditions; at threshold 0.5 all fixed-model predictions are negative. These results motivate the subsequent feature-map search but do not establish a test-set or research-loop advantage.

@@ -1,0 +1,12 @@
+\centering\small\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{@{}Xrrrr@{}}
+\toprule
+Method & Random & Unseen drug & Unseen protein & PTPC AP \\
+\midrule
+Fixed predictor & $0.9545\,\pm\,0.0083$ & $0.9328\,\pm\,0.0148$ & $0.8868\,\pm\,0.0362$ & $0.2783$ \\
+Shared strong start & $\textbf{0.9710}\,\pm\,0.0034$ & $\textbf{0.9588}\,\pm\,0.0061$ & $\textbf{0.9317}\,\pm\,0.0153$ & $0.3699$ \\
+Harness-free & $\textbf{0.9710}\,\pm\,0.0034$ & $\textbf{0.9588}\,\pm\,0.0061$ & $\textbf{0.9317}\,\pm\,0.0153$ & $0.3716\,\pm\,0.0055$ \\
+Our research loop & $\textbf{0.9710}\,\pm\,0.0034$ & $\textbf{0.9588}\,\pm\,0.0061$ & $\textbf{0.9317}\,\pm\,0.0153$ & $\textbf{0.3727}\,\pm\,0.0039$ \\
+\bottomrule\end{tabularx}
+\caption{Strong-start comparison. DTI columns are AUROC; PTPC uses primary AP. Mean $\pm$ sample SD across five fixed trajectories; deterministic PTPC controls have no SD. Fixed predictors are TAPB (DTI) and logistic regression (PTPC). Both research controllers receive the same improved starting source and the same opportunity/call ceilings; actual inference costs differ. Bold marks the best displayed mean, including display ties.}
+\label{tab:strong-start}

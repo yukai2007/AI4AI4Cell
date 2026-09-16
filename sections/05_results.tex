@@ -1,47 +1,38 @@
 \section*{5. Results}
-\subsection*{5.1 Full-training gains and transferable predictor improvement}
+\subsection*{5.1 Stronger predictive designs under matched starting points}
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{assets/strong_start_results.pdf}
+\caption{Completed strong-start comparison. Each controller receives the same development-selected starting design, scorer and search ceilings. Dots and whiskers are means and sample SDs over all five fixed trajectories; faint dots show individual outcomes. Deterministic PTPC controls have no SD. DTI shares the same five backbone fits. Bold numbers mark best displayed means, including ties; axes are zoomed. The improved starting design drives the large gains, not an established controller advantage. All secondary metrics and costs are retained in Appendix P.}
+\label{fig:strong-start}
+\end{figure}
+
+The best tested pipeline combines a stronger predictor with a reusable source interface (Figure~\ref{fig:strong-start}). Development-selected composition retrieval mixed with TAPB reaches mean AUROC 0.9710/0.9588/0.9317 on random/unseen-drug/unseen-protein tests. Relative to TAPB alone, these are gains of 1.65/2.60/4.49 percentage points, with no new neural weight fitting. Relative to the earlier strongest frozen direct-program transfer, the gains are 0.38/0.72/1.59 points. These are single-backbone-fit predictions, not a five-model ensemble. Each of the ten new DTI campaigns retains its shared starting rule, so direct, loop and fixed-start predictions tie exactly.
+
+For proteomics, the improved fixed feature map reaches AP 0.3699; harness-free research reaches $0.3716\pm0.0055$ and our loop $0.3727\pm0.0039$. All five trajectories per controller are included. The paired loop-minus-direct effect is $+0.00107$ AP (exact $p=0.625$, Holm $p=1$ across the two task contrasts); it is not a statistically established controller advantage. The fixed start retains the highest AUROC, 0.7302, and lowest BCE, 0.3741, among the strong-start PTPC arms. Thus the modest primary-AP gain does not improve every metric. The twenty campaigns complete with 141 successful LLM calls: DTI direct/loop use 15/45, and PTPC direct/loop 15/66. Equal search ceilings do not imply equal realized cost.
+
+\subsection*{5.2 Additional local measurements improve a fixed design}
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{assets/strong_client_scaling.pdf}
+\caption{Local-data availability with the same improved PTPC feature map and optimizer. One/three/ten clients expose 44--59/130--159/491 training conditions. Points and whiskers summarize five compound partitions (mean and sample SD); small dots show partition values. Ten-client runs use the identical full pool, so their repeated value is numerical replay, not independent institutional replication. Source discovery precedes this experiment and is shared across all client counts.}
+\label{fig:strong-client-scaling}
+\end{figure}
+
+Holding the improved representation and fitting objective fixed, mean AP rises from 0.3088 with one client to 0.3183 with three and 0.3699 with ten: a 6.11-point one-to-ten gain (Figure~\ref{fig:strong-client-scaling}). AUROC rises from 0.6901 to 0.7302 and BCE falls from 0.4015 to 0.3741. All fifteen fits execute through data-owning workers and an optimizer process denied raw-array reads. Ten-client predictions reproduce centralized fitting within $1.23\times10^{-10}$, isolating additional training access from a change in the optimizer. Individual partitions are not uniformly improved.
+
+The earlier full controller-by-client-count factorial remains informative: direct ten-client AP was 0.2974 versus loop 0.2696, while unchanged-model AP increased from 0.2431 to 0.2783 with more clients (Appendix K). Training-only CV subsequently gave loop/direct/native-Helmsman AP 0.3111/0.3189/0.2927 (Appendix O). These complete comparisons, including the loop's negative contrasts, show why ten-client loop research cannot be compared only against one-client direct generation. The improved starting design is shared in the new comparison; its benefit is not misattributed to the loop.
+
+\subsection*{5.3 Full-training architecture gains and cross-backbone reuse}
 \begin{table}[t]
 \input{tables/display/main_dti}
 \end{table}
 
-After 100-epoch full-data refitting, our harness-selected architectures have the highest mean AUROC on all three splits within the five-method DrugBAN family (Table~\ref{tab:dti-complete-overview}). Unseen-drug AUROC is 0.9330, versus 0.9239 for native DrugEvolve and 0.9280 for harness-free generation. The paired gains are $+0.00913$ and $+0.00506$, respectively; both Holm-adjusted exact $p$-values are 0.25. Thus the complete roster supports a positive mean effect, with limited five-pair resolution. TAPB is stronger on random and unseen-protein tests, motivating the unchanged-program transfer below. All 21 BAN-family and five TAPB fits finish 100 epochs; Appendix L provides all 93 records, secondary metrics, source aliases and measured costs.
+The original architecture comparison tests a different intervention: executable interaction-module changes followed by full training. All 21 BAN-family and five TAPB fits complete 100 epochs. Our loop-selected architectures have the highest mean AUROC on all three splits within the five-method BAN family (Table~\ref{tab:dti-complete-overview}). Unseen-drug AUROC is 0.9330, versus 0.9239 for native DrugEvolve and 0.9280 for harness-free generation. The paired gains are $+0.00913$ and $+0.00506$; both Holm-adjusted exact $p$-values are 0.25. The means favor our method, with limited five-pair resolution. TAPB uses different representations and is reported separately, not as a capacity-matched controller.
 
-\paragraph{Researching executable probability programs.}
-With the shared DrugBAN predictor, loop-selected probability programs reach unseen-drug/unseen-protein AUROC 0.9438/0.8849, versus 0.9271/0.8484 for DrugBAN and 0.9430/0.8832 for the common manual mixture. Direct generation is slightly higher on all three splits; the primary loop-minus-direct difference is $-0.000385$ (exact $p=0.5625$). Appendix M reports all 39 final records and the 15 direct versus 61 loop model calls. This separates predictor complementarity from the small incremental contribution of source research.
+Frozen probability programs also transfer across backbones. Substituting TAPB for DrugBAN, without changing the loop-selected source or conducting new search, reaches AUROC 0.9669/0.9512/0.9149. Direct transfer reaches 0.9672/0.9515/0.9158, and the shared manual mixture 0.9666/0.9507/0.9143. All ten sources transfer; none is selected by test rank. The useful result is predictor complementarity and code portability, with a small loop-minus-direct difference. Appendices L and M retain every fit, secondary metric, source, cost and matched comparison; the stronger retrieval follow-up in Section 5.1 is a separate optimization study.
 
-The source changes are interpretable probability rules, not opaque descriptions. For example, one retained program sets cosine weight to
-\[
-w=0.3+0.05\bigl(|2p_{\rm cosine}-1|-|2p_{\rm BAN}-1|\bigr),
-\quad \hat p=(1-w)p_{\rm BAN}+wp_{\rm cosine}.
-\]
-It adjusts the manual mixture using probability distance from 0.5. This distance is not an independently validated reliability estimate. A later increase of the coefficient to 0.075 fails the minimum visible-improvement rule and is rejected. Appendix M reports all programs and starting-point controls.
+\subsection*{5.4 What the loop changes, retains and transmits}
+In the fixed first strong-start PTPC trajectory (742), the loop adds a separately normalized temporal-difference block to the observed 24h profile, then tests weak temporal modulation of compound features. Pooled training OOF AP rises from 0.43099 to 0.44993, 0.45008 and 0.45019; minimum-fold AP improves at every retained step (Appendix P). The shared artifact is a row-wise feature map; clients fit its coefficients and return performance summaries, not their biological rows. This is a measured computational change, not confirmation of a biological mechanism.
 
-\paragraph{Transfer to a stronger backbone without retraining.}
-Applied unchanged to TAPB, the loop-selected programs reach random/unseen-drug/unseen-protein AUROC $0.9669/0.9512/0.9149$, versus $0.9545/0.9328/0.8868$ for TAPB alone. The unseen-drug gain is positive in all five pairs: mean $+0.01834$, descriptive 95\% interval $[+0.01407,+0.02293]$, exact $p=0.0625$ and Holm $p=0.125$. Manual fusion reaches $0.9666/0.9507/0.9143$, and transferred direct programs reach $0.9672/0.9515/0.9158$. Thus the reusable interface preserves useful predictor complementarity across backbones, while the incremental loop-minus-direct contrast remains small ($-0.000371$, Holm $p=0.375$). All 45 new program applications succeed, with no new weight fits or model calls; the 63 reported records include 18 existing references. Appendix M gives complete scores and fixed source-to-fit mapping.
-
-The weaker cosine predictor contributes complementary order information. A post-final decomposition of all saved predictions shows that manual fusion repairs 2.6865 AUROC percentage points of positive--negative pair credit on unseen drugs while breaking 0.8984, giving the observed net gain of 1.7881 points. Ties receive half credit. This explains the fixed mixture's ranking gain without introducing another fitted model or attributing it to a biological mechanism (Appendix M.3).
-
-\subsection*{5.2 Separating local-data access from the research controller}
-\begin{table}[t]
-\input{tables/display/main_federated}
-\end{table}
-
-Increasing data access improves the unchanged logistic predictor: ten-client AP/AUROC are 0.2783/0.7273, compared with one-client means 0.2431/0.6574. The same-data centralized/distributed coefficient discrepancy is at most $3.162\times10^{-9}$. The predictive change thus reflects the available training examples, not a different objective or a claimed superiority of a new federated optimizer.
-
-Both research controllers can exploit the ten-client interface. Direct generation reaches AP 0.2974, compared with 0.2696 for the development-gated loop. Their primary paired difference is $-0.0278$ (95\% interval $[-0.0545,-0.0083]$; exact $p=0.0625$, Holm $p=0.125$). Loop ten-minus-one-client AP is $+0.0112$, with interval $[-0.0358,+0.0554]$. The factorial comparison supports the practical value of local-data access for the fixed model, but does not establish that the iterative controller is responsible for that benefit.
-
-The same full-pool cosine reference attains AP 0.1996 and AUROC 0.6153. All thirty logistic final records predict every condition negative at threshold 0.5: accuracy 0.8514 is exactly the majority-class value, so ranking and calibration metrics carry the predictive comparison. The five full-pool fixed-model records reuse the same data objective; their zero SD is not evidence from five independent laboratories.
-
-\subsection*{5.3 Training-only cross-validation and native research controls}
-\begin{table}[t]
-\input{tables/display/main_federated_cv}
-\end{table}
-
-With training-only CV, our loop reaches final AP $0.3111\pm0.0406$, versus $0.3189\pm0.0378$ for direct generation, $0.2927\pm0.0281$ for native Helmsman and 0.2783 for the unchanged model (Table~\ref{tab:federated-cv-v2}). The loop has the highest mean AUROC, 0.7314, and lowest mean BCE, 0.3892, among these four arms, but not the highest primary AP. Loop-minus-direct AP is $-0.00775$ (95\% interval $[-0.04317,+0.02641]$, Holm $p=0.6797$); loop-minus-Helmsman is $+0.01839$ ($[-0.00723,+0.04727]$, Holm $p=0.5781$). These results support useful representation changes with local training, not a statistically established controller ranking.
-
-All 24 research trajectories close before 21 unique full-data fits produce the 25 final labels. There are 240 charged call attempts, 239 completed generations, and one native Helmsman pre-launch argument-length failure. The failed trajectory retains baseline and stays in the primary comparison. The predeclared secondary comparison excluding its paired index remains inconclusive. One loop candidate fails the row-invariance contract; its charged evaluation and feedback are retained. Appendix O reports all costs, failures and the fixed first-index source trace. The higher AP than in the development-gated study is descriptive: this follow-up is not a randomized selector ablation.
-
-\subsection*{5.4 What the loop learns and transmits}
-A fixed first-campaign case shows the actual feedback path (Appendix K.3). Starting from flattened temporal profiles, the loop proposes separately normalized temporal mean and 24h-minus-6h difference blocks. Development/gate AP increases from 0.24592/0.25444 to 0.25532/0.34565, so this source becomes the incumbent. Increasing the difference weight from 1 to 1.5 lowers both scores and is rejected. The next proposal explicitly cites that failure, returns to the retained parent, and reduces the weight to 0.75; AP rises to 0.26515/0.35693.
-
-The transmitted design is therefore a temporal feature map, the learned quantities are its locally fitted coefficients, and the returned evidence is ranking performance. Round 3 inherits round 1's source but also uses round 2's rejected evidence; source-parent identities and next-proposal context verify this distinction. This demonstrates how the loop updates its research state, not that visible improvement guarantees generalization. Across the completed twenty-campaign study, 75 successful and one failed fit produce 19 retained changes, 36 rejections and five failed candidates. All 30 native decisions persist; all final vectors reproduce the unchanged scorer.
+The earlier first-index case illustrates learning from rejection: increasing a temporal-difference weight from 1 to 1.5 worsens both visible scores; the next proposal cites the failure and reduces the retained parent's weight to 0.75, improving both scores (Appendix K.3). Conversely, a 288-configuration ESM retrieval probe and 183 strong-start cell-policy variants do not improve the retained final results. Reverse-ID/phenocopy/CEX remain at 0.803922/0.723917/0.096127. All three cell tasks and the unsuccessful routes remain reported (Appendices I, N and P).

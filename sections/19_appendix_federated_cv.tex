@@ -1,5 +1,12 @@
 \section*{Appendix O. Training-CV-guided federated feature research}
 \label{app:federated-cv}
+\renewcommand{\thetable}{O.\arabic{table}}
+\renewcommand{\theHtable}{O.\arabic{table}}
+\setcounter{table}{0}
+
+\begin{table}[ht]
+\input{tables/display/main_federated_cv}
+\end{table}
 
 \paragraph{Completed training-only diagnosis.}
 The earlier development/gate roles contain eight/nine positives, versus 86 in the original 491 training conditions. A training-only diagnostic evaluated all 54 unique valid sources, including baseline, from the completed 20-campaign pool. Three compound folds plus a baseline repeat gave 165 completed fits; repeat predictions were bitwise identical. Aliases and earlier failures remained inventoried. This diagnostic used the centralized sum of the same logistic objective, with 55 synthetic warm-ups counted separately. All 220 pooled/fold vectors reproduced the unchanged scorer. Baseline OOF AP/AUROC/BCE were 0.4182/0.7671/0.4221. Across 45 distinct prediction groups, fold-pair AP Spearman correlations were 0.5205 (0/1), 0.7953 (0/2) and 0.3084 (1/2). Uneven rankings motivate, but do not establish, more reliable selection. No final labels or final-score correlations were inspected; previously developed sources preclude unbiased nested-CV interpretation.
