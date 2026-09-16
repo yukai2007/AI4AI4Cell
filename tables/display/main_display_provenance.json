@@ -4,8 +4,8 @@
     "auroc": "max",
     "bce": "min"
   },
-  "dti_extra_rule": "Underline best among five BAN-family rows in panel A.",
-  "generator_sha256": "e7e45adaa44d614175b41ca16a9cdbca72f3b2b2b6df758d56f91b836e13539c",
+  "dti_extra_rule": "Separate BAN-family, fixed-reference and frozen-transfer panels; no cross-panel ranking.",
+  "generator_sha256": "8c2154b1caefc15f692e0685c625083ec9707ab4921dcaa0e702388f52153c3e",
   "highlighted_cells": {
     "main_dti.tex": [
       {
@@ -117,13 +117,13 @@
         "underline": false
       },
       {
-        "bold": false,
+        "bold": true,
         "mean": 0.9473575521520994,
         "method": "our_harness",
         "metric": "random_auroc",
         "panel": "A",
         "sd": 0.009195438601043241,
-        "underline": true
+        "underline": false
       },
       {
         "bold": true,
@@ -132,32 +132,32 @@
         "metric": "unseen_drug_auroc",
         "panel": "A",
         "sd": 0.010254179752794697,
-        "underline": true
+        "underline": false
       },
       {
-        "bold": false,
+        "bold": true,
         "mean": 0.8534003673527056,
         "method": "our_harness",
         "metric": "unseen_protein_auroc",
         "panel": "A",
         "sd": 0.02868672008420693,
-        "underline": true
+        "underline": false
       },
       {
         "bold": true,
         "mean": 0.9545270002640613,
         "method": "tapb",
         "metric": "random_auroc",
-        "panel": "A",
+        "panel": "B",
         "sd": 0.008305336787415478,
         "underline": false
       },
       {
-        "bold": false,
+        "bold": true,
         "mean": 0.932812660135815,
         "method": "tapb",
         "metric": "unseen_drug_auroc",
-        "panel": "A",
+        "panel": "B",
         "sd": 0.014836232142813714,
         "underline": false
       },
@@ -166,7 +166,7 @@
         "mean": 0.8867661378705508,
         "method": "tapb",
         "metric": "unseen_protein_auroc",
-        "panel": "A",
+        "panel": "B",
         "sd": 0.03622557845195157,
         "underline": false
       },
@@ -175,7 +175,7 @@
         "mean": 0.9142149458674412,
         "method": "fixed_cosine_k5_full50149",
         "metric": "random_auroc",
-        "panel": "A",
+        "panel": "B",
         "sd": null,
         "underline": false
       },
@@ -184,7 +184,7 @@
         "mean": 0.8892951561057008,
         "method": "fixed_cosine_k5_full50149",
         "metric": "unseen_drug_auroc",
-        "panel": "A",
+        "panel": "B",
         "sd": null,
         "underline": false
       },
@@ -193,7 +193,7 @@
         "mean": 0.8095255218483212,
         "method": "fixed_cosine_k5_full50149",
         "metric": "unseen_protein_auroc",
-        "panel": "A",
+        "panel": "B",
         "sd": null,
         "underline": false
       },
@@ -202,7 +202,7 @@
         "mean": 0.9668919593345656,
         "method": "transferred_loop",
         "metric": "random_auroc",
-        "panel": "B",
+        "panel": "C",
         "sd": 0.005308123484985296,
         "underline": false
       },
@@ -211,7 +211,7 @@
         "mean": 0.9511508828314023,
         "method": "transferred_loop",
         "metric": "unseen_drug_auroc",
-        "panel": "B",
+        "panel": "C",
         "sd": 0.009012784051971985,
         "underline": false
       },
@@ -220,7 +220,7 @@
         "mean": 0.9148977687714559,
         "method": "transferred_loop",
         "metric": "unseen_protein_auroc",
-        "panel": "B",
+        "panel": "C",
         "sd": 0.022531566568313975,
         "underline": false
       },
@@ -229,7 +229,7 @@
         "mean": 0.9671635991550039,
         "method": "transferred_direct",
         "metric": "random_auroc",
-        "panel": "B",
+        "panel": "C",
         "sd": 0.005241086644264964,
         "underline": false
       },
@@ -238,7 +238,7 @@
         "mean": 0.951521591050004,
         "method": "transferred_direct",
         "metric": "unseen_drug_auroc",
-        "panel": "B",
+        "panel": "C",
         "sd": 0.009003303319528057,
         "underline": false
       },
@@ -247,7 +247,7 @@
         "mean": 0.9158170415505695,
         "method": "transferred_direct",
         "metric": "unseen_protein_auroc",
-        "panel": "B",
+        "panel": "C",
         "sd": 0.022254970928175393,
         "underline": false
       },
@@ -256,7 +256,7 @@
         "mean": 0.9666134011090574,
         "method": "fixed_manual_0.7_0.3",
         "metric": "random_auroc",
-        "panel": "B",
+        "panel": "C",
         "sd": 0.005148030640339021,
         "underline": false
       },
@@ -265,7 +265,7 @@
         "mean": 0.9506939383798799,
         "method": "fixed_manual_0.7_0.3",
         "metric": "unseen_drug_auroc",
-        "panel": "B",
+        "panel": "C",
         "sd": 0.008739733067643484,
         "underline": false
       },
@@ -274,7 +274,7 @@
         "mean": 0.9142777497037375,
         "method": "fixed_manual_0.7_0.3",
         "metric": "unseen_protein_auroc",
-        "panel": "B",
+        "panel": "C",
         "sd": 0.022239504246625783,
         "underline": false
       }
@@ -656,9 +656,9 @@
   },
   "new_experiments_or_statistical_tests": false,
   "output_tex_sha256": {
-    "main_dti.tex": "8c8aa418f7769b9ac1ffafa8f842a29f110a130045f9e2c4db165d83eae450a2",
-    "main_federated.tex": "949b4bf0b9e5df4573031fab7f2f943a64e88d324010676139c3c89e26025a28",
-    "main_federated_cv.tex": "47d4875646a672330c1750eea91d9db7cd45d7c3e866b69532ead813ecb86c81"
+    "main_dti.tex": "fb13e61281db09dcf913dde4c7e1ba9d25a20d9e0c7504b7cf7373f93f4be425",
+    "main_federated.tex": "c57c754ffab00dde76f031255eb8b573c896ae44ee25ce41f02ebfb6b46fdb37",
+    "main_federated_cv.tex": "fb01cc63f2b2b28a5c2f0294d86ba65aa212557594bddee616732e18f7feb163"
   },
   "ranking_rule": "Best mean at displayed four-decimal precision within named panel; all ties marked; SD never ranked.",
   "schema": "aicell-main-table-presentation-v1",
