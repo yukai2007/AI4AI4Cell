@@ -16,7 +16,7 @@ where $\mathcal K$ denotes participating clients, $\widetilde a_t$ a proposed so
 \end{figure}
 
 \subsection*{3.2 Hypotheses become measured source changes}
-At round $t$, the proposer uses the task contract, shared agenda, retained source and scores, and accepted/rejected/failed history to state one change, its rationale and expected effect. Implementation edits only permitted source; interface checks precede fitting and scoring, and repairs consume the common budgets. Rejection updates the evidence, not the incumbent: subsequent proposals can learn from a failed change without inheriting it.
+At round $t$, the proposer uses the task contract, shared agenda, retained source and scores, and accepted/rejected/failed history to state one change, its rationale and expected effect. Implementation edits only permitted source; interface checks precede fitting and scoring, and repairs consume the common budgets. Rejection updates the evidence, and subsequent proposals can learn from a failed change without inheriting it.
 
 Retention requires both declared criteria to improve by more than $10^{-4}$: development/gate AP for the initial proteomics study, pooled out-of-fold/minimum-fold AP for its CV revision, and two validation-half AUROCs for fixed-predictor DTI. Native assessments cannot override this numerical selector. Harness-free generation uses the same task and selector but emits candidates directly, without separate hypothesis, implementation, review or memory stages.
 
