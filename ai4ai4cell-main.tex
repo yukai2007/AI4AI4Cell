@@ -18,7 +18,7 @@
 \date{}
 \maketitle
 \begin{abstract}
-Biological laboratories hold complementary measurements that could improve shared models without centralizing the underlying data. We introduce AI4AI4Bio, a federated agentic research framework coupling client-local parameter learning with iterative model-design improvement. An inner training process aggregates locally computed updates; an outer research loop uses evaluation summaries to formulate hypotheses, revise executable designs, and select subsequent candidates. On the original DrugEvolve DTI splits, full-training refits of loop-selected architectures improve mean unseen-drug AUROC by 0.0091 over native DrugEvolve. A stronger development-selected predictor reaches random/unseen-drug/unseen-protein AUROC of 0.9710/0.9588/0.9317. In observed-response proteomics, expanding a fixed design from one to ten simulated clients raises mean final average precision from 0.3088 to 0.3699; loop research reaches 0.3727. Matched strong-start controls attribute most gains to predictive design and data availability rather than an established controller advantage. Trainable cell pilots extend the framework to single-gene, double-gene, and drug perturbation identification, with mixed initial performance. AI4AI4Bio enables distributed biological measurements to contribute to both shared model parameters and computational designs without transferring raw responses to the research LLM.
+Biological laboratories generate rich experimental datasets, yet restrictions on data sharing limit their collective use for model development. We introduce AI4AI4Bio, a federated agentic research framework that enables locally held biological measurements to improve both a shared predictive model and the executable designs used to build it. An inner federated process aggregates locally trained model updates; an outer research loop uses aggregate development evidence to formulate hypotheses, revise designs, and evaluate subsequent candidates. We instantiate the same training and research protocol in three parallel case studies: drug--target interaction prediction, proteomics-based efficacy prediction, and cell perturbation identification spanning single-gene, double-gene, and drug interventions. Each study simulates ten laboratories with disjoint client datasets. Six matched configurations cross one versus ten laboratories with fixed models, feedback-free direct search, and feedback-guided research, separately measuring laboratory participation and research-loop effects. Completed first-seed development evaluations show ten-laboratory versus single-laboratory loop gains of 12.18 AP points in proteomics and 11.80, 29.30, and 13.33 Top-1 points in the three cell strata. Loop and matched-budget direct search currently tie on these primary endpoints. The corresponding three-seed held-out effects for DTI, proteomics, and cells are N/A while the unified evaluation remains incomplete. AI4AI4Bio provides a common computational interface through which distributed biological evidence can contribute to parameter learning and iterative model improvement without requiring raw response transfer during training and research.
 \end{abstract}
 
 \input{sections/01_introduction}
@@ -87,5 +87,8 @@ Biological laboratories hold complementary measurements that could improve share
 
 \clearpage
 \input{sections/21_appendix_trainable_cell}
+
+\clearpage
+\input{sections/22_appendix_unified_protocol}
 
 \end{document}

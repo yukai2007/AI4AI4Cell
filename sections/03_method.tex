@@ -1,39 +1,39 @@
-\section*{3. Method: federated evidence-guided research}
-\subsection*{3.1 Two levels of model improvement}
-The research object is an executable design $a$. A task adapter fixes the writable source interface, trainer, evaluation roles and resource budget. For predictor $f_{a,w}$, research has two levels:
+\section*{3. Method: federated agentic biological research}
+\subsection*{3.1 A shared inner trainer and outer research loop}
+For design $a$, model parameters $w$, client datasets $D_i$ and participating laboratories $\mathcal K$, the framework alternates between
 \[
- w_a^{\mathcal K}=\operatorname{Fit}(a,\{D_i\}_{i\in\mathcal K}),
+ w_a^{\mathcal K}=\operatorname{FederatedFit}(a,\{D_i\}_{i\in\mathcal K}),
  \qquad
- a_{t+1}=\operatorname{Retain}(a_t,\widetilde a_t,E_t),
+ a_{t+1}=\operatorname{Retain}(a_t,\widetilde a_t,E_t).
 \]
-where $\mathcal K$ denotes participating clients, $\widetilde a_t$ a proposed source change, and $E_t$ its measured development evidence. The inner procedure learns task weights; the outer procedure changes the representation, interaction module or policy. Fixed-predictor program search changes the prediction rule without new weight fitting. The research LLM remains fixed.
+Here $\widetilde a_t$ is a proposed executable design and $E_t$ is its aggregate development evidence. The inner process learns predictive parameters; the outer process tests changes to the predictor and its optimization. Every candidate restarts from the same task-specific initialization for its seed, rather than inheriting extra training from the incumbent. The language model itself is not fine-tuned.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\linewidth]{assets/method_diagram.pdf}
-\caption{End-to-end pipeline. (A) Hypothesize, implement, evaluate, retain and revise. (B) Simulated clients keep separate response datasets and return gradients (proteomics) or fitted head weights (cell pilots); only evaluation summaries reach the LLM. (C) Task adapters share the research interface, not their training mode or metrics. DTI remains a centralized training/transfer study.}
+\includegraphics[width=\linewidth]{assets/unified_pipeline.pdf}
+\caption{One framework across three biological task families. The outer loop proposes a hypothesis and executable configuration, while the inner loop trains it through data-owning laboratory workers. Model updates return to the coordinator; only aggregate development diagnostics reach the research LLM. The same implementation supports DTI, proteomics and the three cell-perturbation strata. Laboratory participation and research feedback are crossed in the six-arm evaluation.}
 \label{fig:research-interface}
 \end{figure}
 
-\subsection*{3.2 Hypotheses become measured source changes}
-At round $t$, the proposer uses the task contract, shared agenda, retained source and scores, and accepted/rejected/failed history to state one change, its rationale and expected effect. Implementation edits only permitted source; interface checks precede fitting and scoring, and repairs consume the common budgets. Rejection updates the evidence, and subsequent proposals can learn from a failed change without inheriting it.
-
-Retention requires both declared criteria to improve by more than $10^{-4}$: development/gate AP for the initial proteomics study, pooled out-of-fold/minimum-fold AP for its CV revision, and two validation-half AUROCs for fixed-predictor DTI. Native assessments cannot override this numerical selector. Harness-free generation uses the same task and selector but emits candidates directly, without separate hypothesis, implementation, review or memory stages.
-
-Measured native loop attempts link hypothesis, source diff, parent, evaluator receipt, scores and decision. Failures inform subsequent proposals through separate receipts and need not appear in matched measurement history. These links expose what ran, why it was retained and which source was inherited. Native direct candidates omit separate hypotheses. The new bounded cell prototype instead shares a proposal format and varies feedback access (Appendix Q). Source inspection establishes the computation; measured outcomes, not the LLM's explanation, test its effect.
-
-\subsection*{3.3 Local training and evidence transfer}
-In the proteomics training adapter, $a$ specifies a stateless feature map $\phi_a$. Each client evaluates it on local protein responses and compound features. With $z=w^\top\phi_a(x)+b$, the fixed inner objective is logistic loss with coefficient penalty:
+\subsection*{3.2 Local parameter learning}
+At round $r$, each participating laboratory receives shared parameters $w^r$ and completes one local epoch with AdamW. Local optimizer state resets each round, batch size is 64, and the gradient norm is clipped at one. With local fitted parameters $w_i^{r+1}$ and training-example counts $n_i$, the shared update is
 \[
- F_a(w,b)=\frac{1}{N}\left[\sum_{i\in\mathcal K}\sum_{(x,y)\in D_i}
- \bigl\{\log(1+e^z)-yz\bigr\}+\frac{\|w\|_2^2}{2C}\right],
- \quad N=\sum_{i\in\mathcal K}|D_i|,\ C=1.
+ \bar w^{r+1}=\sum_{i\in\mathcal K}\frac{n_i}{\sum_j n_j}w_i^{r+1},\quad
+ v^{r+1}=\beta v^r+\bar w^{r+1}-w^r,\quad
+ w^{r+1}=w^r+v^{r+1}.
 \]
-The coordinator aggregates local losses, gradients and counts for fixed L-BFGS-B updates (Figure~\ref{fig:research-interface}B). Source specifies \emph{what to fit}; client replies determine \emph{the weights}; evaluation summaries determine \emph{what to revise}. Evaluation workers receive source and fitted parameters and return aggregate scores. Training RPCs exclude raw arrays; the LLM receives neither rows nor gradients. For fixed source and clients, additivity recovers the centralized objective and gradient; Appendix K verifies equivalence. This existing optimizer lets research test changing representations with local data.
+Setting $\beta=0$ gives sample-weighted FedAvg \citep{McMahan2017}. Momentum acts only on trainable parameters: floating model buffers are averaged and integer buffers use an elementwise maximum. This preserves nonnegative local BatchNorm variances instead of extrapolating them as parameters. A one-client run uses the same implementation with $|\mathcal K|=1$.
 
-The historical evidence-only adapters instead train centrally and use partner diagnostics without adding partner training examples. Appendices C and N distinguish those studies from actual local-gradient training.
+All candidates complete 100 rounds. Every five rounds, local development workers return scalar metrics; the coordinator retains the checkpoint with the highest equal-client mean primary metric, breaking ties by lower mean development loss. No test responses enter training, checkpoint selection or proposal generation. DTI trains the native DrugBAN network; proteomics trains an efficacy head; cell tasks adapt a frozen public scDEBART response head. Only these task adapters differ.
 
-The biological motivation is access to complementary measurements under sharing constraints \citep{Sheller2020}. Direct generation receives the same client access as the loop within each condition. Crossing both controllers with one and ten clients separates research organization from data availability; fixed-feature references isolate the latter effect without source search.
+\subsection*{3.3 Evidence-guided design revision}
+The shared research model is local Qwen2.5-7B-Instruct. A proposal contains a hypothesis, a planned experiment, an expected effect and a design identifier. The identifier compiles to an executable configuration from a common twelve-design library: learning rate, weight decay, server momentum and an optional zero-output-initialized width-32 residual adapter. The base predictor remains trainable. Appendix R lists the complete library. This unified study tests bounded design research, not arbitrary source editing; the earlier unrestricted source-search studies are retained separately.
 
-\subsection*{3.4 Execution boundary}
-The original source-search workers deny file opens, networking and new processes after initialization; fixed scorers, trainers and orchestration are trusted. The new cell prototype instead accepts bounded configurations and runs persistent client workers, without claiming an adversarial filesystem sandbox. It averages locally trained head parameters with FedAvg. Offline packaging simulates institutions on one host; fitting exchanges updates and scalar summaries, not raw responses. Neither implementation provides differential privacy or secure aggregation. Direct and loop arms share the boundary within each study.
+Each direct or loop arm receives six proposal slots, with at most two generation attempts per slot for schema or novelty repair. Both share exactly the same first proposal. Thereafter direct search sees its tried configurations but no evaluation feedback; the loop sees the prior configurations, best development scores and rounds, first/last training and development diagnostics, and acceptance or failure records. These summaries let the proposer revise a hypothesis after underfitting, deteriorating validation or numerical failure without viewing biological rows.
+
+Candidates are selected by the same primary-metric/loss ordering used for checkpoints. Rejected proposals remain in the history but do not replace the incumbent. A numerical failure consumes a slot and cannot promote an incomplete early checkpoint; its workers restart before subsequent trials. Infrastructure or contract errors halt the study instead of being scored as weak models. Identical configurations within the same seed and participation setting may reuse a completed fit across arms, while still consuming both logical proposal slots. Actual generation, fitting and communication costs remain separately recorded.
+
+\subsection*{3.4 What laboratories contribute and what is shared}
+During fitting, a laboratory worker reads its own response shard and returns model updates, counts and aggregate evaluation evidence. The research LLM receives the executable configuration and scalar history, not raw profiles, interaction rows or model-update arrays. The useful shared output is both a fitted predictor and a reproducible design that other compatible laboratories can execute. This is particularly relevant when additional biological measurements exist but cannot be centrally pooled.
+
+The experiments simulate institutions on one host, with offline data packaging. They do not measure laboratory willingness to participate and do not provide differential privacy, secure aggregation or an adversarial isolation guarantee. Direct search can use the same local-training service; federation is not an ability exclusive to the agentic controller. The factorial comparison therefore tests the two components separately.

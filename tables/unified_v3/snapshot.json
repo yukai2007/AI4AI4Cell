@@ -1,0 +1,464 @@
+{
+  "snapshot_utc": "2026-09-18T06:59:58.775738+00:00",
+  "protocol": "unified_v3",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "evaluation_role": "post-selection common development",
+  "final_test_scored": false,
+  "tasks": {
+    "native_dti": {
+      "label": "DTI",
+      "runs": {
+        "42": null,
+        "43": null,
+        "44": null
+      },
+      "final_test": null
+    },
+    "ptpc": {
+      "label": "Proteomics",
+      "runs": {
+        "42": {
+          "scores": {
+            "single_fixed": {
+              "primary": 0.568932178932179,
+              "loss": 0.4563044965267181,
+              "secondary": {
+                "ap": 0.568932178932179,
+                "auroc": 0.68997113997114,
+                "bce": 0.4563044827484113,
+                "accuracy_at_0_5": 0.8102730602730602
+              }
+            },
+            "single_direct": {
+              "primary": 0.5497258297258298,
+              "loss": 0.46736722588539126,
+              "secondary": {
+                "ap": 0.5497258297258297,
+                "auroc": 0.6642135642135643,
+                "bce": 0.46736720962358463,
+                "accuracy_at_0_5": 0.7737651237651237
+              }
+            },
+            "single_loop": {
+              "primary": 0.5497258297258298,
+              "loss": 0.46736722588539126,
+              "secondary": {
+                "ap": 0.5497258297258297,
+                "auroc": 0.6642135642135643,
+                "bce": 0.46736720962358463,
+                "accuracy_at_0_5": 0.7737651237651237
+              }
+            },
+            "federated_fixed": {
+              "primary": 0.6715079365079365,
+              "loss": 0.5019664615392685,
+              "secondary": {
+                "ap": 0.6715079365079365,
+                "auroc": 0.7261904761904762,
+                "bce": 0.5019664220050816,
+                "accuracy_at_0_5": 0.7828560328560329
+              }
+            },
+            "federated_direct": {
+              "primary": 0.6715079365079365,
+              "loss": 0.5019664615392685,
+              "secondary": {
+                "ap": 0.6715079365079365,
+                "auroc": 0.7261904761904762,
+                "bce": 0.5019664220050816,
+                "accuracy_at_0_5": 0.7828560328560329
+              }
+            },
+            "federated_loop": {
+              "primary": 0.6715079365079365,
+              "loss": 0.4949213743209839,
+              "secondary": {
+                "ap": 0.6715079365079365,
+                "auroc": 0.7261904761904762,
+                "bce": 0.4949213507380968,
+                "accuracy_at_0_5": 0.7828560328560329
+              }
+            }
+          },
+          "receipts": {
+            "ptpc/study_v3_seed42/definition.json": "05495867a466930c54a0dfe36acfe3c5591fedb672d0bd74a10dff92389efbbe",
+            "ptpc/study_v3_seed42/status.json": "5893409f8375b824b7ddf76cc727d6688e4e4525dc6f0322036dfaf22a56a782",
+            "ptpc/study_v3_seed42/selected_development.json": "eaa3cab2dc9e1d56a722cae411c0454adff45601a537972c8ecbd1abdf7227c1",
+            "ptpc/study_v3_seed42/common_development_report.json": "bbf333019623d6d5732ce1346ffa418f28e644c605c8392459c05a0eb1514653",
+            "ptpc/study_v3_seed42/effects.json": "0d8158ec0f4f365c30806048d347ceeaef4c6faf3edaef64b708fb42772f6802"
+          },
+          "definition": {
+            "task": "ptpc",
+            "seed": 42,
+            "rounds": 100,
+            "slots": 6,
+            "source_sha256": {
+              "core.py": "d358e491d07f11e27607f96d7243e844fdb9152a1c4954effbd77893b6a3370a",
+              "core_v3.py": "ef53be48dfe17967e7d2faa20a200bc4c6e286ad21ef5406a694d07e26b663ae",
+              "adapters.py": "af63c8d49990d862ec7e0955eb65366f03e60ad31a2f108c2d9a50302a184e92",
+              "drugban_adapter.py": "8c0cb1f3841fb0c2dd760081c04f38a93e0d0b8a20a469269c52a7e4f6eb98ae",
+              "native_run.py": "b878d3db04d69f96d0da5c50a3e7b029dc03e9b40c16c3e7fdece362ba58c418",
+              "run.py": "b49b73c907589cc3fef1ac75d005bc7c28d60aad89e87e4c0c0f29c8c34a86ad",
+              "run_v3.py": "1abce301e0971c3778f279ee0a237104f0d5e4081d2e24657be23389714726d9",
+              "research.py": "4ae128fccf0621a97ce1ac5f5bf3a5d9107093fb93c73aae42a2690a5077bb49",
+              "research_v2.py": "ea0894213b6db722ad37f5541e11755dc2a351c80cf94c1906756f3d96d73184",
+              "effects.py": "d7f72b46e0324cc2d3b620ab72c6b7cbbc0e8c0c13a95835564d3196e2a7495f"
+            },
+            "data_manifest_sha256": "7d651ce335b4ca93632e565e5d088bf91bc51af31f2456b62b3d297d553efc11",
+            "shared_first_proposal": true,
+            "attempts_per_slot": 2,
+            "single_client": 0,
+            "shared_core": "core_v3.py",
+            "test_read": false,
+            "controller": "Qwen2.5-7B / research_v2 menu; trajectory feedback",
+            "numerical_failure_policy": "consume slot, retain incumbent, expose to loop only; infrastructure errors abort"
+          },
+          "physical_fits": 15
+        },
+        "43": null,
+        "44": null
+      },
+      "final_test": null
+    },
+    "vcc_pilot": {
+      "label": "VCC",
+      "runs": {
+        "42": {
+          "scores": {
+            "single_fixed": {
+              "primary": 0.13004834086730638,
+              "loss": 1.6201773066678657,
+              "secondary": {
+                "macro_accuracy": 0.13004834086730638,
+                "accuracy": 0.17349334357398874,
+                "mrr": 0.43151723843659323,
+                "top3": 0.6404275473630312,
+                "cross_entropy": 1.620177306667866
+              }
+            },
+            "single_direct": {
+              "primary": 0.18286250307802032,
+              "loss": 1.608788758516725,
+              "secondary": {
+                "macro_accuracy": 0.18286250307802032,
+                "accuracy": 0.2197452636968766,
+                "mrr": 0.46149150878989587,
+                "top3": 0.5453699436763952,
+                "cross_entropy": 1.6087887585167253
+              }
+            },
+            "single_loop": {
+              "primary": 0.18286250307802032,
+              "loss": 1.608788758516725,
+              "secondary": {
+                "macro_accuracy": 0.18286250307802032,
+                "accuracy": 0.2197452636968766,
+                "mrr": 0.46149150878989587,
+                "top3": 0.5453699436763952,
+                "cross_entropy": 1.6087887585167253
+              }
+            },
+            "federated_fixed": {
+              "primary": 0.1329959934701314,
+              "loss": 1.627764048737675,
+              "secondary": {
+                "macro_accuracy": 0.1329959934701314,
+                "accuracy": 0.17978622631848437,
+                "mrr": 0.43665463389656933,
+                "top3": 0.6226612903225807,
+                "cross_entropy": 1.627764048737675
+              }
+            },
+            "federated_direct": {
+              "primary": 0.3008325965222517,
+              "loss": 1.5598285342087854,
+              "secondary": {
+                "macro_accuracy": 0.3008325965222517,
+                "accuracy": 0.35786866359447006,
+                "mrr": 0.5780690817545656,
+                "top3": 0.72405273937532,
+                "cross_entropy": 1.5598285342087854
+              }
+            },
+            "federated_loop": {
+              "primary": 0.3008325965222517,
+              "loss": 1.5598285342087854,
+              "secondary": {
+                "macro_accuracy": 0.3008325965222517,
+                "accuracy": 0.35786866359447006,
+                "mrr": 0.5780690817545656,
+                "top3": 0.72405273937532,
+                "cross_entropy": 1.5598285342087854
+              }
+            }
+          },
+          "receipts": {
+            "vcc_pilot/study_v3_seed42/definition.json": "381ecea5bce187a26599172deded392c7c922276679c43954b9c224b8db9fcc9",
+            "vcc_pilot/study_v3_seed42/status.json": "af587d0b1cb58ed3978945e5fc7513180f97a25e4f15bab9bc6b1e2bc5a9ff68",
+            "vcc_pilot/study_v3_seed42/selected_development.json": "eeba810c340bce0f86609f6824026d732adcfd21436fe14ee2393b0bb64e630c",
+            "vcc_pilot/study_v3_seed42/common_development_report.json": "46a8cbba9aa3ae614d168648c6480a8084ed46e2fdae578c1853297c82afb2b2",
+            "vcc_pilot/study_v3_seed42/effects.json": "21498235fe7d08db689f9300f6f2380b6d0187a33c3636f8af8135fd80e64811"
+          },
+          "definition": {
+            "task": "vcc_pilot",
+            "seed": 42,
+            "rounds": 100,
+            "slots": 6,
+            "source_sha256": {
+              "core.py": "d358e491d07f11e27607f96d7243e844fdb9152a1c4954effbd77893b6a3370a",
+              "core_v3.py": "ef53be48dfe17967e7d2faa20a200bc4c6e286ad21ef5406a694d07e26b663ae",
+              "adapters.py": "af63c8d49990d862ec7e0955eb65366f03e60ad31a2f108c2d9a50302a184e92",
+              "drugban_adapter.py": "8c0cb1f3841fb0c2dd760081c04f38a93e0d0b8a20a469269c52a7e4f6eb98ae",
+              "native_run.py": "b878d3db04d69f96d0da5c50a3e7b029dc03e9b40c16c3e7fdece362ba58c418",
+              "run.py": "b49b73c907589cc3fef1ac75d005bc7c28d60aad89e87e4c0c0f29c8c34a86ad",
+              "run_v3.py": "1abce301e0971c3778f279ee0a237104f0d5e4081d2e24657be23389714726d9",
+              "research.py": "4ae128fccf0621a97ce1ac5f5bf3a5d9107093fb93c73aae42a2690a5077bb49",
+              "research_v2.py": "ea0894213b6db722ad37f5541e11755dc2a351c80cf94c1906756f3d96d73184",
+              "effects.py": "d7f72b46e0324cc2d3b620ab72c6b7cbbc0e8c0c13a95835564d3196e2a7495f"
+            },
+            "data_manifest_sha256": "e477c914859b9a73aae656dc46d98cbc89540a7db4ae6e16104e83777db2ecc4",
+            "shared_first_proposal": true,
+            "attempts_per_slot": 2,
+            "single_client": 0,
+            "shared_core": "core_v3.py",
+            "test_read": false,
+            "controller": "Qwen2.5-7B / research_v2 menu; trajectory feedback",
+            "numerical_failure_policy": "consume slot, retain incumbent, expose to loop only; infrastructure errors abort"
+          },
+          "physical_fits": 14
+        },
+        "43": null,
+        "44": null
+      },
+      "final_test": null
+    },
+    "norman_double_pilot": {
+      "label": "Norman",
+      "runs": {
+        "42": {
+          "scores": {
+            "single_fixed": {
+              "primary": 0.125,
+              "loss": 1.6192486391385295,
+              "secondary": {
+                "macro_accuracy": 0.125,
+                "accuracy": 0.125,
+                "mrr": 0.4016166666666666,
+                "top3": 0.572,
+                "cross_entropy": 1.6192486391385297
+              }
+            },
+            "single_direct": {
+              "primary": 0.20700000000000002,
+              "loss": 1.6841797985851499,
+              "secondary": {
+                "macro_accuracy": 0.20700000000000002,
+                "accuracy": 0.207,
+                "mrr": 0.4473833333333333,
+                "top3": 0.55,
+                "cross_entropy": 1.6841797985851499
+              }
+            },
+            "single_loop": {
+              "primary": 0.20700000000000002,
+              "loss": 1.6841797985851499,
+              "secondary": {
+                "macro_accuracy": 0.20700000000000002,
+                "accuracy": 0.207,
+                "mrr": 0.4473833333333333,
+                "top3": 0.55,
+                "cross_entropy": 1.6841797985851499
+              }
+            },
+            "federated_fixed": {
+              "primary": 0.5,
+              "loss": 1.5847261099157668,
+              "secondary": {
+                "macro_accuracy": 0.5,
+                "accuracy": 0.5,
+                "mrr": 0.6397666666666666,
+                "top3": 0.667,
+                "cross_entropy": 1.584726109915767
+              }
+            },
+            "federated_direct": {
+              "primary": 0.5,
+              "loss": 1.5847261099157668,
+              "secondary": {
+                "macro_accuracy": 0.5,
+                "accuracy": 0.5,
+                "mrr": 0.6397666666666666,
+                "top3": 0.667,
+                "cross_entropy": 1.584726109915767
+              }
+            },
+            "federated_loop": {
+              "primary": 0.5,
+              "loss": 1.5847261099157668,
+              "secondary": {
+                "macro_accuracy": 0.5,
+                "accuracy": 0.5,
+                "mrr": 0.6397666666666666,
+                "top3": 0.667,
+                "cross_entropy": 1.584726109915767
+              }
+            }
+          },
+          "receipts": {
+            "norman_double_pilot/study_v3_seed42/definition.json": "ac45469ea890857e1c337858bb24bb1c5bb0d77167f022aad01388d2fecfba88",
+            "norman_double_pilot/study_v3_seed42/status.json": "a9e146fcc4b62f2ce055aa2656980d7c33ffd3dda596794a112615791857bc3c",
+            "norman_double_pilot/study_v3_seed42/selected_development.json": "fb350250bfa4f560681311195e6547c4d977ba838b58d59e8795b28ce6315a3b",
+            "norman_double_pilot/study_v3_seed42/common_development_report.json": "018d86c363c93a2f489f3bc492365d6aae33519678578abe1c4ae7e61b097dac",
+            "norman_double_pilot/study_v3_seed42/effects.json": "1796b0d7468f32d4c9c1e91997a109d6c6a5455b0d43da45a4ad8829fb710c77"
+          },
+          "definition": {
+            "task": "norman_double_pilot",
+            "seed": 42,
+            "rounds": 100,
+            "slots": 6,
+            "source_sha256": {
+              "core.py": "d358e491d07f11e27607f96d7243e844fdb9152a1c4954effbd77893b6a3370a",
+              "core_v3.py": "ef53be48dfe17967e7d2faa20a200bc4c6e286ad21ef5406a694d07e26b663ae",
+              "adapters.py": "af63c8d49990d862ec7e0955eb65366f03e60ad31a2f108c2d9a50302a184e92",
+              "drugban_adapter.py": "8c0cb1f3841fb0c2dd760081c04f38a93e0d0b8a20a469269c52a7e4f6eb98ae",
+              "native_run.py": "b878d3db04d69f96d0da5c50a3e7b029dc03e9b40c16c3e7fdece362ba58c418",
+              "run.py": "b49b73c907589cc3fef1ac75d005bc7c28d60aad89e87e4c0c0f29c8c34a86ad",
+              "run_v3.py": "1abce301e0971c3778f279ee0a237104f0d5e4081d2e24657be23389714726d9",
+              "research.py": "4ae128fccf0621a97ce1ac5f5bf3a5d9107093fb93c73aae42a2690a5077bb49",
+              "research_v2.py": "ea0894213b6db722ad37f5541e11755dc2a351c80cf94c1906756f3d96d73184",
+              "effects.py": "d7f72b46e0324cc2d3b620ab72c6b7cbbc0e8c0c13a95835564d3196e2a7495f"
+            },
+            "data_manifest_sha256": "ac1e37ea2ae2e6005355037f92b9910e3ef36670cce6914a0135428d9298e9a0",
+            "shared_first_proposal": true,
+            "attempts_per_slot": 2,
+            "single_client": 0,
+            "shared_core": "core_v3.py",
+            "test_read": false,
+            "controller": "Qwen2.5-7B / research_v2 menu; trajectory feedback",
+            "numerical_failure_policy": "consume slot, retain incumbent, expose to loop only; infrastructure errors abort"
+          },
+          "physical_fits": 15
+        },
+        "43": null,
+        "44": null
+      },
+      "final_test": null
+    },
+    "tahoe_drug_pilot": {
+      "label": "Tahoe",
+      "runs": {
+        "42": {
+          "scores": {
+            "single_fixed": {
+              "primary": 0.24999999999999994,
+              "loss": 1.6188667224117395,
+              "secondary": {
+                "macro_accuracy": 0.25,
+                "accuracy": 0.25,
+                "mrr": 0.49388888888888893,
+                "top3": 0.6166666666666667,
+                "cross_entropy": 1.6188667224117395
+              }
+            },
+            "single_direct": {
+              "primary": 0.18333333333333332,
+              "loss": 1.6932293770479194,
+              "secondary": {
+                "macro_accuracy": 0.18333333333333332,
+                "accuracy": 0.18333333333333332,
+                "mrr": 0.4361111111111111,
+                "top3": 0.55,
+                "cross_entropy": 1.6932293770479192
+              }
+            },
+            "single_loop": {
+              "primary": 0.18333333333333332,
+              "loss": 1.6932293770479194,
+              "secondary": {
+                "macro_accuracy": 0.18333333333333332,
+                "accuracy": 0.18333333333333332,
+                "mrr": 0.4361111111111111,
+                "top3": 0.55,
+                "cross_entropy": 1.6932293770479192
+              }
+            },
+            "federated_fixed": {
+              "primary": 0.2833333333333333,
+              "loss": 1.5942505208571613,
+              "secondary": {
+                "macro_accuracy": 0.2833333333333333,
+                "accuracy": 0.2833333333333333,
+                "mrr": 0.5183333333333333,
+                "top3": 0.6666666666666667,
+                "cross_entropy": 1.5942505208571616
+              }
+            },
+            "federated_direct": {
+              "primary": 0.31666666666666665,
+              "loss": 1.5972918618457865,
+              "secondary": {
+                "macro_accuracy": 0.31666666666666665,
+                "accuracy": 0.31666666666666665,
+                "mrr": 0.5383333333333333,
+                "top3": 0.6833333333333333,
+                "cross_entropy": 1.5972918618457868
+              }
+            },
+            "federated_loop": {
+              "primary": 0.31666666666666665,
+              "loss": 1.5972918618457865,
+              "secondary": {
+                "macro_accuracy": 0.31666666666666665,
+                "accuracy": 0.31666666666666665,
+                "mrr": 0.5383333333333333,
+                "top3": 0.6833333333333333,
+                "cross_entropy": 1.5972918618457868
+              }
+            }
+          },
+          "receipts": {
+            "tahoe_drug_pilot/study_v3_seed42/definition.json": "72b51144d528f117b9b8b99d43e8181fa4377a8ca2995e5e4e11879b192e2f48",
+            "tahoe_drug_pilot/study_v3_seed42/status.json": "5d5c4ae00ba11a20b8a7f06d78487ceeda284215177979852f9fa64be7b2205c",
+            "tahoe_drug_pilot/study_v3_seed42/selected_development.json": "a432a03c701047c72269d836effc40f2bef79b98aff4b85a507e5d781f6f8178",
+            "tahoe_drug_pilot/study_v3_seed42/common_development_report.json": "06cc4ebb66b8141a3a55e6d3ff3b8d54f81a6132e7e9979e362dea1f2144bca5",
+            "tahoe_drug_pilot/study_v3_seed42/effects.json": "d8c3e9e241c8c5a7194419b140a9dbf2f91deff10bab3809a0315d069bf8c478"
+          },
+          "definition": {
+            "task": "tahoe_drug_pilot",
+            "seed": 42,
+            "rounds": 100,
+            "slots": 6,
+            "source_sha256": {
+              "core.py": "d358e491d07f11e27607f96d7243e844fdb9152a1c4954effbd77893b6a3370a",
+              "core_v3.py": "ef53be48dfe17967e7d2faa20a200bc4c6e286ad21ef5406a694d07e26b663ae",
+              "adapters.py": "af63c8d49990d862ec7e0955eb65366f03e60ad31a2f108c2d9a50302a184e92",
+              "drugban_adapter.py": "8c0cb1f3841fb0c2dd760081c04f38a93e0d0b8a20a469269c52a7e4f6eb98ae",
+              "native_run.py": "b878d3db04d69f96d0da5c50a3e7b029dc03e9b40c16c3e7fdece362ba58c418",
+              "run.py": "b49b73c907589cc3fef1ac75d005bc7c28d60aad89e87e4c0c0f29c8c34a86ad",
+              "run_v3.py": "1abce301e0971c3778f279ee0a237104f0d5e4081d2e24657be23389714726d9",
+              "research.py": "4ae128fccf0621a97ce1ac5f5bf3a5d9107093fb93c73aae42a2690a5077bb49",
+              "research_v2.py": "ea0894213b6db722ad37f5541e11755dc2a351c80cf94c1906756f3d96d73184",
+              "effects.py": "d7f72b46e0324cc2d3b620ab72c6b7cbbc0e8c0c13a95835564d3196e2a7495f"
+            },
+            "data_manifest_sha256": "fc61ae7b2e86161062342d4f2c4bc2c9311382e5d886ae41d5644506670f9327",
+            "shared_first_proposal": true,
+            "attempts_per_slot": 2,
+            "single_client": 0,
+            "shared_core": "core_v3.py",
+            "test_read": false,
+            "controller": "Qwen2.5-7B / research_v2 menu; trajectory feedback",
+            "numerical_failure_policy": "consume slot, retain incumbent, expose to loop only; infrastructure errors abort"
+          },
+          "physical_fits": 14
+        },
+        "43": null,
+        "44": null
+      },
+      "final_test": null
+    }
+  }
+}

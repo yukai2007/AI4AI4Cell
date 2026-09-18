@@ -1,0 +1,52 @@
+\section*{Appendix R. Uniform federated research protocol and current snapshot}
+\label{app:unified}
+\setcounter{table}{0}
+\renewcommand{\thetable}{R.\arabic{table}}
+\renewcommand{\theHtable}{R.\arabic{table}}
+
+\paragraph{Version and scope.}
+The current main protocol uses \texttt{core\_v3.py}, \texttt{run\_v3.py} and the common \texttt{research\_v2.py} candidate generator. Version 3 refers to the orchestration, feedback and state-buffer correction, not a new foundation model. Historical V1/V2 outputs and failed fits are preserved. All V3 scientific fits start afresh; earlier weights are not reused across the correction. DTI's native DGL workers use the pinned compatible Python environment, while Qwen and the other adapters use the LDA environment. They execute the same versioned optimization and aggregation source, not identical dependency binaries.
+
+\paragraph{Complete common design library.}
+Each row defines an executable candidate. D00 is the fixed starting recipe; D01--D11 are available without within-arm repeats. The six-slot budget does not exhaustively evaluate the library. FedProx is disabled in this version: for one-batch local clients its penalty has zero gradient at the sole step from the shared anchor, so a proximal-only change would be a no-op in the small tasks.
+
+\begin{center}\small
+\begin{tabular}{lrrrr}
+\toprule
+Design & Learning rate & Weight decay & Momentum & Residual adapter \\
+\midrule
+D00 & 0.001 & 0.001 & 0 & no \\
+D01 & 0.0001 & 0.001 & 0 & no \\
+D02 & 0.01 & 0.001 & 0 & no \\
+D03 & 0.001 & 0 & 0 & no \\
+D04 & 0.001 & 0.01 & 0 & no \\
+D05 & 0.001 & 0.001 & 0.9 & no \\
+D06 & 0.001 & 0.001 & 0 & yes \\
+D07 & 0.001 & 0.001 & 0.9 & yes \\
+D08 & 0.0001 & 0.001 & 0 & yes \\
+D09 & 0.0001 & 0.001 & 0.9 & yes \\
+D10 & 0.01 & 0.01 & 0 & no \\
+D11 & 0.001 & 0.01 & 0 & yes \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Generation and evidence.}
+The local proposer uses bfloat16 inference, temperature 0.7, top-$p$ 0.9 and at most 512 new tokens. Slot $s$ uses seed $\text{training seed}+s$; a second bounded formatting attempt adds 10,000. The first direct proposal is copied to the paired loop arm rather than regenerated. Later direct proposals see configuration identities but no scores. Loop evidence contains the aggregate best development metric/loss, best round, first/last validation records, training losses and acceptance status. Raw worker tracebacks remain in local failure receipts; the proposer receives a numerical-failure diagnosis. No test score is passed to either proposer.
+
+\paragraph{State-buffer regression.}
+The paired five-round native DrugBAN regression fixes seed 42 and the D07 configuration. The old core produces negative BatchNorm running variances (including $-8.585$ and $-28.029$ in graph layers) and non-finite predictions. The corrected core keeps all recorded running variances nonnegative and completes scoring. Its five-round AUROC is not used as a scientific result, nor is this a hyperparameter-selection experiment. This check isolates the implementation failure that stopped the historical native queue.
+
+\paragraph{Client and split integrity.}
+DTI clients contain 4,932--5,058 training and 517--643 development pairs. Their compounds are disjoint across clients; within-client original train/development compound overlap is retained explicitly. PTPC compound groups do not cross clients or its newly reserved training/development boundary. Its development panel has 105 conditions, with small per-client positive counts. Cell clients have disjoint intervention identities and reuse the data construction in Appendix Q, but their new training uses batch 64, 100 rounds and MSE plus local contrastive loss rather than the old batch-two 20-round recipe. Common development reports are generated only after arm selection and are not loop feedback.
+
+\paragraph{Completion and missing values.}
+The scalar snapshot accompanying the main tables contains completed seed-42 results for PTPC, VCC, Norman and Tahoe; native DTI and seeds 43/44 are incomplete at export. Three-seed means and sample SDs are therefore N/A, not estimates from the first seed. Final-test scores are N/A independently of training status. The current automatic queue covers the development campaigns, not subsequent test scoring, cosine reruns or new task-aligned strong references. Remaining work also includes client rotations and same-data centralized comparisons. Historical Appendix L/P/Q scores retain their original roles and protocols.
+
+\paragraph{Verification and publication.}
+Twenty-two unit/integration tests pass, including parameter aggregation, buffer handling, proposal validation, failure recovery and direct-feedback isolation. The independent V3 audit validates all six selected arms, checkpoint existence, source hashes, training budgets, shared first proposals, evidence histories and common-panel metric aggregation. The paper snapshot includes receipt hashes and aggregate scalar metrics, not private biological arrays. A frozen export date prevents later-running experiments from silently changing the submitted PDF; refreshed exports must update the narrative and rerun compilation.
+
+\paragraph{Secondary-metric display.} Bold marks the best displayed value within each task and metric, including ties. Higher is better except BCE and cross-entropy. These remain development diagnostics rather than independent confirmatory endpoints.
+\begingroup\footnotesize\setlength{\tabcolsep}{4pt}
+\input{tables/unified_v3/secondary}
+\endgroup

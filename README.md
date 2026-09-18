@@ -1,57 +1,50 @@
 # AI4AI4Bio manuscript
 
-Title: **AI4AI4Bio: Federated Evidence-Guided Research for Biological Model Improvement**.
+**AI4AI4Bio: Federated Evidence-Guided Research for Biological Model Improvement**
 
-## 18 September: trainable cell pilots
+## Current version: uniform six-arm study, 18 September 2026
 
-Cell development now targets five-option perturbation identification for VCC
-single-gene, Norman double-gene and Tahoe drug responses. Appendix Q reports
-all 18 arm evaluations from 33 actual head fits and 27 local Qwen proposals.
-The same Qwen2.5-7B checkpoint drives direct and feedback-guided head search;
-ten local workers perform FedAvg. These are one-seed, 20-round integration
-pilots, not fully converged or SOTA experiments. VCC is below chance; Tahoe
-improves with ten-client access, while fixed and loop federated heads tie in
-Top-1. The bounded head-search prototype is not the archived native harness.
-The new drug-conditioning adapter is explicitly distinguished from native
-scDEBART genetic inputs. Earlier results and scorers remain unchanged.
+The main text now follows three parallel biological task families: native DrugBAN DTI, observed-response proteomic efficacy, and scDEBART-head perturbation identification (VCC single-gene, Norman double-gene, Tahoe drug strata). All use the same V3 federated core, local Qwen proposer, design library, training schedule and selection rule.
 
-Generated tables and verified aggregate metrics are in
-`tables/trainable_cell_pilot.tex` and `tables/trainable_cell_pilot_results.json`.
-The local implementation is `../extensions/federated_bio_20260918/`.
-The figure now includes trainable perturbation identification; DTI is still
-centralized and has not been rerun as a new ten-client training benchmark.
+The six arms cross **one vs ten laboratories** with **fixed model / feedback-free direct search / feedback-guided loop**. Three contrasts are reported separately: loop minus fixed, loop minus matched-budget direct, and ten-laboratory loop minus one-laboratory loop.
 
-This is an editable, result-bearing research draft, not a submitted/accepted article. The completed performance-first revision connects executable-design research with actual client-local gradient training. It includes all 21 full-data, 100-epoch BAN-family refits, five complete TAPB fits, DTI probability-program research, unchanged-program transfer to TAPB, matched training-pool cosine references and a 24-trajectory comparison with native Helmsman. The ten-method DTI overview uses the original scorer and all three test splits. Our selected BAN architectures lead that family in mean AUROC; program transfer improves TAPB without new training or search. Direct-generation and manual-fusion controls identify where those gains arise, and do not establish universal loop superiority or broad SOTA. The earlier Cell, DTI and PTPC studies remain preserved. The named local PDF is updated only after the corresponding manuscript build and review.
+The 18 September snapshot (exact UTC export time in `snapshot.json`) contains completed **seed-42 development** results for proteomics and all three cell strata. These show positive laboratory-participation contrasts, but loop and matched-budget direct tie on every available primary endpoint. Native DTI, three-seed summaries, new cosine references and uniform final-test scores are **N/A**, not extrapolated from earlier experiments. The training queue does not itself implement final-test scoring or the remaining reference reruns.
 
-## 17 September strong-start revision
+- Main tables: `tables/unified_v3/development.tex`, `effects.tex`, `final.tex`.
+- Secondary metrics and protocol: Appendix R, `sections/22_appendix_unified_protocol.tex`.
+- Machine-readable aggregate snapshot and receipt hashes: `tables/unified_v3/snapshot.json`.
+- Current pipeline: editable `assets/unified_pipeline.svg` and vector PDF.
+- Previous source-search, strong-start and held-out studies remain in the historical appendices under their original protocols. Their scores are not inserted into new uniform-protocol N/A cells.
 
-Twenty additional native campaigns compare direct generation and our loop from identical improved starting designs, with five paired trajectories per task and unchanged scorers/selectors. DTI reaches mean single-fit AUROC 0.9710/0.9588/0.9317: all ten campaigns retain the shared starting rule, so direct and loop tie. PTPC loop/direct AP is 0.3727/0.3716; the small paired difference is not statistically established. Fixed improved features achieve AP 0.3088/0.3183/0.3699 with one/three/ten simulated clients. All fifteen availability fits execute client-local gradients. The ten-client pool is identical across partitions, not five independent institutions.
+Bold marks all best displayed values in each task column, including ties. It does not denote significance or global SOTA. Mean-client AUROC/AP, intervention-macro Top-1, development scores and final-test results are explicitly distinguished.
 
-Figure 2 shows every strong-start arm, with all five trajectories and best displayed means bolded including ties. Figure 3 separates local-data availability from source search. Appendix P and `tables/strong_start/` retain all primary/secondary metrics, source identities, paired tests and realized costs (141 successful model calls). The initial 794-candidate engineering search is explicitly separated from native controller output. A further 288-configuration ESM retrieval probe and 183 cell-policy configurations did not improve the retained results and remain reported. Original tables are not overwritten: the full earlier federated factorial and CV tables now appear in Appendices K and O. All 86 new saved classifier score records were recomputed with the original scorers.
+## Editing and compilation
 
-The new figures are editable vector PDF/SVG assets. Their local generator is `tools/overleaf/publish_strong_start.py` in the parent research workspace; the writing repository contains its generated scalar/provenance exports, not the complete runtime or raw measurements. These are developmental evaluations on previously exposed public splits, not fresh blind confirmation or an exhaustive SOTA comparison.
+Select `main.tex` as the Overleaf entry and **XeLaTeX** as compiler. `latexmkrc` also redirects the default pdfLaTeX command to XeLaTeX for the bundled fonts. Edit `ai4ai4cell-main.tex` and files under `sections/`; bibliography is `references.bib`.
 
-## Editing and compiling
+Local build with the populated TeX cache:
 
-The 14 September coauthor integration sharpens the two-level method and retained-source/failure-feedback case, adds biological-FL and Chiron related work, and distinguishes a reconstructed historical no-LLM calibration reference from direct LLM generation. Existing scientific tables and selected experimental artifacts are unchanged. Unverified coauthor FL scores are not included.
+```bash
+tectonic --only-cached --keep-intermediates --keep-logs --outdir build main.tex
+```
 
-The main tables use readable presentation views under `tables/display/`: bold marks the best mean within each labeled comparison panel, including ties at the displayed precision; lower BCE is better. DTI separates (A) the BAN-family comparison under the same full-refit recipe, (B) fixed predictive references with different representations/recipes, and (C) frozen-program transfer to TAPB. All ten method rows remain visible. Bold applies within each panel, not across panels, and means ranking rather than significance or global SOTA. Whole winning numbers, including decimal points, use a consistent bold text font. The display provenance binds every value to unchanged scalar publications; original tables are retained. The vector method figure shows the research loop, simulated laboratories, and three downstream task families. Proteomics uses local-gradient fitting and the new cell pilots use head-parameter FedAvg; DTI remains centralized. Appendix Q adds separately generated trainable-cell tables, including all measured baselines and the random expectation.
+The reading copy is `manuscript.pdf`; temporary compilation output is under `build/`. The ICLR 2027 template does not imply submission or acceptance.
 
-- Select `main.tex` as the Overleaf main document and **XeLaTeX** as compiler.
-- The bundled `latexmkrc` also redirects the default pdfLaTeX command to XeLaTeX, so a newly synchronized project with its old pdfLaTeX setting can load `fontspec` and the bundled OpenType fonts. This uses Overleaf's supported project-level command configuration, not a change to the web UI's compiler setting. If needed, explicitly select XeLaTeX and use Recompile from scratch. Local Perl configuration checks passed; the current remote Overleaf compilation has not been independently verified.
-- `main.tex` is a compatibility entry. Edit the descriptive `ai4ai4cell-main.tex` orchestration file and prose under `sections/`.
-- Bibliography: `references.bib`. Editable figure source: `assets/method_diagram.svg`; the manuscript includes its vector PDF.
-- Local build: `tectonic --only-cached --keep-intermediates --keep-logs --outdir build main.tex` with Tectonic 0.17.0. Without a populated TeX cache, omit `--only-cached` to obtain compiler packages. Alternatively use XeLaTeX, BibTeX, and two further XeLaTeX passes.
-- The named reading copy is `manuscript.pdf`; compiler output lives under `build/`. Export tools exclude both from the paper-only source ZIP.
+## Refreshing the aggregate snapshot
 
-## Scope and source migration
+First run `extensions/unified_bio_20260918/audit_v3.py` in the separate parent research workspace. Then, from this writing repository:
 
-The source was initially migrated from the legacy final-study release. All 28 historical numeric table rows remain unchanged. The main method distinguishes outer executable-design research from inner task-weight fitting. Earlier partner-card studies only evaluated centrally fitted candidates; the new local-training study executes fixed logistic objectives through actual client loss/gradient aggregation. Direct and loop receive identical training access within each client-count condition. The research LLM remains fixed. Same-host execution and bounded diagnostics do not constitute differential privacy or secure aggregation.
+```bash
+python tools/publish_unified_snapshot.py --results /path/to/results/unified_bio_20260918
+python -m unittest discover -s tools -p 'test_*.py'
+```
 
-Detailed local migration, claim/evidence records, compilation and visual-review receipts live outside this paper-only project under `docs/overleaf/`. Full experiment/data manifests remain in the parent project's `results/` and `runtime/`; they are deliberately absent from this source bundle. Do not overwrite the frozen historical results to match future protocols.
+The publisher reads only completed, audited aggregate records. It does not train models, read raw biological arrays or perform test evaluation. The current exporter deliberately keeps final-test cells N/A; adding measured test results requires a separately validated test-export implementation. A refresh also requires checking the narrative and snapshot date, compiling, and reviewing the rendered PDF. Figures remain vector/editable assets.
 
-## Asset provenance
+## Scope and publication
 
-The ICLR 2027 style, bibliography style, `natbib.sty`, and `fancyhdr.sty` are unchanged assets from the earlier project. The draft status text is explicitly patched in the orchestration file; using this style does not imply submission or acceptance. Four unchanged TeX Gyre Termes OpenType fonts (2.501) are bundled with their GUST Font License. The method figure is original project vector artwork and contains no raw biological measurements.
+This writing repository does not include the full experiment runtime, raw biological data, model checkpoints or the supplied Nature PDF. It is not a standalone reproducible benchmark release. Federated training is a one-host laboratory simulation, not differential privacy or secure aggregation. Existing benchmark test roles were previously examined in historical studies.
 
-The paper-only source excludes raw biological data, checkpoints, runtime logs, credentials, and the supplied Nature PDF. The working-tree origin is https://github.com/yukai2007/AI4AI4Cell_ICLR; the user also requested a copy at https://github.com/yukai2007/AI4AI4Cell, their Overleaf-linked writing repository. Both use branch main. Check collaborator changes before publication, review and compile the diff, and use normal fast-forward pushes. A GitHub push does not establish an Overleaf pull or remote compilation. Do not publish an editable Overleaf sharing link in this public repository.
+The user's Overleaf-linked writing repository is `https://github.com/yukai2007/AI4AI4Cell`, branch `main`. The local configured origin may still point to the historical `_ICLR` repository; verify the explicit destination before publication. Fetch collaborator changes, review and compile the diff, and use normal fast-forward pushes. A GitHub push alone does not establish an Overleaf pull or remote compilation. Do not publish editable Overleaf sharing links.
+
+The template, bibliography styles and bundled TeX Gyre fonts retain their original licenses. Current and historical pipeline figures are original project vector artwork and contain no raw biological measurements.

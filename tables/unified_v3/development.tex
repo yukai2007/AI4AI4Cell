@@ -1,0 +1,22 @@
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{clrrrrr}
+\toprule
+Labs & Method & DTI & Proteomics & VCC & Norman & Tahoe \\
+ & & AUROC & AP & Top-1 & Top-1 & Top-1 \\
+\midrule
+1 & Fixed model & N/A & 56.89 & 13.00 & 12.50 & 25.00 \\
+1 & Direct & N/A & 54.97 & 18.29 & 20.70 & 18.33 \\
+1 & Our loop & N/A & 54.97 & 18.29 & 20.70 & 18.33 \\
+\midrule
+10 & Fixed model & N/A & \textbf{67.15} & 13.30 & \textbf{50.00} & 28.33 \\
+10 & Direct & N/A & \textbf{67.15} & \textbf{30.08} & \textbf{50.00} & \textbf{31.67} \\
+10 & Our loop & N/A & \textbf{67.15} & \textbf{30.08} & \textbf{50.00} & \textbf{31.67} \\
+\midrule
+1/10 & Cosine reference & N/A & N/A & N/A & N/A & N/A \\
+\bottomrule
+\end{tabular}
+\caption{Completed first-seed development results (seed 42), all metrics multiplied by 100; higher is better. AUROC/AP are equal-client means; cell scores are intervention-macro Top-1. Bold marks every column maximum, including ties. Unfinished studies and the pending cosine row are N/A, not zero-valued baselines. These are not final-test results or three-seed means.}
+\label{tab:unified-development}
+\end{table}
