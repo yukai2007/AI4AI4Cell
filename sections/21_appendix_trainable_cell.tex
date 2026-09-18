@@ -1,11 +1,14 @@
 \section*{Appendix Q. Trainable perturbation-identification pilots}
 \label{sec:trainable-cell}
+\setcounter{table}{0}
+\renewcommand{\thetable}{Q.\arabic{table}}
+\renewcommand{\theHtable}{Q.\arabic{table}}
 
 \paragraph{Task and scope.}
 Given an observed transcriptional response and five candidate interventions, the predictor selects the intervention that generated the response. We implement three strata: single-gene perturbations (VCC H1-hESC), double-gene overexpression (Norman), and chemical perturbations (Tahoe). These replace frozen-policy replay as the forward development target, but do not retroactively change any earlier scorer or result. Every stratum has ten disjoint simulated clients. All arms within a stratum use identical held-out queries and candidate rosters, sampled from identities before training. The primary metric is intervention-macro Top-1; micro Top-1, MRR, Top-3 and cosine-logit cross-entropy are secondary. The latter uses a fixed temperature of 0.1. The analytical uniform-random Top-1 expectation is 20\%.
 
 \paragraph{Data and grouping.}
-VCC uses 60/20/20 training/development/test interventions: the first two are a fixed split of the original train80, while the original validation20 supplies the retrospective pilot test. Each client owns six training and two development interventions. Training targets average all available cells within an intervention. Evaluation averages disjoint blocks of at most 64 cells, dropping residual blocks smaller than 16; 360 test queries represent 20 interventions, not 360 independent perturbations. Common untreated controls are explicitly a public reference. VCC targets are differences of mean log1p counts normalized to 10,000.
+VCC uses 60/20/20 training/development/test interventions: the first two are a fixed split of the original train80, while the original validation20 supplies the retrospective pilot test. Each client owns six training and two development interventions. Clients are balanced by intervention count, not raw cell count (5,204--12,158 training cells per client). Training targets average all available cells within an intervention. Evaluation averages disjoint blocks of at most 64 cells, dropping residual blocks smaller than 16; 360 test queries represent 20 interventions, not 360 independent perturbations. Common untreated controls are explicitly a public reference. VCC targets are differences of mean log1p counts normalized to 10,000.
 
 The official Norman release supplies 117 double-gene interventions, split 70/20/27 by whole gene pair; clients own seven training and two development pairs. We average the released profiles within each training pair. Test queries are 1,350 released scVI-derived differential-expression profiles for 27 pairs, not independently measured single cells. The task retains the release's log-fold-change target scale. The common untreated reference is constructed from designated public training-pool controls; perturbed responses remain private during fitting.
 
