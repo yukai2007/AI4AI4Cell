@@ -13,12 +13,12 @@
 \makeatother
 \begin{document}
 % Build with Tectonic 0.17.0 or XeLaTeX/BibTeX. No acceptance or submission is implied.
-\title{AI4AI4Cell: Federated Evidence-Guided Research for Biological Model Improvement}
+\title{AI4AI4Bio: Federated Evidence-Guided Research for Biological Model Improvement}
 \author{Anonymous}
 \date{}
 \maketitle
 \begin{abstract}
-Biological laboratories hold complementary measurements that could improve shared models without centralizing the underlying data. We present AI4AI4Cell, a federated research framework coupling executable-design revision with client-local parameter fitting. A fixed language model proposes and implements targeted changes; local trainers fit task weights, and aggregate evaluation evidence guides subsequent revisions. On the original DrugEvolve DTI splits, 100-epoch refits of loop-selected architectures improve mean unseen-drug AUROC by 0.0091 over native DrugEvolve. Combining a stronger backbone with development-selected retrieval raises random/unseen-drug/unseen-protein AUROC to 0.9710/0.9588/0.9317. In observed-response proteomics, expanding a fixed design from one to ten simulated clients raises mean final average precision from 0.3088 to 0.3699; native loop research reaches 0.3727. Twenty matched strong-start campaigns give both controllers identical improved designs: DTI ties direct generation, while proteomics exceeds its 0.3716 mean by 0.0011. These controls attribute the substantial gains to predictive design and local-data access, with a smaller, variable contribution from research organization. Across these tasks and exploratory cell policies, AI4AI4Cell lets locally held biological evidence improve both a shared executable design and its fitted parameters.
+Biological laboratories hold complementary measurements that could improve shared models without centralizing the underlying data. We introduce AI4AI4Bio, a federated agentic research framework coupling client-local parameter learning with iterative model-design improvement. An inner training process aggregates locally computed updates; an outer research loop uses evaluation summaries to formulate hypotheses, revise executable designs, and select subsequent candidates. On the original DrugEvolve DTI splits, full-training refits of loop-selected architectures improve mean unseen-drug AUROC by 0.0091 over native DrugEvolve. A stronger development-selected predictor reaches random/unseen-drug/unseen-protein AUROC of 0.9710/0.9588/0.9317. In observed-response proteomics, expanding a fixed design from one to ten simulated clients raises mean final average precision from 0.3088 to 0.3699; loop research reaches 0.3727. Matched strong-start controls attribute most gains to predictive design and data availability rather than an established controller advantage. Trainable cell pilots extend the framework to single-gene, double-gene, and drug perturbation identification, with mixed initial performance. AI4AI4Bio enables distributed biological measurements to contribute to both shared model parameters and computational designs without transferring raw responses to the research LLM.
 \end{abstract}
 
 \input{sections/01_introduction}
@@ -84,5 +84,8 @@ Biological laboratories hold complementary measurements that could improve share
 
 \clearpage
 \input{sections/20_appendix_strong_start}
+
+\clearpage
+\input{sections/21_appendix_trainable_cell}
 
 \end{document}

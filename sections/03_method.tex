@@ -11,7 +11,7 @@ where $\mathcal K$ denotes participating clients, $\widetilde a_t$ a proposed so
 \begin{figure}[t]
 \centering
 \includegraphics[width=\linewidth]{assets/method_diagram.pdf}
-\caption{End-to-end pipeline. (A) Hypothesize, implement, evaluate, retain and revise. (B) Proteomics clients keep separate local datasets, receive source/weights and return loss/gradient/count for fitting; only scores/diagnostics reach the LLM. Labs are simulated on one host. (C) Task adapters share the research interface, not their training mode or metrics.}
+\caption{End-to-end pipeline. (A) Hypothesize, implement, evaluate, retain and revise. (B) Simulated clients keep separate response datasets and return gradients (proteomics) or fitted head weights (cell pilots); only evaluation summaries reach the LLM. (C) Task adapters share the research interface, not their training mode or metrics. DTI remains a centralized training/transfer study.}
 \label{fig:research-interface}
 \end{figure}
 
@@ -20,7 +20,7 @@ At round $t$, the proposer uses the task contract, shared agenda, retained sourc
 
 Retention requires both declared criteria to improve by more than $10^{-4}$: development/gate AP for the initial proteomics study, pooled out-of-fold/minimum-fold AP for its CV revision, and two validation-half AUROCs for fixed-predictor DTI. Native assessments cannot override this numerical selector. Harness-free generation uses the same task and selector but emits candidates directly, without separate hypothesis, implementation, review or memory stages.
 
-Measured loop attempts link hypothesis, source diff, parent, evaluator receipt, scores and decision. Failures inform subsequent proposals through separate receipts and need not appear in matched measurement history. These links expose what ran, why it was retained and which source was inherited. Direct candidates retain executable/measurement identities without separate hypotheses. Source inspection establishes the computation; measured outcomes, not the LLM's explanation, test its effect.
+Measured native loop attempts link hypothesis, source diff, parent, evaluator receipt, scores and decision. Failures inform subsequent proposals through separate receipts and need not appear in matched measurement history. These links expose what ran, why it was retained and which source was inherited. Native direct candidates omit separate hypotheses. The new bounded cell prototype instead shares a proposal format and varies feedback access (Appendix Q). Source inspection establishes the computation; measured outcomes, not the LLM's explanation, test its effect.
 
 \subsection*{3.3 Local training and evidence transfer}
 In the proteomics training adapter, $a$ specifies a stateless feature map $\phi_a$. Each client evaluates it on local protein responses and compound features. With $z=w^\top\phi_a(x)+b$, the fixed inner objective is logistic loss with coefficient penalty:
@@ -36,4 +36,4 @@ The historical evidence-only adapters instead train centrally and use partner di
 The biological motivation is access to complementary measurements under sharing constraints \citep{Sheller2020}. Direct generation receives the same client access as the loop within each condition. Crossing both controllers with one and ten clients separates research organization from data availability; fixed-feature references isolate the latter effect without source search.
 
 \subsection*{3.4 Execution boundary}
-Validated candidate workers deny file opens, networking and new processes after initialization. Fixed scorers, trainers and orchestration are trusted. In this same-host simulation, the dispatch service can read shard bytes for integrity checks even though the optimizer exchanges aggregates. This is not independently administered cross-institutional deployment, differential privacy or secure aggregation. The same execution boundary applies to direct generation and loop research.
+The original source-search workers deny file opens, networking and new processes after initialization; fixed scorers, trainers and orchestration are trusted. The new cell prototype instead accepts bounded configurations and runs persistent client workers, without claiming an adversarial filesystem sandbox. It averages locally trained head parameters with FedAvg. Offline packaging simulates institutions on one host; fitting exchanges updates and scalar summaries, not raw responses. Neither implementation provides differential privacy or secure aggregation. Direct and loop arms share the boundary within each study.

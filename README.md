@@ -1,6 +1,25 @@
-# AI4AI4Cell manuscript
+# AI4AI4Bio manuscript
 
-Title: **AI4AI4Cell: Federated Evidence-Guided Research for Biological Model Improvement**.
+Title: **AI4AI4Bio: Federated Evidence-Guided Research for Biological Model Improvement**.
+
+## 18 September: trainable cell pilots
+
+Cell development now targets five-option perturbation identification for VCC
+single-gene, Norman double-gene and Tahoe drug responses. Appendix Q reports
+all 18 arm evaluations from 33 actual head fits and 27 local Qwen proposals.
+The same Qwen2.5-7B checkpoint drives direct and feedback-guided head search;
+ten local workers perform FedAvg. These are one-seed, 20-round integration
+pilots, not fully converged or SOTA experiments. VCC is below chance; Tahoe
+improves with ten-client access, while fixed and loop federated heads tie in
+Top-1. The bounded head-search prototype is not the archived native harness.
+The new drug-conditioning adapter is explicitly distinguished from native
+scDEBART genetic inputs. Earlier results and scorers remain unchanged.
+
+Generated tables and verified aggregate metrics are in
+`tables/trainable_cell_pilot.tex` and `tables/trainable_cell_pilot_results.json`.
+The local implementation is `../extensions/federated_bio_20260918/`.
+The figure now includes trainable perturbation identification; DTI is still
+centralized and has not been rerun as a new ten-client training benchmark.
 
 This is an editable, result-bearing research draft, not a submitted/accepted article. The completed performance-first revision connects executable-design research with actual client-local gradient training. It includes all 21 full-data, 100-epoch BAN-family refits, five complete TAPB fits, DTI probability-program research, unchanged-program transfer to TAPB, matched training-pool cosine references and a 24-trajectory comparison with native Helmsman. The ten-method DTI overview uses the original scorer and all three test splits. Our selected BAN architectures lead that family in mean AUROC; program transfer improves TAPB without new training or search. Direct-generation and manual-fusion controls identify where those gains arise, and do not establish universal loop superiority or broad SOTA. The earlier Cell, DTI and PTPC studies remain preserved. The named local PDF is updated only after the corresponding manuscript build and review.
 

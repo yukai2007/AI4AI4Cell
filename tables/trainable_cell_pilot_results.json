@@ -1,0 +1,230 @@
+{
+  "vcc_pilot": {
+    "passed": true,
+    "groups": [
+      60,
+      20,
+      20
+    ],
+    "test_queries": 360,
+    "results": {
+      "single_fixed": {
+        "accuracy": 0.13055555555555556,
+        "macro_accuracy": 0.1313870466289821,
+        "mrr": 0.4003703703703704,
+        "top3": 0.5638888888888889,
+        "cross_entropy": 1.6537366294167055,
+        "n_queries": 360,
+        "n_interventions": 20
+      },
+      "federated_fixed": {
+        "accuracy": 0.13333333333333333,
+        "macro_accuracy": 0.13814955641568544,
+        "mrr": 0.40101851851851855,
+        "top3": 0.525,
+        "cross_entropy": 1.6672499941686176,
+        "n_queries": 360,
+        "n_interventions": 20
+      },
+      "single_direct": {
+        "accuracy": 0.13055555555555556,
+        "macro_accuracy": 0.1313870466289821,
+        "mrr": 0.4003703703703704,
+        "top3": 0.5638888888888889,
+        "cross_entropy": 1.6537366294167055,
+        "n_queries": 360,
+        "n_interventions": 20
+      },
+      "single_loop": {
+        "accuracy": 0.14444444444444443,
+        "macro_accuracy": 0.13852492850476722,
+        "mrr": 0.4102314814814815,
+        "top3": 0.5694444444444444,
+        "cross_entropy": 1.646369224484582,
+        "n_queries": 360,
+        "n_interventions": 20
+      },
+      "federated_loop": {
+        "accuracy": 0.13333333333333333,
+        "macro_accuracy": 0.13814955641568544,
+        "mrr": 0.4005555555555555,
+        "top3": 0.525,
+        "cross_entropy": 1.6674975759745243,
+        "n_queries": 360,
+        "n_interventions": 20
+      },
+      "public_pretrained": {
+        "accuracy": 0.1527777777777778,
+        "macro_accuracy": 0.1403268168187523,
+        "mrr": 0.4086574074074074,
+        "top3": 0.525,
+        "cross_entropy": 1.6364842639754404,
+        "n_queries": 360,
+        "n_interventions": 20
+      }
+    },
+    "federated_loop_minus_single_fixed_macro": 0.006762509786703336,
+    "paired_intervention_bootstrap95": [
+      -0.021514088960661544,
+      0.036569525707630515
+    ],
+    "llm_calls": 9,
+    "llm_output_tokens": 1348,
+    "physical_fits": 11,
+    "training_seconds_sum": 27.954839233774692,
+    "model_update_bytes_sum": 3106624480,
+    "invalid_proposals": 0
+  },
+  "norman_double_pilot": {
+    "passed": true,
+    "groups": [
+      70,
+      20,
+      27
+    ],
+    "test_queries": 1350,
+    "results": {
+      "single_fixed": {
+        "accuracy": 0.18518518518518517,
+        "macro_accuracy": 0.18518518518518517,
+        "mrr": 0.473,
+        "top3": 0.7037037037037037,
+        "cross_entropy": 1.5824307531781798,
+        "n_queries": 1350,
+        "n_interventions": 27
+      },
+      "federated_fixed": {
+        "accuracy": 0.2222222222222222,
+        "macro_accuracy": 0.2222222222222222,
+        "mrr": 0.47677777777777786,
+        "top3": 0.6777777777777778,
+        "cross_entropy": 1.582161316970073,
+        "n_queries": 1350,
+        "n_interventions": 27
+      },
+      "single_direct": {
+        "accuracy": 0.18518518518518517,
+        "macro_accuracy": 0.18518518518518517,
+        "mrr": 0.473,
+        "top3": 0.7037037037037037,
+        "cross_entropy": 1.5824307531781798,
+        "n_queries": 1350,
+        "n_interventions": 27
+      },
+      "single_loop": {
+        "accuracy": 0.18518518518518517,
+        "macro_accuracy": 0.18518518518518517,
+        "mrr": 0.473,
+        "top3": 0.7037037037037037,
+        "cross_entropy": 1.5824307531781798,
+        "n_queries": 1350,
+        "n_interventions": 27
+      },
+      "federated_loop": {
+        "accuracy": 0.2222222222222222,
+        "macro_accuracy": 0.2222222222222222,
+        "mrr": 0.4787037037037037,
+        "top3": 0.6940740740740741,
+        "cross_entropy": 1.5832238344314074,
+        "n_queries": 1350,
+        "n_interventions": 27
+      },
+      "public_pretrained": {
+        "accuracy": 0.17851851851851852,
+        "macro_accuracy": 0.1785185185185185,
+        "mrr": 0.45554320987654323,
+        "top3": 0.6192592592592593,
+        "cross_entropy": 1.6204064160539808,
+        "n_queries": 1350,
+        "n_interventions": 27
+      }
+    },
+    "federated_loop_minus_single_fixed_macro": 0.037037037037037035,
+    "paired_intervention_bootstrap95": [
+      -0.11333333333333334,
+      0.18740740740740738
+    ],
+    "llm_calls": 9,
+    "llm_output_tokens": 1562,
+    "physical_fits": 11,
+    "training_seconds_sum": 35.36806660471484,
+    "model_update_bytes_sum": 3023830720,
+    "invalid_proposals": 0
+  },
+  "tahoe_drug_pilot": {
+    "passed": true,
+    "groups": [
+      180,
+      60,
+      67
+    ],
+    "test_queries": 67,
+    "results": {
+      "single_fixed": {
+        "accuracy": 0.13432835820895522,
+        "macro_accuracy": 0.13432835820895522,
+        "mrr": 0.41567164179104477,
+        "top3": 0.5671641791044776,
+        "cross_entropy": 1.712308174130715,
+        "n_queries": 67,
+        "n_interventions": 67
+      },
+      "federated_fixed": {
+        "accuracy": 0.2835820895522388,
+        "macro_accuracy": 0.2835820895522388,
+        "mrr": 0.5176616915422886,
+        "top3": 0.6567164179104478,
+        "cross_entropy": 1.5879401838093168,
+        "n_queries": 67,
+        "n_interventions": 67
+      },
+      "single_direct": {
+        "accuracy": 0.13432835820895522,
+        "macro_accuracy": 0.13432835820895522,
+        "mrr": 0.41567164179104477,
+        "top3": 0.5671641791044776,
+        "cross_entropy": 1.712308174130715,
+        "n_queries": 67,
+        "n_interventions": 67
+      },
+      "single_loop": {
+        "accuracy": 0.13432835820895522,
+        "macro_accuracy": 0.13432835820895522,
+        "mrr": 0.41567164179104477,
+        "top3": 0.5671641791044776,
+        "cross_entropy": 1.712308174130715,
+        "n_queries": 67,
+        "n_interventions": 67
+      },
+      "federated_loop": {
+        "accuracy": 0.2835820895522388,
+        "macro_accuracy": 0.2835820895522388,
+        "mrr": 0.5171641791044777,
+        "top3": 0.6716417910447762,
+        "cross_entropy": 1.5864866741579962,
+        "n_queries": 67,
+        "n_interventions": 67
+      },
+      "public_pretrained": {
+        "accuracy": 0.208955223880597,
+        "macro_accuracy": 0.208955223880597,
+        "mrr": 0.4669154228855722,
+        "top3": 0.6417910447761194,
+        "cross_entropy": 1.6094379124341003,
+        "n_queries": 67,
+        "n_interventions": 67
+      }
+    },
+    "federated_loop_minus_single_fixed_macro": 0.14925373134328357,
+    "paired_intervention_bootstrap95": [
+      0.014925373134328358,
+      0.2835820895522388
+    ],
+    "llm_calls": 9,
+    "llm_output_tokens": 1774,
+    "physical_fits": 11,
+    "training_seconds_sum": 45.32204235903919,
+    "model_update_bytes_sum": 3567873120,
+    "invalid_proposals": 0
+  }
+}

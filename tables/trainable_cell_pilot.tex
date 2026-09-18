@@ -1,0 +1,51 @@
+\begin{table}[htbp]
+\centering\small
+\caption{First-pass five-option perturbation identification. Entries are intervention-macro Top-1 (\%). Bold marks the highest measured value in each column, including ties; it does not imply SOTA or significance. Uniform random is an analytical expectation.}
+\label{tab:trainable-cell-pilot}
+\begin{tabular}{lrrr}
+\toprule
+Method & VCC single & Norman double & Tahoe drug \\
+\midrule
+Public head + cosine & \textbf{14.03} & 17.85 & 20.90 \\
+1 lab, fixed head & 13.14 & 18.52 & 13.43 \\
+1 lab, Qwen direct & 13.14 & 18.52 & 13.43 \\
+1 lab, Qwen loop & 13.85 & 18.52 & 13.43 \\
+10 labs, fixed head & 13.81 & \textbf{22.22} & \textbf{28.36} \\
+10 labs, Qwen loop & 13.81 & \textbf{22.22} & \textbf{28.36} \\
+\midrule
+Uniform random expectation & 20.00 & 20.00 & 20.00 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{longtable}{lrrrrr}
+\caption{Complete pilot metrics. Accuracy columns and Top-3 are percentages. MRR is higher-is-better; cross-entropy (CE) is lower-is-better.}\\
+\toprule Method & Macro Top-1 & Micro Top-1 & MRR & Top-3 & CE \\ \midrule
+\endfirsthead
+\toprule Method & Macro Top-1 & Micro Top-1 & MRR & Top-3 & CE \\ \midrule
+\endhead
+\multicolumn{6}{l}{\textit{VCC: 20 interventions, 360 queries}} \\
+Public head + cosine & \textbf{14.03} & \textbf{15.28} & 0.4087 & 52.50 & \textbf{1.6365} \\
+1 lab, fixed head & 13.14 & 13.06 & 0.4004 & 56.39 & 1.6537 \\
+1 lab, Qwen direct & 13.14 & 13.06 & 0.4004 & 56.39 & 1.6537 \\
+1 lab, Qwen loop & 13.85 & 14.44 & \textbf{0.4102} & \textbf{56.94} & 1.6464 \\
+10 labs, fixed head & 13.81 & 13.33 & 0.4010 & 52.50 & 1.6672 \\
+10 labs, Qwen loop & 13.81 & 13.33 & 0.4006 & 52.50 & 1.6675 \\
+\midrule
+\multicolumn{6}{l}{\textit{Norman: 27 pairs, 1350 profiles}} \\
+Public head + cosine & 17.85 & 17.85 & 0.4555 & 61.93 & 1.6204 \\
+1 lab, fixed head & 18.52 & 18.52 & 0.4730 & \textbf{70.37} & 1.5824 \\
+1 lab, Qwen direct & 18.52 & 18.52 & 0.4730 & \textbf{70.37} & 1.5824 \\
+1 lab, Qwen loop & 18.52 & 18.52 & 0.4730 & \textbf{70.37} & 1.5824 \\
+10 labs, fixed head & \textbf{22.22} & \textbf{22.22} & 0.4768 & 67.78 & \textbf{1.5822} \\
+10 labs, Qwen loop & \textbf{22.22} & \textbf{22.22} & \textbf{0.4787} & 69.41 & 1.5832 \\
+\midrule
+\multicolumn{6}{l}{\textit{Tahoe: 67 drugs, 67 queries}} \\
+Public head + cosine & 20.90 & 20.90 & 0.4669 & 64.18 & 1.6094 \\
+1 lab, fixed head & 13.43 & 13.43 & 0.4157 & 56.72 & 1.7123 \\
+1 lab, Qwen direct & 13.43 & 13.43 & 0.4157 & 56.72 & 1.7123 \\
+1 lab, Qwen loop & 13.43 & 13.43 & 0.4157 & 56.72 & 1.7123 \\
+10 labs, fixed head & \textbf{28.36} & \textbf{28.36} & \textbf{0.5177} & 65.67 & 1.5879 \\
+10 labs, Qwen loop & \textbf{28.36} & \textbf{28.36} & 0.5172 & \textbf{67.16} & \textbf{1.5865} \\
+\midrule
+\end{longtable}
