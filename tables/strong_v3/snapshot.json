@@ -1,0 +1,2575 @@
+{
+  "snapshot_utc": "2026-09-18T08:31:52.907181+00:00",
+  "role": "retrospective held-out; prior historical exposure; not blind confirmation",
+  "seeds_requested": [
+    42,
+    43,
+    44
+  ],
+  "model_version_policy": "/liziqing/yukai/AI4AI4Cell/docs/model_selection_20260918/MAIN_PROTOCOL_DECISION.md",
+  "model_version_policy_sha256": "7349f09212889b538c4a4746126f894809b6bde3b9c27dfe19f6e4c6181c3842",
+  "selection_on_heldout": false,
+  "tasks": {
+    "native_tapb": {
+      "label": "DTI",
+      "model": "TAPB; random task weights with public frozen features",
+      "runs": {
+        "42": null,
+        "43": null,
+        "44": null
+      },
+      "pending": {
+        "42": "complete verified six-arm evaluation not available",
+        "43": "complete verified six-arm evaluation not available",
+        "44": "complete verified six-arm evaluation not available"
+      }
+    },
+    "ptpc_neural": {
+      "label": "Proteomics",
+      "model": "ProteinTalks-derived observed-response efficacy head (adapted)",
+      "runs": {
+        "42": {
+          "scores": {
+            "single_fixed": {
+              "primary": 0.2396505407073914,
+              "secondary": {
+                "n_rows": 148,
+                "n_labeled": 148,
+                "n_missing_label": 0,
+                "n_positive": 22,
+                "ap": 0.2396505407073914,
+                "auroc": 0.6594516594516595,
+                "accuracy_at_0_5": 0.8513513513513513,
+                "bce": 0.4226827160041012,
+                "undefined_reason": null
+              }
+            },
+            "single_direct": {
+              "primary": 0.20212685836749988,
+              "secondary": {
+                "n_rows": 148,
+                "n_labeled": 148,
+                "n_missing_label": 0,
+                "n_positive": 22,
+                "ap": 0.20212685836749988,
+                "auroc": 0.6168831168831169,
+                "accuracy_at_0_5": 0.7905405405405406,
+                "bce": 0.4497950478149368,
+                "undefined_reason": null
+              }
+            },
+            "single_loop": {
+              "primary": 0.20212685836749988,
+              "secondary": {
+                "n_rows": 148,
+                "n_labeled": 148,
+                "n_missing_label": 0,
+                "n_positive": 22,
+                "ap": 0.20212685836749988,
+                "auroc": 0.6168831168831169,
+                "accuracy_at_0_5": 0.7905405405405406,
+                "bce": 0.4497950478149368,
+                "undefined_reason": null
+              }
+            },
+            "federated_fixed": {
+              "primary": 0.37122571638534896,
+              "secondary": {
+                "n_rows": 148,
+                "n_labeled": 148,
+                "n_missing_label": 0,
+                "n_positive": 22,
+                "ap": 0.37122571638534896,
+                "auroc": 0.7402597402597403,
+                "accuracy_at_0_5": 0.8513513513513513,
+                "bce": 0.40010039913478024,
+                "undefined_reason": null
+              }
+            },
+            "federated_direct": {
+              "primary": 0.37122571638534896,
+              "secondary": {
+                "n_rows": 148,
+                "n_labeled": 148,
+                "n_missing_label": 0,
+                "n_positive": 22,
+                "ap": 0.37122571638534896,
+                "auroc": 0.7402597402597403,
+                "accuracy_at_0_5": 0.8513513513513513,
+                "bce": 0.4001006234394519,
+                "undefined_reason": null
+              }
+            },
+            "federated_loop": {
+              "primary": 0.37122571638534896,
+              "secondary": {
+                "n_rows": 148,
+                "n_labeled": 148,
+                "n_missing_label": 0,
+                "n_positive": 22,
+                "ap": 0.37122571638534896,
+                "auroc": 0.7402597402597403,
+                "accuracy_at_0_5": 0.8513513513513513,
+                "bce": 0.4001006234394519,
+                "undefined_reason": null
+              }
+            }
+          },
+          "uncertainty": {
+            "arms": {
+              "single_fixed": {
+                "ci95": [
+                  0.11074480916631689,
+                  0.4063635435675764
+                ],
+                "valid_replicates": 1000
+              },
+              "single_direct": {
+                "ci95": [
+                  0.08655452161192408,
+                  0.3388503429923211
+                ],
+                "valid_replicates": 1000
+              },
+              "single_loop": {
+                "ci95": [
+                  0.08655452161192408,
+                  0.3388503429923211
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_fixed": {
+                "ci95": [
+                  0.18998622066637513,
+                  0.5399623638508737
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_direct": {
+                "ci95": [
+                  0.18998622066637513,
+                  0.5399623638508737
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_loop": {
+                "ci95": [
+                  0.18998622066637513,
+                  0.5399623638508737
+                ],
+                "valid_replicates": 1000
+              }
+            },
+            "effects": {
+              "loop_single": {
+                "arms": [
+                  "single_loop",
+                  "single_direct"
+                ],
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "loop_federated": {
+                "arms": [
+                  "federated_loop",
+                  "federated_direct"
+                ],
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_fixed": {
+                "arms": [
+                  "federated_fixed",
+                  "single_fixed"
+                ],
+                "difference": 0.13157517567795757,
+                "ci95": [
+                  -0.0039059103813917015,
+                  0.2602339512461926
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_direct": {
+                "arms": [
+                  "federated_direct",
+                  "single_direct"
+                ],
+                "difference": 0.16909885801784907,
+                "ci95": [
+                  0.033702360066047043,
+                  0.3102494003697314
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_loop": {
+                "arms": [
+                  "federated_loop",
+                  "single_loop"
+                ],
+                "difference": 0.16909885801784907,
+                "ci95": [
+                  0.033702360066047043,
+                  0.3102494003697314
+                ],
+                "valid_replicates": 1000
+              },
+              "loop_vs_fixed_federated": {
+                "arms": [
+                  "federated_loop",
+                  "federated_fixed"
+                ],
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "main_harness_vs_fixed": {
+                "arms": [
+                  "federated_loop",
+                  "single_fixed"
+                ],
+                "difference": 0.13157517567795757,
+                "ci95": [
+                  -0.0039059103813917015,
+                  0.2602339512461926
+                ],
+                "valid_replicates": 1000
+              },
+              "main_harness_vs_direct": {
+                "arms": [
+                  "federated_loop",
+                  "single_direct"
+                ],
+                "difference": 0.16909885801784907,
+                "ci95": [
+                  0.033702360066047043,
+                  0.3102494003697314
+                ],
+                "valid_replicates": 1000
+              }
+            },
+            "clusters": 92,
+            "method": "paired cluster bootstrap, percentile 95%, 1000 requested replicates; fixed trained models"
+          },
+          "primary_metric": "ap",
+          "receipts": {
+            "heldout_ptpc_neural/seed42/results.json": "c55a876ec64d780529c76e5c4fc112cdc7c2d64fd50285735591a81733e167c1",
+            "heldout_ptpc_neural/seed42/seal.json": "e0becdec9399fcb5a8db0e03d110558d09d27eaf5d91a0051032409fc2bffcee",
+            "heldout_ptpc_neural/seed42/audit.json": "bfc53af7674f0caab1b421f2dee9ae9ef6ac80f625857cd107f4ecda0526db42",
+            "heldout_ptpc_neural/seed42/verification.json": "cd9a48f3f2c9b44714cbc8c977a752de074d189d75a49f78ab9c3373fac41056",
+            "ptpc_neural/study_v3_seed42/neural_registration.json": "6d6f448ec95740eb97ddce484fc272b3018f41c4e85c1c387c5e1b3d57b6b205"
+          },
+          "model_version_receipt": null,
+          "model": "ProteinTalks-derived observed-response efficacy head (adapted)",
+          "endpoints": null
+        },
+        "43": {
+          "scores": {
+            "single_fixed": {
+              "primary": 0.21123518202682223,
+              "secondary": {
+                "n_rows": 148,
+                "n_labeled": 148,
+                "n_missing_label": 0,
+                "n_positive": 22,
+                "ap": 0.21123518202682223,
+                "auroc": 0.6396103896103896,
+                "accuracy_at_0_5": 0.8513513513513513,
+                "bce": 0.43595081794986135,
+                "undefined_reason": null
+              }
+            },
+            "single_direct": {
+              "primary": 0.20081894695272912,
+              "secondary": {
+                "n_rows": 148,
+                "n_labeled": 148,
+                "n_missing_label": 0,
+                "n_positive": 22,
+                "ap": 0.20081894695272912,
+                "auroc": 0.6183261183261183,
+                "accuracy_at_0_5": 0.8175675675675675,
+                "bce": 0.4477169363220694,
+                "undefined_reason": null
+              }
+            },
+            "single_loop": {
+              "primary": 0.20081894695272912,
+              "secondary": {
+                "n_rows": 148,
+                "n_labeled": 148,
+                "n_missing_label": 0,
+                "n_positive": 22,
+                "ap": 0.20081894695272912,
+                "auroc": 0.6183261183261183,
+                "accuracy_at_0_5": 0.8175675675675675,
+                "bce": 0.4477169363220694,
+                "undefined_reason": null
+              }
+            },
+            "federated_fixed": {
+              "primary": 0.3710822812416906,
+              "secondary": {
+                "n_rows": 148,
+                "n_labeled": 148,
+                "n_missing_label": 0,
+                "n_positive": 22,
+                "ap": 0.3710822812416906,
+                "auroc": 0.7391774891774893,
+                "accuracy_at_0_5": 0.8513513513513513,
+                "bce": 0.3970389774646117,
+                "undefined_reason": null
+              }
+            },
+            "federated_direct": {
+              "primary": 0.3710822812416906,
+              "secondary": {
+                "n_rows": 148,
+                "n_labeled": 148,
+                "n_missing_label": 0,
+                "n_positive": 22,
+                "ap": 0.3710822812416906,
+                "auroc": 0.7391774891774893,
+                "accuracy_at_0_5": 0.8513513513513513,
+                "bce": 0.3970389774646117,
+                "undefined_reason": null
+              }
+            },
+            "federated_loop": {
+              "primary": 0.3710822812416906,
+              "secondary": {
+                "n_rows": 148,
+                "n_labeled": 148,
+                "n_missing_label": 0,
+                "n_positive": 22,
+                "ap": 0.3710822812416906,
+                "auroc": 0.7391774891774893,
+                "accuracy_at_0_5": 0.8513513513513513,
+                "bce": 0.3970389774646117,
+                "undefined_reason": null
+              }
+            }
+          },
+          "uncertainty": {
+            "arms": {
+              "single_fixed": {
+                "ci95": [
+                  0.10099059517073608,
+                  0.36864836242656096
+                ],
+                "valid_replicates": 1000
+              },
+              "single_direct": {
+                "ci95": [
+                  0.08594659032793579,
+                  0.3374787385160874
+                ],
+                "valid_replicates": 1000
+              },
+              "single_loop": {
+                "ci95": [
+                  0.08594659032793579,
+                  0.3374787385160874
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_fixed": {
+                "ci95": [
+                  0.18950400107055654,
+                  0.5403654397052557
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_direct": {
+                "ci95": [
+                  0.18950400107055654,
+                  0.5403654397052557
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_loop": {
+                "ci95": [
+                  0.18950400107055654,
+                  0.5403654397052557
+                ],
+                "valid_replicates": 1000
+              }
+            },
+            "effects": {
+              "loop_single": {
+                "arms": [
+                  "single_loop",
+                  "single_direct"
+                ],
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "loop_federated": {
+                "arms": [
+                  "federated_loop",
+                  "federated_direct"
+                ],
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_fixed": {
+                "arms": [
+                  "federated_fixed",
+                  "single_fixed"
+                ],
+                "difference": 0.1598470992148684,
+                "ci95": [
+                  0.012897595138161253,
+                  0.2900259700348633
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_direct": {
+                "arms": [
+                  "federated_direct",
+                  "single_direct"
+                ],
+                "difference": 0.1702633342889615,
+                "ci95": [
+                  0.03343381954850129,
+                  0.31437121415248426
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_loop": {
+                "arms": [
+                  "federated_loop",
+                  "single_loop"
+                ],
+                "difference": 0.1702633342889615,
+                "ci95": [
+                  0.03343381954850129,
+                  0.31437121415248426
+                ],
+                "valid_replicates": 1000
+              },
+              "loop_vs_fixed_federated": {
+                "arms": [
+                  "federated_loop",
+                  "federated_fixed"
+                ],
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "main_harness_vs_fixed": {
+                "arms": [
+                  "federated_loop",
+                  "single_fixed"
+                ],
+                "difference": 0.1598470992148684,
+                "ci95": [
+                  0.012897595138161253,
+                  0.2900259700348633
+                ],
+                "valid_replicates": 1000
+              },
+              "main_harness_vs_direct": {
+                "arms": [
+                  "federated_loop",
+                  "single_direct"
+                ],
+                "difference": 0.1702633342889615,
+                "ci95": [
+                  0.03343381954850129,
+                  0.31437121415248426
+                ],
+                "valid_replicates": 1000
+              }
+            },
+            "clusters": 92,
+            "method": "paired cluster bootstrap, percentile 95%, 1000 requested replicates; fixed trained models"
+          },
+          "primary_metric": "ap",
+          "receipts": {
+            "heldout_ptpc_neural/seed43/results.json": "0eaea381903322058947b382bdf3a16963ca0ecfc2207ae14b1521156d12bf89",
+            "heldout_ptpc_neural/seed43/seal.json": "84814e1a6b312b6d5b4ccb550c9dbca44e46e2459cc964da180c7ba569027c95",
+            "heldout_ptpc_neural/seed43/audit.json": "bfc53af7674f0caab1b421f2dee9ae9ef6ac80f625857cd107f4ecda0526db42",
+            "heldout_ptpc_neural/seed43/verification.json": "7c330c84ad6f23d2cf46b0961e814a8509e9c1236f8ada43bcbe2875c9dde56c",
+            "ptpc_neural/study_v3_seed43/neural_registration.json": "6d6f448ec95740eb97ddce484fc272b3018f41c4e85c1c387c5e1b3d57b6b205"
+          },
+          "model_version_receipt": null,
+          "model": "ProteinTalks-derived observed-response efficacy head (adapted)",
+          "endpoints": null
+        },
+        "44": {
+          "scores": {
+            "single_fixed": {
+              "primary": 0.300480174354729,
+              "secondary": {
+                "n_rows": 148,
+                "n_labeled": 148,
+                "n_missing_label": 0,
+                "n_positive": 22,
+                "ap": 0.300480174354729,
+                "auroc": 0.6655844155844156,
+                "accuracy_at_0_5": 0.8513513513513513,
+                "bce": 0.4207649575059726,
+                "undefined_reason": null
+              }
+            },
+            "single_direct": {
+              "primary": 0.20103243378788083,
+              "secondary": {
+                "n_rows": 148,
+                "n_labeled": 148,
+                "n_missing_label": 0,
+                "n_positive": 22,
+                "ap": 0.20103243378788083,
+                "auroc": 0.6186868686868686,
+                "accuracy_at_0_5": 0.8445945945945946,
+                "bce": 0.4327393799575528,
+                "undefined_reason": null
+              }
+            },
+            "single_loop": {
+              "primary": 0.20103243378788083,
+              "secondary": {
+                "n_rows": 148,
+                "n_labeled": 148,
+                "n_missing_label": 0,
+                "n_positive": 22,
+                "ap": 0.20103243378788083,
+                "auroc": 0.6186868686868686,
+                "accuracy_at_0_5": 0.8445945945945946,
+                "bce": 0.4327393799575528,
+                "undefined_reason": null
+              }
+            },
+            "federated_fixed": {
+              "primary": 0.369746757981547,
+              "secondary": {
+                "n_rows": 148,
+                "n_labeled": 148,
+                "n_missing_label": 0,
+                "n_positive": 22,
+                "ap": 0.369746757981547,
+                "auroc": 0.7424242424242424,
+                "accuracy_at_0_5": 0.8513513513513513,
+                "bce": 0.39628390834697114,
+                "undefined_reason": null
+              }
+            },
+            "federated_direct": {
+              "primary": 0.3673186513685702,
+              "secondary": {
+                "n_rows": 148,
+                "n_labeled": 148,
+                "n_missing_label": 0,
+                "n_positive": 22,
+                "ap": 0.3673186513685702,
+                "auroc": 0.7366522366522367,
+                "accuracy_at_0_5": 0.8513513513513513,
+                "bce": 0.3978247417217139,
+                "undefined_reason": null
+              }
+            },
+            "federated_loop": {
+              "primary": 0.3673186513685702,
+              "secondary": {
+                "n_rows": 148,
+                "n_labeled": 148,
+                "n_missing_label": 0,
+                "n_positive": 22,
+                "ap": 0.3673186513685702,
+                "auroc": 0.7366522366522367,
+                "accuracy_at_0_5": 0.8513513513513513,
+                "bce": 0.3978247417217139,
+                "undefined_reason": null
+              }
+            }
+          },
+          "uncertainty": {
+            "arms": {
+              "single_fixed": {
+                "ci95": [
+                  0.15854423004941565,
+                  0.46565753336092425
+                ],
+                "valid_replicates": 1000
+              },
+              "single_direct": {
+                "ci95": [
+                  0.08681317366110917,
+                  0.33721321499975526
+                ],
+                "valid_replicates": 1000
+              },
+              "single_loop": {
+                "ci95": [
+                  0.08681317366110917,
+                  0.33721321499975526
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_fixed": {
+                "ci95": [
+                  0.1835560017463749,
+                  0.5405286808911055
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_direct": {
+                "ci95": [
+                  0.18164698794068113,
+                  0.5439989016485844
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_loop": {
+                "ci95": [
+                  0.18164698794068113,
+                  0.5439989016485844
+                ],
+                "valid_replicates": 1000
+              }
+            },
+            "effects": {
+              "loop_single": {
+                "arms": [
+                  "single_loop",
+                  "single_direct"
+                ],
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "loop_federated": {
+                "arms": [
+                  "federated_loop",
+                  "federated_direct"
+                ],
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_fixed": {
+                "arms": [
+                  "federated_fixed",
+                  "single_fixed"
+                ],
+                "difference": 0.06926658362681798,
+                "ci95": [
+                  -0.034297418736095715,
+                  0.1559999269122178
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_direct": {
+                "arms": [
+                  "federated_direct",
+                  "single_direct"
+                ],
+                "difference": 0.1662862175806894,
+                "ci95": [
+                  0.03022279571677317,
+                  0.31080819724950953
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_loop": {
+                "arms": [
+                  "federated_loop",
+                  "single_loop"
+                ],
+                "difference": 0.1662862175806894,
+                "ci95": [
+                  0.03022279571677317,
+                  0.31080819724950953
+                ],
+                "valid_replicates": 1000
+              },
+              "loop_vs_fixed_federated": {
+                "arms": [
+                  "federated_loop",
+                  "federated_fixed"
+                ],
+                "difference": -0.002428106612976766,
+                "ci95": [
+                  -0.03395489551150566,
+                  0.023270519768081907
+                ],
+                "valid_replicates": 1000
+              },
+              "main_harness_vs_fixed": {
+                "arms": [
+                  "federated_loop",
+                  "single_fixed"
+                ],
+                "difference": 0.06683847701384121,
+                "ci95": [
+                  -0.04911911412007822,
+                  0.15732046728990776
+                ],
+                "valid_replicates": 1000
+              },
+              "main_harness_vs_direct": {
+                "arms": [
+                  "federated_loop",
+                  "single_direct"
+                ],
+                "difference": 0.1662862175806894,
+                "ci95": [
+                  0.03022279571677317,
+                  0.31080819724950953
+                ],
+                "valid_replicates": 1000
+              }
+            },
+            "clusters": 92,
+            "method": "paired cluster bootstrap, percentile 95%, 1000 requested replicates; fixed trained models"
+          },
+          "primary_metric": "ap",
+          "receipts": {
+            "heldout_ptpc_neural/seed44/results.json": "d9e48e5361b15f47f9a5d7c7dbafd76daa7e756c5585af22846556844032d748",
+            "heldout_ptpc_neural/seed44/seal.json": "cccfe67f80b888c1c5b9bb54ff8af1fd4b6de6b97a9630e7f9979da9ebca59e7",
+            "heldout_ptpc_neural/seed44/audit.json": "bfc53af7674f0caab1b421f2dee9ae9ef6ac80f625857cd107f4ecda0526db42",
+            "heldout_ptpc_neural/seed44/verification.json": "b41d896587925fa17742f40441a6f16157e4ed9860d6743f5c57ebe35203e704",
+            "ptpc_neural/study_v3_seed44/neural_registration.json": "6d6f448ec95740eb97ddce484fc272b3018f41c4e85c1c387c5e1b3d57b6b205"
+          },
+          "model_version_receipt": null,
+          "model": "ProteinTalks-derived observed-response efficacy head (adapted)",
+          "endpoints": null
+        }
+      },
+      "pending": {}
+    },
+    "vcc_corrected": {
+      "label": "VCC",
+      "model": "mask-corrected scDEBART adaptation",
+      "runs": {
+        "42": {
+          "scores": {
+            "single_fixed": {
+              "primary": 0.2993522913328416,
+              "secondary": {
+                "accuracy": 0.33611111111111114,
+                "macro_accuracy": 0.2993522913328416,
+                "mrr": 0.565462962962963,
+                "top3": 0.7388888888888889,
+                "cross_entropy": 1.5450752123295448,
+                "n_queries": 360,
+                "n_interventions": 20
+              }
+            },
+            "single_direct": {
+              "primary": 0.21731260153105506,
+              "secondary": {
+                "accuracy": 0.20277777777777778,
+                "macro_accuracy": 0.21731260153105506,
+                "mrr": 0.4680092592592593,
+                "top3": 0.65,
+                "cross_entropy": 1.6079545395266497,
+                "n_queries": 360,
+                "n_interventions": 20
+              }
+            },
+            "single_loop": {
+              "primary": 0.21731260153105506,
+              "secondary": {
+                "accuracy": 0.20277777777777778,
+                "macro_accuracy": 0.21731260153105506,
+                "mrr": 0.4680092592592593,
+                "top3": 0.65,
+                "cross_entropy": 1.6079545395266497,
+                "n_queries": 360,
+                "n_interventions": 20
+              }
+            },
+            "federated_fixed": {
+              "primary": 0.31630626390707034,
+              "secondary": {
+                "accuracy": 0.3416666666666667,
+                "macro_accuracy": 0.31630626390707034,
+                "mrr": 0.5644444444444444,
+                "top3": 0.6944444444444444,
+                "cross_entropy": 1.5812469375457434,
+                "n_queries": 360,
+                "n_interventions": 20
+              }
+            },
+            "federated_direct": {
+              "primary": 0.31630626390707034,
+              "secondary": {
+                "accuracy": 0.3416666666666667,
+                "macro_accuracy": 0.31630626390707034,
+                "mrr": 0.5644444444444444,
+                "top3": 0.6944444444444444,
+                "cross_entropy": 1.5812469375457434,
+                "n_queries": 360,
+                "n_interventions": 20
+              }
+            },
+            "federated_loop": {
+              "primary": 0.31630626390707034,
+              "secondary": {
+                "accuracy": 0.3416666666666667,
+                "macro_accuracy": 0.31630626390707034,
+                "mrr": 0.5644444444444444,
+                "top3": 0.6944444444444444,
+                "cross_entropy": 1.5812469375457434,
+                "n_queries": 360,
+                "n_interventions": 20
+              }
+            }
+          },
+          "uncertainty": {
+            "arms": {
+              "single_fixed": {
+                "ci95": [
+                  0.16979787025250734,
+                  0.42624665097820924
+                ],
+                "valid_replicates": 1000
+              },
+              "single_direct": {
+                "ci95": [
+                  0.12434751545033802,
+                  0.33250602278451546
+                ],
+                "valid_replicates": 1000
+              },
+              "single_loop": {
+                "ci95": [
+                  0.12434751545033802,
+                  0.33250602278451546
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_fixed": {
+                "ci95": [
+                  0.1824358794767061,
+                  0.4572967828905329
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_direct": {
+                "ci95": [
+                  0.1824358794767061,
+                  0.4572967828905329
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_loop": {
+                "ci95": [
+                  0.1824358794767061,
+                  0.4572967828905329
+                ],
+                "valid_replicates": 1000
+              }
+            },
+            "effects": {
+              "loop_single": {
+                "arms": [
+                  "single_loop",
+                  "single_direct"
+                ],
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "loop_federated": {
+                "arms": [
+                  "federated_loop",
+                  "federated_direct"
+                ],
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_fixed": {
+                "arms": [
+                  "federated_fixed",
+                  "single_fixed"
+                ],
+                "difference": 0.01695397257422876,
+                "ci95": [
+                  -0.05362290416524285,
+                  0.08581018857934183
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_direct": {
+                "arms": [
+                  "federated_direct",
+                  "single_direct"
+                ],
+                "difference": 0.09899366237601528,
+                "ci95": [
+                  -0.028783312603165533,
+                  0.2303836712035241
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_loop": {
+                "arms": [
+                  "federated_loop",
+                  "single_loop"
+                ],
+                "difference": 0.09899366237601528,
+                "ci95": [
+                  -0.028783312603165533,
+                  0.2303836712035241
+                ],
+                "valid_replicates": 1000
+              },
+              "loop_vs_fixed_federated": {
+                "arms": [
+                  "federated_loop",
+                  "federated_fixed"
+                ],
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "main_harness_vs_fixed": {
+                "arms": [
+                  "federated_loop",
+                  "single_fixed"
+                ],
+                "difference": 0.01695397257422876,
+                "ci95": [
+                  -0.05362290416524285,
+                  0.08581018857934183
+                ],
+                "valid_replicates": 1000
+              },
+              "main_harness_vs_direct": {
+                "arms": [
+                  "federated_loop",
+                  "single_direct"
+                ],
+                "difference": 0.09899366237601528,
+                "ci95": [
+                  -0.028783312603165533,
+                  0.2303836712035241
+                ],
+                "valid_replicates": 1000
+              }
+            },
+            "clusters": 20,
+            "method": "paired cluster bootstrap, percentile 95%, 1000 requested replicates; fixed trained models"
+          },
+          "primary_metric": "macro_accuracy",
+          "receipts": {
+            "heldout_v3/vcc_corrected/seed42/results.json": "91aa660c109ca6476f9309d56182b5330e7b1a80782314bc7461d44ff00cce63",
+            "heldout_v3/vcc_corrected/seed42/seal.json": "668ba8162d34c7dcfd3c50a2ed586e8d2a7905d4a2d602d484597086903a8778",
+            "heldout_v3/vcc_corrected/seed42/audit.json": "4749255e661ce18c327bb4f95b3656cfed94864d1d6f81b8c7a34d5f1f70613e",
+            "heldout_v3/vcc_corrected/seed42/verification.json": "e03c62c97b7c609b56416bf7bb0b3b5af60b6b2a5e8b14bd5dc733fc7ec3d2e5",
+            "heldout_v3/vcc_corrected/seed42/version_proof.json": "1981dbb14f7080f6d20283c7adea5c22ced7187bbe4930013a74227ad9e7889a",
+            "vcc_corrected/study_v3_seed42/maskfix_registration.json": "13c211586e782445c6e8227bbe77ca7e3c505dbab4c03a953c0952e1ba3103dc"
+          },
+          "model_version_receipt": {
+            "task": "vcc_corrected",
+            "seed": 42,
+            "predictor": "mask-corrected scDEBART adaptation; frozen public backbone; no target-trained initialization",
+            "registration_path": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/vcc_corrected/study_v3_seed42/maskfix_registration.json",
+            "registration_sha256": "13c211586e782445c6e8227bbe77ca7e3c505dbab4c03a953c0952e1ba3103dc",
+            "selection_sha256": "003603a53c8a282a348d56b24f733501cd4f76f35d0a29adc25e9c44631d81e8",
+            "definition_sha256": "f43dbd861cfad75fbcb733e0f7188840e5988f38888f65aaf9c5b0c73f00a18e",
+            "data_manifest_sha256": "0f63700ce858ac39d8486693b542d71780547c3b83023b0498b3512b45cc4e9c",
+            "source_sha256": {
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/run_corrected.py": "fe4fcab1ef1a51b2fc15e39c6487a489769f0ab559f62e8d902e8622d6b4047f",
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/architecture.py": "d15f65db7148ab8c9ca9421aea14a55e6fa9697ca300e44009f94a740a5ef90d",
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/prepare_features.py": "35a57f932205f79aeac981717139a088829ef7b44ae78c2d9dbcd975ab2a0c00",
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/test_masks.py": "3fd7db9f291fc63701e0a26787bdb8b7516a68e8a5cdc91d7edeab6bf2044868"
+            },
+            "evaluation_wrapper_sha256": "19ef51b1e855a94c22b1b5b8767042e49164dea528d53ff182bb00fda0137a84",
+            "proof_generator_sha256": "cfeb2e282409f5bf6a48640cab7e2df68e7400035281f824bc7494ab69c059ba",
+            "phase": "POSTHOC_INTEGRITY_CHECK",
+            "verified_unix": 1789718402.896251,
+            "note": "The evaluation wrapper checked registration/source hashes before invoking the original evaluator, but did not then persist this additional receipt. This receipt verifies them now and does NOT retroactively extend or change the timestamp/content of the original selection seal."
+          },
+          "model": "mask-corrected scDEBART adaptation",
+          "endpoints": null
+        },
+        "43": {
+          "scores": {
+            "single_fixed": {
+              "primary": 0.2993522913328416,
+              "secondary": {
+                "accuracy": 0.33611111111111114,
+                "macro_accuracy": 0.2993522913328416,
+                "mrr": 0.565462962962963,
+                "top3": 0.7388888888888889,
+                "cross_entropy": 1.545140232812358,
+                "n_queries": 360,
+                "n_interventions": 20
+              }
+            },
+            "single_direct": {
+              "primary": 0.16419504604988475,
+              "secondary": {
+                "accuracy": 0.19722222222222222,
+                "macro_accuracy": 0.16419504604988475,
+                "mrr": 0.45708333333333334,
+                "top3": 0.625,
+                "cross_entropy": 1.608239789948846,
+                "n_queries": 360,
+                "n_interventions": 20
+              }
+            },
+            "single_loop": {
+              "primary": 0.21254443445145532,
+              "secondary": {
+                "accuracy": 0.2111111111111111,
+                "macro_accuracy": 0.21254443445145532,
+                "mrr": 0.47430555555555554,
+                "top3": 0.6583333333333333,
+                "cross_entropy": 1.6090428658101334,
+                "n_queries": 360,
+                "n_interventions": 20
+              }
+            },
+            "federated_fixed": {
+              "primary": 0.314954912555719,
+              "secondary": {
+                "accuracy": 0.3388888888888889,
+                "macro_accuracy": 0.314954912555719,
+                "mrr": 0.5630555555555555,
+                "top3": 0.6944444444444444,
+                "cross_entropy": 1.5815205222223325,
+                "n_queries": 360,
+                "n_interventions": 20
+              }
+            },
+            "federated_direct": {
+              "primary": 0.314954912555719,
+              "secondary": {
+                "accuracy": 0.3388888888888889,
+                "macro_accuracy": 0.314954912555719,
+                "mrr": 0.5630555555555555,
+                "top3": 0.6944444444444444,
+                "cross_entropy": 1.5815205222223325,
+                "n_queries": 360,
+                "n_interventions": 20
+              }
+            },
+            "federated_loop": {
+              "primary": 0.314954912555719,
+              "secondary": {
+                "accuracy": 0.3388888888888889,
+                "macro_accuracy": 0.314954912555719,
+                "mrr": 0.5630555555555555,
+                "top3": 0.6944444444444444,
+                "cross_entropy": 1.5815205222223325,
+                "n_queries": 360,
+                "n_interventions": 20
+              }
+            }
+          },
+          "uncertainty": {
+            "arms": {
+              "single_fixed": {
+                "ci95": [
+                  0.16979787025250734,
+                  0.42624665097820924
+                ],
+                "valid_replicates": 1000
+              },
+              "single_direct": {
+                "ci95": [
+                  0.08899313273910048,
+                  0.25259185413419283
+                ],
+                "valid_replicates": 1000
+              },
+              "single_loop": {
+                "ci95": [
+                  0.11366893157666402,
+                  0.3127133957345057
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_fixed": {
+                "ci95": [
+                  0.1800445791902445,
+                  0.45496162026756776
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_direct": {
+                "ci95": [
+                  0.1800445791902445,
+                  0.45496162026756776
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_loop": {
+                "ci95": [
+                  0.1800445791902445,
+                  0.45496162026756776
+                ],
+                "valid_replicates": 1000
+              }
+            },
+            "effects": {
+              "loop_single": {
+                "arms": [
+                  "single_loop",
+                  "single_direct"
+                ],
+                "difference": 0.048349388401570575,
+                "ci95": [
+                  -0.05495594252449093,
+                  0.1649248930940107
+                ],
+                "valid_replicates": 1000
+              },
+              "loop_federated": {
+                "arms": [
+                  "federated_loop",
+                  "federated_direct"
+                ],
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_fixed": {
+                "arms": [
+                  "federated_fixed",
+                  "single_fixed"
+                ],
+                "difference": 0.015602621222877422,
+                "ci95": [
+                  -0.05762211444220455,
+                  0.08581018857934183
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_direct": {
+                "arms": [
+                  "federated_direct",
+                  "single_direct"
+                ],
+                "difference": 0.15075986650583426,
+                "ci95": [
+                  0.029431637576798893,
+                  0.2778076867068802
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_loop": {
+                "arms": [
+                  "federated_loop",
+                  "single_loop"
+                ],
+                "difference": 0.10241047810426368,
+                "ci95": [
+                  -0.027351282963682135,
+                  0.23485348527408542
+                ],
+                "valid_replicates": 1000
+              },
+              "loop_vs_fixed_federated": {
+                "arms": [
+                  "federated_loop",
+                  "federated_fixed"
+                ],
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "main_harness_vs_fixed": {
+                "arms": [
+                  "federated_loop",
+                  "single_fixed"
+                ],
+                "difference": 0.015602621222877422,
+                "ci95": [
+                  -0.05762211444220455,
+                  0.08581018857934183
+                ],
+                "valid_replicates": 1000
+              },
+              "main_harness_vs_direct": {
+                "arms": [
+                  "federated_loop",
+                  "single_direct"
+                ],
+                "difference": 0.15075986650583426,
+                "ci95": [
+                  0.029431637576798893,
+                  0.2778076867068802
+                ],
+                "valid_replicates": 1000
+              }
+            },
+            "clusters": 20,
+            "method": "paired cluster bootstrap, percentile 95%, 1000 requested replicates; fixed trained models"
+          },
+          "primary_metric": "macro_accuracy",
+          "receipts": {
+            "heldout_v3/vcc_corrected/seed43/results.json": "5d3fc76e89d428e3b6d03aa18eba6bdb241e19525592122cbd590d5e93466316",
+            "heldout_v3/vcc_corrected/seed43/seal.json": "b12c658064531ece24a0d99b9ec13dae9a0bd9adac883c6007afc4912de56ad3",
+            "heldout_v3/vcc_corrected/seed43/audit.json": "4749255e661ce18c327bb4f95b3656cfed94864d1d6f81b8c7a34d5f1f70613e",
+            "heldout_v3/vcc_corrected/seed43/verification.json": "1eacaea7a1b751afda50061702060a582d27a9196b27eb8f03b1b36ec50ea0bb",
+            "heldout_v3/vcc_corrected/seed43/registration_seal.json": "4c2e6ba42e17c41b69293c811c66ba2a0706bb573b553657bcda010af5e7e988",
+            "vcc_corrected/study_v3_seed43/maskfix_registration.json": "13c211586e782445c6e8227bbe77ca7e3c505dbab4c03a953c0952e1ba3103dc"
+          },
+          "model_version_receipt": {
+            "task": "vcc_corrected",
+            "seed": 43,
+            "predictor": "mask-corrected scDEBART adaptation; frozen public backbone; no target-trained initialization",
+            "registration_path": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/vcc_corrected/study_v3_seed43/maskfix_registration.json",
+            "registration_sha256": "13c211586e782445c6e8227bbe77ca7e3c505dbab4c03a953c0952e1ba3103dc",
+            "selection_sha256": "68c2e174b7465dd56b396ed517b50e40940053c3fd98440aa347b4b74af71daa",
+            "definition_sha256": "a791d3e98a6d149b8a9f8aa9f25c340ddce161c85af8850e9037951d7eee04bb",
+            "data_manifest_sha256": "0f63700ce858ac39d8486693b542d71780547c3b83023b0498b3512b45cc4e9c",
+            "source_sha256": {
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/run_corrected.py": "fe4fcab1ef1a51b2fc15e39c6487a489769f0ab559f62e8d902e8622d6b4047f",
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/architecture.py": "d15f65db7148ab8c9ca9421aea14a55e6fa9697ca300e44009f94a740a5ef90d",
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/prepare_features.py": "35a57f932205f79aeac981717139a088829ef7b44ae78c2d9dbcd975ab2a0c00",
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/test_masks.py": "3fd7db9f291fc63701e0a26787bdb8b7516a68e8a5cdc91d7edeab6bf2044868"
+            },
+            "evaluation_wrapper_sha256": "19ef51b1e855a94c22b1b5b8767042e49164dea528d53ff182bb00fda0137a84",
+            "proof_generator_sha256": "cfeb2e282409f5bf6a48640cab7e2df68e7400035281f824bc7494ab69c059ba",
+            "phase": "PRE_EVALUATION_REGISTRATION_SEAL",
+            "verified_unix": 1789719131.7837405,
+            "note": "Written before the common held-out selection seal and before any held-out response is decoded. Join to the common seal by task, seed, selection_sha256, definition_sha256 and data_manifest_sha256."
+          },
+          "model": "mask-corrected scDEBART adaptation",
+          "endpoints": null
+        },
+        "44": {
+          "scores": {
+            "single_fixed": {
+              "primary": 0.2993522913328416,
+              "secondary": {
+                "accuracy": 0.33611111111111114,
+                "macro_accuracy": 0.2993522913328416,
+                "mrr": 0.5650000000000001,
+                "top3": 0.7388888888888889,
+                "cross_entropy": 1.5451616927652931,
+                "n_queries": 360,
+                "n_interventions": 20
+              }
+            },
+            "single_direct": {
+              "primary": 0.2511307347194444,
+              "secondary": {
+                "accuracy": 0.24444444444444444,
+                "macro_accuracy": 0.2511307347194444,
+                "mrr": 0.4878240740740741,
+                "top3": 0.6083333333333333,
+                "cross_entropy": 1.6083683153203177,
+                "n_queries": 360,
+                "n_interventions": 20
+              }
+            },
+            "single_loop": {
+              "primary": 0.17675851861335734,
+              "secondary": {
+                "accuracy": 0.20833333333333334,
+                "macro_accuracy": 0.17675851861335734,
+                "mrr": 0.46578703703703705,
+                "top3": 0.6194444444444445,
+                "cross_entropy": 1.6088175717160658,
+                "n_queries": 360,
+                "n_interventions": 20
+              }
+            },
+            "federated_fixed": {
+              "primary": 0.314954912555719,
+              "secondary": {
+                "accuracy": 0.3388888888888889,
+                "macro_accuracy": 0.314954912555719,
+                "mrr": 0.5625925925925926,
+                "top3": 0.6944444444444444,
+                "cross_entropy": 1.5815309061972793,
+                "n_queries": 360,
+                "n_interventions": 20
+              }
+            },
+            "federated_direct": {
+              "primary": 0.314954912555719,
+              "secondary": {
+                "accuracy": 0.3388888888888889,
+                "macro_accuracy": 0.314954912555719,
+                "mrr": 0.5625925925925926,
+                "top3": 0.6944444444444444,
+                "cross_entropy": 1.5815309061972793,
+                "n_queries": 360,
+                "n_interventions": 20
+              }
+            },
+            "federated_loop": {
+              "primary": 0.314954912555719,
+              "secondary": {
+                "accuracy": 0.3388888888888889,
+                "macro_accuracy": 0.314954912555719,
+                "mrr": 0.5625925925925926,
+                "top3": 0.6944444444444444,
+                "cross_entropy": 1.5815309061972793,
+                "n_queries": 360,
+                "n_interventions": 20
+              }
+            }
+          },
+          "uncertainty": {
+            "arms": {
+              "single_fixed": {
+                "ci95": [
+                  0.16979787025250734,
+                  0.42624665097820924
+                ],
+                "valid_replicates": 1000
+              },
+              "single_direct": {
+                "ci95": [
+                  0.14358915073128783,
+                  0.3625850134902554
+                ],
+                "valid_replicates": 1000
+              },
+              "single_loop": {
+                "ci95": [
+                  0.0873031337366015,
+                  0.2766836272884659
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_fixed": {
+                "ci95": [
+                  0.1800445791902445,
+                  0.45496162026756776
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_direct": {
+                "ci95": [
+                  0.1800445791902445,
+                  0.45496162026756776
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_loop": {
+                "ci95": [
+                  0.1800445791902445,
+                  0.45496162026756776
+                ],
+                "valid_replicates": 1000
+              }
+            },
+            "effects": {
+              "loop_single": {
+                "arms": [
+                  "single_loop",
+                  "single_direct"
+                ],
+                "difference": -0.07437221610608707,
+                "ci95": [
+                  -0.17227282730710153,
+                  0.013310934636539457
+                ],
+                "valid_replicates": 1000
+              },
+              "loop_federated": {
+                "arms": [
+                  "federated_loop",
+                  "federated_direct"
+                ],
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_fixed": {
+                "arms": [
+                  "federated_fixed",
+                  "single_fixed"
+                ],
+                "difference": 0.015602621222877422,
+                "ci95": [
+                  -0.05762211444220455,
+                  0.08581018857934183
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_direct": {
+                "arms": [
+                  "federated_direct",
+                  "single_direct"
+                ],
+                "difference": 0.06382417783627459,
+                "ci95": [
+                  -0.04384611960620022,
+                  0.19132388801794048
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_loop": {
+                "arms": [
+                  "federated_loop",
+                  "single_loop"
+                ],
+                "difference": 0.13819639394236166,
+                "ci95": [
+                  0.025432534908845363,
+                  0.26342353252585116
+                ],
+                "valid_replicates": 1000
+              },
+              "loop_vs_fixed_federated": {
+                "arms": [
+                  "federated_loop",
+                  "federated_fixed"
+                ],
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "main_harness_vs_fixed": {
+                "arms": [
+                  "federated_loop",
+                  "single_fixed"
+                ],
+                "difference": 0.015602621222877422,
+                "ci95": [
+                  -0.05762211444220455,
+                  0.08581018857934183
+                ],
+                "valid_replicates": 1000
+              },
+              "main_harness_vs_direct": {
+                "arms": [
+                  "federated_loop",
+                  "single_direct"
+                ],
+                "difference": 0.06382417783627459,
+                "ci95": [
+                  -0.04384611960620022,
+                  0.19132388801794048
+                ],
+                "valid_replicates": 1000
+              }
+            },
+            "clusters": 20,
+            "method": "paired cluster bootstrap, percentile 95%, 1000 requested replicates; fixed trained models"
+          },
+          "primary_metric": "macro_accuracy",
+          "receipts": {
+            "heldout_v3/vcc_corrected/seed44/results.json": "b75873068a4479cc0092d4f6373bca66e765bed6c425f178c15ca06c96da20c0",
+            "heldout_v3/vcc_corrected/seed44/seal.json": "4fb40bc1b634d029fae57c0d55d95ee8ea8a98e78287e8fd53cf983bee50db08",
+            "heldout_v3/vcc_corrected/seed44/audit.json": "4749255e661ce18c327bb4f95b3656cfed94864d1d6f81b8c7a34d5f1f70613e",
+            "heldout_v3/vcc_corrected/seed44/verification.json": "ee6473897f8cdcf20a72baa35703c539ac0b925dbccfd92dca2c00216d37adbc",
+            "heldout_v3/vcc_corrected/seed44/registration_seal.json": "32e01e07f1c8b3b167d662c91632bab8782d7241cca8736a43a0da022869c75d",
+            "vcc_corrected/study_v3_seed44/maskfix_registration.json": "13c211586e782445c6e8227bbe77ca7e3c505dbab4c03a953c0952e1ba3103dc"
+          },
+          "model_version_receipt": {
+            "task": "vcc_corrected",
+            "seed": 44,
+            "predictor": "mask-corrected scDEBART adaptation; frozen public backbone; no target-trained initialization",
+            "registration_path": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/vcc_corrected/study_v3_seed44/maskfix_registration.json",
+            "registration_sha256": "13c211586e782445c6e8227bbe77ca7e3c505dbab4c03a953c0952e1ba3103dc",
+            "selection_sha256": "cffa95ddc79d4448de3949492c97236439c311428ec744dc474be721baec6b75",
+            "definition_sha256": "e6fe30286ab93726f4ee035a5be3ff4dfa46c0a50d81d6777a7613690dd35bbf",
+            "data_manifest_sha256": "0f63700ce858ac39d8486693b542d71780547c3b83023b0498b3512b45cc4e9c",
+            "source_sha256": {
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/run_corrected.py": "fe4fcab1ef1a51b2fc15e39c6487a489769f0ab559f62e8d902e8622d6b4047f",
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/architecture.py": "d15f65db7148ab8c9ca9421aea14a55e6fa9697ca300e44009f94a740a5ef90d",
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/prepare_features.py": "35a57f932205f79aeac981717139a088829ef7b44ae78c2d9dbcd975ab2a0c00",
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/test_masks.py": "3fd7db9f291fc63701e0a26787bdb8b7516a68e8a5cdc91d7edeab6bf2044868"
+            },
+            "evaluation_wrapper_sha256": "19ef51b1e855a94c22b1b5b8767042e49164dea528d53ff182bb00fda0137a84",
+            "proof_generator_sha256": "cfeb2e282409f5bf6a48640cab7e2df68e7400035281f824bc7494ab69c059ba",
+            "phase": "PRE_EVALUATION_REGISTRATION_SEAL",
+            "verified_unix": 1789720287.7624557,
+            "note": "Written before the common held-out selection seal and before any held-out response is decoded. Join to the common seal by task, seed, selection_sha256, definition_sha256 and data_manifest_sha256."
+          },
+          "model": "mask-corrected scDEBART adaptation",
+          "endpoints": null
+        }
+      },
+      "pending": {}
+    },
+    "norman_double_corrected": {
+      "label": "Norman",
+      "model": "mask-corrected scDEBART adaptation",
+      "runs": {
+        "42": {
+          "scores": {
+            "single_fixed": {
+              "primary": 0.2555555555555556,
+              "secondary": {
+                "accuracy": 0.25555555555555554,
+                "macro_accuracy": 0.2555555555555556,
+                "mrr": 0.48495061728395067,
+                "top3": 0.6392592592592593,
+                "cross_entropy": 1.5874276603520776,
+                "n_queries": 1350,
+                "n_interventions": 27
+              }
+            },
+            "single_direct": {
+              "primary": 0.14148148148148149,
+              "secondary": {
+                "accuracy": 0.14148148148148149,
+                "macro_accuracy": 0.14148148148148149,
+                "mrr": 0.420679012345679,
+                "top3": 0.582962962962963,
+                "cross_entropy": 1.6039272402976126,
+                "n_queries": 1350,
+                "n_interventions": 27
+              }
+            },
+            "single_loop": {
+              "primary": 0.14148148148148149,
+              "secondary": {
+                "accuracy": 0.14148148148148149,
+                "macro_accuracy": 0.14148148148148149,
+                "mrr": 0.420679012345679,
+                "top3": 0.582962962962963,
+                "cross_entropy": 1.6039272402976126,
+                "n_queries": 1350,
+                "n_interventions": 27
+              }
+            },
+            "federated_fixed": {
+              "primary": 0.1548148148148148,
+              "secondary": {
+                "accuracy": 0.15481481481481482,
+                "macro_accuracy": 0.1548148148148148,
+                "mrr": 0.4526296296296296,
+                "top3": 0.6562962962962963,
+                "cross_entropy": 1.5806460604974037,
+                "n_queries": 1350,
+                "n_interventions": 27
+              }
+            },
+            "federated_direct": {
+              "primary": 0.2274074074074074,
+              "secondary": {
+                "accuracy": 0.22740740740740742,
+                "macro_accuracy": 0.2274074074074074,
+                "mrr": 0.5006172839506172,
+                "top3": 0.7051851851851851,
+                "cross_entropy": 1.5881126140662936,
+                "n_queries": 1350,
+                "n_interventions": 27
+              }
+            },
+            "federated_loop": {
+              "primary": 0.2274074074074074,
+              "secondary": {
+                "accuracy": 0.22740740740740742,
+                "macro_accuracy": 0.2274074074074074,
+                "mrr": 0.5006172839506172,
+                "top3": 0.7051851851851851,
+                "cross_entropy": 1.5881126140662936,
+                "n_queries": 1350,
+                "n_interventions": 27
+              }
+            }
+          },
+          "uncertainty": {
+            "arms": {
+              "single_fixed": {
+                "ci95": [
+                  0.10962962962962963,
+                  0.40596296296296297
+                ],
+                "valid_replicates": 1000
+              },
+              "single_direct": {
+                "ci95": [
+                  0.037037037037037035,
+                  0.28296296296296297
+                ],
+                "valid_replicates": 1000
+              },
+              "single_loop": {
+                "ci95": [
+                  0.037037037037037035,
+                  0.28296296296296297
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_fixed": {
+                "ci95": [
+                  0.0437037037037037,
+                  0.30296296296296293
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_direct": {
+                "ci95": [
+                  0.09407407407407407,
+                  0.38
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_loop": {
+                "ci95": [
+                  0.09407407407407407,
+                  0.38
+                ],
+                "valid_replicates": 1000
+              }
+            },
+            "effects": {
+              "loop_single": {
+                "arms": [
+                  "single_loop",
+                  "single_direct"
+                ],
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "loop_federated": {
+                "arms": [
+                  "federated_loop",
+                  "federated_direct"
+                ],
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_fixed": {
+                "arms": [
+                  "federated_fixed",
+                  "single_fixed"
+                ],
+                "difference": -0.1007407407407408,
+                "ci95": [
+                  -0.21185185185185185,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_direct": {
+                "arms": [
+                  "federated_direct",
+                  "single_direct"
+                ],
+                "difference": 0.0859259259259259,
+                "ci95": [
+                  -0.08299999999999999,
+                  0.26
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_loop": {
+                "arms": [
+                  "federated_loop",
+                  "single_loop"
+                ],
+                "difference": 0.0859259259259259,
+                "ci95": [
+                  -0.08299999999999999,
+                  0.26
+                ],
+                "valid_replicates": 1000
+              },
+              "loop_vs_fixed_federated": {
+                "arms": [
+                  "federated_loop",
+                  "federated_fixed"
+                ],
+                "difference": 0.0725925925925926,
+                "ci95": [
+                  -0.09407407407407403,
+                  0.2541481481481481
+                ],
+                "valid_replicates": 1000
+              },
+              "main_harness_vs_fixed": {
+                "arms": [
+                  "federated_loop",
+                  "single_fixed"
+                ],
+                "difference": -0.0281481481481482,
+                "ci95": [
+                  -0.19633333333333333,
+                  0.1496481481481481
+                ],
+                "valid_replicates": 1000
+              },
+              "main_harness_vs_direct": {
+                "arms": [
+                  "federated_loop",
+                  "single_direct"
+                ],
+                "difference": 0.0859259259259259,
+                "ci95": [
+                  -0.08299999999999999,
+                  0.26
+                ],
+                "valid_replicates": 1000
+              }
+            },
+            "clusters": 27,
+            "method": "paired cluster bootstrap, percentile 95%, 1000 requested replicates; fixed trained models"
+          },
+          "primary_metric": "macro_accuracy",
+          "receipts": {
+            "heldout_v3/norman_double_corrected/seed42/results.json": "30e674aa16430556a49085f8572a5bce18bc8abb81ba1a2a427fc0daa5a7f53c",
+            "heldout_v3/norman_double_corrected/seed42/seal.json": "99dedf3bb8edb7364dc66a857e36f20168939a7941362ccbd13952a6a14f2883",
+            "heldout_v3/norman_double_corrected/seed42/audit.json": "4edc7574b8d22d5005e560ec66f77ea735e1636e08a9ce9afa9c2340c9a87155",
+            "heldout_v3/norman_double_corrected/seed42/verification.json": "7de0e47a954584cff694c5838e4d22754e965353eadcadaaa478f1664871b51e",
+            "heldout_v3/norman_double_corrected/seed42/registration_seal.json": "76b5e677bfc52e48014c2f64578badf34935b7ded92011501303d34261d9ff85",
+            "norman_double_corrected/study_v3_seed42/maskfix_registration.json": "662294f1b29dc5c9b74de8a161e984dbe52accc185f93fb9298127fbbef3b7ef"
+          },
+          "model_version_receipt": {
+            "task": "norman_double_corrected",
+            "seed": 42,
+            "predictor": "mask-corrected scDEBART adaptation; frozen public backbone; no target-trained initialization",
+            "registration_path": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/norman_double_corrected/study_v3_seed42/maskfix_registration.json",
+            "registration_sha256": "662294f1b29dc5c9b74de8a161e984dbe52accc185f93fb9298127fbbef3b7ef",
+            "selection_sha256": "5f6dfa3aa1c0fa61f9918c52948b4caaf5d08ba831d9216609eabe0ffc8dcc12",
+            "definition_sha256": "4f9e29e766890e7fdcc89e5d1b28e447501ebaffa208df126126142691b35bf4",
+            "data_manifest_sha256": "340d9df6de0d6f05215b60c2c393f8e6a4ec3f6df14763ae10748709e6f23527",
+            "source_sha256": {
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/run_corrected.py": "fe4fcab1ef1a51b2fc15e39c6487a489769f0ab559f62e8d902e8622d6b4047f",
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/architecture.py": "d15f65db7148ab8c9ca9421aea14a55e6fa9697ca300e44009f94a740a5ef90d",
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/prepare_features.py": "35a57f932205f79aeac981717139a088829ef7b44ae78c2d9dbcd975ab2a0c00",
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/test_masks.py": "3fd7db9f291fc63701e0a26787bdb8b7516a68e8a5cdc91d7edeab6bf2044868"
+            },
+            "evaluation_wrapper_sha256": "19ef51b1e855a94c22b1b5b8767042e49164dea528d53ff182bb00fda0137a84",
+            "proof_generator_sha256": "cfeb2e282409f5bf6a48640cab7e2df68e7400035281f824bc7494ab69c059ba",
+            "phase": "PRE_EVALUATION_REGISTRATION_SEAL",
+            "verified_unix": 1789718521.0319605,
+            "note": "Written before the common held-out selection seal and before any held-out response is decoded. Join to the common seal by task, seed, selection_sha256, definition_sha256 and data_manifest_sha256."
+          },
+          "model": "mask-corrected scDEBART adaptation",
+          "endpoints": null
+        },
+        "43": {
+          "scores": {
+            "single_fixed": {
+              "primary": 0.2555555555555556,
+              "secondary": {
+                "accuracy": 0.25555555555555554,
+                "macro_accuracy": 0.2555555555555556,
+                "mrr": 0.48495061728395067,
+                "top3": 0.6392592592592593,
+                "cross_entropy": 1.587427659177775,
+                "n_queries": 1350,
+                "n_interventions": 27
+              }
+            },
+            "single_direct": {
+              "primary": 0.14148148148148149,
+              "secondary": {
+                "accuracy": 0.14148148148148149,
+                "macro_accuracy": 0.14148148148148149,
+                "mrr": 0.4211111111111111,
+                "top3": 0.5837037037037037,
+                "cross_entropy": 1.6040941592141542,
+                "n_queries": 1350,
+                "n_interventions": 27
+              }
+            },
+            "single_loop": {
+              "primary": 0.14148148148148149,
+              "secondary": {
+                "accuracy": 0.14148148148148149,
+                "macro_accuracy": 0.14148148148148149,
+                "mrr": 0.4211111111111111,
+                "top3": 0.5837037037037037,
+                "cross_entropy": 1.6040941592141542,
+                "n_queries": 1350,
+                "n_interventions": 27
+              }
+            },
+            "federated_fixed": {
+              "primary": 0.1548148148148148,
+              "secondary": {
+                "accuracy": 0.15481481481481482,
+                "macro_accuracy": 0.1548148148148148,
+                "mrr": 0.4526296296296296,
+                "top3": 0.6562962962962963,
+                "cross_entropy": 1.580632167684946,
+                "n_queries": 1350,
+                "n_interventions": 27
+              }
+            },
+            "federated_direct": {
+              "primary": 0.2185185185185185,
+              "secondary": {
+                "accuracy": 0.21851851851851853,
+                "macro_accuracy": 0.2185185185185185,
+                "mrr": 0.5001234567901235,
+                "top3": 0.7140740740740741,
+                "cross_entropy": 1.58857639407504,
+                "n_queries": 1350,
+                "n_interventions": 27
+              }
+            },
+            "federated_loop": {
+              "primary": 0.2185185185185185,
+              "secondary": {
+                "accuracy": 0.21851851851851853,
+                "macro_accuracy": 0.2185185185185185,
+                "mrr": 0.5001234567901235,
+                "top3": 0.7140740740740741,
+                "cross_entropy": 1.58857639407504,
+                "n_queries": 1350,
+                "n_interventions": 27
+              }
+            }
+          },
+          "uncertainty": {
+            "arms": {
+              "single_fixed": {
+                "ci95": [
+                  0.10962962962962963,
+                  0.40596296296296297
+                ],
+                "valid_replicates": 1000
+              },
+              "single_direct": {
+                "ci95": [
+                  0.037037037037037035,
+                  0.28296296296296297
+                ],
+                "valid_replicates": 1000
+              },
+              "single_loop": {
+                "ci95": [
+                  0.037037037037037035,
+                  0.28296296296296297
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_fixed": {
+                "ci95": [
+                  0.0437037037037037,
+                  0.30296296296296293
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_direct": {
+                "ci95": [
+                  0.08518518518518518,
+                  0.3696481481481481
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_loop": {
+                "ci95": [
+                  0.08518518518518518,
+                  0.3696481481481481
+                ],
+                "valid_replicates": 1000
+              }
+            },
+            "effects": {
+              "loop_single": {
+                "arms": [
+                  "single_loop",
+                  "single_direct"
+                ],
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "loop_federated": {
+                "arms": [
+                  "federated_loop",
+                  "federated_direct"
+                ],
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_fixed": {
+                "arms": [
+                  "federated_fixed",
+                  "single_fixed"
+                ],
+                "difference": -0.1007407407407408,
+                "ci95": [
+                  -0.21185185185185185,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_direct": {
+                "arms": [
+                  "federated_direct",
+                  "single_direct"
+                ],
+                "difference": 0.07703703703703701,
+                "ci95": [
+                  -0.09333333333333331,
+                  0.25851851851851854
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_loop": {
+                "arms": [
+                  "federated_loop",
+                  "single_loop"
+                ],
+                "difference": 0.07703703703703701,
+                "ci95": [
+                  -0.09333333333333331,
+                  0.25851851851851854
+                ],
+                "valid_replicates": 1000
+              },
+              "loop_vs_fixed_federated": {
+                "arms": [
+                  "federated_loop",
+                  "federated_fixed"
+                ],
+                "difference": 0.0637037037037037,
+                "ci95": [
+                  -0.11116666666666665,
+                  0.2481481481481481
+                ],
+                "valid_replicates": 1000
+              },
+              "main_harness_vs_fixed": {
+                "arms": [
+                  "federated_loop",
+                  "single_fixed"
+                ],
+                "difference": -0.03703703703703709,
+                "ci95": [
+                  -0.2096481481481482,
+                  0.14670370370370373
+                ],
+                "valid_replicates": 1000
+              },
+              "main_harness_vs_direct": {
+                "arms": [
+                  "federated_loop",
+                  "single_direct"
+                ],
+                "difference": 0.07703703703703701,
+                "ci95": [
+                  -0.09333333333333331,
+                  0.25851851851851854
+                ],
+                "valid_replicates": 1000
+              }
+            },
+            "clusters": 27,
+            "method": "paired cluster bootstrap, percentile 95%, 1000 requested replicates; fixed trained models"
+          },
+          "primary_metric": "macro_accuracy",
+          "receipts": {
+            "heldout_v3/norman_double_corrected/seed43/results.json": "21c6c476eb2df84e5f442297ab4dec087d91a550095281d2dd35a20c82cced00",
+            "heldout_v3/norman_double_corrected/seed43/seal.json": "aa623460434fc2cb2dc1dc4e481b055e65486e1bdf17cbfba3754d8cf3959b39",
+            "heldout_v3/norman_double_corrected/seed43/audit.json": "4edc7574b8d22d5005e560ec66f77ea735e1636e08a9ce9afa9c2340c9a87155",
+            "heldout_v3/norman_double_corrected/seed43/verification.json": "6e67a9cba1d61220a9d14909ae55076741f4fc3715779da498b093bc1d68c819",
+            "heldout_v3/norman_double_corrected/seed43/registration_seal.json": "ee135e6938acdfd32273778d54e0cfc551e8d5b819cc043c7d019464f7a2dd1e",
+            "norman_double_corrected/study_v3_seed43/maskfix_registration.json": "662294f1b29dc5c9b74de8a161e984dbe52accc185f93fb9298127fbbef3b7ef"
+          },
+          "model_version_receipt": {
+            "task": "norman_double_corrected",
+            "seed": 43,
+            "predictor": "mask-corrected scDEBART adaptation; frozen public backbone; no target-trained initialization",
+            "registration_path": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/norman_double_corrected/study_v3_seed43/maskfix_registration.json",
+            "registration_sha256": "662294f1b29dc5c9b74de8a161e984dbe52accc185f93fb9298127fbbef3b7ef",
+            "selection_sha256": "9e4a9d14c4bc0bc719452fc0c0f94d7ced047f18643954e851fee5b09ac4dabe",
+            "definition_sha256": "d01858c6ed12d9c3a146921b5bad5742e36e9cd3786be49091acee2aba5f493d",
+            "data_manifest_sha256": "340d9df6de0d6f05215b60c2c393f8e6a4ec3f6df14763ae10748709e6f23527",
+            "source_sha256": {
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/run_corrected.py": "fe4fcab1ef1a51b2fc15e39c6487a489769f0ab559f62e8d902e8622d6b4047f",
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/architecture.py": "d15f65db7148ab8c9ca9421aea14a55e6fa9697ca300e44009f94a740a5ef90d",
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/prepare_features.py": "35a57f932205f79aeac981717139a088829ef7b44ae78c2d9dbcd975ab2a0c00",
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/test_masks.py": "3fd7db9f291fc63701e0a26787bdb8b7516a68e8a5cdc91d7edeab6bf2044868"
+            },
+            "evaluation_wrapper_sha256": "19ef51b1e855a94c22b1b5b8767042e49164dea528d53ff182bb00fda0137a84",
+            "proof_generator_sha256": "cfeb2e282409f5bf6a48640cab7e2df68e7400035281f824bc7494ab69c059ba",
+            "phase": "PRE_EVALUATION_REGISTRATION_SEAL",
+            "verified_unix": 1789719418.8690815,
+            "note": "Written before the common held-out selection seal and before any held-out response is decoded. Join to the common seal by task, seed, selection_sha256, definition_sha256 and data_manifest_sha256."
+          },
+          "model": "mask-corrected scDEBART adaptation",
+          "endpoints": null
+        },
+        "44": null
+      },
+      "pending": {
+        "44": "complete verified six-arm evaluation not available"
+      }
+    },
+    "tahoe_drug_corrected": {
+      "label": "Tahoe",
+      "model": "mask-corrected scDEBART with drug-conditioning adapter",
+      "runs": {
+        "42": {
+          "scores": {
+            "single_fixed": {
+              "primary": 0.19402985074626866,
+              "secondary": {
+                "accuracy": 0.19402985074626866,
+                "macro_accuracy": 0.19402985074626866,
+                "mrr": 0.44950248756218913,
+                "top3": 0.582089552238806,
+                "cross_entropy": 1.6306180243927197,
+                "n_queries": 67,
+                "n_interventions": 67
+              }
+            },
+            "single_direct": {
+              "primary": 0.13432835820895522,
+              "secondary": {
+                "accuracy": 0.13432835820895522,
+                "macro_accuracy": 0.13432835820895522,
+                "mrr": 0.42089552238805966,
+                "top3": 0.582089552238806,
+                "cross_entropy": 1.6293660642634307,
+                "n_queries": 67,
+                "n_interventions": 67
+              }
+            },
+            "single_loop": {
+              "primary": 0.13432835820895522,
+              "secondary": {
+                "accuracy": 0.13432835820895522,
+                "macro_accuracy": 0.13432835820895522,
+                "mrr": 0.42089552238805966,
+                "top3": 0.582089552238806,
+                "cross_entropy": 1.6293660642634307,
+                "n_queries": 67,
+                "n_interventions": 67
+              }
+            },
+            "federated_fixed": {
+              "primary": 0.23880597014925373,
+              "secondary": {
+                "accuracy": 0.23880597014925373,
+                "macro_accuracy": 0.23880597014925373,
+                "mrr": 0.49552238805970156,
+                "top3": 0.6567164179104478,
+                "cross_entropy": 1.6066668818488963,
+                "n_queries": 67,
+                "n_interventions": 67
+              }
+            },
+            "federated_direct": {
+              "primary": 0.23880597014925373,
+              "secondary": {
+                "accuracy": 0.23880597014925373,
+                "macro_accuracy": 0.23880597014925373,
+                "mrr": 0.49552238805970156,
+                "top3": 0.6567164179104478,
+                "cross_entropy": 1.6066668818488963,
+                "n_queries": 67,
+                "n_interventions": 67
+              }
+            },
+            "federated_loop": {
+              "primary": 0.23880597014925373,
+              "secondary": {
+                "accuracy": 0.23880597014925373,
+                "macro_accuracy": 0.23880597014925373,
+                "mrr": 0.49552238805970156,
+                "top3": 0.6567164179104478,
+                "cross_entropy": 1.6066668818488963,
+                "n_queries": 67,
+                "n_interventions": 67
+              }
+            }
+          },
+          "uncertainty": {
+            "arms": {
+              "single_fixed": {
+                "ci95": [
+                  0.11902985074626868,
+                  0.29850746268656714
+                ],
+                "valid_replicates": 1000
+              },
+              "single_direct": {
+                "ci95": [
+                  0.05970149253731343,
+                  0.22388059701492538
+                ],
+                "valid_replicates": 1000
+              },
+              "single_loop": {
+                "ci95": [
+                  0.05970149253731343,
+                  0.22388059701492538
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_fixed": {
+                "ci95": [
+                  0.13432835820895522,
+                  0.34328358208955223
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_direct": {
+                "ci95": [
+                  0.13432835820895522,
+                  0.34328358208955223
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_loop": {
+                "ci95": [
+                  0.13432835820895522,
+                  0.34328358208955223
+                ],
+                "valid_replicates": 1000
+              }
+            },
+            "effects": {
+              "loop_single": {
+                "arms": [
+                  "single_loop",
+                  "single_direct"
+                ],
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "loop_federated": {
+                "arms": [
+                  "federated_loop",
+                  "federated_direct"
+                ],
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_fixed": {
+                "arms": [
+                  "federated_fixed",
+                  "single_fixed"
+                ],
+                "difference": 0.044776119402985065,
+                "ci95": [
+                  -0.05970149253731344,
+                  0.14925373134328357
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_direct": {
+                "arms": [
+                  "federated_direct",
+                  "single_direct"
+                ],
+                "difference": 0.1044776119402985,
+                "ci95": [
+                  -0.014925373134328346,
+                  0.22388059701492535
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_loop": {
+                "arms": [
+                  "federated_loop",
+                  "single_loop"
+                ],
+                "difference": 0.1044776119402985,
+                "ci95": [
+                  -0.014925373134328346,
+                  0.22388059701492535
+                ],
+                "valid_replicates": 1000
+              },
+              "loop_vs_fixed_federated": {
+                "arms": [
+                  "federated_loop",
+                  "federated_fixed"
+                ],
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "main_harness_vs_fixed": {
+                "arms": [
+                  "federated_loop",
+                  "single_fixed"
+                ],
+                "difference": 0.044776119402985065,
+                "ci95": [
+                  -0.05970149253731344,
+                  0.14925373134328357
+                ],
+                "valid_replicates": 1000
+              },
+              "main_harness_vs_direct": {
+                "arms": [
+                  "federated_loop",
+                  "single_direct"
+                ],
+                "difference": 0.1044776119402985,
+                "ci95": [
+                  -0.014925373134328346,
+                  0.22388059701492535
+                ],
+                "valid_replicates": 1000
+              }
+            },
+            "clusters": 67,
+            "method": "paired cluster bootstrap, percentile 95%, 1000 requested replicates; fixed trained models"
+          },
+          "primary_metric": "macro_accuracy",
+          "receipts": {
+            "heldout_v3/tahoe_drug_corrected/seed42/results.json": "c7c6a49a2c800ee0460df98377b1871a5feb5678be2756a93b27ea3fb7ca4267",
+            "heldout_v3/tahoe_drug_corrected/seed42/seal.json": "8f94dd203f37f78c38efc1cb6cf3b39fd7746c830043c3bf2c100d696a32cba5",
+            "heldout_v3/tahoe_drug_corrected/seed42/audit.json": "84a631de95289093f14fbce4861f1fa803298e92cc58c842401ce495a2ee6afa",
+            "heldout_v3/tahoe_drug_corrected/seed42/verification.json": "c7e34cf1e0cdcdc522d5ff8589be2ab9ebae994ff129706acefafa95a42d79bd",
+            "heldout_v3/tahoe_drug_corrected/seed42/registration_seal.json": "e196a8447c59f2721c6947beec0e65afcc31b1640d3126f23e5df14e16694bfa",
+            "tahoe_drug_corrected/study_v3_seed42/maskfix_registration.json": "cf1cf94ee493f6dbe3723376c32ee62bbbafc599fb9b526e8164b93d35beb545"
+          },
+          "model_version_receipt": {
+            "task": "tahoe_drug_corrected",
+            "seed": 42,
+            "predictor": "mask-corrected scDEBART adaptation; frozen public backbone; no target-trained initialization",
+            "registration_path": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/tahoe_drug_corrected/study_v3_seed42/maskfix_registration.json",
+            "registration_sha256": "cf1cf94ee493f6dbe3723376c32ee62bbbafc599fb9b526e8164b93d35beb545",
+            "selection_sha256": "406ee5eb5836edb085a537f4f78fdac9e51bd03306dba7ff910ec0bde8760bf6",
+            "definition_sha256": "acba8f773904276b0c1e289e621be89d5ec10a53ddbd31b05c775470ae8662f0",
+            "data_manifest_sha256": "ca6d46b952c79dbae6f323c9fe663bdb268c46eb5a594a291c62b5ebbb5133ec",
+            "source_sha256": {
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/run_corrected.py": "fe4fcab1ef1a51b2fc15e39c6487a489769f0ab559f62e8d902e8622d6b4047f",
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/architecture.py": "d15f65db7148ab8c9ca9421aea14a55e6fa9697ca300e44009f94a740a5ef90d",
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/prepare_features.py": "35a57f932205f79aeac981717139a088829ef7b44ae78c2d9dbcd975ab2a0c00",
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/test_masks.py": "3fd7db9f291fc63701e0a26787bdb8b7516a68e8a5cdc91d7edeab6bf2044868"
+            },
+            "evaluation_wrapper_sha256": "19ef51b1e855a94c22b1b5b8767042e49164dea528d53ff182bb00fda0137a84",
+            "proof_generator_sha256": "cfeb2e282409f5bf6a48640cab7e2df68e7400035281f824bc7494ab69c059ba",
+            "phase": "PRE_EVALUATION_REGISTRATION_SEAL",
+            "verified_unix": 1789718845.2766795,
+            "note": "Written before the common held-out selection seal and before any held-out response is decoded. Join to the common seal by task, seed, selection_sha256, definition_sha256 and data_manifest_sha256."
+          },
+          "model": "mask-corrected scDEBART with drug-conditioning adapter",
+          "endpoints": null
+        },
+        "43": {
+          "scores": {
+            "single_fixed": {
+              "primary": 0.19402985074626866,
+              "secondary": {
+                "accuracy": 0.19402985074626866,
+                "macro_accuracy": 0.19402985074626866,
+                "mrr": 0.4502487562189055,
+                "top3": 0.582089552238806,
+                "cross_entropy": 1.6304911910705682,
+                "n_queries": 67,
+                "n_interventions": 67
+              }
+            },
+            "single_direct": {
+              "primary": 0.1044776119402985,
+              "secondary": {
+                "accuracy": 0.1044776119402985,
+                "macro_accuracy": 0.1044776119402985,
+                "mrr": 0.38532338308457703,
+                "top3": 0.4925373134328358,
+                "cross_entropy": 1.610497595464846,
+                "n_queries": 67,
+                "n_interventions": 67
+              }
+            },
+            "single_loop": {
+              "primary": 0.1044776119402985,
+              "secondary": {
+                "accuracy": 0.1044776119402985,
+                "macro_accuracy": 0.1044776119402985,
+                "mrr": 0.38532338308457703,
+                "top3": 0.4925373134328358,
+                "cross_entropy": 1.610497595464846,
+                "n_queries": 67,
+                "n_interventions": 67
+              }
+            },
+            "federated_fixed": {
+              "primary": 0.26865671641791045,
+              "secondary": {
+                "accuracy": 0.26865671641791045,
+                "macro_accuracy": 0.26865671641791045,
+                "mrr": 0.5029850746268658,
+                "top3": 0.6567164179104478,
+                "cross_entropy": 1.6057407521622655,
+                "n_queries": 67,
+                "n_interventions": 67
+              }
+            },
+            "federated_direct": {
+              "primary": 0.23880597014925373,
+              "secondary": {
+                "accuracy": 0.23880597014925373,
+                "macro_accuracy": 0.23880597014925373,
+                "mrr": 0.496268656716418,
+                "top3": 0.6567164179104478,
+                "cross_entropy": 1.6064469177312664,
+                "n_queries": 67,
+                "n_interventions": 67
+              }
+            },
+            "federated_loop": {
+              "primary": 0.23880597014925373,
+              "secondary": {
+                "accuracy": 0.23880597014925373,
+                "macro_accuracy": 0.23880597014925373,
+                "mrr": 0.4950248756218906,
+                "top3": 0.6417910447761194,
+                "cross_entropy": 1.606543642150868,
+                "n_queries": 67,
+                "n_interventions": 67
+              }
+            }
+          },
+          "uncertainty": {
+            "arms": {
+              "single_fixed": {
+                "ci95": [
+                  0.11902985074626868,
+                  0.29850746268656714
+                ],
+                "valid_replicates": 1000
+              },
+              "single_direct": {
+                "ci95": [
+                  0.04477611940298507,
+                  0.19402985074626866
+                ],
+                "valid_replicates": 1000
+              },
+              "single_loop": {
+                "ci95": [
+                  0.04477611940298507,
+                  0.19402985074626866
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_fixed": {
+                "ci95": [
+                  0.16417910447761194,
+                  0.373134328358209
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_direct": {
+                "ci95": [
+                  0.13432835820895522,
+                  0.34328358208955223
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_loop": {
+                "ci95": [
+                  0.13432835820895522,
+                  0.34328358208955223
+                ],
+                "valid_replicates": 1000
+              }
+            },
+            "effects": {
+              "loop_single": {
+                "arms": [
+                  "single_loop",
+                  "single_direct"
+                ],
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "loop_federated": {
+                "arms": [
+                  "federated_loop",
+                  "federated_direct"
+                ],
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_fixed": {
+                "arms": [
+                  "federated_fixed",
+                  "single_fixed"
+                ],
+                "difference": 0.07462686567164178,
+                "ci95": [
+                  -0.044776119402985065,
+                  0.17947761194029818
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_direct": {
+                "arms": [
+                  "federated_direct",
+                  "single_direct"
+                ],
+                "difference": 0.13432835820895522,
+                "ci95": [
+                  0.014925373134328346,
+                  0.23880597014925375
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_loop": {
+                "arms": [
+                  "federated_loop",
+                  "single_loop"
+                ],
+                "difference": 0.13432835820895522,
+                "ci95": [
+                  0.014925373134328346,
+                  0.23880597014925375
+                ],
+                "valid_replicates": 1000
+              },
+              "loop_vs_fixed_federated": {
+                "arms": [
+                  "federated_loop",
+                  "federated_fixed"
+                ],
+                "difference": -0.02985074626865672,
+                "ci95": [
+                  -0.07462686567164181,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "main_harness_vs_fixed": {
+                "arms": [
+                  "federated_loop",
+                  "single_fixed"
+                ],
+                "difference": 0.044776119402985065,
+                "ci95": [
+                  -0.05970149253731344,
+                  0.14925373134328357
+                ],
+                "valid_replicates": 1000
+              },
+              "main_harness_vs_direct": {
+                "arms": [
+                  "federated_loop",
+                  "single_direct"
+                ],
+                "difference": 0.13432835820895522,
+                "ci95": [
+                  0.014925373134328346,
+                  0.23880597014925375
+                ],
+                "valid_replicates": 1000
+              }
+            },
+            "clusters": 67,
+            "method": "paired cluster bootstrap, percentile 95%, 1000 requested replicates; fixed trained models"
+          },
+          "primary_metric": "macro_accuracy",
+          "receipts": {
+            "heldout_v3/tahoe_drug_corrected/seed43/results.json": "667def01a12716c01b39e9ab9413e5fa459316f2145b9be117a1cdc5eadb4b10",
+            "heldout_v3/tahoe_drug_corrected/seed43/seal.json": "0ec13610a1d76b525363db78247d083058b55450cc5cbd906763570839d2ccb7",
+            "heldout_v3/tahoe_drug_corrected/seed43/audit.json": "84a631de95289093f14fbce4861f1fa803298e92cc58c842401ce495a2ee6afa",
+            "heldout_v3/tahoe_drug_corrected/seed43/verification.json": "fa5c33e85f8f307677aea51e8ac1a8bca1c19dabe9fbaae398b9aa20ab7a00ef",
+            "heldout_v3/tahoe_drug_corrected/seed43/registration_seal.json": "f5e4394aded7dd2ce6a7d2a37687e33cb6945ed1bc3d0f4ec2edf43cfe5878a6",
+            "tahoe_drug_corrected/study_v3_seed43/maskfix_registration.json": "cf1cf94ee493f6dbe3723376c32ee62bbbafc599fb9b526e8164b93d35beb545"
+          },
+          "model_version_receipt": {
+            "task": "tahoe_drug_corrected",
+            "seed": 43,
+            "predictor": "mask-corrected scDEBART adaptation; frozen public backbone; no target-trained initialization",
+            "registration_path": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/tahoe_drug_corrected/study_v3_seed43/maskfix_registration.json",
+            "registration_sha256": "cf1cf94ee493f6dbe3723376c32ee62bbbafc599fb9b526e8164b93d35beb545",
+            "selection_sha256": "4ca481241cb0590f508443c1224ec1051aa51a8eae81b5b8a1e3b91608677114",
+            "definition_sha256": "aed88951da3436812cdc9534b8904d392f9cc1cf87c7c26b63b7d2c2deec45b8",
+            "data_manifest_sha256": "ca6d46b952c79dbae6f323c9fe663bdb268c46eb5a594a291c62b5ebbb5133ec",
+            "source_sha256": {
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/run_corrected.py": "fe4fcab1ef1a51b2fc15e39c6487a489769f0ab559f62e8d902e8622d6b4047f",
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/architecture.py": "d15f65db7148ab8c9ca9421aea14a55e6fa9697ca300e44009f94a740a5ef90d",
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/prepare_features.py": "35a57f932205f79aeac981717139a088829ef7b44ae78c2d9dbcd975ab2a0c00",
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/test_masks.py": "3fd7db9f291fc63701e0a26787bdb8b7516a68e8a5cdc91d7edeab6bf2044868"
+            },
+            "evaluation_wrapper_sha256": "19ef51b1e855a94c22b1b5b8767042e49164dea528d53ff182bb00fda0137a84",
+            "proof_generator_sha256": "cfeb2e282409f5bf6a48640cab7e2df68e7400035281f824bc7494ab69c059ba",
+            "phase": "PRE_EVALUATION_REGISTRATION_SEAL",
+            "verified_unix": 1789719785.0438762,
+            "note": "Written before the common held-out selection seal and before any held-out response is decoded. Join to the common seal by task, seed, selection_sha256, definition_sha256 and data_manifest_sha256."
+          },
+          "model": "mask-corrected scDEBART with drug-conditioning adapter",
+          "endpoints": null
+        },
+        "44": null
+      },
+      "pending": {
+        "44": "complete verified six-arm evaluation not available"
+      }
+    }
+  }
+}

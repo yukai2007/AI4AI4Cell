@@ -3,20 +3,16 @@
 \setlength{\tabcolsep}{4pt}
 \begin{tabular}{clrrrrr}
 \toprule
-Labs & Method & DTI & Proteomics & VCC & Norman & Tahoe \\
- & & AUROC & AP & Top-1 & Top-1 & Top-1 \\
+ & & DTI & Proteomics & \multicolumn{3}{c}{Cell perturbation} \\
+\cmidrule(lr){5-7}
+Labs & Method & AUROC & AP & VCC & Norman & Tahoe \\
+ & & $\uparrow$ & $\uparrow$ & Top-1 $\uparrow$ & Top-1 $\uparrow$ & Top-1 $\uparrow$ \\
 \midrule
 1 & Fixed model & N/A & 56.89 & 13.00 & 12.50 & 25.00 \\
-1 & Direct & N/A & 54.97 & 18.29 & 20.70 & 18.33 \\
-1 & Our loop & N/A & 54.97 & 18.29 & 20.70 & 18.33 \\
-\midrule
-10 & Fixed model & N/A & \textbf{67.15} & 13.30 & \textbf{50.00} & 28.33 \\
-10 & Direct & N/A & \textbf{67.15} & \textbf{30.08} & \textbf{50.00} & \textbf{31.67} \\
-10 & Our loop & N/A & \textbf{67.15} & \textbf{30.08} & \textbf{50.00} & \textbf{31.67} \\
-\midrule
-1/10 & Cosine reference & N/A & N/A & N/A & N/A & N/A \\
+1 & Direct optimize & N/A & 54.97 & 18.29 & 20.70 & 18.33 \\
+10 & Our harness & N/A & \textbf{67.15} & \textbf{30.08} & \textbf{50.00} & \textbf{31.67} \\
 \bottomrule
 \end{tabular}
-\caption{Completed first-seed development results (seed 42), all metrics multiplied by 100; higher is better. AUROC/AP are equal-client means; cell scores are intervention-macro Top-1. Bold marks every column maximum, including ties. Unfinished studies and the pending cosine row are N/A, not zero-valued baselines. These are not final-test results or three-seed means.}
+\caption{Diagnostic deployment comparison on common development data (seed 42; scores multiplied by 100, higher is better). Fixed and harness-free direct use one laboratory; our harness combines loop research with ten-laboratory federation. AUROC/AP are equal-client means; cell scores are intervention-macro Top-1. Bold marks all displayed maxima; N/A denotes unfinished evaluation. These are not final-test results.}
 \label{tab:unified-development}
 \end{table}

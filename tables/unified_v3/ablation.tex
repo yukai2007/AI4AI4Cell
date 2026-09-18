@@ -1,0 +1,22 @@
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{clrrrrr}
+\toprule
+ & & DTI & Proteomics & \multicolumn{3}{c}{Cell perturbation} \\
+\cmidrule(lr){5-7}
+Labs & Method & AUROC & AP & VCC & Norman & Tahoe \\
+ & & $\uparrow$ & $\uparrow$ & Top-1 $\uparrow$ & Top-1 $\uparrow$ & Top-1 $\uparrow$ \\
+\midrule
+1 & Fixed model & N/A & 56.89 & 13.00 & 12.50 & 25.00 \\
+1 & Direct & N/A & 54.97 & 18.29 & 20.70 & 18.33 \\
+1 & Our loop & N/A & 54.97 & 18.29 & 20.70 & 18.33 \\
+\midrule
+10 & Fixed model & N/A & \textbf{67.15} & 13.30 & \textbf{50.00} & 28.33 \\
+10 & Direct & N/A & \textbf{67.15} & \textbf{30.08} & \textbf{50.00} & \textbf{31.67} \\
+10 & Our loop & N/A & \textbf{67.15} & \textbf{30.08} & \textbf{50.00} & \textbf{31.67} \\
+\bottomrule
+\end{tabular}
+\caption{Full six-arm ablation on the common development panel (seed 42). Laboratory participation (1 or 10) is crossed with fixed training, feedback-free direct optimization and feedback-guided loop research. All primary metrics are multiplied by 100; higher is better. Bold marks all displayed column maxima, including ties. Missing studies are N/A. These are development measurements, not final-test results.}
+\label{tab:unified-ablation}
+\end{table}

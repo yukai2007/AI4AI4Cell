@@ -1,0 +1,46 @@
+\begin{longtable}{llrrrr}
+\caption{Secondary metrics for the committed model versions on retrospective held-out data; means over completed seeds. Bold indicates all tied maxima, or minima for loss.}\label{tab:strong-secondary}\\
+\toprule Method & Labs & Metric 1 & Metric 2 & Metric 3 & Metric 4 \\ \midrule\endfirsthead
+\toprule Method & Labs & Metric 1 & Metric 2 & Metric 3 & Metric 4 \\ \midrule\endhead
+\multicolumn{2}{l}{\textbf{DTI ($n=0$)}} & AUROC & AP & MCC & BCE \\
+Fixed model & 1 & N/A & N/A & N/A & N/A \\
+Direct & 1 & N/A & N/A & N/A & N/A \\
+Our loop & 1 & N/A & N/A & N/A & N/A \\
+Fixed model & 10 & N/A & N/A & N/A & N/A \\
+Direct & 10 & N/A & N/A & N/A & N/A \\
+Our loop & 10 & N/A & N/A & N/A & N/A \\
+\midrule
+\multicolumn{2}{l}{\textbf{Proteomics ($n=3$)}} & AP & AUROC & BCE & Acc. \\
+Fixed model & 1 & 0.2505 & 0.6549 & 0.4265 & \textbf{0.8514} \\
+Direct & 1 & 0.2013 & 0.6180 & 0.4434 & 0.8176 \\
+Our loop & 1 & 0.2013 & 0.6180 & 0.4434 & 0.8176 \\
+Fixed model & 10 & \textbf{0.3707} & \textbf{0.7406} & \textbf{0.3978} & \textbf{0.8514} \\
+Direct & 10 & 0.3699 & 0.7387 & 0.3983 & \textbf{0.8514} \\
+Our loop & 10 & 0.3699 & 0.7387 & 0.3983 & \textbf{0.8514} \\
+\midrule
+\multicolumn{2}{l}{\textbf{VCC ($n=3$)}} & Micro Top-1 & MRR & Top-3 & CE \\
+Fixed model & 1 & 0.3361 & \textbf{0.5653} & \textbf{0.7389} & \textbf{1.5451} \\
+Direct & 1 & 0.2148 & 0.4710 & 0.6278 & 1.6082 \\
+Our loop & 1 & 0.2074 & 0.4694 & 0.6426 & 1.6086 \\
+Fixed model & 10 & \textbf{0.3398} & 0.5634 & 0.6944 & 1.5814 \\
+Direct & 10 & \textbf{0.3398} & 0.5634 & 0.6944 & 1.5814 \\
+Our loop & 10 & \textbf{0.3398} & 0.5634 & 0.6944 & 1.5814 \\
+\midrule
+\multicolumn{2}{l}{\textbf{Norman ($n=2$)}} & Micro Top-1 & MRR & Top-3 & CE \\
+Fixed model & 1 & \textbf{0.2556} & 0.4850 & 0.6393 & 1.5874 \\
+Direct & 1 & 0.1415 & 0.4209 & 0.5833 & 1.6040 \\
+Our loop & 1 & 0.1415 & 0.4209 & 0.5833 & 1.6040 \\
+Fixed model & 10 & 0.1548 & 0.4526 & 0.6563 & \textbf{1.5806} \\
+Direct & 10 & 0.2230 & \textbf{0.5004} & \textbf{0.7096} & 1.5883 \\
+Our loop & 10 & 0.2230 & \textbf{0.5004} & \textbf{0.7096} & 1.5883 \\
+\midrule
+\multicolumn{2}{l}{\textbf{Tahoe ($n=2$)}} & Micro Top-1 & MRR & Top-3 & CE \\
+Fixed model & 1 & 0.1940 & 0.4499 & 0.5821 & 1.6306 \\
+Direct & 1 & 0.1194 & 0.4031 & 0.5373 & 1.6199 \\
+Our loop & 1 & 0.1194 & 0.4031 & 0.5373 & 1.6199 \\
+Fixed model & 10 & \textbf{0.2537} & \textbf{0.4993} & \textbf{0.6567} & \textbf{1.6062} \\
+Direct & 10 & 0.2388 & 0.4959 & \textbf{0.6567} & 1.6066 \\
+Our loop & 10 & 0.2388 & 0.4953 & 0.6493 & 1.6066 \\
+\midrule
+\bottomrule
+\end{longtable}

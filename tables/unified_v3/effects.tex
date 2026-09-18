@@ -5,15 +5,17 @@
 \toprule
 Development contrast & DTI & Proteomics & VCC & Norman & Tahoe \\
 \midrule
-Loop $-$ fixed (10 labs) & N/A & +0.00 & +16.78 & +0.00 & +3.33 \\
+Loop $-$ direct (1 lab) & N/A & +0.00 & +0.00 & +0.00 & +0.00 \\
 Loop $-$ direct (10 labs) & N/A & +0.00 & +0.00 & +0.00 & +0.00 \\
+10 $-$ 1 labs (both fixed) & N/A & +10.26 & +0.29 & +37.50 & +3.33 \\
+10 $-$ 1 labs (both direct) & N/A & +12.18 & +11.80 & +29.30 & +13.33 \\
 10 $-$ 1 labs (both loop) & N/A & +12.18 & +11.80 & +29.30 & +13.33 \\
 \midrule
-Completed development seeds & 0/3 & 1/3 & 1/3 & 1/3 & 1/3 \\
-3-seed loop $-$ direct & N/A & N/A & N/A & N/A & N/A \\
-3-seed FL $-$ single (loop) & N/A & N/A & N/A & N/A & N/A \\
+Completed development seeds & 0/3 & 3/3 & 3/3 & 3/3 & 3/3 \\
+3-seed loop $-$ direct & N/A & $+0.00\pm0.00$ & $+0.00\pm0.00$ & $+0.00\pm0.00$ & $+0.00\pm1.67$ \\
+3-seed FL $-$ single (loop) & N/A & $+12.76\pm0.86$ & $+11.25\pm0.50$ & $+29.30\pm0.00$ & $+13.33\pm1.67$ \\
 \bottomrule
 \end{tabular}
-\caption{Independent attribution contrasts, percentage points on the corresponding primary metric. First-seed development only; zero means a measured tie. Three-seed effects remain N/A until all prespecified runs finish. The participation contrast changes available training data; it is not a same-data centralized comparison.}
+\caption{Separate contributions of loop engineering and access to additional laboratory data, in percentage points on the primary metric. Loop versus direct holds participation, candidate budget and selection fixed. Ten versus one laboratory holds the research mode fixed while increasing available training data; it does not isolate the federated optimizer at matched data volume. First-seed development only; zero means a measured tie. Three-seed effects remain N/A until all prespecified runs finish.}
 \label{tab:unified-effects}
 \end{table}

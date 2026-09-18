@@ -1,0 +1,24 @@
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{clrrrrr}
+\toprule
+ & & DTI & PTPC (linear) & \multicolumn{3}{c}{Cell perturbation} \\
+\cmidrule(lr){5-7}
+Labs & Method & AUROC & AP & VCC & Norman & Tahoe \\
+ & & $\uparrow$ & $\uparrow$ & Top-1 $\uparrow$ & Top-1 $\uparrow$ & Top-1 $\uparrow$ \\
+\midrule
+1 & Fixed model & N/A & 27.80{\scriptsize$\pm0.07$} & 13.02{\scriptsize$\pm0.14$} & 6.52{\scriptsize$\pm0.00$} & 20.40{\scriptsize$\pm2.28$} \\
+1 & Direct & N/A & 24.99{\scriptsize$\pm0.16$} & 13.41{\scriptsize$\pm0.12$} & \textbf{16.27}{\scriptsize$\pm0.28$} & 18.91{\scriptsize$\pm4.31$} \\
+1 & Our loop & N/A & 24.99{\scriptsize$\pm0.16$} & 13.41{\scriptsize$\pm0.12$} & \textbf{16.27}{\scriptsize$\pm0.28$} & 18.91{\scriptsize$\pm4.31$} \\
+\midrule
+10 & Fixed model & N/A & 43.70{\scriptsize$\pm0.77$} & 12.01{\scriptsize$\pm0.00$} & 15.31{\scriptsize$\pm0.04$} & \textbf{23.88}{\scriptsize$\pm0.00$} \\
+10 & Direct & N/A & 43.73{\scriptsize$\pm0.79$} & \textbf{17.38}{\scriptsize$\pm0.82$} & 15.31{\scriptsize$\pm0.04$} & 21.89{\scriptsize$\pm3.11$} \\
+10 & Our loop & N/A & \textbf{44.48}{\scriptsize$\pm1.90$} & \textbf{17.38}{\scriptsize$\pm0.82$} & 15.21{\scriptsize$\pm0.15$} & 18.91{\scriptsize$\pm2.28$} \\
+\midrule
+\multicolumn{2}{l}{Completed seeds ($n/3$)} & 0/3 & 3/3 & 3/3 & 3/3 & 3/3 \\
+\bottomrule
+\end{tabular}
+\caption{Six-arm retrospective held-out ablation: mean and sample SD over completed seeds; no SD is estimated for a single seed. Scores are multiplied by 100; bold marks all displayed maxima. PTPC uses the linear comparator, not native ProteinTalks. These historically exposed endpoints are not blind confirmation. N/A denotes incomplete paired evaluation; unrun seeds are never imputed.}
+\label{tab:unified-heldout-ablation}
+\end{table}

@@ -1,22 +1,20 @@
 \begin{table}[t]
 \centering\small
-\setlength{\tabcolsep}{4pt}
+\setlength{\tabcolsep}{3pt}
 \begin{tabular}{clrrrrr}
 \toprule
-Labs & Method & DTI & Proteomics & VCC & Norman & Tahoe \\
- & & AUROC & AP & Top-1 & Top-1 & Top-1 \\
+ & & DTI & PTPC (linear) & \multicolumn{3}{c}{Cell perturbation} \\
+\cmidrule(lr){5-7}
+Labs & Method & AUROC & AP & VCC & Norman & Tahoe \\
+ & & $\uparrow$ & $\uparrow$ & Top-1 $\uparrow$ & Top-1 $\uparrow$ & Top-1 $\uparrow$ \\
 \midrule
-1 & Fixed model & N/A & N/A & N/A & N/A & N/A \\
-1 & Direct & N/A & N/A & N/A & N/A & N/A \\
-1 & Our loop & N/A & N/A & N/A & N/A & N/A \\
+1 & Fixed model & N/A & 27.80 & 13.02 & 6.52 & \textbf{20.40} \\
+1 & Direct optimize & N/A & 24.99 & 13.41 & \textbf{16.27} & 18.91 \\
+10 & Our harness & N/A & \textbf{44.48} & \textbf{17.38} & 15.21 & 18.91 \\
 \midrule
-10 & Fixed model & N/A & N/A & N/A & N/A & N/A \\
-10 & Direct & N/A & N/A & N/A & N/A & N/A \\
-10 & Our loop & N/A & N/A & N/A & N/A & N/A \\
-\midrule
-1/10 & Cosine reference & N/A & N/A & N/A & N/A & N/A \\
+\multicolumn{2}{l}{Completed seeds ($n/3$)} & 0/3 & 3/3 & 3/3 & 3/3 & 3/3 \\
 \bottomrule
 \end{tabular}
-\caption{Reserved common-test comparison for the uniform protocol (three-seed mean and sample SD). All values are N/A because no uniform-run final-test scores are available in this snapshot. DTI denotes the unseen-drug endpoint; random and unseen-protein results will be separate. The cosine reference is not yet rerun under this protocol. Older test scores are not substituted.}
+\caption{Diagnostic comparison of the earlier model versions: retrospective held-out means over completed seeds ($n$ shown). Fixed and harness-free direct optimization use one laboratory; our harness uses ten. Scores are multiplied by 100; bold marks all displayed maxima. PTPC uses the linear comparator, not native ProteinTalks. These historically exposed endpoints are not blind confirmation. N/A denotes incomplete paired evaluation; unrun seeds are never imputed.}
 \label{tab:unified-final}
 \end{table}
