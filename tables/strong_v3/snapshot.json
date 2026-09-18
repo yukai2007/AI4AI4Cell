@@ -1,5 +1,5 @@
 {
-  "snapshot_utc": "2026-09-18T08:31:52.907181+00:00",
+  "snapshot_utc": "2026-09-18T08:44:46.639509+00:00",
   "role": "retrospective held-out; prior historical exposure; not blind confirmation",
   "seeds_requested": [
     42,
@@ -2047,11 +2047,262 @@
           "model": "mask-corrected scDEBART adaptation",
           "endpoints": null
         },
-        "44": null
+        "44": {
+          "scores": {
+            "single_fixed": {
+              "primary": 0.2555555555555556,
+              "secondary": {
+                "accuracy": 0.25555555555555554,
+                "macro_accuracy": 0.2555555555555556,
+                "mrr": 0.48495061728395067,
+                "top3": 0.6392592592592593,
+                "cross_entropy": 1.587427620069844,
+                "n_queries": 1350,
+                "n_interventions": 27
+              }
+            },
+            "single_direct": {
+              "primary": 0.14148148148148149,
+              "secondary": {
+                "accuracy": 0.14148148148148149,
+                "macro_accuracy": 0.14148148148148149,
+                "mrr": 0.4217283950617283,
+                "top3": 0.5837037037037037,
+                "cross_entropy": 1.6036246621498806,
+                "n_queries": 1350,
+                "n_interventions": 27
+              }
+            },
+            "single_loop": {
+              "primary": 0.14148148148148149,
+              "secondary": {
+                "accuracy": 0.14148148148148149,
+                "macro_accuracy": 0.14148148148148149,
+                "mrr": 0.4217283950617283,
+                "top3": 0.5837037037037037,
+                "cross_entropy": 1.6036246621498806,
+                "n_queries": 1350,
+                "n_interventions": 27
+              }
+            },
+            "federated_fixed": {
+              "primary": 0.1548148148148148,
+              "secondary": {
+                "accuracy": 0.15481481481481482,
+                "macro_accuracy": 0.1548148148148148,
+                "mrr": 0.4526296296296296,
+                "top3": 0.6562962962962963,
+                "cross_entropy": 1.580642332386545,
+                "n_queries": 1350,
+                "n_interventions": 27
+              }
+            },
+            "federated_direct": {
+              "primary": 0.2214814814814815,
+              "secondary": {
+                "accuracy": 0.22148148148148147,
+                "macro_accuracy": 0.2214814814814815,
+                "mrr": 0.5014814814814815,
+                "top3": 0.7096296296296296,
+                "cross_entropy": 1.5882194987392533,
+                "n_queries": 1350,
+                "n_interventions": 27
+              }
+            },
+            "federated_loop": {
+              "primary": 0.2214814814814815,
+              "secondary": {
+                "accuracy": 0.22148148148148147,
+                "macro_accuracy": 0.2214814814814815,
+                "mrr": 0.5014814814814815,
+                "top3": 0.7096296296296296,
+                "cross_entropy": 1.5882194987392533,
+                "n_queries": 1350,
+                "n_interventions": 27
+              }
+            }
+          },
+          "uncertainty": {
+            "arms": {
+              "single_fixed": {
+                "ci95": [
+                  0.10962962962962963,
+                  0.40596296296296297
+                ],
+                "valid_replicates": 1000
+              },
+              "single_direct": {
+                "ci95": [
+                  0.037037037037037035,
+                  0.28296296296296297
+                ],
+                "valid_replicates": 1000
+              },
+              "single_loop": {
+                "ci95": [
+                  0.037037037037037035,
+                  0.28296296296296297
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_fixed": {
+                "ci95": [
+                  0.0437037037037037,
+                  0.30296296296296293
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_direct": {
+                "ci95": [
+                  0.09185185185185185,
+                  0.3740925925925926
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_loop": {
+                "ci95": [
+                  0.09185185185185185,
+                  0.3740925925925926
+                ],
+                "valid_replicates": 1000
+              }
+            },
+            "effects": {
+              "loop_single": {
+                "arms": [
+                  "single_loop",
+                  "single_direct"
+                ],
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "loop_federated": {
+                "arms": [
+                  "federated_loop",
+                  "federated_direct"
+                ],
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_fixed": {
+                "arms": [
+                  "federated_fixed",
+                  "single_fixed"
+                ],
+                "difference": -0.1007407407407408,
+                "ci95": [
+                  -0.21185185185185185,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_direct": {
+                "arms": [
+                  "federated_direct",
+                  "single_direct"
+                ],
+                "difference": 0.08000000000000002,
+                "ci95": [
+                  -0.08520370370370371,
+                  0.2592777777777778
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_loop": {
+                "arms": [
+                  "federated_loop",
+                  "single_loop"
+                ],
+                "difference": 0.08000000000000002,
+                "ci95": [
+                  -0.08520370370370371,
+                  0.2592777777777778
+                ],
+                "valid_replicates": 1000
+              },
+              "loop_vs_fixed_federated": {
+                "arms": [
+                  "federated_loop",
+                  "federated_fixed"
+                ],
+                "difference": 0.06666666666666671,
+                "ci95": [
+                  -0.10370370370370371,
+                  0.24814814814814812
+                ],
+                "valid_replicates": 1000
+              },
+              "main_harness_vs_fixed": {
+                "arms": [
+                  "federated_loop",
+                  "single_fixed"
+                ],
+                "difference": -0.03407407407407409,
+                "ci95": [
+                  -0.2015370370370371,
+                  0.14818518518518514
+                ],
+                "valid_replicates": 1000
+              },
+              "main_harness_vs_direct": {
+                "arms": [
+                  "federated_loop",
+                  "single_direct"
+                ],
+                "difference": 0.08000000000000002,
+                "ci95": [
+                  -0.08520370370370371,
+                  0.2592777777777778
+                ],
+                "valid_replicates": 1000
+              }
+            },
+            "clusters": 27,
+            "method": "paired cluster bootstrap, percentile 95%, 1000 requested replicates; fixed trained models"
+          },
+          "primary_metric": "macro_accuracy",
+          "receipts": {
+            "heldout_v3/norman_double_corrected/seed44/results.json": "f3aaba21d8d9113d0d2e7c1d8b0b8733f6a1cfe71e291bb2f3b80882c2043128",
+            "heldout_v3/norman_double_corrected/seed44/seal.json": "18ef02ed56b4f9e75559d7782cb51c081ae0babcb657b11265b334c3dff918f8",
+            "heldout_v3/norman_double_corrected/seed44/audit.json": "4edc7574b8d22d5005e560ec66f77ea735e1636e08a9ce9afa9c2340c9a87155",
+            "heldout_v3/norman_double_corrected/seed44/verification.json": "6677d3b081acb7377ef1354e5c36a3eedbef79edaf5b70b43880efc88919e3ed",
+            "heldout_v3/norman_double_corrected/seed44/registration_seal.json": "dd19bb67c63ab500ef75015c25d291a358c658975a071cbccf3646dd7736646e",
+            "norman_double_corrected/study_v3_seed44/maskfix_registration.json": "662294f1b29dc5c9b74de8a161e984dbe52accc185f93fb9298127fbbef3b7ef"
+          },
+          "model_version_receipt": {
+            "task": "norman_double_corrected",
+            "seed": 44,
+            "predictor": "mask-corrected scDEBART adaptation; frozen public backbone; no target-trained initialization",
+            "registration_path": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/norman_double_corrected/study_v3_seed44/maskfix_registration.json",
+            "registration_sha256": "662294f1b29dc5c9b74de8a161e984dbe52accc185f93fb9298127fbbef3b7ef",
+            "selection_sha256": "a32361e17fb5304fbe14ba0481ff50bc2e6521bc0b04537a6bfbb6d092f309d9",
+            "definition_sha256": "01485be95105542cc2217cb92eacb2977d4e7cce55ad184221e3f5ef43a068e3",
+            "data_manifest_sha256": "340d9df6de0d6f05215b60c2c393f8e6a4ec3f6df14763ae10748709e6f23527",
+            "source_sha256": {
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/run_corrected.py": "fe4fcab1ef1a51b2fc15e39c6487a489769f0ab559f62e8d902e8622d6b4047f",
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/architecture.py": "d15f65db7148ab8c9ca9421aea14a55e6fa9697ca300e44009f94a740a5ef90d",
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/prepare_features.py": "35a57f932205f79aeac981717139a088829ef7b44ae78c2d9dbcd975ab2a0c00",
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/test_masks.py": "3fd7db9f291fc63701e0a26787bdb8b7516a68e8a5cdc91d7edeab6bf2044868"
+            },
+            "evaluation_wrapper_sha256": "19ef51b1e855a94c22b1b5b8767042e49164dea528d53ff182bb00fda0137a84",
+            "proof_generator_sha256": "cfeb2e282409f5bf6a48640cab7e2df68e7400035281f824bc7494ab69c059ba",
+            "phase": "PRE_EVALUATION_REGISTRATION_SEAL",
+            "verified_unix": 1789720591.0824063,
+            "note": "Written before the common held-out selection seal and before any held-out response is decoded. Join to the common seal by task, seed, selection_sha256, definition_sha256 and data_manifest_sha256."
+          },
+          "model": "mask-corrected scDEBART adaptation",
+          "endpoints": null
+        }
       },
-      "pending": {
-        "44": "complete verified six-arm evaluation not available"
-      }
+      "pending": {}
     },
     "tahoe_drug_corrected": {
       "label": "Tahoe",
@@ -2565,11 +2816,262 @@
           "model": "mask-corrected scDEBART with drug-conditioning adapter",
           "endpoints": null
         },
-        "44": null
+        "44": {
+          "scores": {
+            "single_fixed": {
+              "primary": 0.19402985074626866,
+              "secondary": {
+                "accuracy": 0.19402985074626866,
+                "macro_accuracy": 0.19402985074626866,
+                "mrr": 0.4502487562189055,
+                "top3": 0.582089552238806,
+                "cross_entropy": 1.6314382174171167,
+                "n_queries": 67,
+                "n_interventions": 67
+              }
+            },
+            "single_direct": {
+              "primary": 0.22388059701492538,
+              "secondary": {
+                "accuracy": 0.22388059701492538,
+                "macro_accuracy": 0.22388059701492538,
+                "mrr": 0.4716417910447761,
+                "top3": 0.6268656716417911,
+                "cross_entropy": 1.6171710426475228,
+                "n_queries": 67,
+                "n_interventions": 67
+              }
+            },
+            "single_loop": {
+              "primary": 0.22388059701492538,
+              "secondary": {
+                "accuracy": 0.22388059701492538,
+                "macro_accuracy": 0.22388059701492538,
+                "mrr": 0.4716417910447761,
+                "top3": 0.6268656716417911,
+                "cross_entropy": 1.6171710426475228,
+                "n_queries": 67,
+                "n_interventions": 67
+              }
+            },
+            "federated_fixed": {
+              "primary": 0.26865671641791045,
+              "secondary": {
+                "accuracy": 0.26865671641791045,
+                "macro_accuracy": 0.26865671641791045,
+                "mrr": 0.5074626865671643,
+                "top3": 0.6417910447761194,
+                "cross_entropy": 1.6057623634670593,
+                "n_queries": 67,
+                "n_interventions": 67
+              }
+            },
+            "federated_direct": {
+              "primary": 0.19402985074626866,
+              "secondary": {
+                "accuracy": 0.19402985074626866,
+                "macro_accuracy": 0.19402985074626866,
+                "mrr": 0.44800995024875623,
+                "top3": 0.5373134328358209,
+                "cross_entropy": 1.6093178209117436,
+                "n_queries": 67,
+                "n_interventions": 67
+              }
+            },
+            "federated_loop": {
+              "primary": 0.19402985074626866,
+              "secondary": {
+                "accuracy": 0.19402985074626866,
+                "macro_accuracy": 0.19402985074626866,
+                "mrr": 0.44800995024875623,
+                "top3": 0.5373134328358209,
+                "cross_entropy": 1.6093178209117436,
+                "n_queries": 67,
+                "n_interventions": 67
+              }
+            }
+          },
+          "uncertainty": {
+            "arms": {
+              "single_fixed": {
+                "ci95": [
+                  0.11902985074626868,
+                  0.29850746268656714
+                ],
+                "valid_replicates": 1000
+              },
+              "single_direct": {
+                "ci95": [
+                  0.13395522388059702,
+                  0.3283582089552239
+                ],
+                "valid_replicates": 1000
+              },
+              "single_loop": {
+                "ci95": [
+                  0.13395522388059702,
+                  0.3283582089552239
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_fixed": {
+                "ci95": [
+                  0.16417910447761194,
+                  0.373134328358209
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_direct": {
+                "ci95": [
+                  0.1044776119402985,
+                  0.2835820895522388
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_loop": {
+                "ci95": [
+                  0.1044776119402985,
+                  0.2835820895522388
+                ],
+                "valid_replicates": 1000
+              }
+            },
+            "effects": {
+              "loop_single": {
+                "arms": [
+                  "single_loop",
+                  "single_direct"
+                ],
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "loop_federated": {
+                "arms": [
+                  "federated_loop",
+                  "federated_direct"
+                ],
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_fixed": {
+                "arms": [
+                  "federated_fixed",
+                  "single_fixed"
+                ],
+                "difference": 0.07462686567164178,
+                "ci95": [
+                  -0.044776119402985065,
+                  0.17947761194029818
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_direct": {
+                "arms": [
+                  "federated_direct",
+                  "single_direct"
+                ],
+                "difference": -0.02985074626865672,
+                "ci95": [
+                  -0.17910447761194032,
+                  0.11940298507462688
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_loop": {
+                "arms": [
+                  "federated_loop",
+                  "single_loop"
+                ],
+                "difference": -0.02985074626865672,
+                "ci95": [
+                  -0.17910447761194032,
+                  0.11940298507462688
+                ],
+                "valid_replicates": 1000
+              },
+              "loop_vs_fixed_federated": {
+                "arms": [
+                  "federated_loop",
+                  "federated_fixed"
+                ],
+                "difference": -0.07462686567164178,
+                "ci95": [
+                  -0.19402985074626863,
+                  0.04477611940298509
+                ],
+                "valid_replicates": 1000
+              },
+              "main_harness_vs_fixed": {
+                "arms": [
+                  "federated_loop",
+                  "single_fixed"
+                ],
+                "difference": 0.0,
+                "ci95": [
+                  -0.08992537313432834,
+                  0.08955223880597016
+                ],
+                "valid_replicates": 1000
+              },
+              "main_harness_vs_direct": {
+                "arms": [
+                  "federated_loop",
+                  "single_direct"
+                ],
+                "difference": -0.02985074626865672,
+                "ci95": [
+                  -0.17910447761194032,
+                  0.11940298507462688
+                ],
+                "valid_replicates": 1000
+              }
+            },
+            "clusters": 67,
+            "method": "paired cluster bootstrap, percentile 95%, 1000 requested replicates; fixed trained models"
+          },
+          "primary_metric": "macro_accuracy",
+          "receipts": {
+            "heldout_v3/tahoe_drug_corrected/seed44/results.json": "86c422283b93d55e195ffcd3db9a234180033f781d51f5d2b7272e91512a239b",
+            "heldout_v3/tahoe_drug_corrected/seed44/seal.json": "d366c6ad8a2a29312ba15546bc3f96195184bdb85a9533044d5b4c8eb5750423",
+            "heldout_v3/tahoe_drug_corrected/seed44/audit.json": "84a631de95289093f14fbce4861f1fa803298e92cc58c842401ce495a2ee6afa",
+            "heldout_v3/tahoe_drug_corrected/seed44/verification.json": "c588012e139cf5eced3d64ded0f3541502c07194d874079934482ba735b42655",
+            "heldout_v3/tahoe_drug_corrected/seed44/registration_seal.json": "96652be8c3354233fa3e40a47c4a1ca1ad653e7275b3090c0a1e462a5f72041d",
+            "tahoe_drug_corrected/study_v3_seed44/maskfix_registration.json": "cf1cf94ee493f6dbe3723376c32ee62bbbafc599fb9b526e8164b93d35beb545"
+          },
+          "model_version_receipt": {
+            "task": "tahoe_drug_corrected",
+            "seed": 44,
+            "predictor": "mask-corrected scDEBART adaptation; frozen public backbone; no target-trained initialization",
+            "registration_path": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/tahoe_drug_corrected/study_v3_seed44/maskfix_registration.json",
+            "registration_sha256": "cf1cf94ee493f6dbe3723376c32ee62bbbafc599fb9b526e8164b93d35beb545",
+            "selection_sha256": "a24cce16a06714c55463f197b3dd3caf080e890066212993889e368385bdac52",
+            "definition_sha256": "e5495010e39f294628a350c7dd8b4ae9bce8ce1fd6f38f2f7878d7c8d46d106e",
+            "data_manifest_sha256": "ca6d46b952c79dbae6f323c9fe663bdb268c46eb5a594a291c62b5ebbb5133ec",
+            "source_sha256": {
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/run_corrected.py": "fe4fcab1ef1a51b2fc15e39c6487a489769f0ab559f62e8d902e8622d6b4047f",
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/architecture.py": "d15f65db7148ab8c9ca9421aea14a55e6fa9697ca300e44009f94a740a5ef90d",
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/prepare_features.py": "35a57f932205f79aeac981717139a088829ef7b44ae78c2d9dbcd975ab2a0c00",
+              "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/test_masks.py": "3fd7db9f291fc63701e0a26787bdb8b7516a68e8a5cdc91d7edeab6bf2044868"
+            },
+            "evaluation_wrapper_sha256": "19ef51b1e855a94c22b1b5b8767042e49164dea528d53ff182bb00fda0137a84",
+            "proof_generator_sha256": "cfeb2e282409f5bf6a48640cab7e2df68e7400035281f824bc7494ab69c059ba",
+            "phase": "PRE_EVALUATION_REGISTRATION_SEAL",
+            "verified_unix": 1789720966.1697688,
+            "note": "Written before the common held-out selection seal and before any held-out response is decoded. Join to the common seal by task, seed, selection_sha256, definition_sha256 and data_manifest_sha256."
+          },
+          "model": "mask-corrected scDEBART with drug-conditioning adapter",
+          "endpoints": null
+        }
       },
-      "pending": {
-        "44": "complete verified six-arm evaluation not available"
-      }
+      "pending": {}
     }
   }
 }

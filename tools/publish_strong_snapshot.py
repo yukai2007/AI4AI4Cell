@@ -231,7 +231,7 @@ def effects(snapshot,out,full=False):
         lines.append(label+' & '+' & '.join(cells)+r' \\')
     lines += [r'\midrule','Completed seeds ($n/3$) & '+' & '.join(
         f'{len(runs(snapshot,t))}/3' for t,_,_ in TASKS)+r' \\',r'\bottomrule',r'\end{tabular}',
-        r'\caption{Separating total research/search improvement (loop minus fixed), feedback-specific improvement (loop minus matched-budget direct), and access to more laboratory data (ten minus one lab with loop fixed). Mean paired differences are in percentage points over the completed seeds on retrospective held-out data. Total search improvement must not be attributed solely to feedback. Negative effects and ties are retained; per-seed uncertainty is in Appendix R.}',
+        r'\caption{Separating total research/search improvement (loop minus fixed), feedback-specific improvement (loop minus matched-budget direct), and access to more laboratory data (ten minus one lab with loop fixed). Mean paired differences are in percentage points over completed seeds on retrospective held-out data, computed before rounding. Total search improvement must not be attributed solely to feedback. Negative effects and ties are retained; per-seed uncertainty is in Appendix R.}',
         r'\label{'+('tab:strong-effects-full' if full else 'tab:strong-effects')+'}',r'\end{table}']
     (out/('effects_full.tex' if full else 'effects.tex')).write_text('\n'.join(lines)+'\n')
 
