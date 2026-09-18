@@ -8,15 +8,15 @@
 Labs & Method & AUROC & AP & VCC & Norman & Tahoe \\
  & & $\uparrow$ & $\uparrow$ & Top-1 $\uparrow$ & Top-1 $\uparrow$ & Top-1 $\uparrow$ \\
 \midrule
-1 & Fixed model & N/A & 25.05{\scriptsize$\pm4.56$} & 29.94{\scriptsize$\pm0.00$} & \textbf{25.56}{\scriptsize$\pm0.00$} & 19.40{\scriptsize$\pm0.00$} \\
-1 & Direct & N/A & 20.13{\scriptsize$\pm0.07$} & 21.09{\scriptsize$\pm4.38$} & 14.15{\scriptsize$\pm0.00$} & 15.42{\scriptsize$\pm6.21$} \\
-1 & Our loop & N/A & 20.13{\scriptsize$\pm0.07$} & 20.22{\scriptsize$\pm2.22$} & 14.15{\scriptsize$\pm0.00$} & 15.42{\scriptsize$\pm6.21$} \\
+1 & Fixed model & 81.76 & 25.05{\scriptsize$\pm4.56$} & 29.94{\scriptsize$\pm0.00$} & \textbf{25.56}{\scriptsize$\pm0.00$} & 19.40{\scriptsize$\pm0.00$} \\
+1 & Direct & 88.82 & 20.13{\scriptsize$\pm0.07$} & 21.09{\scriptsize$\pm4.38$} & 14.15{\scriptsize$\pm0.00$} & 15.42{\scriptsize$\pm6.21$} \\
+1 & Our loop & 88.82 & 20.13{\scriptsize$\pm0.07$} & 20.22{\scriptsize$\pm2.22$} & 14.15{\scriptsize$\pm0.00$} & 15.42{\scriptsize$\pm6.21$} \\
 \midrule
-10 & Fixed model & N/A & \textbf{37.07}{\scriptsize$\pm0.08$} & \textbf{31.54}{\scriptsize$\pm0.08$} & 15.48{\scriptsize$\pm0.00$} & \textbf{25.87}{\scriptsize$\pm1.72$} \\
-10 & Direct & N/A & 36.99{\scriptsize$\pm0.22$} & \textbf{31.54}{\scriptsize$\pm0.08$} & 22.25{\scriptsize$\pm0.45$} & 22.39{\scriptsize$\pm2.59$} \\
-10 & Our loop & N/A & 36.99{\scriptsize$\pm0.22$} & \textbf{31.54}{\scriptsize$\pm0.08$} & 22.25{\scriptsize$\pm0.45$} & 22.39{\scriptsize$\pm2.59$} \\
+10 & Fixed model & 94.27 & \textbf{37.07}{\scriptsize$\pm0.08$} & \textbf{31.54}{\scriptsize$\pm0.08$} & 15.48{\scriptsize$\pm0.00$} & \textbf{25.87}{\scriptsize$\pm1.72$} \\
+10 & Direct & \textbf{94.60} & 36.99{\scriptsize$\pm0.22$} & \textbf{31.54}{\scriptsize$\pm0.08$} & 22.25{\scriptsize$\pm0.45$} & 22.39{\scriptsize$\pm2.59$} \\
+10 & Our loop & \textbf{94.60} & 36.99{\scriptsize$\pm0.22$} & \textbf{31.54}{\scriptsize$\pm0.08$} & 22.25{\scriptsize$\pm0.45$} & 22.39{\scriptsize$\pm2.59$} \\
 \midrule
-\multicolumn{2}{l}{Completed seeds ($n/3$)} & 0/3 & 3/3 & 3/3 & 3/3 & 3/3 \\
+\multicolumn{2}{l}{Completed seeds ($n/3$)} & 1/3 & 3/3 & 3/3 & 3/3 & 3/3 \\
 \bottomrule
 \end{tabular}
 \caption{Six-arm ablation of the committed reference-model versions. Entries are completed-seed means and sample SD where at least two seeds are available. DTI uses the random held-out endpoint. Retrospective held-out means are multiplied by 100; completed seed counts are shown. Bold marks all displayed maxima. N/A denotes incomplete paired evaluation. Model versions were not selected by held-out scores; these endpoints are not blind confirmation.}

@@ -1,5 +1,5 @@
 {
-  "snapshot_utc": "2026-09-18T08:44:46.639509+00:00",
+  "snapshot_utc": "2026-09-18T18:11:29.890650+00:00",
   "role": "retrospective held-out; prior historical exposure; not blind confirmation",
   "seeds_requested": [
     42,
@@ -14,12 +14,452 @@
       "label": "DTI",
       "model": "TAPB; random task weights with public frozen features",
       "runs": {
-        "42": null,
+        "42": {
+          "scores": {
+            "single_fixed": {
+              "primary": 0.8176202138896225,
+              "secondary": {
+                "auroc": 0.8176202138896225,
+                "average_precision": 0.8230315148356314,
+                "mcc": 0.48609258045700926,
+                "accuracy": 0.7431425976385104,
+                "log_loss": 0.5033706525925172,
+                "n_samples": 5505,
+                "n_positive": 2705,
+                "n_negative": 2800,
+                "threshold": 0.5,
+                "log_loss_epsilon": 1e-15
+              }
+            },
+            "single_direct": {
+              "primary": 0.8881695273303406,
+              "secondary": {
+                "auroc": 0.8881695273303406,
+                "average_precision": 0.8597544337609471,
+                "mcc": 0.6469429214195159,
+                "accuracy": 0.8198001816530427,
+                "log_loss": 0.6979408864514062,
+                "n_samples": 5505,
+                "n_positive": 2705,
+                "n_negative": 2800,
+                "threshold": 0.5,
+                "log_loss_epsilon": 1e-15
+              }
+            },
+            "single_loop": {
+              "primary": 0.8881695273303406,
+              "secondary": {
+                "auroc": 0.8881695273303406,
+                "average_precision": 0.8597544337609471,
+                "mcc": 0.6469429214195159,
+                "accuracy": 0.8198001816530427,
+                "log_loss": 0.6979408864514062,
+                "n_samples": 5505,
+                "n_positive": 2705,
+                "n_negative": 2800,
+                "threshold": 0.5,
+                "log_loss_epsilon": 1e-15
+              }
+            },
+            "federated_fixed": {
+              "primary": 0.9426791655664115,
+              "secondary": {
+                "auroc": 0.9426791655664115,
+                "average_precision": 0.928660904919976,
+                "mcc": 0.7786874357897304,
+                "accuracy": 0.8870118074477747,
+                "log_loss": 0.3083782076954481,
+                "n_samples": 5505,
+                "n_positive": 2705,
+                "n_negative": 2800,
+                "threshold": 0.5,
+                "log_loss_epsilon": 1e-15
+              }
+            },
+            "federated_direct": {
+              "primary": 0.9460002640612623,
+              "secondary": {
+                "auroc": 0.9460002640612623,
+                "average_precision": 0.9426511033754423,
+                "mcc": 0.7425774036953274,
+                "accuracy": 0.8683015440508629,
+                "log_loss": 0.33918473937649307,
+                "n_samples": 5505,
+                "n_positive": 2705,
+                "n_negative": 2800,
+                "threshold": 0.5,
+                "log_loss_epsilon": 1e-15
+              }
+            },
+            "federated_loop": {
+              "primary": 0.9460002640612623,
+              "secondary": {
+                "auroc": 0.9460002640612623,
+                "average_precision": 0.9426511033754423,
+                "mcc": 0.7425774036953274,
+                "accuracy": 0.8683015440508629,
+                "log_loss": 0.33918473937649307,
+                "n_samples": 5505,
+                "n_positive": 2705,
+                "n_negative": 2800,
+                "threshold": 0.5,
+                "log_loss_epsilon": 1e-15
+              }
+            }
+          },
+          "uncertainty": null,
+          "primary_metric": "auroc",
+          "receipts": {
+            "heldout_v3/native_tapb/seed42/results.json": "9175ecbe4aca2cbdca4aff0cd6f565b6f48c0772a9f617659c8a00f4e61b7bdd",
+            "heldout_v3/native_tapb/seed42/seal.json": "9bf05d62d61e40fd86f84c2763f9c5c4998f95e768152b505a8a11f70b7aa274",
+            "heldout_v3/native_tapb/seed42/audit.json": "c2a64dd37d9ec328d344224238aa3c27e40fef2dfde537b91be4f47050aec41a",
+            "heldout_v3/native_tapb/seed42/verification.json": "6823ffa9da0e0b81fcd05e01f3ab38ca4eddd4480584898b20f789faa0902387"
+          },
+          "model_version_receipt": null,
+          "model": "TAPB; random task weights with public frozen features",
+          "endpoints": {
+            "random": {
+              "single_fixed": {
+                "primary": 0.8176202138896225,
+                "metrics": {
+                  "auroc": 0.8176202138896225,
+                  "average_precision": 0.8230315148356314,
+                  "mcc": 0.48609258045700926,
+                  "accuracy": 0.7431425976385104,
+                  "log_loss": 0.5033706525925172,
+                  "n_samples": 5505,
+                  "n_positive": 2705,
+                  "n_negative": 2800,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed42/fits/single_7badccc152baa0b2/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/random_single_fixed_predictions.csv",
+                "predictions_sha256": "d9fa7389aa4d91fad38088499c639fb3de19a27b55a27c5ae20e5c156b6bd696"
+              },
+              "single_direct": {
+                "primary": 0.8881695273303406,
+                "metrics": {
+                  "auroc": 0.8881695273303406,
+                  "average_precision": 0.8597544337609471,
+                  "mcc": 0.6469429214195159,
+                  "accuracy": 0.8198001816530427,
+                  "log_loss": 0.6979408864514062,
+                  "n_samples": 5505,
+                  "n_positive": 2705,
+                  "n_negative": 2800,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed42/fits/single_42fef289aeba20c1/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/random_single_direct_predictions.csv",
+                "predictions_sha256": "8c03da33a6ae0b94d86c6bcee4b75a725b2b5170411960f5ecbc3c1f34026832"
+              },
+              "single_loop": {
+                "primary": 0.8881695273303406,
+                "metrics": {
+                  "auroc": 0.8881695273303406,
+                  "average_precision": 0.8597544337609471,
+                  "mcc": 0.6469429214195159,
+                  "accuracy": 0.8198001816530427,
+                  "log_loss": 0.6979408864514062,
+                  "n_samples": 5505,
+                  "n_positive": 2705,
+                  "n_negative": 2800,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed42/fits/single_42fef289aeba20c1/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/random_single_direct_predictions.csv",
+                "predictions_sha256": "8c03da33a6ae0b94d86c6bcee4b75a725b2b5170411960f5ecbc3c1f34026832",
+                "reused_identical_checkpoint": "single_direct"
+              },
+              "federated_fixed": {
+                "primary": 0.9426791655664115,
+                "metrics": {
+                  "auroc": 0.9426791655664115,
+                  "average_precision": 0.928660904919976,
+                  "mcc": 0.7786874357897304,
+                  "accuracy": 0.8870118074477747,
+                  "log_loss": 0.3083782076954481,
+                  "n_samples": 5505,
+                  "n_positive": 2705,
+                  "n_negative": 2800,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed42/fits/federated_7badccc152baa0b2/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/random_federated_fixed_predictions.csv",
+                "predictions_sha256": "c7da3f84dea338f6817efab8054a89a0019f895e5abc94442a513e8669fdf402"
+              },
+              "federated_direct": {
+                "primary": 0.9460002640612623,
+                "metrics": {
+                  "auroc": 0.9460002640612623,
+                  "average_precision": 0.9426511033754423,
+                  "mcc": 0.7425774036953274,
+                  "accuracy": 0.8683015440508629,
+                  "log_loss": 0.33918473937649307,
+                  "n_samples": 5505,
+                  "n_positive": 2705,
+                  "n_negative": 2800,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed42/fits/federated_ecdb13784389f73c/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/random_federated_direct_predictions.csv",
+                "predictions_sha256": "08dc355ffb80333cf827dbbdbc5c59ea04bd616e0261ca2b811efad1f14c77c2"
+              },
+              "federated_loop": {
+                "primary": 0.9460002640612623,
+                "metrics": {
+                  "auroc": 0.9460002640612623,
+                  "average_precision": 0.9426511033754423,
+                  "mcc": 0.7425774036953274,
+                  "accuracy": 0.8683015440508629,
+                  "log_loss": 0.33918473937649307,
+                  "n_samples": 5505,
+                  "n_positive": 2705,
+                  "n_negative": 2800,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed42/fits/federated_ecdb13784389f73c/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/random_federated_direct_predictions.csv",
+                "predictions_sha256": "08dc355ffb80333cf827dbbdbc5c59ea04bd616e0261ca2b811efad1f14c77c2",
+                "reused_identical_checkpoint": "federated_direct"
+              }
+            },
+            "unseen_drug": {
+              "single_fixed": {
+                "primary": 0.806666774249623,
+                "metrics": {
+                  "auroc": 0.806666774249623,
+                  "average_precision": 0.8640908068199541,
+                  "mcc": 0.467112819864388,
+                  "accuracy": 0.7319968346082828,
+                  "log_loss": 0.5048658949488776,
+                  "n_samples": 3791,
+                  "n_positive": 2142,
+                  "n_negative": 1649,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed42/fits/single_7badccc152baa0b2/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/unseen_drug_single_fixed_predictions.csv",
+                "predictions_sha256": "054f5cc77bf9249cfbc5eaae9b324dc92bccdfc9f804a11d4f29fd9e1d6cba20"
+              },
+              "single_direct": {
+                "primary": 0.8668430177811978,
+                "metrics": {
+                  "auroc": 0.8668430177811978,
+                  "average_precision": 0.8708060255860901,
+                  "mcc": 0.6138005249432102,
+                  "accuracy": 0.8106040622527038,
+                  "log_loss": 0.7406290935967419,
+                  "n_samples": 3791,
+                  "n_positive": 2142,
+                  "n_negative": 1649,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed42/fits/single_42fef289aeba20c1/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/unseen_drug_single_direct_predictions.csv",
+                "predictions_sha256": "556bdf8372e40a1d0daf6c0df2b2e7a6e27ea9de494064f77963598ad6241ded"
+              },
+              "single_loop": {
+                "primary": 0.8668430177811978,
+                "metrics": {
+                  "auroc": 0.8668430177811978,
+                  "average_precision": 0.8708060255860901,
+                  "mcc": 0.6138005249432102,
+                  "accuracy": 0.8106040622527038,
+                  "log_loss": 0.7406290935967419,
+                  "n_samples": 3791,
+                  "n_positive": 2142,
+                  "n_negative": 1649,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed42/fits/single_42fef289aeba20c1/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/unseen_drug_single_direct_predictions.csv",
+                "predictions_sha256": "556bdf8372e40a1d0daf6c0df2b2e7a6e27ea9de494064f77963598ad6241ded",
+                "reused_identical_checkpoint": "single_direct"
+              },
+              "federated_fixed": {
+                "primary": 0.9296387647438195,
+                "metrics": {
+                  "auroc": 0.9296387647438195,
+                  "average_precision": 0.9357593732941301,
+                  "mcc": 0.7472678817624085,
+                  "accuracy": 0.8752308098127143,
+                  "log_loss": 0.33352977301834097,
+                  "n_samples": 3791,
+                  "n_positive": 2142,
+                  "n_negative": 1649,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed42/fits/federated_7badccc152baa0b2/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/unseen_drug_federated_fixed_predictions.csv",
+                "predictions_sha256": "83caf41c62b5d828e1cd7b671804da1362b60dc504c4fc3009de5222ad5178b0"
+              },
+              "federated_direct": {
+                "primary": 0.9306353226554419,
+                "metrics": {
+                  "auroc": 0.9306353226554419,
+                  "average_precision": 0.9463322971989592,
+                  "mcc": 0.6883417486699969,
+                  "accuracy": 0.845950936428383,
+                  "log_loss": 0.3841870645100626,
+                  "n_samples": 3791,
+                  "n_positive": 2142,
+                  "n_negative": 1649,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed42/fits/federated_ecdb13784389f73c/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/unseen_drug_federated_direct_predictions.csv",
+                "predictions_sha256": "8c5f946901ce2fc7dac335d00aeeaf5eabc26e1d5582a7c4052fcf555b948c0e"
+              },
+              "federated_loop": {
+                "primary": 0.9306353226554419,
+                "metrics": {
+                  "auroc": 0.9306353226554419,
+                  "average_precision": 0.9463322971989592,
+                  "mcc": 0.6883417486699969,
+                  "accuracy": 0.845950936428383,
+                  "log_loss": 0.3841870645100626,
+                  "n_samples": 3791,
+                  "n_positive": 2142,
+                  "n_negative": 1649,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed42/fits/federated_ecdb13784389f73c/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/unseen_drug_federated_direct_predictions.csv",
+                "predictions_sha256": "8c5f946901ce2fc7dac335d00aeeaf5eabc26e1d5582a7c4052fcf555b948c0e",
+                "reused_identical_checkpoint": "federated_direct"
+              }
+            },
+            "unseen_protein": {
+              "single_fixed": {
+                "primary": 0.6986008520647997,
+                "metrics": {
+                  "auroc": 0.6986008520647997,
+                  "average_precision": 0.7804872088944423,
+                  "mcc": 0.3918020152765356,
+                  "accuracy": 0.6912644595133626,
+                  "log_loss": 0.5867800163207828,
+                  "n_samples": 2507,
+                  "n_positive": 1249,
+                  "n_negative": 1258,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed42/fits/single_7badccc152baa0b2/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/unseen_protein_single_fixed_predictions.csv",
+                "predictions_sha256": "219acb0a79ef8262df937e5e93097a4179e4ab36ffff427ec3f8b82478d8edbb"
+              },
+              "single_direct": {
+                "primary": 0.8105330051004237,
+                "metrics": {
+                  "auroc": 0.8105330051004237,
+                  "average_precision": 0.7704174493899876,
+                  "mcc": 0.5160803439922257,
+                  "accuracy": 0.7506980454726765,
+                  "log_loss": 0.9652283164264259,
+                  "n_samples": 2507,
+                  "n_positive": 1249,
+                  "n_negative": 1258,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed42/fits/single_42fef289aeba20c1/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/unseen_protein_single_direct_predictions.csv",
+                "predictions_sha256": "8b408786d677692df4c27d4187fd4553f6302b40cccee0a387399c165aab3923"
+              },
+              "single_loop": {
+                "primary": 0.8105330051004237,
+                "metrics": {
+                  "auroc": 0.8105330051004237,
+                  "average_precision": 0.7704174493899876,
+                  "mcc": 0.5160803439922257,
+                  "accuracy": 0.7506980454726765,
+                  "log_loss": 0.9652283164264259,
+                  "n_samples": 2507,
+                  "n_positive": 1249,
+                  "n_negative": 1258,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed42/fits/single_42fef289aeba20c1/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/unseen_protein_single_direct_predictions.csv",
+                "predictions_sha256": "8b408786d677692df4c27d4187fd4553f6302b40cccee0a387399c165aab3923",
+                "reused_identical_checkpoint": "single_direct"
+              },
+              "federated_fixed": {
+                "primary": 0.8988424443847605,
+                "metrics": {
+                  "auroc": 0.8988424443847605,
+                  "average_precision": 0.8618628826091761,
+                  "mcc": 0.7089027990398393,
+                  "accuracy": 0.8520143597925808,
+                  "log_loss": 0.4084949586276086,
+                  "n_samples": 2507,
+                  "n_positive": 1249,
+                  "n_negative": 1258,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed42/fits/federated_7badccc152baa0b2/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/unseen_protein_federated_fixed_predictions.csv",
+                "predictions_sha256": "dfd5cab3a76060fdb817c9a903cef3ffd76c2a79d0c5d6186fa38dcac60116b2"
+              },
+              "federated_direct": {
+                "primary": 0.899107203091567,
+                "metrics": {
+                  "auroc": 0.899107203091567,
+                  "average_precision": 0.9030344501660621,
+                  "mcc": 0.6188918489373385,
+                  "accuracy": 0.8033506182688472,
+                  "log_loss": 0.5006621524769154,
+                  "n_samples": 2507,
+                  "n_positive": 1249,
+                  "n_negative": 1258,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed42/fits/federated_ecdb13784389f73c/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/unseen_protein_federated_direct_predictions.csv",
+                "predictions_sha256": "56be125973ea05436a6fcea2669a74d5b05156afaf2d0c8d667c23838fe8b753"
+              },
+              "federated_loop": {
+                "primary": 0.899107203091567,
+                "metrics": {
+                  "auroc": 0.899107203091567,
+                  "average_precision": 0.9030344501660621,
+                  "mcc": 0.6188918489373385,
+                  "accuracy": 0.8033506182688472,
+                  "log_loss": 0.5006621524769154,
+                  "n_samples": 2507,
+                  "n_positive": 1249,
+                  "n_negative": 1258,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed42/fits/federated_ecdb13784389f73c/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/unseen_protein_federated_direct_predictions.csv",
+                "predictions_sha256": "56be125973ea05436a6fcea2669a74d5b05156afaf2d0c8d667c23838fe8b753",
+                "reused_identical_checkpoint": "federated_direct"
+              }
+            }
+          }
+        },
         "43": null,
         "44": null
       },
       "pending": {
-        "42": "complete verified six-arm evaluation not available",
         "43": "complete verified six-arm evaluation not available",
         "44": "complete verified six-arm evaluation not available"
       }

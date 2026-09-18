@@ -2,13 +2,13 @@
 \caption{Secondary metrics for the committed model versions on retrospective held-out data; means over completed seeds. Bold indicates all tied maxima, or minima for loss.}\label{tab:strong-secondary}\\
 \toprule Method & Labs & Metric 1 & Metric 2 & Metric 3 & Metric 4 \\ \midrule\endfirsthead
 \toprule Method & Labs & Metric 1 & Metric 2 & Metric 3 & Metric 4 \\ \midrule\endhead
-\multicolumn{2}{l}{\textbf{DTI ($n=0$)}} & AUROC & AP & MCC & BCE \\
-Fixed model & 1 & N/A & N/A & N/A & N/A \\
-Direct & 1 & N/A & N/A & N/A & N/A \\
-Our loop & 1 & N/A & N/A & N/A & N/A \\
-Fixed model & 10 & N/A & N/A & N/A & N/A \\
-Direct & 10 & N/A & N/A & N/A & N/A \\
-Our loop & 10 & N/A & N/A & N/A & N/A \\
+\multicolumn{2}{l}{\textbf{DTI ($n=1$)}} & AUROC & AP & MCC & BCE \\
+Fixed model & 1 & 0.8176 & 0.8230 & 0.4861 & 0.5034 \\
+Direct & 1 & 0.8882 & 0.8598 & 0.6469 & 0.6979 \\
+Our loop & 1 & 0.8882 & 0.8598 & 0.6469 & 0.6979 \\
+Fixed model & 10 & 0.9427 & 0.9287 & \textbf{0.7787} & \textbf{0.3084} \\
+Direct & 10 & \textbf{0.9460} & \textbf{0.9427} & 0.7426 & 0.3392 \\
+Our loop & 10 & \textbf{0.9460} & \textbf{0.9427} & 0.7426 & 0.3392 \\
 \midrule
 \multicolumn{2}{l}{\textbf{Proteomics ($n=3$)}} & AP & AUROC & BCE & Acc. \\
 Fixed model & 1 & 0.2505 & 0.6549 & 0.4265 & \textbf{0.8514} \\
