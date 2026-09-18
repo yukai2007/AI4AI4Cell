@@ -201,6 +201,8 @@ def pipeline():
     fig.subplots_adjust(left=.01, right=.99, bottom=.01, top=.99)
     for suffix in ['pdf', 'svg']:
         fig.savefig(PAPER/f'assets/unified_pipeline.{suffix}')
+    svg = PAPER/'assets/unified_pipeline.svg'
+    svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines())+'\n')
     plt.close(fig)
 
 
