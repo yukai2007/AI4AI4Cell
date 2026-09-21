@@ -2,15 +2,9 @@
 \usepackage{iclr2027_conference}
 \usepackage{fontspec}
 \setmainfont{texgyretermes-regular.otf}[Path=fonts/,BoldFont=texgyretermes-bold.otf,ItalicFont=texgyretermes-italic.otf,BoldItalicFont=texgyretermes-bolditalic.otf]
-\usepackage{amsmath,amssymb,booktabs,tabularx,longtable,etoolbox,xurl,graphicx}
+\usepackage{amsmath,amssymb,booktabs,tabularx,longtable,xurl,graphicx}
 \usepackage[colorlinks=true,allcolors=blue]{hyperref}
 \usepackage{microtype}
-\setlength{\parskip}{0.25em}
-\setlength{\parindent}{0pt}
-\makeatletter
-\patchcmd{\@maketitle}{Under review as a conference paper at ICLR 2027}{Manuscript draft in ICLR 2027 format}{}{}
-\patchcmd{\@maketitle}{Paper under double-blind review}{Draft prepared for anonymous review}{}{}
-\makeatother
 \begin{document}
 % Build with Tectonic 0.17.0 or XeLaTeX/BibTeX. No acceptance or submission is implied.
 \title{AI4AI4Bio: Collaborative Evidence-Guided\\Research for Biological Model Improvement}
@@ -19,7 +13,7 @@
 \maketitle
 \input{tables/strong_v3/snapshot_stats}
 \begin{abstract}
-Biological laboratories hold complementary measurements, but data-sharing constraints limit their collective use in model development. Using this evidence requires coordinating both parameter fitting and the evaluation of changes to a model's computational design. We introduce AI4AI4Bio, a collaborative research framework that couples client-local training with an evidence-guided proposal--evaluation loop. Laboratories contribute model updates and aggregate development diagnostics; a fixed research language model proposes executable configurations without receiving raw biological responses. A common orchestration, research interface and selection rule connect task-specific adapters for drug--target interaction prediction, observed-response proteomic efficacy prediction and cell perturbation identification, with ten simulated laboratories per study. Our main comparison contrasts fixed models and feedback-free direct search using one laboratory with our harness using ten; a six-arm ablation separates participation, design search and iterative feedback. On retrospective held-out tests, the ProteinTalks-derived efficacy head reaches \StrongPTPCHarness{}\% average precision versus \StrongPTPCDirect{}\% for one-laboratory direct search across \StrongPTPCSeeds{} seeds. TAPB reaches \StrongDTIHarness{}\% versus \StrongDTIDirect{}\% AUROC on \StrongDTISeeds{} of three planned seeds, and VCC identification gains \StrongVCCDeltaDirect{} Top-1 percentage points across \StrongVCCSeeds{} seeds. Matched-access ablations attribute these gains primarily to additional laboratory participation; evaluation history does not yet provide a consistent further benefit. AI4AI4Bio makes parameter learning and executable-design evaluation available through a common interface to distributed biological evidence.
+Biological laboratories hold complementary measurements, but data-sharing constraints limit their collective use for model development. Existing local-update methods coordinate parameter fitting, whereas research agents revise computational designs; using distributed evidence at both levels requires a common interface. We introduce AI4AI4Bio, a collaborative framework coupling client-local training to an evidence-guided proposal--evaluation loop. Laboratories return model updates and aggregate development diagnostics, while a fixed research language model proposes executable configurations without receiving raw biological responses. One orchestration and selection rule connect task-specific adapters for drug--target interaction prediction, observed-response proteomic efficacy prediction and cell perturbation identification. Across retrospective held-out tests, the ten-laboratory harness reaches \StrongDTIHarness{}\% versus \StrongDTIDirect{}\% AUROC for TAPB and \StrongPTPCHarness{}\% versus \StrongPTPCDirect{}\% average precision for proteomics, relative to one-laboratory feedback-free search. Its corresponding gains on VCC single-gene, Norman double-gene and Tahoe drug identification are \StrongVCCDeltaDirect{}, \StrongNormanDeltaDirect{} and \StrongTahoeDeltaDirect{} macro Top-1 points. It is the best of the three displayed configurations on four of five endpoints. A six-arm factorial ablation shows that these gains arise primarily from additional laboratory participation: matched-access iterative feedback ties direct search on all five endpoints in the current bounded design space. AI4AI4Bio therefore provides an executable route for distributed biological evidence to improve a shared predictor and evaluate design changes, while identifying feedback-driven search as the remaining challenge.
 \end{abstract}
 
 \input{sections/01_introduction}

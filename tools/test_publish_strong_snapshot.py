@@ -101,11 +101,23 @@ class StrongSnapshotTests(unittest.TestCase):
             table(data,out)
             text=(out/'main.tex').read_text()
             self.assertEqual(text.count(r'\textbf{60.00}'),8)
-            self.assertIn('1 & Fixed model & N/A',text)
-            self.assertIn('10 & Our harness & N/A',text)
-            self.assertIn('ProteinTalks-derived',text)
-            self.assertIn('mask-corrected',text)
-            self.assertIn('not blind confirmation',text)
+            self.assertIn('DTI: TAPB random split & AUROC & N/A & N/A & N/A & N/A',text)
+            self.assertIn('Proteomics: observed-response efficacy & AP',text)
+            self.assertIn('Cell: VCC single-gene identification & Macro Top-1',text)
+            self.assertIn('Cell: Norman double-gene identification & Macro Top-1',text)
+            self.assertIn('Cell: Tahoe drug identification & Macro Top-1',text)
+            self.assertNotIn('Completed seeds',text)
+            self.assertIn('Exact seed counts',text)
+
+    def test_main_delta_is_computed_before_display_rounding(self):
+        with tempfile.TemporaryDirectory() as directory:
+            out=Path(directory); data=fixture()
+            run=data['tasks']['ptpc_neural']['runs']['42']
+            run['scores']['single_direct']['primary']=.20126
+            run['scores']['federated_loop']['primary']=.36984
+            table(data,out)
+            text=(out/'main.tex').read_text()
+            self.assertIn('20.13 & 36.98 & +16.86',text)
 
     def test_full_ablation_not_hidden_and_signed_effects(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -115,8 +127,11 @@ class StrongSnapshotTests(unittest.TestCase):
             self.assertIn('1 & Our loop', (out/'ablation.tex').read_text())
             self.assertIn('10 $-$ 1 labs (both loop) & N/A & +20.00 & +20.00 & -10.00 & +20.00',
                           (out/'effects_full.tex').read_text())
-            self.assertIn('Loop $-$ fixed (10 labs)',(out/'effects.tex').read_text())
-            self.assertNotIn('Loop $-$ fixed (1 lab)',(out/'effects.tex').read_text())
+            main_effects=(out/'effects.tex').read_text()
+            self.assertIn('Benchmark & Search & Feedback & Participation',main_effects)
+            self.assertIn('Cell: Norman double-gene & +0.00 & +0.00 & -10.00',main_effects)
+            self.assertNotIn('Completed seeds',main_effects)
+            self.assertNotIn('Loop $-$ fixed (1 lab)',main_effects)
             self.assertIn('Loop $-$ fixed (1 lab)',(out/'effects_full.tex').read_text())
 
     def test_distinct_strong_macros_and_incomplete_seed_estimates(self):

@@ -12,14 +12,23 @@ class ManuscriptConsistencyTests(unittest.TestCase):
         self.assertIn('Collaborative Evidence-Guided Research', source.replace(r'\\', ' '))
         abstract = source.split(r'\begin{abstract}', 1)[1].split(r'\end{abstract}', 1)[0]
         self.assertNotRegex(abstract.lower(), r'federat|\bsota\b')
-        self.assertIn('six-arm ablation', abstract)
+        self.assertRegex(abstract, r'six-arm (?:factorial )?ablation')
         self.assertIn('retrospective held-out', abstract)
         self.assertIn('FedAvg', (PAPER / 'sections/03_method.tex').read_text())
 
-    def test_seed_counts_are_generated_not_stale_literal_words(self):
+    def test_official_submission_header_and_spacing_are_not_patched(self):
+        source = (PAPER / 'ai4ai4cell-main.tex').read_text()
+        self.assertIn(r'\usepackage{iclr2027_conference}', source)
+        self.assertNotIn(r'\patchcmd{\@maketitle}', source)
+        self.assertNotIn(r'\setlength{\parskip}', source)
+        self.assertNotIn(r'\iclrfinalcopy', source)
+
+    def test_seed_counts_stay_out_of_main_presentation(self):
         source = (PAPER / 'ai4ai4cell-main.tex').read_text()
         source += (PAPER / 'sections/05_results.tex').read_text()
-        self.assertIn(r'\StrongDTISeeds{}', source)
+        self.assertNotIn(r'\StrongDTISeeds{}', source)
+        self.assertNotIn('planned seeds', source)
+        self.assertIn('Completed seeds', (PAPER / 'tables/strong_v3/ablation.tex').read_text())
         self.assertNotRegex(source.lower(), r'(one|two) completed tapb seeds?')
         self.assertNotIn('same trainer, research interface', source)
 

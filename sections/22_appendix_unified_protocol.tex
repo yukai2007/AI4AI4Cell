@@ -69,7 +69,7 @@ The current neural adapter preserves the original historical 491-condition sourc
 The scalar snapshot records which prespecified seeds have completed training and held-out scoring. The held-out exporter requires six selected arms, a checkpoint seal and independent verification; a completed development run alone cannot populate a test cell. Means include every available prespecified seed, with sample SD where defined. Missing models, seeds or evaluation roles remain N/A. An independent evaluator follows completed studies without sending test evidence to the research controller. Historical Appendix L/P/Q scores retain their original roles and protocols. Client rotations and same-data centralized comparisons remain separate requirements.
 
 \paragraph{Full factorial results.}
-The following tables retain the complete six-arm held-out comparison for the committed task-reference versions, with secondary metrics and uncertainty. The three-row main table is a presentation choice, not a restriction of the evidence archive.
+The following tables retain the complete six-arm held-out comparison for the committed task-reference versions, with secondary metrics and uncertainty. The five-row main table is a presentation choice, not a restriction of the evidence archive.
 
 \input{tables/strong_v3/ablation}
 \input{tables/strong_v3/effects_full}
@@ -80,7 +80,7 @@ The following tables retain the complete six-arm held-out comparison for the com
 \input{tables/strong_v3/dti_uncertainty}
 
 \paragraph{Additional DTI uncertainty analysis.}
-Paired cluster-bootstrap intervals were added after training and held-out scoring, using retained predictions without model reselection. We use 1,000 resamples with a fixed analysis seed, grouping by the released drug identifier on random/unseen-drug endpoints and by protein sequence on unseen-protein. Each resample is shared by the compared methods. The full table includes AUROC and AP for all three endpoints, including zero and negative contrasts. These intervals condition on the fitted models and the chosen grouping; they do not capture between-training-seed variation or simultaneous drug/protein dependence. For seeds 42 and 43, the ten-laboratory harness improves on one-laboratory direct search on the random endpoint in both runs, whereas unseen-entity gains change sign. A positive average should not be read as uniform transfer improvement.
+Paired cluster-bootstrap intervals were added after training and held-out scoring, using retained predictions without model reselection. We use 1,000 resamples with a fixed analysis seed, grouping by the released drug identifier on random/unseen-drug endpoints and by protein sequence on unseen-protein. Each resample is shared by the compared methods. The full table includes AUROC and AP for all three endpoints, including zero and negative contrasts. These intervals condition on the fitted models and the chosen grouping; they do not capture between-training-seed variation or simultaneous drug/protein dependence. We report every seed rather than collapsing the sign-changing unseen-entity effects into the main random-split mean. A positive average should not be read as uniform transfer improvement.
 
 \paragraph{Earlier uniform-protocol controls and diagnostics.}
 The following tables retain the linear proteomic head, original-mask cell adapters and native DrugBAN reference under their separate model versions. They are not substituted into the new-reference table or pooled across versions.

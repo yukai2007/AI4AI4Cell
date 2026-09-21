@@ -1,17 +1,18 @@
-\begin{table}[t]
+\begin{table}[h!]
 \centering\small
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{lrrrrr}
+\setlength{\tabcolsep}{5pt}
+\begin{tabularx}{\linewidth}{@{}Xrrr@{}}
 \toprule
-Held-out contrast & DTI & Proteomics & VCC & Norman & Tahoe \\
+Benchmark & Search & Feedback & Participation \\
+ & loop $-$ fixed (10 labs) & loop $-$ direct (10 labs) & 10 $-$ 1 labs (loop) \\
 \midrule
-Loop $-$ fixed (10 labs) & +0.44 & -0.08 & +0.00 & +6.77 & -3.48 \\
-Loop $-$ direct (10 labs) & +0.00 & +0.00 & +0.00 & +0.00 & +0.00 \\
-10 $-$ 1 labs (both loop) & +3.72 & +16.85 & +11.32 & +8.10 & +6.97 \\
-\midrule
-Completed seeds ($n/3$) & 2/3 & 3/3 & 3/3 & 3/3 & 3/3 \\
+DTI: TAPB random split & +1.96 & +0.00 & +3.87 \\
+Proteomics: efficacy & -0.08 & +0.00 & +16.85 \\
+Cell: VCC single-gene & +0.00 & +0.00 & +11.32 \\
+Cell: Norman double-gene & +6.77 & +0.00 & +8.10 \\
+Cell: Tahoe drug & -3.48 & +0.00 & +6.97 \\
 \bottomrule
-\end{tabular}
-\caption{Separating total research/search improvement (loop minus fixed), feedback-specific improvement (loop minus matched-budget direct), and access to more laboratory data (ten minus one lab with loop fixed). Mean paired differences are in percentage points over completed seeds on retrospective held-out data, computed before rounding. Total search improvement must not be attributed solely to feedback. Negative effects and ties are retained; per-seed uncertainty is in Appendix R.}
+\end{tabularx}
+\caption{Factorial attribution on the same five endpoints, in percentage points. Search compares the complete loop with the fixed recipe at ten laboratories. Feedback compares loop with matched-budget direct search at the same ten-laboratory access. Participation compares ten with one laboratory while holding loop research fixed; it expands training data, development evidence and computation. Negative effects and measured ties are retained. Seed-level effects and uncertainty appear in Appendix R.}
 \label{tab:strong-effects}
 \end{table}

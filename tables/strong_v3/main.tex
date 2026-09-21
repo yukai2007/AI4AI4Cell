@@ -1,20 +1,18 @@
-\begin{table}[t]
+\begin{table}[h!]
 \centering\small
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{clrrrrr}
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{@{}Xlrrrr@{}}
 \toprule
- & & DTI & Proteomics & \multicolumn{3}{c}{Cell perturbation} \\
-\cmidrule(lr){5-7}
-Labs & Method & AUROC & AP & VCC & Norman & Tahoe \\
- & & $\uparrow$ & $\uparrow$ & Top-1 $\uparrow$ & Top-1 $\uparrow$ & Top-1 $\uparrow$ \\
+Task and benchmark & Metric & Fixed & Direct & \textbf{Ours} & $\Delta$ direct \\
+ & & 1 lab & 1 lab & 10 labs & (points) \\
 \midrule
-1 & Fixed model & 82.96 & 25.05 & 29.94 & \textbf{25.56} & 19.40 \\
-1 & Direct optimize & 89.83 & 20.13 & 21.09 & 14.15 & 15.42 \\
-10 & Our harness & \textbf{93.55} & \textbf{36.99} & \textbf{31.54} & 22.25 & \textbf{22.39} \\
-\midrule
-\multicolumn{2}{l}{Completed seeds ($n/3$)} & 2/3 & 3/3 & 3/3 & 3/3 & 3/3 \\
+DTI: TAPB random split & AUROC & 82.83 & 89.89 & \textbf{93.76} & +3.87 \\
+Proteomics: observed-response efficacy & AP & 25.05 & 20.13 & \textbf{36.99} & +16.85 \\
+Cell: VCC single-gene identification & Macro Top-1 & 29.94 & 21.09 & \textbf{31.54} & +10.45 \\
+Cell: Norman double-gene identification & Macro Top-1 & \textbf{25.56} & 14.15 & 22.25 & +8.10 \\
+Cell: Tahoe drug identification & Macro Top-1 & 19.40 & 15.42 & \textbf{22.39} & +6.97 \\
 \bottomrule
-\end{tabular}
-\caption{Main comparison using committed task-reference versions: TAPB, the ProteinTalks-derived observed-response head, and mask-corrected scDEBART adaptations. Fixed and harness-free direct use one laboratory; our harness uses ten. DTI uses the random held-out endpoint. Retrospective held-out means are multiplied by 100; completed seed counts are shown. Bold marks all displayed maxima. N/A denotes incomplete paired evaluation. Model versions were not selected by held-out scores; these endpoints are not blind confirmation.}
+\end{tabularx}
+\caption{Main held-out comparison across three biological task families and five explicit endpoints. Fixed and feedback-free direct search use one laboratory; our collaborative harness uses ten. Values are means multiplied by 100; $\Delta$ direct is our harness minus direct search, in percentage points. Bold marks the best displayed configuration. Exact seed counts, sample SD, all six factorial arms and secondary metrics are in Appendix R.}
 \label{tab:strong-main}
 \end{table}

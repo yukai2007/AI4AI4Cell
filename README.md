@@ -2,7 +2,7 @@
 
 **AI4AI4Bio: Collaborative Evidence-Guided Research for Biological Model Improvement**
 
-## Current version: collaborative research with six-arm attribution, 21 September 2026
+## Current version: collaborative research with six-arm attribution, 22 September 2026
 
 The main text follows three parallel biological task families: TAPB-based DTI, ProteinTalks-derived observed-response efficacy, and mask-corrected scDEBART-head perturbation identification (VCC single-gene, Norman double-gene, Tahoe drug strata). These are task-adapted model references, not certified global-SOTA reproductions. All use the same V3 training orchestration, local Qwen proposer, design library, training schedule and selection rule, with task-specific adapters.
 
@@ -10,7 +10,7 @@ The framing is **collaborative evidence-guided research**, not a new federated-l
 
 The main table has **fixed model (1 lab), direct optimize / harness-free (1 lab), and our harness (10 labs)**. This is an access-enabled system comparison. A separate full factorial ablation crosses one vs ten laboratories with fixed / direct / loop, isolating feedback effects at matched data access from additional laboratory participation.
 
-The snapshot includes **executed retrospective held-out tests** for completed seeds, with per-column counts. Proteomics, VCC and the completed TAPB DTI seeds show access-enabled gains; other outcomes and matched-data loop effects are retained irrespective of direction. `tables/strong_v3/main.tex` is authoritative for completed seed counts; missing seeds are never extrapolated from development or earlier protocols. Selected checkpoints/configurations/data are frozen before held-out response decoding; the audit distinguishes complete pre-decode registration from a supplemental post-hoc source-integrity receipt. Predictions and scores are independently recomputed. Previously exposed benchmark roles are not called blind validation.
+The snapshot includes **executed retrospective held-out tests** for completed seeds. The clean main table presents five explicit endpoints without a seed-count row; Appendix R reports exact counts, sample variation, all six arms and secondary metrics. Access-enabled gains, regressions, ties and matched-data loop effects are retained irrespective of direction. Missing seeds are never extrapolated from development or earlier protocols. Selected checkpoints/configurations/data are frozen before held-out response decoding; the audit distinguishes complete pre-decode registration from a supplemental post-hoc source-integrity receipt. Predictions and scores are independently recomputed. Previously exposed benchmark roles are not called blind validation.
 
 - Main tables: `tables/strong_v3/main.tex`, `effects.tex`.
 - Full six-arm ablations, secondary metrics and uncertainty: Appendix R and `tables/strong_v3/`.
@@ -54,6 +54,6 @@ The publisher reads completed, audited aggregate records and independently verif
 
 This writing repository does not include the full experiment runtime, raw biological data, model checkpoints or the supplied Nature PDF. It is not a standalone reproducible benchmark release. Client-local training is a one-host laboratory simulation, not differential privacy or secure aggregation. Existing benchmark test roles were previously examined in historical studies.
 
-The user's Overleaf-linked writing repository is `https://github.com/yukai2007/AI4AI4Cell`, branch `main`. The local configured origin may still point to the historical `_ICLR` repository; verify the explicit destination before publication. Fetch collaborator changes, review and compile the diff, and use normal fast-forward pushes. A GitHub push alone does not establish an Overleaf pull or remote compilation. Do not publish editable Overleaf sharing links.
+The user's Overleaf-linked writing repository is `https://github.com/yukai2007/AI4AI4Cell`, branch `main`. Fetch collaborator changes, review and compile the diff, and use normal fast-forward pushes. A GitHub push alone does not establish an Overleaf pull or remote compilation. Do not publish editable Overleaf sharing links.
 
 The template, bibliography styles and bundled TeX Gyre fonts retain their original licenses. Current and historical pipeline figures are original project vector artwork and contain no raw biological measurements.

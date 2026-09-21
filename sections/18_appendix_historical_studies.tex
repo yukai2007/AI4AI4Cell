@@ -52,7 +52,6 @@ Our harness records 41/51 reverse-identification hits, compared with 39/51 for d
 
 The same-data federated variant does not outperform our non-federated harness. Across the three tasks, the latter uses 79 model calls and scores 17/18 candidates; the federated arm uses 87 calls and also scores 17/18; direct uses 18 calls and scores 9/18, with its other generations timing out at 900 seconds. These differences motivate the controlled DTI comparison, rather than an unsupported attribution of all score gains to research organization.
 
-\newpage
 \paragraph{Separate fixed no-LLM calibration control.}
 We independently reconstruct the fixed B-NM formula supplied with the historical Norman comparison. For existing model predictions $P$ and 30 calibration predictions/observations $(C,Y_C)$, it ranks candidates by cosine similarity to corrected profiles
 \[

@@ -261,6 +261,41 @@ def scores(snapshot, task, arm, metric=None):
 
 def table(snapshot, out, full=False):
     arms = ARMS if full else MAIN_ARMS
+    if not full:
+        row_labels = {
+            'native_tapb': ('DTI: TAPB random split', 'AUROC'),
+            'ptpc_neural': ('Proteomics: observed-response efficacy', 'AP'),
+            'vcc_corrected': ('Cell: VCC single-gene identification', 'Macro Top-1'),
+            'norman_double_corrected': ('Cell: Norman double-gene identification', 'Macro Top-1'),
+            'tahoe_drug_corrected': ('Cell: Tahoe drug identification', 'Macro Top-1'),
+        }
+        lines = [r'\begin{table}[h!]', r'\centering\small', r'\setlength{\tabcolsep}{4pt}',
+            r'\begin{tabularx}{\linewidth}{@{}Xlrrrr@{}}', r'\toprule',
+            r'Task and benchmark & Metric & Fixed & Direct & \textbf{Ours} & $\Delta$ direct \\',
+            r' & & 1 lab & 1 lab & 10 labs & (points) \\', r'\midrule']
+        for task, _, _ in TASKS:
+            task_label, metric = row_labels[task]
+            task_means = []
+            for arm, _, _ in arms:
+                values = scores(snapshot, task, arm)
+                task_means.append(None if not values else 100 * stats(values)[0])
+            task_scores = [None if value is None else round(value, 2) for value in task_means]
+            finite = [value for value in task_scores if value is not None]
+            cells = []
+            for value in task_scores:
+                if value is None:
+                    cells.append('N/A')
+                else:
+                    cell = f'{value:.2f}'
+                    cells.append(r'\textbf{' + cell + '}' if value == max(finite) else cell)
+            delta = 'N/A' if task_means[1] is None or task_means[2] is None else f'{task_means[2] - task_means[1]:+.2f}'
+            lines.append(f'{task_label} & {metric} & ' + ' & '.join(cells + [delta]) + r' \\')
+        lines += [r'\bottomrule', r'\end{tabularx}',
+            r'\caption{Main held-out comparison across three biological task families and five explicit endpoints. Fixed and feedback-free direct search use one laboratory; our collaborative harness uses ten. Values are means multiplied by 100; $\Delta$ direct is our harness minus direct search, in percentage points. Bold marks the best displayed configuration. Exact seed counts, sample SD, all six factorial arms and secondary metrics are in Appendix R.}',
+            r'\label{tab:strong-main}', r'\end{table}']
+        (out/'main.tex').write_text('\n'.join(lines)+'\n')
+        return
+
     lines = [r'\begin{table}[t]',r'\centering\small',r'\setlength{\tabcolsep}{3pt}',
         r'\begin{tabular}{clrrrrr}',r'\toprule',
         r' & & DTI & Proteomics & \multicolumn{3}{c}{Cell perturbation} \\',r'\cmidrule(lr){5-7}',
@@ -282,10 +317,7 @@ def table(snapshot, out, full=False):
     lines += [r'\midrule',r'\multicolumn{2}{l}{Completed seeds ($n/3$)} & '+' & '.join(
         f'{len(runs(snapshot,t))}/3' for t,_,_ in TASKS)+r' \\',r'\bottomrule',r'\end{tabular}']
     caption=('Six-arm ablation of the committed reference-model versions. Entries are completed-seed means '
-             'and sample SD where at least two seeds are available. ' if full else
-             'Main comparison using committed task-reference versions: TAPB, the ProteinTalks-derived '
-             'observed-response head, and mask-corrected scDEBART adaptations. Fixed and harness-free '
-             'direct use one laboratory; our harness uses ten. ')
+             'and sample SD where at least two seeds are available. ')
     caption+=('DTI uses the random held-out endpoint. Retrospective held-out means are multiplied by 100; completed seed counts are shown. '
               'Bold marks all displayed maxima. N/A denotes incomplete paired evaluation. '
               'Model versions were not selected by held-out scores; these endpoints are not blind confirmation.')
@@ -295,14 +327,41 @@ def table(snapshot, out, full=False):
 
 
 def effects(snapshot,out,full=False):
+    if not full:
+        row_labels = {
+            'native_tapb': 'DTI: TAPB random split',
+            'ptpc_neural': 'Proteomics: efficacy',
+            'vcc_corrected': 'Cell: VCC single-gene',
+            'norman_double_corrected': 'Cell: Norman double-gene',
+            'tahoe_drug_corrected': 'Cell: Tahoe drug',
+        }
+        comparisons = [
+            ('Search effect', 'federated_loop', 'federated_fixed'),
+            ('Feedback effect', 'federated_loop', 'federated_direct'),
+            ('Participation effect', 'federated_loop', 'single_loop'),
+        ]
+        lines = [r'\begin{table}[h!]', r'\centering\small', r'\setlength{\tabcolsep}{5pt}',
+            r'\begin{tabularx}{\linewidth}{@{}Xrrr@{}}', r'\toprule',
+            r'Benchmark & Search & Feedback & Participation \\',
+            r' & loop $-$ fixed (10 labs) & loop $-$ direct (10 labs) & 10 $-$ 1 labs (loop) \\', r'\midrule']
+        for task, _, _ in TASKS:
+            cells = []
+            for _, a, b in comparisons:
+                values = [100 * (run['scores'][a]['primary'] - run['scores'][b]['primary'])
+                          for run in runs(snapshot, task)]
+                cells.append(f'{statistics.mean(values):+.2f}' if values else 'N/A')
+            lines.append(row_labels[task] + ' & ' + ' & '.join(cells) + r' \\')
+        lines += [r'\bottomrule', r'\end{tabularx}',
+            r'\caption{Factorial attribution on the same five endpoints, in percentage points. Search compares the complete loop with the fixed recipe at ten laboratories. Feedback compares loop with matched-budget direct search at the same ten-laboratory access. Participation compares ten with one laboratory while holding loop research fixed; it expands training data, development evidence and computation. Negative effects and measured ties are retained. Seed-level effects and uncertainty appear in Appendix R.}',
+            r'\label{tab:strong-effects}', r'\end{table}']
+        (out/'effects.tex').write_text('\n'.join(lines)+'\n')
+        return
+
     lines=[r'\begin{table}[t]',r'\centering\small',r'\setlength{\tabcolsep}{3pt}',
         r'\begin{tabular}{lrrrrr}',r'\toprule',
         r'Held-out contrast & DTI & Proteomics & VCC & Norman & Tahoe \\',r'\midrule']
-    comparisons = ([('Loop $-$ fixed (1 lab)','single_loop','single_fixed'),
-                    ('Loop $-$ fixed (10 labs)','federated_loop','federated_fixed')]+CONTRASTS if full else
-                   [('Loop $-$ fixed (10 labs)','federated_loop','federated_fixed'),
-                    ('Loop $-$ direct (10 labs)','federated_loop','federated_direct'),
-                    ('10 $-$ 1 labs (both loop)','federated_loop','single_loop')])
+    comparisons = [('Loop $-$ fixed (1 lab)','single_loop','single_fixed'),
+                   ('Loop $-$ fixed (10 labs)','federated_loop','federated_fixed')]+CONTRASTS
     for label,a,b in comparisons:
         cells=[]
         for task,_,_ in TASKS:
