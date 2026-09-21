@@ -4,6 +4,8 @@
 
 ## Current version: collaborative research with six-arm attribution, 22 September 2026
 
+For a section-by-section Chinese reading guide with the main results, ablations, claim boundaries and appendix map, run `python3 tools/build_chinese_companion.py`. The generated file is `output/pdf/AI4AI4Bio_中文伴读版.pdf`; it is a concise companion rather than a second submission manuscript.
+
 The main text follows three parallel biological task families: TAPB-based DTI, ProteinTalks-derived observed-response efficacy, and mask-corrected scDEBART-head perturbation identification (VCC single-gene, Norman double-gene, Tahoe drug strata). These are task-adapted model references, not certified global-SOTA reproductions. All use the same V3 training orchestration, local Qwen proposer, design library, training schedule and selection rule, with task-specific adapters.
 
 The framing is **collaborative evidence-guided research**, not a new federated-learning algorithm. The method still discloses sample-weighted local-update aggregation (FedAvg at zero server momentum). Established terminology and historical experiment names are retained where needed for implementation accuracy. Larger participation changes both training and development access and computation; it is not an isolated parameter-only effect.
