@@ -72,6 +72,7 @@ def collect(root):
 
 def collect_heldout(root):
     """Consume verified frozen evaluations, never select on their outcomes."""
+    root = Path(root).resolve()
     ledger = root/'summary.json'
     summary = json.loads(ledger.read_text()) if ledger.exists() else {}
     seeds = summary.get('seeds_requested', [42, 43, 44])
@@ -80,6 +81,9 @@ def collect_heldout(root):
     if summary and summary['role'] != HELDOUT_ROLE:
         raise ValueError('Unexpected held-out role; do not silently relabel evaluation')
     for task, label in TASKS:
+        if task == 'native_dti':
+            heldout['tasks'][task] = collect_native_dti(root, seeds)
+            continue
         item = dict(label='PTPC (linear)' if task == 'ptpc' else label,
                     runs={str(s): None for s in seeds})
         registered = summary.get('tasks', {}).get(task, {})
@@ -124,6 +128,76 @@ def collect_heldout(root):
                 receipts={f'{task}/seed{seed}/{f}': sha(path/f) for f in names})
         heldout['tasks'][task] = item
     return heldout
+
+
+def collect_native_dti(root, seeds):
+    """DrugBAN uses its frozen three-endpoint schema, not the cell/head schema.
+
+    Scan the prespecified seeds directly: the historical generic summary only
+    enumerates cell/linear tasks. Never rewrite that ledger to inject results.
+    """
+    item = dict(label='DTI (DrugBAN)', runs={str(s): None for s in seeds})
+    arm_names = {arm for arm, _, _ in ARMS}
+    for seed in seeds:
+        path = root/'native_dti'/f'seed{seed}'
+        names = ['results.json', 'verification.json', 'audit.json', 'seal.json']
+        if not all((path/name).is_file() for name in names):
+            continue
+        result, verification, audit, seal = [json.loads((path/name).read_text()) for name in names]
+        if set(result.get('results', {})) != arm_names:
+            continue
+        assert result['schema'] == 'native-dti-v3-heldout-results-v1'
+        assert seal['schema'] == 'native-dti-v3-heldout-seal-v1'
+        assert verification['schema'] == 'native-dti-independent-verification-v1'
+        assert result['task'] == seal['task'] == verification['task'] == 'native_dti'
+        assert result['seed'] == seal['seed'] == verification['seed'] == seed
+        assert result['role'] == seal['role'] == HELDOUT_ROLE
+        assert verification['status'] == audit['status'] == 'PASS'
+        assert result['feedback_to_controller'] is seal['feedback_to_controller'] is False
+        assert result['primary_endpoint'] == seal['primary_endpoint'] == 'random'
+        assert result['primary_metric'] == seal['primary_metric'] == 'auroc'
+        assert verification['arms'] == 6 and verification['endpoints'] == 3
+        assert all(verification[k] is True for k in ['sealed_before_response_access',
+            'all_checkpoint_hashes_match', 'common_original_roster', 'original_scorer'])
+        assert all(audit[k] is True for k in ['sealed_before_response_decode',
+            'fixed_all_three_endpoints', 'six_arms', 'original_scorer', 'all_inputs_matched_official_featurizer'])
+        assert audit['test_checkpoint_selection'] is audit['feedback_to_controller'] is False
+        assert verification['feedback_to_controller'] is False
+        assert result['seal_sha256'] == verification['seal_sha256'] == sha(path/'seal.json')
+        assert verification['results_sha256'] == sha(path/'results.json')
+        assert seal['development_completed_unix'] <= seal['sealed_unix'] <= result['heldout_decoded_unix'] <= result['completed_unix']
+        definition = seal['definition']
+        assert definition['rounds'] == 100 and definition['slots'] == 6
+        assert definition['seed'] == seed and definition['test_read'] is False
+        assert result['results'] == result['endpoints']['random']
+        assert set(result['endpoints']) == {'random', 'unseen_drug', 'unseen_protein'}
+        for endpoint, records in result['endpoints'].items():
+            assert set(records) == arm_names
+            for arm, record in records.items():
+                actual = verification['rescored'][f'{endpoint}/{arm}']['metrics']
+                assert all(math.isfinite(v) for v in actual.values())
+                assert all(abs(actual[k] - record['metrics'][k]) <= 1e-12 for k in actual)
+                assert abs(record['primary'] - actual['auroc']) <= 1e-12
+                source_arm = record.get('reused_identical_checkpoint', arm)
+                assert record['checkpoint'] == seal['arms'][source_arm]['checkpoint']
+                assert seal['arms'][source_arm]['checkpoint_sha256'] == seal['arms'][arm]['checkpoint_sha256']
+        scores = {arm: dict(primary=record['primary'], secondary=record['metrics'],
+                  checkpoint=seal['arms'][arm]) for arm, record in result['results'].items()}
+        supplement, supplement_path = None, None
+        if (root.parent/'uncertainty_native_dti_v1'/f'seed{seed}.json').exists():
+            # Lazy import avoids a module initialization cycle: strong exports
+            # share our arm definitions and the same strict sidecar validator.
+            from publish_strong_snapshot import tapb_uncertainty
+            supplement, supplement_path = tapb_uncertainty(
+                root.parent, seed, path, result, seal, task='native_dti')
+        receipts = {f'native_dti/seed{seed}/{name}': sha(path/name) for name in names}
+        if supplement_path is not None:
+            receipts[str(supplement_path)] = sha(supplement_path)
+        item['runs'][str(seed)] = dict(scores=scores, predictor='Native DrugBAN; task-trained from random initialization',
+            primary_metric='auroc', primary_endpoint='random', endpoints=result['endpoints'],
+            uncertainty=supplement['endpoints']['random']['metrics']['auroc'] if supplement else {},
+            endpoint_uncertainty=supplement, receipts=receipts)
+    return item
 
 
 def heldout_runs(heldout, task):
@@ -229,7 +303,7 @@ def heldout_secondary_table(heldout, out):
 
 def heldout_uncertainty_table(heldout, out):
     lines = [r'\begin{longtable}{llrrl}',
-        r'\caption{Per-seed paired effects on retrospective held-out data (percentage points). Percentile 95\% intervals use the recorded 1,000-replicate paired cluster bootstrap with fixed trained models, not independent-cell resampling or confidence intervals over training seeds.}\label{tab:unified-heldout-uncertainty}\\',
+        r'\caption{Per-seed paired effects on retrospective held-out data (percentage points). Percentile 95\% intervals use the recorded 1,000-replicate paired cluster bootstrap with fixed trained models, not independent-cell resampling or confidence intervals over training seeds. DrugBAN intervals are a post-hoc supplement over frozen random-endpoint predictions, clustered by drug.}\label{tab:unified-heldout-uncertainty}\\',
         r'\toprule Task & Contrast & Seed & Difference & 95\% interval \\ \midrule\endfirsthead',
         r'\toprule Task & Contrast & Seed & Difference & 95\% interval \\ \midrule\endhead']
     effect_keys = ['loop_single', 'loop_federated', 'federation_fixed', 'federation_direct', 'federation_loop']
@@ -237,6 +311,9 @@ def heldout_uncertainty_table(heldout, out):
         if task == 'ptpc': label = 'PTPC (linear)'
         for seed, run in heldout.get('tasks', {}).get(task, {}).get('runs', {}).items():
             if run is None: continue
+            if not run.get('uncertainty', {}).get('effects'):
+                lines.append(f'{label} & Bootstrap intervals not yet computed & {seed} & N/A & N/A'+r' \\')
+                continue
             for (contrast, _, _), key in zip(CONTRASTS, effect_keys):
                 effect = run['uncertainty']['effects'][key]
                 lo, hi = effect['ci95']
@@ -306,7 +383,7 @@ def score_table(snapshot, out, final=False, full=False):
         label = 'tab:unified-ablation'
     else:
         caption = ('Diagnostic deployment comparison on common development data (seed 42; scores multiplied by 100, higher is better). '
-                   'Fixed and harness-free direct use one laboratory; our harness combines loop research with ten-laboratory federation. '
+                   'Fixed and harness-free direct use one laboratory; our harness combines loop research with ten-laboratory participation. '
                    'AUROC/AP are equal-client means; cell scores are intervention-macro Top-1. '
                    'Bold marks all displayed maxima; N/A denotes unfinished evaluation. These are not final-test results.')
         label = 'tab:unified-development'
@@ -316,7 +393,7 @@ def score_table(snapshot, out, final=False, full=False):
 
 
 def effect_table(snapshot, out):
-    lines = [r'\begin{table}[t]', r'\centering\small', r'\setlength{\tabcolsep}{4pt}',
+    lines = [r'\begin{table}[t]', r'\centering\footnotesize', r'\setlength{\tabcolsep}{2.5pt}',
              r'\begin{tabular}{lrrrrr}', r'\toprule',
              r'Development contrast & DTI & Proteomics & VCC & Norman & Tahoe \\', r'\midrule']
     comparisons = [('Loop $-$ direct (1 lab)', 'single_loop', 'single_direct'),
@@ -330,10 +407,10 @@ def effect_table(snapshot, out):
             run = snapshot['tasks'][task]['runs']['42']
             cells.append('N/A' if run is None else f"{100*(run['scores'][a]['primary']-run['scores'][b]['primary']):+.2f}")
         lines.append(label+' & '+' & '.join(cells)+r' \\')
-    lines.extend([r'\midrule', r'Completed development seeds & '+' & '.join(
+    lines.extend([r'\midrule', r'Completed seeds ($n/3$) & '+' & '.join(
         f"{sum(r is not None for r in snapshot['tasks'][t]['runs'].values())}/3" for t, _ in TASKS)+r' \\'])
     for label, a, b in [('3-seed loop $-$ direct', 'federated_loop', 'federated_direct'),
-                         ('3-seed FL $-$ single (loop)', 'federated_loop', 'single_loop')]:
+                         ('3-seed access (loop)', 'federated_loop', 'single_loop')]:
         cells = []
         for task, _ in TASKS:
             runs = list(snapshot['tasks'][task]['runs'].values())
@@ -343,7 +420,7 @@ def effect_table(snapshot, out):
             cells.append(f'${statistics.mean(values):+.2f}\\pm{statistics.stdev(values):.2f}$')
         lines.append(label+' & '+' & '.join(cells)+r' \\')
     lines.extend([r'\bottomrule', r'\end{tabular}',
-        r'\caption{Separate contributions of loop engineering and access to additional laboratory data, in percentage points on the primary metric. Loop versus direct holds participation, candidate budget and selection fixed. Ten versus one laboratory holds the research mode fixed while increasing available training data; it does not isolate the federated optimizer at matched data volume. First-seed development only; zero means a measured tie. Three-seed effects remain N/A until all prespecified runs finish.}',
+        r'\caption{Separate contributions of loop engineering and access to additional laboratory data, in percentage points on the primary metric. Loop versus direct holds participation, candidate budget and selection fixed. Ten versus one laboratory holds the research mode fixed while increasing training data, development evidence and computation; it is not a matched-data optimizer comparison. First-seed development only; zero means a measured tie. Three-seed effects remain N/A until all prespecified runs finish.}',
         r'\label{tab:unified-effects}', r'\end{table}'])
     (out/'effects.tex').write_text('\n'.join(lines)+'\n')
 
@@ -403,7 +480,7 @@ def pipeline():
     for x in [2.8, 5.8, 8.8]: arrow((x, 6.02), (x+.4, 6.02))
     ax.plot([10.5, 10.5, 1.5, 1.5], [5.46, 5.14, 5.14, 5.45], color=blue, linestyle='--', linewidth=1.3)
     ax.text(6, 4.94, 'Only aggregate diagnostics return to the research model', ha='center', fontsize=13.5, color=blue)
-    box(.3, 3.87, 11.35, .85, 'INNER FEDERATED TRAINING  |  one shared coordinator',
+    box(.3, 3.87, 11.35, .85, 'INNER COLLABORATIVE TRAINING  |  one shared coordinator',
         'broadcast parameters  /  aggregate local updates  /  fixed scorer', green, '#edf7f3')
     # Route the training call outside the feedback-label band to avoid overlap.
     ax.plot([7.5, 7.5, 11.93, 11.93], [5.47, 5.34, 5.34, 4.29], color=blue, linewidth=1.4)

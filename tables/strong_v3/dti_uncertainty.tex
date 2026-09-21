@@ -1,0 +1,62 @@
+\begingroup\scriptsize\setlength{\tabcolsep}{3pt}
+\begin{longtable}{llrrrr}
+\caption{Post-hoc TAPB uncertainty supplement from frozen prediction files. All three endpoints, six arms and fixed contrasts are retained. Entries are paired AUROC/AP differences and percentile 95\% intervals in percentage points from 1,000 requested cluster draws (RNG seed 20260918). Random and unseen-drug endpoints resample drug clusters; unseen-protein resamples protein clusters. Intervals condition on fixed trained models and one clustering axis; they are not two-way, across-seed, multiplicity-adjusted, or prospective confirmatory intervals.}\label{tab:strong-dti-uncertainty}\\
+\toprule Endpoint / seed & Contrast & AUROC $\Delta$ & 95\% interval & AP $\Delta$ & 95\% interval \\ \midrule\endfirsthead
+\toprule Endpoint / seed & Contrast & AUROC $\Delta$ & 95\% interval & AP $\Delta$ & 95\% interval \\ \midrule\endhead
+Random / 42 & Loop $-$ fixed (10 labs) & +0.33 & [-0.06, +0.69] & +1.40 & [+0.76, +2.05] \\
+Random / 42 & Loop $-$ direct (1 lab) & +0.00 & [+0.00, +0.00] & +0.00 & [+0.00, +0.00] \\
+Random / 42 & Loop $-$ direct (10 labs) & +0.00 & [+0.00, +0.00] & +0.00 & [+0.00, +0.00] \\
+Random / 42 & 10 $-$ 1 labs (fixed) & +12.51 & [+11.35, +13.71] & +10.56 & [+9.10, +12.11] \\
+Random / 42 & 10 $-$ 1 labs (direct) & +5.78 & [+5.02, +6.57] & +8.29 & [+7.01, +9.56] \\
+Random / 42 & 10 $-$ 1 labs (loop) & +5.78 & [+5.02, +6.57] & +8.29 & [+7.01, +9.56] \\
+Random / 42 & Our harness $-$ fixed (1 lab) & +12.84 & [+11.82, +14.01] & +11.96 & [+10.56, +13.45] \\
+Random / 42 & Our harness $-$ direct (1 lab) & +5.78 & [+5.02, +6.57] & +8.29 & [+7.01, +9.56] \\
+\midrule
+Unseen drug / 42 & Loop $-$ fixed (10 labs) & +0.10 & [-0.47, +0.67] & +1.06 & [+0.42, +1.66] \\
+Unseen drug / 42 & Loop $-$ direct (1 lab) & +0.00 & [+0.00, +0.00] & +0.00 & [+0.00, +0.00] \\
+Unseen drug / 42 & Loop $-$ direct (10 labs) & +0.00 & [+0.00, +0.00] & +0.00 & [+0.00, +0.00] \\
+Unseen drug / 42 & 10 $-$ 1 labs (fixed) & +12.30 & [+10.77, +13.98] & +7.17 & [+5.82, +8.72] \\
+Unseen drug / 42 & 10 $-$ 1 labs (direct) & +6.38 & [+5.34, +7.53] & +7.55 & [+6.30, +8.92] \\
+Unseen drug / 42 & 10 $-$ 1 labs (loop) & +6.38 & [+5.34, +7.53] & +7.55 & [+6.30, +8.92] \\
+Unseen drug / 42 & Our harness $-$ fixed (1 lab) & +12.40 & [+10.94, +13.85] & +8.22 & [+6.97, +9.66] \\
+Unseen drug / 42 & Our harness $-$ direct (1 lab) & +6.38 & [+5.34, +7.53] & +7.55 & [+6.30, +8.92] \\
+\midrule
+Unseen protein / 42 & Loop $-$ fixed (10 labs) & +0.03 & [-5.53, +4.28] & +4.12 & [-4.10, +8.22] \\
+Unseen protein / 42 & Loop $-$ direct (1 lab) & +0.00 & [+0.00, +0.00] & +0.00 & [+0.00, +0.00] \\
+Unseen protein / 42 & Loop $-$ direct (10 labs) & +0.00 & [+0.00, +0.00] & +0.00 & [+0.00, +0.00] \\
+Unseen protein / 42 & 10 $-$ 1 labs (fixed) & +20.02 & [+0.16, +63.83] & +8.14 & [-8.27, +51.77] \\
+Unseen protein / 42 & 10 $-$ 1 labs (direct) & +8.86 & [+2.48, +13.39] & +13.26 & [+3.15, +28.50] \\
+Unseen protein / 42 & 10 $-$ 1 labs (loop) & +8.86 & [+2.48, +13.39] & +13.26 & [+3.15, +28.50] \\
+Unseen protein / 42 & Our harness $-$ fixed (1 lab) & +20.05 & [+1.84, +61.27] & +12.25 & [-3.01, +53.19] \\
+Unseen protein / 42 & Our harness $-$ direct (1 lab) & +8.86 & [+2.48, +13.39] & +13.26 & [+3.15, +28.50] \\
+\midrule
+Random / 43 & Loop $-$ fixed (10 labs) & +0.54 & [-0.08, +1.11] & +0.44 & [-0.54, +1.44] \\
+Random / 43 & Loop $-$ direct (1 lab) & +0.00 & [+0.00, +0.00] & +0.00 & [+0.00, +0.00] \\
+Random / 43 & Loop $-$ direct (10 labs) & +0.00 & [+0.00, +0.00] & +0.00 & [+0.00, +0.00] \\
+Random / 43 & 10 $-$ 1 labs (fixed) & +7.80 & [+6.82, +8.82] & +7.68 & [+6.32, +9.13] \\
+Random / 43 & 10 $-$ 1 labs (direct) & +1.65 & [+0.90, +2.38] & +1.17 & [-0.11, +2.50] \\
+Random / 43 & 10 $-$ 1 labs (loop) & +1.65 & [+0.90, +2.38] & +1.17 & [-0.11, +2.50] \\
+Random / 43 & Our harness $-$ fixed (1 lab) & +8.35 & [+7.29, +9.37] & +8.12 & [+6.53, +9.76] \\
+Random / 43 & Our harness $-$ direct (1 lab) & +1.65 & [+0.90, +2.38] & +1.17 & [-0.11, +2.50] \\
+\midrule
+Unseen drug / 43 & Loop $-$ fixed (10 labs) & -0.51 & [-1.44, +0.29] & -1.10 & [-2.16, -0.18] \\
+Unseen drug / 43 & Loop $-$ direct (1 lab) & +0.00 & [+0.00, +0.00] & +0.00 & [+0.00, +0.00] \\
+Unseen drug / 43 & Loop $-$ direct (10 labs) & +0.00 & [+0.00, +0.00] & +0.00 & [+0.00, +0.00] \\
+Unseen drug / 43 & 10 $-$ 1 labs (fixed) & +6.68 & [+5.33, +8.25] & +4.66 & [+3.33, +6.36] \\
+Unseen drug / 43 & 10 $-$ 1 labs (direct) & -0.15 & [-0.96, +0.67] & -1.43 & [-2.43, -0.42] \\
+Unseen drug / 43 & 10 $-$ 1 labs (loop) & -0.15 & [-0.96, +0.67] & -1.43 & [-2.43, -0.42] \\
+Unseen drug / 43 & Our harness $-$ fixed (1 lab) & +6.17 & [+4.85, +7.48] & +3.57 & [+2.10, +5.09] \\
+Unseen drug / 43 & Our harness $-$ direct (1 lab) & -0.15 & [-0.96, +0.67] & -1.43 & [-2.43, -0.42] \\
+\midrule
+Unseen protein / 43 & Loop $-$ fixed (10 labs) & -0.96 & [-7.24, +3.07] & -1.83 & [-21.55, +7.54] \\
+Unseen protein / 43 & Loop $-$ direct (1 lab) & +0.00 & [+0.00, +0.00] & +0.00 & [+0.00, +0.00] \\
+Unseen protein / 43 & Loop $-$ direct (10 labs) & +0.00 & [+0.00, +0.00] & +0.00 & [+0.00, +0.00] \\
+Unseen protein / 43 & 10 $-$ 1 labs (fixed) & +4.79 & [-6.61, +28.12] & +0.41 & [-16.48, +31.69] \\
+Unseen protein / 43 & 10 $-$ 1 labs (direct) & -1.19 & [-6.22, +6.09] & -6.76 & [-13.95, +6.71] \\
+Unseen protein / 43 & 10 $-$ 1 labs (loop) & -1.19 & [-6.22, +6.09] & -6.76 & [-13.95, +6.71] \\
+Unseen protein / 43 & Our harness $-$ fixed (1 lab) & +3.83 & [-5.83, +22.32] & -1.42 & [-14.49, +16.88] \\
+Unseen protein / 43 & Our harness $-$ direct (1 lab) & -1.19 & [-6.22, +6.09] & -6.76 & [-13.95, +6.71] \\
+\midrule
+\bottomrule
+\end{longtable}
+\endgroup

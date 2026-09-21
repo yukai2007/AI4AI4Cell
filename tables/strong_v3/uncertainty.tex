@@ -1,8 +1,21 @@
 \begin{longtable}{llrrl}
-\caption{Per-seed paired cluster-bootstrap 95\% intervals for the committed model versions, in percentage points. These retrospective intervals condition on fixed trained models and do not measure across-seed uncertainty.}\label{tab:strong-uncertainty}\\
+\caption{Per-seed paired cluster-bootstrap 95\% intervals for the committed model versions, in percentage points. These retrospective intervals condition on fixed trained models and do not measure across-seed uncertainty. DTI intervals, when available, are a post-hoc supplement using frozen predictions; random-endpoint rows use drug clusters.}\label{tab:strong-uncertainty}\\
 \toprule Task & Contrast & Seed & Difference & 95\% interval \\ \midrule\endfirsthead
 \toprule Task & Contrast & Seed & Difference & 95\% interval \\ \midrule\endhead
-DTI & Bootstrap intervals pending & 42 & N/A & N/A \\
+DTI & Loop $-$ fixed (10 labs) & 42 & +0.33 & [-0.06, +0.69] \\
+DTI & Loop $-$ direct (1 lab) & 42 & +0.00 & [+0.00, +0.00] \\
+DTI & Loop $-$ direct (10 labs) & 42 & +0.00 & [+0.00, +0.00] \\
+DTI & 10 $-$ 1 labs (both fixed) & 42 & +12.51 & [+11.35, +13.71] \\
+DTI & 10 $-$ 1 labs (both direct) & 42 & +5.78 & [+5.02, +6.57] \\
+DTI & 10 $-$ 1 labs (both loop) & 42 & +5.78 & [+5.02, +6.57] \\
+\midrule
+DTI & Loop $-$ fixed (10 labs) & 43 & +0.54 & [-0.08, +1.11] \\
+DTI & Loop $-$ direct (1 lab) & 43 & +0.00 & [+0.00, +0.00] \\
+DTI & Loop $-$ direct (10 labs) & 43 & +0.00 & [+0.00, +0.00] \\
+DTI & 10 $-$ 1 labs (both fixed) & 43 & +7.80 & [+6.82, +8.82] \\
+DTI & 10 $-$ 1 labs (both direct) & 43 & +1.65 & [+0.90, +2.38] \\
+DTI & 10 $-$ 1 labs (both loop) & 43 & +1.65 & [+0.90, +2.38] \\
+\midrule
 Proteomics & Loop $-$ fixed (10 labs) & 42 & +0.00 & [+0.00, +0.00] \\
 Proteomics & Loop $-$ direct (1 lab) & 42 & +0.00 & [+0.00, +0.00] \\
 Proteomics & Loop $-$ direct (10 labs) & 42 & +0.00 & [+0.00, +0.00] \\

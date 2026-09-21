@@ -1,5 +1,5 @@
 {
-  "snapshot_utc": "2026-09-18T18:11:29.890650+00:00",
+  "snapshot_utc": "2026-09-21T14:37:56.276826+00:00",
   "role": "retrospective held-out; prior historical exposure; not blind confirmation",
   "seeds_requested": [
     42,
@@ -107,13 +107,168 @@
               }
             }
           },
-          "uncertainty": null,
+          "uncertainty": {
+            "arms": {
+              "single_fixed": {
+                "point": 0.8176202138896225,
+                "ci95": [
+                  0.8057123778836195,
+                  0.8283259253089871
+                ],
+                "valid_replicates": 1000
+              },
+              "single_direct": {
+                "point": 0.8881695273303406,
+                "ci95": [
+                  0.878054425127076,
+                  0.8976444118731401
+                ],
+                "valid_replicates": 1000
+              },
+              "single_loop": {
+                "point": 0.8881695273303406,
+                "ci95": [
+                  0.878054425127076,
+                  0.8976444118731401
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_fixed": {
+                "point": 0.9426791655664115,
+                "ci95": [
+                  0.9360245942183176,
+                  0.9494839708210298
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_direct": {
+                "point": 0.9460002640612623,
+                "ci95": [
+                  0.9397176563092776,
+                  0.951720736677431
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_loop": {
+                "point": 0.9460002640612623,
+                "ci95": [
+                  0.9397176563092776,
+                  0.951720736677431
+                ],
+                "valid_replicates": 1000
+              }
+            },
+            "effects": {
+              "loop_single": {
+                "arms": [
+                  "single_loop",
+                  "single_direct"
+                ],
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "loop_federated": {
+                "arms": [
+                  "federated_loop",
+                  "federated_direct"
+                ],
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_fixed": {
+                "arms": [
+                  "federated_fixed",
+                  "single_fixed"
+                ],
+                "difference": 0.12505895167678904,
+                "ci95": [
+                  0.11345269663232745,
+                  0.13708931727957924
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_direct": {
+                "arms": [
+                  "federated_direct",
+                  "single_direct"
+                ],
+                "difference": 0.05783073673092165,
+                "ci95": [
+                  0.05018347491441141,
+                  0.06572279371404853
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_loop": {
+                "arms": [
+                  "federated_loop",
+                  "single_loop"
+                ],
+                "difference": 0.05783073673092165,
+                "ci95": [
+                  0.05018347491441141,
+                  0.06572279371404853
+                ],
+                "valid_replicates": 1000
+              },
+              "loop_vs_fixed_federated": {
+                "arms": [
+                  "federated_loop",
+                  "federated_fixed"
+                ],
+                "difference": 0.0033210984948507383,
+                "ci95": [
+                  -0.000627516987105714,
+                  0.006853665934718647
+                ],
+                "valid_replicates": 1000
+              },
+              "main_harness_vs_fixed": {
+                "arms": [
+                  "federated_loop",
+                  "single_fixed"
+                ],
+                "difference": 0.12838005017163978,
+                "ci95": [
+                  0.11821370387741784,
+                  0.1400609614000224
+                ],
+                "valid_replicates": 1000
+              },
+              "main_harness_vs_direct": {
+                "arms": [
+                  "federated_loop",
+                  "single_direct"
+                ],
+                "difference": 0.05783073673092165,
+                "ci95": [
+                  0.05018347491441141,
+                  0.06572279371404853
+                ],
+                "valid_replicates": 1000
+              }
+            },
+            "clusters": 5013,
+            "requested_replicates": 1000,
+            "skipped_single_class_replicates": 0,
+            "rng_seed": 20260918,
+            "method": "paired cluster bootstrap, percentile 95%; fixed trained models"
+          },
           "primary_metric": "auroc",
           "receipts": {
             "heldout_v3/native_tapb/seed42/results.json": "9175ecbe4aca2cbdca4aff0cd6f565b6f48c0772a9f617659c8a00f4e61b7bdd",
             "heldout_v3/native_tapb/seed42/seal.json": "9bf05d62d61e40fd86f84c2763f9c5c4998f95e768152b505a8a11f70b7aa274",
             "heldout_v3/native_tapb/seed42/audit.json": "c2a64dd37d9ec328d344224238aa3c27e40fef2dfde537b91be4f47050aec41a",
-            "heldout_v3/native_tapb/seed42/verification.json": "6823ffa9da0e0b81fcd05e01f3ab38ca4eddd4480584898b20f789faa0902387"
+            "heldout_v3/native_tapb/seed42/verification.json": "6823ffa9da0e0b81fcd05e01f3ab38ca4eddd4480584898b20f789faa0902387",
+            "uncertainty_native_tapb_v1/seed42.json": "b36c7ac5721dd51cfce5ef89abbd66c605b4fda6afe23a35ee81f7ba9f560bae"
           },
           "model_version_receipt": null,
           "model": "TAPB; random task weights with public frozen features",
@@ -454,13 +609,2598 @@
                 "reused_identical_checkpoint": "federated_direct"
               }
             }
+          },
+          "endpoint_uncertainty": {
+            "schema": "native-tapb-posthoc-uncertainty-v1",
+            "task": "native_tapb",
+            "seed": 42,
+            "role": "retrospective held-out; prior historical exposure; not blind confirmation",
+            "analysis_role": "post-hoc uncertainty supplement; no model or metric selection",
+            "feedback_to_controller": false,
+            "model_fitted": false,
+            "prediction_generated": false,
+            "original_result_modified": false,
+            "source_sha256": {
+              "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/results.json": "9175ecbe4aca2cbdca4aff0cd6f565b6f48c0772a9f617659c8a00f4e61b7bdd",
+              "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/seal.json": "9bf05d62d61e40fd86f84c2763f9c5c4998f95e768152b505a8a11f70b7aa274",
+              "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/audit.json": "c2a64dd37d9ec328d344224238aa3c27e40fef2dfde537b91be4f47050aec41a",
+              "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/verification.json": "6823ffa9da0e0b81fcd05e01f3ab38ca4eddd4480584898b20f789faa0902387",
+              "/liziqing/yukai/AI4AI4Cell/runtime/experiments/drugevolve_transfer/scoring.py": "2ec1689fecea7c12bdfd3b84a235883a43abaa5d1668da94bd0cfa252dc81216",
+              "/liziqing/yukai/project_collab_auto_research_cell_federated/third_party/DrugEvolve/applications/dataset/Drug-target_interaction_prediction/bindingdb/random/test.csv": "d165719ad92cd0b870bcd8c897f8037676a6e4a159d0c7ad7f0bb690f52da850",
+              "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/random_single_fixed_predictions.csv": "d9fa7389aa4d91fad38088499c639fb3de19a27b55a27c5ae20e5c156b6bd696",
+              "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/random_single_direct_predictions.csv": "8c03da33a6ae0b94d86c6bcee4b75a725b2b5170411960f5ecbc3c1f34026832",
+              "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/random_federated_fixed_predictions.csv": "c7da3f84dea338f6817efab8054a89a0019f895e5abc94442a513e8669fdf402",
+              "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/random_federated_direct_predictions.csv": "08dc355ffb80333cf827dbbdbc5c59ea04bd616e0261ca2b811efad1f14c77c2",
+              "/liziqing/yukai/project_collab_auto_research_cell_federated/third_party/DrugEvolve/applications/dataset/Drug-target_interaction_prediction/bindingdb/unseen_drug/test.csv": "ab32f3533480f1fc5fb9162b50d2b160b317af171ad6b8d4d9faa8c58b57d052",
+              "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/unseen_drug_single_fixed_predictions.csv": "054f5cc77bf9249cfbc5eaae9b324dc92bccdfc9f804a11d4f29fd9e1d6cba20",
+              "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/unseen_drug_single_direct_predictions.csv": "556bdf8372e40a1d0daf6c0df2b2e7a6e27ea9de494064f77963598ad6241ded",
+              "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/unseen_drug_federated_fixed_predictions.csv": "83caf41c62b5d828e1cd7b671804da1362b60dc504c4fc3009de5222ad5178b0",
+              "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/unseen_drug_federated_direct_predictions.csv": "8c5f946901ce2fc7dac335d00aeeaf5eabc26e1d5582a7c4052fcf555b948c0e",
+              "/liziqing/yukai/project_collab_auto_research_cell_federated/third_party/DrugEvolve/applications/dataset/Drug-target_interaction_prediction/bindingdb/unseen_protein/test.csv": "c590231b96db6e616975a677b1696870ff22d8f53e04a57785346880f5ee2b64",
+              "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/unseen_protein_single_fixed_predictions.csv": "219acb0a79ef8262df937e5e93097a4179e4ab36ffff427ec3f8b82478d8edbb",
+              "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/unseen_protein_single_direct_predictions.csv": "8b408786d677692df4c27d4187fd4553f6302b40cccee0a387399c165aab3923",
+              "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/unseen_protein_federated_fixed_predictions.csv": "dfd5cab3a76060fdb817c9a903cef3ffd76c2a79d0c5d6186fa38dcac60116b2",
+              "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/unseen_protein_federated_direct_predictions.csv": "56be125973ea05436a6fcea2669a74d5b05156afaf2d0c8d667c23838fe8b753",
+              "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/bootstrap_native_tapb.py": "6686cbb4b167071b266974137c8048fba32c6653b008787cc0e43460cd1b253e"
+            },
+            "endpoints": {
+              "random": {
+                "cluster_unit": "SMILES",
+                "rows": 5505,
+                "metrics": {
+                  "auroc": {
+                    "arms": {
+                      "single_fixed": {
+                        "point": 0.8176202138896225,
+                        "ci95": [
+                          0.8057123778836195,
+                          0.8283259253089871
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "single_direct": {
+                        "point": 0.8881695273303406,
+                        "ci95": [
+                          0.878054425127076,
+                          0.8976444118731401
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "single_loop": {
+                        "point": 0.8881695273303406,
+                        "ci95": [
+                          0.878054425127076,
+                          0.8976444118731401
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_fixed": {
+                        "point": 0.9426791655664115,
+                        "ci95": [
+                          0.9360245942183176,
+                          0.9494839708210298
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_direct": {
+                        "point": 0.9460002640612623,
+                        "ci95": [
+                          0.9397176563092776,
+                          0.951720736677431
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_loop": {
+                        "point": 0.9460002640612623,
+                        "ci95": [
+                          0.9397176563092776,
+                          0.951720736677431
+                        ],
+                        "valid_replicates": 1000
+                      }
+                    },
+                    "effects": {
+                      "loop_single": {
+                        "arms": [
+                          "single_loop",
+                          "single_direct"
+                        ],
+                        "difference": 0.0,
+                        "ci95": [
+                          0.0,
+                          0.0
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "loop_federated": {
+                        "arms": [
+                          "federated_loop",
+                          "federated_direct"
+                        ],
+                        "difference": 0.0,
+                        "ci95": [
+                          0.0,
+                          0.0
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_fixed": {
+                        "arms": [
+                          "federated_fixed",
+                          "single_fixed"
+                        ],
+                        "difference": 0.12505895167678904,
+                        "ci95": [
+                          0.11345269663232745,
+                          0.13708931727957924
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_direct": {
+                        "arms": [
+                          "federated_direct",
+                          "single_direct"
+                        ],
+                        "difference": 0.05783073673092165,
+                        "ci95": [
+                          0.05018347491441141,
+                          0.06572279371404853
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_loop": {
+                        "arms": [
+                          "federated_loop",
+                          "single_loop"
+                        ],
+                        "difference": 0.05783073673092165,
+                        "ci95": [
+                          0.05018347491441141,
+                          0.06572279371404853
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "loop_vs_fixed_federated": {
+                        "arms": [
+                          "federated_loop",
+                          "federated_fixed"
+                        ],
+                        "difference": 0.0033210984948507383,
+                        "ci95": [
+                          -0.000627516987105714,
+                          0.006853665934718647
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "main_harness_vs_fixed": {
+                        "arms": [
+                          "federated_loop",
+                          "single_fixed"
+                        ],
+                        "difference": 0.12838005017163978,
+                        "ci95": [
+                          0.11821370387741784,
+                          0.1400609614000224
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "main_harness_vs_direct": {
+                        "arms": [
+                          "federated_loop",
+                          "single_direct"
+                        ],
+                        "difference": 0.05783073673092165,
+                        "ci95": [
+                          0.05018347491441141,
+                          0.06572279371404853
+                        ],
+                        "valid_replicates": 1000
+                      }
+                    },
+                    "clusters": 5013,
+                    "requested_replicates": 1000,
+                    "skipped_single_class_replicates": 0,
+                    "rng_seed": 20260918,
+                    "method": "paired cluster bootstrap, percentile 95%; fixed trained models"
+                  },
+                  "average_precision": {
+                    "arms": {
+                      "single_fixed": {
+                        "point": 0.8230315148356314,
+                        "ci95": [
+                          0.8073445451846366,
+                          0.8389551536785962
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "single_direct": {
+                        "point": 0.8597544337609471,
+                        "ci95": [
+                          0.8438696946814788,
+                          0.8756578724380614
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "single_loop": {
+                        "point": 0.8597544337609471,
+                        "ci95": [
+                          0.8438696946814788,
+                          0.8756578724380614
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_fixed": {
+                        "point": 0.928660904919976,
+                        "ci95": [
+                          0.9177811458871217,
+                          0.939620739665861
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_direct": {
+                        "point": 0.9426511033754423,
+                        "ci95": [
+                          0.9338770691429508,
+                          0.9499586420892083
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_loop": {
+                        "point": 0.9426511033754423,
+                        "ci95": [
+                          0.9338770691429508,
+                          0.9499586420892083
+                        ],
+                        "valid_replicates": 1000
+                      }
+                    },
+                    "effects": {
+                      "loop_single": {
+                        "arms": [
+                          "single_loop",
+                          "single_direct"
+                        ],
+                        "difference": 0.0,
+                        "ci95": [
+                          0.0,
+                          0.0
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "loop_federated": {
+                        "arms": [
+                          "federated_loop",
+                          "federated_direct"
+                        ],
+                        "difference": 0.0,
+                        "ci95": [
+                          0.0,
+                          0.0
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_fixed": {
+                        "arms": [
+                          "federated_fixed",
+                          "single_fixed"
+                        ],
+                        "difference": 0.10562939008434458,
+                        "ci95": [
+                          0.09103812703143982,
+                          0.12111476450385807
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_direct": {
+                        "arms": [
+                          "federated_direct",
+                          "single_direct"
+                        ],
+                        "difference": 0.08289666961449527,
+                        "ci95": [
+                          0.07010787649495315,
+                          0.09561831694396906
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_loop": {
+                        "arms": [
+                          "federated_loop",
+                          "single_loop"
+                        ],
+                        "difference": 0.08289666961449527,
+                        "ci95": [
+                          0.07010787649495315,
+                          0.09561831694396906
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "loop_vs_fixed_federated": {
+                        "arms": [
+                          "federated_loop",
+                          "federated_fixed"
+                        ],
+                        "difference": 0.01399019845546634,
+                        "ci95": [
+                          0.007580815653035397,
+                          0.02053712184298821
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "main_harness_vs_fixed": {
+                        "arms": [
+                          "federated_loop",
+                          "single_fixed"
+                        ],
+                        "difference": 0.11961958853981092,
+                        "ci95": [
+                          0.10557174253699694,
+                          0.13451811640736583
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "main_harness_vs_direct": {
+                        "arms": [
+                          "federated_loop",
+                          "single_direct"
+                        ],
+                        "difference": 0.08289666961449527,
+                        "ci95": [
+                          0.07010787649495315,
+                          0.09561831694396906
+                        ],
+                        "valid_replicates": 1000
+                      }
+                    },
+                    "clusters": 5013,
+                    "requested_replicates": 1000,
+                    "skipped_single_class_replicates": 0,
+                    "rng_seed": 20260918,
+                    "method": "paired cluster bootstrap, percentile 95%; fixed trained models"
+                  }
+                }
+              },
+              "unseen_drug": {
+                "cluster_unit": "SMILES",
+                "rows": 3791,
+                "metrics": {
+                  "auroc": {
+                    "arms": {
+                      "single_fixed": {
+                        "point": 0.806666774249623,
+                        "ci95": [
+                          0.7913762132836444,
+                          0.8210730204832521
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "single_direct": {
+                        "point": 0.8668430177811978,
+                        "ci95": [
+                          0.8523369589835972,
+                          0.880750800486227
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "single_loop": {
+                        "point": 0.8668430177811978,
+                        "ci95": [
+                          0.8523369589835972,
+                          0.880750800486227
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_fixed": {
+                        "point": 0.9296387647438195,
+                        "ci95": [
+                          0.9207277141162724,
+                          0.9387629395823759
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_direct": {
+                        "point": 0.9306353226554419,
+                        "ci95": [
+                          0.9224117029718906,
+                          0.9387478302306257
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_loop": {
+                        "point": 0.9306353226554419,
+                        "ci95": [
+                          0.9224117029718906,
+                          0.9387478302306257
+                        ],
+                        "valid_replicates": 1000
+                      }
+                    },
+                    "effects": {
+                      "loop_single": {
+                        "arms": [
+                          "single_loop",
+                          "single_direct"
+                        ],
+                        "difference": 0.0,
+                        "ci95": [
+                          0.0,
+                          0.0
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "loop_federated": {
+                        "arms": [
+                          "federated_loop",
+                          "federated_direct"
+                        ],
+                        "difference": 0.0,
+                        "ci95": [
+                          0.0,
+                          0.0
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_fixed": {
+                        "arms": [
+                          "federated_fixed",
+                          "single_fixed"
+                        ],
+                        "difference": 0.12297199049419649,
+                        "ci95": [
+                          0.10774094629907027,
+                          0.13981029722239408
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_direct": {
+                        "arms": [
+                          "federated_direct",
+                          "single_direct"
+                        ],
+                        "difference": 0.06379230487424414,
+                        "ci95": [
+                          0.053361169528859165,
+                          0.07529525697918743
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_loop": {
+                        "arms": [
+                          "federated_loop",
+                          "single_loop"
+                        ],
+                        "difference": 0.06379230487424414,
+                        "ci95": [
+                          0.053361169528859165,
+                          0.07529525697918743
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "loop_vs_fixed_federated": {
+                        "arms": [
+                          "federated_loop",
+                          "federated_fixed"
+                        ],
+                        "difference": 0.0009965579116224532,
+                        "ci95": [
+                          -0.004674842917238059,
+                          0.006712964666247849
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "main_harness_vs_fixed": {
+                        "arms": [
+                          "federated_loop",
+                          "single_fixed"
+                        ],
+                        "difference": 0.12396854840581895,
+                        "ci95": [
+                          0.10940064191935547,
+                          0.13848879030371544
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "main_harness_vs_direct": {
+                        "arms": [
+                          "federated_loop",
+                          "single_direct"
+                        ],
+                        "difference": 0.06379230487424414,
+                        "ci95": [
+                          0.053361169528859165,
+                          0.07529525697918743
+                        ],
+                        "valid_replicates": 1000
+                      }
+                    },
+                    "clusters": 3494,
+                    "requested_replicates": 1000,
+                    "skipped_single_class_replicates": 0,
+                    "rng_seed": 20260918,
+                    "method": "paired cluster bootstrap, percentile 95%; fixed trained models"
+                  },
+                  "average_precision": {
+                    "arms": {
+                      "single_fixed": {
+                        "point": 0.8640908068199541,
+                        "ci95": [
+                          0.8489088680837453,
+                          0.8784666592568433
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "single_direct": {
+                        "point": 0.8708060255860901,
+                        "ci95": [
+                          0.8541032742119421,
+                          0.887803383197854
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "single_loop": {
+                        "point": 0.8708060255860901,
+                        "ci95": [
+                          0.8541032742119421,
+                          0.887803383197854
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_fixed": {
+                        "point": 0.9357593732941301,
+                        "ci95": [
+                          0.925501684013834,
+                          0.9463413744294509
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_direct": {
+                        "point": 0.9463322971989592,
+                        "ci95": [
+                          0.9386548462205146,
+                          0.9535685809686647
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_loop": {
+                        "point": 0.9463322971989592,
+                        "ci95": [
+                          0.9386548462205146,
+                          0.9535685809686647
+                        ],
+                        "valid_replicates": 1000
+                      }
+                    },
+                    "effects": {
+                      "loop_single": {
+                        "arms": [
+                          "single_loop",
+                          "single_direct"
+                        ],
+                        "difference": 0.0,
+                        "ci95": [
+                          0.0,
+                          0.0
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "loop_federated": {
+                        "arms": [
+                          "federated_loop",
+                          "federated_direct"
+                        ],
+                        "difference": 0.0,
+                        "ci95": [
+                          0.0,
+                          0.0
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_fixed": {
+                        "arms": [
+                          "federated_fixed",
+                          "single_fixed"
+                        ],
+                        "difference": 0.07166856647417597,
+                        "ci95": [
+                          0.058230056345267886,
+                          0.08723171150564503
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_direct": {
+                        "arms": [
+                          "federated_direct",
+                          "single_direct"
+                        ],
+                        "difference": 0.07552627161286907,
+                        "ci95": [
+                          0.06298593774294049,
+                          0.08917717421387023
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_loop": {
+                        "arms": [
+                          "federated_loop",
+                          "single_loop"
+                        ],
+                        "difference": 0.07552627161286907,
+                        "ci95": [
+                          0.06298593774294049,
+                          0.08917717421387023
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "loop_vs_fixed_federated": {
+                        "arms": [
+                          "federated_loop",
+                          "federated_fixed"
+                        ],
+                        "difference": 0.010572923904829112,
+                        "ci95": [
+                          0.004190853473042847,
+                          0.016615510796025565
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "main_harness_vs_fixed": {
+                        "arms": [
+                          "federated_loop",
+                          "single_fixed"
+                        ],
+                        "difference": 0.08224149037900508,
+                        "ci95": [
+                          0.0696501096027625,
+                          0.096568295584752
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "main_harness_vs_direct": {
+                        "arms": [
+                          "federated_loop",
+                          "single_direct"
+                        ],
+                        "difference": 0.07552627161286907,
+                        "ci95": [
+                          0.06298593774294049,
+                          0.08917717421387023
+                        ],
+                        "valid_replicates": 1000
+                      }
+                    },
+                    "clusters": 3494,
+                    "requested_replicates": 1000,
+                    "skipped_single_class_replicates": 0,
+                    "rng_seed": 20260918,
+                    "method": "paired cluster bootstrap, percentile 95%; fixed trained models"
+                  }
+                }
+              },
+              "unseen_protein": {
+                "cluster_unit": "Protein",
+                "rows": 2507,
+                "metrics": {
+                  "auroc": {
+                    "arms": {
+                      "single_fixed": {
+                        "point": 0.6986008520647997,
+                        "ci95": [
+                          0.26437541855602276,
+                          0.8985625612703723
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "single_direct": {
+                        "point": 0.8105330051004237,
+                        "ci95": [
+                          0.6952080647280783,
+                          0.9044572763780274
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "single_loop": {
+                        "point": 0.8105330051004237,
+                        "ci95": [
+                          0.6952080647280783,
+                          0.9044572763780274
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_fixed": {
+                        "point": 0.8988424443847605,
+                        "ci95": [
+                          0.8063769210363226,
+                          0.9517609156432065
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_direct": {
+                        "point": 0.899107203091567,
+                        "ci95": [
+                          0.7597216810820557,
+                          0.9638934623104121
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_loop": {
+                        "point": 0.899107203091567,
+                        "ci95": [
+                          0.7597216810820557,
+                          0.9638934623104121
+                        ],
+                        "valid_replicates": 1000
+                      }
+                    },
+                    "effects": {
+                      "loop_single": {
+                        "arms": [
+                          "single_loop",
+                          "single_direct"
+                        ],
+                        "difference": 0.0,
+                        "ci95": [
+                          0.0,
+                          0.0
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "loop_federated": {
+                        "arms": [
+                          "federated_loop",
+                          "federated_direct"
+                        ],
+                        "difference": 0.0,
+                        "ci95": [
+                          0.0,
+                          0.0
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_fixed": {
+                        "arms": [
+                          "federated_fixed",
+                          "single_fixed"
+                        ],
+                        "difference": 0.20024159231996075,
+                        "ci95": [
+                          0.001578912633806731,
+                          0.6382993703439851
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_direct": {
+                        "arms": [
+                          "federated_direct",
+                          "single_direct"
+                        ],
+                        "difference": 0.0885741979911433,
+                        "ci95": [
+                          0.02479350814451303,
+                          0.13392930973981768
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_loop": {
+                        "arms": [
+                          "federated_loop",
+                          "single_loop"
+                        ],
+                        "difference": 0.0885741979911433,
+                        "ci95": [
+                          0.02479350814451303,
+                          0.13392930973981768
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "loop_vs_fixed_federated": {
+                        "arms": [
+                          "federated_loop",
+                          "federated_fixed"
+                        ],
+                        "difference": 0.0002647587068065338,
+                        "ci95": [
+                          -0.05531673250905168,
+                          0.0428472981809627
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "main_harness_vs_fixed": {
+                        "arms": [
+                          "federated_loop",
+                          "single_fixed"
+                        ],
+                        "difference": 0.20050635102676728,
+                        "ci95": [
+                          0.018399075933890726,
+                          0.6127086243811065
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "main_harness_vs_direct": {
+                        "arms": [
+                          "federated_loop",
+                          "single_direct"
+                        ],
+                        "difference": 0.0885741979911433,
+                        "ci95": [
+                          0.02479350814451303,
+                          0.13392930973981768
+                        ],
+                        "valid_replicates": 1000
+                      }
+                    },
+                    "clusters": 42,
+                    "requested_replicates": 1000,
+                    "skipped_single_class_replicates": 0,
+                    "rng_seed": 20260918,
+                    "method": "paired cluster bootstrap, percentile 95%; fixed trained models"
+                  },
+                  "average_precision": {
+                    "arms": {
+                      "single_fixed": {
+                        "point": 0.7804872088944423,
+                        "ci95": [
+                          0.22086394702831813,
+                          0.9311724521141106
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "single_direct": {
+                        "point": 0.7704174493899876,
+                        "ci95": [
+                          0.40444297666581835,
+                          0.9441954676126108
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "single_loop": {
+                        "point": 0.7704174493899876,
+                        "ci95": [
+                          0.40444297666581835,
+                          0.9441954676126108
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_fixed": {
+                        "point": 0.8618628826091761,
+                        "ci95": [
+                          0.5696030334871454,
+                          0.9566316116957535
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_direct": {
+                        "point": 0.9030344501660621,
+                        "ci95": [
+                          0.5576870594159368,
+                          0.9823519313414766
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_loop": {
+                        "point": 0.9030344501660621,
+                        "ci95": [
+                          0.5576870594159368,
+                          0.9823519313414766
+                        ],
+                        "valid_replicates": 1000
+                      }
+                    },
+                    "effects": {
+                      "loop_single": {
+                        "arms": [
+                          "single_loop",
+                          "single_direct"
+                        ],
+                        "difference": 0.0,
+                        "ci95": [
+                          0.0,
+                          0.0
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "loop_federated": {
+                        "arms": [
+                          "federated_loop",
+                          "federated_direct"
+                        ],
+                        "difference": 0.0,
+                        "ci95": [
+                          0.0,
+                          0.0
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_fixed": {
+                        "arms": [
+                          "federated_fixed",
+                          "single_fixed"
+                        ],
+                        "difference": 0.08137567371473375,
+                        "ci95": [
+                          -0.08268889615964557,
+                          0.5176553853492937
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_direct": {
+                        "arms": [
+                          "federated_direct",
+                          "single_direct"
+                        ],
+                        "difference": 0.13261700077607452,
+                        "ci95": [
+                          0.031486033239097794,
+                          0.2850332507814282
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_loop": {
+                        "arms": [
+                          "federated_loop",
+                          "single_loop"
+                        ],
+                        "difference": 0.13261700077607452,
+                        "ci95": [
+                          0.031486033239097794,
+                          0.2850332507814282
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "loop_vs_fixed_federated": {
+                        "arms": [
+                          "federated_loop",
+                          "federated_fixed"
+                        ],
+                        "difference": 0.041171567556886,
+                        "ci95": [
+                          -0.040955880560224894,
+                          0.0821751648826629
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "main_harness_vs_fixed": {
+                        "arms": [
+                          "federated_loop",
+                          "single_fixed"
+                        ],
+                        "difference": 0.12254724127161976,
+                        "ci95": [
+                          -0.030104960802142505,
+                          0.5319235257263675
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "main_harness_vs_direct": {
+                        "arms": [
+                          "federated_loop",
+                          "single_direct"
+                        ],
+                        "difference": 0.13261700077607452,
+                        "ci95": [
+                          0.031486033239097794,
+                          0.2850332507814282
+                        ],
+                        "valid_replicates": 1000
+                      }
+                    },
+                    "clusters": 42,
+                    "requested_replicates": 1000,
+                    "skipped_single_class_replicates": 0,
+                    "rng_seed": 20260918,
+                    "method": "paired cluster bootstrap, percentile 95%; fixed trained models"
+                  }
+                }
+              }
+            },
+            "requested_replicates": 1000,
+            "rng_seed": 20260918,
+            "limitations": "Conditional on fixed trained models; one clustering axis per endpoint; not two-way or across-seed uncertainty; no multiplicity correction; not prospective confirmation",
+            "environment": {
+              "python": "3.10.12 (main, Nov 20 2023, 15:14:05) [GCC 11.4.0]",
+              "numpy": "1.24.4",
+              "pandas": "1.5.3",
+              "sklearn": "1.2.0",
+              "platform": "Linux-3.10.0-1160.el7.x86_64-x86_64-with-glibc2.35"
+            },
+            "completed_unix": 1790001125.7963421
           }
         },
-        "43": null,
+        "43": {
+          "scores": {
+            "single_fixed": {
+              "primary": 0.841541523633483,
+              "secondary": {
+                "auroc": 0.841541523633483,
+                "average_precision": 0.8261447156275921,
+                "mcc": 0.532308034388545,
+                "accuracy": 0.7662125340599455,
+                "log_loss": 0.4903145839302723,
+                "n_samples": 5505,
+                "n_positive": 2705,
+                "n_negative": 2800,
+                "threshold": 0.5,
+                "log_loss_epsilon": 1e-15
+              }
+            },
+            "single_direct": {
+              "primary": 0.9084580802746237,
+              "secondary": {
+                "auroc": 0.9084580802746237,
+                "average_precision": 0.8956072893475976,
+                "mcc": 0.6571110959471131,
+                "accuracy": 0.8241598546775658,
+                "log_loss": 0.5480013845532731,
+                "n_samples": 5505,
+                "n_positive": 2705,
+                "n_negative": 2800,
+                "threshold": 0.5,
+                "log_loss_epsilon": 1e-15
+              }
+            },
+            "single_loop": {
+              "primary": 0.9084580802746237,
+              "secondary": {
+                "auroc": 0.9084580802746237,
+                "average_precision": 0.8956072893475976,
+                "mcc": 0.6571110959471131,
+                "accuracy": 0.8241598546775658,
+                "log_loss": 0.5480013845532731,
+                "n_samples": 5505,
+                "n_positive": 2705,
+                "n_negative": 2800,
+                "threshold": 0.5,
+                "log_loss_epsilon": 1e-15
+              }
+            },
+            "federated_fixed": {
+              "primary": 0.9195574333245313,
+              "secondary": {
+                "auroc": 0.9195574333245313,
+                "average_precision": 0.9029152867514195,
+                "mcc": 0.7104948916593983,
+                "accuracy": 0.8532243415077203,
+                "log_loss": 0.3661107844172814,
+                "n_samples": 5505,
+                "n_positive": 2705,
+                "n_negative": 2800,
+                "threshold": 0.5,
+                "log_loss_epsilon": 1e-15
+              }
+            },
+            "federated_direct": {
+              "primary": 0.9249997359387377,
+              "secondary": {
+                "auroc": 0.9249997359387377,
+                "average_precision": 0.9073430632439301,
+                "mcc": 0.7182054248892593,
+                "accuracy": 0.8521344232515895,
+                "log_loss": 0.40404543954607325,
+                "n_samples": 5505,
+                "n_positive": 2705,
+                "n_negative": 2800,
+                "threshold": 0.5,
+                "log_loss_epsilon": 1e-15
+              }
+            },
+            "federated_loop": {
+              "primary": 0.9249997359387377,
+              "secondary": {
+                "auroc": 0.9249997359387377,
+                "average_precision": 0.9073430632439301,
+                "mcc": 0.7182054248892593,
+                "accuracy": 0.8521344232515895,
+                "log_loss": 0.40404543954607325,
+                "n_samples": 5505,
+                "n_positive": 2705,
+                "n_negative": 2800,
+                "threshold": 0.5,
+                "log_loss_epsilon": 1e-15
+              }
+            }
+          },
+          "uncertainty": {
+            "arms": {
+              "single_fixed": {
+                "point": 0.841541523633483,
+                "ci95": [
+                  0.8303995577975868,
+                  0.8516260499301279
+                ],
+                "valid_replicates": 1000
+              },
+              "single_direct": {
+                "point": 0.9084580802746237,
+                "ci95": [
+                  0.8997229281418897,
+                  0.9170358573177582
+                ],
+                "valid_replicates": 1000
+              },
+              "single_loop": {
+                "point": 0.9084580802746237,
+                "ci95": [
+                  0.8997229281418897,
+                  0.9170358573177582
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_fixed": {
+                "point": 0.9195574333245313,
+                "ci95": [
+                  0.912024462253115,
+                  0.9278342771156315
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_direct": {
+                "point": 0.9249997359387377,
+                "ci95": [
+                  0.916834885930917,
+                  0.9323336329692664
+                ],
+                "valid_replicates": 1000
+              },
+              "federated_loop": {
+                "point": 0.9249997359387377,
+                "ci95": [
+                  0.916834885930917,
+                  0.9323336329692664
+                ],
+                "valid_replicates": 1000
+              }
+            },
+            "effects": {
+              "loop_single": {
+                "arms": [
+                  "single_loop",
+                  "single_direct"
+                ],
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "loop_federated": {
+                "arms": [
+                  "federated_loop",
+                  "federated_direct"
+                ],
+                "difference": 0.0,
+                "ci95": [
+                  0.0,
+                  0.0
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_fixed": {
+                "arms": [
+                  "federated_fixed",
+                  "single_fixed"
+                ],
+                "difference": 0.07801590969104832,
+                "ci95": [
+                  0.06820176019138995,
+                  0.08816007683035465
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_direct": {
+                "arms": [
+                  "federated_direct",
+                  "single_direct"
+                ],
+                "difference": 0.01654165566411403,
+                "ci95": [
+                  0.008963753833656218,
+                  0.023759903263711028
+                ],
+                "valid_replicates": 1000
+              },
+              "federation_loop": {
+                "arms": [
+                  "federated_loop",
+                  "single_loop"
+                ],
+                "difference": 0.01654165566411403,
+                "ci95": [
+                  0.008963753833656218,
+                  0.023759903263711028
+                ],
+                "valid_replicates": 1000
+              },
+              "loop_vs_fixed_federated": {
+                "arms": [
+                  "federated_loop",
+                  "federated_fixed"
+                ],
+                "difference": 0.005442302614206418,
+                "ci95": [
+                  -0.0008211191313448385,
+                  0.011069185000562977
+                ],
+                "valid_replicates": 1000
+              },
+              "main_harness_vs_fixed": {
+                "arms": [
+                  "federated_loop",
+                  "single_fixed"
+                ],
+                "difference": 0.08345821230525474,
+                "ci95": [
+                  0.07292507239069117,
+                  0.09370230669778563
+                ],
+                "valid_replicates": 1000
+              },
+              "main_harness_vs_direct": {
+                "arms": [
+                  "federated_loop",
+                  "single_direct"
+                ],
+                "difference": 0.01654165566411403,
+                "ci95": [
+                  0.008963753833656218,
+                  0.023759903263711028
+                ],
+                "valid_replicates": 1000
+              }
+            },
+            "clusters": 5013,
+            "requested_replicates": 1000,
+            "skipped_single_class_replicates": 0,
+            "rng_seed": 20260918,
+            "method": "paired cluster bootstrap, percentile 95%; fixed trained models"
+          },
+          "primary_metric": "auroc",
+          "receipts": {
+            "heldout_v3/native_tapb/seed43/results.json": "e74ddf26a94bbbe7d14206769d35903200863c3482d10276e66757a6f1789d74",
+            "heldout_v3/native_tapb/seed43/seal.json": "4b8f7eb990f0d9a4c9f28141a1da901ce95697c1e2357e1a65b7f949c840c07d",
+            "heldout_v3/native_tapb/seed43/audit.json": "c2a64dd37d9ec328d344224238aa3c27e40fef2dfde537b91be4f47050aec41a",
+            "heldout_v3/native_tapb/seed43/verification.json": "f7ab001b3564eb618cf2fb9470e49f05bc4c91beb1ce744b6fbd680e9f022f3d",
+            "uncertainty_native_tapb_v1/seed43.json": "420f591a3a9be0ce406c5e86b0d69dbe19cf37bda6a03d9ab372ca05cc597ce1"
+          },
+          "model_version_receipt": null,
+          "model": "TAPB; random task weights with public frozen features",
+          "endpoints": {
+            "random": {
+              "single_fixed": {
+                "primary": 0.841541523633483,
+                "metrics": {
+                  "auroc": 0.841541523633483,
+                  "average_precision": 0.8261447156275921,
+                  "mcc": 0.532308034388545,
+                  "accuracy": 0.7662125340599455,
+                  "log_loss": 0.4903145839302723,
+                  "n_samples": 5505,
+                  "n_positive": 2705,
+                  "n_negative": 2800,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed43/fits/single_7badccc152baa0b2/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/random_single_fixed_predictions.csv",
+                "predictions_sha256": "34aee0e0132aee370a1a2a1590273316124664614ac751e1d03f41bf8d46e73e"
+              },
+              "single_direct": {
+                "primary": 0.9084580802746237,
+                "metrics": {
+                  "auroc": 0.9084580802746237,
+                  "average_precision": 0.8956072893475976,
+                  "mcc": 0.6571110959471131,
+                  "accuracy": 0.8241598546775658,
+                  "log_loss": 0.5480013845532731,
+                  "n_samples": 5505,
+                  "n_positive": 2705,
+                  "n_negative": 2800,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed43/fits/single_42fef289aeba20c1/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/random_single_direct_predictions.csv",
+                "predictions_sha256": "ddd9e00801b1052aad5403abf9b00824350d30e2c176c5e7135d012412f26dce"
+              },
+              "single_loop": {
+                "primary": 0.9084580802746237,
+                "metrics": {
+                  "auroc": 0.9084580802746237,
+                  "average_precision": 0.8956072893475976,
+                  "mcc": 0.6571110959471131,
+                  "accuracy": 0.8241598546775658,
+                  "log_loss": 0.5480013845532731,
+                  "n_samples": 5505,
+                  "n_positive": 2705,
+                  "n_negative": 2800,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed43/fits/single_42fef289aeba20c1/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/random_single_direct_predictions.csv",
+                "predictions_sha256": "ddd9e00801b1052aad5403abf9b00824350d30e2c176c5e7135d012412f26dce",
+                "reused_identical_checkpoint": "single_direct"
+              },
+              "federated_fixed": {
+                "primary": 0.9195574333245313,
+                "metrics": {
+                  "auroc": 0.9195574333245313,
+                  "average_precision": 0.9029152867514195,
+                  "mcc": 0.7104948916593983,
+                  "accuracy": 0.8532243415077203,
+                  "log_loss": 0.3661107844172814,
+                  "n_samples": 5505,
+                  "n_positive": 2705,
+                  "n_negative": 2800,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed43/fits/federated_7badccc152baa0b2/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/random_federated_fixed_predictions.csv",
+                "predictions_sha256": "71b5c632c3ca4ee34b248ec5a11ce9603ec2ffc6f7f0fe64535fed2a9240ec14"
+              },
+              "federated_direct": {
+                "primary": 0.9249997359387377,
+                "metrics": {
+                  "auroc": 0.9249997359387377,
+                  "average_precision": 0.9073430632439301,
+                  "mcc": 0.7182054248892593,
+                  "accuracy": 0.8521344232515895,
+                  "log_loss": 0.40404543954607325,
+                  "n_samples": 5505,
+                  "n_positive": 2705,
+                  "n_negative": 2800,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed43/fits/federated_42fef289aeba20c1/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/random_federated_direct_predictions.csv",
+                "predictions_sha256": "305448de8e45c180f07270f17564038de30dbe36ac899adc47b83cae74e8280d"
+              },
+              "federated_loop": {
+                "primary": 0.9249997359387377,
+                "metrics": {
+                  "auroc": 0.9249997359387377,
+                  "average_precision": 0.9073430632439301,
+                  "mcc": 0.7182054248892593,
+                  "accuracy": 0.8521344232515895,
+                  "log_loss": 0.40404543954607325,
+                  "n_samples": 5505,
+                  "n_positive": 2705,
+                  "n_negative": 2800,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed43/fits/federated_42fef289aeba20c1/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/random_federated_direct_predictions.csv",
+                "predictions_sha256": "305448de8e45c180f07270f17564038de30dbe36ac899adc47b83cae74e8280d",
+                "reused_identical_checkpoint": "federated_direct"
+              }
+            },
+            "unseen_drug": {
+              "single_fixed": {
+                "primary": 0.836789294250144,
+                "metrics": {
+                  "auroc": 0.836789294250144,
+                  "average_precision": 0.8676199566310567,
+                  "mcc": 0.5035253013463536,
+                  "accuracy": 0.754682141915062,
+                  "log_loss": 0.48118563714886725,
+                  "n_samples": 3791,
+                  "n_positive": 2142,
+                  "n_negative": 1649,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed43/fits/single_7badccc152baa0b2/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/unseen_drug_single_fixed_predictions.csv",
+                "predictions_sha256": "7583d12f68488ce09c23232bb5254dd8e314ca75990cbeb657ec125d69c4238c"
+              },
+              "single_direct": {
+                "primary": 0.899933978038355,
+                "metrics": {
+                  "auroc": 0.899933978038355,
+                  "average_precision": 0.9176115660345097,
+                  "mcc": 0.6302714893140325,
+                  "accuracy": 0.8185175415457663,
+                  "log_loss": 0.5494908279808918,
+                  "n_samples": 3791,
+                  "n_positive": 2142,
+                  "n_negative": 1649,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed43/fits/single_42fef289aeba20c1/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/unseen_drug_single_direct_predictions.csv",
+                "predictions_sha256": "a45d0f2703451b9cc5296876ccffdfea904f5cf5d0493ff3a6b4f63b8dfad19f"
+              },
+              "single_loop": {
+                "primary": 0.899933978038355,
+                "metrics": {
+                  "auroc": 0.899933978038355,
+                  "average_precision": 0.9176115660345097,
+                  "mcc": 0.6302714893140325,
+                  "accuracy": 0.8185175415457663,
+                  "log_loss": 0.5494908279808918,
+                  "n_samples": 3791,
+                  "n_positive": 2142,
+                  "n_negative": 1649,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed43/fits/single_42fef289aeba20c1/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/unseen_drug_single_direct_predictions.csv",
+                "predictions_sha256": "a45d0f2703451b9cc5296876ccffdfea904f5cf5d0493ff3a6b4f63b8dfad19f",
+                "reused_identical_checkpoint": "single_direct"
+              },
+              "federated_fixed": {
+                "primary": 0.9036177033983191,
+                "metrics": {
+                  "auroc": 0.9036177033983191,
+                  "average_precision": 0.914258084419493,
+                  "mcc": 0.6695478911652993,
+                  "accuracy": 0.8380374571353205,
+                  "log_loss": 0.3919524819401512,
+                  "n_samples": 3791,
+                  "n_positive": 2142,
+                  "n_negative": 1649,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed43/fits/federated_7badccc152baa0b2/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/unseen_drug_federated_fixed_predictions.csv",
+                "predictions_sha256": "cdd34359eab85b3f75032e4b1ba0821b4f37d31a3808e4d92f957a00aab5d34c"
+              },
+              "federated_direct": {
+                "primary": 0.898482740579555,
+                "metrics": {
+                  "auroc": 0.898482740579555,
+                  "average_precision": 0.9032844135473814,
+                  "mcc": 0.6701185402839824,
+                  "accuracy": 0.8340807174887892,
+                  "log_loss": 0.4559686773040751,
+                  "n_samples": 3791,
+                  "n_positive": 2142,
+                  "n_negative": 1649,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed43/fits/federated_42fef289aeba20c1/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/unseen_drug_federated_direct_predictions.csv",
+                "predictions_sha256": "c009571ffeff69602d287b2ab757309b8faef15d4f1632bbc8295afea6629c96"
+              },
+              "federated_loop": {
+                "primary": 0.898482740579555,
+                "metrics": {
+                  "auroc": 0.898482740579555,
+                  "average_precision": 0.9032844135473814,
+                  "mcc": 0.6701185402839824,
+                  "accuracy": 0.8340807174887892,
+                  "log_loss": 0.4559686773040751,
+                  "n_samples": 3791,
+                  "n_positive": 2142,
+                  "n_negative": 1649,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed43/fits/federated_42fef289aeba20c1/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/unseen_drug_federated_direct_predictions.csv",
+                "predictions_sha256": "c009571ffeff69602d287b2ab757309b8faef15d4f1632bbc8295afea6629c96",
+                "reused_identical_checkpoint": "federated_direct"
+              }
+            },
+            "unseen_protein": {
+              "single_fixed": {
+                "primary": 0.8111999933810323,
+                "metrics": {
+                  "auroc": 0.8111999933810323,
+                  "average_precision": 0.8103954857043587,
+                  "mcc": 0.4626168859133178,
+                  "accuracy": 0.7311527722377343,
+                  "log_loss": 0.5252067977853222,
+                  "n_samples": 2507,
+                  "n_positive": 1249,
+                  "n_negative": 1258,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed43/fits/single_7badccc152baa0b2/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/unseen_protein_single_fixed_predictions.csv",
+                "predictions_sha256": "fa020027385294f70b6c5fd7da59bb3ec6c78754becb019d8c18e7eef5114a39"
+              },
+              "single_direct": {
+                "primary": 0.861429684287971,
+                "metrics": {
+                  "auroc": 0.861429684287971,
+                  "average_precision": 0.8638704542588027,
+                  "mcc": 0.5488289037010232,
+                  "accuracy": 0.7694455524531313,
+                  "log_loss": 0.698945024597547,
+                  "n_samples": 2507,
+                  "n_positive": 1249,
+                  "n_negative": 1258,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed43/fits/single_42fef289aeba20c1/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/unseen_protein_single_direct_predictions.csv",
+                "predictions_sha256": "0b3ca828a8a1a195844959fa3ff7565ba70e969c1e917e60b68e5bc58e234d73"
+              },
+              "single_loop": {
+                "primary": 0.861429684287971,
+                "metrics": {
+                  "auroc": 0.861429684287971,
+                  "average_precision": 0.8638704542588027,
+                  "mcc": 0.5488289037010232,
+                  "accuracy": 0.7694455524531313,
+                  "log_loss": 0.698945024597547,
+                  "n_samples": 2507,
+                  "n_positive": 1249,
+                  "n_negative": 1258,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed43/fits/single_42fef289aeba20c1/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/unseen_protein_single_direct_predictions.csv",
+                "predictions_sha256": "0b3ca828a8a1a195844959fa3ff7565ba70e969c1e917e60b68e5bc58e234d73",
+                "reused_identical_checkpoint": "single_direct"
+              },
+              "federated_fixed": {
+                "primary": 0.8591031807958291,
+                "metrics": {
+                  "auroc": 0.8591031807958291,
+                  "average_precision": 0.8145074869728101,
+                  "mcc": 0.6117022401283542,
+                  "accuracy": 0.8037495013960909,
+                  "log_loss": 0.48381962251991684,
+                  "n_samples": 2507,
+                  "n_positive": 1249,
+                  "n_negative": 1258,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed43/fits/federated_7badccc152baa0b2/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/unseen_protein_federated_fixed_predictions.csv",
+                "predictions_sha256": "20b7208122a4dd56d6a7bac2772949eadf7995444584b0c9b358e548a0f28af1"
+              },
+              "federated_direct": {
+                "primary": 0.8494929488901136,
+                "metrics": {
+                  "auroc": 0.8494929488901136,
+                  "average_precision": 0.7962303792939656,
+                  "mcc": 0.5977772403047519,
+                  "accuracy": 0.7850019944156362,
+                  "log_loss": 0.6041053800729458,
+                  "n_samples": 2507,
+                  "n_positive": 1249,
+                  "n_negative": 1258,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed43/fits/federated_42fef289aeba20c1/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/unseen_protein_federated_direct_predictions.csv",
+                "predictions_sha256": "4942e91fd254b2456dbfbc92e473950572528f0f85d910d2840bf589b91be1da"
+              },
+              "federated_loop": {
+                "primary": 0.8494929488901136,
+                "metrics": {
+                  "auroc": 0.8494929488901136,
+                  "average_precision": 0.7962303792939656,
+                  "mcc": 0.5977772403047519,
+                  "accuracy": 0.7850019944156362,
+                  "log_loss": 0.6041053800729458,
+                  "n_samples": 2507,
+                  "n_positive": 1249,
+                  "n_negative": 1258,
+                  "threshold": 0.5,
+                  "log_loss_epsilon": 1e-15
+                },
+                "checkpoint": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/native_tapb/study_v3_seed43/fits/federated_42fef289aeba20c1/best.pt",
+                "predictions": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/unseen_protein_federated_direct_predictions.csv",
+                "predictions_sha256": "4942e91fd254b2456dbfbc92e473950572528f0f85d910d2840bf589b91be1da",
+                "reused_identical_checkpoint": "federated_direct"
+              }
+            }
+          },
+          "endpoint_uncertainty": {
+            "schema": "native-tapb-posthoc-uncertainty-v1",
+            "task": "native_tapb",
+            "seed": 43,
+            "role": "retrospective held-out; prior historical exposure; not blind confirmation",
+            "analysis_role": "post-hoc uncertainty supplement; no model or metric selection",
+            "feedback_to_controller": false,
+            "model_fitted": false,
+            "prediction_generated": false,
+            "original_result_modified": false,
+            "source_sha256": {
+              "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/results.json": "e74ddf26a94bbbe7d14206769d35903200863c3482d10276e66757a6f1789d74",
+              "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/seal.json": "4b8f7eb990f0d9a4c9f28141a1da901ce95697c1e2357e1a65b7f949c840c07d",
+              "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/audit.json": "c2a64dd37d9ec328d344224238aa3c27e40fef2dfde537b91be4f47050aec41a",
+              "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/verification.json": "f7ab001b3564eb618cf2fb9470e49f05bc4c91beb1ce744b6fbd680e9f022f3d",
+              "/liziqing/yukai/AI4AI4Cell/runtime/experiments/drugevolve_transfer/scoring.py": "2ec1689fecea7c12bdfd3b84a235883a43abaa5d1668da94bd0cfa252dc81216",
+              "/liziqing/yukai/project_collab_auto_research_cell_federated/third_party/DrugEvolve/applications/dataset/Drug-target_interaction_prediction/bindingdb/random/test.csv": "d165719ad92cd0b870bcd8c897f8037676a6e4a159d0c7ad7f0bb690f52da850",
+              "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/random_single_fixed_predictions.csv": "34aee0e0132aee370a1a2a1590273316124664614ac751e1d03f41bf8d46e73e",
+              "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/random_single_direct_predictions.csv": "ddd9e00801b1052aad5403abf9b00824350d30e2c176c5e7135d012412f26dce",
+              "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/random_federated_fixed_predictions.csv": "71b5c632c3ca4ee34b248ec5a11ce9603ec2ffc6f7f0fe64535fed2a9240ec14",
+              "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/random_federated_direct_predictions.csv": "305448de8e45c180f07270f17564038de30dbe36ac899adc47b83cae74e8280d",
+              "/liziqing/yukai/project_collab_auto_research_cell_federated/third_party/DrugEvolve/applications/dataset/Drug-target_interaction_prediction/bindingdb/unseen_drug/test.csv": "ab32f3533480f1fc5fb9162b50d2b160b317af171ad6b8d4d9faa8c58b57d052",
+              "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/unseen_drug_single_fixed_predictions.csv": "7583d12f68488ce09c23232bb5254dd8e314ca75990cbeb657ec125d69c4238c",
+              "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/unseen_drug_single_direct_predictions.csv": "a45d0f2703451b9cc5296876ccffdfea904f5cf5d0493ff3a6b4f63b8dfad19f",
+              "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/unseen_drug_federated_fixed_predictions.csv": "cdd34359eab85b3f75032e4b1ba0821b4f37d31a3808e4d92f957a00aab5d34c",
+              "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/unseen_drug_federated_direct_predictions.csv": "c009571ffeff69602d287b2ab757309b8faef15d4f1632bbc8295afea6629c96",
+              "/liziqing/yukai/project_collab_auto_research_cell_federated/third_party/DrugEvolve/applications/dataset/Drug-target_interaction_prediction/bindingdb/unseen_protein/test.csv": "c590231b96db6e616975a677b1696870ff22d8f53e04a57785346880f5ee2b64",
+              "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/unseen_protein_single_fixed_predictions.csv": "fa020027385294f70b6c5fd7da59bb3ec6c78754becb019d8c18e7eef5114a39",
+              "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/unseen_protein_single_direct_predictions.csv": "0b3ca828a8a1a195844959fa3ff7565ba70e969c1e917e60b68e5bc58e234d73",
+              "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/unseen_protein_federated_fixed_predictions.csv": "20b7208122a4dd56d6a7bac2772949eadf7995444584b0c9b358e548a0f28af1",
+              "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed43/unseen_protein_federated_direct_predictions.csv": "4942e91fd254b2456dbfbc92e473950572528f0f85d910d2840bf589b91be1da",
+              "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/bootstrap_native_tapb.py": "6686cbb4b167071b266974137c8048fba32c6653b008787cc0e43460cd1b253e"
+            },
+            "endpoints": {
+              "random": {
+                "cluster_unit": "SMILES",
+                "rows": 5505,
+                "metrics": {
+                  "auroc": {
+                    "arms": {
+                      "single_fixed": {
+                        "point": 0.841541523633483,
+                        "ci95": [
+                          0.8303995577975868,
+                          0.8516260499301279
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "single_direct": {
+                        "point": 0.9084580802746237,
+                        "ci95": [
+                          0.8997229281418897,
+                          0.9170358573177582
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "single_loop": {
+                        "point": 0.9084580802746237,
+                        "ci95": [
+                          0.8997229281418897,
+                          0.9170358573177582
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_fixed": {
+                        "point": 0.9195574333245313,
+                        "ci95": [
+                          0.912024462253115,
+                          0.9278342771156315
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_direct": {
+                        "point": 0.9249997359387377,
+                        "ci95": [
+                          0.916834885930917,
+                          0.9323336329692664
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_loop": {
+                        "point": 0.9249997359387377,
+                        "ci95": [
+                          0.916834885930917,
+                          0.9323336329692664
+                        ],
+                        "valid_replicates": 1000
+                      }
+                    },
+                    "effects": {
+                      "loop_single": {
+                        "arms": [
+                          "single_loop",
+                          "single_direct"
+                        ],
+                        "difference": 0.0,
+                        "ci95": [
+                          0.0,
+                          0.0
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "loop_federated": {
+                        "arms": [
+                          "federated_loop",
+                          "federated_direct"
+                        ],
+                        "difference": 0.0,
+                        "ci95": [
+                          0.0,
+                          0.0
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_fixed": {
+                        "arms": [
+                          "federated_fixed",
+                          "single_fixed"
+                        ],
+                        "difference": 0.07801590969104832,
+                        "ci95": [
+                          0.06820176019138995,
+                          0.08816007683035465
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_direct": {
+                        "arms": [
+                          "federated_direct",
+                          "single_direct"
+                        ],
+                        "difference": 0.01654165566411403,
+                        "ci95": [
+                          0.008963753833656218,
+                          0.023759903263711028
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_loop": {
+                        "arms": [
+                          "federated_loop",
+                          "single_loop"
+                        ],
+                        "difference": 0.01654165566411403,
+                        "ci95": [
+                          0.008963753833656218,
+                          0.023759903263711028
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "loop_vs_fixed_federated": {
+                        "arms": [
+                          "federated_loop",
+                          "federated_fixed"
+                        ],
+                        "difference": 0.005442302614206418,
+                        "ci95": [
+                          -0.0008211191313448385,
+                          0.011069185000562977
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "main_harness_vs_fixed": {
+                        "arms": [
+                          "federated_loop",
+                          "single_fixed"
+                        ],
+                        "difference": 0.08345821230525474,
+                        "ci95": [
+                          0.07292507239069117,
+                          0.09370230669778563
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "main_harness_vs_direct": {
+                        "arms": [
+                          "federated_loop",
+                          "single_direct"
+                        ],
+                        "difference": 0.01654165566411403,
+                        "ci95": [
+                          0.008963753833656218,
+                          0.023759903263711028
+                        ],
+                        "valid_replicates": 1000
+                      }
+                    },
+                    "clusters": 5013,
+                    "requested_replicates": 1000,
+                    "skipped_single_class_replicates": 0,
+                    "rng_seed": 20260918,
+                    "method": "paired cluster bootstrap, percentile 95%; fixed trained models"
+                  },
+                  "average_precision": {
+                    "arms": {
+                      "single_fixed": {
+                        "point": 0.8261447156275921,
+                        "ci95": [
+                          0.8085167084017151,
+                          0.8417468465593088
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "single_direct": {
+                        "point": 0.8956072893475976,
+                        "ci95": [
+                          0.8819029497070154,
+                          0.908018033663445
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "single_loop": {
+                        "point": 0.8956072893475976,
+                        "ci95": [
+                          0.8819029497070154,
+                          0.908018033663445
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_fixed": {
+                        "point": 0.9029152867514195,
+                        "ci95": [
+                          0.8912315895944581,
+                          0.9142569526617569
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_direct": {
+                        "point": 0.9073430632439301,
+                        "ci95": [
+                          0.8948901200646895,
+                          0.9187948378907015
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_loop": {
+                        "point": 0.9073430632439301,
+                        "ci95": [
+                          0.8948901200646895,
+                          0.9187948378907015
+                        ],
+                        "valid_replicates": 1000
+                      }
+                    },
+                    "effects": {
+                      "loop_single": {
+                        "arms": [
+                          "single_loop",
+                          "single_direct"
+                        ],
+                        "difference": 0.0,
+                        "ci95": [
+                          0.0,
+                          0.0
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "loop_federated": {
+                        "arms": [
+                          "federated_loop",
+                          "federated_direct"
+                        ],
+                        "difference": 0.0,
+                        "ci95": [
+                          0.0,
+                          0.0
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_fixed": {
+                        "arms": [
+                          "federated_fixed",
+                          "single_fixed"
+                        ],
+                        "difference": 0.07677057112382746,
+                        "ci95": [
+                          0.06324149585867885,
+                          0.09129527913080965
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_direct": {
+                        "arms": [
+                          "federated_direct",
+                          "single_direct"
+                        ],
+                        "difference": 0.011735773896332513,
+                        "ci95": [
+                          -0.0011250420868966686,
+                          0.02496854237844452
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_loop": {
+                        "arms": [
+                          "federated_loop",
+                          "single_loop"
+                        ],
+                        "difference": 0.011735773896332513,
+                        "ci95": [
+                          -0.0011250420868966686,
+                          0.02496854237844452
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "loop_vs_fixed_federated": {
+                        "arms": [
+                          "federated_loop",
+                          "federated_fixed"
+                        ],
+                        "difference": 0.004427776492510582,
+                        "ci95": [
+                          -0.005407623883911677,
+                          0.01439094946250077
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "main_harness_vs_fixed": {
+                        "arms": [
+                          "federated_loop",
+                          "single_fixed"
+                        ],
+                        "difference": 0.08119834761633804,
+                        "ci95": [
+                          0.06527170673668718,
+                          0.097566224788877
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "main_harness_vs_direct": {
+                        "arms": [
+                          "federated_loop",
+                          "single_direct"
+                        ],
+                        "difference": 0.011735773896332513,
+                        "ci95": [
+                          -0.0011250420868966686,
+                          0.02496854237844452
+                        ],
+                        "valid_replicates": 1000
+                      }
+                    },
+                    "clusters": 5013,
+                    "requested_replicates": 1000,
+                    "skipped_single_class_replicates": 0,
+                    "rng_seed": 20260918,
+                    "method": "paired cluster bootstrap, percentile 95%; fixed trained models"
+                  }
+                }
+              },
+              "unseen_drug": {
+                "cluster_unit": "SMILES",
+                "rows": 3791,
+                "metrics": {
+                  "auroc": {
+                    "arms": {
+                      "single_fixed": {
+                        "point": 0.836789294250144,
+                        "ci95": [
+                          0.8223644441140732,
+                          0.851077166870404
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "single_direct": {
+                        "point": 0.899933978038355,
+                        "ci95": [
+                          0.8881278730355678,
+                          0.9100747535519169
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "single_loop": {
+                        "point": 0.899933978038355,
+                        "ci95": [
+                          0.8881278730355678,
+                          0.9100747535519169
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_fixed": {
+                        "point": 0.9036177033983191,
+                        "ci95": [
+                          0.8929098037855913,
+                          0.9141975860841822
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_direct": {
+                        "point": 0.898482740579555,
+                        "ci95": [
+                          0.8862743327045143,
+                          0.9100205168881034
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_loop": {
+                        "point": 0.898482740579555,
+                        "ci95": [
+                          0.8862743327045143,
+                          0.9100205168881034
+                        ],
+                        "valid_replicates": 1000
+                      }
+                    },
+                    "effects": {
+                      "loop_single": {
+                        "arms": [
+                          "single_loop",
+                          "single_direct"
+                        ],
+                        "difference": 0.0,
+                        "ci95": [
+                          0.0,
+                          0.0
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "loop_federated": {
+                        "arms": [
+                          "federated_loop",
+                          "federated_direct"
+                        ],
+                        "difference": 0.0,
+                        "ci95": [
+                          0.0,
+                          0.0
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_fixed": {
+                        "arms": [
+                          "federated_fixed",
+                          "single_fixed"
+                        ],
+                        "difference": 0.06682840914817512,
+                        "ci95": [
+                          0.05332556373129369,
+                          0.08252660375245183
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_direct": {
+                        "arms": [
+                          "federated_direct",
+                          "single_direct"
+                        ],
+                        "difference": -0.0014512374587999366,
+                        "ci95": [
+                          -0.009569410002566642,
+                          0.006676797056621052
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_loop": {
+                        "arms": [
+                          "federated_loop",
+                          "single_loop"
+                        ],
+                        "difference": -0.0014512374587999366,
+                        "ci95": [
+                          -0.009569410002566642,
+                          0.006676797056621052
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "loop_vs_fixed_federated": {
+                        "arms": [
+                          "federated_loop",
+                          "federated_fixed"
+                        ],
+                        "difference": -0.005134962818764133,
+                        "ci95": [
+                          -0.014413873508823513,
+                          0.002919397074925153
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "main_harness_vs_fixed": {
+                        "arms": [
+                          "federated_loop",
+                          "single_fixed"
+                        ],
+                        "difference": 0.061693446329410984,
+                        "ci95": [
+                          0.04853194646469702,
+                          0.07475633705297416
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "main_harness_vs_direct": {
+                        "arms": [
+                          "federated_loop",
+                          "single_direct"
+                        ],
+                        "difference": -0.0014512374587999366,
+                        "ci95": [
+                          -0.009569410002566642,
+                          0.006676797056621052
+                        ],
+                        "valid_replicates": 1000
+                      }
+                    },
+                    "clusters": 3494,
+                    "requested_replicates": 1000,
+                    "skipped_single_class_replicates": 0,
+                    "rng_seed": 20260918,
+                    "method": "paired cluster bootstrap, percentile 95%; fixed trained models"
+                  },
+                  "average_precision": {
+                    "arms": {
+                      "single_fixed": {
+                        "point": 0.8676199566310567,
+                        "ci95": [
+                          0.8495734006693307,
+                          0.8831066037668636
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "single_direct": {
+                        "point": 0.9176115660345097,
+                        "ci95": [
+                          0.90580182503362,
+                          0.9279124523696988
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "single_loop": {
+                        "point": 0.9176115660345097,
+                        "ci95": [
+                          0.90580182503362,
+                          0.9279124523696988
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_fixed": {
+                        "point": 0.914258084419493,
+                        "ci95": [
+                          0.9024723050191247,
+                          0.9259256603829994
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_direct": {
+                        "point": 0.9032844135473814,
+                        "ci95": [
+                          0.8878918214224362,
+                          0.9170212120225419
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_loop": {
+                        "point": 0.9032844135473814,
+                        "ci95": [
+                          0.8878918214224362,
+                          0.9170212120225419
+                        ],
+                        "valid_replicates": 1000
+                      }
+                    },
+                    "effects": {
+                      "loop_single": {
+                        "arms": [
+                          "single_loop",
+                          "single_direct"
+                        ],
+                        "difference": 0.0,
+                        "ci95": [
+                          0.0,
+                          0.0
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "loop_federated": {
+                        "arms": [
+                          "federated_loop",
+                          "federated_direct"
+                        ],
+                        "difference": 0.0,
+                        "ci95": [
+                          0.0,
+                          0.0
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_fixed": {
+                        "arms": [
+                          "federated_fixed",
+                          "single_fixed"
+                        ],
+                        "difference": 0.046638127788436234,
+                        "ci95": [
+                          0.03331460930602514,
+                          0.0635758987277047
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_direct": {
+                        "arms": [
+                          "federated_direct",
+                          "single_direct"
+                        ],
+                        "difference": -0.014327152487128236,
+                        "ci95": [
+                          -0.02425878231471169,
+                          -0.004249037712341662
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_loop": {
+                        "arms": [
+                          "federated_loop",
+                          "single_loop"
+                        ],
+                        "difference": -0.014327152487128236,
+                        "ci95": [
+                          -0.02425878231471169,
+                          -0.004249037712341662
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "loop_vs_fixed_federated": {
+                        "arms": [
+                          "federated_loop",
+                          "federated_fixed"
+                        ],
+                        "difference": -0.01097367087211154,
+                        "ci95": [
+                          -0.02158541527907293,
+                          -0.0017611433586550212
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "main_harness_vs_fixed": {
+                        "arms": [
+                          "federated_loop",
+                          "single_fixed"
+                        ],
+                        "difference": 0.035664456916324694,
+                        "ci95": [
+                          0.020968008049829737,
+                          0.050932184079097845
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "main_harness_vs_direct": {
+                        "arms": [
+                          "federated_loop",
+                          "single_direct"
+                        ],
+                        "difference": -0.014327152487128236,
+                        "ci95": [
+                          -0.02425878231471169,
+                          -0.004249037712341662
+                        ],
+                        "valid_replicates": 1000
+                      }
+                    },
+                    "clusters": 3494,
+                    "requested_replicates": 1000,
+                    "skipped_single_class_replicates": 0,
+                    "rng_seed": 20260918,
+                    "method": "paired cluster bootstrap, percentile 95%; fixed trained models"
+                  }
+                }
+              },
+              "unseen_protein": {
+                "cluster_unit": "Protein",
+                "rows": 2507,
+                "metrics": {
+                  "auroc": {
+                    "arms": {
+                      "single_fixed": {
+                        "point": 0.8111999933810323,
+                        "ci95": [
+                          0.5279351094572843,
+                          0.9275751602678024
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "single_direct": {
+                        "point": 0.861429684287971,
+                        "ci95": [
+                          0.6947385188971865,
+                          0.9467465090836296
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "single_loop": {
+                        "point": 0.861429684287971,
+                        "ci95": [
+                          0.6947385188971865,
+                          0.9467465090836296
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_fixed": {
+                        "point": 0.8591031807958291,
+                        "ci95": [
+                          0.7572256889490387,
+                          0.9410488525519946
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_direct": {
+                        "point": 0.8494929488901136,
+                        "ci95": [
+                          0.7305478048239353,
+                          0.9485345293339933
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_loop": {
+                        "point": 0.8494929488901136,
+                        "ci95": [
+                          0.7305478048239353,
+                          0.9485345293339933
+                        ],
+                        "valid_replicates": 1000
+                      }
+                    },
+                    "effects": {
+                      "loop_single": {
+                        "arms": [
+                          "single_loop",
+                          "single_direct"
+                        ],
+                        "difference": 0.0,
+                        "ci95": [
+                          0.0,
+                          0.0
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "loop_federated": {
+                        "arms": [
+                          "federated_loop",
+                          "federated_direct"
+                        ],
+                        "difference": 0.0,
+                        "ci95": [
+                          0.0,
+                          0.0
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_fixed": {
+                        "arms": [
+                          "federated_fixed",
+                          "single_fixed"
+                        ],
+                        "difference": 0.04790318741479682,
+                        "ci95": [
+                          -0.06605210939626287,
+                          0.28121902895175716
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_direct": {
+                        "arms": [
+                          "federated_direct",
+                          "single_direct"
+                        ],
+                        "difference": -0.011936735397857334,
+                        "ci95": [
+                          -0.06222582599244694,
+                          0.06088592230078117
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_loop": {
+                        "arms": [
+                          "federated_loop",
+                          "single_loop"
+                        ],
+                        "difference": -0.011936735397857334,
+                        "ci95": [
+                          -0.06222582599244694,
+                          0.06088592230078117
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "loop_vs_fixed_federated": {
+                        "arms": [
+                          "federated_loop",
+                          "federated_fixed"
+                        ],
+                        "difference": -0.009610231905715527,
+                        "ci95": [
+                          -0.07241851136231484,
+                          0.03068396945278008
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "main_harness_vs_fixed": {
+                        "arms": [
+                          "federated_loop",
+                          "single_fixed"
+                        ],
+                        "difference": 0.038292955509081295,
+                        "ci95": [
+                          -0.05827578339512059,
+                          0.22315753592040882
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "main_harness_vs_direct": {
+                        "arms": [
+                          "federated_loop",
+                          "single_direct"
+                        ],
+                        "difference": -0.011936735397857334,
+                        "ci95": [
+                          -0.06222582599244694,
+                          0.06088592230078117
+                        ],
+                        "valid_replicates": 1000
+                      }
+                    },
+                    "clusters": 42,
+                    "requested_replicates": 1000,
+                    "skipped_single_class_replicates": 0,
+                    "rng_seed": 20260918,
+                    "method": "paired cluster bootstrap, percentile 95%; fixed trained models"
+                  },
+                  "average_precision": {
+                    "arms": {
+                      "single_fixed": {
+                        "point": 0.8103954857043587,
+                        "ci95": [
+                          0.35899574925569533,
+                          0.9315995720205134
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "single_direct": {
+                        "point": 0.8638704542588027,
+                        "ci95": [
+                          0.4136997327487868,
+                          0.9711314337923528
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "single_loop": {
+                        "point": 0.8638704542588027,
+                        "ci95": [
+                          0.4136997327487868,
+                          0.9711314337923528
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_fixed": {
+                        "point": 0.8145074869728101,
+                        "ci95": [
+                          0.5188893003386607,
+                          0.9515395581111431
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_direct": {
+                        "point": 0.7962303792939656,
+                        "ci95": [
+                          0.4295857048651058,
+                          0.9703149761595824
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federated_loop": {
+                        "point": 0.7962303792939656,
+                        "ci95": [
+                          0.4295857048651058,
+                          0.9703149761595824
+                        ],
+                        "valid_replicates": 1000
+                      }
+                    },
+                    "effects": {
+                      "loop_single": {
+                        "arms": [
+                          "single_loop",
+                          "single_direct"
+                        ],
+                        "difference": 0.0,
+                        "ci95": [
+                          0.0,
+                          0.0
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "loop_federated": {
+                        "arms": [
+                          "federated_loop",
+                          "federated_direct"
+                        ],
+                        "difference": 0.0,
+                        "ci95": [
+                          0.0,
+                          0.0
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_fixed": {
+                        "arms": [
+                          "federated_fixed",
+                          "single_fixed"
+                        ],
+                        "difference": 0.0041120012684513485,
+                        "ci95": [
+                          -0.1648108603319662,
+                          0.3169295858347836
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_direct": {
+                        "arms": [
+                          "federated_direct",
+                          "single_direct"
+                        ],
+                        "difference": -0.06764007496483715,
+                        "ci95": [
+                          -0.13947671281041288,
+                          0.06711736691560215
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "federation_loop": {
+                        "arms": [
+                          "federated_loop",
+                          "single_loop"
+                        ],
+                        "difference": -0.06764007496483715,
+                        "ci95": [
+                          -0.13947671281041288,
+                          0.06711736691560215
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "loop_vs_fixed_federated": {
+                        "arms": [
+                          "federated_loop",
+                          "federated_fixed"
+                        ],
+                        "difference": -0.018277107678844495,
+                        "ci95": [
+                          -0.21552218368513065,
+                          0.07536325136868063
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "main_harness_vs_fixed": {
+                        "arms": [
+                          "federated_loop",
+                          "single_fixed"
+                        ],
+                        "difference": -0.014165106410393147,
+                        "ci95": [
+                          -0.14491519372503978,
+                          0.16880545897285726
+                        ],
+                        "valid_replicates": 1000
+                      },
+                      "main_harness_vs_direct": {
+                        "arms": [
+                          "federated_loop",
+                          "single_direct"
+                        ],
+                        "difference": -0.06764007496483715,
+                        "ci95": [
+                          -0.13947671281041288,
+                          0.06711736691560215
+                        ],
+                        "valid_replicates": 1000
+                      }
+                    },
+                    "clusters": 42,
+                    "requested_replicates": 1000,
+                    "skipped_single_class_replicates": 0,
+                    "rng_seed": 20260918,
+                    "method": "paired cluster bootstrap, percentile 95%; fixed trained models"
+                  }
+                }
+              }
+            },
+            "requested_replicates": 1000,
+            "rng_seed": 20260918,
+            "limitations": "Conditional on fixed trained models; one clustering axis per endpoint; not two-way or across-seed uncertainty; no multiplicity correction; not prospective confirmation",
+            "environment": {
+              "python": "3.10.12 (main, Nov 20 2023, 15:14:05) [GCC 11.4.0]",
+              "numpy": "1.24.4",
+              "pandas": "1.5.3",
+              "sklearn": "1.2.0",
+              "platform": "Linux-3.10.0-1160.el7.x86_64-x86_64-with-glibc2.35"
+            },
+            "completed_unix": 1790001178.5137882
+          }
+        },
         "44": null
       },
       "pending": {
-        "43": "complete verified six-arm evaluation not available",
         "44": "complete verified six-arm evaluation not available"
       }
     },
@@ -711,7 +3451,8 @@
           },
           "model_version_receipt": null,
           "model": "ProteinTalks-derived observed-response efficacy head (adapted)",
-          "endpoints": null
+          "endpoints": null,
+          "endpoint_uncertainty": null
         },
         "43": {
           "scores": {
@@ -956,7 +3697,8 @@
           },
           "model_version_receipt": null,
           "model": "ProteinTalks-derived observed-response efficacy head (adapted)",
-          "endpoints": null
+          "endpoints": null,
+          "endpoint_uncertainty": null
         },
         "44": {
           "scores": {
@@ -1201,7 +3943,8 @@
           },
           "model_version_receipt": null,
           "model": "ProteinTalks-derived observed-response efficacy head (adapted)",
-          "endpoints": null
+          "endpoints": null,
+          "endpoint_uncertainty": null
         }
       },
       "pending": {}
@@ -1462,7 +4205,8 @@
             "note": "The evaluation wrapper checked registration/source hashes before invoking the original evaluator, but did not then persist this additional receipt. This receipt verifies them now and does NOT retroactively extend or change the timestamp/content of the original selection seal."
           },
           "model": "mask-corrected scDEBART adaptation",
-          "endpoints": null
+          "endpoints": null,
+          "endpoint_uncertainty": null
         },
         "43": {
           "scores": {
@@ -1716,7 +4460,8 @@
             "note": "Written before the common held-out selection seal and before any held-out response is decoded. Join to the common seal by task, seed, selection_sha256, definition_sha256 and data_manifest_sha256."
           },
           "model": "mask-corrected scDEBART adaptation",
-          "endpoints": null
+          "endpoints": null,
+          "endpoint_uncertainty": null
         },
         "44": {
           "scores": {
@@ -1970,7 +4715,8 @@
             "note": "Written before the common held-out selection seal and before any held-out response is decoded. Join to the common seal by task, seed, selection_sha256, definition_sha256 and data_manifest_sha256."
           },
           "model": "mask-corrected scDEBART adaptation",
-          "endpoints": null
+          "endpoints": null,
+          "endpoint_uncertainty": null
         }
       },
       "pending": {}
@@ -2231,7 +4977,8 @@
             "note": "Written before the common held-out selection seal and before any held-out response is decoded. Join to the common seal by task, seed, selection_sha256, definition_sha256 and data_manifest_sha256."
           },
           "model": "mask-corrected scDEBART adaptation",
-          "endpoints": null
+          "endpoints": null,
+          "endpoint_uncertainty": null
         },
         "43": {
           "scores": {
@@ -2485,7 +5232,8 @@
             "note": "Written before the common held-out selection seal and before any held-out response is decoded. Join to the common seal by task, seed, selection_sha256, definition_sha256 and data_manifest_sha256."
           },
           "model": "mask-corrected scDEBART adaptation",
-          "endpoints": null
+          "endpoints": null,
+          "endpoint_uncertainty": null
         },
         "44": {
           "scores": {
@@ -2739,7 +5487,8 @@
             "note": "Written before the common held-out selection seal and before any held-out response is decoded. Join to the common seal by task, seed, selection_sha256, definition_sha256 and data_manifest_sha256."
           },
           "model": "mask-corrected scDEBART adaptation",
-          "endpoints": null
+          "endpoints": null,
+          "endpoint_uncertainty": null
         }
       },
       "pending": {}
@@ -3000,7 +5749,8 @@
             "note": "Written before the common held-out selection seal and before any held-out response is decoded. Join to the common seal by task, seed, selection_sha256, definition_sha256 and data_manifest_sha256."
           },
           "model": "mask-corrected scDEBART with drug-conditioning adapter",
-          "endpoints": null
+          "endpoints": null,
+          "endpoint_uncertainty": null
         },
         "43": {
           "scores": {
@@ -3254,7 +6004,8 @@
             "note": "Written before the common held-out selection seal and before any held-out response is decoded. Join to the common seal by task, seed, selection_sha256, definition_sha256 and data_manifest_sha256."
           },
           "model": "mask-corrected scDEBART with drug-conditioning adapter",
-          "endpoints": null
+          "endpoints": null,
+          "endpoint_uncertainty": null
         },
         "44": {
           "scores": {
@@ -3508,7 +6259,8 @@
             "note": "Written before the common held-out selection seal and before any held-out response is decoded. Join to the common seal by task, seed, selection_sha256, definition_sha256 and data_manifest_sha256."
           },
           "model": "mask-corrected scDEBART with drug-conditioning adapter",
-          "endpoints": null
+          "endpoints": null,
+          "endpoint_uncertainty": null
         }
       },
       "pending": {}

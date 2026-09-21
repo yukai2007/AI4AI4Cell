@@ -1,4 +1,4 @@
-"""Vector schematic: accessible-data agents, fixed-design FL, and their coupling.
+"""Vector schematic: accessible-data agents, local-update training, and their coupling.
 
 The first two columns are conceptual configurations, not universal statements
 about prior work. No task scores or privacy guarantees are implied by this asset.
@@ -61,8 +61,8 @@ def draw():
     # Large titles remain readable at the manuscript's full text width.
     for x, title, subtitle, color in [
         (2.0, 'Bio-agent research', 'Accessible-data loop', BLUE),
-        (6.0, 'Federated learning', 'Predefined-design training', GRAY),
-        (10.0, 'AI4AI4Bio', 'Federated research loop', TEAL)]:
+        (6.0, 'Collaborative training', 'Predefined-design updates', GRAY),
+        (10.0, 'AI4AI4Bio', 'Collaborative research loop', TEAL)]:
         text(x, 5.26, title, 17.5, color, 'bold')
         text(x, 4.89, subtitle, 13.5, color)
     for x in (4, 8):
@@ -92,9 +92,9 @@ def draw():
     text(6, 1.20, 'Raw data stay local', 15, TEAL, 'bold')
     text(6, .72, 'Research design is fixed\nin this configuration', 14, GRAY)
 
-    # C: aggregate evidence closes a shared design loop above federated training.
+    # C: aggregate evidence closes a shared design loop above collaborative training.
     box(8.33, 3.93, 3.34, .60, 'Shared research loop', BLUE, '#eef3fa', weight='bold')
-    box(8.59, 2.90, 2.82, .62, 'Federated training', TEAL, '#e8f4ef', weight='bold')
+    box(8.59, 2.90, 2.82, .62, 'Collaborative training', TEAL, '#e8f4ef', weight='bold')
     arrow((9.20, 3.91), (9.20, 3.54), BLUE)
     text(9.12, 3.74, 'design', 12, BLUE, ha='right')
     arrow((10.66, 3.54), (10.66, 3.91), BLUE, style='--')

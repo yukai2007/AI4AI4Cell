@@ -2,13 +2,13 @@
 \caption{Retrospective held-out secondary metrics: means over completed seeds, on each task\textquotesingle s common held-out roster. PTPC is the linear comparator, not native ProteinTalks. Bold marks all displayed maxima, or minima for loss.}\label{tab:unified-heldout-secondary}\\
 \toprule Method & Labs & Metric 1 & Metric 2 & Metric 3 & Metric 4 \\ \midrule\endfirsthead
 \toprule Method & Labs & Metric 1 & Metric 2 & Metric 3 & Metric 4 \\ \midrule\endhead
-\multicolumn{2}{l}{\textbf{DTI ($n=0$)}} & AUROC & AP & MCC & BCE \\
-Fixed model & 1 & N/A & N/A & N/A & N/A \\
-Direct & 1 & N/A & N/A & N/A & N/A \\
-Our loop & 1 & N/A & N/A & N/A & N/A \\
-Fixed model & 10 & N/A & N/A & N/A & N/A \\
-Direct & 10 & N/A & N/A & N/A & N/A \\
-Our loop & 10 & N/A & N/A & N/A & N/A \\
+\multicolumn{2}{l}{\textbf{DTI ($n=3$)}} & AUROC & AP & MCC & BCE \\
+Fixed model & 1 & 0.8951 & 0.8809 & 0.6367 & 0.5992 \\
+Direct & 1 & 0.9056 & 0.8964 & 0.6457 & 0.7902 \\
+Our loop & 1 & 0.9056 & 0.8964 & 0.6457 & 0.7902 \\
+Fixed model & 10 & 0.9203 & 0.9189 & 0.6736 & \textbf{0.3879} \\
+Direct & 10 & \textbf{0.9439} & \textbf{0.9421} & \textbf{0.7154} & 0.6205 \\
+Our loop & 10 & \textbf{0.9439} & \textbf{0.9421} & \textbf{0.7154} & 0.6205 \\
 \midrule
 \multicolumn{2}{l}{\textbf{PTPC (linear) ($n=3$)}} & AP & AUROC & BCE & Acc. \\
 Fixed model & 1 & 0.2780 & 0.6450 & 0.4277 & \textbf{0.8581} \\

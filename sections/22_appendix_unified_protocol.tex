@@ -1,8 +1,11 @@
-\section*{Appendix R. Uniform federated research protocol and current snapshot}
+\section*{Appendix R. Uniform collaborative research protocol and current snapshot}
 \label{app:unified}
 \setcounter{table}{0}
 \renewcommand{\thetable}{R.\arabic{table}}
 \renewcommand{\theHtable}{R.\arabic{table}}
+\makeatletter
+\setlength{\@fptop}{0pt}
+\makeatother
 
 \paragraph{Version and scope.}
 The current main protocol uses \texttt{core\_v3.py}, \texttt{run\_v3.py} and the common \texttt{research\_v2.py} candidate generator. Version 3 refers to the orchestration, feedback and state-buffer correction, not a new foundation model. Historical V1/V2 outputs and failed fits are preserved. All V3 scientific fits start afresh; earlier task-trained weights are not reused across the correction. Public pretrained backbones remain fixed references. TAPB workers use the dedicated TAPB environment; the additional native DrugBAN workers use their DGL-compatible environment. Qwen, proteomics and cell adapters use the LDA environment. They execute the same versioned optimization and aggregation source, not identical dependency binaries.
@@ -70,9 +73,14 @@ The following tables retain the complete six-arm held-out comparison for the com
 
 \input{tables/strong_v3/ablation}
 \input{tables/strong_v3/effects_full}
+\clearpage
 \input{tables/strong_v3/secondary}
 \input{tables/strong_v3/uncertainty}
 \input{tables/strong_v3/dti_endpoints}
+\input{tables/strong_v3/dti_uncertainty}
+
+\paragraph{Additional DTI uncertainty analysis.}
+Paired cluster-bootstrap intervals were added after training and held-out scoring, using retained predictions without model reselection. We use 1,000 resamples with a fixed analysis seed, grouping by the released drug identifier on random/unseen-drug endpoints and by protein sequence on unseen-protein. Each resample is shared by the compared methods. The full table includes AUROC and AP for all three endpoints, including zero and negative contrasts. These intervals condition on the fitted models and the chosen grouping; they do not capture between-training-seed variation or simultaneous drug/protein dependence. For seeds 42 and 43, the ten-laboratory harness improves on one-laboratory direct search on the random endpoint in both runs, whereas unseen-entity gains change sign. A positive average should not be read as uniform transfer improvement.
 
 \paragraph{Earlier uniform-protocol controls and diagnostics.}
 The following tables retain the linear proteomic head, original-mask cell adapters and native DrugBAN reference under their separate model versions. They are not substituted into the new-reference table or pooled across versions.
@@ -80,14 +88,17 @@ The following tables retain the linear proteomic head, original-mask cell adapte
 \input{tables/unified_v3/final}
 \input{tables/unified_v3/heldout_effects}
 \input{tables/unified_v3/heldout_ablation}
+\clearpage
 \input{tables/unified_v3/heldout_secondary}
 \input{tables/unified_v3/heldout_uncertainty}
+\clearpage
 \input{tables/unified_v3/development}
 \input{tables/unified_v3/ablation}
 \input{tables/unified_v3/effects}
+\clearpage
 
 \paragraph{Verification and publication.}
-Forty-seven CPU unit/integration tests pass across the common core, adapters, proposal generation, frozen evaluation and cell-mask correction; seventeen additional publication tests pass. These cover parameter aggregation, buffer handling, proposal validation, failure recovery and direct-feedback isolation. The independent V3 audit validates all six selected arms, checkpoint existence, source hashes, training budgets, shared first proposals, evidence histories and common-panel metric aggregation. The paper snapshot includes receipt hashes and aggregate scalar metrics, not private biological arrays. A frozen export date prevents later-running experiments from silently changing the submitted PDF; refreshed exports must update the narrative and rerun compilation.
+CPU unit/integration tests cover the common core, adapters, proposal generation, frozen evaluation and cell-mask correction. Publication tests check table values, missingness, ties, model identity and independent-verification bindings. The independent V3 audit validates all six selected arms, checkpoint existence, source hashes, training budgets, shared first proposals, evidence histories and common-panel metric aggregation. The paper snapshot includes receipt hashes and aggregate scalar metrics, not private biological arrays. A frozen export date prevents later-running experiments from silently changing the submitted PDF; refreshed exports must update the narrative and rerun compilation.
 
 The corrected VCC seed-42 run has a pre-decoding core/checkpoint/data seal and an explicitly post-hoc supplemental wrapper-registration integrity receipt; it is not represented as a retroactive pre-registration. Later corrected-cell runs persist the wrapper registration before response decoding. The aggregate snapshot preserves this distinction. Environment and Qwen-asset hashes captured after some runs began are observational metadata, not advance registration.
 

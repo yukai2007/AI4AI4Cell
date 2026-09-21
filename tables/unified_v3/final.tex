@@ -8,11 +8,11 @@
 Labs & Method & AUROC & AP & VCC & Norman & Tahoe \\
  & & $\uparrow$ & $\uparrow$ & Top-1 $\uparrow$ & Top-1 $\uparrow$ & Top-1 $\uparrow$ \\
 \midrule
-1 & Fixed model & N/A & 27.80 & 13.02 & 6.52 & \textbf{20.40} \\
-1 & Direct optimize & N/A & 24.99 & 13.41 & \textbf{16.27} & 18.91 \\
-10 & Our harness & N/A & \textbf{44.48} & \textbf{17.38} & 15.21 & 18.91 \\
+1 & Fixed model & 89.51 & 27.80 & 13.02 & 6.52 & \textbf{20.40} \\
+1 & Direct optimize & 90.56 & 24.99 & 13.41 & \textbf{16.27} & 18.91 \\
+10 & Our harness & \textbf{94.39} & \textbf{44.48} & \textbf{17.38} & 15.21 & 18.91 \\
 \midrule
-\multicolumn{2}{l}{Completed seeds ($n/3$)} & 0/3 & 3/3 & 3/3 & 3/3 & 3/3 \\
+\multicolumn{2}{l}{Completed seeds ($n/3$)} & 3/3 & 3/3 & 3/3 & 3/3 & 3/3 \\
 \bottomrule
 \end{tabular}
 \caption{Diagnostic comparison of the earlier model versions: retrospective held-out means over completed seeds ($n$ shown). Fixed and harness-free direct optimization use one laboratory; our harness uses ten. Scores are multiplied by 100; bold marks all displayed maxima. PTPC uses the linear comparator, not native ProteinTalks. These historically exposed endpoints are not blind confirmation. N/A denotes incomplete paired evaluation; unrun seeds are never imputed.}

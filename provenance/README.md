@@ -6,6 +6,8 @@ data, or model release**. It contains no biological measurements, model
 weights, credentials, or copied prompts. The underlying artifacts remain in
 the companion research workspace and are not included in a paper-only clone.
 
+Completion review on 21 September 2026 additionally verified the native DrugBAN held-out records and added post-hoc DTI uncertainty analyses. Current verified seed counts come from the aggregate snapshots, not from the earlier index date.
+
 ## Path convention and protocol decision
 
 All paths below are relative to the **parent research workspace
@@ -27,7 +29,7 @@ held-out scores, and is not a claim of certified global SOTA reproduction.
 The common V3 protocol uses 100 training rounds, six proposal slots per
 direct/loop arm, a local Qwen2.5-7B controller, development-only retention,
 and seeds 42/43/44. The clean main comparison is fixed/one lab,
-direct optimization/one lab, and loop plus federation/ten labs. All six
+direct optimization/one lab, and collaborative research loop/ten labs. All six
 factorial arms are retained to separate participation, total search, and
 feedback effects. Missing completed evaluations remain N/A. Older DrugBAN,
 linear-proteomics, and uncorrected-cell studies remain separate diagnostics;
@@ -42,7 +44,7 @@ exposed test endpoints are explicitly **retrospective held-out**, not blind.
 | Proteomic efficacy | `ptpc-observed-6h24h-head-v1`: randomly initialized ProteinTalks-derived head using measured 6h/24h responses and Morgan features; **not** the full ppODE model or an author-pretrained head | [PTV-1 / ProteinTalks](https://github.com/guomics-lab/PTV-1), `1223e9401cc11ca2d2252ad0522fcf9604f0d305` |
 | Cell perturbation identification | Mask-corrected scDEBART adaptation on VCC single-gene, Norman double-gene, and Tahoe drug perturbations; original public backbone retained | [scDEBART](https://github.com/Jieun-Sung/scDEBART), `8996c7ca8c336d636de4ba06a4d5d97b2bbe2ce8` |
 
-The TAPB training recipe is the common federated recipe, not the original
+The TAPB training recipe is the common client-local recipe, not the original
 centralized benchmark recipe. The scDEBART version fixes three SDPA mask
 call sites established by synthetic tests; weights, response targets,
 splits, scoring masks, and option rosters are unchanged. Proteomics source
@@ -122,6 +124,15 @@ pre-evaluation wrapper-registration seal. Subsequent corrected runs use
 and written before the common seal and held-out response decoding.
 
 ## Environment timing and selected immutable hashes
+
+### Supplementary verification and uncertainty added 21 September 2026
+
+- `U/verify_native_drugban_frozen.py` independently re-scores the retained native DrugBAN probabilities for seeds 42/43/44 and all three endpoints. Each `R/heldout_v3/native_dti/seed*/verification.json` binds the original results, seals, selected checkpoints, prediction rows and scorer. Its scores remain a separate historical-model control, never substituted into TAPB means.
+- `U/bootstrap_native_tapb.py` and `U/bootstrap_native_drugban.py` add **post-hoc**, fixed-prediction paired cluster intervals. Their receipts are `R/uncertainty_native_tapb_v1/seed*.json` and `R/uncertainty_native_dti_v1/seed*.json`. Only completed, verified seeds receive receipts; a path pattern does not assert completion of seed 44.
+- Each supplement uses 1,000 valid resamples with analysis seed 20260918, drug-identifier clusters on random/unseen-drug tests and protein-sequence clusters on unseen-protein tests. AUROC/AP, all three endpoints and all declared contrasts are retained, with source/prediction/result hashes. No checkpoint or design is reselected. These intervals condition on the fitted model and resampling groups, not on training-seed uncertainty or two-way drug/protein dependence.
+- The aggregate publishers validate sidecar bindings before including intervals. The original results and seals are not rewritten to make this later analysis look prespecified. The main TAPB interval table is `tables/strong_v3/dti_uncertainty.tex`; historical DrugBAN's full endpoint intervals remain in the machine-readable diagnostic snapshot.
+
+### Earlier environment receipts
 
 `R/metadata/environment_1789717824.json` is an **observational snapshot
 captured after some runs had started** (`captured_after_some_runs_started=true`),

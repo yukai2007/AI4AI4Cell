@@ -3,8 +3,11 @@ from pathlib import Path
 import unittest
 import json
 import os
+import copy
 
-from publish_strong_snapshot import TASKS, ARMS, HELDOUT_ROLE, collect, table, effects, macros, result_path, sha, uncertainty, dti_endpoints
+from publish_strong_snapshot import (TASKS, ARMS, HELDOUT_ROLE, collect, table, effects,
+    macros, result_path, sha, uncertainty, dti_endpoints, tapb_uncertainty,
+    TAPB_BOOTSTRAP_CONTRASTS, TAPB_CLUSTER_UNITS, dti_uncertainty)
 
 
 def fixture():
@@ -17,6 +20,67 @@ def fixture():
 
 
 class StrongSnapshotTests(unittest.TestCase):
+    def bootstrap_fixture(self, base):
+        path = result_path(base, 'native_tapb', 42)
+        path.mkdir(parents=True)
+        for filename in ['results.json', 'seal.json', 'audit.json', 'verification.json']:
+            (path/filename).write_text('{}')
+        source_sha256 = {str(path/f): sha(path/f) for f in
+                        ['results.json', 'seal.json', 'audit.json', 'verification.json']}
+        frozen, seal, endpoints = {'endpoints': {}}, {'endpoints': {}}, {}
+        for endpoint, unit in TAPB_CLUSTER_UNITS.items():
+            seal['endpoints'][endpoint] = dict(rows=12, path=f'{endpoint}.csv', expected_sha256='input-hash')
+            source_sha256[f'{endpoint}.csv'] = 'input-hash'
+            frozen['endpoints'][endpoint] = {}
+            metrics = {}
+            for arm, _, _ in ARMS:
+                filename = f'{endpoint}_{arm}.csv'
+                frozen['endpoints'][endpoint][arm] = dict(predictions=filename,
+                    predictions_sha256='prediction-hash', metrics=dict(auroc=.7, average_precision=.6))
+                source_sha256[filename] = 'prediction-hash'
+            for metric, point in [('auroc', .7), ('average_precision', .6)]:
+                metrics[metric] = dict(requested_replicates=1000, rng_seed=20260918,
+                    clusters=6, skipped_single_class_replicates=0,
+                    arms={arm: dict(point=point, ci95=[.1, .9], valid_replicates=1000) for arm, _, _ in ARMS},
+                    effects={key: dict(arms=[first, second], difference=0., ci95=[0., 0.],
+                        valid_replicates=1000) for key, (_, first, second) in TAPB_BOOTSTRAP_CONTRASTS.items()})
+            endpoints[endpoint] = dict(cluster_unit=unit, rows=12, metrics=metrics)
+        receipt = dict(schema='native-tapb-posthoc-uncertainty-v1', task='native_tapb', seed=42,
+            role=HELDOUT_ROLE, requested_replicates=1000, rng_seed=20260918,
+            feedback_to_controller=False, model_fitted=False, prediction_generated=False,
+            original_result_modified=False, source_sha256=source_sha256, endpoints=endpoints)
+        target=base/'uncertainty_native_tapb_v1/seed42.json'; target.parent.mkdir()
+        return path, target, frozen, seal, receipt
+
+    def test_tapb_supplement_preserves_all_endpoints_metrics_and_labels(self):
+        with tempfile.TemporaryDirectory() as directory:
+            base=Path(directory); path,target,frozen,seal,receipt=self.bootstrap_fixture(base)
+            target.write_text(json.dumps(receipt))
+            data,source=tapb_uncertainty(base,42,path,frozen,seal)
+            self.assertEqual(data,receipt); self.assertEqual(source,target)
+            snapshot=fixture()
+            snapshot['tasks']['native_tapb']['runs']['42']=dict(endpoint_uncertainty=data)
+            dti_uncertainty(snapshot,base)
+            rendered=(base/'dti_uncertainty.tex').read_text()
+            for label in ['Random / 42','Unseen drug / 42','Unseen protein / 42']:
+                self.assertEqual(rendered.count(label),len(TAPB_BOOTSTRAP_CONTRASTS))
+            self.assertIn('Post-hoc',rendered)
+            self.assertIn('protein clusters',rendered)
+            self.assertEqual(rendered.count('[+0.00, +0.00]'),48)
+
+    def test_tapb_supplement_rejects_tamper_missing_endpoint_and_changed_points(self):
+        with tempfile.TemporaryDirectory() as directory:
+            base=Path(directory); path,target,frozen,seal,receipt=self.bootstrap_fixture(base)
+            variants=[]
+            changed=copy.deepcopy(receipt); changed['source_sha256'][str(path/'results.json')]='wrong'; variants.append(changed)
+            changed=copy.deepcopy(receipt); del changed['endpoints']['unseen_protein']; variants.append(changed)
+            changed=copy.deepcopy(receipt); changed['endpoints']['random']['metrics']['auroc']['arms']['single_fixed']['point']=.9; variants.append(changed)
+            changed=copy.deepcopy(receipt); changed['endpoints']['unseen_protein']['cluster_unit']='SMILES'; variants.append(changed)
+            changed=copy.deepcopy(receipt); changed['endpoints']['random']['metrics']['auroc']['effects']['loop_single']['ci95']=[1.,-1.]; variants.append(changed)
+            for changed in variants:
+                target.write_text(json.dumps(changed))
+                with self.assertRaises(ValueError): tapb_uncertainty(base,42,path,frozen,seal)
+
     def test_model_sources_are_distinct_and_have_no_legacy_fallback(self):
         with tempfile.TemporaryDirectory() as directory:
             base=Path(directory)

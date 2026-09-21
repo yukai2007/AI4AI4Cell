@@ -24,6 +24,17 @@ MODELS = {'native_tapb': 'TAPB; random task weights with public frozen features'
           'vcc_corrected': 'mask-corrected scDEBART adaptation',
           'norman_double_corrected': 'mask-corrected scDEBART adaptation',
           'tahoe_drug_corrected': 'mask-corrected scDEBART with drug-conditioning adapter'}
+TAPB_CLUSTER_UNITS = {'random': 'SMILES', 'unseen_drug': 'SMILES', 'unseen_protein': 'Protein'}
+TAPB_BOOTSTRAP_CONTRASTS = {
+    'loop_vs_fixed_federated': ('Loop $-$ fixed (10 labs)', 'federated_loop', 'federated_fixed'),
+    'loop_single': ('Loop $-$ direct (1 lab)', 'single_loop', 'single_direct'),
+    'loop_federated': ('Loop $-$ direct (10 labs)', 'federated_loop', 'federated_direct'),
+    'federation_fixed': ('10 $-$ 1 labs (fixed)', 'federated_fixed', 'single_fixed'),
+    'federation_direct': ('10 $-$ 1 labs (direct)', 'federated_direct', 'single_direct'),
+    'federation_loop': ('10 $-$ 1 labs (loop)', 'federated_loop', 'single_loop'),
+    'main_harness_vs_fixed': ('Our harness $-$ fixed (1 lab)', 'federated_loop', 'single_fixed'),
+    'main_harness_vs_direct': ('Our harness $-$ direct (1 lab)', 'federated_loop', 'single_direct'),
+}
 
 
 def read(path):
@@ -33,6 +44,68 @@ def read(path):
 def result_path(base, task, seed):
     if task == 'ptpc_neural': return base/'heldout_ptpc_neural'/f'seed{seed}'
     return base/'heldout_v3'/task/f'seed{seed}'
+
+
+def tapb_uncertainty(base, seed, path, result, seal, task='native_tapb'):
+    """Read optional post-hoc intervals; never modify the frozen point results."""
+    if task not in {'native_tapb', 'native_dti'}:
+        raise ValueError('Unknown native DTI uncertainty task')
+    target = base/f'uncertainty_{task}_v1'/f'seed{seed}.json'
+    if not target.exists():
+        return None, None
+    data = read(target)
+    expected_schema = ('native-tapb-posthoc-uncertainty-v1' if task == 'native_tapb'
+                       else 'native-dti-posthoc-uncertainty-v1')
+    if (data['schema'] != expected_schema
+            or data['task'] != task or data['seed'] != seed
+            or data['role'] != HELDOUT_ROLE or data['requested_replicates'] != 1000
+            or data['rng_seed'] != 20260918):
+        raise ValueError('Different post-hoc TAPB uncertainty protocol')
+    for key in ['feedback_to_controller', 'model_fitted', 'prediction_generated', 'original_result_modified']:
+        if data[key] is not False:
+            raise ValueError('Uncertainty supplement must not change the selected models or evaluation')
+    for filename in ['results.json', 'seal.json', 'audit.json', 'verification.json']:
+        if data['source_sha256'].get(str(path/filename)) != sha(path/filename):
+            raise ValueError('Uncertainty supplement binds different frozen evidence')
+    if set(data['endpoints']) != set(TAPB_CLUSTER_UNITS):
+        raise ValueError('Uncertainty must retain all three DTI endpoints')
+    for endpoint, unit in TAPB_CLUSTER_UNITS.items():
+        record = data['endpoints'][endpoint]
+        if record['cluster_unit'] != unit or set(record['metrics']) != {'auroc', 'average_precision'}:
+            raise ValueError('Uncertainty clustering unit or metric set changed')
+        if record['rows'] != seal['endpoints'][endpoint]['rows']:
+            raise ValueError('Uncertainty roster size mismatch')
+        if data['source_sha256'].get(seal['endpoints'][endpoint]['path']) != seal['endpoints'][endpoint]['expected_sha256']:
+            raise ValueError('Uncertainty test-input binding differs')
+        for arm, _, _ in ARMS:
+            evidence = result['endpoints'][endpoint][arm]
+            if data['source_sha256'].get(evidence['predictions']) != evidence['predictions_sha256']:
+                raise ValueError('Uncertainty prediction binding differs')
+        for metric, intervals in record['metrics'].items():
+            if (intervals['requested_replicates'] != 1000 or intervals['rng_seed'] != 20260918
+                    or intervals['clusters'] < 2
+                    or set(intervals['arms']) != {a for a, _, _ in ARMS}
+                    or set(intervals['effects']) != set(TAPB_BOOTSTRAP_CONTRASTS)):
+                raise ValueError('Incomplete paired bootstrap evidence')
+            expected_valid = 1000 - intervals['skipped_single_class_replicates']
+            for section in ['arms', 'effects']:
+                for entry in intervals[section].values():
+                    low, high = entry['ci95']
+                    if (not math.isfinite(low) or not math.isfinite(high) or low > high
+                            or entry['valid_replicates'] != expected_valid or not 0 < expected_valid <= 1000):
+                        raise ValueError('Invalid bootstrap interval or replicate count')
+            for arm, _, _ in ARMS:
+                if (not math.isfinite(intervals['arms'][arm]['point'])
+                        or abs(intervals['arms'][arm]['point']-result['endpoints'][endpoint][arm]['metrics'][metric]) > 1e-12):
+                    raise ValueError('Bootstrap point score differs from frozen evaluation')
+            for name, (_, first, second) in TAPB_BOOTSTRAP_CONTRASTS.items():
+                effect = intervals['effects'][name]
+                expected = (result['endpoints'][endpoint][first]['metrics'][metric]
+                            - result['endpoints'][endpoint][second]['metrics'][metric])
+                if (effect['arms'] != [first, second] or not math.isfinite(effect['difference'])
+                        or abs(effect['difference']-expected) > 1e-12):
+                    raise ValueError('Bootstrap contrast differs from frozen evaluation')
+    return data, target
 
 
 def collect(base):
@@ -155,13 +228,20 @@ def collect(base):
                         checked = verification['rescored'][f'{endpoint}/{arm}']['metrics']['auroc']
                         if not math.isfinite(value) or abs(value-checked)>1e-12:
                             raise ValueError('DTI endpoint lacks independent verification')
+            supplement = None
+            if task == 'native_tapb':
+                supplement, supplement_path = tapb_uncertainty(base, seed, path, result, seal)
+                if supplement_path is not None:
+                    files.append(str(supplement_path))
             receipts = {}
             for filename in files:
                 file = Path(filename) if Path(filename).is_absolute() else path/filename
                 receipts[str(file.relative_to(base))] = sha(file)
-            item['runs'][str(seed)] = dict(scores=scores, uncertainty=result.get('uncertainty'),
+            interval = supplement['endpoints']['random']['metrics']['auroc'] if supplement else result.get('uncertainty')
+            item['runs'][str(seed)] = dict(scores=scores, uncertainty=interval,
                 primary_metric=result['primary_metric'], receipts=receipts,
-                model_version_receipt=version, model=MODELS[task], endpoints=endpoints)
+                model_version_receipt=version, model=MODELS[task], endpoints=endpoints,
+                endpoint_uncertainty=supplement)
         snapshot['tasks'][task] = item
     return snapshot
 
@@ -262,7 +342,7 @@ def secondary(snapshot,out):
 
 def uncertainty(snapshot,out):
     lines=[r'\begin{longtable}{llrrl}',
-        r'\caption{Per-seed paired cluster-bootstrap 95\% intervals for the committed model versions, in percentage points. These retrospective intervals condition on fixed trained models and do not measure across-seed uncertainty.}\label{tab:strong-uncertainty}\\',
+        r'\caption{Per-seed paired cluster-bootstrap 95\% intervals for the committed model versions, in percentage points. These retrospective intervals condition on fixed trained models and do not measure across-seed uncertainty. DTI intervals, when available, are a post-hoc supplement using frozen predictions; random-endpoint rows use drug clusters.}\label{tab:strong-uncertainty}\\',
         r'\toprule Task & Contrast & Seed & Difference & 95\% interval \\ \midrule\endfirsthead',
         r'\toprule Task & Contrast & Seed & Difference & 95\% interval \\ \midrule\endhead']
     keys=['loop_vs_fixed_federated','loop_single','loop_federated','federation_fixed','federation_direct','federation_loop']
@@ -278,6 +358,37 @@ def uncertainty(snapshot,out):
                 lines.append(f"{label} & {contrast} & {seed} & {100*effect['difference']:+.2f} & [{100*lo:+.2f}, {100*hi:+.2f}]"+r' \\')
             lines.append(r'\midrule')
     lines += [r'\bottomrule',r'\end{longtable}']; (out/'uncertainty.tex').write_text('\n'.join(lines)+'\n')
+
+
+def dti_uncertainty(snapshot, out, task='native_tapb'):
+    if task not in {'native_tapb', 'native_dti'}:
+        raise ValueError('Unknown uncertainty table model')
+    model = 'TAPB' if task == 'native_tapb' else 'historical DrugBAN'
+    table_label = 'tab:strong-dti-uncertainty' if task == 'native_tapb' else 'tab:diagnostic-drugban-uncertainty'
+    filename = 'dti_uncertainty.tex' if task == 'native_tapb' else 'drugban_uncertainty.tex'
+    lines=[r'\begingroup\scriptsize\setlength{\tabcolsep}{3pt}',
+        r'\begin{longtable}{llrrrr}',
+        r'\caption{Post-hoc '+model+r' uncertainty supplement from frozen prediction files. All three endpoints, six arms and fixed contrasts are retained. Entries are paired AUROC/AP differences and percentile 95\% intervals in percentage points from 1,000 requested cluster draws (RNG seed 20260918). Random and unseen-drug endpoints resample drug clusters; unseen-protein resamples protein clusters. Intervals condition on fixed trained models and one clustering axis; they are not two-way, across-seed, multiplicity-adjusted, or prospective confirmatory intervals.}\label{'+table_label+r'}\\',
+        r'\toprule Endpoint / seed & Contrast & AUROC $\Delta$ & 95\% interval & AP $\Delta$ & 95\% interval \\ \midrule\endfirsthead',
+        r'\toprule Endpoint / seed & Contrast & AUROC $\Delta$ & 95\% interval & AP $\Delta$ & 95\% interval \\ \midrule\endhead']
+    labels={'random':'Random','unseen_drug':'Unseen drug','unseen_protein':'Unseen protein'}
+    for seed, run in snapshot['tasks'][task]['runs'].items():
+        if run is None: continue
+        supplement = run.get('endpoint_uncertainty')
+        if supplement is None:
+            lines.append(f'All / {seed} & Supplement pending & N/A & N/A & N/A & N/A'+r' \\')
+            continue
+        for endpoint in TAPB_CLUSTER_UNITS:
+            for key, (label, _, _) in TAPB_BOOTSTRAP_CONTRASTS.items():
+                cells=[]
+                for metric in ['auroc','average_precision']:
+                    entry=supplement['endpoints'][endpoint]['metrics'][metric]['effects'][key]
+                    low,high=entry['ci95']
+                    cells.extend([f"{100*entry['difference']:+.2f}",f'[{100*low:+.2f}, {100*high:+.2f}]'])
+                lines.append(f'{labels[endpoint]} / {seed} & {label} & '+' & '.join(cells)+r' \\')
+            lines.append(r'\midrule')
+    lines += [r'\bottomrule',r'\end{longtable}',r'\endgroup']
+    (out/filename).write_text('\n'.join(lines)+'\n')
 
 
 def macros(snapshot,out):
@@ -321,7 +432,7 @@ def main():
     args=parser.parse_args(); snapshot=collect(args.results); out=PAPER/'tables/strong_v3'; out.mkdir(parents=True,exist_ok=True)
     (out/'snapshot.json').write_text(json.dumps(snapshot,indent=2,allow_nan=False)+'\n')
     table(snapshot,out); table(snapshot,out,True); effects(snapshot,out); effects(snapshot,out,True); secondary(snapshot,out)
-    uncertainty(snapshot,out); macros(snapshot,out); dti_endpoints(snapshot,out)
+    uncertainty(snapshot,out); macros(snapshot,out); dti_endpoints(snapshot,out); dti_uncertainty(snapshot,out)
     print(json.dumps(dict(completed_seeds={t:len(runs(snapshot,t)) for t,_,_ in TASKS},role=HELDOUT_ROLE)))
 
 
