@@ -2,6 +2,21 @@
 \subsection*{4.1 Three questions: parameters, proposals, and generalization}
 Each case tests whether distributed measurements improve a shared predictor at both the parameter and design levels, and whether retained changes generalize beyond the local setting that produced them. We assign training and development groups to ten disjoint simulated laboratories, balancing by compounds or intervention identities rather than equal cell counts. A single-laboratory method accesses only preselected client 0; a ten-laboratory method uses all ten clients. Within a task, every arm uses the same scorer and candidate rosters.
 
+\noindent\textbf{Benchmark contracts.}
+\begin{center}\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{@{}lXXl@{}}
+\toprule
+Setting & Prediction contract & Task-reference model & Primary metric \\
+\midrule
+DTI & Compound + protein $\rightarrow$ interaction & TAPB & AUROC $\uparrow$ \\
+Proteomics & Proteome + drug $\rightarrow$ efficacy & ProteinTalks-derived head & AP $\uparrow$ \\
+Cell (3 strata) & Response + 5 options $\rightarrow$ identity & Corrected scDEBART head & Macro Top-1 $\uparrow$ \\
+\bottomrule
+\end{tabularx}
+\end{center}
+The cell contract is instantiated for VCC single-gene, Norman double-gene and Tahoe drug perturbations; task-specific held-out units and secondary metrics are specified below.
+
 Three contrasts address the two-level question. Ten- versus one-laboratory training, with the research mode held fixed, measures access-enabled improvement: it expands both training data and development evidence, and increases work per round. It does not isolate a parameter-only mechanism or compare with same-data centralized training. Loop versus direct search, at matched participation, Qwen checkpoint, design menu, six candidate slots and training schedule, tests whether evaluation history helps proposal generation. Direct receives no evaluation outcomes in its prompts, although its final candidate is selected by the same development scorer; it is distinct from a no-LLM fixed predictor. Held-out tests assess generalization after selection. A separate common development panel diagnoses every arm without returning its scores to the proposer.
 
 Loop minus fixed measures the complete research workflow. The main operational table reports a fixed model and direct optimizer with one laboratory against our harness with ten, an access-enabled system comparison rather than an equal-data algorithm comparison. A separate ablation includes all six combinations of one/ten laboratories and fixed/direct/loop training. ``Fixed'' means a fixed architecture and training recipe, not frozen predictive parameters: it receives the complete training schedule. Seeds 42, 43 and 44 are specified for all tasks, without selecting favorable seeds.
