@@ -100,12 +100,14 @@ class StrongSnapshotTests(unittest.TestCase):
                 if run: run['scores']['single_direct']['primary']=.600001
             table(data,out)
             text=(out/'main.tex').read_text()
-            self.assertEqual(text.count(r'\textbf{60.00}'),8)
-            self.assertIn('DTI: TAPB random split & AUROC & N/A & N/A & N/A & N/A',text)
-            self.assertIn('Proteomics: observed-response efficacy & AP',text)
-            self.assertIn('Cell: VCC single-gene identification & Macro Top-1',text)
-            self.assertIn('Cell: Norman double-gene identification & Macro Top-1',text)
-            self.assertIn('Cell: Tahoe drug identification & Macro Top-1',text)
+            self.assertIn(r'\multicolumn{3}{c}{Cell perturbation}',text)
+            self.assertIn(r'\textbf{Method / access}',text)
+            self.assertIn(r'\textbf{AI4AI4Cell} (10 labs)',text)
+            self.assertIn(r'\multicolumn{1}{c}{DTI}',text)
+            self.assertIn('& TAPB & observed-response',text)
+            self.assertIn('observed-response',text)
+            self.assertIn('five-endpoint',text)
+            self.assertNotIn('Task and benchmark',text)
             self.assertNotIn('Completed seeds',text)
             self.assertIn('Exact seed counts',text)
 
@@ -114,10 +116,12 @@ class StrongSnapshotTests(unittest.TestCase):
             out=Path(directory); data=fixture()
             run=data['tasks']['ptpc_neural']['runs']['42']
             run['scores']['single_direct']['primary']=.20126
+            run['scores']['single_loop']['primary']=.20125
             run['scores']['federated_loop']['primary']=.36984
             table(data,out)
-            text=(out/'main.tex').read_text()
-            self.assertIn('20.13 & 36.98 & +16.86',text)
+            effects(data,out)
+            text=(out/'effects.tex').read_text()
+            self.assertIn('Proteomics: efficacy & -23.02 & -23.02 & +16.86',text)
 
     def test_full_ablation_not_hidden_and_signed_effects(self):
         with tempfile.TemporaryDirectory() as directory:

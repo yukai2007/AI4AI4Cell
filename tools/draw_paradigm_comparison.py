@@ -62,7 +62,7 @@ def draw():
     for x, title, subtitle, color in [
         (2.0, 'Bio-agent research', 'Accessible-data loop', BLUE),
         (6.0, 'Collaborative training', 'Predefined-design updates', GRAY),
-        (10.0, 'AI4AI4Bio', 'Collaborative research loop', TEAL)]:
+        (10.0, 'AI4AI4Cell', 'Collaborative research loop', TEAL)]:
         text(x, 5.26, title, 17.5, color, 'bold')
         text(x, 4.89, subtitle, 13.5, color)
     for x in (4, 8):
@@ -111,7 +111,7 @@ def draw():
          12, GRAY)
     fig.subplots_adjust(left=0, right=1, bottom=0, top=1)
     for suffix in ('pdf', 'svg'):
-        fig.savefig(PAPER/f'assets/paradigm_comparison.{suffix}', metadata={'Creator': 'AI4AI4Bio'})
+        fig.savefig(PAPER/f'assets/paradigm_comparison.{suffix}', metadata={'Creator': 'AI4AI4Cell'})
     svg = PAPER/'assets/paradigm_comparison.svg'
     svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines())+'\n')
     plt.close(fig)

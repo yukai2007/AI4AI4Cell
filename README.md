@@ -1,10 +1,10 @@
-# AI4AI4Bio manuscript
+# AI4AI4Cell manuscript
 
-**AI4AI4Bio: Collaborative Evidence-Guided Research for Biological Model Improvement**
+**AI4AI4Cell: Collaborative Evidence-Guided Research for Biological Model Improvement**
 
 ## Current version: collaborative research with six-arm attribution, 22 September 2026
 
-For a section-by-section Chinese reading guide with the main results, ablations, claim boundaries and appendix map, run `python3 tools/build_chinese_companion.py`. The generated file is `output/pdf/AI4AI4Bio_中文伴读版.pdf`; it is a concise companion rather than a second submission manuscript.
+For a section-by-section Chinese reading guide with the main results, ablations, claim boundaries and appendix map, run `python3 tools/build_chinese_companion.py`. The generated file is `output/pdf/AI4AI4Cell_中文伴读版.pdf`; it is a concise companion rather than a second submission manuscript.
 
 The main text follows three parallel biological task families: TAPB-based DTI, ProteinTalks-derived observed-response efficacy, and mask-corrected scDEBART-head perturbation identification (VCC single-gene, Norman double-gene, Tahoe drug strata). These are task-adapted model references, not certified global-SOTA reproductions. All use the same V3 training orchestration, local Qwen proposer, design library, training schedule and selection rule, with task-specific adapters.
 

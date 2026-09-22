@@ -262,36 +262,49 @@ def scores(snapshot, task, arm, metric=None):
 def table(snapshot, out, full=False):
     arms = ARMS if full else MAIN_ARMS
     if not full:
-        row_labels = {
-            'native_tapb': ('DTI: TAPB random split', 'AUROC'),
-            'ptpc_neural': ('Proteomics: observed-response efficacy', 'AP'),
-            'vcc_corrected': ('Cell: VCC single-gene identification', 'Macro Top-1'),
-            'norman_double_corrected': ('Cell: Norman double-gene identification', 'Macro Top-1'),
-            'tahoe_drug_corrected': ('Cell: Tahoe drug identification', 'Macro Top-1'),
-        }
-        lines = [r'\begin{table}[h!]', r'\centering\small', r'\setlength{\tabcolsep}{4pt}',
-            r'\begin{tabularx}{\linewidth}{@{}Xlrrrr@{}}', r'\toprule',
-            r'Task and benchmark & Metric & Fixed & Direct & \textbf{Ours} & $\Delta$ direct \\',
-            r' & & 1 lab & 1 lab & 10 labs & (points) \\', r'\midrule']
-        for task, _, _ in TASKS:
-            task_label, metric = row_labels[task]
-            task_means = []
-            for arm, _, _ in arms:
+        lines = [r'\begin{table}[h!]', r'\centering\small', r'\setlength{\tabcolsep}{3.5pt}',
+            r'\begin{tabularx}{\linewidth}{@{}Xrrrrrr@{}}', r'\toprule',
+            r'\textbf{Method / access} & \multicolumn{1}{c}{DTI} & \multicolumn{1}{c}{Proteomics} & \multicolumn{3}{c}{Cell perturbation} & \multicolumn{1}{c}{Average} \\',
+            r' & TAPB & observed-response & VCC & Norman & Tahoe & five-endpoint \\',
+            r' & AUROC $\uparrow$ & AP $\uparrow$ & Top-1 $\uparrow$ & Top-1 $\uparrow$ & Top-1 $\uparrow$ & mean $\uparrow$ \\',
+            r'\midrule']
+        task_order = [task for task, _, _ in TASKS]
+        by_arm = {}
+        for arm, labs, name in arms:
+            endpoint_means = []
+            for task in task_order:
                 values = scores(snapshot, task, arm)
-                task_means.append(None if not values else 100 * stats(values)[0])
-            task_scores = [None if value is None else round(value, 2) for value in task_means]
-            finite = [value for value in task_scores if value is not None]
-            cells = []
-            for value in task_scores:
-                if value is None:
-                    cells.append('N/A')
-                else:
-                    cell = f'{value:.2f}'
-                    cells.append(r'\textbf{' + cell + '}' if value == max(finite) else cell)
-            delta = 'N/A' if task_means[1] is None or task_means[2] is None else f'{task_means[2] - task_means[1]:+.2f}'
-            lines.append(f'{task_label} & {metric} & ' + ' & '.join(cells + [delta]) + r' \\')
+                endpoint_means.append(None if not values else 100 * stats(values)[0])
+            finite = [value for value in endpoint_means if value is not None]
+            endpoint_means.append(sum(finite) / len(finite) if len(finite) == len(task_order) else None)
+            by_arm[arm] = endpoint_means
+
+        displayed = [[None if value is None else round(value, 2) for value in by_arm[arm]]
+                     for arm, _, _ in arms]
+        column_ranks = []
+        for column in range(len(task_order) + 1):
+            values = sorted({row[column] for row in displayed if row[column] is not None}, reverse=True)
+            column_ranks.append((values[0] if values else None,
+                                 values[1] if len(values) > 1 else None))
+
+        def marked(value, rank):
+            if value is None:
+                return 'N/A'
+            text = f'{value:.2f}'
+            best, runner = rank
+            if value == best:
+                return r'\textbf{' + text + r'}'
+            if runner is not None and value == runner:
+                return r'\underline{' + text + r'}'
+            return text
+
+        for row_index, (arm, labs, name) in enumerate(arms):
+            cells = [marked(value, column_ranks[column]) for column, value in enumerate(displayed[row_index])]
+            method = r'\textbf{AI4AI4Cell}' if arm == 'federated_loop' else name
+            lines.append(f'{method} ({labs} lab' + ('' if labs == '1' else 's') + ') & ' +
+                         ' & '.join(cells) + r' \\')
         lines += [r'\bottomrule', r'\end{tabularx}',
-            r'\caption{Main held-out comparison across three biological task families and five explicit endpoints. Fixed and feedback-free direct search use one laboratory; our collaborative harness uses ten. Values are means multiplied by 100; $\Delta$ direct is our harness minus direct search, in percentage points. Bold marks the best displayed configuration. Exact seed counts, sample SD, all six factorial arms and secondary metrics are in Appendix R.}',
+            r'\caption{Main held-out comparison across three biological task families and five explicit endpoints. Fixed recipe and feedback-free direct search use one laboratory; AI4AI4Cell uses ten. Values are completed-seed means multiplied by 100. The final column is an unweighted descriptive mean over the five displayed endpoints, not a separate primary endpoint. Bold and underline mark the best and runner-up displayed values within each column. Exact seed counts, sample SD, all six factorial arms and secondary metrics are in Appendix R.}',
             r'\label{tab:strong-main}', r'\end{table}']
         (out/'main.tex').write_text('\n'.join(lines)+'\n')
         return

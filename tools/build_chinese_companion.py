@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the Chinese reading companion for the AI4AI4Bio manuscript."""
+"""Build the Chinese reading companion for the AI4AI4Cell manuscript."""
 
 from pathlib import Path
 
@@ -27,7 +27,7 @@ from reportlab.platypus import (
 
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "output" / "pdf" / "AI4AI4Bio_中文伴读版.pdf"
+OUT = ROOT / "output" / "pdf" / "AI4AI4Cell_中文伴读版.pdf"
 TMP = ROOT / "tmp" / "pdfs"
 
 NAVY = colors.HexColor("#17365D")
@@ -63,9 +63,9 @@ class CompanionDoc(BaseDocTemplate):
             rightMargin=17 * mm,
             topMargin=18 * mm,
             bottomMargin=17 * mm,
-            title="AI4AI4Bio 中文伴读版",
+            title="AI4AI4Cell 中文伴读版",
             author="Anonymous",
-            subject="AI4AI4Bio manuscript Chinese reading companion",
+            subject="AI4AI4Cell manuscript Chinese reading companion",
         )
         frame = Frame(
             self.leftMargin,
@@ -85,7 +85,7 @@ class CompanionDoc(BaseDocTemplate):
             canvas.line(17 * mm, A4[1] - 12 * mm, A4[0] - 17 * mm, A4[1] - 12 * mm)
             canvas.setFont("STSong-Light", 8)
             canvas.setFillColor(MUTED)
-            canvas.drawString(17 * mm, A4[1] - 9.5 * mm, "AI4AI4Bio 中文伴读版")
+            canvas.drawString(17 * mm, A4[1] - 9.5 * mm, "AI4AI4Cell 中文伴读版")
             canvas.drawRightString(A4[0] - 17 * mm, 9 * mm, str(doc.page))
         canvas.restoreState()
 
@@ -186,7 +186,11 @@ def callout(head, body, fill=PALE_BLUE, border=BLUE):
 
 
 def table(data, widths, header=True, font="small", row_bgs=None):
-    cooked = [[p(str(cell), font) for cell in row] for row in data]
+    cooked = [
+        [p(f'<font color="white">{cell}</font>' if header and row_index == 0 else str(cell), font)
+         for cell in row]
+        for row_index, row in enumerate(data)
+    ]
     result = Table(cooked, colWidths=widths, repeatRows=1 if header else 0, hAlign="LEFT")
     commands = [
         ("VALIGN", (0, 0), (-1, -1), "TOP"),
@@ -231,7 +235,7 @@ def build_story():
     story = []
 
     story += [Spacer(1, 30 * mm), p("ICLR 2027 稿件内部伴读材料", "cover_kicker")]
-    story += [p("AI4AI4Bio 中文伴读版", "cover_title")]
+    story += [p("AI4AI4Cell 中文伴读版", "cover_title")]
     story += [p("协作式证据引导的生物模型改进", "cover_sub")]
     story += [Spacer(1, 5 * mm), HRFlowable(width="72%", thickness=1.2, color=TEAL, hAlign="CENTER")]
     story += [Spacer(1, 12 * mm)]
@@ -265,7 +269,7 @@ def build_story():
     story += title("01", "30 秒读懂这篇论文", "先理解论文真正证明了什么，再看实现细节。")
     summary = [
         ["问题", "不同生物实验室持有互补数据，但原始测量往往不能集中共享；已有研究通常只解决本地模型训练，或只让 agent 在可访问数据上改方案。"],
-        ["方法", "AI4AI4Bio 把两层过程接起来：内层在数据所属实验室本地训练并聚合更新；外层根据聚合开发集证据提出、执行并筛选可复现的模型设计。"],
+        ["方法", "AI4AI4Cell 把两层过程接起来：内层在数据所属实验室本地训练并聚合更新；外层根据聚合开发集证据提出、执行并筛选可复现的模型设计。"],
         ["实验", "统一测试 DTI、蛋白组学疗效预测、细胞扰动识别三类任务；细胞任务进一步分为单基因、双基因和药物扰动，共五个主端点。"],
         ["主结果", "十实验室完整系统在五个端点中的四个取得三种主配置里的最高分；相对单实验室 direct search 的提升为 +3.87、+16.85、+10.45、+8.10、+6.97 个百分点。"],
         ["最重要消融", "更多实验室参与在五个端点上都带来正增益；但 matched-access 下 loop 与 direct search 的结果全部持平，当前尚未证明迭代反馈本身的独立增益。"],
@@ -303,14 +307,14 @@ def build_story():
     story += figure(
         "paradigm_comparison",
         171,
-        "英文主稿图 1。左：传统 bio-agent 能迭代模型设计，但依赖可访问数据。中：协作训练让原始数据留在本地，但设计固定。右：AI4AI4Bio 同时连接本地参数学习与共享研究循环。",
+        "英文主稿图 1。左：传统 bio-agent 能迭代模型设计，但依赖可访问数据。中：协作训练让原始数据留在本地，但设计固定。右：AI4AI4Cell 同时连接本地参数学习与共享研究循环。",
     )
     story += [Spacer(1, 4 * mm)]
     paradigm = [
         ["范式", "优点", "局限"],
         ["可访问数据上的 bio-agent", "能根据实验反馈迭代代码或模型设计", "新增实验室通常需要把测量交给 agent 或中心环境"],
         ["固定设计的协作训练", "原始数据可留在各 worker，本地更新后聚合", "训练的模型结构和研究方案预先固定"],
-        ["AI4AI4Bio", "参数更新与模型设计都能利用分布式证据", "当前是同机模拟；没有正式隐私保护；反馈增益尚未建立"],
+        ["AI4AI4Cell", "参数更新与模型设计都能利用分布式证据", "当前是同机模拟；没有正式隐私保护；反馈增益尚未建立"],
     ]
     story += [table(paradigm, [40 * mm, 65 * mm, 66 * mm], row_bgs=[(3, PALE_TEAL)])]
     story.append(PageBreak())
@@ -374,15 +378,13 @@ def build_story():
 
     story += title("07", "主结果：完整系统在五项中的四项最高")
     main = [
-        ["主端点", "Fixed 1 lab", "Direct 1 lab", "Ours 10 labs", "Ours - Direct"],
-        ["DTI: TAPB random AUROC", "82.83", "89.89", "<b>93.76</b>", "+3.87"],
-        ["Proteomics efficacy AP", "25.05", "20.13", "<b>36.99</b>", "+16.85"],
-        ["VCC single-gene Top-1", "29.94", "21.09", "<b>31.54</b>", "+10.45"],
-        ["Norman double-gene Top-1", "<b>25.56</b>", "14.15", "22.25", "+8.10"],
-        ["Tahoe drug Top-1", "19.40", "15.42", "<b>22.39</b>", "+6.97"],
+        ["方法 / access", "DTI<br/>TAPB AUROC", "Proteomics<br/>AP", "VCC<br/>Top-1", "Norman<br/>Top-1", "Tahoe<br/>Top-1", "五端点<br/>均值"],
+        ["Fixed recipe<br/>(1 lab)", "82.83", "<u>25.05</u>", "<u>29.94</u>", "<b>25.56</b>", "<u>19.40</u>", "<u>36.55</u>"],
+        ["Direct optimize<br/>(1 lab)", "<u>89.89</u>", "20.13", "21.09", "14.15", "15.42", "32.14"],
+        ["<b>AI4AI4Cell</b><br/>(10 labs)", "<b>93.76</b>", "<b>36.99</b>", "<b>31.54</b>", "<u>22.25</u>", "<b>22.39</b>", "<b>41.39</b>"],
     ]
-    story += [table(main, [56 * mm, 28 * mm, 28 * mm, 30 * mm, 29 * mm], row_bgs=[(1, PALE_TEAL), (2, PALE_TEAL), (3, PALE_TEAL), (5, PALE_TEAL)])]
-    story += [Spacer(1, 4 * mm), p("数值为 seeds 42/43/44 的 held-out 均值乘以 100。粗体只表示三种展示配置中最高，不表示统计显著或全球 SOTA。", "note")]
+    story += [table(main, [40 * mm, 22 * mm, 22 * mm, 22 * mm, 22 * mm, 22 * mm, 21 * mm], font="tiny", row_bgs=[(3, PALE_TEAL)])]
+    story += [Spacer(1, 4 * mm), p("数值为 seeds 42/43/44 的 held-out 均值乘以 100。粗体和下划线分别表示列内最高与次高；五端点均值是描述性汇总，不是新的生物学主指标。", "note")]
     story += [Spacer(1, 5 * mm), callout(
         "如何解读",
         "最直观的产品级结论是：允许十个实验室参与的完整系统，相比只使用一个实验室数据的直接优化，在五项上都更高。但这个差异同时包含更多训练数据、更多开发证据和更多计算，不能解释成纯算法优势。",
@@ -492,8 +494,8 @@ def build_story():
     story += title("12", "英文正文逐节导读")
     main_sections = [
         ["部分", "在讲什么", "读者应带走什么"],
-        ["Abstract", "现实问题、双层框架、三任务验证、主要数值和因子消融。", "四项最佳，但反馈独立增益未建立。"],
-        ["1 Introduction", "数据分散与 agent 研究之间的缺口；定义三项贡献。", "贡献是接口、跨任务执行和可归因实验。"],
+        ["Abstract", "采用作者提供的摘要：分布式生物证据、协作学习与自动设计的衔接、双层反馈和三类场景。", "本地测量共同驱动参数拟合与可执行方案改进；展示框架适用性。"],
+        ["1 Introduction", "围绕摘要展开数据约束、固定设计与自动研究的缺口、协作框架及三项贡献。", "贡献是双层反馈接口、跨任务实现和泛化评估。"],
         ["2 Related work", "定位自动研究、协作训练、FedEx、Helmsman、DrugEvolve 等。", "不声称第一个组合两者，也不混用不可比协议。"],
         ["3 Method", "双层优化、FedAvg 实现、Qwen proposal、数据与证据边界。", "同一 core，task-specific adapters。"],
         ["4 Experimental design", "三个任务、五端点、六臂、三个 seed、冻结和评分规则。", "主表是 access-enabled system comparison；消融负责归因。"],
@@ -609,7 +611,7 @@ def build_story():
         PALE_GOLD,
         GOLD,
     )]
-    story += [Spacer(1, 10 * mm), p("对应英文稿版本：Git commit ea0a6faf8696d3dc12d90f004bbad22d28300cff", "note")]
+    story += [Spacer(1, 10 * mm), p("对应英文稿：2026-09-22 作者摘要及 Introduction 修订；实验快照沿用 ea0a6fa。", "note")]
     story += [p("本伴读版只解释已执行结果，不生成或替代任何实验分数。", "note")]
     return story
 

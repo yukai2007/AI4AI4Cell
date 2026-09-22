@@ -12,8 +12,10 @@ class ManuscriptConsistencyTests(unittest.TestCase):
         self.assertIn('Collaborative Evidence-Guided Research', source.replace(r'\\', ' '))
         abstract = source.split(r'\begin{abstract}', 1)[1].split(r'\end{abstract}', 1)[0]
         self.assertNotRegex(abstract.lower(), r'federat|\bsota\b')
-        self.assertRegex(abstract, r'six-arm (?:factorial )?ablation')
-        self.assertIn('retrospective held-out', abstract)
+        self.assertIn('AI4AI4Cell, a collaborative research framework', abstract)
+        self.assertIn('Collaborative learning typically optimizes fixed models', abstract)
+        self.assertIn('Across three biological settings', abstract)
+        self.assertNotIn(r'\Strong', abstract)
         self.assertIn('FedAvg', (PAPER / 'sections/03_method.tex').read_text())
 
     def test_official_submission_header_and_spacing_are_not_patched(self):
