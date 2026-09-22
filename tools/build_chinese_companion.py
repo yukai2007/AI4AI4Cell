@@ -145,7 +145,8 @@ def story():
                  "多个生物实验室拥有互补数据。AI4AI4Cell 让这些数据在本地参与两件事：一是训练共享预测模型，二是为外层研究循环评价和选择下一版可执行设计。",
                  PALE_TEAL, TEAL), Spacer(1, 10*mm),
          table([["任务族", "主端点", "实验配置", "随机种子"],
-                ["DTI / 蛋白组学 / 细胞扰动", "5", "6 臂因子设计", "42 / 43 / 44"]],
+                ["DTI / 蛋白组学 / 细胞扰动", "5", "6 臂因子设计", "42 / 43 / 44"],
+                ["蛋白组学 / 3 类细胞扰动", "4", "同预算 loop 隔离", "53 / 54 / 55"]],
                [55*mm, 32*mm, 45*mm, 39*mm]), Spacer(1, 12*mm),
          p("对应英文稿：2026-09-22 当前统一实验版本", "center"), PageBreak()]
 
@@ -203,7 +204,7 @@ def story():
                  ["Tahoe", "response + 5 drug options → identity", "scDEBART + Morgan conditioning", "Macro Top-1"]],
                 [30*mm, 70*mm, 48*mm, 23*mm], font="tiny"), Spacer(1, 6*mm),
           callout("一致性",
-                  "五个端点共享同一个 inner trainer、Qwen proposer、12 项 design library、6 个 proposal slots、retention rule 与 seeds 42–44。任务差异只通过 adapter 和 scorer 进入。",
+                  "五个端点共享同一个 inner trainer、proposal schema、evidence card、研究历史和 finalizer；任务差异只通过 adapter 和 scorer 进入。主实验使用 seeds 42–44；反馈隔离实验在四个可完整重训的端点上统一使用 seeds 53–55。",
                   PALE_BLUE, BLUE), Spacer(1, 5*mm),
           p("六臂因子设计", "h2"),
           bullets([
@@ -225,22 +226,23 @@ def story():
                   "完整系统在分子互作、蛋白响应和细胞扰动三类任务上都取得了有竞争力的结果；相对于单实验室 direct optimization，五个端点分别变化 +3.87、+16.85、+10.45、+8.10 和 +6.97 个百分点。",
                   PALE_TEAL, TEAL), PageBreak()]
 
-    s += [p("6  增益来自哪里", "h1"),
-          table([["端点", "Search: loop-fixed", "Feedback: loop-direct", "Participation: 10-1 labs"],
-                 ["DTI", "+1.96", "+0.00", "+3.87"],
-                 ["Proteomics", "-0.08", "+0.00", "+16.85"],
-                 ["VCC", "+0.00", "+0.00", "+11.32"],
-                 ["Norman", "+6.77", "+0.00", "+8.10"],
-                 ["Tahoe", "-3.48", "+0.00", "+6.97"]],
-                [38*mm, 44*mm, 44*mm, 45*mm]), Spacer(1, 6*mm),
+    s += [p("6  Loop 是否真的有效", "h1"),
+          table([["端点", "Direct", "Loop", "增益", "胜/平/负"],
+                 ["DTI（开发轨迹回放）", "93.63", "94.02", "+0.39", "2/1/0"],
+                 ["Proteomics（留出）", "37.47", "37.47", "+0.00", "0/3/0"],
+                 ["VCC（留出）", "20.01", "20.01", "+0.00", "0/3/0"],
+                 ["Norman（留出）", "11.48", "22.32", "<b>+10.84</b>", "3/0/0"],
+                 ["Tahoe（留出）", "20.90", "22.89", "+1.99", "1/2/0"]],
+                [49*mm, 29*mm, 29*mm, 32*mm, 32*mm], font="tiny",
+                highlights=[(4, PALE_TEAL)]), Spacer(1, 5*mm),
           bullets([
-              "最终预算下，最稳定的效应来自更多实验室参与：五个端点全部为正。",
-              "loop 相比 fixed 在 DTI 和 Norman 上有正提升，说明 design search 能在部分任务找到更好的配置。",
-              "六次 proposal 后 loop 与 direct 选择同一 checkpoint，因为 12 项候选库容易被两种搜索共同覆盖。",
-              "在只看前两次 proposal 时，loop 在 15 条十实验室轨迹中 2 条更好、13 条持平、0 条更差，平均领先 0.78 点。",
+              "Direct 与 loop 使用相同的十个设计、十个实验室和 160 次开发评估。",
+              "Direct 为每个设计平均分配 80 轮；loop 先为十个设计各训练 20 轮，再将剩余预算集中到六个由当前得分和学习趋势共同提升的设计；两者总计都是 800 个全客户端训练轮。",
+              "12 个新执行的留出 task-seed 对比为 4 胜、8 平、0 负。Norman 平均提升 10.84 点，95% CI 为 [4.54, 17.73]；Tahoe 平均提升 1.99 点，区间跨零。",
+              "DTI 使用已有开发轨迹做保守回放：Direct 反而多 5 个 candidate-round，loop 仍为 2 胜、1 平；该行不作为新的留出结论。",
           ]), Spacer(1, 5*mm),
-          callout("Loop 的当前实证定位",
-                  "持久证据在小预算阶段显示出搜索效率信号；最终预算的持平说明下一版应扩大可组合设计空间，让历史证据对选择路径产生更大的影响。",
+          callout("Loop 的实证结论",
+                  "证据历史不仅用于记录实验，还能成为预算分配的控制信号：在固定候选、数据、评估次数和训练预算后，它能保留 uniform search 的最优解，并在需要更长训练才能显现优势的设计上带来显著提升。",
                   PALE_PURPLE, PURPLE), PageBreak()]
 
     s += [p("7  当前论文如何阅读", "h1"),
@@ -253,7 +255,7 @@ def story():
                  ["Appendix A", "完整 design library、proposal JSON、15 条轨迹、六臂结果、次指标与不确定性。"]],
                 [43*mm, 128*mm]), Spacer(1, 6*mm),
           callout("目前最强的论文信息",
-                  "同一套协作研究接口已经跨三个生物任务族完成训练、选择与 held-out 评价；十实验室参与带来稳定增益；evidence-guided loop 在早期预算显示效率优势，并为更大设计空间提供了可复用的研究基础设施。",
+                  "同一套协作研究接口已经跨三个生物任务族完成训练、选择与 held-out 评价；完整系统在主表五个端点中的四个最高。进一步的同预算隔离实验得到 4 胜、8 平、0 负，并在 Norman 上取得 +10.84 点且置信区间为正的提升，证明 evidence-guided loop 可以实际改善计算预算的分配。",
                   PALE_ORANGE, ORANGE), Spacer(1, 6*mm),
           p("后续增强方向：独立实验室队列、client rotation、same-data centralized reference、更大的 compositional design space，以及 secure aggregation / differential privacy 部署层。", "body")]
     return s

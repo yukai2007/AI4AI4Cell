@@ -1,18 +1,18 @@
-\begin{table}[h!]
+\begin{table}[t]
 \centering\small
-\setlength{\tabcolsep}{7pt}
+\setlength{\tabcolsep}{4.5pt}
 \renewcommand{\arraystretch}{1.08}
-\begin{tabularx}{\linewidth}{@{}Xrrr@{}}
+\begin{tabularx}{\linewidth}{@{}Xlrrrr@{}}
 \toprule
-\textbf{Benchmark} & \shortstack{Design search\\10 labs} & \shortstack{Feedback\\10 labs} & \shortstack{Participation\\loop fixed} \\
+\textbf{Benchmark} & \textbf{Role} & \textbf{Direct} & \textbf{Loop} & \textbf{Gain} & \textbf{W/T/L} \\
 \midrule
-DTI: TAPB random split & +1.96 & +0.00 & +3.87 \\
-Proteomics: efficacy & -0.08 & +0.00 & +16.85 \\
-Cell: VCC single-gene & +0.00 & +0.00 & +11.32 \\
-Cell: Norman double-gene & +6.77 & +0.00 & +8.10 \\
-Cell: Tahoe drug & -3.48 & +0.00 & +6.97 \\
+DTI: TAPB & Dev. replay & 93.63 & \textbf{94.02} & \textbf{+0.39} & 2/1/0 \\
+Proteomics: efficacy & Held-out & \textbf{37.47} & \textbf{37.47} & +0.00 & 0/3/0 \\
+Cell: VCC single-gene & Held-out & \textbf{20.01} & \textbf{20.01} & +0.00 & 0/3/0 \\
+Cell: Norman double-gene & Held-out & 11.48 & \textbf{22.32} & \textbf{+10.84} & 3/0/0 \\
+Cell: Tahoe drug & Held-out & 20.90 & \textbf{22.89} & \textbf{+1.99} & 1/2/0 \\
 \bottomrule
 \end{tabularx}
-\caption{Factorial attribution on the five held-out endpoints, in percentage points. Design search is loop $-$ fixed at ten laboratories; feedback is loop $-$ matched-budget direct at ten laboratories; participation is ten $-$ one laboratory with the loop fixed. Participation combines additional training data, development evidence and computation. Appendix A reports seed-level effects and uncertainty.}
+\caption{Compute-matched feedback isolation, averaged over three seeds and reported in percentage points. Held-out arms each use 800 full-client rounds and 160 development measurements. Gain is loop minus direct; W/T/L counts seed-level wins, ties and losses. The held-out total is 4/8/0, with Norman 95\% CI [4.54, 17.73] and Tahoe CI [$-$1.00, 7.46]. DTI reports a conservative development-trajectory replay; no DTI held-out claim is made.}
 \label{tab:strong-effects}
 \end{table}

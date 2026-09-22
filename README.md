@@ -2,7 +2,7 @@
 
 **AI4AI4Cell: Collaborative Evidence-Guided Research for Biological Model Improvement**
 
-## Current version: collaborative research with six-arm attribution, 22 September 2026
+## Current version: collaborative research with compute-matched loop evidence, 22 September 2026
 
 For a section-by-section Chinese reading guide with the main results, ablations, claim boundaries and appendix map, run `python3 tools/build_chinese_companion.py`. The generated file is `output/pdf/AI4AI4Cell_中文伴读版.pdf`; it is a concise companion rather than a second submission manuscript.
 
@@ -10,11 +10,11 @@ The main text follows three parallel biological task families: TAPB-based DTI, P
 
 The framing is **collaborative evidence-guided research**. The inner training pipeline uses sample-weighted local-update aggregation; the outer harness structures proposals, executes candidates, records aggregate evidence cards and passes accepted, rejected and failed outcomes into the next proposal.
 
-The main table has **fixed model (1 lab), direct optimize / harness-free (1 lab), and our harness (10 labs)**. This is an access-enabled system comparison. A separate full factorial ablation crosses one vs ten laboratories with fixed / direct / loop, isolating feedback effects at matched data access from additional laboratory participation.
+The main table has **fixed model (1 lab), direct optimize / harness-free (1 lab), and our harness (10 labs)**. This is an access-enabled system comparison. A separate full factorial ablation crosses one vs ten laboratories with fixed / direct / loop. The main feedback claim now comes from an additional compute-matched racing experiment: direct and loop use the same ten designs, 800 full-client rounds and 160 development measurements; held-out results over seeds 53--55 give four wins, eight ties and no losses for the loop, including +10.84 Top-1 points on Norman.
 
 The snapshot includes executed held-out tests for seeds 42--44. The clean main table presents five explicit endpoints; Appendix A reports sample variation, all six arms, proposal prefixes, uncertainty and secondary metrics. Selected checkpoints, configurations and data hashes bind each score to an executed run, and predictions are independently recomputed.
 
-- Main tables: `tables/strong_v3/main.tex`, `effects.tex`.
+- Main tables: `tables/strong_v3/main.tex`, `effects.tex`; the latter is the compute-matched loop comparison.
 - Full six-arm ablations, secondary metrics and uncertainty: Appendix A and `tables/strong_v3/`.
 - Proposal schema, design library and protocol: Appendix A, `sections/22_appendix_unified_protocol.tex`.
 - Machine-readable aggregate snapshot and receipt hashes: `tables/strong_v3/snapshot.json`.

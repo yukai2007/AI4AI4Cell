@@ -1,5 +1,6 @@
 """Editorial regressions independent of any favorable score or completion count."""
 from pathlib import Path
+import json
 import re
 import unittest
 
@@ -45,6 +46,19 @@ class ManuscriptConsistencyTests(unittest.TestCase):
         self.assertIn(r'\input{tables/strong_v3/dti_uncertainty}', text)
         self.assertIn('after training and held-out scoring', text)
         self.assertIn('between-training-seed', text)
+
+    def test_compute_matched_loop_claims_are_bound_to_public_summary(self):
+        summary = json.loads((PAPER / 'provenance/v6_loop_summary.json').read_text())
+        table = (PAPER / 'tables/strong_v3/effects.tex').read_text()
+        results = (PAPER / 'sections/05_results.tex').read_text()
+        self.assertEqual(summary['heldout_wins_ties_losses'], [4, 8, 0])
+        self.assertAlmostEqual(
+            summary['heldout_loop_minus_direct']['norman_double_gene']['mean'],
+            0.10839506172839508)
+        for token in ('+10.84', '[4.54, 17.73]', '4/8/0'):
+            self.assertIn(token, table + results)
+        self.assertIn('800 full-client', table)
+        self.assertIn('no DTI held-out claim', table)
 
 
 if __name__ == '__main__':

@@ -34,6 +34,39 @@ feedback effects. All three prespecified seeds are complete for the five
 main endpoints. Appendix A contains the complete six-arm comparison,
 secondary metrics, proposal-prefix analysis and uncertainty.
 
+### Compute-matched loop follow-up (22 September 2026)
+
+The final feedback-isolation result uses the versioned V6 racing protocol at
+`U/research_v6.py` and `U/run_v6.py`. For PTPC and the three cell strata,
+direct and loop receive the same ten-design fractional-factorial slate. Direct
+trains each design for 80 rounds. The loop screens each for 20 rounds and
+promotes six, by current primary/loss rank and early improvement within each
+learning-rate stratum, to fresh 100-round validation. Both arms therefore use
+800 full-client rounds, 160 development measurements and ten candidate
+hypotheses. Seeds 53/54/55 were executed after the rule was frozen.
+
+Selected checkpoints were sealed and scored by `U/heldout_v6.py`; saved
+predictions were independently recomputed by `U/summarize_v6.py`. The aggregate
+receipt is `R/v6_loop_summary/summary.json` (SHA-256
+`a33102a044f17a3b24b76ca57c19622994951d06ea49b9fc89b5ecb16858a113`).
+Across 12 held-out task--seed comparisons, racing yields four wins, eight ties
+and no losses. Norman improves by 10.84 Top-1 points on average with
+hierarchical paired-bootstrap interval [4.54, 17.73] points. Tahoe improves by
+1.99 points on average with one win and two ties; VCC and PTPC tie.
+
+DTI uses a conservative development-only replay over the seven-design
+intersection of completed TAPB trajectories. Direct receives 525
+candidate-rounds and racing receives 520. The receipt
+`R/native_tapb/v6_dti_replay/report.json` (SHA-256
+`59a90170ff5b13859f20335c46ca1d9acb7d6844ab652af66c07a1e37db48e88`)
+records two wins, one tie, no losses and +0.39 mean AUROC points. No new DTI
+held-out claim is inferred from this replay.
+
+An earlier V5 scalar-threshold controller was evaluated on development data
+and rejected after it regressed on Tahoe and PTPC. Its results are not used in
+the manuscript. V6 replaces that brittle threshold with stratified racing and
+uses disjoint later training seeds.
+
 ## Task models and official source pins
 
 | Task family | Intended main implementation | Official source and immutable commit |
