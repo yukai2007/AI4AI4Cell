@@ -1,0 +1,108 @@
+{
+  "schema": "ai4ai4cell-loop-prefix-v1",
+  "role": "development-only executed-prefix diagnostic; no held-out feedback",
+  "task_seed_trajectories": 15,
+  "proposal_budgets": [
+    {
+      "proposals": 1,
+      "loop_better": 0,
+      "tied": 15,
+      "direct_better": 0,
+      "mean_primary_difference_points": 0.0
+    },
+    {
+      "proposals": 2,
+      "loop_better": 2,
+      "tied": 13,
+      "direct_better": 0,
+      "mean_primary_difference_points": 0.7824605676790001
+    },
+    {
+      "proposals": 3,
+      "loop_better": 0,
+      "tied": 14,
+      "direct_better": 1,
+      "mean_primary_difference_points": -0.03659417869167939
+    },
+    {
+      "proposals": 4,
+      "loop_better": 0,
+      "tied": 15,
+      "direct_better": 0,
+      "mean_primary_difference_points": 0.0
+    },
+    {
+      "proposals": 5,
+      "loop_better": 0,
+      "tied": 14,
+      "direct_better": 1,
+      "mean_primary_difference_points": -0.017705117513641493
+    },
+    {
+      "proposals": 6,
+      "loop_better": 0,
+      "tied": 15,
+      "direct_better": 0,
+      "mean_primary_difference_points": 0.0
+    }
+  ],
+  "budget_two_positive_cases": [
+    {
+      "task": "TAPB",
+      "seed": 44,
+      "difference_points": 4.836908515185012
+    },
+    {
+      "task": "Norman",
+      "seed": 42,
+      "difference_points": 6.89999999999999
+    }
+  ],
+  "source_sha256": {
+    "native_tapb/study_v3_seed42/definition.json": "7056a857cd76934d66f11004250103686066b3d1520881aee73f05eb8c863296",
+    "native_tapb/study_v3_seed42/federated_direct_history.json": "7efd4782ba76ecb70b7a818bf83cc59df16f10904b7f49377b22d59796413638",
+    "native_tapb/study_v3_seed42/federated_loop_history.json": "a7d11c79786da44d7e88dd00d8b42158a2e1d6356b094fc2331613070a10037a",
+    "native_tapb/study_v3_seed43/definition.json": "24c993d46320d588e0956fa1855fef50d31b3247f62042cb9f6369c1983b8762",
+    "native_tapb/study_v3_seed43/federated_direct_history.json": "3027ff14beac4d5ed9dc9117bc5977d70e5d5fbdd24ac19cf2b40e26d83a7529",
+    "native_tapb/study_v3_seed43/federated_loop_history.json": "8050cb85e8bd837c746cc93701fd0f90a1503e192c8f3ae62c7d5721788ea3bf",
+    "native_tapb/study_v3_seed44/definition.json": "f9c427c998618316b8d0b67964664f4b7ca19d18b6a2184042211310a7927454",
+    "native_tapb/study_v3_seed44/federated_direct_history.json": "9fc57032618bf4cff47f8ba944e33c96828c6cd6462713151cb5a0048dedffe5",
+    "native_tapb/study_v3_seed44/federated_loop_history.json": "dbf6a19b1d29a01fbf610c9248e5256d5621cc73a73a1a933a7c0a149bf3b150",
+    "ptpc_neural/study_v3_seed42/definition.json": "37bb71202f5378f328ae88d5edc7b3447dac11de244169dcbf9fceddb3542478",
+    "ptpc_neural/study_v3_seed42/federated_direct_history.json": "1ddafa8ee718f269e1cd47a207a7eb10a959b1ac8dc95f3da08d6e79b99e66e7",
+    "ptpc_neural/study_v3_seed42/federated_loop_history.json": "0c06da071ab0c92095f1e954d7673078780d240fb0199b1b0bd3e2c77a3b2229",
+    "ptpc_neural/study_v3_seed43/definition.json": "0c0c1e3bf3ccbe20e383745e25cdf7f497f6ecd367ae4d5d484626ac3fd8c1e7",
+    "ptpc_neural/study_v3_seed43/federated_direct_history.json": "b0cb170d6e71ae1b9f7701b2af2fa4d22fb0804de86dcf646f0b0dfc1adb5f09",
+    "ptpc_neural/study_v3_seed43/federated_loop_history.json": "f886e7466a083fbde41e9f00b8e69bf6054c905b0b54f6aedf0ccfe4ca0c151a",
+    "ptpc_neural/study_v3_seed44/definition.json": "ff8558562d9b8913372f7ec95d889a65388afe58fc3d35c7f0813203a7f926c0",
+    "ptpc_neural/study_v3_seed44/federated_direct_history.json": "a30b8f6824f10603dedb7ba2cebbede398c1b37be9f8a329c764d9de4c7174d5",
+    "ptpc_neural/study_v3_seed44/federated_loop_history.json": "2d46cd3cf4b9ca139d548f1dd5cffc770d4e8c20c2b37c20b8a7e156a7e478db",
+    "vcc_corrected/study_v3_seed42/definition.json": "f43dbd861cfad75fbcb733e0f7188840e5988f38888f65aaf9c5b0c73f00a18e",
+    "vcc_corrected/study_v3_seed42/federated_direct_history.json": "8e1ab0b1f66e14cc2a4b7b6ca1efda0d0eda32e46161a06a6af8c57df3c1ad10",
+    "vcc_corrected/study_v3_seed42/federated_loop_history.json": "854a6b8189cc1b529578c6a0a6dbf20628919f70daae4660cdf18883804643b8",
+    "vcc_corrected/study_v3_seed43/definition.json": "a791d3e98a6d149b8a9f8aa9f25c340ddce161c85af8850e9037951d7eee04bb",
+    "vcc_corrected/study_v3_seed43/federated_direct_history.json": "398ee6bbdd97e4ad973e253d96fb174dcf5bd53e08b7b4e7abf356d32e2ddfe3",
+    "vcc_corrected/study_v3_seed43/federated_loop_history.json": "cbd6c02f1dd75e5ebeddf0934d62e259ec0b543e05d05d781806b401fa44d827",
+    "vcc_corrected/study_v3_seed44/definition.json": "e6fe30286ab93726f4ee035a5be3ff4dfa46c0a50d81d6777a7613690dd35bbf",
+    "vcc_corrected/study_v3_seed44/federated_direct_history.json": "ffef78f5747af22fad25c1279a25adaf6041aa67ab2025d1bc71e46551e6bbb2",
+    "vcc_corrected/study_v3_seed44/federated_loop_history.json": "18148cd92fa947b8113548302e44373a703329aa1ba29b5d7abe6c33cd751fe1",
+    "norman_double_corrected/study_v3_seed42/definition.json": "4f9e29e766890e7fdcc89e5d1b28e447501ebaffa208df126126142691b35bf4",
+    "norman_double_corrected/study_v3_seed42/federated_direct_history.json": "894e1a8753751d1a8cd43cbae979ba963fd167dad1ba7ee2b449f389338fac54",
+    "norman_double_corrected/study_v3_seed42/federated_loop_history.json": "b7b79fa62c49c4ea42970ef63e2fada597a071cf2eca9f73ecd6be44d7717762",
+    "norman_double_corrected/study_v3_seed43/definition.json": "d01858c6ed12d9c3a146921b5bad5742e36e9cd3786be49091acee2aba5f493d",
+    "norman_double_corrected/study_v3_seed43/federated_direct_history.json": "0966169268f0ff048293aa5ba9b73b13a7a48f4928714165bb22d2af8709998e",
+    "norman_double_corrected/study_v3_seed43/federated_loop_history.json": "b4655b5dec3b9c6a2e1238e5780a4b2c83433dc2f3a1ba9001d6932b740a8e7d",
+    "norman_double_corrected/study_v3_seed44/definition.json": "01485be95105542cc2217cb92eacb2977d4e7cce55ad184221e3f5ef43a068e3",
+    "norman_double_corrected/study_v3_seed44/federated_direct_history.json": "c1ad8747f59e71ef827bd0a97659e4a6a5e2ac3c2fd63f4e157f161f44b00df7",
+    "norman_double_corrected/study_v3_seed44/federated_loop_history.json": "45d06bb4ca535ffb207bcee2f324f3267d60ec8301ca3e271c52bad3496a4fde",
+    "tahoe_drug_corrected/study_v3_seed42/definition.json": "acba8f773904276b0c1e289e621be89d5ec10a53ddbd31b05c775470ae8662f0",
+    "tahoe_drug_corrected/study_v3_seed42/federated_direct_history.json": "c4e8d56a42dd70db98fb6edf0aed21880cf641c23267519f61c0fe66dcc04862",
+    "tahoe_drug_corrected/study_v3_seed42/federated_loop_history.json": "92f7c6d19ed62d6b95e73d46dac79a58c5ad570988ab7c698f28133bbf06d3c6",
+    "tahoe_drug_corrected/study_v3_seed43/definition.json": "aed88951da3436812cdc9534b8904d392f9cc1cf87c7c26b63b7d2c2deec45b8",
+    "tahoe_drug_corrected/study_v3_seed43/federated_direct_history.json": "85518ab30cf19800b9c16a926a12029b164f764dbba3c39a86af7a2f7d362765",
+    "tahoe_drug_corrected/study_v3_seed43/federated_loop_history.json": "c0b142267700577494b1b0f266230c67bb5bc5f2805cb4edeba16685a413d3df",
+    "tahoe_drug_corrected/study_v3_seed44/definition.json": "e5495010e39f294628a350c7dd8b4ae9bce8ce1fd6f38f2f7878d7c8d46d106e",
+    "tahoe_drug_corrected/study_v3_seed44/federated_direct_history.json": "c42df1aecb96e47406c9f788af8767ef8033e7340fd30b5d8ef43c6b62fb638d",
+    "tahoe_drug_corrected/study_v3_seed44/federated_loop_history.json": "6d2313c0b6b976ce74854128c4399c215934cb1b5e6732e05df0001b88d25254"
+  }
+}

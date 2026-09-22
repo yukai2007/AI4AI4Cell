@@ -380,7 +380,7 @@ def build_story():
     main = [
         ["方法 / access", "DTI<br/>TAPB AUROC", "Proteomics<br/>AP", "VCC<br/>Top-1", "Norman<br/>Top-1", "Tahoe<br/>Top-1", "五端点<br/>均值"],
         ["Fixed recipe<br/>(1 lab)", "82.83", "<u>25.05</u>", "<u>29.94</u>", "<b>25.56</b>", "<u>19.40</u>", "<u>36.55</u>"],
-        ["Direct optimize<br/>(1 lab)", "<u>89.89</u>", "20.13", "21.09", "14.15", "15.42", "32.14"],
+        ["Direct optimization<br/>(1 lab)", "<u>89.89</u>", "20.13", "21.09", "14.15", "15.42", "32.14"],
         ["<b>AI4AI4Cell</b><br/>(10 labs)", "<b>93.76</b>", "<b>36.99</b>", "<b>31.54</b>", "<u>22.25</u>", "<b>22.39</b>", "<b>41.39</b>"],
     ]
     story += [table(main, [40 * mm, 22 * mm, 22 * mm, 22 * mm, 22 * mm, 22 * mm, 21 * mm], font="tiny", row_bgs=[(3, PALE_TEAL)])]

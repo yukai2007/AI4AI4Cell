@@ -262,11 +262,12 @@ def scores(snapshot, task, arm, metric=None):
 def table(snapshot, out, full=False):
     arms = ARMS if full else MAIN_ARMS
     if not full:
-        lines = [r'\begin{table}[h!]', r'\centering\small', r'\setlength{\tabcolsep}{3.5pt}',
+        lines = [r'\begin{table}[h!]', r'\centering\small', r'\setlength{\tabcolsep}{4pt}',
+            r'\renewcommand{\arraystretch}{1.08}',
             r'\begin{tabularx}{\linewidth}{@{}Xrrrrrr@{}}', r'\toprule',
-            r'\textbf{Method / access} & \multicolumn{1}{c}{DTI} & \multicolumn{1}{c}{Proteomics} & \multicolumn{3}{c}{Cell perturbation} & \multicolumn{1}{c}{Average} \\',
-            r' & TAPB & observed-response & VCC & Norman & Tahoe & five-endpoint \\',
-            r' & AUROC $\uparrow$ & AP $\uparrow$ & Top-1 $\uparrow$ & Top-1 $\uparrow$ & Top-1 $\uparrow$ & mean $\uparrow$ \\',
+            r'\textbf{Method} & \multicolumn{1}{c}{DTI} & \multicolumn{1}{c}{Proteomics} & \multicolumn{3}{c}{Cell perturbation} & \multicolumn{1}{c}{Overall} \\',
+            r'\cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(lr){4-6}\cmidrule(l){7-7}',
+            r' & \shortstack{TAPB\\AUROC $\uparrow$} & \shortstack{PTPC\\AP $\uparrow$} & \shortstack{VCC\\Top-1 $\uparrow$} & \shortstack{Norman\\Top-1 $\uparrow$} & \shortstack{Tahoe\\Top-1 $\uparrow$} & \shortstack{Mean\\5 endpoints} \\',
             r'\midrule']
         task_order = [task for task, _, _ in TASKS]
         by_arm = {}
@@ -300,11 +301,14 @@ def table(snapshot, out, full=False):
 
         for row_index, (arm, labs, name) in enumerate(arms):
             cells = [marked(value, column_ranks[column]) for column, value in enumerate(displayed[row_index])]
-            method = r'\textbf{AI4AI4Cell}' if arm == 'federated_loop' else name
+            method = ({'single_fixed': 'Fixed recipe', 'single_direct': 'Direct optimization'}
+                      .get(arm, r'\textbf{AI4AI4Cell}' if arm == 'federated_loop' else name))
+            if arm == 'federated_loop':
+                lines.append(r'\midrule')
             lines.append(f'{method} ({labs} lab' + ('' if labs == '1' else 's') + ') & ' +
                          ' & '.join(cells) + r' \\')
         lines += [r'\bottomrule', r'\end{tabularx}',
-            r'\caption{Main held-out comparison across three biological task families and five explicit endpoints. Fixed recipe and feedback-free direct search use one laboratory; AI4AI4Cell uses ten. Values are completed-seed means multiplied by 100. The final column is an unweighted descriptive mean over the five displayed endpoints, not a separate primary endpoint. Bold and underline mark the best and runner-up displayed values within each column. Exact seed counts, sample SD, all six factorial arms and secondary metrics are in Appendix R.}',
+            r'\caption{Main held-out comparison across three biological task families and five endpoints. Fixed recipe and feedback-free direct search use one laboratory; AI4AI4Cell uses ten. PTPC denotes observed-response proteomic efficacy. Values are completed-seed means multiplied by 100. Overall is an unweighted descriptive mean, not a separate biological endpoint. Bold and underline mark the best and runner-up within each column. Exact seed counts, sample SD, all six factorial arms and secondary metrics are in Appendix R.}',
             r'\label{tab:strong-main}', r'\end{table}']
         (out/'main.tex').write_text('\n'.join(lines)+'\n')
         return
@@ -353,10 +357,12 @@ def effects(snapshot,out,full=False):
             ('Feedback effect', 'federated_loop', 'federated_direct'),
             ('Participation effect', 'federated_loop', 'single_loop'),
         ]
-        lines = [r'\begin{table}[h!]', r'\centering\small', r'\setlength{\tabcolsep}{5pt}',
+        lines = [r'\begin{table}[h!]', r'\centering\small', r'\setlength{\tabcolsep}{7pt}',
+            r'\renewcommand{\arraystretch}{1.08}',
             r'\begin{tabularx}{\linewidth}{@{}Xrrr@{}}', r'\toprule',
-            r'Benchmark & Search & Feedback & Participation \\',
-            r' & loop $-$ fixed (10 labs) & loop $-$ direct (10 labs) & 10 $-$ 1 labs (loop) \\', r'\midrule']
+            r'\textbf{Benchmark} & \shortstack{Design search\\10 labs} & '
+            r'\shortstack{Feedback\\10 labs} & \shortstack{Participation\\loop fixed} \\',
+            r'\midrule']
         for task, _, _ in TASKS:
             cells = []
             for _, a, b in comparisons:
@@ -365,7 +371,7 @@ def effects(snapshot,out,full=False):
                 cells.append(f'{statistics.mean(values):+.2f}' if values else 'N/A')
             lines.append(row_labels[task] + ' & ' + ' & '.join(cells) + r' \\')
         lines += [r'\bottomrule', r'\end{tabularx}',
-            r'\caption{Factorial attribution on the same five endpoints, in percentage points. Search compares the complete loop with the fixed recipe at ten laboratories. Feedback compares loop with matched-budget direct search at the same ten-laboratory access. Participation compares ten with one laboratory while holding loop research fixed; it expands training data, development evidence and computation. Negative effects and measured ties are retained. Seed-level effects and uncertainty appear in Appendix R.}',
+            r'\caption{Factorial attribution on the same five held-out endpoints, in percentage points. Design search is loop $-$ fixed at ten laboratories; feedback is loop $-$ matched-budget direct at ten laboratories; participation is ten $-$ one laboratory with the loop fixed. Participation expands training data, development evidence and computation. Negative effects and measured ties are retained. Seed-level effects and uncertainty appear in Appendix R.}',
             r'\label{tab:strong-effects}', r'\end{table}']
         (out/'effects.tex').write_text('\n'.join(lines)+'\n')
         return

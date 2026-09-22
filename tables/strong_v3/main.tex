@@ -1,17 +1,19 @@
 \begin{table}[h!]
 \centering\small
-\setlength{\tabcolsep}{3.5pt}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.08}
 \begin{tabularx}{\linewidth}{@{}Xrrrrrr@{}}
 \toprule
-\textbf{Method / access} & \multicolumn{1}{c}{DTI} & \multicolumn{1}{c}{Proteomics} & \multicolumn{3}{c}{Cell perturbation} & \multicolumn{1}{c}{Average} \\
- & TAPB & observed-response & VCC & Norman & Tahoe & five-endpoint \\
- & AUROC $\uparrow$ & AP $\uparrow$ & Top-1 $\uparrow$ & Top-1 $\uparrow$ & Top-1 $\uparrow$ & mean $\uparrow$ \\
+\textbf{Method} & \multicolumn{1}{c}{DTI} & \multicolumn{1}{c}{Proteomics} & \multicolumn{3}{c}{Cell perturbation} & \multicolumn{1}{c}{Overall} \\
+\cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(lr){4-6}\cmidrule(l){7-7}
+ & \shortstack{TAPB\\AUROC $\uparrow$} & \shortstack{PTPC\\AP $\uparrow$} & \shortstack{VCC\\Top-1 $\uparrow$} & \shortstack{Norman\\Top-1 $\uparrow$} & \shortstack{Tahoe\\Top-1 $\uparrow$} & \shortstack{Mean\\5 endpoints} \\
 \midrule
-Fixed model (1 lab) & 82.83 & \underline{25.05} & \underline{29.94} & \textbf{25.56} & \underline{19.40} & \underline{36.55} \\
-Direct optimize (1 lab) & \underline{89.89} & 20.13 & 21.09 & 14.15 & 15.42 & 32.14 \\
+Fixed recipe (1 lab) & 82.83 & \underline{25.05} & \underline{29.94} & \textbf{25.56} & \underline{19.40} & \underline{36.55} \\
+Direct optimization (1 lab) & \underline{89.89} & 20.13 & 21.09 & 14.15 & 15.42 & 32.14 \\
+\midrule
 \textbf{AI4AI4Cell} (10 labs) & \textbf{93.76} & \textbf{36.99} & \textbf{31.54} & \underline{22.25} & \textbf{22.39} & \textbf{41.39} \\
 \bottomrule
 \end{tabularx}
-\caption{Main held-out comparison across three biological task families and five explicit endpoints. Fixed recipe and feedback-free direct search use one laboratory; AI4AI4Cell uses ten. Values are completed-seed means multiplied by 100. The final column is an unweighted descriptive mean over the five displayed endpoints, not a separate primary endpoint. Bold and underline mark the best and runner-up displayed values within each column. Exact seed counts, sample SD, all six factorial arms and secondary metrics are in Appendix R.}
+\caption{Main held-out comparison across three biological task families and five endpoints. Fixed recipe and feedback-free direct search use one laboratory; AI4AI4Cell uses ten. PTPC denotes observed-response proteomic efficacy. Values are completed-seed means multiplied by 100. Overall is an unweighted descriptive mean, not a separate biological endpoint. Bold and underline mark the best and runner-up within each column. Exact seed counts, sample SD, all six factorial arms and secondary metrics are in Appendix R.}
 \label{tab:strong-main}
 \end{table}

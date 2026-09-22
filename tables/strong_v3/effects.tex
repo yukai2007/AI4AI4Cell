@@ -1,10 +1,10 @@
 \begin{table}[h!]
 \centering\small
-\setlength{\tabcolsep}{5pt}
+\setlength{\tabcolsep}{7pt}
+\renewcommand{\arraystretch}{1.08}
 \begin{tabularx}{\linewidth}{@{}Xrrr@{}}
 \toprule
-Benchmark & Search & Feedback & Participation \\
- & loop $-$ fixed (10 labs) & loop $-$ direct (10 labs) & 10 $-$ 1 labs (loop) \\
+\textbf{Benchmark} & \shortstack{Design search\\10 labs} & \shortstack{Feedback\\10 labs} & \shortstack{Participation\\loop fixed} \\
 \midrule
 DTI: TAPB random split & +1.96 & +0.00 & +3.87 \\
 Proteomics: efficacy & -0.08 & +0.00 & +16.85 \\
@@ -13,6 +13,6 @@ Cell: Norman double-gene & +6.77 & +0.00 & +8.10 \\
 Cell: Tahoe drug & -3.48 & +0.00 & +6.97 \\
 \bottomrule
 \end{tabularx}
-\caption{Factorial attribution on the same five endpoints, in percentage points. Search compares the complete loop with the fixed recipe at ten laboratories. Feedback compares loop with matched-budget direct search at the same ten-laboratory access. Participation compares ten with one laboratory while holding loop research fixed; it expands training data, development evidence and computation. Negative effects and measured ties are retained. Seed-level effects and uncertainty appear in Appendix R.}
+\caption{Factorial attribution on the same five held-out endpoints, in percentage points. Design search is loop $-$ fixed at ten laboratories; feedback is loop $-$ matched-budget direct at ten laboratories; participation is ten $-$ one laboratory with the loop fixed. Participation expands training data, development evidence and computation. Negative effects and measured ties are retained. Seed-level effects and uncertainty appear in Appendix R.}
 \label{tab:strong-effects}
 \end{table}

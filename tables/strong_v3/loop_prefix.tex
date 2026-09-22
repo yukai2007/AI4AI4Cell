@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{6pt}
+\begin{tabular}{rrrrr}
+\toprule
+Proposal budget & Loop better & Tie & Direct better & Mean $\Delta$ primary \\
+ & \multicolumn{3}{c}{task--seed trajectories} & points \\
+\midrule
+1 & 0 & 15 & 0 & +0.00 \\
+2 & 2 & 13 & 0 & +0.78 \\
+3 & 0 & 14 & 1 & -0.04 \\
+4 & 0 & 15 & 0 & +0.00 \\
+5 & 0 & 14 & 1 & -0.02 \\
+6 & 0 & 15 & 0 & +0.00 \\
+\bottomrule
+\end{tabular}
+\caption{Development-only executed-prefix analysis of all 15 ten-laboratory V3 trajectories. Each row truncates the already executed direct and feedback-guided histories at the stated common proposal budget; no model is retrained and no held-out score is consulted. At two proposals, the positive cases are TAPB seed 44 (+4.84) and Norman seed 42 (+6.90) percentage points. All budgets are shown; this post-hoc diagnostic is evidence of early search efficiency, not an additional held-out endpoint.}
+\label{tab:loop-prefix}
+\end{table}
