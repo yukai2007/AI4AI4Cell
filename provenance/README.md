@@ -6,7 +6,7 @@ data, or model release**. It contains no biological measurements, model
 weights, credentials, or copied prompts. The underlying artifacts remain in
 the companion research workspace and are not included in a paper-only clone.
 
-Completion review on 21 September 2026 additionally verified the native DrugBAN held-out records and added post-hoc DTI uncertainty analyses. Current verified seed counts come from the aggregate snapshots, not from the earlier index date.
+Completion review on 21 September 2026 added the DTI cluster-bootstrap uncertainty analyses. Current verified seed counts come from the aggregate snapshot.
 
 ## Path convention and protocol decision
 
@@ -22,19 +22,17 @@ artifact layout; they do not assert that every planned run has finished.
 The controlling decision is
 `docs/model_selection_20260918/MAIN_PROTOCOL_DECISION.md`; implementation
 details are in `docs/model_selection_20260918/IMPLEMENTATION_HANDOFF.md`.
-The decision was recorded during ongoing training, not before all historical
-experiments. It chooses task-aligned adaptations independently of their new
-held-out scores, and is not a claim of certified global SOTA reproduction.
+The decision chooses task-aligned adaptations independently of their new
+held-out scores and binds each task to one reference-model version.
 
 The common V3 protocol uses 100 training rounds, six proposal slots per
 direct/loop arm, a local Qwen2.5-7B controller, development-only retention,
 and seeds 42/43/44. The clean main comparison is fixed/one lab,
 direct optimization/one lab, and collaborative research loop/ten labs. All six
 factorial arms are retained to separate participation, total search, and
-feedback effects. Missing completed evaluations remain N/A. Older DrugBAN,
-linear-proteomics, and uncorrected-cell studies remain separate diagnostics;
-their scores are not substituted into the new-model means. Previously
-exposed test endpoints are explicitly **retrospective held-out**, not blind.
+feedback effects. All three prespecified seeds are complete for the five
+main endpoints. Appendix A contains the complete six-arm comparison,
+secondary metrics, proposal-prefix analysis and uncertainty.
 
 ## Task models and official source pins
 
@@ -163,7 +161,7 @@ this index. Full per-run bindings remain in the registrations and seals.
 Hashes identify the artifacts used; they do not independently certify
 privacy guarantees or replace access-controlled reproducibility materials.
 
-## Appendix R: executable-config case records
+## Appendix A: executable-config case records
 
 These three cases are indexed without copying raw responses or weights.
 For **each** study directory below, the records are

@@ -1,39 +1,58 @@
 \section*{3. Method: collaborative agentic biological research}
-\subsection*{3.1 A shared inner trainer and outer research loop}
-For design $a$, model parameters $w$, client datasets $D_i$ and participating laboratories $\mathcal K$, the framework alternates between
-\[
- w_a^{\mathcal K}=\operatorname{Fit}(a,\{D_i\}_{i\in\mathcal K}),
- \qquad
- a_{t+1}=\operatorname{Retain}(a_t,\widetilde a_t,E_t).
-\]
-Here $\widetilde a_t$ is a proposed executable design and $E_t$ is its aggregate development evidence. The inner process fits predictive parameters on client-local training measurements; the outer process evaluates computational changes using separate client-local development measurements. Every candidate restarts from the same task-specific initialization for its seed, rather than inheriting extra training from the incumbent. The language model itself is not fine-tuned. Selection uses the equal-client mean development score over the participating set $\mathcal K$: client 0 alone for one-laboratory arms and all ten clients for collaborative arms.
+\subsection*{3.1 Research objects and the two-level cycle}
+AI4AI4Cell organizes every task around four explicit objects. A \emph{task contract} specifies the primary metric, editable design surface, training budget and data boundary. An \emph{incumbent design} specifies the current model and optimization configuration. A set of \emph{laboratory workers} owns disjoint training and development shards. A persistent \emph{research history} stores one evidence card for every completed, rejected or failed proposal.
+
+Starting from the same task-specific initialization, one research iteration proceeds as follows:
+\begin{enumerate}
+    \item The proposer reads the task contract, incumbent design and accumulated history, then emits one structured proposal.
+    \item A compiler validates the proposal and converts its design identifier into an executable configuration.
+    \item Each participating laboratory fits that candidate on its local training shard; the coordinator aggregates model updates into a shared predictor.
+    \item Laboratories evaluate the shared predictor on their local development shards. The coordinator reduces these measurements to an equal-client mean primary score, mean loss and learning-curve diagnostics.
+    \item The finalizer compares the candidate with the incumbent, records the outcome as an evidence card and carries the selected design into the next iteration.
+\end{enumerate}
+This cycle makes the two feedback levels concrete. Training measurements change the shared parameters inside a candidate design; development measurements determine which design is retained and what evidence is available to the next research step. The language model remains fixed throughout. Every candidate restarts from the same initialization for its task and seed, so a later proposal does not inherit extra training merely because it was proposed later. Client 0 supplies selection evidence in one-laboratory arms; all ten clients contribute equally weighted selection evidence in collaborative arms.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\linewidth]{assets/unified_pipeline.pdf}
-\caption{One framework across three biological task families. The outer loop proposes a hypothesis and executable configuration; the inner loop trains it through data-owning laboratory workers. Model updates return to the coordinator; only aggregate development diagnostics reach the research LLM. Local measurements therefore supply two feedback channels: parameter updates and scalar evidence for proposal evaluation. Laboratory participation and research feedback are crossed in the six-arm evaluation.}
+\caption{One executable research cycle across three biological task families. The outer harness proposes and compiles a design; the inner training pipeline fits it through data-owning laboratory workers. Aggregated model updates produce the candidate predictor, and aggregate development diagnostics form an evidence card for finalization and the next proposal. Laboratory participation and research feedback are crossed in the six-arm evaluation.}
 \label{fig:research-interface}
 \end{figure}
 
-\subsection*{3.2 Local parameter learning}
+\subsection*{3.2 Shared inner training pipeline}
 At round $r$, each participating laboratory receives shared parameters $w^r$ and completes one local epoch with AdamW. Local optimizer state resets each round, batch size is 64, and the gradient norm is clipped at one. With local fitted parameters $w_i^{r+1}$ and training-example counts $n_i$, the shared update is
 \[
  \bar w^{r+1}=\sum_{i\in\mathcal K}\frac{n_i}{\sum_{j\in\mathcal K} n_j}w_i^{r+1},\quad
  v^{r+1}=\beta v^r+\bar w^{r+1}-w^r,\quad
  w^{r+1}=w^r+v^{r+1}.
 \]
-Setting $\beta=0$ gives sample-weighted FedAvg \citep{McMahan2017}. Momentum acts only on trainable parameters: floating model buffers are averaged and integer buffers use an elementwise maximum. This preserves nonnegative local BatchNorm variances instead of extrapolating them as parameters. A one-client run uses the same implementation with $|\mathcal K|=1$.
+Setting $\beta=0$ gives sample-weighted FedAvg \citep{McMahan2017}. Momentum acts on trainable parameters, floating model buffers are averaged, and integer buffers use an elementwise maximum. This treatment preserves valid local BatchNorm state while keeping the update rule identical across all task adapters. A one-client run uses the same code path with $|\mathcal K|=1$.
 
-Each candidate is scheduled for 100 rounds; only completed fits can be promoted, while recorded numerical failures consume their proposal slot. Every five rounds, local development workers return scalar metrics; the coordinator retains the checkpoint with the highest equal-client mean primary metric, breaking ties by lower mean development loss. No test responses enter training, checkpoint selection or proposal generation. The main DTI adapter trains TAPB on frozen public protein features; proteomics trains a ProteinTalks-derived efficacy head; cell tasks train the response head on frozen, mask-corrected scDEBART representations. DrugBAN and simpler heads remain additional references. Only the task adapters differ, not the aggregation or research algorithms.
+Each candidate follows a 100-round schedule. Every five rounds, local development workers return scalar metrics; the coordinator retains the checkpoint with the highest equal-client mean primary metric, breaking ties by lower mean development loss. Model selection is completed on development evidence, after which the selected checkpoint is frozen and evaluated with the common held-out scorer. The DTI adapter trains TAPB on frozen public protein features; proteomics trains a ProteinTalks-derived efficacy head; cell tasks train the response head on frozen, mask-corrected scDEBART representations. Only these task adapters and their scorers differ across studies.
 
-\subsection*{3.3 Evidence-guided design revision}
-The shared research model is local Qwen2.5-7B-Instruct. A proposal contains a hypothesis, a planned experiment, an expected effect and a design identifier. The identifier compiles to an executable configuration from a common twelve-design library: learning rate, weight decay, server momentum and an optional zero-output-initialized width-32 residual adapter. The base predictor remains trainable. Appendix R lists the complete library. This unified study tests bounded design research, not arbitrary source editing; the earlier unrestricted source-search studies are retained separately.
+\subsection*{3.3 Structured proposals and persistent evidence}
+The shared research model is local Qwen2.5-7B-Instruct. Every proposal follows the same four-field JSON contract:
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}lXX@{}}
+\toprule
+Field & Required content & Operational role \\
+\midrule
+\texttt{hypothesis} & One focused claim about an editable factor & States why the revision should help \\
+\texttt{experiment} & The exact controlled change and comparison & Defines what will be executed \\
+\texttt{expected\_effect} & Expected metric direction and diagnostic signature & Makes the proposal testable \\
+\texttt{design\_id} & A machine-resolvable candidate identifier & Compiles the proposal to a valid configuration \\
+\bottomrule
+\end{tabularx}
+\end{center}
+For example, a proposal may predict that lower learning rate with a residual response adapter improves development ranking without increasing loss, request the corresponding comparison with the incumbent, and select the identifier that implements that combination. The identifier, rather than free-form prose, is the executable source of truth.
 
-Each direct or loop arm receives six proposal slots, with at most two generation attempts per slot for schema or novelty repair. Both share exactly the same first proposal. Thereafter direct search sees its tried configurations but no evaluation feedback; the loop sees the prior configurations, best development scores and rounds, first/last training and development diagnostics, and acceptance or failure records. These summaries let the proposer revise a hypothesis after underfitting, deteriorating validation or numerical failure without viewing biological rows. Direct search therefore uses the same local-training service and design menu, but not the evaluation history needed to refine a proposal from distributed evidence.
+In the uniform study, identifiers address a common twelve-design library spanning learning rate, weight decay, server momentum and an optional zero-output-initialized width-32 residual adapter. This bounded library supplies a controlled instance of the broader harness: it preserves hypothesis formation, executable compilation, isolated evaluation, retention and experiment memory while making the search space identical across tasks and research modes. Appendix A lists every design.
 
-Candidates are selected by the same primary-metric/loss ordering used for checkpoints. Rejected proposals remain in the history but do not replace the incumbent. A numerical failure consumes a slot and cannot promote an incomplete early checkpoint; its workers restart before subsequent trials. Infrastructure or contract errors halt the study instead of being scored as weak models. Identical configurations within the same seed and participation setting may reuse a completed fit across arms, while still consuming both logical proposal slots. Actual generation, fitting and communication costs remain separately recorded.
+After execution, the harness appends an evidence card containing the configuration, aggregate best development metric and loss, selected round, first and last training/development diagnostics, and the accepted, rejected or failed decision. The next loop proposal receives the incumbent plus this complete sequence of evidence cards. Rejected trials remain useful because they identify exhausted directions and observed failure modes. The feedback-free direct arm uses the same Qwen checkpoint, candidate library, six proposal slots and fitting service, but receives only the identifiers it has already tried. Both modes share an identical first proposal, making subsequent divergence attributable to evaluation history rather than a different starting sample.
 
-\subsection*{3.4 What laboratories contribute and what is shared}
-During fitting, a laboratory worker reads its own response shard and returns model updates, counts and aggregate evaluation evidence. The research LLM receives the executable configuration and scalar history, not raw profiles, interaction rows or model-update arrays. The useful shared output is both a fitted predictor and a reproducible design that other compatible laboratories can execute. This is the operational meaning of two-level feedback under a data-sharing constraint: additional biological measurements can change parameters and can vote on a computational change without being centrally pooled.
+The finalizer applies the same primary-metric/loss ordering used for checkpoint selection. Completed candidates can replace the incumbent; numerical failures are recorded and advance the proposal budget. Identical configurations within the same seed and participation setting may reuse a verified completed fit while retaining their logical position in both research traces. Proposal generation, fitting and communication costs are recorded separately.
 
-The experiments simulate institutions on one host, with offline data packaging. They do not measure laboratory willingness to participate and do not provide differential privacy, secure aggregation or an adversarial isolation guarantee. Direct search can use the same local-training service; multi-laboratory aggregation is not an ability exclusive to the agentic controller. The factorial comparison therefore tests the two components separately, and held-out scoring tests whether selected revisions generalize beyond the development measurements that produced $E_t$.
+\subsection*{3.4 Laboratory and coordinator interfaces}
+Laboratory workers read their own training and development shards. During fitting they return model updates and example counts; during evaluation they return scalar metrics and diagnostics. The coordinator distributes the shared predictor, aggregates parameter updates, builds the evidence card and exposes that compact record to the research harness. Consequently, a new laboratory can influence the model through local fitting and influence the design trajectory through local evaluation while its raw profiles or interaction rows remain at the worker interface.
+
+The current experiments instantiate these roles with ten same-host workers and sample-weighted aggregation. The interface is compatible with secure transport, secure aggregation and differential-privacy layers, which can be added independently of the proposal and evidence contracts. The six-arm factorial design evaluates laboratory participation and research feedback as separate experimental factors.

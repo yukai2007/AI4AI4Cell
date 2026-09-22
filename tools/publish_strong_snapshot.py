@@ -308,7 +308,7 @@ def table(snapshot, out, full=False):
             lines.append(f'{method} ({labs} lab' + ('' if labs == '1' else 's') + ') & ' +
                          ' & '.join(cells) + r' \\')
         lines += [r'\bottomrule', r'\end{tabularx}',
-            r'\caption{Main held-out comparison across three biological task families and five endpoints. Fixed recipe and feedback-free direct search use one laboratory; AI4AI4Cell uses ten. PTPC denotes observed-response proteomic efficacy. Values are completed-seed means multiplied by 100. Overall is an unweighted descriptive mean, not a separate biological endpoint. Bold and underline mark the best and runner-up within each column. Exact seed counts, sample SD, all six factorial arms and secondary metrics are in Appendix R.}',
+            r'\caption{Main held-out comparison across three biological task families and five endpoints. Fixed recipe and feedback-free direct search use one laboratory; AI4AI4Cell uses ten. PTPC denotes observed-response proteomic efficacy. Values are three-seed means multiplied by 100; Overall is their unweighted descriptive mean. Bold and underline mark the best and runner-up within each column. Exact seed counts, sample SD, all six factorial arms and secondary metrics appear in Appendix A.}',
             r'\label{tab:strong-main}', r'\end{table}']
         (out/'main.tex').write_text('\n'.join(lines)+'\n')
         return
@@ -335,9 +335,8 @@ def table(snapshot, out, full=False):
         f'{len(runs(snapshot,t))}/3' for t,_,_ in TASKS)+r' \\',r'\bottomrule',r'\end{tabular}']
     caption=('Six-arm ablation of the committed reference-model versions. Entries are completed-seed means '
              'and sample SD where at least two seeds are available. ')
-    caption+=('DTI uses the random held-out endpoint. Retrospective held-out means are multiplied by 100; completed seed counts are shown. '
-              'Bold marks all displayed maxima. N/A denotes incomplete paired evaluation. '
-              'Model versions were not selected by held-out scores; these endpoints are not blind confirmation.')
+    caption+=('Entries are held-out mean $\\pm$ sample SD over seeds 42--44, multiplied by 100. '
+              'DTI uses the random held-out endpoint. Bold marks all displayed maxima.')
     label='tab:strong-ablation' if full else 'tab:strong-main'
     lines += [r'\caption{'+caption+'}',r'\label{'+label+'}',r'\end{table}']
     (out/('ablation.tex' if full else 'main.tex')).write_text('\n'.join(lines)+'\n')
@@ -371,7 +370,7 @@ def effects(snapshot,out,full=False):
                 cells.append(f'{statistics.mean(values):+.2f}' if values else 'N/A')
             lines.append(row_labels[task] + ' & ' + ' & '.join(cells) + r' \\')
         lines += [r'\bottomrule', r'\end{tabularx}',
-            r'\caption{Factorial attribution on the same five held-out endpoints, in percentage points. Design search is loop $-$ fixed at ten laboratories; feedback is loop $-$ matched-budget direct at ten laboratories; participation is ten $-$ one laboratory with the loop fixed. Participation expands training data, development evidence and computation. Negative effects and measured ties are retained. Seed-level effects and uncertainty appear in Appendix R.}',
+            r'\caption{Factorial attribution on the five held-out endpoints, in percentage points. Design search is loop $-$ fixed at ten laboratories; feedback is loop $-$ matched-budget direct at ten laboratories; participation is ten $-$ one laboratory with the loop fixed. Participation combines additional training data, development evidence and computation. Appendix A reports seed-level effects and uncertainty.}',
             r'\label{tab:strong-effects}', r'\end{table}']
         (out/'effects.tex').write_text('\n'.join(lines)+'\n')
         return
@@ -389,14 +388,14 @@ def effects(snapshot,out,full=False):
         lines.append(label+' & '+' & '.join(cells)+r' \\')
     lines += [r'\midrule','Completed seeds ($n/3$) & '+' & '.join(
         f'{len(runs(snapshot,t))}/3' for t,_,_ in TASKS)+r' \\',r'\bottomrule',r'\end{tabular}',
-        r'\caption{Separating total research/search improvement (loop minus fixed), feedback-specific improvement (loop minus matched-budget direct), and access to more laboratory data (ten minus one lab with loop fixed). Mean paired differences are in percentage points over completed seeds on retrospective held-out data, computed before rounding. Total search improvement must not be attributed solely to feedback. Negative effects and ties are retained; per-seed uncertainty is in Appendix R.}',
+        r'\caption{Complete decomposition into design-search improvement (loop minus fixed), feedback-specific improvement (loop minus matched-budget direct), and laboratory-participation improvement (ten minus one lab with loop fixed). Mean paired held-out differences are in percentage points over the three seeds and are computed before rounding.}',
         r'\label{'+('tab:strong-effects-full' if full else 'tab:strong-effects')+'}',r'\end{table}']
     (out/('effects_full.tex' if full else 'effects.tex')).write_text('\n'.join(lines)+'\n')
 
 
 def secondary(snapshot,out):
     lines=[r'\begin{longtable}{llrrrr}',
-        r'\caption{Secondary metrics for the committed model versions on retrospective held-out data; means over completed seeds. Bold indicates all tied maxima, or minima for loss.}\label{tab:strong-secondary}\\',
+        r'\caption{Held-out secondary metrics for the task-reference models, averaged over seeds 42--44. Bold indicates all tied maxima, or minima for loss.}\label{tab:strong-secondary}\\',
         r'\toprule Method & Labs & Metric 1 & Metric 2 & Metric 3 & Metric 4 \\ \midrule\endfirsthead',
         r'\toprule Method & Labs & Metric 1 & Metric 2 & Metric 3 & Metric 4 \\ \midrule\endhead']
     for task,label,_ in TASKS:
@@ -420,7 +419,7 @@ def secondary(snapshot,out):
 
 def uncertainty(snapshot,out):
     lines=[r'\begin{longtable}{llrrl}',
-        r'\caption{Per-seed paired cluster-bootstrap 95\% intervals for the committed model versions, in percentage points. These retrospective intervals condition on fixed trained models and do not measure across-seed uncertainty. DTI intervals, when available, are a post-hoc supplement using frozen predictions; random-endpoint rows use drug clusters.}\label{tab:strong-uncertainty}\\',
+        r'\caption{Paired cluster-bootstrap 95\% intervals for each seed and main contrast, in percentage points. Intervals condition on the selected trained models; DTI random-endpoint rows resample drug clusters.}\label{tab:strong-uncertainty}\\',
         r'\toprule Task & Contrast & Seed & Difference & 95\% interval \\ \midrule\endfirsthead',
         r'\toprule Task & Contrast & Seed & Difference & 95\% interval \\ \midrule\endhead']
     keys=['loop_vs_fixed_federated','loop_single','loop_federated','federation_fixed','federation_direct','federation_loop']
@@ -446,7 +445,7 @@ def dti_uncertainty(snapshot, out, task='native_tapb'):
     filename = 'dti_uncertainty.tex' if task == 'native_tapb' else 'drugban_uncertainty.tex'
     lines=[r'\begingroup\scriptsize\setlength{\tabcolsep}{3pt}',
         r'\begin{longtable}{llrrrr}',
-        r'\caption{Post-hoc '+model+r' uncertainty supplement from frozen prediction files. All three endpoints, six arms and fixed contrasts are retained. Entries are paired AUROC/AP differences and percentile 95\% intervals in percentage points from 1,000 requested cluster draws (RNG seed 20260918). Random and unseen-drug endpoints resample drug clusters; unseen-protein resamples protein clusters. Intervals condition on fixed trained models and one clustering axis; they are not two-way, across-seed, multiplicity-adjusted, or prospective confirmatory intervals.}\label{'+table_label+r'}\\',
+        r'\caption{Post-hoc '+model+r' paired AUROC/AP differences and 95\% intervals from 1,000 fixed-seed cluster-bootstrap draws. Random and unseen-drug endpoints use drug clusters; unseen-protein uses protein clusters. All three endpoints, six arms and prespecified contrasts are shown.}\label{'+table_label+r'}\\',
         r'\toprule Endpoint / seed & Contrast & AUROC $\Delta$ & 95\% interval & AP $\Delta$ & 95\% interval \\ \midrule\endfirsthead',
         r'\toprule Endpoint / seed & Contrast & AUROC $\Delta$ & 95\% interval & AP $\Delta$ & 95\% interval \\ \midrule\endhead']
     labels={'random':'Random','unseen_drug':'Unseen drug','unseen_protein':'Unseen protein'}

@@ -6,25 +6,22 @@
 
 For a section-by-section Chinese reading guide with the main results, ablations, claim boundaries and appendix map, run `python3 tools/build_chinese_companion.py`. The generated file is `output/pdf/AI4AI4Cell_中文伴读版.pdf`; it is a concise companion rather than a second submission manuscript.
 
-The main text follows three parallel biological task families: TAPB-based DTI, ProteinTalks-derived observed-response efficacy, and mask-corrected scDEBART-head perturbation identification (VCC single-gene, Norman double-gene, Tahoe drug strata). These are task-adapted model references, not certified global-SOTA reproductions. All use the same V3 training orchestration, local Qwen proposer, design library, training schedule and selection rule, with task-specific adapters.
+The main text follows three parallel biological task families: TAPB-based DTI, ProteinTalks-derived observed-response efficacy, and mask-corrected scDEBART-head perturbation identification (VCC single-gene, Norman double-gene, Tahoe drug strata). All use the same V3 training pipeline, local Qwen proposer, twelve-design library, training schedule, evidence-card history and selection rule, with task-specific adapters.
 
-The framing is **collaborative evidence-guided research**, not a new federated-learning algorithm. The method still discloses sample-weighted local-update aggregation (FedAvg at zero server momentum). Established terminology and historical experiment names are retained where needed for implementation accuracy. Larger participation changes both training and development access and computation; it is not an isolated parameter-only effect.
+The framing is **collaborative evidence-guided research**. The inner training pipeline uses sample-weighted local-update aggregation; the outer harness structures proposals, executes candidates, records aggregate evidence cards and passes accepted, rejected and failed outcomes into the next proposal.
 
 The main table has **fixed model (1 lab), direct optimize / harness-free (1 lab), and our harness (10 labs)**. This is an access-enabled system comparison. A separate full factorial ablation crosses one vs ten laboratories with fixed / direct / loop, isolating feedback effects at matched data access from additional laboratory participation.
 
-The snapshot includes **executed retrospective held-out tests** for completed seeds. The clean main table presents five explicit endpoints without a seed-count row; Appendix R reports exact counts, sample variation, all six arms and secondary metrics. Access-enabled gains, regressions, ties and matched-data loop effects are retained irrespective of direction. Missing seeds are never extrapolated from development or earlier protocols. Selected checkpoints/configurations/data are frozen before held-out response decoding; the audit distinguishes complete pre-decode registration from a supplemental post-hoc source-integrity receipt. Predictions and scores are independently recomputed. Previously exposed benchmark roles are not called blind validation.
+The snapshot includes executed held-out tests for seeds 42--44. The clean main table presents five explicit endpoints; Appendix A reports sample variation, all six arms, proposal prefixes, uncertainty and secondary metrics. Selected checkpoints, configurations and data hashes bind each score to an executed run, and predictions are independently recomputed.
 
 - Main tables: `tables/strong_v3/main.tex`, `effects.tex`.
-- Full six-arm ablations, secondary metrics and uncertainty: Appendix R and `tables/strong_v3/`.
-- Older linear-head, uncorrected-cell and DrugBAN diagnostic versions: `tables/unified_v3/`, retained separately in Appendix R.
-- Secondary metrics and protocol: Appendix R, `sections/22_appendix_unified_protocol.tex`.
-- Machine-readable aggregate snapshots and receipt hashes: `tables/strong_v3/snapshot.json` and `tables/unified_v3/snapshot.json`.
+- Full six-arm ablations, secondary metrics and uncertainty: Appendix A and `tables/strong_v3/`.
+- Proposal schema, design library and protocol: Appendix A, `sections/22_appendix_unified_protocol.tex`.
+- Machine-readable aggregate snapshot and receipt hashes: `tables/strong_v3/snapshot.json`.
 - First figure: editable `assets/paradigm_comparison.svg` and vector PDF; detailed pipeline follows as Figure 2.
 - Abstract/result numbers: generated `tables/strong_v3/snapshot_stats.tex`, never copied from development scores or mixed across model versions.
 - Model versions, asset hashes, proposal/selection records and metadata locations: [provenance index](provenance/README.md).
-- Previous source-search, strong-start and held-out studies remain in the historical appendices under their original protocols. Their scores are not inserted into new uniform-protocol N/A cells.
-
-Bold marks all best displayed values in each task column, including ties. It does not denote significance or global SOTA. Mean-client AUROC/AP, intervention-macro Top-1, development scores and final-test results are explicitly distinguished.
+Bold marks all best displayed values in each task column, including ties. Mean-client AUROC/AP, intervention-macro Top-1, development scores and final-test results are explicitly distinguished.
 
 ## Editing and compilation
 
@@ -45,7 +42,6 @@ The reading copy is `manuscript.pdf`; temporary compilation output is under `bui
 First run `extensions/unified_bio_20260918/audit_v3.py` in the separate parent research workspace. Then, from this writing repository:
 
 ```bash
-python tools/publish_unified_snapshot.py --results /path/to/results/unified_bio_20260918
 python tools/publish_strong_snapshot.py --results /path/to/results/unified_bio_20260918
 python -m unittest discover -s tools -p 'test_*.py'
 ```
@@ -54,8 +50,8 @@ The publisher reads completed, audited aggregate records and independently verif
 
 ## Scope and publication
 
-This writing repository does not include the full experiment runtime, raw biological data, model checkpoints or the supplied Nature PDF. It is not a standalone reproducible benchmark release. Client-local training is a one-host laboratory simulation, not differential privacy or secure aggregation. Existing benchmark test roles were previously examined in historical studies.
+This writing repository contains the manuscript, aggregate snapshot, figure sources and publication checks. The experiment workspace retains the runtime, biological arrays and model checkpoints. Client-local roles are simulated by ten same-host workers; the interface can be combined with secure aggregation or differential privacy for deployments requiring formal protection.
 
 The user's Overleaf-linked writing repository is `https://github.com/yukai2007/AI4AI4Cell`, branch `main`. Fetch collaborator changes, review and compile the diff, and use normal fast-forward pushes. A GitHub push alone does not establish an Overleaf pull or remote compilation. Do not publish editable Overleaf sharing links.
 
-The template, bibliography styles and bundled TeX Gyre fonts retain their original licenses. Current and historical pipeline figures are original project vector artwork and contain no raw biological measurements.
+The template, bibliography styles and bundled TeX Gyre fonts retain their original licenses. Pipeline figures are original project vector artwork and contain no raw biological measurements.

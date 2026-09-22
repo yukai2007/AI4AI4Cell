@@ -6,14 +6,14 @@
 \usepackage[colorlinks=true,allcolors=blue]{hyperref}
 \usepackage{microtype}
 \begin{document}
-% Build with Tectonic 0.17.0 or XeLaTeX/BibTeX. No acceptance or submission is implied.
+% Build with Tectonic 0.17.0 or XeLaTeX/BibTeX.
 \title{AI4AI4Cell: Collaborative Evidence-Guided\\Research for Biological Model Improvement}
 \author{Anonymous}
 \date{}
 \maketitle
 \input{tables/strong_v3/snapshot_stats}
 \begin{abstract}
-Biological data are often distributed across institutions and data holders, where privacy and data-sharing constraints limit centralized access. A key challenge for self-improving AI in this setting is to use such distributed evidence to improve both model parameters and the computational solutions built around them. Collaborative learning typically optimizes fixed models, whereas automated model design and research generally rely on centralized training and evaluation signals. Bridging the two is nontrivial: distributed evidence must support not only optimization, but also the evaluation and refinement of computational changes that generalize beyond their local settings. To tackle this, we introduce AI4AI4Cell, a collaborative research framework that couples client-local parameter fitting with a distributed proposal--evaluation loop. Within this loop, local measurements provide feedback at both levels, jointly driving parameter optimization and executable proposal refinement. Across three biological settings spanning drug--target interaction prediction, observed-response proteomics, and cell perturbation, AI4AI4Cell demonstrates its applicability and offers a practical path toward self-improving biological AI under data-sharing constraints.
+Biological data are often distributed across institutions and data holders, where privacy and data-sharing constraints limit centralized access. A key challenge for self-improving AI in this setting is to use such distributed evidence to improve both model parameters and the computational solutions built around them. Collaborative learning typically optimizes fixed models, whereas automated model design and research generally rely on centralized training and evaluation signals. Bridging the two is nontrivial: distributed evidence must support not only optimization, but also the evaluation and refinement of computational changes that generalize beyond their local settings. To tackle this, we introduce AI4AI4Cell, a collaborative research framework that couples client-local parameter fitting with an evidence-guided proposal--evaluation loop. Local training shards update a shared predictor, while local development shards produce aggregate evidence cards that guide the next executable proposal. Across three biological settings spanning drug--target interaction prediction, observed-response proteomics, and cell perturbation, AI4AI4Cell demonstrates its applicability and offers a practical path toward self-improving biological AI under data-sharing constraints.
 \end{abstract}
 
 \input{sections/01_introduction}
@@ -31,57 +31,6 @@ Biological data are often distributed across institutions and data holders, wher
 \input{sections/07_conclusion}
 
 \input{sections/08_reproducibility}
-
-\input{sections/09_appendix_metrics}
-
-\input{sections/10_appendix_recovery}
-
-\input{sections/ptpc_protocol}
-
-\clearpage
-\input{sections/11_appendix_audit}
-
-\clearpage
-\input{sections/12_appendix_dti_protocol}
-
-\clearpage
-\section*{Appendix F. Complete historical twelve-epoch DTI metrics}
-\input{tables/dti_full_metrics}
-
-\clearpage
-\input{tables/ptpc_secondary}
-
-\clearpage
-\input{tables/ptpc_costs}
-\input{tables/ptpc_cases}
-\input{sections/14_appendix_ptpc_case_interpretation}
-
-\clearpage
-\input{sections/13_appendix_cell_contracts}
-
-\clearpage
-\input{tables/ptpc_diagnostics}
-
-\clearpage
-\input{sections/15_appendix_federated_training}
-
-\clearpage
-\input{sections/16_appendix_full_training}
-
-\clearpage
-\input{sections/17_appendix_program_search}
-
-\clearpage
-\input{sections/18_appendix_historical_studies}
-
-\clearpage
-\input{sections/19_appendix_federated_cv}
-
-\clearpage
-\input{sections/20_appendix_strong_start}
-
-\clearpage
-\input{sections/21_appendix_trainable_cell}
 
 \clearpage
 \input{sections/22_appendix_unified_protocol}

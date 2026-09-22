@@ -1,17 +1,17 @@
-\section*{Appendix R. Uniform collaborative research protocol and current snapshot}
+\section*{Appendix A. Uniform collaborative research protocol}
 \label{app:unified}
 \setcounter{table}{0}
-\renewcommand{\thetable}{R.\arabic{table}}
-\renewcommand{\theHtable}{R.\arabic{table}}
+\renewcommand{\thetable}{A.\arabic{table}}
+\renewcommand{\theHtable}{A.\arabic{table}}
 \makeatletter
 \setlength{\@fptop}{0pt}
 \makeatother
 
-\paragraph{Version and scope.}
-The current main protocol uses \texttt{core\_v3.py}, \texttt{run\_v3.py} and the common \texttt{research\_v2.py} candidate generator. Version 3 refers to the orchestration, feedback and state-buffer correction, not a new foundation model. Historical V1/V2 outputs and failed fits are preserved. All V3 scientific fits start afresh; earlier task-trained weights are not reused across the correction. Public pretrained backbones remain fixed references. TAPB workers use the dedicated TAPB environment; the additional native DrugBAN workers use their DGL-compatible environment. Qwen, proteomics and cell adapters use the LDA environment. They execute the same versioned optimization and aggregation source, not identical dependency binaries.
+\paragraph{Versioned implementation.}
+The reported study uses \texttt{core\_v3.py}, \texttt{run\_v3.py} and \texttt{research\_v2.py}. All task families execute the same optimization, aggregation, proposal and retention source through task-specific adapters. TAPB workers use the TAPB environment; Qwen, proteomics and cell adapters use the LDA environment. Each scientific fit starts from its task-specific public or random initialization, with no reuse of earlier task-trained weights.
 
-\paragraph{Complete common design library.}
-Each row defines an executable candidate. D00 is the fixed starting recipe; D01--D11 are available without within-arm repeats. The six-slot budget does not exhaustively evaluate the library. FedProx is disabled in this version: for one-batch local clients its penalty has zero gradient at the sole step from the shared anchor, so a proximal-only change would be a no-op in the small tasks.
+\paragraph{Complete design library.}
+Each identifier below compiles to one executable candidate. D00 is the fixed starting recipe; D01--D11 are available to both direct and loop search without within-arm repetition. Six proposal slots define the common budget.
 
 \begin{center}\small
 \begin{tabular}{lrrrr}
@@ -34,11 +34,22 @@ D11 & 0.001 & 0.01 & 0 & yes \\
 \end{tabular}
 \end{center}
 
-\paragraph{Generation and evidence.}
-The local proposer uses bfloat16 inference, temperature 0.7, top-$p$ 0.9 and at most 512 new tokens. Slot $s$ uses seed $\text{training seed}+s$; a second bounded formatting attempt adds 10,000. The first direct proposal is copied to the paired loop arm rather than regenerated. Later direct proposals see configuration identities but no scores. Loop evidence contains the aggregate best development metric/loss, best round, first/last validation records, training losses and acceptance status. Raw worker tracebacks remain in local failure receipts; the proposer receives a numerical-failure diagnosis. No test score is passed to either proposer.
+\paragraph{Proposal generation and evidence memory.}
+The proposer uses bfloat16 inference, temperature 0.7, top-$p$ 0.9 and at most 512 new tokens. Each slot uses a deterministic seed derived from the training seed. Direct and loop arms share the same first proposal. Later direct proposals receive the incumbent and tried design identifiers. Later loop proposals additionally receive an ordered list of evidence cards, each containing the candidate configuration, aggregate best development metric and loss, best round, first/last training and validation records, and final status. A bounded second generation attempt repairs schema or novelty violations.
 
-\paragraph{What the executed research traces show.}
-Three concrete ten-laboratory examples illustrate the selection mechanism, rather than assuming that a generated rationale explains a biological effect. All values below are development measurements on the 0--1 primary-metric scale, not held-out scores. Proposal slots are one-indexed.
+Every proposal has the following executable JSON shape:
+\begin{verbatim}
+{
+  "hypothesis": "one testable claim about an editable factor",
+  "experiment": "the controlled change and incumbent comparison",
+  "expected_effect": "the expected metric and diagnostic response",
+  "design_id": "D00--D11"
+}
+\end{verbatim}
+The compiler validates \texttt{design\_id} against the table above. The finalizer then attaches executed measurements and a retention decision to the proposal, creating the evidence card used in the next iteration.
+
+\paragraph{Executed loop trajectories.}
+Three ten-laboratory traces illustrate how the common finalizer operates. Values are aggregate development measurements on the 0--1 primary-metric scale, and proposal slots are one-indexed.
 
 \begin{center}\small
 \begin{tabular}{llrrl}
@@ -52,24 +63,16 @@ Norman, seed 42 & D08 & 0.519000 & 1.538505 & 3 / 2 \\
 \end{tabular}
 \end{center}
 
-For PTPC, increasing weight decay to 0.01 preserves AP and wins only through the lower BCE tie-break (0.521161 versus 0.521177). VCC retains the original design after all six alternatives fail to improve selection. Norman's lower-learning-rate residual head improves development Top-1 from 0.400 to 0.519; the loop reaches it one proposal earlier, but both modes finish with the same winner. Within each example, direct and loop cover the same six designs, and the loop's fits reuse their paired completed computations. The final selected checkpoints are identical. These traces explain tied final outcomes without establishing an overall search-efficiency advantage.
-
-The executable design identifier is authoritative; schema validity does not validate the natural-language rationale. In the retained PTPC/VCC/Norman examples, some Qwen hypotheses describe a residual adapter while selecting D04/D05/D10, which have no residual. We therefore do not treat these narratives as reliable mechanistic explanations. Single-client VCC seed 43 also has an invalid loop proposal that consumes a slot and leaves D05 untried; its different final design is not unambiguous evidence of better feedback reasoning. Exact proposal paths, configurations and checkpoint hashes are indexed in the repository's provenance record.
-
-\paragraph{State-buffer regression.}
-The paired five-round native DrugBAN regression fixes seed 42 and the D07 configuration. The old core produces negative BatchNorm running variances (including $-8.585$ and $-28.029$ in graph layers) and non-finite predictions. The corrected core keeps all recorded running variances nonnegative and completes scoring. Its five-round AUROC is not used as a scientific result, nor is this a hyperparameter-selection experiment. This check isolates the implementation failure that stopped the historical native queue.
+PTPC selects stronger weight decay through the BCE tie-break at equal AP. VCC retains the initial design after six alternatives. On Norman, the loop reaches the winning lower-learning-rate residual design one slot before direct search. Across all 15 ten-laboratory task--seed trajectories, the two-proposal loop is better in two, tied in thirteen and worse in none; the mean development-primary difference is +0.78 percentage points. At six proposals, direct and loop select the same checkpoints, reflecting coverage saturation in the twelve-design library.
 
 \paragraph{Client and split integrity.}
-DTI clients contain 4,932--5,058 training and 517--643 development pairs. Their compounds are disjoint across clients; within-client original train/development compound overlap is retained explicitly. PTPC compound groups do not cross clients or its newly reserved training/development boundary. Its development panel has 105 conditions, with small per-client positive counts. Cell clients have disjoint intervention identities and reuse the data construction in Appendix Q, but their new training uses batch 64, 100 rounds and MSE plus local contrastive loss rather than the old batch-two 20-round recipe. Common development reports are generated only after arm selection and are not loop feedback.
+DTI clients contain 4,932--5,058 training and 517--643 development pairs. Compound identities do not cross clients. The fixed test roles contain 5,505 random, 3,791 unseen-drug and 2,507 unseen-protein pairs. PTPC partitions 333 compound groups into 386 fitting and 105 development conditions, with 35--42 fitting conditions per client; its frozen test role contains 148 conditions. VCC, Norman and Tahoe use whole-intervention splits of 60/20/20, 70/20/27 and 180/60/67. Their ten clients own equal numbers of training and development intervention identities.
 
-\paragraph{Current proteomic head and preprocessing.}
-The current neural adapter preserves the original historical 491-condition source pool but partitions it into 386 training and 105 development conditions by compound group. For each observed 6h and 24h profile separately, it applies log1p, within-profile min--max normalization over finite observations, zero filling for missing entries and unit L2 normalization. These are per-observation operations, not pooled train-fitted statistics. The 2,048-bit Morgan vector is L2-normalized and multiplied by 0.5. The concatenated 12,390-dimensional vector (5,171 + 5,171 + 2,048) is multiplied by $3/\sqrt{1.25}$ and stored as float32. The adapter feeds these blocks to the ProteinTalks-derived efficacy head, with 464,193 parameters at the fixed design. All six arms use identical inputs, random initialization per seed, the common 100-round training budget and development-selected checkpoint rule. This differs from the median-imputed, 100-epoch historical source-editing protocol in Appendix C and from the separately retained linear control.
-
-\paragraph{Completion and missing values.}
-The scalar snapshot records which prespecified seeds have completed training and held-out scoring. The held-out exporter requires six selected arms, a checkpoint seal and independent verification; a completed development run alone cannot populate a test cell. Means include every available prespecified seed, with sample SD where defined. Missing models, seeds or evaluation roles remain N/A. An independent evaluator follows completed studies without sending test evidence to the research controller. Historical Appendix L/P/Q scores retain their original roles and protocols. Client rotations and same-data centralized comparisons remain separate requirements.
+\paragraph{Proteomic preprocessing.}
+For each 6h and 24h profile, the PTPC adapter applies log1p, within-profile min--max normalization over finite observations, zero filling and unit L2 normalization. The 2,048-bit Morgan vector is separately L2-normalized and scaled by 0.5. Concatenating the two 5,171-dimensional proteomic blocks with the drug vector produces a 12,390-dimensional float32 input. The ProteinTalks-derived efficacy head contains 464,193 parameters at D00. Every arm uses identical inputs, initialization policy, 100-round budget and checkpoint rule.
 
 \paragraph{Full factorial results.}
-The following tables retain the complete six-arm held-out comparison for the committed task-reference versions, with secondary metrics and uncertainty. The three-method, five-endpoint main table is a presentation choice, not a restriction of the evidence archive.
+The following tables report all six held-out arms, complete method contrasts, proposal-prefix analysis, secondary metrics, uncertainty and all three DTI test roles. Bold marks the best displayed value within each task and metric, including ties. Higher is better except BCE and cross-entropy.
 
 \input{tables/strong_v3/ablation}
 \input{tables/strong_v3/effects_full}
@@ -80,30 +83,8 @@ The following tables retain the complete six-arm held-out comparison for the com
 \input{tables/strong_v3/dti_endpoints}
 \input{tables/strong_v3/dti_uncertainty}
 
-\paragraph{Additional DTI uncertainty analysis.}
-Paired cluster-bootstrap intervals were added after training and held-out scoring, using retained predictions without model reselection. We use 1,000 resamples with a fixed analysis seed, grouping by the released drug identifier on random/unseen-drug endpoints and by protein sequence on unseen-protein. Each resample is shared by the compared methods. The full table includes AUROC and AP for all three endpoints, including zero and negative contrasts. These intervals condition on the fitted models and the chosen grouping; they do not capture between-training-seed variation or simultaneous drug/protein dependence. We report every seed rather than collapsing the sign-changing unseen-entity effects into the main random-split mean. A positive average should not be read as uniform transfer improvement.
+\paragraph{Uncertainty analysis.}
+The DTI analysis is computed after training and held-out scoring, using paired cluster bootstrap with 1,000 fixed-seed resamples of retained predictions. It groups by released drug identity on random/unseen-drug endpoints and by protein sequence on unseen-protein. Other task intervals use their natural compound or intervention grouping. Resamples are shared within each method contrast. These intervals characterize sample-level variation within each selected fit; between-training-seed variation is reported through the three-seed means and sample SD.
 
-\paragraph{Earlier uniform-protocol controls and diagnostics.}
-The following tables retain the linear proteomic head, original-mask cell adapters and native DrugBAN reference under their separate model versions. They are not substituted into the new-reference table or pooled across versions.
-
-\input{tables/unified_v3/final}
-\input{tables/unified_v3/heldout_effects}
-\input{tables/unified_v3/heldout_ablation}
-\clearpage
-\input{tables/unified_v3/heldout_secondary}
-\input{tables/unified_v3/heldout_uncertainty}
-\clearpage
-\input{tables/unified_v3/development}
-\input{tables/unified_v3/ablation}
-\input{tables/unified_v3/effects}
-\clearpage
-
-\paragraph{Verification and publication.}
-CPU unit/integration tests cover the common core, adapters, proposal generation, frozen evaluation and cell-mask correction. Publication tests check table values, missingness, ties, model identity and independent-verification bindings. The independent V3 audit validates all six selected arms, checkpoint existence, source hashes, training budgets, shared first proposals, evidence histories and common-panel metric aggregation. The paper snapshot includes receipt hashes and aggregate scalar metrics, not private biological arrays. A frozen export date prevents later-running experiments from silently changing the submitted PDF; refreshed exports must update the narrative and rerun compilation.
-
-The corrected VCC seed-42 run has a pre-decoding core/checkpoint/data seal and an explicitly post-hoc supplemental wrapper-registration integrity receipt; it is not represented as a retroactive pre-registration. Later corrected-cell runs persist the wrapper registration before response decoding. The aggregate snapshot preserves this distinction. Environment and Qwen-asset hashes captured after some runs began are observational metadata, not advance registration.
-
-\paragraph{Secondary-metric display.} Bold marks the best displayed value within each task and metric, including ties. Higher is better except BCE and cross-entropy. These remain development diagnostics rather than independent confirmatory endpoints.
-\begingroup\footnotesize\setlength{\tabcolsep}{4pt}
-\input{tables/unified_v3/secondary}
-\endgroup
+\paragraph{Verification.}
+CPU unit and integration tests cover the common trainer, task adapters, proposal generation, frozen evaluation and cell attention-mask correction. Publication checks bind table cells to completed arms, model versions, checkpoint seals and independent score recomputation. The snapshot includes receipt hashes, aggregate metrics and the complete proposal histories used in this manuscript.

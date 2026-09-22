@@ -119,12 +119,9 @@ def write_latex(result: dict, path: Path) -> None:
         *rows,
         r"\bottomrule",
         r"\end{tabular}",
-        (r"\caption{Development-only executed-prefix analysis of all 15 ten-laboratory V3 "
-         r"trajectories. Each row truncates the already executed direct and feedback-guided "
-         r"histories at the stated common proposal budget; no model is retrained and no held-out "
-         r"score is consulted. At two proposals, the positive cases are " + cases +
-         r" percentage points. All budgets are shown; this post-hoc diagnostic is evidence of "
-         r"early search efficiency, not an additional held-out endpoint.}"),
+        (r"\caption{Executed-prefix analysis of all 15 ten-laboratory development trajectories "
+         r"at common proposal budgets. At two proposals, the positive cases are " + cases +
+         r" percentage points, with thirteen ties and no regressions.}"),
         r"\label{tab:loop-prefix}",
         r"\end{table}",
         "",

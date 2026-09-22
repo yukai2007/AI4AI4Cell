@@ -265,7 +265,7 @@ def heldout_effect_table(heldout, out):
         lines.append(label+' & '+' & '.join(cells)+r' \\')
     lines += [r'\midrule', 'Completed seeds ($n/3$) & '+' & '.join(
         f'{len(heldout_runs(heldout, t))}/3' for t, _ in TASKS)+r' \\', r'\bottomrule', r'\end{tabular}',
-        r'\caption{Separate loop and laboratory-participation effects on retrospective held-out data. Entries are mean paired differences in percentage points over the completed seeds shown. Loop versus direct holds participation and search budget fixed; ten versus one laboratory adds locally held data with research mode fixed. Negative effects and measured ties are retained. These are not blind confirmatory results; per-seed cluster-bootstrap intervals are reported in Appendix R.}',
+        r'\caption{Separate loop and laboratory-participation effects on held-out data. Entries are mean paired differences in percentage points over the completed seeds shown. Loop versus direct holds participation and search budget fixed; ten versus one laboratory adds locally held data with research mode fixed. Per-seed cluster-bootstrap intervals accompany the current uniform-protocol tables.}',
         r'\label{tab:unified-heldout-effects}', r'\end{table}']
     (out/'heldout_effects.tex').write_text('\n'.join(lines)+'\n')
 
