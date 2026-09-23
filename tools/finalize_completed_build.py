@@ -17,8 +17,13 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--tests-passed',type=int,required=True)
     p.add_argument('--visual-review',required=True)
+    p.add_argument('--revision-id',required=True)
+    p.add_argument('--revision-description',required=True)
     a=p.parse_args()
     assert a.tests_passed>0 and a.visual_review.strip()
+    if not re.fullmatch(r'[a-z0-9][a-z0-9_-]*',a.revision_id):
+        raise ValueError('Revision ID must be a simple directory name')
+    assert a.revision_description.strip()
     log=(PAPER/'build/main.log').read_text()
     errors=re.findall(r'Overfull[^\n]*|[^\n]*undefined[^\n]*|^!.*',log,re.M)
     if errors: raise RuntimeError(errors)
@@ -59,8 +64,9 @@ def main():
         shutil.copy2(pdf,stage)
         if sha(stage)!=sha(pdf): raise RuntimeError('PDF copy mismatch')
         stage.replace(target)
-    receipt=dict(framework_name='BioCoLoop',naming_migration='Presentation-only; frozen scientific records unchanged',
-        migration_verification_sha256=sha(PAPER/'provenance/rename_biocoloop_20260923/migration_verification.json'),
+    receipt=dict(framework_name='BioCoLoop',revision_id=a.revision_id,
+        revision_description=a.revision_description,
+        branding_migration_record_sha256=sha(PAPER/'provenance/rename_biocoloop_20260923/migration_verification.json'),
         built_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),
         manuscript_sha256=sha(pdf),total_pages=len(doc),main_text_ends_page=conclusions[0],
         statements_start_page=statements[0],initial_submission_main_limit=9,
@@ -79,7 +85,8 @@ def main():
                                        'additional ablation seeds deferred'],
         scientific_interpretation='Allocation gains and proposal-history effects are distinct; feedback does not universally improve heldout scores.',
         platform_status='This build does not submit to OpenReview or verify Overleaf remote compilation.')
-    out=PAPER/'provenance/rename_biocoloop_20260923/build_receipt.json'
+    out=PAPER/'provenance'/a.revision_id/'build_receipt.json'
+    out.parent.mkdir(parents=True,exist_ok=True)
     stage=out.with_suffix('.json.staging');stage.write_text(json.dumps(receipt,indent=2)+'\n');stage.replace(out)
     print(json.dumps({k:v for k,v in receipt.items() if k!='source_sha256'},indent=2))
 

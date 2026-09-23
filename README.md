@@ -2,7 +2,11 @@
 
 **BioCoLoop: Collaborative Agentic Research for Biological Model Improvement**
 
-BioCoLoop combines **biology**, **collaboration** and an iterative **research loop**. This is a naming-only revision: experimental scores, designs, datasets and frozen identifiers are unchanged. Historical releases retain their original names. The existing repository URL and storage paths remain stable for Overleaf and result provenance.
+BioCoLoop combines **biology**, **collaboration** and an iterative **research loop**. Historical releases retain their original names. The existing repository URL and storage paths remain stable for Overleaf and result provenance.
+
+## Current editorial revision — 23 September 2026
+
+The abstract now distinguishes the complete-system comparison from the allocation ablation. The introduction centers on collaborative model development with laboratory-held data, defines executable designs and explains their scope, and states the experimental contribution directly. Task-specific predictors share a research process; this is not a single cross-modal predictor. Scores, experimental configurations and scientific artifacts are unchanged. The [revision notes](provenance/intro_clarity_20260923/RESPONSE.zh-CN.md) explain each change.
 
 ## Completed-experiment revision — 23 September 2026
 
@@ -40,7 +44,7 @@ tectonic --only-cached --keep-intermediates --keep-logs --outdir build main.tex
 python -m unittest discover -s tools -p 'test_*.py'
 ```
 
-The research host requires its compatible cached Tectonic 0.17.0 binary and matching shared libraries, rather than the default local binary. This host-specific setup is not required on Overleaf. Build and visual-review receipts are in `provenance/rename_biocoloop_20260923/`.
+The research host requires its compatible cached Tectonic 0.17.0 binary and matching shared libraries, rather than the default local binary. This host-specific setup is not required on Overleaf. Current build and visual-review receipts are in `provenance/intro_clarity_20260923/`; the historical naming-only receipt remains in `provenance/rename_biocoloop_20260923/`.
 
 ## Data-to-paper publication
 

@@ -10,8 +10,8 @@
     "AAAAAC+CompanionSC"
   ],
   "text_out_of_bounds_pages": [],
-  "generated_utc": "2026-09-23T12:58:43.632897+00:00",
-  "generator_sha256": "fd88f1f000504043e1728354a6003798809a965ebe2354e894677246912b9d35",
+  "generated_utc": "2026-09-23T13:26:30.615978+00:00",
+  "generator_sha256": "986b6ea51e81aabcb56fce3d7d00f9f3eb74dc0809f81c0ed822a5c87f835680",
   "embedded_font_source_sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
   "input_sha256": {
     "paper/tables/strong_v3/snapshot.json": "814129bf578ab358de0773b1975ba00257a7fe12c75b3e6b6f1534617cd5749a",
@@ -20,7 +20,7 @@
     "results/tonight_completion_20260923/final_delivery/summary.json": "8eb30ad05acaf714dbaa8c180a0657dcd9bc6c8b9bebccba620f097159eb7541",
     "results/proteomics_external_pilot_20260923/RESULT.zh-CN.md": "e9fc4c7c2424dc12959816efa8a1c1cd758c0414835df386799904c1948b68a9",
     "paper/assets/paradigm_comparison.pdf": "b35200a6cc8152cfab6d1ab2d26628bc476c3067cf9c0e9716355a37147d0660",
-    "paper/assets/completed_budget_examples.pdf": "fe32e00d50c67474d7fe8c5e815d04e27ea5290ad6c78f07eb41af951c82d1c6",
+    "paper/assets/completed_budget_examples.pdf": "608d0baba8a6b7f19b50e56ae44d53de2bb9919876af2d72bcedc3454be7e35b",
     "paper/figures/biocoloop_framework.pdf": "f9fd977ec594b11cfe96a15beb936fb485402691dee2159bcdf24fe5b2372abe"
   },
   "publication_snapshot_sha256": "1300ee2702358927af215de29d7de22bf9b1d495923c2d5661a42f5abed79f23",
@@ -60,7 +60,7 @@
     }
   },
   "page_count": 15,
-  "output_sha256": "e3c05278e7b733cded718360d688ac7c3d7523bf523274e1d472d70888956cef",
+  "output_sha256": "1f2b06855d038d748ca21b5e65b2ad77732010373f240b1d270f8ff2a1161260",
   "uncompleted_extensions": [
     "additional seeds",
     "DTI long24",

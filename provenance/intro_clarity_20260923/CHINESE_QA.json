@@ -1,0 +1,34 @@
+{
+  "scope": "Chinese introductory explanation synchronized with clarified BioCoLoop motivation and contributions",
+  "changes": [
+    "data sharing as the scenario constraint",
+    "task-specific predictors collaborate within a task",
+    "parameter fitting and design revision as separate feedback channels",
+    "executable design components and rationale",
+    "plain-language contribution and ablation descriptions"
+  ],
+  "page_count_before": 15,
+  "page_count_after": 15,
+  "changed_pages": [
+    1,
+    2,
+    5
+  ],
+  "visible_numeric_sequence_unchanged": true,
+  "visible_numeric_token_count": 489,
+  "scientific_snapshot_sha256_unchanged": {
+    "tables/strong_v3/snapshot.json": "814129bf578ab358de0773b1975ba00257a7fe12c75b3e6b6f1534617cd5749a",
+    "tables/core_review/snapshot.json": "ea19d08df451ffaeb07e791536b5f8278d0886acd941c79304fd9cc328de8529",
+    "tables/completed_ablation/snapshot.json": "1300ee2702358927af215de29d7de22bf9b1d495923c2d5661a42f5abed79f23"
+  },
+  "previous_pdf_sha256": "e3c05278e7b733cded718360d688ac7c3d7523bf523274e1d472d70888956cef",
+  "current_pdf_sha256": "1f2b06855d038d748ca21b5e65b2ad77732010373f240b1d270f8ff2a1161260",
+  "generator_sha256": "986b6ea51e81aabcb56fce3d7d00f9f3eb74dc0809f81c0ed822a5c87f835680",
+  "render_directory": "/tmp/biocoloop-intro-chinese-review",
+  "visual_review": "PASS: rendered and inspected changed pages 1, 2 and 5; no clipping, overlap, broken glyphs or table overflow.",
+  "visual_review_pages": [
+    1,
+    2,
+    5
+  ]
+}
