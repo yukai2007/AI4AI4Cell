@@ -1,0 +1,49 @@
+{
+  "purpose": "Method execution clarification synchronized to Chinese companion",
+  "pdf": "output/pdf/BioCoLoop_中文伴读版.pdf",
+  "pdf_sha256": "5bcfa385ca7cda41d05fa471e40cf166f4c28f75bddf53500b0b220d4f5175a7",
+  "generator_sha256": "da3d83fadae0aa8c1de1ef24518bb9812643e5387f3e39d496b022f23b2e6ca7",
+  "page_count": 16,
+  "method_pages": [
+    4,
+    5,
+    6,
+    9
+  ],
+  "out_of_bounds": [],
+  "scientific_snapshots_unchanged": {
+    "tables/strong_v3/snapshot.json": "814129bf578ab358de0773b1975ba00257a7fe12c75b3e6b6f1534617cd5749a",
+    "tables/core_review/snapshot.json": "ea19d08df451ffaeb07e791536b5f8278d0886acd941c79304fd9cc328de8529",
+    "tables/completed_ablation/snapshot.json": "1300ee2702358927af215de29d7de22bf9b1d495923c2d5661a42f5abed79f23"
+  },
+  "method_checks": {
+    "design_id_excludes_rounds_or_epochs": true,
+    "main_and_proposal_history_candidates_receive_100_rounds": true,
+    "round_means_one_local_epoch_per_lab_then_aggregation": true,
+    "evaluation_every_five_rounds": true,
+    "parameter_aggregation_example_weighted": true,
+    "development_primary_and_loss_lab_weighted_equally": true,
+    "allocation_is_separate_fixed_slate_experiment": true,
+    "uniform_10_times_80_equals_screen_10_times_20_plus_promoted_6_times_100": true,
+    "promotion_restarts_rather_than_continuing_screen_checkpoint": true,
+    "four_unpromoted_candidates_only_screened": true,
+    "promotion_uses_lr_strata_best_checkpoint_and_round_5_to_20_gain": true,
+    "loss_tie_breaking_distinguishes_best_checkpoint_and_round_20": true,
+    "language_model_weights_fixed_but_evidence_context_changes": true,
+    "llm_receives_trial_summaries_not_full_learning_curves": true,
+    "same_host_roles_and_k1_versus_k10_explicit": true
+  },
+  "visual_review": {
+    "all_pages_rendered": true,
+    "all_pages_contact_sheets_inspected": true,
+    "full_size_changed_pages_inspected": [
+      5,
+      6,
+      9
+    ],
+    "readability_and_page_transitions": "PASS",
+    "visible_clipping_overlap_or_missing_glyphs": false,
+    "render_directory": "/tmp/biocoloop-method-zh-review"
+  },
+  "original_experiment_results_modified": false
+}

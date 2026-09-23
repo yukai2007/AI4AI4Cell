@@ -10,8 +10,8 @@
     "AAAAAC+CompanionSC"
   ],
   "text_out_of_bounds_pages": [],
-  "generated_utc": "2026-09-23T13:26:30.615978+00:00",
-  "generator_sha256": "986b6ea51e81aabcb56fce3d7d00f9f3eb74dc0809f81c0ed822a5c87f835680",
+  "generated_utc": "2026-09-23T13:55:04.457056+00:00",
+  "generator_sha256": "da3d83fadae0aa8c1de1ef24518bb9812643e5387f3e39d496b022f23b2e6ca7",
   "embedded_font_source_sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
   "input_sha256": {
     "paper/tables/strong_v3/snapshot.json": "814129bf578ab358de0773b1975ba00257a7fe12c75b3e6b6f1534617cd5749a",
@@ -59,8 +59,8 @@
       ]
     }
   },
-  "page_count": 15,
-  "output_sha256": "1f2b06855d038d748ca21b5e65b2ad77732010373f240b1d270f8ff2a1161260",
+  "page_count": 16,
+  "output_sha256": "5bcfa385ca7cda41d05fa471e40cf166f4c28f75bddf53500b0b220d4f5175a7",
   "uncompleted_extensions": [
     "additional seeds",
     "DTI long24",
