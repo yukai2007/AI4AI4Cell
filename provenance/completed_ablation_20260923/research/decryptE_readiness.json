@@ -1,0 +1,53 @@
+{
+  "status": "ONE_MAIN_PROCESSED_FILE_SCHEMA_VERIFIED_NOT_TRAINED",
+  "as_of": "2026-09-23",
+  "accession": "MSV000093659 / PXD047799",
+  "official_summary": "https://massive.ucsd.edu/ProteoSAFe/QueryMSV?id=MSV000093659",
+  "official_list": "https://massive.ucsd.edu/ProteoSAFe/dataset_files.jsp?task=70cd42693c7f4d4da2cf466a0832e87d",
+  "main_series": "other/Dose response data - Jurkat proteome",
+  "main_file_count": 145,
+  "main_total_bytes": 564387423,
+  "paper_drug_count": 144,
+  "count_reconciliation_pending": true,
+  "probe_selection": "Vorinostat chosen for schema and previously known identity, not selected by predictive performance",
+  "file_descriptor": "f.MSV000093659/other/Dose response data - Jurkat proteome/Vorinostat/TXTs_Classified/Vorinostat_ALL.txt",
+  "download_endpoint": "https://massive.ucsd.edu/ProteoSAFe/DownloadResultFile?file=<URL-encoded file_descriptor>&forceDownload=true",
+  "local_probe": "/tmp/aicell_decrypte_check_h0s4tlt7/jurkat_vorinostat_ALL.txt",
+  "bytes": 3901411,
+  "sha256": "13933c5fb89bd6f78450657ad42abb9f8c119b02cc1e2253d84f6b7956c51131",
+  "shape": [
+    7871,
+    37
+  ],
+  "target_protein_total": 5171,
+  "uniprot_overlap": 4211,
+  "valid_common_by_nM": {
+    "1": 3980,
+    "10": 3997,
+    "100": 4005,
+    "1000": 3992,
+    "10000": 4010
+  },
+  "valid_rule": "exact UniProt; positive finite Normalized_Intensity_{dose}; Unique_Peptides_{dose}>0",
+  "protein_time_hours": 18,
+  "phenotype_source": "data/proteomics/external_intake_20260923/decrypte2024_tables.xlsx / TableS1 - Cpd via info",
+  "phenotype_join": "Drug exact,Cell Type=Jurkat,Type=Metabolic activity,dose nM -> released Relative intensity {dose} nM",
+  "effect_type": "continuous resazurin metabolic activity; not PTPC binary efficacy",
+  "time_caveat": "18h treatment then3.5h resazurin readout; do not present as PTPC6h/24h paired measurements",
+  "download_bound": "one full3.9MB main protein file plus prior131072byte unrelated CLK prefix and HTML/metadata; <200MB,active transfer well below5min; no RAW data",
+  "excluded_features": [
+    ".pred_class",
+    "protein IC50 and all fitted-curve coefficients",
+    "gene lists filtered by outcome",
+    "supplement phenotype Effect/R2/AUC/EC50 as predictive inputs"
+  ],
+  "remaining": [
+    "resolve145 files versus144 paper drug list",
+    "complete source matrix download under separately approved budget or freeze unbiased subset before results",
+    "canonical plus stereo-agnostic targetdev/heldout identity exclusion",
+    "group-drug source split and train-only normalization",
+    "source-specific continuous head and loss; preserve target primary task",
+    "versioned new pilot protocol,training and locked targetheldout evaluation"
+  ],
+  "completed_source_count_change": 0
+}

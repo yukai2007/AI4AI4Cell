@@ -1,0 +1,48 @@
+\begin{table}[htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{@{}Xrrrr@{}}
+\toprule
+Design & Learning rate & Weight decay & Server momentum & Residual head \\
+\midrule
+L0W0M0R0 & 0.0001 & 0 & 0 & No \\
+L0W0M0R1 & 0.0001 & 0 & 0 & Yes \\
+L0W0M1R0 & 0.0001 & 0 & 0.9 & No \\
+L0W0M1R1 & 0.0001 & 0 & 0.9 & Yes \\
+L0W1M0R0 & 0.0001 & 0.001 & 0 & No \\
+L0W1M0R1 & 0.0001 & 0.001 & 0 & Yes \\
+L0W1M1R0 & 0.0001 & 0.001 & 0.9 & No \\
+L0W1M1R1 & 0.0001 & 0.001 & 0.9 & Yes \\
+L0W2M0R0 & 0.0001 & 0.01 & 0 & No \\
+L0W2M0R1 & 0.0001 & 0.01 & 0 & Yes \\
+L0W2M1R0 & 0.0001 & 0.01 & 0.9 & No \\
+L0W2M1R1 & 0.0001 & 0.01 & 0.9 & Yes \\
+L1W0M0R0 & 0.001 & 0 & 0 & No \\
+L1W0M0R1 & 0.001 & 0 & 0 & Yes \\
+L1W0M1R0 & 0.001 & 0 & 0.9 & No \\
+L1W0M1R1 & 0.001 & 0 & 0.9 & Yes \\
+L1W1M0R0 & 0.001 & 0.001 & 0 & No \\
+L1W1M0R1 & 0.001 & 0.001 & 0 & Yes \\
+L1W1M1R0 & 0.001 & 0.001 & 0.9 & No \\
+L1W1M1R1 & 0.001 & 0.001 & 0.9 & Yes \\
+L1W2M0R0 & 0.001 & 0.01 & 0 & No \\
+L1W2M0R1 & 0.001 & 0.01 & 0 & Yes \\
+L1W2M1R0 & 0.001 & 0.01 & 0.9 & No \\
+L1W2M1R1 & 0.001 & 0.01 & 0.9 & Yes \\
+L2W0M0R0 & 0.01 & 0 & 0 & No \\
+L2W0M0R1 & 0.01 & 0 & 0 & Yes \\
+L2W0M1R0 & 0.01 & 0 & 0.9 & No \\
+L2W0M1R1 & 0.01 & 0 & 0.9 & Yes \\
+L2W1M0R0 & 0.01 & 0.001 & 0 & No \\
+L2W1M0R1 & 0.01 & 0.001 & 0 & Yes \\
+L2W1M1R0 & 0.01 & 0.001 & 0.9 & No \\
+L2W1M1R1 & 0.01 & 0.001 & 0.9 & Yes \\
+L2W2M0R0 & 0.01 & 0.01 & 0 & No \\
+L2W2M0R1 & 0.01 & 0.01 & 0 & Yes \\
+L2W2M1R0 & 0.01 & 0.01 & 0.9 & No \\
+L2W2M1R1 & 0.01 & 0.01 & 0.9 & Yes \\
+\bottomrule
+\end{tabularx}
+\caption{Thirty-six executable configurations for the long24 protocol. Every design has proximal coefficient zero. A trace design ID uniquely identifies these parameter changes; the task-specific prediction interface remains fixed.}
+\label{tab:completed-menu-long24}
+\end{table}

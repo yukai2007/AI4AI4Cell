@@ -1,0 +1,93 @@
+{
+  "source": "/liziqing/yukai/AI4AI4Cell/ai4ai4cell_editable_framework-1(2).pptx",
+  "source_sha256": "f708424b3f30ed6f7813d66eeddc86e8adf58940091ac1a672703cf267028f81",
+  "source_unchanged": true,
+  "derived_editable_pptx": "/liziqing/yukai/AI4AI4Cell/paper/figures/framework_user_20260923_readable_original_labels.pptx",
+  "derived_pptx_sha256": "d7f8a87122d09f704893499489382fc8ab338f96b1fbfeb01f27b8bbf6d15869",
+  "vector_pdf": "/liziqing/yukai/AI4AI4Cell/paper/figures/framework_user_20260923_readable_original_labels.pdf",
+  "vector_pdf_sha256": "6a4a4a203db6941df6ac3ed24736a23007307f4e1f950bb4dfa9e99a16b75368",
+  "png_preview": "/liziqing/yukai/AI4AI4Cell/paper/figures/framework_user_20260923_readable_original_labels.png",
+  "small_preview": "/tmp/ai4ai4cell-framework-padm9cao/readable-final-1000.jpg",
+  "vector_path_count": 63,
+  "embedded_images": 15,
+  "crop_box_points": [
+    8.89799976348877,
+    8.998235702514648,
+    711.0460205078125,
+    529.4019775390625
+  ],
+  "page_points": [
+    0.0,
+    0.0,
+    702.1480102539062,
+    520.4037475585938
+  ],
+  "fonts": [
+    [
+      192,
+      "ttf",
+      "TrueType",
+      "BAAAAA+Carlito-Bold",
+      "F1",
+      ""
+    ],
+    [
+      204,
+      "ttf",
+      "TrueType",
+      "CAAAAA+Carlito",
+      "F2",
+      ""
+    ],
+    [
+      208,
+      "ttf",
+      "TrueType",
+      "DAAAAA+DejaVuSans-Bold",
+      "F3",
+      ""
+    ],
+    [
+      200,
+      "ttf",
+      "TrueType",
+      "EAAAAA+Carlito-Italic",
+      "F4",
+      ""
+    ],
+    [
+      196,
+      "ttf",
+      "TrueType",
+      "FAAAAA+Carlito-BoldItalic",
+      "F5",
+      ""
+    ]
+  ],
+  "source_text_identical": true,
+  "original_connectors_colors_icons_preserved": true,
+  "changes": [
+    "explicit render-available Carlito/DejaVu fonts",
+    "text box bounds and sizes",
+    "three padlocks placed below lab headings",
+    "outside-margin crop"
+  ],
+  "original_source_render": "/tmp/ai4ai4cell-framework-padm9cao/original/slide-1.png",
+  "pending_wording": [
+    "Federated in title",
+    "Laboratory 10",
+    "federated learning in local-data footer",
+    "Aggregated diagnostic guide: original grammatical form retained"
+  ],
+  "authored_diagram_note": "No new linking arrow was added between outer and inner panels.",
+  "final_visual_review_required": false,
+  "validation": {
+    "original_slides_test": "PASS: no canvas overflow",
+    "derived_slides_test": "PASS: no canvas overflow",
+    "final_pdf_text_bbox_outside_crop": 0,
+    "final_visual_review": "PASS: exact cropped PDF inspected at 1000px; no label clipping or image/text overlap",
+    "text_wording_byte_identical_to_original": true,
+    "rendered_minimum_font_pt": 9.013999938964844,
+    "source_labels_alignment_status": "PENDING author decision; no label edits applied"
+  }
+}

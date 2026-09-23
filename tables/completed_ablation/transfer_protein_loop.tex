@@ -1,0 +1,20 @@
+\begin{table}[htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{@{}Xlrr@{}}
+\toprule
+Training sources & Selection & AP $\uparrow$ & $\Delta$ vs target only (pp) \\
+\midrule
+Target only & Fixed & 34.98 & +0.00 \\
+Target only & Loop & 34.98 & +0.00 \\
++ Lin & Fixed & 35.01 & +0.03 \\
++ Lin & Loop & 35.01 & +0.03 \\
++ Ruprecht & Fixed & \textbf{35.50} & +0.52 \\
++ Ruprecht & Loop & \textbf{35.50} & +0.52 \\
++ Both & Fixed & 35.31 & +0.34 \\
++ Both & Loop & 35.31 & +0.34 \\
+\bottomrule
+\end{tabularx}
+\caption{Independent-source proteomics auxiliary pilot, seed 61. Fixed design and a two-proposal Luna loop use the same shared-encoder/source-specific-head model and 100-round training allocation. Every source arm and both selection modes are retained. The heldout AP gain from this short loop is zero in all four source conditions; source-transfer gains are a different comparison.}
+\label{tab:completed-protein-loop}
+\end{table}

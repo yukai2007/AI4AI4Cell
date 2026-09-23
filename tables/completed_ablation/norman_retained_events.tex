@@ -1,0 +1,24 @@
+\begin{table}[htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{@{}llXlr@{}}
+\toprule
+Mode & Slot & Design & Retained configuration & Dev. Top-1 \\
+\midrule
+Direct & 0 & Initial & Common initial design & 40.00 \\
+Direct & 1 & L1W1M0R1 & lr=0.001, wd=0.001, m=0, R=1 & 40.00 \\
+Direct & 2 & L1W1M1R1 & lr=0.001, wd=0.001, m=0.9, R=1 & 42.00 \\
+Direct & 7 & L1W2M1R1 & lr=0.001, wd=0.01, m=0.9, R=1 & 44.60 \\
+Direct & 10 & L0W0M0R1 & lr=0.0001, wd=0, m=0, R=1 & 51.70 \\
+Direct & 11 & L0W1M0R1 & lr=0.0001, wd=0.001, m=0, R=1 & 51.70 \\
+Direct & 22 & L0W1M0R0 & lr=0.0001, wd=0.001, m=0, R=0 & 52.10 \\
+Loop & 0 & Initial & Common initial design & 40.00 \\
+Loop & 1 & L1W1M0R1 & lr=0.001, wd=0.001, m=0, R=1 & 40.00 \\
+Loop & 2 & L0W1M0R1 & lr=0.0001, wd=0.001, m=0, R=1 & 51.70 \\
+Loop & 4 & L0W1M0R0 & lr=0.0001, wd=0.001, m=0, R=0 & 52.10 \\
+Loop & 7 & L0W0M0R0 & lr=0.0001, wd=0, m=0, R=0 & 52.10 \\
+\bottomrule
+\end{tabularx}
+\caption{All retained proposals for the Norman/Luna extended 36-design, 24-slot study, seed 61. The two modes share initialization and first proposal. lr, wd, m and R denote learning rate, weight decay, server momentum and residual-head indicator. Development selection is followed by evaluation at every prespecified heldout prefix; the full attempted-slot trace is retained separately.}
+\label{tab:completed-norman-events}
+\end{table}

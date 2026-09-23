@@ -1,0 +1,17 @@
+\begin{table}[htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{@{}lXrrrr@{}}
+\toprule
+Task & Metric & $K=1$ & $K=2$ & $K=5$ & $K=10$ \\
+\midrule
+DTI & AUROC & 85.47 & 88.96 & 88.05 & \textbf{93.88} \\
+PTPC & AP & 34.59 $\pm$ 5.66 & 37.36 $\pm$ 1.89 & \textbf{39.19 $\pm$ 0.43} & 37.54 $\pm$ 0.27 \\
+VCC & Macro Top-1 & 29.49 $\pm$ 0.00 & 28.80 $\pm$ 0.20 & 31.06 $\pm$ 0.22 & \textbf{31.48 $\pm$ 0.16} \\
+Norman & Macro Top-1 & \textbf{49.63 $\pm$ 4.20} & 19.56 $\pm$ 0.20 & 26.12 $\pm$ 0.11 & 15.48 $\pm$ 0.00 \\
+Tahoe & Macro Top-1 & 22.39 $\pm$ 0.00 & 21.39 $\pm$ 0.86 & 20.40 $\pm$ 0.86 & \textbf{26.37 $\pm$ 0.86} \\
+\bottomrule
+\end{tabularx}
+\caption{Fixed data pool. All target data are retained and merged into $K$ clients; only the partition count changes. The default design and 100-round trainer are fixed. DTI uses seed 61; the four light endpoints report mean $\pm$ sample SD over seeds 61--63. Scores are metric $\times100$; bold denotes the best $K$ within each row, including displayed ties.}
+\label{tab:completed-partition}
+\end{table}

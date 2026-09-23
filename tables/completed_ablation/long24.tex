@@ -1,0 +1,20 @@
+\begin{table}[htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{@{}Xlrrrrr@{}}
+\toprule
+Task & Proposer & Fixed & Direct@6 & Loop@6 & Direct@24 & Loop@24 \\
+\midrule
+PTPC & Luna & \textbf{37.27} & \textbf{37.27} & \textbf{37.27} & \textbf{37.27} & \textbf{37.27} \\
+PTPC & Qwen & \textbf{37.27} & \textbf{37.27} & \textbf{37.27} & \textbf{37.27} & \textbf{37.27} \\
+VCC & Luna & \textbf{31.50} & 16.94 & 16.94 & 20.23 & 20.01 \\
+VCC & Qwen & \textbf{31.50} & \textbf{31.50} & \textbf{31.50} & 19.61 & 19.61 \\
+Norman & Luna & 15.48 & \textbf{35.48} & 23.11 & 23.11 & 23.11 \\
+Norman & Qwen & 15.48 & \textbf{22.30} & \textbf{22.30} & \textbf{22.30} & \textbf{22.30} \\
+Tahoe & Luna & 25.37 & 13.43 & \textbf{26.87} & 13.43 & 13.43 \\
+Tahoe & Qwen & 25.37 & \textbf{26.87} & \textbf{26.87} & 13.43 & 13.43 \\
+\bottomrule
+\end{tabularx}
+\caption{Extended 36-design/24-slot heldout results. Four light endpoints, seed 61; no native DTI 24-slot result is implied. All displayed budgets are prefixes of this single protocol; they are not selected by test performance. Every candidate uses 100 rounds. Scores use each original task metric $\times100$; bold marks the best displayed score within a row, including ties.}
+\label{tab:completed-long24}
+\end{table}

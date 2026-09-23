@@ -1,0 +1,388 @@
+{
+  "cutoff": "2026-09-23",
+  "audit_kind": "read-only completion and executed-source audit",
+  "short_loop": [
+    {
+      "task": "native_tapb",
+      "backend": "qwen",
+      "seed": 42,
+      "slots": 6,
+      "menu_size": 12,
+      "status": "COMPLETE",
+      "heldout_exists": true,
+      "heldout_path": "results/budget1day_20260923/native_tapb/seed42/qwen/heldout/results.json",
+      "heldout_sha256": "f49b893c9c6f3a5846788ba67907d83e0294404b96559ef50bc2870ddbd950f9"
+    },
+    {
+      "task": "native_tapb",
+      "backend": "luna",
+      "seed": 42,
+      "slots": 6,
+      "menu_size": 12,
+      "status": "COMPLETE",
+      "heldout_exists": true,
+      "heldout_path": "results/budget1day_20260923/native_tapb/seed42/luna/heldout/results.json",
+      "heldout_sha256": "bd2074380347b46cd711f4e598e8ee0bd06a9fffd8a4d9f89cfaa0cffdb39f5c"
+    },
+    {
+      "task": "ptpc_neural",
+      "backend": "qwen",
+      "seed": 61,
+      "slots": 6,
+      "menu_size": 12,
+      "status": "COMPLETE",
+      "heldout_exists": true,
+      "heldout_path": "results/budget1day_20260923/ptpc_neural/seed61/qwen/heldout/results.json",
+      "heldout_sha256": "9b01f5b81f54c43334191d19b5c1572519f3e719065dbf4ab97c228300a6ca65"
+    },
+    {
+      "task": "ptpc_neural",
+      "backend": "luna",
+      "seed": 61,
+      "slots": 6,
+      "menu_size": 12,
+      "status": "COMPLETE",
+      "heldout_exists": true,
+      "heldout_path": "results/budget1day_20260923/ptpc_neural/seed61/luna/heldout/results.json",
+      "heldout_sha256": "c66aef8246640d538fc62247d7bb4ec35367237d480eafd9fb7a3714226b8a33"
+    },
+    {
+      "task": "vcc_corrected",
+      "backend": "qwen",
+      "seed": 61,
+      "slots": 6,
+      "menu_size": 12,
+      "status": "COMPLETE",
+      "heldout_exists": true,
+      "heldout_path": "results/budget1day_20260923/vcc_corrected/seed61/qwen/heldout/results.json",
+      "heldout_sha256": "08d553836a9035fcd78c498a54e7e42e2fd3a334ab98b8f1c24044ad8bf121be"
+    },
+    {
+      "task": "vcc_corrected",
+      "backend": "luna",
+      "seed": 61,
+      "slots": 6,
+      "menu_size": 12,
+      "status": "COMPLETE",
+      "heldout_exists": true,
+      "heldout_path": "results/budget1day_20260923/vcc_corrected/seed61/luna/heldout/results.json",
+      "heldout_sha256": "24c964ad54b50eae29384dc0eb0977ccf0c9659c1d96e1509f2de9440a8c6d8b"
+    },
+    {
+      "task": "norman_double_corrected",
+      "backend": "qwen",
+      "seed": 61,
+      "slots": 6,
+      "menu_size": 12,
+      "status": "COMPLETE",
+      "heldout_exists": true,
+      "heldout_path": "results/budget1day_20260923/norman_double_corrected/seed61/qwen/heldout/results.json",
+      "heldout_sha256": "846a93edae9a0d39c75ff1e89692a47681c53e33f3939366d3946eba8ca3a31a"
+    },
+    {
+      "task": "norman_double_corrected",
+      "backend": "luna",
+      "seed": 61,
+      "slots": 6,
+      "menu_size": 12,
+      "status": "COMPLETE",
+      "heldout_exists": true,
+      "heldout_path": "results/budget1day_20260923/norman_double_corrected/seed61/luna/heldout/results.json",
+      "heldout_sha256": "d78487b4e62cff8892d271792a1853cada2ded853b2268e18876abd321b827cc"
+    },
+    {
+      "task": "tahoe_drug_corrected",
+      "backend": "qwen",
+      "seed": 61,
+      "slots": 6,
+      "menu_size": 12,
+      "status": "COMPLETE",
+      "heldout_exists": true,
+      "heldout_path": "results/budget1day_20260923/tahoe_drug_corrected/seed61/qwen/heldout/results.json",
+      "heldout_sha256": "97140e8d88700dcaa002c73cdcc78e389709d1292818b81031a546bedf0964cb"
+    },
+    {
+      "task": "tahoe_drug_corrected",
+      "backend": "luna",
+      "seed": 61,
+      "slots": 6,
+      "menu_size": 12,
+      "status": "COMPLETE",
+      "heldout_exists": true,
+      "heldout_path": "results/budget1day_20260923/tahoe_drug_corrected/seed61/luna/heldout/results.json",
+      "heldout_sha256": "8a3c8e40a1f030d5c004a87ed0c96634d3c53e6989ade65f8e0f3242de6e9eef"
+    }
+  ],
+  "long_loop": [
+    {
+      "task": "ptpc_neural",
+      "backend": "qwen",
+      "seed": 61,
+      "slots": 24,
+      "menu_size": 36,
+      "status": "COMPLETE",
+      "heldout_path": "results/core_ablation_20260922/model_loop/ptpc_neural/seed61/qwen/heldout/results.json",
+      "heldout_sha256": "6a32cb0b055437cb0c1c5c11344f77b8c3127b6ee0f147882765c2b5ed263600"
+    },
+    {
+      "task": "ptpc_neural",
+      "backend": "luna",
+      "seed": 61,
+      "slots": 24,
+      "menu_size": 36,
+      "status": "COMPLETE",
+      "heldout_path": "results/core_ablation_20260922/model_loop/ptpc_neural/seed61/luna/heldout/results.json",
+      "heldout_sha256": "e19431c3e8a9ae3258b737cf075a96f1b81705520c2ac02fc25fab5f86f89c6e"
+    },
+    {
+      "task": "vcc_corrected",
+      "backend": "qwen",
+      "seed": 61,
+      "slots": 24,
+      "menu_size": 36,
+      "status": "COMPLETE",
+      "heldout_path": "results/core_ablation_20260922/model_loop/vcc_corrected/seed61/qwen/heldout/results.json",
+      "heldout_sha256": "9dce9b70742346d15ca5da520c4690394c6f308fc5e5dcc936c20d0fd0e8b9a0"
+    },
+    {
+      "task": "vcc_corrected",
+      "backend": "luna",
+      "seed": 61,
+      "slots": 24,
+      "menu_size": 36,
+      "status": "COMPLETE",
+      "heldout_path": "results/core_ablation_20260922/model_loop/vcc_corrected/seed61/luna/heldout/results.json",
+      "heldout_sha256": "71608898652197b7d50deb8cd0e8396d4023537d8cdb3634b156f1e6944c54ca"
+    },
+    {
+      "task": "norman_double_corrected",
+      "backend": "qwen",
+      "seed": 61,
+      "slots": 24,
+      "menu_size": 36,
+      "status": "COMPLETE",
+      "heldout_path": "results/core_ablation_20260922/model_loop/norman_double_corrected/seed61/qwen/heldout/results.json",
+      "heldout_sha256": "21f63e488a47575e59baa5245401e6615ec004e89add8d5ecf830a2440333736"
+    },
+    {
+      "task": "norman_double_corrected",
+      "backend": "luna",
+      "seed": 61,
+      "slots": 24,
+      "menu_size": 36,
+      "status": "COMPLETE",
+      "heldout_path": "results/core_ablation_20260922/model_loop/norman_double_corrected/seed61/luna/heldout/results.json",
+      "heldout_sha256": "194aebfe69b114894d9d31681bdb3e02196181e0b88b275b728eead424be1559"
+    },
+    {
+      "task": "tahoe_drug_corrected",
+      "backend": "qwen",
+      "seed": 61,
+      "slots": 24,
+      "menu_size": 36,
+      "status": "COMPLETE",
+      "heldout_path": "results/core_ablation_20260922/model_loop/tahoe_drug_corrected/seed61/qwen/heldout/results.json",
+      "heldout_sha256": "184b38e6398dbfd990a94e6f0153c00c196d55629329b4294933c9c6be152de6"
+    },
+    {
+      "task": "tahoe_drug_corrected",
+      "backend": "luna",
+      "seed": 61,
+      "slots": 24,
+      "menu_size": 36,
+      "status": "COMPLETE",
+      "heldout_path": "results/core_ablation_20260922/model_loop/tahoe_drug_corrected/seed61/luna/heldout/results.json",
+      "heldout_sha256": "cf90965975c91e918dc25d2c0f89fbeaf860d2f85a7ffc6512ee7c317a0f6d1f"
+    }
+  ],
+  "lab_count": [
+    {
+      "task": "native_tapb",
+      "seed": 61,
+      "cases": [
+        "participation_k1",
+        "participation_k2",
+        "participation_k5",
+        "participation_k10",
+        "partition_k1",
+        "partition_k2",
+        "partition_k5",
+        "partition_k10"
+      ],
+      "path": "results/tonight_completion_20260923/native_final_lab_v1/summary.json",
+      "sha256": "bb05a98f16d837d12e393c637f0667c6758792252aa7187500f37e4708952122"
+    },
+    {
+      "task": "ptpc_neural",
+      "seed": 61,
+      "cases": [
+        "participation_k1",
+        "participation_k2",
+        "participation_k5",
+        "participation_k10",
+        "partition_k1",
+        "partition_k2",
+        "partition_k5",
+        "partition_k10"
+      ],
+      "path": "results/core_ablation_20260922/lab_count/ptpc_neural/seed61/heldout/results.json",
+      "sha256": "0a6a0ac74fc7ab88f9a67dc9323944ab367311a95159d0755d8c9761070f6c63"
+    },
+    {
+      "task": "vcc_corrected",
+      "seed": 61,
+      "cases": [
+        "participation_k1",
+        "participation_k2",
+        "participation_k5",
+        "participation_k10",
+        "partition_k1",
+        "partition_k2",
+        "partition_k5",
+        "partition_k10"
+      ],
+      "path": "results/core_ablation_20260922/lab_count/vcc_corrected/seed61/heldout/results.json",
+      "sha256": "2a5d9a507cd25e7131c70e88e86c3bec8a8b90857ed13d7c45683e8014022f5c"
+    },
+    {
+      "task": "norman_double_corrected",
+      "seed": 61,
+      "cases": [
+        "participation_k1",
+        "participation_k2",
+        "participation_k5",
+        "participation_k10",
+        "partition_k1",
+        "partition_k2",
+        "partition_k5",
+        "partition_k10"
+      ],
+      "path": "results/core_ablation_20260922/lab_count/norman_double_corrected/seed61/heldout/results.json",
+      "sha256": "c3cad5f2511251f590f2640de1195f4a6d0dd8a0b1b92e2f17d956bb163b4492"
+    },
+    {
+      "task": "tahoe_drug_corrected",
+      "seed": 61,
+      "cases": [
+        "participation_k1",
+        "participation_k2",
+        "participation_k5",
+        "participation_k10",
+        "partition_k1",
+        "partition_k2",
+        "partition_k5",
+        "partition_k10"
+      ],
+      "path": "results/core_ablation_20260922/lab_count/tahoe_drug_corrected/seed61/heldout/results.json",
+      "sha256": "62f1d49cd9b3cc395cdd595bc72b18e670558daf6041a803843309ced4ed2599"
+    }
+  ],
+  "external_sources": {
+    "DTI": 3,
+    "cell": 3,
+    "proteomics_completed": 2,
+    "proteomics_candidate_not_run": 1
+  },
+  "paper_incorporation_status": "INCORPORATED_SECTIONS_4_5_6_APPENDIX_B",
+  "DTI_final": {
+    "path": "results/tonight_completion_20260923/native_final_cross_v2/summary.json",
+    "sha256": "20120cf06b87eab820add4a0701ebdb2aa40d5f17d7d159ec8c01b5f948e1bab"
+  },
+  "delivery": {
+    "path": "results/tonight_completion_20260923/final_delivery/summary.json",
+    "sha256": "8eb30ad05acaf714dbaa8c180a0657dcd9bc6c8b9bebccba620f097159eb7541"
+  },
+  "protein_final": {
+    "path": "results/proteomics_external_pilot_20260923/seed61/heldout/results.json",
+    "sha256": "00a410c52553c22c5befe34bc13fd9b90370212b705a3c2d2f074b1d99a2ced3"
+  },
+  "proteomics_adapter": {
+    "kind": "independent_proteomics_multitask_pilot",
+    "seed": 61,
+    "n_proteins": 5171,
+    "n_drug_features": 2048,
+    "clients": {
+      "target": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "lin": [
+        10
+      ],
+      "ruprecht": [
+        11
+      ]
+    },
+    "independent_auxiliary_studies": 2,
+    "preparer_sha256": "1b088b6078858a38daa60a10e1b77bd44ed565c13c8afc91d48250eb6611f1cf",
+    "endpoint_policy": "target original efficacy BCE; Lin continuous24h viability MSE; Ruprecht interval log10nM EC50 loss",
+    "ruprecht_feature": "published Log2FC columns derived from24h LFQ; no profiling dose/p/q/effect-derived features",
+    "closure_policy": "Original canonical compound keys plus conservative stereo-agnostic graph overlap; unresolved identity excluded",
+    "sources": {
+      "lin": {
+        "n_rows": 28,
+        "n_train": 20,
+        "n_dev": 8,
+        "n_train_drugs": 5,
+        "n_dev_drugs": 2,
+        "contexts": [
+          "A549",
+          "H292",
+          "PC9",
+          "PSC1"
+        ],
+        "common_protein_min": 4085,
+        "common_protein_max": 4156,
+        "endpoint_kind_counts": {
+          "continuous_viability": 28
+        }
+      },
+      "ruprecht": {
+        "n_rows": 109,
+        "n_train": 85,
+        "n_dev": 24,
+        "n_train_drugs": 17,
+        "n_dev_drugs": 5,
+        "contexts": [
+          "2030",
+          "2122",
+          "A549",
+          "Calu1",
+          "Calu6"
+        ],
+        "common_protein_min": 1921,
+        "common_protein_max": 2026,
+        "endpoint_kind_counts": {
+          "approx_factor2": 18,
+          "right_censored": 42,
+          "exact": 49
+        }
+      }
+    },
+    "losses": {
+      "target": "binary_cross_entropy_with_logits; unchanged PTPC binary labels",
+      "lin": "MSE to mean of released Ratio 1/2/3; continuous 24h 10uM CTG ratio",
+      "ruprecht": "relu(lower-pred)^2 + upper_valid*relu(pred-upper)^2 on log10(nM); approximately marked values use own factor-of-two interval convention; >=10000 treated as right-censored"
+    },
+    "old_main_architecture_unchanged": true,
+    "auxiliary_pilot_has_new_shared_encoder": true,
+    "note": "New auxiliary experiment uses paired target-only controls with its new multitask encoder; not the old main-table architecture."
+  },
+  "manuscript_content_review_status": "PASS_AFTER_TWO_WORDING_CORRECTIONS",
+  "pdf_visual_review_status": "ROOT_OWNED_NOT_ASSESSED_BY_THIS_AUDIT",
+  "manuscript_files_sha256": {
+    "paper/sections/04_experimental_design.tex": "3005fd0b4557e4dd2990c7f9d5c9733eabaf3ea9b5f340f55e5dad0737782766",
+    "paper/sections/05_results.tex": "7aa3972cd1afbbd5b08bef3b6ccad94a3a8f4bdfddbf7da42266c2c6c2517b0c",
+    "paper/sections/07_conclusion.tex": "2bc890d2280849054981cf57d2ffb438bc1ac6aad34b704475a32fc6d3bff877",
+    "paper/sections/23_appendix_core_sensitivity.tex": "867bd832ae2d3a6e17093e3b7f34af0e011c87ee33d142386110370c4cbd4d62"
+  },
+  "common_development_target_definition": "min of direct/loop terminal primary scores; common attained target; retrospective only"
+}

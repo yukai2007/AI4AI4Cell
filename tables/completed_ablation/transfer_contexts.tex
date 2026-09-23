@@ -1,0 +1,17 @@
+\begin{table}[htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{@{}Xrrr@{}}
+\toprule
+Additional context & AP $\uparrow$ & $\Delta$ AP (pp) & Paired 95\% CI \\
+\midrule
+Target only & 34.59 $\pm$ 5.66 & +0.00 $\pm$ 0.00 & [0.00, 0.00] \\
++ HCC1143 & 34.94 $\pm$ 5.15 & +0.35 $\pm$ 0.56 & [-1.22, 1.60] \\
++ HCC1806 & 35.23 $\pm$ 5.35 & +0.64 $\pm$ 0.32 & [-0.78, 1.77] \\
++ MDA-MB-453-1 & 35.20 $\pm$ 5.31 & +0.61 $\pm$ 0.44 & [-0.85, 2.04] \\
++ All three & \textbf{35.47 $\pm$ 6.36} & +0.87 $\pm$ 8.89 & [-2.44, 3.99] \\
+\bottomrule
+\end{tabularx}
+\caption{Within-study PTPC context transfer, reported separately from independent-source transfer. HCC1143, HCC1806 and MDA-MB-453-1 belong to the same mtPTDS study. Values are mean $\pm$ sample SD over seeds 61--63, multiplied by 100. Confidence intervals resample target compounds while retaining paired seed predictions. These contexts are not additional independent studies; the original model and results are unchanged.}
+\label{tab:completed-context-transfer}
+\end{table}

@@ -20,7 +20,7 @@
 | C12 / P2 x500 | Related Work分两方面 | 改为Collaborative learning for biological data与AI for AI in biological research。 | 已落实 |
 | C13 / P3 x505 | Method先overview后亮点 | §3.1首段说明任务规格、初始模型、设计空间、K实验室、输出；次段讲证据闭环。 | 已落实 |
 | C14 / P3 x509 | 不用机械编号步骤 | 删除五项enumerate，改成连贯机制叙述，由图2承担流程。 | 已落实 |
-| C15 / P4 x517，关联x513 | 10改K并做超参分析 | 框架/图统一K；10留在实验设置。Appendix B区分增加可用数据和固定全部数据两种K消融。四轻端点3seed已完成；DTI仍运行，不填估算。 | 写作及已完成实验已纳入；DTI待完成 |
+| C15 / P4 x517，关联x513 | 10改K并做超参分析 | 框架以K表述；按用户新要求使用原PPT架构图，图中10为主实验实例，caption明确K。Appendix B含所有五端点K=1/2/5/10，两种K定义分表；DTI seed61完整100轮已评分。 | 已完成并纳入本轮正文/附录 |
 | C16 / P4 x523 | 流程图只写任务不要指标 | 图2去AUROC/AP/Top-1；指标集中到实验契约表。 | 已落实 |
 | C17 / P4 x527 | 训练实现细节移实验/附录 | 100轮、评估间隔移§4；AdamW重置、batch64、clip1、buffer聚合、动量和adapter宽度移Appendix A。 | 已落实 |
 | C18 / P4 x536，关联x532 | Qwen型号是实现细节 | Method使用research controller；具体Qwen及Luna接口放实验和附录。 | 已落实 |
@@ -35,13 +35,13 @@
 
 `core_verification.json`于9月23日补充核验到26个完整结果文件、286个配置或预算截点、139个独立checkpoint，包含新完成的Tahoe Qwen/Luna 24槽位结果。原指标从保存预测复算，最大误差为0。它是保存预测复算，不冒充一次重新执行checkpoint推理；本轮补记的输入哈希也不冒充原始seal已有的历史绑定。模型对照还逐一验证了0–24槽位、全部提案记录和预设测试截点；DTI评分器已接入原始固定CSV的哈希检查。
 
-主结果仍采用统一的seeds 42–44，未混入新候选空间或不同预算。Appendix B单独给新实验的完成数和N/A。更多实验室、外源数据或proposal slots不保证单调提高，论文保留全部已完成对照和反例。
+主结果仍采用统一的seeds 42–44，未混入新候选空间或不同预算。Appendix B现采用 completed_ablation 最终快照，完整报告已完成设置，短6/长24两种候选空间分开。更多实验室、外源数据或proposal slots不保证单调提高，论文保留全部已完成对照和反例。
 
 ## 尚需完成或由作者确认
 
-- DTI实验室数量、跨源与长loop队列，以及其他任务剩余proposer seeds；运行状态以实验监管报告为准。
-- 蛋白组外源是同一研究的不同collection/context，尚不构成三项独立研究的复现。
-- 三项核心要求的逐组合验收表在研究目录 `results/core_ablation_20260922/analysis/COMPLETION.zh-CN.md`：训练、测试、独立复算、论文纳入分别计数，不能把队列已启动或单个COMPLETE标记等同于全部完成。
+- 本轮队列已于9月23日19:35完成。DTI K与三源迁移、五端点Qwen/Luna短6槽比较、四轻端点长24槽比较均已纳入；DTI长24槽未执行，新增重复seed按用户要求后置。
+- Lin和Ruprecht两项独立蛋白研究已完成共享编码器/来源专属head配对pilot，纳入Appendix B；原三cell contexts单列，不计作独立研究。第三源decryptE公开矩阵已确认可取，但尚未接入训练。
+- 本次完整验收见 `../completed_ablation_20260923/research/ACCEPTANCE.zh-CN.md` 与最终build receipt：训练、测试、复算、论文纳入分别确认。仍需增强的科学证据是跨任务稳定的proposal-history增益，以及第三项蛋白独立来源。
 - 投稿平台的作者、reciprocal reviewer、AI use表单与最终上传由作者核实；本轮未操作OpenReview。
 - `annotations.json`及本响应表包含合作者批注信息，供内部修改使用，不应随匿名补充材料上传。
 - 文献技能引用的paper-writing/general-writing附属模板本地缺失，使用原始来源核验、直接重写、回归检查和逐页渲染作为回退。

@@ -1,0 +1,20 @@
+\begin{table}[htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{@{}Xlrrrrr@{}}
+\toprule
+Task & Proposer & Dev. target & First D/L & Last gain D/L & Last retain D/L & Valid D/L \\
+\midrule
+PTPC & Luna & 66.72 & 0/0 & 0/0 & 0/0 & 24/24 \\
+PTPC & Qwen & 66.72 & 0/0 & 0/0 & 0/0 & 19/14 \\
+VCC & Luna & 27.68 & 16/9 & 16/10 & 16/10 & 24/24 \\
+VCC & Qwen & 24.83 & 18/23 & 18/23 & 18/23 & 11/16 \\
+Norman & Luna & 52.10 & 22/4 & 22/4 & 22/7 & 24/24 \\
+Norman & Qwen & 51.70 & 2/5 & 2/5 & 22/19 & 15/12 \\
+Tahoe & Luna & 35.00 & 5/13 & 5/13 & 5/13 & 24/24 \\
+Tahoe & Qwen & 35.00 & 18/14 & 18/14 & 18/14 & 14/15 \\
+\bottomrule
+\end{tabularx}
+\caption{Extended 36-design/24-slot search dynamics. Four light endpoints, seed 61; no native DTI 24-slot result is implied. D/L means direct/loop. The common target is the lower of the two terminal development primary scores, so it is attainable by both runs; first records its earliest attainment. Last gain is the last strictly improving primary-score slot; last retain also includes loss-tiebreak selections. These are retrospective diagnostics, not stopping rules. Slot 0 is initialization.}
+\label{tab:completed-dynamics-long24}
+\end{table}

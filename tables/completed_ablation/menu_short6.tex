@@ -1,0 +1,24 @@
+\begin{table}[htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{@{}Xrrrr@{}}
+\toprule
+Design & Learning rate & Weight decay & Server momentum & Residual head \\
+\midrule
+D00 & 0.001 & 0.001 & 0 & No \\
+D01 & 0.0001 & 0.001 & 0 & No \\
+D02 & 0.01 & 0.001 & 0 & No \\
+D03 & 0.001 & 0 & 0 & No \\
+D04 & 0.001 & 0.01 & 0 & No \\
+D05 & 0.001 & 0.001 & 0.9 & No \\
+D06 & 0.001 & 0.001 & 0 & Yes \\
+D07 & 0.001 & 0.001 & 0.9 & Yes \\
+D08 & 0.0001 & 0.001 & 0 & Yes \\
+D09 & 0.0001 & 0.001 & 0.9 & Yes \\
+D10 & 0.01 & 0.01 & 0 & No \\
+D11 & 0.001 & 0.01 & 0 & Yes \\
+\bottomrule
+\end{tabularx}
+\caption{Twelve executable configurations for the short6 protocol. Every design has proximal coefficient zero. A trace design ID uniquely identifies these parameter changes; the task-specific prediction interface remains fixed.}
+\label{tab:completed-menu-short6}
+\end{table}

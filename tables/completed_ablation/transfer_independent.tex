@@ -1,0 +1,28 @@
+\begin{table}[htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{@{}lXlrr@{}}
+\toprule
+Target & Additional source & Metric & Score $\uparrow$ & $\Delta$ (pp) \\
+\midrule
+DTI & Target only & AUROC & 85.47 & +0.00 \\
+DTI & + BioSNAP & AUROC & 82.44 & -3.03 \\
+DTI & + Davis & AUROC & 87.86 & +2.39 \\
+DTI & + Human & AUROC & \textbf{87.95} & +2.48 \\
+DTI & + All three & AUROC & 84.30 & -1.18 \\
+\midrule
+VCC & Target only & Macro Top-1 & 29.49 $\pm$ 0.00 & +0.00 $\pm$ 0.00 \\
+VCC & + Replogle & Macro Top-1 & 27.12 $\pm$ 0.08 & -2.37 $\pm$ 0.08 \\
+VCC & + Nadig & Macro Top-1 & 26.94 $\pm$ 0.18 & -2.55 $\pm$ 0.18 \\
+VCC & + Jiang & Macro Top-1 & \textbf{33.07 $\pm$ 0.00} & +3.58 $\pm$ 0.00 \\
+VCC & + All three & Macro Top-1 & 27.33 $\pm$ 0.00 & -2.15 $\pm$ 0.00 \\
+\midrule
+PTPC auxiliary & Target only & AP & 34.98 & +0.00 \\
+PTPC auxiliary & + Lin & AP & 35.01 & +0.03 \\
+PTPC auxiliary & + Ruprecht & AP & \textbf{35.50} & +0.52 \\
+PTPC auxiliary & + Both & AP & 35.31 & +0.34 \\
+\bottomrule
+\end{tabularx}
+\caption{Independent-source transfer on the same target heldout set, including every prespecified source and their combination. DTI (seed 61) adds BioSNAP, Davis or Human; VCC (seeds 61--63, mean $\pm$ SD) adds Replogle, Nadig or Jiang. The PTPC auxiliary multi-task model (seed 61) adds Lin or Ruprecht and is compared only with its matched auxiliary target-only model. PTPC has two independent external studies, not three. Changes are paired against target-only training; bold marks the best score within a target/model block. Scores are multiplied by 100.}
+\label{tab:completed-independent-transfer}
+\end{table}

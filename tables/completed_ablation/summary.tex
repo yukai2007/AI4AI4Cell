@@ -1,0 +1,17 @@
+\begin{table}[htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{@{}Xrrrrr@{}}
+\toprule
+Research model / method & DTI & PTPC & VCC & Norman & Tahoe \\
+\midrule
+Qwen: Direct@6 & \textbf{94.27} & \textbf{37.27} & \textbf{31.50} & \textbf{22.30} & \textbf{25.37} \\
+Qwen: Loop@6 & \textbf{94.27} & \textbf{37.27} & \textbf{31.50} & \textbf{22.30} & \textbf{25.37} \\
+\midrule
+Luna: Direct@6 & \textbf{94.60} & \textbf{37.27} & \textbf{31.50} & 22.30 & \textbf{26.87} \\
+Luna: Loop@6 & 94.27 & \textbf{37.27} & \textbf{31.50} & \textbf{23.11} & \textbf{26.87} \\
+\bottomrule
+\end{tabularx}
+\caption{Completed research-model and feedback ablation in the original 12-design, six-slot protocol. DTI uses AUROC and seed 42; PTPC uses AP and the cell endpoints use macro Top-1, all at seed 61. Each candidate receives 100 rounds on the same ten clients. The common initial design is reported in the full protocol table. Scores are multiplied by 100; bold denotes the best method within each task/backend block, including displayed ties. This table does not mix metrics across tasks or substitute the separate 36-design protocol.}
+\label{tab:completed-short-summary}
+\end{table}

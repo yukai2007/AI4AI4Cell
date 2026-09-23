@@ -1,46 +1,87 @@
 # 单日预算下的论文交付状态（2026-09-23）
 
-## 结论
+## 当前结论
 
-主论文当前可以交付：英文稿 `manuscript.pdf` 已按最新正文编译，24 页，论文工具测试 44/44 通过；中文伴读版仍保留。主表使用已完成且独立重算的 seeds 42--44 held-out 结果，不能把它们降级为伪结果或 development 分数。
+**本轮已经挂起的 diverse 数据、lab 数量、研究模型及 loop 消融全部完成。** 最终汇总于北京时间 **2026-09-23 19:35** 写出，七个实验模块均为 `COMPLETE`，队列中没有待跑或运行中的实验。新增重复 seed 未列为本轮完成条件。
 
-“只差多 seed”只适用于已经锁定的主表、现有 cell/proteomics loop 轨迹和已完成的相同协议敏感性；它不适用于两个仍单独列出的增强实验：DTI 的新 6-slot/native 短预算研究，以及外部独立 proteomics 来源迁移。后者目前只有来源身份闭包和可行性审计，没有训练结果，正文不把它写成已完成证据。
+完整分数、每个 loop 前缀、轨迹与来源哈希见 [实验汇总](../../results/tonight_completion_20260923/final_delivery/RESULTS.zh-CN.md) 和 [机器可读结果](../../results/tonight_completion_20260923/final_delivery/summary.json)。后者 SHA-256：`8eb30ad05acaf714dbaa8c180a0657dcd9bc6c8b9bebccba620f097159eb7541`。
 
-## 已锁定，可直接放入论文
+**仍有两点需要在后续论文整合中明确：蛋白组只有两个独立外源；loop 的收益目前并非跨任务普遍成立。** 本轮完成的是已定义、数据可用的实验矩阵，不将缺失的第三蛋白组来源计作完成。
 
-- 主表：TAPB DTI、ProteinTalks observed-response、VCC、Norman、Tahoe 五个 endpoint，task model / Qwen direct / AI4AI4Cell，seeds 42--44。
-- 现有 24-slot Qwen/Luna loop 轨迹、proposal validity、negative transfer、matched-compute racing 与 held-out 重算。
-- cell/VCC 三个独立外部 collection 的 cross-source 证据，以及 ProteinTalks 同一 mtPTDS 研究内三个 context 的 within-study transfer；后者不称为三个独立研究。
-- lab-count 的既有 PTPC、VCC、Norman、Tahoe 多 seed 快照；新增 native DTI seed61 的 participation K10 已完成（development primary 0.9239576），并保留 checkpoint/hash。
+## 1. 不同来源的数据：真实 held-out 结果
 
-## 已结束但不完整、且不阻塞主论文
+### DTI：三个独立外源及联合来源
 
-- native DTI seed61 的 participation K10 fit 已完整（100 rounds，development primary 0.9239576），但其后续 partition K1 只写到第 10 轮，没有 `fit.json`，因此只保留为 partial，不用于论文分数。
-- cross-source DTI seed61 的 target-only fit 已完整（100 rounds，development primary 0.8551163），但尚未完成全 case held-out 汇总；`plus_biosnap` 只到第 70 轮，`plus_davis`、`plus_human`、`plus_all` 没有完整 fit。当前没有相关进程运行，GPU 为空是因为队列已经退出，不代表这些 case 完成。
+原生 TAPB 模型，seed61，每项完整训练 100 轮，同一目标测试集与 scorer。以下差值均为 AUROC 百分点。
 
-## 未完成、不能伪装成“只差多 seed”
+| 来源设置 | AUROC（%） | 相对 target-only |
+|---|---:|---:|
+| Target-only | 85.4719 | — |
+| + BIOSNAP | 82.4383 | −3.0336 |
+| + Davis | 87.8573 | +2.3854 |
+| + Human | **87.9497** | +2.4778 |
+| + 全部三个外源 | 84.2952 | −1.1767 |
 
-- native DTI 新 12-design/6-slot cache：旧四个轻任务 seed61 的 12 个完整 fit 可复用；native DTI 的 10-client 12 个 fit 尚未产生完整 `fit.json + best.pt`，因此不发布该新短协议的 held-out loop 结论。
-- 独立 proteomics 来源：Lin 与 Ruprecht 的 source-specific auxiliary-head 方案已完成身份闭包和 endpoint 风险审计；decryptE 处理矩阵尚未闭合，未启动训练。来源可行性见 `extensions/core_ablation_20260922/research/proteomics_external_20260923/ONE_DAY_FEASIBILITY.md`。
+Davis 与 Human 在这组配对实验中提高了目标 AUROC；BIOSNAP 和全部来源联合出现负迁移。AP、MCC、accuracy、log loss 也已记录并独立复算，不仅保留 AUROC。
 
-## 一日短 loop 已完成（seed61）
+正式完整结果：[native_final_cross_v2/summary.json](../../results/tonight_completion_20260923/native_final_cross_v2/summary.json)。
 
-在四个轻任务上，Qwen2.5-7B 和 gpt-5.6-luna 均完成了统一的 12-design cache、6-slot direct/loop 选择和 held-out seal。这里的候选 fit 全部严格复用已完成的 100-round/10-client checkpoint；新增成本是 proposal、选择和 held-out 评测，而不是重复训练。结果按原 scorer 保存于 `results/budget1day_20260923/{task}/seed61/{qwen,luna}/heldout/results.json`。
+### Cell：VCC + 三个独立 collection
 
-- PTPC AP：Qwen/Luna direct 与 loop 的五个 prefix 均为 0.37274；说明该任务在这一短预算下保持稳定，但没有凭空制造 loop 增益。
-- Norman macro Top-1：Qwen direct 的 prefix 为 15.48/14.96/35.48/22.30/22.30%，Luna loop 为 15.48/14.96/14.96/15.26/23.11%；这组结果说明 proposal 顺序会影响选择，且 held-out 必须按冻结 checkpoint 报告。
-- VCC macro Top-1：Qwen 各 prefix 为 31.50%；Luna loop 在 prefix 4 出现 16.94% 的负迁移，prefix 6 回到 31.50%。负结果已保留。
-- Tahoe macro Top-1：Qwen 各 prefix 为 25.37%；Luna 在 prefix 6/loop 4、6 为 26.87%，其余为 25.37%。
+Replogle、Nadig、Jiang 三个独立外源，target-only、三个单外源和联合外源，共 5 个条件 × seeds61–63 = 15 项结果均完成。Jiang 将目标 macro Top-1 从 **29.4853% 提升至 33.0680%（+3.5827 个百分点）**；其他两个单外源和联合外源的负迁移同样完整保留。
 
-这组单 seed 短协议用于补充 loop 行为和模型后端审计，不替换主表的 seeds 42--44，也不把 proposal-cache replay 描述成新的训练收益。
+### Proteomics：两个独立外源 pilot
 
-## 算力控制
+Lin、Ruprecht 两个外源，4 个来源设置各自 fixed/loop，共 8 项最终测试完成。12 个候选均训练 100 轮，8 次真实 Luna 调用完成。新增多任务共享编码器与来源专属 head 使用同架构 target-only 配对对照，作为补充实验，不替换原主表模型。
 
-本轮从 `repetition_pause.json` 的不可变时间点起按 8 卡整机保留计费，预算 192 GPU·小时、24 小时硬截止。最新账本（2026-09-23 11:43）报告保守已用约 108.3 GPU·小时、剩余约 83.7 GPU·小时；空闲显卡不折减。重复 native、低优先级 seed 和 legacy repeatability 树已按精确 PID/start_ticks 停止，partial/checkpoint 未删除。凭据与只读核验见：
+| 来源设置 | Fixed AP（%） | 两步 Loop AP（%） | 相对 target-only（百分点） |
+|---|---:|---:|---:|
+| Target-only | 34.9786 | 34.9786 | — |
+| + Lin | 35.0122 | 35.0122 | +0.0336 |
+| + Ruprecht | **35.4985** | **35.4985** | +0.5199 |
+| + 两来源 | 35.3147 | 35.3147 | +0.3361 |
 
-- `results/core_ablation_20260922/analysis/budget_stop_receipt_20260923.json`
-- `results/core_ablation_20260922/analysis/stop_verification_20260923.json`
-- `results/core_ablation_20260922/analysis/repeatability_stop_verification_20260923.json`
-- `extensions/budget1day_20260923/budget_ledger.py`
+外源 AP 点估计小幅提升，配对 bootstrap 区间跨零；该 pilot 中 loop 与 fixed 的 AP 持平。第三来源 decryptE 的公开处理矩阵已核验可下载，目标蛋白交集和标签对应已确认；尚未完成全量接入及训练，未计入已完成来源。详细结果：[蛋白组 pilot 报告](../../results/proteomics_external_pilot_20260923/RESULT.zh-CN.md)。
 
-任何新增训练先运行 budget ledger admission；不以瞬时显存、CPU 时间或 development 分数替代真实预算和 held-out 结果。
+## 2. DTI 实验室数量：两个问题分开比较
+
+所有设置均为 seed61、完整 100 轮训练，并使用同一 held-out scorer。
+
+| 设置 | K=1 | K=2 | K=5 | K=10 |
+|---|---:|---:|---:|---:|
+| Participation：增加参与实验室及可用数据，AUROC（%） | 83.6457 | 84.4298 | 89.6212 | **93.8838** |
+| Partition：总数据固定，改变划分数，AUROC（%） | 85.4719 | 88.9625 | 88.0465 | **93.8838** |
+
+Participation 的 K=1→10 提升为 **10.2381 个百分点**。固定数据量的 partition 结果也随划分变化，且 K=2→5 并非单调；因此两条曲线分别呈现，不把全部变化归因于数据量。K=1、K=10 的等价训练复用已有逐项凭据，不作为额外独立重复。
+
+正式结果：[native_final_lab_v1/summary.json](../../results/tonight_completion_20260923/native_final_lab_v1/summary.json)。
+
+## 3. 研究模型与 loop：已完整测完，收益按场景陈述
+
+- **四个轻任务**：ProteinTalks、VCC、Norman、Tahoe；Qwen/Luna；short6 与 long24 共 16 组均完成，并保留各自预设预算前缀及完整开发轨迹。两种协议的设计空间不同，分开分析。
+- **DTI**：12 个 seed42、100-round 候选全部齐备，其中 8 个经源码、数据和配置等价核验复用，D01/D02/D03/D10 新完成。Qwen/Luna 各 direct/loop、预算 0/1/2/4/6，共 20 项前缀测试全部完成并独立复算。seed42 按缓存可用性选定。
+
+| DTI 研究模型 | Direct AUROC（%） | Loop AUROC（%） | Loop − Direct（百分点） |
+|---|---:|---:|---:|
+| Qwen | 94.2679 | 94.2679 | 0.0000 |
+| Luna | 94.6000 | 94.2679 | −0.3321 |
+
+轻任务 short6 中，Norman/Luna 的 loop 提升 **0.8148 个百分点**，其余 7 组终点持平。long24 中，7 组终点持平，VCC/Luna 为 −0.2228 个百分点。Norman/Luna 的 long24 loop 在第 4 个槽达到共同开发目标，direct 为第 22 个槽，体现这组实验的搜索效率收益，而非终点精度差。
+
+当前证据支持研究不同任务上的搜索效率、有效来源和负迁移；**loop 的跨任务稳定精度收益仍是论文需要加强的核心点，不只是补 seed 的问题。**
+
+独立核验：[轻任务 loop 汇总](../../results/tonight_completion_20260923/audit/loop_completed_summary.zh-CN.md)、[DTI 20 项前缀复算](../../results/tonight_completion_20260923/audit/dti_loop_completed_rescore.json)。
+
+## 4. 完成凭据、预算与恢复记录
+
+- 训练、开发选择、封存测试和独立复算均完成；DTI 5 个二分类指标独立复算通过，cell/proteomics 共 23 项已完成结果也已复算。
+- 原联合外源训练在第 50 轮中断，旧 partial 保留；`plus_all_retry1` 从原 seed61 初始化完整重训 100 轮，现已正式评分。
+- 最后一次评分的 checkpoint 复制遇到磁盘配额不足；仅将本次失败评分产生的约 95 MiB 临时副本移至 `/tmp/ai4ai4cell-scoring-quota-20260923.v3kO2z`，逐文件核对移动前后哈希。原始训练模型未删除或修改。
+- 正式恢复评分目录为 `native_final_cross_v2`。它使用已完成 checkpoint 的硬链接避免重复占空间；内容哈希在评分前后核对，选择逻辑、原 scorer 与独立复算不变。旧失败记录及 [存储恢复凭据](../../results/tonight_completion_20260923/native_final_cross_v1/quota_recovery.json) 保留；`finalize_cross_all_retry2` 与 `collect_ablation_delivery_retry2` 均以退出码 0 完成。
+- 预算起点保持 2026-09-22 22:10:34，硬截止 2026-09-23 22:10:34。本轮于 19:35 完成，约 **171.30 GPU·小时**（八卡连续保留的保守口径；不等同于实际活跃 GPU 时长；历史缓存训练开销另计），在 192 GPU·小时上限内。
+
+## 5. 论文文件状态
+
+主表现有 seeds42–44 的五个endpoint数值保持不变。后续整合已将本轮完整结果写入§4.5、§5.3–5.4及Appendix B，新增生成表、完整预算曲线、配置菜单和504槽提案轨迹。图2已替换为用户提供PPT的矢量版，英文PDF与中文版均重新构建；最终校验与Git同步状态以 `completed_ablation_20260923/build_receipt.json` 和交付说明为准。
+
+正文整合重点是：增加独立来源和 K 敏感性证据，分开讲述数据参与、来源适配与 loop 搜索效率；同时落实 loop 增益偏弱这一实际发现。第三个蛋白组独立外源仍需全量下载、适配和训练；DTI长24槽不属于本次已完成短6槽协议。

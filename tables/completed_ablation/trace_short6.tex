@@ -1,0 +1,29 @@
+\begingroup\small
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}p{0.10\linewidth}p{0.08\linewidth}p{0.08\linewidth}>{\raggedright\arraybackslash}p{0.66\linewidth}@{}}
+\caption{Complete proposal trace for short6. Each token is slot:design:decision, with A=retained, R=not retained, I=invalid. Design configurations are decoded in Table~\ref{tab:completed-menu-short6}. All proposed slots, including failures, are retained. Full configuration deltas and development scores are in the accompanying snapshot and TSV.}\label{tab:completed-trace-short6}\\
+\toprule Task & Proposer & Mode & Slot:design:decision \\ \midrule\endfirsthead
+\toprule Task & Proposer & Mode & Slot:design:decision \\ \midrule\endhead
+\bottomrule\endfoot
+DTI & Luna & Direct & 1:D06:R; 2:D05:R; 3:D04:R; 4:D07:R; 5:D03:R; 6:D11:A \\[3pt]
+DTI & Luna & Loop & 1:D06:R; 2:D08:R; 3:D05:R; 4:D04:R; 5:D03:R; 6:D01:R \\[3pt]
+DTI & Qwen & Direct & 1:D06:R; 2:D07:R; 3:D08:R; 4:D09:R; 5:D04:R; 6:D05:R \\[3pt]
+DTI & Qwen & Loop & 1:D06:R; 2:D07:R; 3:D08:R; 4:D09:R; 5:D04:R; 6:D05:R \\[3pt]
+PTPC & Luna & Direct & 1:D06:R; 2:D05:R; 3:D03:R; 4:D07:R; 5:D04:R; 6:D11:R \\[3pt]
+PTPC & Luna & Loop & 1:D06:R; 2:D08:R; 3:D05:R; 4:D04:R; 5:D11:R; 6:D03:R \\[3pt]
+PTPC & Qwen & Direct & 1:D06:R; 2:D07:R; 3:D08:R; 4:D09:R; 5:D04:R; 6:D05:R \\[3pt]
+PTPC & Qwen & Loop & 1:D06:R; 2:D10:R; 3:D07:R; 4:D08:R; 5:--:I; 6:D09:R \\[3pt]
+VCC & Luna & Direct & 1:D06:R; 2:D07:R; 3:D03:A; 4:D04:R; 5:D05:R; 6:D11:R \\[3pt]
+VCC & Luna & Loop & 1:D06:R; 2:D04:R; 3:D05:A; 4:D09:R; 5:D02:R; 6:D03:A \\[3pt]
+VCC & Qwen & Direct & 1:D06:R; 2:D07:R; 3:D08:R; 4:D09:R; 5:D04:R; 6:D11:R \\[3pt]
+VCC & Qwen & Loop & 1:D06:R; 2:D07:R; 3:D10:R; 4:D08:R; 5:D04:R; 6:D09:R \\[3pt]
+Norman & Luna & Direct & 1:D06:A; 2:D07:A; 3:D05:R; 4:D03:R; 5:D08:A; 6:D11:R \\[3pt]
+Norman & Luna & Loop & 1:D06:A; 2:D11:R; 3:D05:R; 4:D04:A; 5:D01:A; 6:D09:R \\[3pt]
+Norman & Qwen & Direct & 1:D06:A; 2:D07:A; 3:D08:A; 4:D09:R; 5:D04:R; 6:D11:R \\[3pt]
+Norman & Qwen & Loop & 1:D06:A; 2:D07:A; 3:D11:R; 4:D08:A; 5:D10:R; 6:D05:R \\[3pt]
+Tahoe & Luna & Direct & 1:D06:R; 2:D03:R; 3:D05:R; 4:D07:R; 5:D08:R; 6:D11:A \\[3pt]
+Tahoe & Luna & Loop & 1:D06:R; 2:D05:R; 3:D04:A; 4:D11:R; 5:D10:R; 6:D03:R \\[3pt]
+Tahoe & Qwen & Direct & 1:--:I; 2:D06:R; 3:D07:R; 4:--:I; 5:D08:R; 6:D09:R \\[3pt]
+Tahoe & Qwen & Loop & 1:--:I; 2:D06:R; 3:--:I; 4:D07:R; 5:D09:R; 6:D05:R \\[3pt]
+\end{longtable}
+\endgroup
