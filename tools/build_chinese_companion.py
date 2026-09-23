@@ -25,8 +25,8 @@ from reportlab.platypus import (
 )
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "output" / "pdf" / "AI4AI4Cell_中文伴读版.pdf"
-TMP = Path(tempfile.mkdtemp(prefix="ai4ai4cell-zh-pdf-"))
+OUT = ROOT / "output" / "pdf" / "BioCoLoop_中文伴读版.pdf"
+TMP = Path(tempfile.mkdtemp(prefix="biocoloop-zh-pdf-"))
 
 
 def main_score_rows():
@@ -38,7 +38,7 @@ def main_score_rows():
     rows = [["方法 / access", "DTI", "Protein", "VCC", "Norman", "Tahoe", "平均"]]
     numeric_means = []
     for arm, label in [('single_fixed', 'Task model (1 lab)'), ('single_direct', 'Qwen direct (1 lab)'),
-                       ('federated_loop', '<b>AI4AI4Cell (10 labs)</b>')]:
+                       ('federated_loop', '<b>BioCoLoop (10 labs)</b>')]:
         values = [[100*run['scores'][arm]['primary'] for run in data['tasks'][task]['runs'].values()
                    if run is not None] for task in tasks]
         values.append([100*statistics.mean(data['tasks'][task]['runs'][seed]['scores'][arm]['primary']
@@ -151,7 +151,8 @@ class Doc(BaseDocTemplate):
     def __init__(self, filename):
         super().__init__(filename, pagesize=A4, leftMargin=17*mm,
                          rightMargin=17*mm, topMargin=18*mm,
-                         bottomMargin=16*mm, title="AI4AI4Cell 中文伴读版")
+                         bottomMargin=16*mm, title="BioCoLoop 中文伴读版",
+                         subject="BioCoLoop: Collaborative Agentic Research for Biological Model Improvement")
         frame = Frame(self.leftMargin, self.bottomMargin, self.width, self.height)
         self.addPageTemplates(PageTemplate(id="main", frames=[frame], onPage=self._page))
 
@@ -163,7 +164,7 @@ class Doc(BaseDocTemplate):
             canvas.line(17*mm, A4[1]-12*mm, A4[0]-17*mm, A4[1]-12*mm)
             canvas.setFont("CompanionSC", 8)
             canvas.setFillColor(MUTED)
-            canvas.drawString(17*mm, A4[1]-9.5*mm, "AI4AI4Cell 中文伴读版")
+            canvas.drawString(17*mm, A4[1]-9.5*mm, "BioCoLoop 中文伴读版")
             canvas.drawRightString(A4[0]-17*mm, 9*mm, str(doc.page))
         canvas.restoreState()
 
@@ -415,7 +416,7 @@ def annotation_page():
                    ['贡献不能泛称已有 harness', '贡献聚焦历史证据打包、提案反馈和按学习轨迹分配验证预算；两类决策分开验证。', 'Method / Results 5.2'],
                    ['相关工作分类与引用', '分 collaborative learning 与 AI for AI in bio 两部分；逐项核对引用，并区分任务模型与研究控制器。', 'Related work / 引用审计'],
                    ['方法层级与技术细节混杂', '方法先给输入、模块、流程、输出和核心 loop；去掉步骤式正文，训练细节与 JSON schema 移至附录。', 'Method / Appendix A'],
-                   ['主图存在不存在的数据、固定10和指标', '范式图只保留实际可用数据；方法图使用用户提供的可编辑架构图，保留原文字，图注说明实验的10对应一般K。', 'Figures 1-2'],
+                   ['主图存在不存在的数据、固定10和指标', '范式图只保留实际可用数据；方法图沿用用户提供的可编辑架构图，统一 BioCoLoop / Collaborative 品牌术语，图注说明实验的10对应一般K。', 'Figures 1-2'],
                    ['主表基线名不清楚', '使用 Task model / Qwen direct，表注写明 TAPB、ProteinTalks-derived 与 scDEBART；生物预测来自任务模型。', 'Main table'],
                    ['效果表不知道检验什么', '改为明确的问题：早期证据能否改善训练分配？列名 Uniform / Evidence-guided；DTI 开发回放移至附录。', 'Results 5.2'],
                    ['Discussion 与结尾冗长', '归并为简洁 Conclusion；复现、伦理与 AI 使用声明分开；附录 B 更新已完成的K、独立来源、双后端及预算分析。', 'Conclusion / Statements / B']],
@@ -429,10 +430,12 @@ def annotation_page():
 def story():
     core, _ = core_review()
     completed, completed_sha = completed_review()
-    s = [Spacer(1, 38*mm), p("AI4AI4Cell 中文伴读版", "cover"),
-         p("协作式证据引导的生物模型改进", "subtitle"), Spacer(1, 12*mm),
+    s = [Spacer(1, 38*mm), p("BioCoLoop 中文伴读版", "cover"),
+         p("面向生物模型改进的协作式智能体研究", "subtitle"),
+         p("Collaborative Agentic Research for Biological Model Improvement", "center"),
+         Spacer(1, 12*mm),
          callout("核心问题",
-                 "多个生物实验室拥有互补数据。AI4AI4Cell 让这些数据在本地参与两件事：一是训练共享预测模型，二是为外层研究循环评价和选择下一版可执行设计。",
+                 "多个生物实验室拥有互补数据。BioCoLoop 让这些数据在本地参与两件事：一是训练共享预测模型，二是为外层研究循环评价和选择下一版可执行设计。",
                  PALE_TEAL, TEAL), Spacer(1, 10*mm),
          table([["任务族", "主端点", "实验配置", "随机种子"],
                 ["DTI / 蛋白组学 / 细胞扰动", "5", "六配置对照，已完成", "42 / 43 / 44"],
@@ -466,14 +469,14 @@ def story():
           table([["范式", "具备的能力", "关键差异"],
                  ["Centralized bio-agent", "在一份可访问数据上训练、评价并迭代设计", "缺少多实验室聚合"],
                  ["Collaborative training", "多实验室本地训练并聚合共享模型", "可执行设计保持固定"],
-                 ["AI4AI4Cell", "同时更新共享模型与研究设计", "aggregate evidence card 闭合外层循环"]],
+                 ["BioCoLoop", "同时更新共享模型与研究设计", "aggregate evidence card 闭合外层循环"]],
                 [43*mm, 65*mm, 63*mm], highlights=[(3, PALE_TEAL)]), PageBreak()]
 
     s += [p("3  架构总览", "h1"),
           figure('user_framework', 171,
-                 ROOT / 'figures/framework_user_20260923_readable_original_labels.pdf'),
+                 ROOT / 'figures/biocoloop_framework.pdf'),
           Spacer(1, 4*mm),
-          p("架构图使用用户提供的可编辑原图，仅修复字体与文字框排版，保留原文字。图中的 10 个实验室对应当前实验实例；一般方法使用 K 个参与实验室。", "note"),
+          p("架构图沿用用户提供的可编辑设计，统一为 BioCoLoop 与 Collaborative 术语，并修复字体与文字框排版；模块、连线和实验数值保持不变。图中的 10 个实验室对应当前实验实例；一般方法使用 K 个参与实验室。", "note"),
           callout("读图顺序",
                   "上方外层由研究模型提出、实例化、评价和修订设计；中部各实验室执行本地参数拟合，协调器聚合更新与开发诊断；下方显示三个任务族及输出。研究模型本身保持固定，反馈用于下一轮可执行设计。",
                   PALE_BLUE, BLUE), PageBreak(),
@@ -519,7 +522,7 @@ def story():
           table(main_score_rows(),
                 [42*mm, 21.5*mm, 21.5*mm, 21.5*mm, 21.5*mm, 21.5*mm, 21.5*mm],
                 font="tiny", highlights=[(3, PALE_TEAL)]), Spacer(1, 4*mm),
-          p("当前主表为已完成的 3 个 seed：held-out 均值 ± 样本标准差，均乘以 100。标准差反映固定数据划分上的训练／搜索波动，不是标准误或置信区间；总体分先按每个 seed 平均五项指标，再计算标准差。新增重复实验尚未计入。AI4AI4Cell 在五个主端点中的四个最高，五端点描述性均值为 41.39。Norman 的最高值来自单实验室 fixed recipe。", "note"),
+          p("当前主表为已完成的 3 个 seed：held-out 均值 ± 样本标准差，均乘以 100。标准差反映固定数据划分上的训练／搜索波动，不是标准误或置信区间；总体分先按每个 seed 平均五项指标，再计算标准差。新增重复实验尚未计入。BioCoLoop 在五个主端点中的四个最高，五端点描述性均值为 41.39。Norman 的最高值来自单实验室 fixed recipe。", "note"),
           Spacer(1, 6*mm),
           callout("整体结论",
                   "完整系统在分子互作、蛋白响应和细胞扰动三类任务上都取得了有竞争力的结果；相对于单实验室 direct optimization，五个端点分别变化 +3.87、+16.85、+10.45、+8.10 和 +6.97 个百分点。",
@@ -580,11 +583,40 @@ def main():
               ROOT.parent / 'results/proteomics_external_pilot_20260923/RESULT.zh-CN.md',
               ROOT / 'assets/paradigm_comparison.pdf',
               ROOT / 'assets/completed_budget_examples.pdf',
-              ROOT / 'figures/framework_user_20260923_readable_original_labels.pdf']
+              ROOT / 'figures/biocoloop_framework.pdf']
+    # Figure PDFs are rasterized for this companion; inspect their source text
+    # as well as the final PDF so visible labels cannot retain the retired name.
+    retired = ''.join(('AI4', 'AI4', 'Cell')).lower()
+    for source in (ROOT / 'assets/paradigm_comparison.pdf',
+                   ROOT / 'figures/biocoloop_framework.pdf'):
+        with fitz.open(source) as figure_doc:
+            figure_text = ''.join(page.get_text() for page in figure_doc)
+            assert retired not in figure_text.lower(), f'Retired label remains in {source.name}'
     with fitz.open(rendered) as document:
         page_count = len(document)
+        text = ''.join(page.get_text() for page in document)
+        assert retired not in text.lower(), 'Retired brand remains in visible text'
+        assert retired not in json.dumps(document.metadata).lower(), 'Retired brand remains in metadata'
+        assert 'BioCoLoop' in document.metadata['title']
+        out_of_bounds = []
+        for index, page in enumerate(document):
+            for block in page.get_text('dict')['blocks']:
+                for line in block.get('lines', []):
+                    for span in line['spans']:
+                        box = fitz.Rect(span['bbox'])
+                        if box.x0 < -0.5 or box.y0 < -0.5 or box.x1 > page.rect.width+0.5 or box.y1 > page.rect.height+0.5:
+                            out_of_bounds.append(index+1)
+        assert not out_of_bounds, f'Text crosses page bounds: {out_of_bounds}'
+        embedded_fonts = sorted({font[3] for page in document for font in page.get_fonts()
+                                 if font[1] not in ('n/a', '')})
+        assert any('CompanionSC' in name for name in embedded_fonts), 'Chinese fonts are not embedded'
     provenance = {
         'schema': 'ai4ai4cell-chinese-companion-v2',
+        'display_brand': 'BioCoLoop',
+        'display_title': 'BioCoLoop: Collaborative Agentic Research for Biological Model Improvement',
+        'branding_verified': True,
+        'embedded_fonts': embedded_fonts,
+        'text_out_of_bounds_pages': out_of_bounds,
         'generated_utc': datetime.now(timezone.utc).isoformat(),
         'generator_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         'embedded_font_source_sha256': hashlib.sha256(FONT_SOURCE.read_bytes()).hexdigest(),

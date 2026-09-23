@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage{iclr2027_conference}
+\usepackage{fontspec}
+\setmainfont{texgyretermes-regular.otf}[Path=fonts/,BoldFont=texgyretermes-bold.otf,ItalicFont=texgyretermes-italic.otf,BoldItalicFont=texgyretermes-bolditalic.otf]
+\usepackage{amsmath,amssymb,booktabs,tabularx,longtable,xurl,graphicx}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\usepackage{microtype}
+\hypersetup{pdftitle={BioCoLoop: Collaborative Agentic Research for Biological Model Improvement}}
+\begin{document}
+% Build with Tectonic 0.17.0 or XeLaTeX/BibTeX.
+\title{BioCoLoop: Collaborative Agentic Research\\for Biological Model Improvement}
+\author{Anonymous}
+\date{}
+\maketitle
+\input{tables/strong_v3/snapshot_stats}
+\begin{abstract}
+Biological data are often distributed across institutions and data holders, where privacy and data-sharing constraints limit centralized access. A key challenge for self-improving AI in this setting is to use such distributed evidence to improve both model parameters and the computational solutions built around them. Collaborative learning typically optimizes fixed models, whereas automated model design and research generally rely on centralized training and evaluation signals. Bridging the two is nontrivial: distributed evidence must support not only optimization, but also the evaluation and refinement of computational changes that generalize beyond their local settings. To tackle this, we introduce BioCoLoop, a collaborative research framework that couples client-local parameter fitting with an evidence-guided proposal--evaluation loop. Local training shards update a shared predictor, while local development shards produce aggregate evidence cards that guide the next executable proposal. Across three biological settings spanning drug--target interaction prediction, observed-response proteomics, and cell perturbation, the complete system leads four of five main-table endpoints. Under matched data, candidate and compute budgets, evidence-guided allocation yields four held-out wins, eight ties and no losses across twelve task--seed comparisons, including a 10.84-point mean Top-1 gain on double-gene perturbations. BioCoLoop offers a practical path toward self-improving biological AI under data-sharing constraints.
+\end{abstract}
+
+\input{sections/01_introduction}
+
+\input{sections/02_related_work}
+
+\input{sections/03_method}
+
+\input{sections/04_experimental_design}
+
+\input{sections/05_results}
+
+\input{sections/07_conclusion}
+
+\input{sections/08_reproducibility}
+
+\clearpage
+\input{sections/22_appendix_unified_protocol}
+
+\input{sections/23_appendix_core_sensitivity}
+
+\end{document}

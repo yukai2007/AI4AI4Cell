@@ -1,6 +1,8 @@
-# AI4AI4Cell manuscript
+# BioCoLoop manuscript
 
-**AI4AI4Cell: Collaborative Evidence-Guided Research for Biological Model Improvement**
+**BioCoLoop: Collaborative Agentic Research for Biological Model Improvement**
+
+BioCoLoop combines **biology**, **collaboration** and an iterative **research loop**. This is a naming-only revision: experimental scores, designs, datasets and frozen identifiers are unchanged. Historical releases retain their original names. The existing repository URL and storage paths remain stable for Overleaf and result provenance.
 
 ## Completed-experiment revision — 23 September 2026
 
@@ -19,9 +21,9 @@ The readable [completion audit](provenance/completed_ablation_20260923/research/
 
 ## Figures and reading copies
 
-Figure 1 compares the research paradigms. Figure 2 uses the user-supplied editable framework slide, converted to a vector PDF with layout-only font and text-box repairs. The original source is unchanged; its wording and design are preserved. The caption relates the illustrated ten laboratories to general K and states the evaluated design scope. The PDF, editable derivative and conversion receipt are in `figures/`.
+Figure 1 compares the research paradigms. Figure 2 uses the user-supplied editable framework slide, converted to a vector PDF with layout-only font and text-box repairs. The original source is unchanged. The current editable derivative uses BioCoLoop and collaborative terminology, with the layout, modules and measurements preserved. The caption relates the illustrated ten laboratories to general K and states the evaluated design scope. The PDF, editable derivative and conversion receipt are in `figures/`.
 
-The [English completed-experiment PDF](output/pdf/AI4AI4Cell_completed_experiments_20260923.pdf) is also copied locally to `manuscript.pdf`. The [Chinese section-by-section companion](output/pdf/AI4AI4Cell_中文伴读版.pdf) is regenerated with:
+The [English completed-experiment PDF](output/pdf/BioCoLoop_manuscript.pdf) is also copied locally to `manuscript.pdf`. The [Chinese section-by-section companion](output/pdf/BioCoLoop_中文伴读版.pdf) is regenerated with:
 
 ```bash
 python3 tools/build_chinese_companion.py
@@ -31,14 +33,14 @@ The companion explains the methods, numerical results, completed ablations and r
 
 ## Editing and compilation
 
-Select `main.tex` as the Overleaf entry and **XeLaTeX** as compiler. `latexmkrc` redirects the default pdfLaTeX command for the bundled fonts. Edit `ai4ai4cell-main.tex` and `sections/`; citations live in `references.bib`. The official ICLR template and its spacing are unchanged.
+Select `main.tex` as the Overleaf entry and **XeLaTeX** as compiler. `latexmkrc` redirects the default pdfLaTeX command for the bundled fonts. Edit `biocoloop-main.tex` and `sections/`; citations live in `references.bib`. The official ICLR template and its spacing are unchanged.
 
 ```bash
 tectonic --only-cached --keep-intermediates --keep-logs --outdir build main.tex
 python -m unittest discover -s tools -p 'test_*.py'
 ```
 
-The research host requires its compatible cached Tectonic 0.17.0 binary and matching shared libraries, rather than the default local binary. This host-specific setup is not required on Overleaf. Build and visual-review receipts are in `provenance/completed_ablation_20260923/`.
+The research host requires its compatible cached Tectonic 0.17.0 binary and matching shared libraries, rather than the default local binary. This host-specific setup is not required on Overleaf. Build and visual-review receipts are in `provenance/rename_biocoloop_20260923/`.
 
 ## Data-to-paper publication
 

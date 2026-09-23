@@ -319,13 +319,13 @@ def table(snapshot, out, full=False):
                     text += r' $\pm$ ' + (f'{sd:.2f}' if sd is not None else r'\textnormal{N/A}')
                 cells.append(text)
             method = ({'single_fixed': 'Task model', 'single_direct': 'Qwen direct'}
-                      .get(arm, r'\textbf{AI4AI4Cell}' if arm == 'federated_loop' else name))
+                      .get(arm, r'\textbf{BioCoLoop}' if arm == 'federated_loop' else name))
             if arm == 'federated_loop':
                 lines.append(r'\midrule')
             lines.append(f'{method} ({labs} lab' + ('' if labs == '1' else 's') + ') & ' +
                          ' & '.join(cells) + r' \\')
         lines += [r'\bottomrule', r'\end{tabularx}',
-            r'\caption{Main held-out comparison. Task models are TAPB (DTI), a ProteinTalks-derived efficacy head (PTPC) and corrected scDEBART response heads (cells). Qwen direct proposes configurations without evaluation history; AI4AI4Cell adds collaborative access and evidence feedback. Values are mean $\pm$ sample SD, multiplied by 100; SD is not a confidence interval. Overall summarizes the five endpoints within each seed. Bold and underline mark the best and second-best displayed means. The shared training protocol is in Section 4; all six configurations, seed counts and secondary metrics are in Appendix A.}',
+            r'\caption{Main held-out comparison. Task models are TAPB (DTI), a ProteinTalks-derived efficacy head (PTPC) and corrected scDEBART response heads (cells). Qwen direct proposes configurations without evaluation history; BioCoLoop adds collaborative access and evidence feedback. Values are mean $\pm$ sample SD, multiplied by 100; SD is not a confidence interval. Overall summarizes the five endpoints within each seed. Bold and underline mark the best and second-best displayed means. The shared training protocol is in Section 4; all six configurations, seed counts and secondary metrics are in Appendix A.}',
             r'\label{tab:strong-main}', r'\end{table}']
         (out/'main.tex').write_text('\n'.join(lines)+'\n')
         return

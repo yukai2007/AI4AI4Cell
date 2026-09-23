@@ -1,0 +1,69 @@
+{
+  "framework_name": "BioCoLoop",
+  "source": "/liziqing/yukai/AI4AI4Cell/paper/figures/framework_user_20260923_readable_original_labels.pptx",
+  "source_sha256": "d7f8a87122d09f704893499489382fc8ab338f96b1fbfeb01f27b8bbf6d15869",
+  "source_unchanged": true,
+  "original_user_source": "/liziqing/yukai/AI4AI4Cell/ai4ai4cell_editable_framework-1(2).pptx",
+  "original_user_source_sha256": "f708424b3f30ed6f7813d66eeddc86e8adf58940091ac1a672703cf267028f81",
+  "original_user_source_unchanged": true,
+  "source_provenance": "/liziqing/yukai/AI4AI4Cell/paper/figures/framework_user_20260923_readable_original_labels.provenance.json",
+  "text_mapping": {
+    "AI4AI4Cell": "BioCoLoop",
+    "Federated Evidence-Guided Research Framework": "Collaborative Evidence-Guided Research Framework",
+    "federated learning": "collaborative learning"
+  },
+  "changed_xml_members": {
+    "docProps/core.xml": {
+      "AI4AI4Cell": 2,
+      "Federated Evidence-Guided Research Framework": 1
+    },
+    "ppt/slides/slide1.xml": {
+      "AI4AI4Cell": 1,
+      "Federated Evidence-Guided Research Framework": 1,
+      "federated learning": 1
+    }
+  },
+  "geometry_and_text_formatting_identical": true,
+  "all_unmodified_archive_members_byte_identical": true,
+  "source_text_identical": false,
+  "labels_retained": [
+    "Laboratory 10",
+    "Designs",
+    "Programs",
+    "Policies"
+  ],
+  "derived_editable_pptx": "/liziqing/yukai/AI4AI4Cell/paper/figures/biocoloop_framework.pptx",
+  "derived_pptx_sha256": "c6a014a7fc4238d3146a59573411d8d33e3e784c93b0d375ab5ffebe35145394",
+  "vector_pdf": "/liziqing/yukai/AI4AI4Cell/paper/figures/biocoloop_framework.pdf",
+  "vector_pdf_sha256": "f9fd977ec594b11cfe96a15beb936fb485402691dee2159bcdf24fe5b2372abe",
+  "png_preview": "/liziqing/yukai/AI4AI4Cell/paper/figures/biocoloop_framework.png",
+  "png_sha256": "8427808fc9f09424dde92505a6f4b956159695423c169bcda7f3ee1dbea469b1",
+  "small_preview": "/tmp/biocoloop-figure-o50z3kos/biocoloop_framework_preview.jpg",
+  "crop_box_points": [
+    8.89799976348877,
+    8.998235702514648,
+    711.0460205078125,
+    529.4019775390625
+  ],
+  "vector_path_count": 63,
+  "embedded_images": 15,
+  "text_outside_crop": [],
+  "final_visual_review_required": false,
+  "final_visual_review": {
+    "status": "PASS",
+    "framework_preview": "/tmp/biocoloop-figure-o50z3kos/biocoloop_framework_preview.jpg",
+    "paradigm_preview": "/tmp/biocoloop-paradigm-preview.jpg",
+    "observations": [
+      "New framework title fits the original title box",
+      "Updated collaborative-learning footer fits the original label area",
+      "Original editable geometry, connectors, numeric labels and icon positions retained",
+      "No visible clipping, unwanted overlap or name remnants in either active figure"
+    ]
+  },
+  "canvas_overflow_test": {
+    "script": "/liziqing/yukai/.codex/skills/slides/scripts/slides_test.py",
+    "input": "figures/biocoloop_framework.pptx",
+    "status": "PASS",
+    "output": "Test passed. No overflow detected."
+  }
+}

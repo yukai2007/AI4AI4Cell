@@ -40,24 +40,28 @@ def main():
     if statements[0]>9 and conclusions[0]>=statements[0]:
         raise RuntimeError('Main text exceeds nine-page submission limit')
     joined='\n'.join(texts)
+    if re.search(r'AI4AI4(?:Cell|Bio)',joined,re.I) or 'BioCoLoop' not in joined:
+        raise RuntimeError('Framework brand missing or old visible brand remains')
     for forbidden in ('/liziqing/','yukai2007','Kai Yu','Westlake University'):
         if forbidden in joined: raise RuntimeError('Anonymous manuscript: '+forbidden)
     if doc.metadata.get('author') or any(list(p.annots() or []) for p in doc):
         raise RuntimeError('Author metadata or review annotations in submission PDF')
     for required in ('85.47','87.95','35.50','94.60','23.11'):
         if required not in joined: raise RuntimeError('Expected completed evidence absent: '+required)
-    files=[PAPER/'main.tex',PAPER/'ai4ai4cell-main.tex',PAPER/'references.bib']
+    files=[PAPER/'main.tex',PAPER/'biocoloop-main.tex',PAPER/'references.bib']
     files+=list((PAPER/'sections').glob('*.tex'))
     files+=list((PAPER/'tables').rglob('*.tex'))
     files+=list((PAPER/'assets').glob('*.pdf'))
     files+=list((PAPER/'figures').glob('*.pdf'))
-    for target in [PAPER/'manuscript.pdf',PAPER/'output/pdf/AI4AI4Cell_completed_experiments_20260923.pdf']:
+    for target in [PAPER/'manuscript.pdf',PAPER/'output/pdf/BioCoLoop_manuscript.pdf']:
         target.parent.mkdir(parents=True,exist_ok=True)
         stage=target.with_suffix('.pdf.staging')
         shutil.copy2(pdf,stage)
         if sha(stage)!=sha(pdf): raise RuntimeError('PDF copy mismatch')
         stage.replace(target)
-    receipt=dict(built_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),
+    receipt=dict(framework_name='BioCoLoop',naming_migration='Presentation-only; frozen scientific records unchanged',
+        migration_verification_sha256=sha(PAPER/'provenance/rename_biocoloop_20260923/migration_verification.json'),
+        built_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),
         manuscript_sha256=sha(pdf),total_pages=len(doc),main_text_ends_page=conclusions[0],
         statements_start_page=statements[0],initial_submission_main_limit=9,
         source_sha256={str(x.relative_to(PAPER)):sha(x) for x in sorted(files)},
@@ -75,7 +79,7 @@ def main():
                                        'additional ablation seeds deferred'],
         scientific_interpretation='Allocation gains and proposal-history effects are distinct; feedback does not universally improve heldout scores.',
         platform_status='This build does not submit to OpenReview or verify Overleaf remote compilation.')
-    out=PAPER/'provenance/completed_ablation_20260923/build_receipt.json'
+    out=PAPER/'provenance/rename_biocoloop_20260923/build_receipt.json'
     stage=out.with_suffix('.json.staging');stage.write_text(json.dumps(receipt,indent=2)+'\n');stage.replace(out)
     print(json.dumps({k:v for k,v in receipt.items() if k!='source_sha256'},indent=2))
 

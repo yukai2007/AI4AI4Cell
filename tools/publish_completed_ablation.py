@@ -46,7 +46,7 @@ def atomic_text(path, content):
 def save_figure(figure, target):
     temporary = target.with_name('.' + target.stem + '.tmp-' + str(os.getpid()) + target.suffix)
     try:
-        figure.savefig(temporary, metadata={'Creator': 'AI4AI4Cell verified snapshot publisher'})
+        figure.savefig(temporary, metadata={'Creator': 'BioCoLoop verified snapshot publisher'})
         os.replace(temporary, target)
     finally:
         if temporary.exists():

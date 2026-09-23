@@ -1,0 +1,70 @@
+{
+  "schema": "ai4ai4cell-chinese-companion-v2",
+  "display_brand": "BioCoLoop",
+  "display_title": "BioCoLoop: Collaborative Agentic Research for Biological Model Improvement",
+  "branding_verified": true,
+  "embedded_fonts": [
+    "AAAAAA+CompanionSC",
+    "AAAAAA+CompanionSC-Bold",
+    "AAAAAB+CompanionSC",
+    "AAAAAC+CompanionSC"
+  ],
+  "text_out_of_bounds_pages": [],
+  "generated_utc": "2026-09-23T12:58:43.632897+00:00",
+  "generator_sha256": "fd88f1f000504043e1728354a6003798809a965ebe2354e894677246912b9d35",
+  "embedded_font_source_sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+  "input_sha256": {
+    "paper/tables/strong_v3/snapshot.json": "814129bf578ab358de0773b1975ba00257a7fe12c75b3e6b6f1534617cd5749a",
+    "paper/tables/core_review/snapshot.json": "ea19d08df451ffaeb07e791536b5f8278d0886acd941c79304fd9cc328de8529",
+    "paper/tables/completed_ablation/snapshot.json": "1300ee2702358927af215de29d7de22bf9b1d495923c2d5661a42f5abed79f23",
+    "results/tonight_completion_20260923/final_delivery/summary.json": "8eb30ad05acaf714dbaa8c180a0657dcd9bc6c8b9bebccba620f097159eb7541",
+    "results/proteomics_external_pilot_20260923/RESULT.zh-CN.md": "e9fc4c7c2424dc12959816efa8a1c1cd758c0414835df386799904c1948b68a9",
+    "paper/assets/paradigm_comparison.pdf": "b35200a6cc8152cfab6d1ab2d26628bc476c3067cf9c0e9716355a37147d0660",
+    "paper/assets/completed_budget_examples.pdf": "fe32e00d50c67474d7fe8c5e815d04e27ea5290ad6c78f07eb41af951c82d1c6",
+    "paper/figures/biocoloop_framework.pdf": "f9fd977ec594b11cfe96a15beb936fb485402691dee2159bcdf24fe5b2372abe"
+  },
+  "publication_snapshot_sha256": "1300ee2702358927af215de29d7de22bf9b1d495923c2d5661a42f5abed79f23",
+  "verified_source_receipts": 164,
+  "paired_terminal_signs": {
+    "short6": {
+      "positive": 1,
+      "tie": 8,
+      "negative": 1
+    },
+    "long24": {
+      "positive": 0,
+      "tie": 7,
+      "negative": 1
+    }
+  },
+  "valid_proposal_counts": {
+    "short6": {
+      "qwen": [
+        55,
+        60
+      ],
+      "luna": [
+        60,
+        60
+      ]
+    },
+    "long24": {
+      "qwen": [
+        116,
+        192
+      ],
+      "luna": [
+        192,
+        192
+      ]
+    }
+  },
+  "page_count": 15,
+  "output_sha256": "e3c05278e7b733cded718360d688ac7c3d7523bf523274e1d472d70888956cef",
+  "uncompleted_extensions": [
+    "additional seeds",
+    "DTI long24",
+    "third independent protein source decryptE"
+  ],
+  "original_results_modified": false
+}

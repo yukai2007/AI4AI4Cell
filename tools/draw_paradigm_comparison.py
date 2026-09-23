@@ -135,7 +135,7 @@ def draw() -> None:
     panels = [
         (0.10, "(a) Centralized bio-agent", "one accessible dataset", "central"),
         (4.10, "(b) Collaborative training", "fixed executable design", "collab"),
-        (8.10, "(c) AI4AI4Cell", "model + design learning", "ours"),
+        (8.10, "(c) BioCoLoop", "model + design learning", "ours"),
     ]
     for x0, title, subtitle, mode in panels:
         label(x0 + 1.875, 6.33, title, 14.2, INK, "bold")
@@ -175,7 +175,7 @@ def draw() -> None:
         assert bounds.y0 >= y and bounds.y1 <= y+h, f"Text overflows box: {artist.get_text()}"
     for suffix in ("pdf", "svg"):
         fig.savefig(PAPER / f"assets/paradigm_comparison.{suffix}",
-                    metadata={"Creator": "AI4AI4Cell"})
+                    metadata={"Creator": "BioCoLoop"})
     svg = PAPER / "assets/paradigm_comparison.svg"
     svg.write_text("\n".join(line.rstrip() for line in svg.read_text().splitlines()) + "\n")
     plt.close(fig)

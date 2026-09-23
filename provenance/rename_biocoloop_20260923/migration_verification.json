@@ -1,0 +1,191 @@
+{
+  "status": "PASS",
+  "baseline_commit": "2f31454972e01a6da2e5dc27e28ef7be7110f065",
+  "framework_name": "BioCoLoop",
+  "scientific_artifacts_unchanged": [
+    {
+      "path": "tables/strong_v3/ablation.tex",
+      "sha256": "c5dc1ac7edf7a0138d4614ef4e36816d2999137f1357a6359ceb0cb368f9e763"
+    },
+    {
+      "path": "tables/strong_v3/dti_endpoints.tex",
+      "sha256": "37e97926fb71d2a40bd61c600a1da8fcffedeabec580b6604ef852585673cfbb"
+    },
+    {
+      "path": "tables/strong_v3/dti_uncertainty.tex",
+      "sha256": "d634a6f826ca961e5b485f19ba5dea6e7ddf4a3182818c22f47706b36b05bf03"
+    },
+    {
+      "path": "tables/strong_v3/effects.tex",
+      "sha256": "9a3e5aa53bbc0997ab6b2f09a781fbdc8dd77bf72fe263791e6e9d10b6b5ae7c"
+    },
+    {
+      "path": "tables/strong_v3/effects_full.tex",
+      "sha256": "e6431cccf9c7c866bb40f7ed0255477045fbf0fb5e84c3946fc62b910223b8ec"
+    },
+    {
+      "path": "tables/strong_v3/loop_prefix.json",
+      "sha256": "5d3687537653a1c5b091842526cc857bbd5dfcd8a96c6d0d4433494fe4587594"
+    },
+    {
+      "path": "tables/strong_v3/loop_prefix.tex",
+      "sha256": "64722bace309226c240298198304071e548f7a3fb0dd2e92d9747ef8c9f03634"
+    },
+    {
+      "path": "tables/strong_v3/racing_snapshot.json",
+      "sha256": "51c16805d53fdf9dd27281980487e8d6f1f1ef2aaf067f869d7be2674f904f94"
+    },
+    {
+      "path": "tables/strong_v3/secondary.tex",
+      "sha256": "4f5993e32f79280b6a71fcf929bc5834465b788158fd3e2d7981a63d7f87a303"
+    },
+    {
+      "path": "tables/strong_v3/snapshot.json",
+      "sha256": "814129bf578ab358de0773b1975ba00257a7fe12c75b3e6b6f1534617cd5749a"
+    },
+    {
+      "path": "tables/strong_v3/snapshot_stats.tex",
+      "sha256": "c1ae7b5cc9c56cd481286b421a320c442bae764da7ee632f2a829a3c4a916f75"
+    },
+    {
+      "path": "tables/strong_v3/uncertainty.tex",
+      "sha256": "da0cf1318edd91d8a7e5544930d0330c1dcc90436b70bebdd958cc9bba62543c"
+    },
+    {
+      "path": "tables/core_review/budget_analysis.json",
+      "sha256": "8a5753e7a1b3db5b858bb187a5b06a59c319da5938fc5e2bf3e4aaebc3d9c035"
+    },
+    {
+      "path": "tables/core_review/lab_count.tex",
+      "sha256": "73860c76c64fd44701179f39be8cc2a9220b04d4f2380477b9d3eb4645e5a447"
+    },
+    {
+      "path": "tables/core_review/loop_budget.tex",
+      "sha256": "3dc5ba74530b6cbc0848e6928ab3274e15872edc08fe4dc140fa2edddabe45c7"
+    },
+    {
+      "path": "tables/core_review/proposal_validity.tex",
+      "sha256": "128a6450e569710d0ff5b5a834eb69e7f2f3e4ccbc3c6d4da982559c89c46df0"
+    },
+    {
+      "path": "tables/core_review/search_dynamics.tex",
+      "sha256": "3fc2d849ca45060d3c1034afdfbb98fe954c398621001fca0ea4d00e6d844520"
+    },
+    {
+      "path": "tables/core_review/snapshot.json",
+      "sha256": "ea19d08df451ffaeb07e791536b5f8278d0886acd941c79304fd9cc328de8529"
+    },
+    {
+      "path": "tables/core_review/transfer.tex",
+      "sha256": "9a36e800cfc8dd34380531bfdc160ea1fdba9e8b60cf16a56dc5525aaf995764"
+    },
+    {
+      "path": "tables/completed_ablation/dynamics_long24.tex",
+      "sha256": "4e376da1ce734e358cbc322ce95ca7766c8306db725167d6f84c4caa0ad59bcf"
+    },
+    {
+      "path": "tables/completed_ablation/dynamics_short6.tex",
+      "sha256": "9552d64a6f5a8ec988b02905c92e062c738e58367b4fb4f50ee63c75aac18a68"
+    },
+    {
+      "path": "tables/completed_ablation/lab_fixed_pool.tex",
+      "sha256": "2abfd0cffd64ebeec883411c1170498db4d92d630ebd7931ae0ac6db653acc44"
+    },
+    {
+      "path": "tables/completed_ablation/lab_participation.tex",
+      "sha256": "0d5e29da49c57658e62aad617d195ad338e5ecb153046ab3f1c6da0c67465eb9"
+    },
+    {
+      "path": "tables/completed_ablation/long24.tex",
+      "sha256": "2485f5af2a592d243c865797a8b8ea41a2cce792cd2180b7be631fc68ea3de64"
+    },
+    {
+      "path": "tables/completed_ablation/menu_long24.tex",
+      "sha256": "cff47710b3bde87fd4c1afc46542dcf206cc458ebd7367e05daab601b3df41a2"
+    },
+    {
+      "path": "tables/completed_ablation/menu_short6.tex",
+      "sha256": "98364a965292e283548d08dbde9c0259b4d0e2258e164343b11c46fd99fca0bd"
+    },
+    {
+      "path": "tables/completed_ablation/norman_retained_events.tex",
+      "sha256": "9d92288db2929565eb8a7961fb8c6800181d34ab794e3583a14f7d3bb95d2d6d"
+    },
+    {
+      "path": "tables/completed_ablation/proposal_trace.tsv",
+      "sha256": "b7e0801cfe7ca5ba71cb59a9eb3679c8376523c0d734b47bf456e86d44d77f84"
+    },
+    {
+      "path": "tables/completed_ablation/publication_review.tex",
+      "sha256": "d4f7000cbe83815c8cd244f2eb208a24227b3d7c046e343faa732ac2d2b66116"
+    },
+    {
+      "path": "tables/completed_ablation/short6.tex",
+      "sha256": "b5dfe895d023cea6c53853b04e003dd820b31a8c456826b6d13b5ba77e54e214"
+    },
+    {
+      "path": "tables/completed_ablation/snapshot.json",
+      "sha256": "1300ee2702358927af215de29d7de22bf9b1d495923c2d5661a42f5abed79f23"
+    },
+    {
+      "path": "tables/completed_ablation/summary.tex",
+      "sha256": "5cdd02ef6e188d1100813acfcb3dbe8ac0cefadf394fade52da77f55bdb798f4"
+    },
+    {
+      "path": "tables/completed_ablation/trace_long24.tex",
+      "sha256": "52d8f3010959590d9f681d939ffd90a2a0f3b3f372b22006e57ae67ded4b491f"
+    },
+    {
+      "path": "tables/completed_ablation/trace_short6.tex",
+      "sha256": "76189d30e1ef46c9c8c3f2a795ee6faf2d6d58b35bdfd5451074c8c5921b6c0f"
+    },
+    {
+      "path": "tables/completed_ablation/transfer_contexts.tex",
+      "sha256": "7bcbe6874ee89b88c28d028a2db4ddfa474533252fbb2f4d8a93d0ebff66b513"
+    },
+    {
+      "path": "tables/completed_ablation/transfer_independent.tex",
+      "sha256": "e8d662fad4a599c689378e0783935f4e48d5e983efc5f91005121cd523335adc"
+    },
+    {
+      "path": "tables/completed_ablation/transfer_protein_loop.tex",
+      "sha256": "bee3944238b547533afeef68c44552677ebba78fd757e7b884f3261153eb4aed"
+    }
+  ],
+  "main_table_only_framework_label_changed": true,
+  "sections_only_allowlisted_name_and_asset_changes": [
+    "sections/01_introduction.tex",
+    "sections/02_related_work.tex",
+    "sections/03_method.tex",
+    "sections/04_experimental_design.tex",
+    "sections/05_results.tex",
+    "sections/07_conclusion.tex",
+    "sections/08_reproducibility.tex",
+    "sections/22_appendix_unified_protocol.tex",
+    "sections/23_appendix_core_sensitivity.tex"
+  ],
+  "retained_originals": [
+    {
+      "path": "figures/framework_user_20260923_readable_original_labels.pptx",
+      "sha256": "d7f8a87122d09f704893499489382fc8ab338f96b1fbfeb01f27b8bbf6d15869"
+    },
+    {
+      "path": "figures/framework_user_20260923_readable_original_labels.pdf",
+      "sha256": "6a4a4a203db6941df6ac3ed24736a23007307f4e1f950bb4dfa9e99a16b75368"
+    },
+    {
+      "path": "output/pdf/AI4AI4Cell_completed_experiments_20260923.pdf",
+      "sha256": "485ca48e5f4064933f995e585501ae8348dd32f309d0c8181d92a120839d9ff4"
+    },
+    {
+      "path": "output/pdf/AI4AI4Cell_\u4e2d\u6587\u4f34\u8bfb\u7248.pdf",
+      "sha256": "d97bf43d26c3cd671c129c6200768d4dd8bc38f03db54bd632bbf8c7a364db81"
+    }
+  ],
+  "stable_external_identifiers": [
+    "repository URL",
+    "workspace path",
+    "experiment schema",
+    "arm ID"
+  ]
+}

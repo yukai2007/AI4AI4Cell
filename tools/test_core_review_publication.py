@@ -58,7 +58,7 @@ class CoreReviewTests(unittest.TestCase):
         self.assertNotIn('Qwen2.5', method)
         self.assertIn('training allocation', method)
         self.assertIn('proposal revision', method)
-        entry = (PAPER/'ai4ai4cell-main.tex').read_text()
+        entry = (PAPER/'biocoloop-main.tex').read_text()
         self.assertNotIn('sections/06_discussion', entry)
         self.assertIn('sections/23_appendix_core_sensitivity', entry)
 

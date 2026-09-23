@@ -9,25 +9,25 @@ PAPER = Path(__file__).resolve().parents[1]
 
 class ManuscriptConsistencyTests(unittest.TestCase):
     def test_active_framing_and_implementation_disclosure(self):
-        source = (PAPER / 'ai4ai4cell-main.tex').read_text()
-        self.assertIn('Collaborative Evidence-Guided Research', source.replace(r'\\', ' '))
+        source = (PAPER / 'biocoloop-main.tex').read_text()
+        self.assertIn('Collaborative Agentic Research', source.replace(r'\\', ' '))
         abstract = source.split(r'\begin{abstract}', 1)[1].split(r'\end{abstract}', 1)[0]
         self.assertNotRegex(abstract.lower(), r'federat|\bsota\b')
-        self.assertIn('AI4AI4Cell, a collaborative research framework', abstract)
+        self.assertIn('BioCoLoop, a collaborative research framework', abstract)
         self.assertIn('Collaborative learning typically optimizes fixed models', abstract)
         self.assertIn('Across three biological settings', abstract)
         self.assertNotIn(r'\Strong', abstract)
         self.assertIn('FedAvg', (PAPER / 'sections/03_method.tex').read_text())
 
     def test_official_submission_header_and_spacing_are_not_patched(self):
-        source = (PAPER / 'ai4ai4cell-main.tex').read_text()
+        source = (PAPER / 'biocoloop-main.tex').read_text()
         self.assertIn(r'\usepackage{iclr2027_conference}', source)
         self.assertNotIn(r'\patchcmd{\@maketitle}', source)
         self.assertNotIn(r'\setlength{\parskip}', source)
         self.assertNotIn(r'\iclrfinalcopy', source)
 
     def test_seed_counts_stay_out_of_main_presentation(self):
-        source = (PAPER / 'ai4ai4cell-main.tex').read_text()
+        source = (PAPER / 'biocoloop-main.tex').read_text()
         source += (PAPER / 'sections/05_results.tex').read_text()
         self.assertNotIn(r'\StrongDTISeeds{}', source)
         self.assertNotIn('planned seeds', source)

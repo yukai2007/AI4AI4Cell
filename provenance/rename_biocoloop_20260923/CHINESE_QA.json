@@ -1,0 +1,32 @@
+{
+  "schema": "biocoloop-branding-qa-v1",
+  "scope": "Chinese reading companion branding only",
+  "output": "output/pdf/BioCoLoop_中文伴读版.pdf",
+  "page_count": 15,
+  "output_sha256": "e3c05278e7b733cded718360d688ac7c3d7523bf523274e1d472d70888956cef",
+  "old_pdf_retained": "output/pdf/AI4AI4Cell_中文伴读版.pdf",
+  "old_pdf_sha256_before_and_after": "d97bf43d26c3cd671c129c6200768d4dd8bc38f03db54bd632bbf8c7a364db81",
+  "checks": {
+    "old_brand_absent_in_visible_pdf_text": true,
+    "old_brand_absent_in_pdf_metadata": true,
+    "old_brand_absent_in_figure_source_text": true,
+    "visible_numeric_sequence_identical_to_previous_pdf": true,
+    "page_count_unchanged": true,
+    "text_outside_page_bounds": false,
+    "chinese_regular_and_bold_fonts_embedded": true,
+    "all_pages_rendered_and_visually_inspected": true,
+    "cover_framework_main_table_and_annotation_page_inspected_at_full_resolution": true,
+    "original_experiment_inputs_and_results_modified": false,
+    "historical_research_schema_unchanged": true
+  },
+  "input_snapshots_unchanged": {
+    "tables/strong_v3/snapshot.json": "814129bf578ab358de0773b1975ba00257a7fe12c75b3e6b6f1534617cd5749a",
+    "tables/core_review/snapshot.json": "ea19d08df451ffaeb07e791536b5f8278d0886acd941c79304fd9cc328de8529",
+    "tables/completed_ablation/snapshot.json": "1300ee2702358927af215de29d7de22bf9b1d495923c2d5661a42f5abed79f23"
+  },
+  "notes": [
+    "New Figure 1 and framework figure use BioCoLoop and Collaborative branding.",
+    "Laboratory 10 remains the experimental instance; the caption retains the general K interpretation.",
+    "Historical source paths, arm keys, scores, and ai4ai4cell-chinese-companion-v2 schema were preserved."
+  ]
+}

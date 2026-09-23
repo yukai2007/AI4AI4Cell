@@ -123,7 +123,7 @@ class StrongSnapshotTests(unittest.TestCase):
             text=(out/'main.tex').read_text()
             self.assertIn(r'\multicolumn{3}{c}{Cell perturbation}',text)
             self.assertIn(r'\textbf{Method}',text)
-            self.assertIn(r'\textbf{AI4AI4Cell} (10 labs)',text)
+            self.assertIn(r'\textbf{BioCoLoop} (10 labs)',text)
             self.assertIn(r'\multicolumn{1}{c}{DTI}',text)
             self.assertIn(r'\shortstack{TAPB\\AUROC $\uparrow$}',text)
             self.assertIn(r'\shortstack{PTPC\\AP $\uparrow$}',text)

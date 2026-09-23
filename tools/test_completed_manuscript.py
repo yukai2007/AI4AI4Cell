@@ -36,15 +36,19 @@ class CompletedManuscriptTests(unittest.TestCase):
         self.assertIn('800 full-client', (ROOT/'tables/strong_v3/effects.tex').read_text())
 
     def test_actual_framework_asset_is_the_user_slide_derivative(self):
-        stem='framework_user_20260923_readable_original_labels'
+        stem='biocoloop_framework'
         method=(ROOT/'sections/03_method.tex').read_text()
         self.assertIn('figures/'+stem+'.pdf',method)
         self.assertNotIn('assets/unified_pipeline.pdf',method)
         receipt=json.loads((ROOT/'figures'/f'{stem}.provenance.json').read_text())
-        self.assertEqual(receipt['source_sha256'],
+        self.assertEqual(receipt['original_user_source_sha256'],
                          'f708424b3f30ed6f7813d66eeddc86e8adf58940091ac1a672703cf267028f81')
         self.assertTrue(receipt['source_unchanged'])
-        self.assertTrue(receipt['source_text_identical'])
+        self.assertFalse(receipt['source_text_identical'])
+        self.assertTrue(receipt['original_user_source_unchanged'])
+        self.assertTrue(receipt['geometry_and_text_formatting_identical'])
+        self.assertTrue(receipt['all_unmodified_archive_members_byte_identical'])
+        self.assertEqual(receipt['text_mapping']['AI4AI4Cell'],'BioCoLoop')
         for extension,key in [('pdf','vector_pdf_sha256'),('pptx','derived_pptx_sha256')]:
             actual=hashlib.sha256((ROOT/'figures'/f'{stem}.{extension}').read_bytes()).hexdigest()
             self.assertEqual(actual,receipt[key])
