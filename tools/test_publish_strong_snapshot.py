@@ -20,6 +20,27 @@ def fixture():
 
 
 class StrongSnapshotTests(unittest.TestCase):
+    def test_overall_sd_uses_paired_seed_means(self):
+        data = fixture()
+        for index, (task, _, _) in enumerate(TASKS):
+            values = ([.4, .6, .8] if index == 0 else [.8, .6, .4] if index == 1 else [.5, .5, .5])
+            data['tasks'][task]['runs'] = {
+                str(seed): dict(scores={arm: dict(primary=value) for arm, _, _ in ARMS})
+                for seed, value in zip([42, 43, 44], values)}
+        with tempfile.TemporaryDirectory() as directory:
+            out = Path(directory)
+            table(data, out)
+            text = (out/'main.tex').read_text()
+            fixed_row = next(line for line in text.splitlines() if line.startswith('Task model'))
+            self.assertIn(r'60.00} $\pm$ 20.00', fixed_row)
+            self.assertTrue(fixed_row.endswith(r'54.00} $\pm$ 0.00 \\'))
+            self.assertIn('SD is not a confidence interval', text)
+
+    def test_duplicate_repetition_seed_is_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            with self.assertRaises(ValueError):
+                collect(Path(directory), seeds=[42, 42])
+
     def bootstrap_fixture(self, base):
         path = result_path(base, 'native_tapb', 42)
         path.mkdir(parents=True)
@@ -106,11 +127,12 @@ class StrongSnapshotTests(unittest.TestCase):
             self.assertIn(r'\multicolumn{1}{c}{DTI}',text)
             self.assertIn(r'\shortstack{TAPB\\AUROC $\uparrow$}',text)
             self.assertIn(r'\shortstack{PTPC\\AP $\uparrow$}',text)
-            self.assertIn('observed-response',text)
+            self.assertIn('ProteinTalks-derived efficacy head',text)
             self.assertIn(r'\shortstack{Mean\\5 endpoints}',text)
             self.assertNotIn('Task and benchmark',text)
             self.assertNotIn('Completed seeds',text)
-            self.assertIn('Exact seed counts',text)
+            self.assertNotIn('Exact seed counts',text)
+            self.assertIn('Qwen direct',text)
 
     def test_main_delta_is_computed_before_display_rounding(self):
         with tempfile.TemporaryDirectory() as directory:

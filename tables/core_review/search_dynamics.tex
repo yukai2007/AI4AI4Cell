@@ -1,0 +1,20 @@
+\begin{table}[htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{@{}Xlcrrrr@{}}
+\toprule
+Task & Proposer & Seed & Dev. target & First slot D/L & Valid D/L & Unvisited D/L \\
+\midrule
+PTPC & Luna & 61 & 66.72 & 0/0 & 24/24 & 11/11 \\
+PTPC & Qwen & 61 & 66.72 & 0/0 & 19/14 & 16/21 \\
+VCC & Luna & 61 & 30.93 & --/10 & 24/24 & 11/11 \\
+VCC & Qwen & 61 & 24.83 & 18/23 & 11/16 & 24/19 \\
+Norman & Luna & 61 & 52.10 & 22/4 & 24/24 & 11/11 \\
+Norman & Qwen & 61 & 51.70 & 2/5 & 15/12 & 20/23 \\
+Tahoe & Luna & 61 & 35.00 & 5/13 & 24/24 & 11/11 \\
+Tahoe & Qwen & 61 & 35.00 & 18/14 & 14/15 & 21/20 \\
+\bottomrule
+\end{tabularx}
+\caption{Search dynamics at 24 proposal slots. D/L denotes direct/loop. The development target is the higher terminal primary score in each paired comparison; first slot records its earliest attainment, and -- means not attained. This target is a retrospective diagnostic, not a stopping rule. Slot 0 is the initial design; valid counts exclude it. Unvisited counts are relative to all 36 configurations, including the initial design. The table covers every completed trajectory in the published snapshot.}
+\label{tab:core-search-dynamics}
+\end{table}

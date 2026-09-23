@@ -108,15 +108,18 @@ def tapb_uncertainty(base, seed, path, result, seal, task='native_tapb'):
     return data, target
 
 
-def collect(base):
+def collect(base, seeds=None):
     base = Path(base).resolve()
+    seeds = list(SEEDS if seeds is None else seeds)
+    if not seeds or len(seeds) != len(set(seeds)):
+        raise ValueError('Expected distinct nonempty repetition seeds')
     policy = ROOT/'docs/model_selection_20260918/MAIN_PROTOCOL_DECISION.md'
     snapshot = dict(snapshot_utc=datetime.now(timezone.utc).isoformat(),
-        role=HELDOUT_ROLE, seeds_requested=SEEDS, model_version_policy=str(policy),
+        role=HELDOUT_ROLE, seeds_requested=seeds, model_version_policy=str(policy),
         model_version_policy_sha256=sha(policy), selection_on_heldout=False, tasks={})
     for task, label, _ in TASKS:
-        item = dict(label=label, model=MODELS[task], runs={str(s):None for s in SEEDS}, pending={})
-        for seed in SEEDS:
+        item = dict(label=label, model=MODELS[task], runs={str(s):None for s in seeds}, pending={})
+        for seed in seeds:
             path = result_path(base, task, seed)
             files = ['results.json', 'seal.json', 'audit.json', 'verification.json']
             if not all((path/name).is_file() for name in files):
@@ -262,7 +265,7 @@ def scores(snapshot, task, arm, metric=None):
 def table(snapshot, out, full=False):
     arms = ARMS if full else MAIN_ARMS
     if not full:
-        lines = [r'\begin{table}[h!]', r'\centering\small', r'\setlength{\tabcolsep}{4pt}',
+        lines = [r'\begin{table}[h!]', r'\centering\footnotesize', r'\setlength{\tabcolsep}{2.5pt}',
             r'\renewcommand{\arraystretch}{1.08}',
             r'\begin{tabularx}{\linewidth}{@{}Xrrrrrr@{}}', r'\toprule',
             r'\textbf{Method} & \multicolumn{1}{c}{DTI} & \multicolumn{1}{c}{Proteomics} & \multicolumn{3}{c}{Cell perturbation} & \multicolumn{1}{c}{Overall} \\',
@@ -270,15 +273,23 @@ def table(snapshot, out, full=False):
             r' & \shortstack{TAPB\\AUROC $\uparrow$} & \shortstack{PTPC\\AP $\uparrow$} & \shortstack{VCC\\Top-1 $\uparrow$} & \shortstack{Norman\\Top-1 $\uparrow$} & \shortstack{Tahoe\\Top-1 $\uparrow$} & \shortstack{Mean\\5 endpoints} \\',
             r'\midrule']
         task_order = [task for task, _, _ in TASKS]
-        by_arm = {}
+        by_arm, by_arm_sd = {}, {}
+        common_seeds = set.intersection(*(set(seed for seed, run in snapshot['tasks'][task]['runs'].items()
+                                              if run is not None) for task in task_order))
         for arm, labs, name in arms:
-            endpoint_means = []
+            endpoint_means, endpoint_sd = [], []
             for task in task_order:
                 values = scores(snapshot, task, arm)
                 endpoint_means.append(None if not values else 100 * stats(values)[0])
-            finite = [value for value in endpoint_means if value is not None]
-            endpoint_means.append(sum(finite) / len(finite) if len(finite) == len(task_order) else None)
+                endpoint_sd.append(100 * stats(values)[1] if len(values) > 1 else None)
+            # Overall variability is across seed-level five-endpoint means,
+            # never the average SD or the spread between unrelated endpoints.
+            overall = [100 * statistics.mean(snapshot['tasks'][task]['runs'][seed]['scores'][arm]['primary']
+                                             for task in task_order) for seed in sorted(common_seeds)]
+            endpoint_means.append(statistics.mean(overall) if overall else None)
+            endpoint_sd.append(statistics.stdev(overall) if len(overall) > 1 else None)
             by_arm[arm] = endpoint_means
+            by_arm_sd[arm] = endpoint_sd
 
         displayed = [[None if value is None else round(value, 2) for value in by_arm[arm]]
                      for arm, _, _ in arms]
@@ -300,15 +311,21 @@ def table(snapshot, out, full=False):
             return text
 
         for row_index, (arm, labs, name) in enumerate(arms):
-            cells = [marked(value, column_ranks[column]) for column, value in enumerate(displayed[row_index])]
-            method = ({'single_fixed': 'Fixed recipe', 'single_direct': 'Direct optimization'}
+            cells = []
+            for column, value in enumerate(displayed[row_index]):
+                text = marked(value, column_ranks[column])
+                sd = by_arm_sd[arm][column]
+                if value is not None:
+                    text += r' $\pm$ ' + (f'{sd:.2f}' if sd is not None else r'\textnormal{N/A}')
+                cells.append(text)
+            method = ({'single_fixed': 'Task model', 'single_direct': 'Qwen direct'}
                       .get(arm, r'\textbf{AI4AI4Cell}' if arm == 'federated_loop' else name))
             if arm == 'federated_loop':
                 lines.append(r'\midrule')
             lines.append(f'{method} ({labs} lab' + ('' if labs == '1' else 's') + ') & ' +
                          ' & '.join(cells) + r' \\')
         lines += [r'\bottomrule', r'\end{tabularx}',
-            r'\caption{Main held-out comparison across three biological task families and five endpoints. Fixed recipe and feedback-free direct search use one laboratory; AI4AI4Cell uses ten. PTPC denotes observed-response proteomic efficacy. Values are three-seed means multiplied by 100; Overall is their unweighted descriptive mean. Bold and underline mark the best and runner-up within each column. Exact seed counts, sample SD, all six factorial arms and secondary metrics appear in Appendix A.}',
+            r'\caption{Main held-out comparison. Task models are TAPB (DTI), a ProteinTalks-derived efficacy head (PTPC) and corrected scDEBART response heads (cells). Qwen direct proposes configurations without evaluation history; AI4AI4Cell adds collaborative access and evidence feedback. Values are mean $\pm$ sample SD, multiplied by 100; SD is not a confidence interval. Overall summarizes the five endpoints within each seed. Bold and underline mark the best and second-best displayed means. The shared training protocol is in Section 4; all six configurations, seed counts and secondary metrics are in Appendix A.}',
             r'\label{tab:strong-main}', r'\end{table}']
         (out/'main.tex').write_text('\n'.join(lines)+'\n')
         return
@@ -331,12 +348,13 @@ def table(snapshot, out, full=False):
             cells.append(text)
         if arm=='federated_fixed': lines.append(r'\midrule')
         lines.append(f'{labs} & {name} & '+' & '.join(cells)+r' \\')
-    lines += [r'\midrule',r'\multicolumn{2}{l}{Completed seeds ($n/3$)} & '+' & '.join(
-        f'{len(runs(snapshot,t))}/3' for t,_,_ in TASKS)+r' \\',r'\bottomrule',r'\end{tabular}']
-    caption=('Six-arm ablation of the committed reference-model versions. Entries are completed-seed means '
-             'and sample SD where at least two seeds are available. ')
-    caption+=('Entries are held-out mean $\\pm$ sample SD over seeds 42--44, multiplied by 100. '
-              'DTI uses the random held-out endpoint. Bold marks all displayed maxima.')
+    requested = len(snapshot.get('seeds_requested', SEEDS))
+    lines += [r'\midrule',r'\multicolumn{2}{l}{Completed seeds ($n/'+str(requested)+r'$)} & '+' & '.join(
+        f'{len(runs(snapshot,t))}/{requested}' for t,_,_ in TASKS)+r' \\',r'\bottomrule',r'\end{tabular}']
+    caption=('Six-arm ablation of the task-reference models. Entries are held-out mean $\\pm$ sample SD '
+             'across completed training/search seeds, multiplied by 100. '
+             'The data partitions remain fixed; this SD measures run-to-run variation, not dataset uncertainty. '
+             'DTI uses the random held-out endpoint. Bold marks all displayed maxima.')
     label='tab:strong-ablation' if full else 'tab:strong-main'
     lines += [r'\caption{'+caption+'}',r'\label{'+label+'}',r'\end{table}']
     (out/('ablation.tex' if full else 'main.tex')).write_text('\n'.join(lines)+'\n')
@@ -505,10 +523,11 @@ def dti_endpoints(snapshot,out):
 
 
 def main():
+    from publish_racing_snapshot import publish_racing
     parser=argparse.ArgumentParser(); parser.add_argument('--results',type=Path,default=ROOT/'results/unified_bio_20260918')
     args=parser.parse_args(); snapshot=collect(args.results); out=PAPER/'tables/strong_v3'; out.mkdir(parents=True,exist_ok=True)
     (out/'snapshot.json').write_text(json.dumps(snapshot,indent=2,allow_nan=False)+'\n')
-    table(snapshot,out); table(snapshot,out,True); effects(snapshot,out); effects(snapshot,out,True); secondary(snapshot,out)
+    table(snapshot,out); table(snapshot,out,True); publish_racing(args.results,out); effects(snapshot,out,True); secondary(snapshot,out)
     uncertainty(snapshot,out); macros(snapshot,out); dti_endpoints(snapshot,out); dti_uncertainty(snapshot,out)
     print(json.dumps(dict(completed_seeds={t:len(runs(snapshot,t)) for t,_,_ in TASKS},role=HELDOUT_ROLE)))
 

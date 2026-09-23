@@ -455,51 +455,113 @@ def secondary_table(snapshot, out):
 
 
 def pipeline():
+    """Draw the framework only; do not publish or modify any score tables."""
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
     from matplotlib.patches import FancyBboxPatch, FancyArrowPatch
     plt.rcParams.update({'font.family': 'DejaVu Sans', 'pdf.fonttype': 42, 'svg.fonttype': 'none'})
-    fig, ax = plt.subplots(figsize=(11.4, 6.7))
-    ax.set_xlim(0, 12); ax.set_ylim(0, 7); ax.axis('off')
-    blue, green, ink = '#365e86', '#24796e', '#243746'
-    def box(x, y, w, h, title, body, color=blue, fill='#f2f6fb'):
-        ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle='round,pad=0.06,rounding_size=0.10',
-                                  linewidth=1.4, edgecolor=color, facecolor=fill))
-        ax.text(x+w/2, y+h-.21, title, ha='center', va='center', fontsize=15, fontweight='bold', color=color)
-        ax.text(x+w/2, y+.29, body, ha='center', va='center', fontsize=13.5, color=ink, linespacing=1.35)
-    def arrow(a, b, color=blue, both=False):
-        ax.add_patch(FancyArrowPatch(a, b, arrowstyle='<->' if both else '-|>', mutation_scale=14,
-                                     color=color, linewidth=1.5, shrinkA=3, shrinkB=3))
-    ax.text(.2, 6.83, 'OUTER RESEARCH LOOP  |  fixed local Qwen2.5-7B', fontsize=16, fontweight='bold', color=blue)
-    for x, title, body in [(0.2, '1  Hypothesize', 'testable revision\nexpected effect'),
-                           (3.2, '2  Instantiate', 'executable design\nsame candidate menu'),
-                           (6.2, '3  Train + evaluate', '100 training rounds\ndevelopment evidence'),
-                           (9.2, '4  Retain / revise', 'primary score + loss\nfailures stay in history')]:
-        box(x, 5.47, 2.6, 1.08, title, body)
-    for x in [2.8, 5.8, 8.8]: arrow((x, 6.02), (x+.4, 6.02))
-    ax.plot([10.5, 10.5, 1.5, 1.5], [5.46, 5.14, 5.14, 5.45], color=blue, linestyle='--', linewidth=1.3)
-    ax.text(6, 4.94, 'Only aggregate diagnostics return to the research model', ha='center', fontsize=13.5, color=blue)
-    box(.3, 3.87, 11.35, .85, 'INNER COLLABORATIVE TRAINING  |  one shared coordinator',
-        'broadcast parameters  /  aggregate local updates  /  fixed scorer', green, '#edf7f3')
-    # Route the training call outside the feedback-label band to avoid overlap.
-    ax.plot([7.5, 7.5, 11.93, 11.93], [5.47, 5.34, 5.34, 4.29], color=blue, linewidth=1.4)
-    arrow((11.93, 4.29), (11.65, 4.29))
-    for x, title, body in [(.3, 'Laboratory 1', 'private train + dev\nlocal model update'),
-                           (4.22, 'Laboratory 2', 'private train + dev\nlocal model update'),
-                           (8.14, 'Laboratory 10', 'private train + dev\nlocal model update')]:
-        box(x, 2.32, 3.5, 1.08, title, body, green, '#edf7f3')
-        arrow((x+1.75, 3.86), (x+1.75, 3.42), green, True)
-    ax.text(8.0, 2.82, '...', fontsize=18, color=green, ha='center')
-    ax.text(6, 1.98, 'SAME core, controller, budget and selector; task-specific prediction adapters',
-            ha='center', fontsize=13.5, color=ink)
-    for x, title, body in [(.3, 'DTI', 'molecule + protein\nTAPB adapter / AUROC'),
-                           (4.22, 'Proteomic efficacy', 'observed 6h/24h + drug\nProteinTalks head / AP'),
-                           (8.14, 'Cell perturbations', 'single / double / drug\ncorrected scDEBART / Top-1')]:
-        box(x, .56, 3.5, 1.08, title, body)
-    ax.text(6, .13, 'Six controls: 1 vs 10 laboratories  x  fixed / feedback-free direct / feedback-guided loop',
-            ha='center', fontsize=13.5, color=ink)
-    fig.subplots_adjust(left=.01, right=.99, bottom=.01, top=.99)
+    fig, ax = plt.subplots(figsize=(11.4, 7.9))
+    ax.set(xlim=(0, 12), ylim=(0, 8.8)); ax.axis('off')
+    ink = '#172B3A'
+    palette = {
+        'data': ('#238B7B', '#E7F5F2'),
+        'model': ('#356FA3', '#E8F1F8'),
+        'harness': ('#76539A', '#F1EAF7'),
+        'gate': ('#D97732', '#FBEDE3'),
+    }
+    text_bounds = []
+
+    def text(x, y, value, size=12, color=ink, weight='normal', ha='center'):
+        return ax.text(x, y, value, ha=ha, va='center', fontsize=size,
+                       color=color, fontweight=weight, linespacing=1.22, zorder=5)
+
+    def box(x, y, w, h, title, body, role, title_size=12.4, body_size=11.3):
+        color, fill = palette[role]
+        ax.add_patch(FancyBboxPatch((x, y), w, h,
+                     boxstyle='round,pad=0.015,rounding_size=0.08',
+                     linewidth=1.4, edgecolor=color, facecolor=fill, zorder=3))
+        for artist in [text(x+w/2, y+h-.23, title, title_size, color, 'bold'),
+                       text(x+w/2, y+.33, body, body_size, ink)]:
+            text_bounds.append((artist, (x, y, w, h)))
+
+    def arrow(a, b, role, both=False):
+        ax.add_patch(FancyArrowPatch(a, b, arrowstyle='<|-|>' if both else '-|>',
+                     mutation_scale=12, color=palette[role][0], linewidth=1.4,
+                     shrinkA=2, shrinkB=2, zorder=2))
+
+    # The feedback route sits above the boxes, apart from execution/evidence lanes.
+    text(.25, 8.58, 'OUTER RESEARCH LOOP', 15, palette['harness'][0], 'bold', ha='left')
+    text(8.88, 8.58, 'shared research model + persistent history', 11.3, ink)
+    for x, title, body, role in [
+        (.25, '1  Hypothesize', 'focused revision\nexpected effect', 'harness'),
+        (3.25, '2  Instantiate', 'validate proposal\ncompile executable design', 'model'),
+        (6.25, '3  Fit + evaluate', 'invoke shared trainer\ncollect local evidence', 'model'),
+        (9.25, '4  Retain + record', 'compare with incumbent\nappend evidence card', 'gate'),
+    ]:
+        box(x, 6.77, 2.5, 1.10, title, body, role)
+    for x in (2.75, 5.75, 8.75):
+        arrow((x, 7.32), (x+.5, 7.32), 'harness')
+    ax.plot([10.5, 10.5, 1.5], [7.88, 8.18, 8.18],
+            color=palette['harness'][0], linewidth=1.4, zorder=2)
+    arrow((1.5, 8.18), (1.5, 7.88), 'harness')
+    text(6, 8.18, 'selected design + experiment history', 10.8,
+         palette['harness'][0]).set_bbox(dict(facecolor='white', edgecolor='none', pad=2))
+
+    # Separate downward execution and upward evidence avoid crossing the history loop.
+    arrow((7.5, 6.75), (7.5, 6.09), 'model')
+    text(6.70, 6.42, 'candidate', 10.5, palette['model'][0])
+    arrow((10.5, 6.09), (10.5, 6.75), 'gate')
+    text(9.32, 6.42, 'aggregate diagnostics', 10.5, palette['gate'][0])
+
+    box(.30, 5.03, 11.35, 1.04,
+        'INNER COLLABORATIVE TRAINING  |  shared coordinator',
+        'Distribute predictor  /  aggregate local model updates  /  summarize development evidence',
+        'gate', title_size=13.7, body_size=11.9)
+
+    # A laboratory is a data boundary, not a model or an aggregation operation.
+    for x, name in [(.30, 'Laboratory 1'), (4.225, 'Laboratory 2'), (8.15, 'Laboratory K')]:
+        ax.add_patch(FancyBboxPatch((x, 2.99), 3.5, 1.45,
+                     boxstyle='round,pad=0.02,rounding_size=0.08',
+                     linewidth=1.2, edgecolor='#CBD6DD', facecolor='#FCFDFE', zorder=1))
+        text(x+1.75, 4.20, name, 13, ink, 'bold')
+        for offset, value, role in [(.13, 'Local train\n+ development', 'data'),
+                                    (1.94, 'Fit predictor\nScore candidate', 'model')]:
+            edge, fill = palette[role]
+            ax.add_patch(FancyBboxPatch((x+offset, 3.15), 1.43, .70,
+                         boxstyle='round,pad=0.015,rounding_size=0.06',
+                         linewidth=1.2, edgecolor=edge, facecolor=fill, zorder=3))
+            artist = text(x+offset+.715, 3.5, value, 10.5, edge)
+            text_bounds.append((artist, (x+offset, 3.15, 1.43, .70)))
+        arrow((x+1.58, 3.5), (x+1.91, 3.5), 'data')
+        arrow((x+1.75, 5.01), (x+1.75, 4.47), 'model', both=True)
+    text(7.94, 3.65, '...', 14, ink)
+    text(6, 2.66, 'Local measurements train the predictor and evaluate each proposed design', 11.9, ink)
+
+    ax.plot([.3, 11.65], [2.38, 2.38], color='#D9E0E5', linewidth=1)
+    text(6, 2.13, 'ONE RESEARCH INTERFACE  |  THREE BIOLOGICAL TASK FAMILIES', 12.1, ink, 'bold')
+    for x, title, body in [
+        (.30, 'Drug-target interaction', 'molecule + protein\ninteraction prediction'),
+        (4.225, 'Proteomic efficacy', 'observed protein response\nefficacy classification'),
+        (8.15, 'Cell perturbation', 'single-gene / double-gene / drug\nfive-option identification'),
+    ]:
+        box(x, .63, 3.5, 1.13, title, body, 'model', title_size=12.7, body_size=11.2)
+
+    for x, name, role in [(.65, 'Local data', 'data'), (3.02, 'Predictive model', 'model'),
+                           (5.89, 'Research harness', 'harness'), (8.87, 'Aggregation / gate', 'gate')]:
+        edge, fill = palette[role]
+        ax.add_patch(FancyBboxPatch((x, .13), .22, .20,
+                     boxstyle='round,pad=0.01,rounding_size=0.03',
+                     linewidth=1.1, edgecolor=edge, facecolor=fill, zorder=3))
+        text(x+.35, .23, name, 10.7, ink, ha='left')
+
+    fig.subplots_adjust(left=.005, right=.995, bottom=.005, top=.995)
+    fig.canvas.draw()
+    renderer = fig.canvas.get_renderer()
+    for artist, (x, y, w, h) in text_bounds:
+        bounds = artist.get_window_extent(renderer).transformed(ax.transData.inverted())
+        assert bounds.x0 >= x and bounds.x1 <= x+w, f'Text overflows box: {artist.get_text()}'
+        assert bounds.y0 >= y and bounds.y1 <= y+h, f'Text overflows box: {artist.get_text()}'
     for suffix in ['pdf', 'svg']:
         fig.savefig(PAPER/f'assets/unified_pipeline.{suffix}')
     svg = PAPER/'assets/unified_pipeline.svg'

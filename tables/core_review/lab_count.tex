@@ -1,0 +1,26 @@
+\begin{table}[htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{@{}Xlcrrrr@{}}
+\toprule
+Task & Comparison & $n$ & $K=1$ & $K=2$ & $K=5$ & $K=10$ \\
+\midrule
+DTI & More data & 0/3 & N/A & N/A & N/A & N/A \\
+DTI & Fixed pool & 0/3 & N/A & N/A & N/A & N/A \\
+\midrule
+PTPC & More data & 3/3 & 26.03 $\pm$ 5.57 & 37.38 $\pm$ 0.60 & 29.63 $\pm$ 2.50 & 37.54 $\pm$ 0.27 \\
+PTPC & Fixed pool & 3/3 & 34.59 $\pm$ 5.66 & 37.36 $\pm$ 1.89 & 39.19 $\pm$ 0.43 & 37.54 $\pm$ 0.27 \\
+\midrule
+VCC & More data & 3/3 & 30.02 $\pm$ 0.78 & 39.56 $\pm$ 0.11 & 31.88 $\pm$ 0.00 & 31.48 $\pm$ 0.16 \\
+VCC & Fixed pool & 3/3 & 29.49 $\pm$ 0.00 & 28.80 $\pm$ 0.20 & 31.06 $\pm$ 0.22 & 31.48 $\pm$ 0.16 \\
+\midrule
+Norman & More data & 3/3 & 25.56 $\pm$ 0.00 & 18.22 $\pm$ 0.00 & 19.68 $\pm$ 1.11 & 15.48 $\pm$ 0.00 \\
+Norman & Fixed pool & 3/3 & 49.63 $\pm$ 4.20 & 19.56 $\pm$ 0.20 & 26.12 $\pm$ 0.11 & 15.48 $\pm$ 0.00 \\
+\midrule
+Tahoe & More data & 3/3 & 19.40 $\pm$ 0.00 & 25.37 $\pm$ 0.00 & 20.90 $\pm$ 0.00 & 26.37 $\pm$ 0.86 \\
+Tahoe & Fixed pool & 3/3 & 22.39 $\pm$ 0.00 & 21.39 $\pm$ 0.86 & 20.40 $\pm$ 0.86 & 26.37 $\pm$ 0.86 \\
+\bottomrule
+\end{tabularx}
+\caption{Laboratory-count sensitivity with the fixed default recipe. More data adds a nested set of original clients; fixed pool retains all data and merges clients. Scores are mean $\pm$ sample SD times 100. $n$ is completed versus specified seeds. N/A indicates an incomplete evaluation, not a zero.}
+\label{tab:core-labs}
+\end{table}

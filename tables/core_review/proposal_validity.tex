@@ -1,0 +1,22 @@
+\begin{table}[htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{@{}lXrr@{}}
+\toprule
+Task & Proposer & Direct valid/slots & Loop valid/slots \\
+\midrule
+DTI & Qwen & N/A & N/A \\
+DTI & Luna & N/A & N/A \\
+PTPC & Qwen & 19/24 & 14/24 \\
+PTPC & Luna & 24/24 & 24/24 \\
+VCC & Qwen & 11/24 & 16/24 \\
+VCC & Luna & 24/24 & 24/24 \\
+Norman & Qwen & 15/24 & 12/24 \\
+Norman & Luna & 24/24 & 24/24 \\
+Tahoe & Qwen & 14/24 & 15/24 \\
+Tahoe & Luna & 24/24 & 24/24 \\
+\bottomrule
+\end{tabularx}
+\caption{Valid executable proposals among attempted slots in the completed runs of Table~\ref{tab:core-budget}. Each slot allows the same two schema-validation attempts. A larger slot budget need not yield an equal number of trained candidates across proposers.}
+\label{tab:core-validity}
+\end{table}

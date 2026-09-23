@@ -1,0 +1,22 @@
+\begin{table}[htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{@{}Xlcrrrrr@{}}
+\toprule
+Task & Proposer & $n$ & Fixed & Direct@6 & Loop@6 & Direct@24 & Loop@24 \\
+\midrule
+DTI & Qwen & 0/3 & N/A & N/A & N/A & N/A & N/A \\
+DTI & Luna & 0/3 & N/A & N/A & N/A & N/A & N/A \\
+PTPC & Qwen & 1/3 & 37.27 & 37.27 & 37.27 & 37.27 & 37.27 \\
+PTPC & Luna & 1/3 & 37.27 & 37.27 & 37.27 & 37.27 & 37.27 \\
+VCC & Qwen & 1/3 & 31.50 & 31.50 & 31.50 & 19.61 & 19.61 \\
+VCC & Luna & 1/3 & 31.50 & 16.94 & 16.94 & 20.23 & 20.01 \\
+Norman & Qwen & 1/3 & 15.48 & 22.30 & 22.30 & 22.30 & 22.30 \\
+Norman & Luna & 1/3 & 15.48 & 35.48 & 23.11 & 23.11 & 23.11 \\
+Tahoe & Qwen & 1/3 & 25.37 & 26.87 & 26.87 & 13.43 & 13.43 \\
+Tahoe & Luna & 1/3 & 25.37 & 13.43 & 26.87 & 13.43 & 13.43 \\
+\bottomrule
+\end{tabularx}
+\caption{Proposer and search-budget sensitivity. Budgets count proposal slots, including failed proposals. Each included run has completed all 24 slots and evaluation at fixed prefixes. Scores use the original task metric times 100; a single completed seed has no estimated SD. Missing results remain N/A. This larger design-space study is separate from the six-slot main comparison.}
+\label{tab:core-budget}
+\end{table}

@@ -58,7 +58,8 @@ class ManuscriptConsistencyTests(unittest.TestCase):
         for token in ('+10.84', '[4.54, 17.73]', '4/8/0'):
             self.assertIn(token, table + results)
         self.assertIn('800 full-client', table)
-        self.assertIn('no DTI held-out claim', table)
+        self.assertNotIn('DTI: TAPB & Dev.', table)
+        self.assertIn('DTI development replay is in Appendix A', table)
 
 
 if __name__ == '__main__':

@@ -2,17 +2,16 @@
 \centering\small
 \setlength{\tabcolsep}{4.5pt}
 \renewcommand{\arraystretch}{1.08}
-\begin{tabularx}{\linewidth}{@{}Xlrrrr@{}}
+\begin{tabularx}{\linewidth}{@{}Xrrrr@{}}
 \toprule
-\textbf{Benchmark} & \textbf{Role} & \textbf{Direct} & \textbf{Loop} & \textbf{Gain} & \textbf{W/T/L} \\
+\textbf{Benchmark} & \textbf{Uniform} & \textbf{Evidence-guided} & \textbf{Gain} & \textbf{W/T/L} \\
 \midrule
-DTI: TAPB & Dev. replay & 93.63 & \textbf{94.02} & \textbf{+0.39} & 2/1/0 \\
-Proteomics: efficacy & Held-out & \textbf{37.47} & \textbf{37.47} & +0.00 & 0/3/0 \\
-Cell: VCC single-gene & Held-out & \textbf{20.01} & \textbf{20.01} & +0.00 & 0/3/0 \\
-Cell: Norman double-gene & Held-out & 11.48 & \textbf{22.32} & \textbf{+10.84} & 3/0/0 \\
-Cell: Tahoe drug & Held-out & 20.90 & \textbf{22.89} & \textbf{+1.99} & 1/2/0 \\
+Proteomics: efficacy & \textbf{37.47} & \textbf{37.47} & +0.00 & 0/3/0 \\
+Cell: VCC single-gene & \textbf{20.01} & \textbf{20.01} & +0.00 & 0/3/0 \\
+Cell: Norman double-gene & 11.48 & \textbf{22.32} & \textbf{+10.84} & 3/0/0 \\
+Cell: Tahoe drug & 20.90 & \textbf{22.89} & \textbf{+1.99} & 1/2/0 \\
 \bottomrule
 \end{tabularx}
-\caption{Compute-matched feedback isolation, averaged over three seeds and reported in percentage points. Held-out arms each use 800 full-client rounds and 160 development measurements. Gain is loop minus direct; W/T/L counts seed-level wins, ties and losses. The held-out total is 4/8/0, with Norman 95\% CI [4.54, 17.73] and Tahoe CI [$-$1.00, 7.46]. DTI reports a conservative development-trajectory replay; no DTI held-out claim is made.}
+\caption{Does early evidence improve training allocation? Held-out scores use the same ten designs, ten laboratories, 800 full-client rounds and 160 development measurements per method. Uniform allocation gives every design 80 rounds; the evidence-guided loop screens all designs and fully validates six promoted candidates. Gain is evidence-guided minus uniform, in percentage points; W/T/L counts seed-level wins, ties and losses (total 4/8/0). Norman 95\% CI: [4.54, 17.73]; Tahoe: [$-$1.00, 7.46]. The separate DTI development replay is in Appendix A.}
 \label{tab:strong-effects}
 \end{table}

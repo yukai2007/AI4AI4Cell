@@ -1,0 +1,46 @@
+\clearpage
+\section*{Appendix B. Laboratory, source and proposer sensitivity}
+\label{app:core}
+\setcounter{table}{0}
+\renewcommand{\thetable}{B.\arabic{table}}
+\renewcommand{\theHtable}{B.\arabic{table}}
+\paragraph{Study status and common settings.}
+These follow-up studies specify seeds 61--63 and retain the task predictors, scorer and inner training procedure of Appendix A. They address sensitivity rather than replacing the main-table protocol. Tables identify the number of completed evaluations at this revision; an unfinished study is N/A. The active DTI queue runs independently of the lighter head-training studies. Independent verification recomputes scores from saved predictions and checks their selected-checkpoint seals.
+
+\paragraph{Number of laboratories.}
+The participation experiment uses a fixed nested set of the first $K$ original clients, increasing both training and development access. The fixed-pool experiment merges the complete ten-client pool into $K$ training groups while retaining equal-weight evaluation over the original ten development panels. Thus its selection population stays fixed as training partitions change. $K\in\{1,2,5,10\}$; the shared $K=10$ fit is reused by both comparisons. Every unique fit uses the default design and 100 rounds. The cell objective forms contrastive negatives within each local training group, so repartitioning changes the negative pool as well as optimization steps. The curves characterize this implemented training procedure; they do not isolate communication alone. Zero between-seed SD can occur when a fixed pretrained head receives an identical single-batch update and does not imply zero biological uncertainty.
+
+\input{tables/core_review/lab_count}
+
+\paragraph{Independent sources and target evaluation.}
+For transfer, the entire target training pool is one study-level client. Each auxiliary collection contributes a separate local update, using the same sample-weighted aggregation. Only the original target development panels select the checkpoint; all methods share the target test set. Each target-only, individual-source and all-source configuration is trained from the same task initialization. VCC auxiliary data comprise Replogle K562, Nadig HepG2 and Jiang IFNB/K562, with respectively 60, 60 and 58 retained training interventions. Source feature panels preserve measured genes, and target development/test intervention identities are excluded from source training. Proteomic sources are HCC1143, HCC1806 and MDA-MB-453-1 from mtPTDS, each with 47 retained drug conditions and 3,501 proteins shared with the target panel. They come from one study, not three independent laboratories. Target development/test compounds are excluded from source training. DTI auxiliaries are BioSNAP, Davis and Human from the pinned TAPB release, with 19,092, 1,721 and 2,929 retained training pairs after drug--protein-pair de-duplication against target splits and preceding sources.
+
+\input{tables/core_review/transfer}
+
+The external cell collections are attributed to their original studies \citep{replogle2022perturbseq,nadig2025trade,jiang2025pathways}. Proteomic contexts and efficacy labels come from the ProteinTalks supplementary mtPTDS collection \citep{Sun2026ProteinTalks}. The source manifest records each retained subset, feature intersection and target-identity exclusion.
+
+\paragraph{Research-model and proposal-budget comparison.}
+Both proposers receive the same 36 configurations: three learning rates, three weight decays, two server-momentum values and two residual-head settings. Every candidate receives 100 rounds and restarts from the common task/seed initialization. Direct search receives untried identifiers without scores; the loop also receives aggregate development history. Within a backend the first proposal is shared. The proposal budget is 24 slots, not 24 guaranteed valid designs. Each slot allows two attempts to produce the four-field schema. Failed slots remain in the trace. Prefixes at 0, 1, 2, 4, 6, 8, 12, 16, 20 and 24 slots are fixed in advance; selected checkpoints are tested after the full trajectory completes. Configurations evaluated in more than one comparison may share an exact fit cache while retaining their logical budget charge.
+
+Qwen uses the local sampling settings in Appendix A. The second proposer is the \texttt{gpt-5.6-luna} service, accessed in a text-only session with tool use disabled; request metadata and responses are retained. Its service-level sampling controls and parameter count are not disclosed by this interface. The comparison therefore tests proposer backends under common task messages, candidate space and training budget, rather than holding every decoding parameter equal.
+
+\input{tables/core_review/loop_budget}
+\input{tables/core_review/proposal_validity}
+
+The completed seed-61 trajectories also separate proposal execution from search quality. Luna produces valid designs in all 192 attempted slots across the four completed endpoints, whereas Qwen produces 116 valid designs in 192 slots. Accordingly, a flat incumbent curve is interpreted together with the number of executable candidates evaluated. On Tahoe, Qwen's six-slot direct and loop checkpoints both score 26.87\% test Top-1, but both reach 13.43\% at 24 slots; Luna also finishes at 13.43\% in both modes. Together with the VCC curves, this distinguishes saturation of development selection from improvement on the target task.
+
+\paragraph{Search dynamics and task-dependent saturation.}
+Table~\ref{tab:core-search-dynamics} compares the slots required to reach a common development target within each pair. Luna reaches Norman's shared target earlier with feedback (4 versus 22 slots), whereas direct search reaches Tahoe's shared target earlier (5 versus 13). Proteomics retains the initial design in both modes. Across the 16 completed mode trajectories, the primary score is unchanged in the final eight slots in 12 cases; the full primary-score/loss selection key is unchanged in 10. All trajectories retain between 11 and 24 unvisited configurations. These diagnostics describe finite-budget saturation and identify where additional valid proposals still change selection. The eight paired 24-slot test endpoints give seven ties and one decrease with feedback (VCC/Luna, $-0.22$ points), so the observed Norman search-efficiency gain does not establish a cross-task final-score advantage.
+
+\input{tables/core_review/search_dynamics}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{assets/core_development_budget.pdf}
+\caption{Development-selected incumbent against proposal budget. Only complete trajectories from Table~\ref{tab:core-budget} contribute. A flat primary-score curve may still contain a lower-loss checkpoint selection; failed proposal slots also remain on the horizontal axis.}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{assets/core_heldout_budget.pdf}
+\caption{Held-out scores of the development-selected checkpoints at fixed proposal prefixes. Improved development search need not improve the target test metric. The full prefix series is shown, rather than choosing a budget from its highest test score.}
+\end{figure}

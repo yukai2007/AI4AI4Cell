@@ -1,0 +1,189 @@
+{
+  "schema": "verified-v6-racing-publication-v1",
+  "seeds": [
+    53,
+    54,
+    55
+  ],
+  "tasks": {
+    "ptpc_neural": {
+      "label": "Proteomics: efficacy",
+      "direct": 0.37471879033338645,
+      "loop": 0.37471879033338645,
+      "difference": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "wins_ties_losses": [
+        0,
+        3,
+        0
+      ]
+    },
+    "vcc_corrected": {
+      "label": "Cell: VCC single-gene",
+      "direct": 0.20007014007014007,
+      "loop": 0.20007014007014007,
+      "difference": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "wins_ties_losses": [
+        0,
+        3,
+        0
+      ]
+    },
+    "norman_double_corrected": {
+      "label": "Cell: Norman double-gene",
+      "direct": 0.11481481481481481,
+      "loop": 0.2232098765432099,
+      "difference": 0.10839506172839507,
+      "ci95": [
+        0.04542592592592592,
+        0.17728395061728397
+      ],
+      "wins_ties_losses": [
+        3,
+        0,
+        0
+      ]
+    },
+    "tahoe_drug_corrected": {
+      "label": "Cell: Tahoe drug",
+      "direct": 0.208955223880597,
+      "loop": 0.2288557213930348,
+      "difference": 0.019900497512437814,
+      "ci95": [
+        -0.009950248756218905,
+        0.07462686567164178
+      ],
+      "wins_ties_losses": [
+        1,
+        2,
+        0
+      ]
+    }
+  },
+  "public_summary_sha256": "887b1e4a8a0d10b16125974af82adbbc7ba477b2c5f6fc5a6e764e172c1da5cb",
+  "full_summary_sha256": "a33102a044f17a3b24b76ca57c19622994951d06ea49b9fc89b5ecb16858a113",
+  "protocol": {
+    "candidate_count_per_arm": 10,
+    "full_client_rounds_per_arm": 800,
+    "development_measurements_per_arm": 160,
+    "direct": "10 designs x 80 rounds",
+    "loop": "10 designs x 20-round screen + 6 promoted designs x 100-round validation",
+    "seeds": [
+      53,
+      54,
+      55
+    ]
+  },
+  "result_bindings": {
+    "heldout_v6/ptpc_neural/seed53": {
+      "results_sha256": "a96bd0d11dbff84cc04753b9091df4a3fc21821694123769e48fe72c930676f9",
+      "seal_sha256": "cdc24c620b0f639098d96c4c24b6ecd01be0688326de60d5e62dc397c8291b1b",
+      "predictions_sha256": {
+        "direct": "f61ee0319fa25731491fa08cbec77e905e9fddc2ad352773d4592890953c21b2",
+        "loop": "f61ee0319fa25731491fa08cbec77e905e9fddc2ad352773d4592890953c21b2"
+      }
+    },
+    "heldout_v6/ptpc_neural/seed54": {
+      "results_sha256": "c6b1adfed4059960027f7b2ec64c249821e9c96c354ca31592770eaba875f938",
+      "seal_sha256": "9bcb795030a1b22533b6cc5d606d1d6c52cd462518fe5c024ba1f5a7f229474e",
+      "predictions_sha256": {
+        "direct": "4d94231e8d0b6613ac6042c539d8157042507b3055eb4e663cf38a4349f46e26",
+        "loop": "4d94231e8d0b6613ac6042c539d8157042507b3055eb4e663cf38a4349f46e26"
+      }
+    },
+    "heldout_v6/ptpc_neural/seed55": {
+      "results_sha256": "c2e5523e410bce752738bb215fc95b878f2cdf09d12b5dc788c2b3c0deb7475e",
+      "seal_sha256": "1a350504e71b08b2e179cd71a029dae8eb8d88d8db8dae9b0db3f178d19c972d",
+      "predictions_sha256": {
+        "direct": "27841e50adaf1be74b4c39f46d6878dfee75f32f187b7905e7f8130538c386b2",
+        "loop": "27841e50adaf1be74b4c39f46d6878dfee75f32f187b7905e7f8130538c386b2"
+      }
+    },
+    "heldout_v6/vcc_corrected/seed53": {
+      "results_sha256": "d58d1a4a5aa5f72f65cdca4936a28dfdc6c7e6ad67d0635c4bc843e166ee2f8b",
+      "seal_sha256": "f40b5dc4b53a90ed02b9c0deb1110374c7da3b8587cc8765c011d507710e4159",
+      "predictions_sha256": {
+        "direct": "1a1cb60e11c4a7673b6f6b4901c83b51d523536e1cccb6c086b4ba1fc2713e8d",
+        "loop": "1a1cb60e11c4a7673b6f6b4901c83b51d523536e1cccb6c086b4ba1fc2713e8d"
+      }
+    },
+    "heldout_v6/vcc_corrected/seed54": {
+      "results_sha256": "d41f840a62b256ae69e1a720ae9bb43fbe95c747363d7feacf368a209dc093e3",
+      "seal_sha256": "cbaa885c0358eb7254e6447f27c1b05912a5611c9f024c0bec0b55459c9e9769",
+      "predictions_sha256": {
+        "direct": "2ca1c668f5c878ae9cc0042d099df525ec0edfc8802158edb6ba5d2b4fc328e1",
+        "loop": "2ca1c668f5c878ae9cc0042d099df525ec0edfc8802158edb6ba5d2b4fc328e1"
+      }
+    },
+    "heldout_v6/vcc_corrected/seed55": {
+      "results_sha256": "5948f24c2283ea4486c779985b6ef94d79224fdc13922e842fabfccaa7837c4d",
+      "seal_sha256": "cd950eb1db5dd4799bf276a42b6fcde8c04b77ab1b7cc17b90004dd1acabe12b",
+      "predictions_sha256": {
+        "direct": "36afb36c21981794776fd93b92c07813419a011b63f7279fbde9d4fa46811e00",
+        "loop": "36afb36c21981794776fd93b92c07813419a011b63f7279fbde9d4fa46811e00"
+      }
+    },
+    "heldout_v6/norman_double_corrected/seed53": {
+      "results_sha256": "907f5ea2740d1a2cc5de70379ba59b4ea0194799b1f83bf1e09dc5d36c2d66c1",
+      "seal_sha256": "9974698c13683ad35fc57ba334168fa0520adb363a4169b10d00660bb0c0714d",
+      "predictions_sha256": {
+        "direct": "c45ce63ae9e2a7cecfd45fe7ae6c599aa9f04a2e92b8f91bae57204d85a17740",
+        "loop": "afb5e17fccfe9aeae8cc7f894b289c8e16a08d4e59b33813b08705b697d33699"
+      }
+    },
+    "heldout_v6/norman_double_corrected/seed54": {
+      "results_sha256": "94595d1a6ee9925df3555082d665b609c33a5463090f35aacbb2047fbe8d21c8",
+      "seal_sha256": "f29310976b1830d6540aa64a053d7927e21d2bdea01c8d5542331365a1fedae6",
+      "predictions_sha256": {
+        "direct": "afc30685e69ccd211bb1b21c8c834d3a8dbea5e8f0d080e55a11d475e7ab5194",
+        "loop": "f0952c5e1ab0b5e2003f695e3b927dfcca8f7acd18fafd8a714c2c63f04031af"
+      }
+    },
+    "heldout_v6/norman_double_corrected/seed55": {
+      "results_sha256": "8a9f8b80b33bca17cd3f335196100d45d985f3593e9587d8cb7cc135b8e065ec",
+      "seal_sha256": "74903a358a3668ed4a62b667fe2faad558902d3fbfd183ded90a0ff4d2bd66bb",
+      "predictions_sha256": {
+        "direct": "ccaa865c851c5e81b78665f3457d9523a7857c4b879de338f42ee08e1a9c33e4",
+        "loop": "4a4d8994f3ea74e7f1e723a8f1ccaef83e78a8811db9a89acdc5931c6a6d662b"
+      }
+    },
+    "heldout_v6/tahoe_drug_corrected/seed53": {
+      "results_sha256": "03bbcd326423b8d39b397cc22e515397bacbd45bb15c1b23031088eb5522deba",
+      "seal_sha256": "11ccbed0b1ad59ad4780c60603045e7166546f3208c0a23df16b6176bf8b0084",
+      "predictions_sha256": {
+        "direct": "c3beb838a10f91fd78e6b5e02867ceec8ec20f29eea8f25809fc138e80771a98",
+        "loop": "c3beb838a10f91fd78e6b5e02867ceec8ec20f29eea8f25809fc138e80771a98"
+      }
+    },
+    "heldout_v6/tahoe_drug_corrected/seed54": {
+      "results_sha256": "b08ad2646c5aaacd4ea333e581c9470c2a60e8283ca8548e76c26a76e4c1ed4c",
+      "seal_sha256": "8d3146487ba0f586265eb0c0de07319ed2f530ed834a9eedec2078d171dbbaef",
+      "predictions_sha256": {
+        "direct": "4a5da50f0c9cb32b682f5950a185b07c9e2ff18f9cd55656692e22627a435759",
+        "loop": "4a5da50f0c9cb32b682f5950a185b07c9e2ff18f9cd55656692e22627a435759"
+      }
+    },
+    "heldout_v6/tahoe_drug_corrected/seed55": {
+      "results_sha256": "a2d914f8c16acf03e50620c76f2af5460db909151758660f7737828a2bc87474",
+      "seal_sha256": "67b346306c227017d4f9373fe6fd52e444a3a79ae6f5ef0b47c3fc6208c527f5",
+      "predictions_sha256": {
+        "direct": "30c589348e06f7c5695dfaa4bb64527a55a5d237d81fe7babfc0800b6e3f84ad",
+        "loop": "193903f4436685bb23d83819a41690b2faa6695e0c9cc70b7194c5ff7c7ea95f"
+      }
+    }
+  },
+  "independent_rescore": "PASS",
+  "ci_source": "hash-bound independently rescored V6 full summary; not recomputed by publisher",
+  "wins_ties_losses": [
+    4,
+    8,
+    0
+  ]
+}

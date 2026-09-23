@@ -10,6 +10,9 @@
 \paragraph{Versioned implementation.}
 The reported study uses \texttt{core\_v3.py}, \texttt{run\_v3.py} and \texttt{research\_v2.py}. All task families execute the same optimization, aggregation, proposal and retention source through task-specific adapters. TAPB workers use the TAPB environment; Qwen, proteomics and cell adapters use the LDA environment. Each scientific fit starts from its task-specific public or random initialization, with no reuse of earlier task-trained weights.
 
+\paragraph{Shared optimization and checkpoint selection.}
+Each round uses one local AdamW epoch, batch size 64 and gradient-norm clipping at one; local optimizer state resets between rounds. Parameters are averaged with training-example weights. If server momentum is enabled, the coordinator multiplies the previous velocity by the configured momentum coefficient and adds the difference between the averaged parameters and the previous shared parameters, then adds that velocity to the shared parameters. Floating model buffers are averaged and integer buffers use an elementwise maximum. Momentum acts on trainable parameters only. Every full-training candidate runs for 100 rounds; local development scores are collected every five rounds. Checkpoint selection maximizes the equal-client primary score, then minimizes mean development loss. The optional residual adapter has width 32 and zero-initialized output. The DTI adapter trains TAPB using frozen public protein features, the proteomic adapter trains its efficacy head from random initialization, and the cell adapters train response heads on frozen corrected scDEBART features.
+
 \paragraph{Complete design library.}
 Each identifier below compiles to one executable candidate. D00 is the fixed starting recipe; D01--D11 are available to both direct and loop search without within-arm repetition. Six proposal slots define the common budget.
 
@@ -35,7 +38,7 @@ D11 & 0.001 & 0.01 & 0 & yes \\
 \end{center}
 
 \paragraph{Proposal generation and evidence memory.}
-The proposer uses bfloat16 inference, temperature 0.7, top-$p$ 0.9 and at most 512 new tokens. Each slot uses a deterministic seed derived from the training seed. Direct and loop arms share the same first proposal. Later direct proposals receive the incumbent and tried design identifiers. Later loop proposals additionally receive an ordered list of evidence cards, each containing the candidate configuration, aggregate best development metric and loss, best round, first/last training and validation records, and final status. A bounded second generation attempt repairs schema or novelty violations.
+The main-study proposer is Qwen2.5-7B-Instruct, using bfloat16 inference, temperature 0.7, top-$p$ 0.9 and at most 512 new tokens. Each slot uses a deterministic seed derived from the training seed. Direct and loop comparisons share the same first proposal. Later direct proposals receive the default reference configuration and remaining untried identifiers, without evaluation scores. Loop proposals instead receive the latest retained configuration and ordered evidence cards, each containing the candidate configuration, aggregate best development metric and loss, best round, first/last training and validation records, and final status. A bounded second generation attempt repairs schema or novelty violations. Failed proposals consume a slot. Identical configurations within a seed and participation setting can reuse a completed fit while retaining their logical positions in the research traces.
 
 Every proposal has the following executable JSON shape:
 \begin{verbatim}

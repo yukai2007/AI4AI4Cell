@@ -1,6 +1,6 @@
 \begin{table}[h!]
-\centering\small
-\setlength{\tabcolsep}{4pt}
+\centering\footnotesize
+\setlength{\tabcolsep}{2.5pt}
 \renewcommand{\arraystretch}{1.08}
 \begin{tabularx}{\linewidth}{@{}Xrrrrrr@{}}
 \toprule
@@ -8,12 +8,12 @@
 \cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(lr){4-6}\cmidrule(l){7-7}
  & \shortstack{TAPB\\AUROC $\uparrow$} & \shortstack{PTPC\\AP $\uparrow$} & \shortstack{VCC\\Top-1 $\uparrow$} & \shortstack{Norman\\Top-1 $\uparrow$} & \shortstack{Tahoe\\Top-1 $\uparrow$} & \shortstack{Mean\\5 endpoints} \\
 \midrule
-Fixed recipe (1 lab) & 82.83 & \underline{25.05} & \underline{29.94} & \textbf{25.56} & \underline{19.40} & \underline{36.55} \\
-Direct optimization (1 lab) & \underline{89.89} & 20.13 & 21.09 & 14.15 & 15.42 & 32.14 \\
+Task model (1 lab) & 82.83 $\pm$ 1.22 & \underline{25.05} $\pm$ 4.56 & \underline{29.94} $\pm$ 0.00 & \textbf{25.56} $\pm$ 0.00 & \underline{19.40} $\pm$ 0.00 & \underline{36.55} $\pm$ 0.82 \\
+Qwen direct (1 lab) & \underline{89.89} $\pm$ 1.02 & 20.13 $\pm$ 0.07 & 21.09 $\pm$ 4.38 & 14.15 $\pm$ 0.00 & 15.42 $\pm$ 6.21 & 32.14 $\pm$ 2.02 \\
 \midrule
-\textbf{AI4AI4Cell} (10 labs) & \textbf{93.76} & \textbf{36.99} & \textbf{31.54} & \underline{22.25} & \textbf{22.39} & \textbf{41.39} \\
+\textbf{AI4AI4Cell} (10 labs) & \textbf{93.76} $\pm$ 1.11 & \textbf{36.99} $\pm$ 0.22 & \textbf{31.54} $\pm$ 0.08 & \underline{22.25} $\pm$ 0.45 & \textbf{22.39} $\pm$ 2.59 & \textbf{41.39} $\pm$ 0.60 \\
 \bottomrule
 \end{tabularx}
-\caption{Main held-out comparison across three biological task families and five endpoints. Fixed recipe and feedback-free direct search use one laboratory; AI4AI4Cell uses ten. PTPC denotes observed-response proteomic efficacy. Values are three-seed means multiplied by 100; Overall is their unweighted descriptive mean. Bold and underline mark the best and runner-up within each column. Exact seed counts, sample SD, all six factorial arms and secondary metrics appear in Appendix A.}
+\caption{Main held-out comparison. Task models are TAPB (DTI), a ProteinTalks-derived efficacy head (PTPC) and corrected scDEBART response heads (cells). Qwen direct proposes configurations without evaluation history; AI4AI4Cell adds collaborative access and evidence feedback. Values are mean $\pm$ sample SD, multiplied by 100; SD is not a confidence interval. Overall summarizes the five endpoints within each seed. Bold and underline mark the best and second-best displayed means. The shared training protocol is in Section 4; all six configurations, seed counts and secondary metrics are in Appendix A.}
 \label{tab:strong-main}
 \end{table}
