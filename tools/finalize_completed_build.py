@@ -33,10 +33,47 @@ def main():
         target=PAPER.parent/path if path.parts[0]=='paper' else PAPER/path
         if sha(target)!=digest: raise RuntimeError(f'Published artifact changed: {path}')
     snapshot=json.loads((PAPER/'tables/completed_ablation/snapshot.json').read_text())
+    protein_path=PAPER.parent/'results/supplemental_20260923/proteomics/seed61_slots0_cpu/independent_rescore.json'
+    scenario_path=PAPER.parent/'results/scenario_labs_20260923/heldout/independent_rescore_v2.json'
+    protein=json.loads(protein_path.read_text())
+    scenario=json.loads(scenario_path.read_text())
+    completion_path=scenario_path.parents[1]/'completion_v2.json'
+    campaign=json.loads(completion_path.read_text())
+    expected_links={
+        scenario_path:campaign['independent_rescore_sha256'],
+        scenario_path.parent/'results.json':campaign['heldout_results_sha256'],
+        scenario_path.parents[1]/'campaign.json':campaign['original_campaign_sha256'],
+        scenario_path.parents[1]/'protocol.json':campaign['protocol_sha256'],
+    }
+    for linked_path,digest in expected_links.items():
+        if sha(linked_path)!=digest:
+            raise RuntimeError(f'Scenario completion chain mismatch: {linked_path}')
+    if campaign['validated_fit_count']!=12 or not campaign['predictions_unchanged']:
+        raise RuntimeError('Scenario completion does not validate twelve unchanged predictions')
+    if protein['status']!='COMPLETE_VERIFIED' or scenario['status']!='PASS' or campaign['status']!='COMPLETE':
+        raise RuntimeError('Supplemental source experiments are not complete and independently verified')
+    if len(protein['results'])!=4 or len(scenario['scores'])!=12:
+        raise RuntimeError('Incomplete supplemental comparison')
+    supplemental_receipts={str(p.relative_to(PAPER.parent)):sha(p) for p in (protein_path,scenario_path,completion_path)}
+    strict_dir=PAPER.parent/'results/proteomics_scenario_labs_20260924'
+    strict_status=json.loads((strict_dir/'status.json').read_text())
+    strict_check=json.loads((strict_dir/'independent_rescore.json').read_text())
+    if strict_status['status']!='COMPLETE' or strict_check['status']!='PASS':
+        raise RuntimeError('One-study-per-lab proteomics controls are not complete')
+    if len(strict_status['completed_arms'])!=4 or strict_status['rounds']!=100 or len(strict_check['results'])!=4:
+        raise RuntimeError('Incomplete strict-source proteomics comparison')
+    for relative,key in (('protocol.json','protocol_sha256'),('binding.json','binding_sha256'),
+                         ('independent_rescore.json','independent_rescore_sha256'),
+                         ('heldout/results.json','results_sha256')):
+        if sha(strict_dir/relative)!=strict_status[key]:
+            raise RuntimeError('Strict-source proteomics receipt mismatch: '+relative)
+    for relative in ('status.json','independent_rescore.json'):
+        linked=strict_dir/relative
+        supplemental_receipts[str(linked.relative_to(PAPER.parent))]=sha(linked)
     pdf=PAPER/'build/main.pdf'
     doc=fitz.open(pdf)
     texts=[page.get_text() for page in doc]
-    conclusions=[i+1 for i,t in enumerate(texts) if '6. CONCLUSION' in t]
+    conclusions=[i+1 for i,t in enumerate(texts) if re.search(r'\b5\.\s*CONCLUSION\b', t)]
     statements=[i+1 for i,t in enumerate(texts) if 'REPRODUCIBILITY STATEMENT' in t]
     if len(conclusions)!=1 or len(statements)!=1 or not 1<=conclusions[0]<=statements[0]<=10:
         raise RuntimeError('Check main-text pagination')
@@ -51,9 +88,9 @@ def main():
         if forbidden in joined: raise RuntimeError('Anonymous manuscript: '+forbidden)
     if doc.metadata.get('author') or any(list(p.annots() or []) for p in doc):
         raise RuntimeError('Author metadata or review annotations in submission PDF')
-    for required in ('85.47','87.95','35.50','94.60','23.11'):
+    for required in ('85.47','87.95','35.50','35.68','94.60','23.11','30.70','28.82'):
         if required not in joined: raise RuntimeError('Expected completed evidence absent: '+required)
-    files=[PAPER/'main.tex',PAPER/'biocoloop-main.tex',PAPER/'references.bib']
+    files=[PAPER/'main.tex',PAPER/'biocoloop-main.tex',PAPER/'references.bib',PAPER/'references_v2.bib']
     files+=list((PAPER/'sections').glob('*.tex'))
     files+=list((PAPER/'tables').rglob('*.tex'))
     files+=list((PAPER/'assets').glob('*.pdf'))
@@ -73,15 +110,18 @@ def main():
         source_sha256={str(x.relative_to(PAPER)):sha(x) for x in sorted(files)},
         completed_snapshot_sha256=sha(PAPER/'tables/completed_ablation/snapshot.json'),
         publication_provenance_sha256=sha(PAPER/'tables/completed_ablation/provenance.json'),
+        supplemental_receipts_sha256=supplemental_receipts,
         unit_tests_passed=a.tests_passed,overfull_boxes=0,undefined_references=0,
         visual_review=a.visual_review,
         incorporated=['five-endpoint two-backend short6','five-endpoint lab count, two definitions',
                       'DTI three independent sources','cell three independent sources',
-                      'proteomics two independent sources with matched adapter controls',
+                      'proteomics two-source loop study and independent three-source fixed-design extension',
                       'four-endpoint long24 curves','504 attempted proposal slots',
-                      'user-supplied editable framework figure'],
-        unresolved_experimental_scope=['third independent proteomics source not trained',
-                                       'native DTI long24 not executed',
+                      'native-vector editable framework figure, explicit inner/outer data flow',
+                      'matched K4/N60 source-as-scenario cell comparison',
+                      'proteomics one study per training laboratory with target-only development selection'],
+        unresolved_experimental_scope=['native DTI long24 not executed',
+                                       'proposal-history ablation on the new matched scenario partition not executed',
                                        'additional ablation seeds deferred'],
         scientific_interpretation='Allocation gains and proposal-history effects are distinct; feedback does not universally improve heldout scores.',
         platform_status='This build does not submit to OpenReview or verify Overleaf remote compilation.')

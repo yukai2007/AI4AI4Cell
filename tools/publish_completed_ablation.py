@@ -47,6 +47,8 @@ def save_figure(figure, target):
     temporary = target.with_name('.' + target.stem + '.tmp-' + str(os.getpid()) + target.suffix)
     try:
         figure.savefig(temporary, metadata={'Creator': 'BioCoLoop verified snapshot publisher'})
+        if target.suffix == '.svg':
+            temporary.write_text('\n'.join(line.rstrip() for line in temporary.read_text().splitlines()) + '\n')
         os.replace(temporary, target)
     finally:
         if temporary.exists():
@@ -287,7 +289,7 @@ def transfer_tables(snapshot):
             rows.append([task, row['label'], row['metric'], score(row['scores'], bold), score(row['deltas'], signed=True)])
         rows.append(None)
     table('transfer_independent.tex', ['Target', 'Additional source', 'Metric', r'Score $\uparrow$', r'$\Delta$ (pp)'], rows[:-1],
-          r'Independent-source transfer on the same target heldout set, including every prespecified source and their combination. DTI (seed 61) adds BioSNAP, Davis or Human; VCC (seeds 61--63, mean $\pm$ SD) adds Replogle, Nadig or Jiang. The PTPC auxiliary multi-task model (seed 61) adds Lin or Ruprecht and is compared only with its matched auxiliary target-only model. PTPC has two independent external studies, not three. Changes are paired against target-only training; bold marks the best score within a target/model block. Scores are multiplied by 100.',
+          r'Independent-source transfer on the same target heldout set, including every prespecified source and their combination. DTI (seed 61) adds BioSNAP, Davis or Human; VCC (seeds 61--63, mean $\pm$ SD) adds Replogle, Nadig or Jiang. The PTPC auxiliary multi-task model (seed 61) adds Lin or Ruprecht and is compared only with its matched auxiliary target-only model. The two-source PTPC protocol shown here uses Lin and Ruprecht; the three-source extension is reported separately in Table~\ref{tab:supplemental-protein-three-source}. Changes are paired against target-only training; bold marks the best score within a target/model block. Scores are multiplied by 100.',
           'tab:completed-independent-transfer', 'lXlrr')
     rows = []
     flags = best_flags([r['scores'] for r in snapshot['context_transfer']])

@@ -1,0 +1,48 @@
+{
+  "status": "STRUCTURAL_AND_VISUAL_CHECKS_PASSED",
+  "edition": "coauthor-review-v2",
+  "authoring": "PptxGenJS PowerPoint-native shapes and text",
+  "source_js": "/liziqing/yukai/AI4AI4Cell/paper/tools/draw_framework_v2.js",
+  "source_js_sha256": "3d6e94c08207f3dd1ca7d377351faf66c07aa14019bd39fd9bbcdc9bb60b7c5b",
+  "exporter_sha256": "dc59d2cc16c44cf2960e12b585e5a3dfc7916698780838eabe8d81b9ad7b7ca7",
+  "old_editable_source_unchanged": true,
+  "old_editable_source_sha256": "c6a014a7fc4238d3146a59573411d8d33e3e784c93b0d375ab5ffebe35145394",
+  "aspect_ratio": "4:3",
+  "embedded_raster_assets": [],
+  "pdf_embedded_images": 0,
+  "vector_path_count": 71,
+  "text_outside_canvas": [],
+  "slides_test_returncode": 0,
+  "slides_test_output": "Test passed. No overflow detected.",
+  "minimum_native_font_pt": 13.2,
+  "artifacts": {
+    "biocoloop_framework_v2.pptx": "169ca2fd8b43a1a57b274f2d2e5d99f41b1108702a2fc978037146bca4053f9d",
+    "biocoloop_framework_v2.pdf": "dbf7abb5b6d6a6fc76e88259d02d93996e4f6c7dcc1c25bbe8a0eabdac206bee",
+    "biocoloop_framework_v2.png": "c03f3c6dfe8caf216ffba69962975b5b9a1c3005f0cabbedea2aa48e2a658626"
+  },
+  "layout": "biocoloop_framework_v2.layout.json",
+  "visual_review_required": false,
+  "independent_visual_review": {
+    "reviewer": "root agent",
+    "status": "PASSED",
+    "preview_sha256": "9bd104ff6ae758aa8fb1d9c47023e01f88e81555485dde5dc34f67e45ae84fa2",
+    "published_png_sha256": "c03f3c6dfe8caf216ffba69962975b5b9a1c3005f0cabbedea2aa48e2a658626",
+    "checks": [
+      "native text readable",
+      "no unintentional arrow crossings",
+      "no text overflow",
+      "semantic color mapping",
+      "inner/outer data flow explicit"
+    ]
+  },
+  "format_only_cleanup": {
+    "change": "Removed redundant blank lines at EOF from the authoring source, exporter and this receipt.",
+    "previous_source_hashes": {
+      "source_js_sha256": "0ea5a6f994c658cfb981d6980af6597ce0ae9c4478947869db3ddf8636e6add3",
+      "exporter_sha256": "c097abf30685a8f3f0b0c85850a32a484b1bc7a1169ad3db189aa676e21838cf"
+    },
+    "figure_redrawn_or_reexported": false,
+    "published_pptx_pdf_png_bytes_unchanged": true,
+    "note": "The published figure was generated before this whitespace-only source cleanup; scientific content, drawing commands and rendered artifacts are unchanged."
+  }
+}

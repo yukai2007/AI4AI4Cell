@@ -1,0 +1,843 @@
+{
+  "layout_inches": [
+    12,
+    9
+  ],
+  "font": "Carlito",
+  "native_only": true,
+  "color_roles": {
+    "data": "2D7F60",
+    "predictor": "276CA6",
+    "research": "76529C",
+    "aggregation": "AE7319"
+  },
+  "text_boxes": [
+    {
+      "id": "title",
+      "text": "BioCoLoop",
+      "x": 0.32,
+      "y": 0.14,
+      "w": 2.26,
+      "h": 0.43,
+      "font_size": 26
+    },
+    {
+      "id": "subtitle",
+      "text": "Collaborative biological model improvement",
+      "x": 2.68,
+      "y": 0.2,
+      "w": 8.99,
+      "h": 0.34,
+      "font_size": 19.4
+    },
+    {
+      "id": "legend_0",
+      "text": "Local data",
+      "x": 0.8799999999999999,
+      "y": 0.71,
+      "w": 2.19,
+      "h": 0.28,
+      "font_size": 15
+    },
+    {
+      "id": "legend_1",
+      "text": "Predictors",
+      "x": 3.33,
+      "y": 0.71,
+      "w": 2.19,
+      "h": 0.28,
+      "font_size": 15
+    },
+    {
+      "id": "legend_2",
+      "text": "Research loop",
+      "x": 6.04,
+      "y": 0.71,
+      "w": 2.19,
+      "h": 0.28,
+      "font_size": 15
+    },
+    {
+      "id": "legend_3",
+      "text": "Aggregation",
+      "x": 9.290000000000001,
+      "y": 0.71,
+      "w": 2.19,
+      "h": 0.28,
+      "font_size": 15
+    },
+    {
+      "id": "outer_label",
+      "text": "OUTER RESEARCH LOOP",
+      "x": 0.51,
+      "y": 1.19,
+      "w": 4.8,
+      "h": 0.27,
+      "font_size": 17.2
+    },
+    {
+      "id": "controller_label",
+      "text": "Research language model: fixed weights",
+      "x": 6.77,
+      "y": 1.19,
+      "w": 4.6,
+      "h": 0.27,
+      "font_size": 14.1
+    },
+    {
+      "id": "research_number_0",
+      "text": "1",
+      "x": 0.63,
+      "y": 2.055,
+      "w": 0.29,
+      "h": 0.29,
+      "font_size": 13.2
+    },
+    {
+      "id": "research_title_0",
+      "text": "Propose",
+      "x": 0.99,
+      "y": 2.01,
+      "w": 1.77,
+      "h": 0.36,
+      "font_size": 17.1
+    },
+    {
+      "id": "research_body_0",
+      "text": "Hypothesis +\ndesign identifier",
+      "x": 0.63,
+      "y": 2.48,
+      "w": 2.09,
+      "h": 0.49,
+      "font_size": 15.2
+    },
+    {
+      "id": "research_number_1",
+      "text": "2",
+      "x": 3.3899999999999997,
+      "y": 2.055,
+      "w": 0.29,
+      "h": 0.29,
+      "font_size": 13.2
+    },
+    {
+      "id": "research_title_1",
+      "text": "Instantiate",
+      "x": 3.75,
+      "y": 2.01,
+      "w": 1.77,
+      "h": 0.36,
+      "font_size": 17.1
+    },
+    {
+      "id": "research_body_1",
+      "text": "Prediction head +\ntraining settings",
+      "x": 3.3899999999999997,
+      "y": 2.48,
+      "w": 2.09,
+      "h": 0.49,
+      "font_size": 15.2
+    },
+    {
+      "id": "research_number_2",
+      "text": "3",
+      "x": 6.1499999999999995,
+      "y": 2.055,
+      "w": 0.29,
+      "h": 0.29,
+      "font_size": 13.2
+    },
+    {
+      "id": "research_title_2",
+      "text": "Train + evaluate",
+      "x": 6.51,
+      "y": 2.01,
+      "w": 1.77,
+      "h": 0.36,
+      "font_size": 17.1
+    },
+    {
+      "id": "research_body_2",
+      "text": "Run candidate;\ncollect diagnostics",
+      "x": 6.1499999999999995,
+      "y": 2.48,
+      "w": 2.09,
+      "h": 0.49,
+      "font_size": 15.2
+    },
+    {
+      "id": "research_number_3",
+      "text": "4",
+      "x": 8.91,
+      "y": 2.055,
+      "w": 0.29,
+      "h": 0.29,
+      "font_size": 13.2
+    },
+    {
+      "id": "research_title_3",
+      "text": "Retain / revise",
+      "x": 9.27,
+      "y": 2.01,
+      "w": 1.77,
+      "h": 0.36,
+      "font_size": 17.1
+    },
+    {
+      "id": "research_body_3",
+      "text": "Compare development;\nrecord trial outcome",
+      "x": 8.91,
+      "y": 2.48,
+      "w": 2.09,
+      "h": 0.49,
+      "font_size": 15.2
+    },
+    {
+      "id": "history_feedback_label",
+      "text": "Evidence cards + previous trials",
+      "x": 3.81,
+      "y": 1.48,
+      "w": 4.35,
+      "h": 0.24,
+      "font_size": 14
+    },
+    {
+      "id": "inner_label",
+      "text": "INNER COLLABORATIVE TRAINING",
+      "x": 0.5,
+      "y": 4.025,
+      "w": 6.6,
+      "h": 0.28,
+      "font_size": 17
+    },
+    {
+      "id": "coordinator_title",
+      "text": "Coordinator: aggregate parameters and development scores",
+      "x": 0.7,
+      "y": 4.5,
+      "w": 8.3,
+      "h": 0.29,
+      "font_size": 17.3
+    },
+    {
+      "id": "coordinator_subtitle",
+      "text": "Send shared parameters; receive local updates and evaluation metrics",
+      "x": 0.7,
+      "y": 4.84,
+      "w": 8.3,
+      "h": 0.23,
+      "font_size": 14.2
+    },
+    {
+      "id": "candidate_label",
+      "text": "Candidate design",
+      "x": 5.1,
+      "y": 3.5,
+      "w": 1.9,
+      "h": 0.29,
+      "font_size": 14.2
+    },
+    {
+      "id": "evidence_label",
+      "text": "Development\nevidence",
+      "x": 7.46,
+      "y": 3.4,
+      "w": 1.27,
+      "h": 0.43,
+      "font_size": 13.7
+    },
+    {
+      "id": "selected_label",
+      "text": "Selected",
+      "x": 10.81,
+      "y": 3.62,
+      "w": 0.88,
+      "h": 0.25,
+      "font_size": 13.6
+    },
+    {
+      "id": "laboratory_name_0",
+      "text": "Lab 1",
+      "x": 0.63,
+      "y": 5.92,
+      "w": 0.88,
+      "h": 0.29,
+      "font_size": 16.2
+    },
+    {
+      "id": "laboratory_scenario_0",
+      "text": "Scenario A",
+      "x": 1.59,
+      "y": 5.94,
+      "w": 1.51,
+      "h": 0.24,
+      "font_size": 14
+    },
+    {
+      "id": "local_data_label_0",
+      "text": "Train / dev",
+      "x": 0.64,
+      "y": 6.385,
+      "w": 1.06,
+      "h": 0.25,
+      "font_size": 14.2
+    },
+    {
+      "id": "local_model_label_0",
+      "text": "Local model",
+      "x": 2.05,
+      "y": 6.385,
+      "w": 1.06,
+      "h": 0.25,
+      "font_size": 14.2
+    },
+    {
+      "id": "laboratory_name_1",
+      "text": "Lab 2",
+      "x": 3.62,
+      "y": 5.92,
+      "w": 0.88,
+      "h": 0.29,
+      "font_size": 16.2
+    },
+    {
+      "id": "laboratory_scenario_1",
+      "text": "Scenario B",
+      "x": 4.58,
+      "y": 5.94,
+      "w": 1.51,
+      "h": 0.24,
+      "font_size": 14
+    },
+    {
+      "id": "local_data_label_1",
+      "text": "Train / dev",
+      "x": 3.6300000000000003,
+      "y": 6.385,
+      "w": 1.06,
+      "h": 0.25,
+      "font_size": 14.2
+    },
+    {
+      "id": "local_model_label_1",
+      "text": "Local model",
+      "x": 5.04,
+      "y": 6.385,
+      "w": 1.06,
+      "h": 0.25,
+      "font_size": 14.2
+    },
+    {
+      "id": "laboratory_name_2",
+      "text": "Lab K",
+      "x": 6.61,
+      "y": 5.92,
+      "w": 0.88,
+      "h": 0.29,
+      "font_size": 16.2
+    },
+    {
+      "id": "laboratory_scenario_2",
+      "text": "Scenario K",
+      "x": 7.57,
+      "y": 5.94,
+      "w": 1.51,
+      "h": 0.24,
+      "font_size": 14
+    },
+    {
+      "id": "local_data_label_2",
+      "text": "Train / dev",
+      "x": 6.62,
+      "y": 6.385,
+      "w": 1.06,
+      "h": 0.25,
+      "font_size": 14.2
+    },
+    {
+      "id": "local_model_label_2",
+      "text": "Local model",
+      "x": 8.030000000000001,
+      "y": 6.385,
+      "w": 1.06,
+      "h": 0.25,
+      "font_size": 14.2
+    },
+    {
+      "id": "locality_note",
+      "text": "Measurements remain within each laboratory",
+      "x": 0.62,
+      "y": 6.99,
+      "w": 8.47,
+      "h": 0.22,
+      "font_size": 14.4
+    },
+    {
+      "id": "outputs_label",
+      "text": "OUTPUTS",
+      "x": 9.82,
+      "y": 4.44,
+      "w": 1.79,
+      "h": 0.26,
+      "font_size": 16.6
+    },
+    {
+      "id": "selected_predictor_label",
+      "text": "Selected design\n+ fitted predictor",
+      "x": 9.93,
+      "y": 5.06,
+      "w": 1.59,
+      "h": 0.6,
+      "font_size": 15.2
+    },
+    {
+      "id": "research_history_label",
+      "text": "Research history\nall trial results",
+      "x": 9.92,
+      "y": 6.2,
+      "w": 1.61,
+      "h": 0.57,
+      "font_size": 14.7
+    },
+    {
+      "id": "tasks_label",
+      "text": "TASK-SPECIFIC PREDICTORS AND SCORERS",
+      "x": 0.42,
+      "y": 7.48,
+      "w": 11.16,
+      "h": 0.28,
+      "font_size": 16.2
+    },
+    {
+      "id": "task_title_0",
+      "text": "Drug-target interactions",
+      "x": 0.48,
+      "y": 8.035,
+      "w": 3.27,
+      "h": 0.28,
+      "font_size": 17.4
+    },
+    {
+      "id": "task_body_0",
+      "text": "Compound + protein to interaction",
+      "x": 0.48,
+      "y": 8.43,
+      "w": 3.27,
+      "h": 0.22,
+      "font_size": 13.7
+    },
+    {
+      "id": "task_title_1",
+      "text": "Proteomic efficacy",
+      "x": 4.38,
+      "y": 8.035,
+      "w": 3.27,
+      "h": 0.28,
+      "font_size": 17.4
+    },
+    {
+      "id": "task_body_1",
+      "text": "Observed proteome + drug to efficacy",
+      "x": 4.38,
+      "y": 8.43,
+      "w": 3.27,
+      "h": 0.22,
+      "font_size": 13.7
+    },
+    {
+      "id": "task_title_2",
+      "text": "Cell perturbations",
+      "x": 8.28,
+      "y": 8.035,
+      "w": 3.27,
+      "h": 0.28,
+      "font_size": 17.4
+    },
+    {
+      "id": "task_body_2",
+      "text": "Single gene / double gene / drug",
+      "x": 8.28,
+      "y": 8.43,
+      "w": 3.27,
+      "h": 0.22,
+      "font_size": 13.7
+    }
+  ],
+  "nodes": [
+    {
+      "id": "outer_frame",
+      "x": 0.25,
+      "y": 1.08,
+      "w": 11.5,
+      "h": 2.19
+    },
+    {
+      "id": "inner_frame",
+      "x": 0.25,
+      "y": 3.9,
+      "w": 9.23,
+      "h": 3.35
+    },
+    {
+      "id": "outputs_frame",
+      "x": 9.7,
+      "y": 4.3,
+      "w": 2.05,
+      "h": 2.95
+    },
+    {
+      "id": "legend_chip_0",
+      "x": 0.57,
+      "y": 0.75,
+      "w": 0.2,
+      "h": 0.2
+    },
+    {
+      "id": "legend_chip_1",
+      "x": 3.02,
+      "y": 0.75,
+      "w": 0.2,
+      "h": 0.2
+    },
+    {
+      "id": "legend_chip_2",
+      "x": 5.73,
+      "y": 0.75,
+      "w": 0.2,
+      "h": 0.2
+    },
+    {
+      "id": "legend_chip_3",
+      "x": 8.98,
+      "y": 0.75,
+      "w": 0.2,
+      "h": 0.2
+    },
+    {
+      "id": "research_card_0",
+      "x": 0.5,
+      "y": 1.92,
+      "w": 2.35,
+      "h": 1.2
+    },
+    {
+      "id": "research_card_1",
+      "x": 3.26,
+      "y": 1.92,
+      "w": 2.35,
+      "h": 1.2
+    },
+    {
+      "id": "research_card_2",
+      "x": 6.02,
+      "y": 1.92,
+      "w": 2.35,
+      "h": 1.2
+    },
+    {
+      "id": "research_card_3",
+      "x": 8.78,
+      "y": 1.92,
+      "w": 2.35,
+      "h": 1.2
+    },
+    {
+      "id": "coordinator",
+      "x": 0.5,
+      "y": 4.43,
+      "w": 8.72,
+      "h": 0.72
+    },
+    {
+      "id": "laboratory_0",
+      "x": 0.5,
+      "y": 5.84,
+      "w": 2.74,
+      "h": 1.03
+    },
+    {
+      "id": "local_data_0",
+      "x": 0.62,
+      "y": 6.32,
+      "w": 1.1,
+      "h": 0.42
+    },
+    {
+      "id": "local_model_0",
+      "x": 2.0300000000000002,
+      "y": 6.32,
+      "w": 1.1,
+      "h": 0.42
+    },
+    {
+      "id": "laboratory_1",
+      "x": 3.49,
+      "y": 5.84,
+      "w": 2.74,
+      "h": 1.03
+    },
+    {
+      "id": "local_data_1",
+      "x": 3.6100000000000003,
+      "y": 6.32,
+      "w": 1.1,
+      "h": 0.42
+    },
+    {
+      "id": "local_model_1",
+      "x": 5.0200000000000005,
+      "y": 6.32,
+      "w": 1.1,
+      "h": 0.42
+    },
+    {
+      "id": "laboratory_2",
+      "x": 6.48,
+      "y": 5.84,
+      "w": 2.74,
+      "h": 1.03
+    },
+    {
+      "id": "local_data_2",
+      "x": 6.6000000000000005,
+      "y": 6.32,
+      "w": 1.1,
+      "h": 0.42
+    },
+    {
+      "id": "local_model_2",
+      "x": 8.01,
+      "y": 6.32,
+      "w": 1.1,
+      "h": 0.42
+    },
+    {
+      "id": "selected_predictor",
+      "x": 9.86,
+      "y": 4.94,
+      "w": 1.73,
+      "h": 0.88
+    },
+    {
+      "id": "research_history",
+      "x": 9.86,
+      "y": 6.07,
+      "w": 1.73,
+      "h": 0.86
+    },
+    {
+      "id": "task_0",
+      "x": 0.3,
+      "y": 7.94,
+      "w": 3.6,
+      "h": 0.82
+    },
+    {
+      "id": "task_1",
+      "x": 4.2,
+      "y": 7.94,
+      "w": 3.6,
+      "h": 0.82
+    },
+    {
+      "id": "task_2",
+      "x": 8.1,
+      "y": 7.94,
+      "w": 3.6,
+      "h": 0.82
+    }
+  ],
+  "edges": [
+    {
+      "id": "research_sequence_0",
+      "x1": 2.85,
+      "y1": 2.53,
+      "x2": 3.26,
+      "y2": 2.53,
+      "arrow": true,
+      "color": "76529C"
+    },
+    {
+      "id": "research_sequence_1",
+      "x1": 5.609999999999999,
+      "y1": 2.53,
+      "x2": 6.02,
+      "y2": 2.53,
+      "arrow": true,
+      "color": "76529C"
+    },
+    {
+      "id": "research_sequence_2",
+      "x1": 8.37,
+      "y1": 2.53,
+      "x2": 8.78,
+      "y2": 2.53,
+      "arrow": true,
+      "color": "76529C"
+    },
+    {
+      "id": "history_feedback_0",
+      "x1": 9.95,
+      "y1": 1.92,
+      "x2": 9.95,
+      "y2": 1.77,
+      "arrow": false,
+      "color": "76529C"
+    },
+    {
+      "id": "history_feedback_1",
+      "x1": 9.95,
+      "y1": 1.77,
+      "x2": 1.675,
+      "y2": 1.77,
+      "arrow": false,
+      "color": "76529C"
+    },
+    {
+      "id": "history_feedback_2",
+      "x1": 1.675,
+      "y1": 1.77,
+      "x2": 1.675,
+      "y2": 1.92,
+      "arrow": true,
+      "color": "76529C"
+    },
+    {
+      "id": "candidate_design",
+      "x1": 7.195,
+      "y1": 3.12,
+      "x2": 7.195,
+      "y2": 4.43,
+      "arrow": true,
+      "color": "76529C"
+    },
+    {
+      "id": "aggregate_evidence_0",
+      "x1": 8.9,
+      "y1": 4.43,
+      "x2": 8.9,
+      "y2": 3.54,
+      "arrow": false,
+      "color": "AE7319"
+    },
+    {
+      "id": "aggregate_evidence_1",
+      "x1": 8.9,
+      "y1": 3.54,
+      "x2": 9.43,
+      "y2": 3.54,
+      "arrow": false,
+      "color": "AE7319"
+    },
+    {
+      "id": "aggregate_evidence_2",
+      "x1": 9.43,
+      "y1": 3.54,
+      "x2": 9.43,
+      "y2": 3.12,
+      "arrow": true,
+      "color": "AE7319"
+    },
+    {
+      "id": "retained_outputs",
+      "x1": 10.65,
+      "y1": 3.12,
+      "x2": 10.65,
+      "y2": 4.3,
+      "arrow": true,
+      "color": "76529C"
+    },
+    {
+      "id": "local_fit_0",
+      "x1": 1.72,
+      "y1": 6.53,
+      "x2": 2.0300000000000002,
+      "y2": 6.53,
+      "arrow": true,
+      "color": "276CA6"
+    },
+    {
+      "id": "parameter_down_0",
+      "x1": 1.7,
+      "y1": 5.15,
+      "x2": 1.7,
+      "y2": 5.84,
+      "arrow": true,
+      "color": "276CA6"
+    },
+    {
+      "id": "update_up_0",
+      "x1": 2.04,
+      "y1": 5.84,
+      "x2": 2.04,
+      "y2": 5.15,
+      "arrow": true,
+      "color": "AE7319"
+    },
+    {
+      "id": "local_fit_1",
+      "x1": 4.71,
+      "y1": 6.53,
+      "x2": 5.0200000000000005,
+      "y2": 6.53,
+      "arrow": true,
+      "color": "276CA6"
+    },
+    {
+      "id": "parameter_down_1",
+      "x1": 4.69,
+      "y1": 5.15,
+      "x2": 4.69,
+      "y2": 5.84,
+      "arrow": true,
+      "color": "276CA6"
+    },
+    {
+      "id": "update_up_1",
+      "x1": 5.03,
+      "y1": 5.84,
+      "x2": 5.03,
+      "y2": 5.15,
+      "arrow": true,
+      "color": "AE7319"
+    },
+    {
+      "id": "local_fit_2",
+      "x1": 7.7,
+      "y1": 6.53,
+      "x2": 8.01,
+      "y2": 6.53,
+      "arrow": true,
+      "color": "276CA6"
+    },
+    {
+      "id": "parameter_down_2",
+      "x1": 7.680000000000001,
+      "y1": 5.15,
+      "x2": 7.680000000000001,
+      "y2": 5.84,
+      "arrow": true,
+      "color": "276CA6"
+    },
+    {
+      "id": "update_up_2",
+      "x1": 8.02,
+      "y1": 5.84,
+      "x2": 8.02,
+      "y2": 5.15,
+      "arrow": true,
+      "color": "AE7319"
+    }
+  ],
+  "connector_text_intersections": [],
+  "connector_crossings": [],
+  "canvas_overflow": [],
+  "deliberate_enclosures": [
+    "outer_frame",
+    "inner_frame",
+    "outputs_frame",
+    "research_card_*",
+    "laboratory_*"
+  ],
+  "edition": "coauthor-review-v2"
+}

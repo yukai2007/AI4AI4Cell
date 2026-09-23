@@ -1,4 +1,4 @@
-\section*{Appendix A. Uniform collaborative research protocol}
+\section*{Appendix A. Algorithm and task protocols}
 \label{app:unified}
 \setcounter{table}{0}
 \renewcommand{\thetable}{A.\arabic{table}}
@@ -7,19 +7,38 @@
 \setlength{\@fptop}{0pt}
 \makeatother
 
-\paragraph{Versioned implementation.}
-The reported study uses \texttt{core\_v3.py}, \texttt{run\_v3.py} and \texttt{research\_v2.py}. All task families execute the same optimization, aggregation, proposal and retention source through task-specific adapters. TAPB workers use the TAPB environment; Qwen, proteomics and cell adapters use the LDA environment. Each scientific fit starts afresh using the task-specific public or random initialization procedure and the study seed. All participating workers instantiate identical parameters for that design; optional residual additions use zero-initialized outputs.
+\subsection*{A.1 Research algorithm and optimization}
+All three task families use the parameter update, development-selection rule and proposal interface of Section 3. A task adapter defines the input representation, prediction components, training loss and development scorer. The research process below starts from the task's reference design. The fitted reference also supplies its first evidence card.
 
-\paragraph{Shared optimization and checkpoint selection.}
-Each round uses one local AdamW epoch, batch size 64 and gradient-norm clipping at one; local optimizer state resets between rounds. Parameters are averaged with training-example weights. If server momentum is enabled, the coordinator multiplies the previous velocity by the configured momentum coefficient and adds the difference between the averaged parameters and the previous shared parameters, then adds that velocity to the shared parameters. Floating model buffers are averaged and integer buffers use an elementwise maximum. Momentum acts on trainable parameters only. Every full-training candidate runs for 100 rounds; local development scores are collected every five rounds. Checkpoint selection maximizes the equal-client primary score, then minimizes mean development loss. The optional residual adapter has width 32 and zero-initialized output. The DTI adapter trains TAPB using frozen public protein features, the proteomic adapter trains its efficacy head from random initialization, and the cell adapters train response heads on frozen corrected scDEBART features.
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}rX@{}}
+\toprule
+& \textbf{BioCoLoop research procedure} \\
+\midrule
+1 & Fit the reference design from the task initialization and seed; retain its best development checkpoint and initialize the research history. \\
+2 & Generate the shared first proposal without development feedback. From the second slot onward, supply the task, untried configurations, retained design and prior evidence cards. \\
+3 & Parse the proposal and map its \texttt{design\_id} to an executable configuration. Allow at most two generation attempts in the slot. \\
+4 & Fit a valid candidate from the same initialization procedure and seed for the assigned number of aggregation rounds. \\
+5 & Select its best development checkpoint. Replace the incumbent only if its score/loss pair is better. \\
+6 & Append the executed configuration, hypothesis, diagnostics and decision to the history, including rejected or failed trials. \\
+7 & After the final slot, return the retained design, its selected checkpoint and the trial history; score that checkpoint on the held-out task. \\
+\bottomrule
+\end{tabularx}
+\end{center}
 
-\paragraph{Complete design library.}
-Each identifier below compiles to one executable candidate. D00 is the fixed starting recipe; D01--D11 are available to both direct and loop search without within-arm repetition. Six proposal slots define the common budget.
+In the controlled direct/loop comparison, the first proposal is generated once without development feedback and shared; measured history enters loop search from the second proposal. Direct search subsequently receives the default configuration and untried identifiers without development outcomes; history-guided search receives the retained configuration and accumulated cards. Both searches use the same design library, proposal count and candidate-training schedule. A configuration evaluated previously under the same task, data access and seed can reuse that completed fit; its logical position in each search remains unchanged.
+
+Each aggregation round contains one local AdamW epoch per participating laboratory. The batch size is 64, gradient-norm clipping is one, and the local optimizer state resets each round. The learning rate and weight decay follow the selected design. The proximal penalty is zero throughout the reported design libraries. The coordinator weights local parameter states by their number of training examples. Server momentum follows Equation~\ref{eq:local-fitting} and applies only to trainable parameters. Floating-point buffers use sample-weighted averaging; integer and Boolean buffers use an elementwise maximum. Every candidate starts with the same task-specific public or random initialization procedure and study seed. The optional residual module has width 32 and a zero-initialized output, while the original prediction head remains trainable.
+
+Full-training candidates receive 100 aggregation rounds, with development evaluation every five rounds. The selection key is mean primary score followed by negative mean loss over the development panels designated by the protocol (Section 3.2). In the main experiment these panels are the participating laboratories. A complete tie retains the earlier checkpoint or incumbent. Training-example counts refer to the adapter's training rows: for the cell tasks these are intervention-level training profiles, rather than the number of cells underlying a profile.
+
+\subsection*{A.2 Design library, proposals and evidence}
+The prefix \texttt{D} stands for \emph{design}; its two-digit suffix is an identifier, not a training duration or ranking. D00 denotes the starting recipe. The main study selects six further proposals from D01--D11 without repeating a design within a search. Each identifier maps to the complete four-factor configuration below. The extended library and its identifiers are given in Appendix B.
 
 \begin{center}\small
 \begin{tabular}{lrrrr}
 \toprule
-Design & Learning rate & Weight decay & Momentum & Residual adapter \\
+Design & Learning rate & Weight decay & Momentum & Residual module \\
 \midrule
 D00 & 0.001 & 0.001 & 0 & no \\
 D01 & 0.0001 & 0.001 & 0 & no \\
@@ -37,22 +56,25 @@ D11 & 0.001 & 0.01 & 0 & yes \\
 \end{tabular}
 \end{center}
 
-\paragraph{Proposal generation and evidence memory.}
-The main-study proposer is Qwen2.5-7B-Instruct, using bfloat16 inference, temperature 0.7, top-$p$ 0.9 and at most 512 new tokens. Each slot uses a deterministic seed derived from the training seed. Direct and loop comparisons share the same first proposal. Later direct proposals receive the default reference configuration and remaining untried identifiers, without evaluation scores. Loop proposals instead receive the latest retained configuration and ordered evidence cards, each containing the candidate configuration, aggregate best development metric and loss, best round, first/last training and validation records, and final status. A bounded second generation attempt repairs schema or novelty violations. Failed proposals consume a slot. Identical configurations within a seed and participation setting can reuse a completed fit while retaining their logical positions in the research traces.
+The main-study controller is Qwen2.5-7B-Instruct, using bfloat16 inference, temperature 0.7, top-$p$ 0.9 and at most 512 new tokens. For zero-indexed proposal slot $t$ and generation attempt $b\in\{0,1\}$, its sampling seed is $z+t+10{,}000b$, where $z$ is the study seed. An invalid identifier, a repeated configuration or a malformed response triggers the second attempt; a second failure consumes the slot without fitting a candidate. A numerically failed fit likewise leaves the incumbent unchanged and is recorded as negative evidence.
 
-Every proposal has the following executable JSON shape:
+A proposal has exactly four fields:
 \begin{verbatim}
 {
-  "hypothesis": "one testable claim about an editable factor",
-  "experiment": "the controlled change and incumbent comparison",
-  "expected_effect": "the expected metric and diagnostic response",
-  "design_id": "D00--D11"
+  "hypothesis": "why the proposed change may help",
+  "experiment": "the intended controlled comparison",
+  "expected_effect": "the anticipated metric or diagnostic change",
+  "design_id": "D08"
 }
 \end{verbatim}
-The compiler validates \texttt{design\_id} against the table above. The finalizer then attaches executed measurements and a retention decision to the proposal, creating the evidence card used in the next iteration.
+The three descriptive fields must be nonempty strings. The identifier must belong to the available design library. The executed configuration is obtained from that identifier; the text records the controller's rationale, not an additional executable instruction or a measured result.
 
-\paragraph{Executed loop trajectories.}
-Three ten-laboratory traces illustrate how the common finalizer operates. Values are aggregate development measurements on the 0--1 primary-metric scale, and proposal slots are one-indexed.
+An evidence card contains the executed configuration, its hypothesis, the best development score and loss, the selected round, and the acceptance decision. Its trajectory summary includes the first and last development-evaluation rounds, their sample-weighted training losses, equal-laboratory development scores and losses, and the last-minus-first changes in development score and loss. For a 100-round fit these endpoints are rounds 5 and 100. In the main comparison, the development summary also records the worst laboratory score and the number of evaluating laboratories. Training participation and the designated evaluation panels are specified separately for source-transfer and repartitioning studies. Ordered cards are supplied as context; unsuccessful trials are not removed.
+
+\paragraph{An observed proposal sequence.}
+For Norman with ten laboratories and seed 42, D06 is accepted in the first slot: it ties D00's development Top-1 of 0.400 but reduces development loss from 1.589766 to 1.589408. In the second slot, D08 retains the residual module and changes the learning rate from $10^{-3}$ to $10^{-4}$. Its development Top-1 rises from 0.102 at round 5 to 0.519 at round 100; its development loss falls from 1.681246 to 1.538505. The candidate is accepted. The next proposed design, D07, reaches a best Top-1 of 0.450 and is rejected. Thus the history records both the slower-improving accepted candidate and the later unsuccessful alternative.
+
+Three representative trajectories are summarized below. Scores use the 0--1 scale and proposal slots are one-indexed.
 
 \begin{center}\small
 \begin{tabular}{llrrl}
@@ -66,21 +88,60 @@ Norman, seed 42 & D08 & 0.519000 & 1.538505 & 3 / 2 \\
 \end{tabular}
 \end{center}
 
-PTPC selects stronger weight decay through the BCE tie-break at equal AP. VCC retains the initial design after six alternatives. On Norman, the loop reaches the winning lower-learning-rate residual design one slot before direct search. Across all 15 ten-laboratory task--seed trajectories, the two-proposal loop is better in two, tied in thirteen and worse in none; the mean development-primary difference is +0.78 percentage points. At six proposals, direct and loop select the same checkpoints, reflecting coverage saturation in the twelve-design library.
+PTPC selects stronger weight decay through the loss tie-break at equal AP, whereas VCC retains its initial design. Across the 15 ten-laboratory task--seed trajectories, the two-proposal history-guided search is better in two, tied in thirteen and worse in none, with a mean development-primary difference of +0.78 percentage points. At six proposals, direct and history-guided search select the same checkpoints. These observations describe search progress within the twelve-design library.
 
-\paragraph{Compute-matched evidence racing.}
-The fixed-slate study uses ten designs and seeds 53--55. Uniform allocation trains each for 80 rounds; the prespecified scheduler screens each for 20. Within each learning-rate stratum, it selects the design with the highest primary score at its best screening checkpoint (lower loss breaks ties), then the remaining design with the largest primary-score change from round 5 to round 20 (lower round-20 development loss breaks ties). Six promoted designs restart from their initial parameters for 100-round training and development evaluation; the other four finish after screening. Each schedule uses 800 full-client rounds and 160 development measurements. The candidate slate, durations and promotion rule are fixed by the protocol.
+\subsection*{A.3 Independent training-allocation control}
+This study fixes the candidate set and changes only the allocation of training rounds. It uses seeds 53--55 on proteomics and the three cell settings. The ten configurations cover the following factor combinations; every configuration uses the same ten laboratories.
 
-Across the resulting 12 proteomics/cell held-out comparisons, racing gives four wins, eight ties and no losses. Norman improves by 10.84 Top-1 points on average, with seed-level effects of +10.00, +11.70 and +10.81 and a hierarchical paired-bootstrap 95\% interval of [4.54, 17.73]. Tahoe gives one +5.97-point seed and two ties; VCC and PTPC tie in all three seeds. Independent rescoring of every saved prediction reproduces the reported metrics exactly. A TAPB companion replay applies the same screen/promote principle to the seven-design intersection of existing traces: direct receives 525 candidate-rounds, the loop receives 520, and the development AUROC effect is +0.39 points on average (two wins, one tie).
+\begin{center}\small
+\begin{tabular}{rrrr}
+\toprule
+Learning rate & Weight decay & Momentum & Residual module \\
+\midrule
+0.001 & 0.001 & 0 & no \\
+0.0001 & 0.001 & 0 & no \\
+0.0001 & 0.001 & 0 & yes \\
+0.0001 & 0.01 & 0.9 & no \\
+0.0001 & 0.01 & 0.9 & yes \\
+0.001 & 0.001 & 0.9 & yes \\
+0.01 & 0.001 & 0 & yes \\
+0.01 & 0.001 & 0.9 & yes \\
+0.01 & 0.01 & 0.9 & no \\
+0.001 & 0.01 & 0 & yes \\
+\bottomrule
+\end{tabular}
+\end{center}
 
-\paragraph{Client and split integrity.}
-DTI clients contain 4,932--5,058 training and 517--643 development pairs. Compound identities do not cross clients. The fixed test roles contain 5,505 random, 3,791 unseen-drug and 2,507 unseen-protein pairs. PTPC partitions 333 compound groups into 386 fitting and 105 development conditions, with 35--42 fitting conditions per client; its frozen test role contains 148 conditions. VCC, Norman and Tahoe use whole-intervention splits of 60/20/20, 70/20/27 and 180/60/67. Their ten clients own equal numbers of training and development intervention identities.
+Uniform allocation trains every design for 80 rounds. Trajectory-guided allocation first trains each for 20 rounds. Within each of the three learning-rate groups, it promotes the design with the highest primary score at its best screening checkpoint, using lower development loss to break ties. From the remaining designs in that group, it also promotes the largest development-score improvement from round 5 to round 20, using lower round-20 development loss to break ties. Complete ties follow the order of the configurations in the table. The six promoted designs restart from their initial parameters and train for 100 rounds. Final selection considers their full-training checkpoints; the four unpromoted designs stop after screening.
 
-\paragraph{Proteomic preprocessing.}
-For each 6h and 24h profile, the PTPC adapter applies log1p, within-profile min--max normalization over finite observations, zero filling and unit L2 normalization. The 2,048-bit Morgan vector is separately L2-normalized and scaled by 0.5. Concatenating the two 5,171-dimensional proteomic blocks with the drug vector produces a 12,390-dimensional float32 input. The ProteinTalks-derived efficacy head contains 464,193 parameters at D00. Every arm uses identical inputs, initialization policy, 100-round budget and checkpoint rule.
+Both schedules use 800 aggregation rounds: $10\times80=10\times20+6\times100$. With ten participating laboratories, this is 8,000 local epochs. Evaluation every five rounds gives 160 aggregate development evaluations, each formed from ten laboratory evaluations. These are matched training and evaluation counts; the scheduler itself generates no language-model proposals.
 
-\paragraph{Full factorial results.}
-The following tables report all six held-out arms, complete method contrasts, proposal-prefix analysis, secondary metrics, uncertainty and all three DTI test roles. Bold marks the best displayed value within each task and metric, including ties. Higher is better except BCE and cross-entropy.
+Across the 12 task--seed held-out comparisons, allocation gives four wins, eight ties and no losses. Norman improves by 10.84 Top-1 points on average, with seed-level effects of +10.00, +11.70 and +10.81 and a hierarchical paired-bootstrap 95\% interval of [4.54, 17.73]. Tahoe gives one +5.97-point seed and two ties; VCC and PTPC tie in all three seeds. A separate TAPB development replay uses the seven-design intersection of existing trajectories: uniform allocation receives 525 candidate-rounds and trajectory-guided allocation receives 520, with a mean development AUROC difference of +0.39 points (two wins and one tie). It is not included in the twelve held-out comparisons.
+
+\subsection*{A.4 Data construction and task adapters}
+\paragraph{Drug--target interaction.}
+The BindingDB partition contains 50,149 fitting and 5,604 development pairs. Canonical compounds are assigned to ten laboratories, giving 4,932--5,058 training and 517--643 development pairs per laboratory. The fixed test sets contain 5,505 random, 3,791 unseen-drug and 2,507 unseen-protein pairs. TAPB uses frozen public protein features and trainable drug, fusion and classification components; an optional residual adapter precedes its native confounder-averaged prediction. Classification NLL and masked-language loss form its local training objective.
+
+\paragraph{Observed-response proteomics.}
+The PTPC source pool contains 333 compound groups and 491 conditions, partitioned into 386 fitting and 105 development conditions. A laboratory owns 35--42 fitting conditions; the test set contains 148 conditions. For each 6h and 24h profile, preprocessing applies log1p, within-profile min--max normalization over finite observations, zero filling and unit L2 normalization. The 2,048-bit Morgan vector is separately L2-normalized and scaled by 0.5. The two 5,171-dimensional proteomic blocks and drug vector form a 12,390-dimensional float32 input. The ProteinTalks-derived efficacy head has protein and drug convolutional branches followed by a 64--32--1 classifier, totaling 464,193 parameters under D00. It is trained from random initialization using binary cross-entropy. All comparison methods use these same inputs and architecture; AP is the selection metric.
+
+\paragraph{Cell inputs and response units.}
+VCC, Norman and Tahoe have whole-intervention fitting/development/test splits of 60/20/20, 70/20/27 and 180/60/67. Training uses one mean response profile per intervention. VCC development and test queries average disjoint groups of up to 64 cells, omitting a final group smaller than 16 cells. Norman queries are the released scVI-derived differential-expression profiles for each gene pair. Tahoe uses one aggregate response profile per compound at the selected cell context and dose. These are the units scored by the identification task.
+
+The scDEBART backbone receives the shared untreated reference and candidate perturbation encoding; its features are fixed while the response head is trained. The corrected feature extractor implements three attention masks as additive blocking masks. Its correction preserves the pretrained weights, gene panels, response targets, intervention partitions and candidate options. Genetic-task scoring excludes the union of directly perturbed genes. Tahoe concatenates a fixed 128-dimensional projection of a 2,048-bit Morgan fingerprint to the 768-dimensional backbone features, with the additional head-input weights initialized to zero. Its drug projection uses seed 1234. The training loss is response MSE plus 0.1 times a contrastive loss over interventions in the local training minibatch; the cosine-logit temperature is 0.1.
+
+\paragraph{Five-option queries and scoring.}
+For every development or test intervention, four distinct distractors are sampled uniformly without replacement from the \emph{same} development or test intervention pool, excluding the true intervention. The true intervention is added and the five positions are shuffled. A single roster is fixed per intervention and reused for all of its response queries, all training seeds and all methods. Split construction and roster sampling use the preparation generator initialized with seed 20260918. Training does not use these five-option rosters; its contrastive negatives come from the local training minibatch.
+
+For each query, predicted candidate responses and the observed response are L2-normalized over the scoring genes. Candidates are ranked by their cosine similarity; equal scores retain the fixed shuffled option order. Let $G$ be the number of evaluated interventions, $m_g$ the number of response queries for intervention $g$, and $r_{g,j}$ the rank of the true option for its $j$th query. The primary score is
+\[
+\operatorname{MacroTop1}=\frac{1}{G}\sum_{g=1}^{G}\frac{1}{m_g}
+\sum_{j=1}^{m_g}\mathbf{1}\{r_{g,j}=1\}.
+\]
+Thus each intervention receives equal weight even when it contributes a different number of query profiles. Micro Top-1, mean reciprocal rank and Top-3 average over individual queries. The development loss is cross-entropy over the five cosine scores divided by temperature 0.1. Development selection first computes these scores within each laboratory and then averages laboratories equally.
+
+\subsection*{A.5 Complete comparisons and uncertainty}
+The following tables give the full one/ten-laboratory by fixed/direct/history-guided comparison, method contrasts, proposal-prefix results, secondary metrics and all three drug--target test sets. Bold marks the best displayed value within a task and metric, including ties. Higher is better except for binary cross-entropy and cell cross-entropy.
 
 \input{tables/strong_v3/ablation}
 \input{tables/strong_v3/effects_full}
@@ -91,8 +152,6 @@ The following tables report all six held-out arms, complete method contrasts, pr
 \input{tables/strong_v3/dti_endpoints}
 \input{tables/strong_v3/dti_uncertainty}
 
-\paragraph{Uncertainty analysis.}
-The DTI analysis is computed after training and held-out scoring, using paired cluster bootstrap with 1,000 fixed-seed resamples of retained predictions. It groups by released drug identity on random/unseen-drug endpoints and by protein sequence on unseen-protein. Other task intervals use their natural compound or intervention grouping. Resamples are shared within each method contrast. These intervals characterize sample-level variation within each selected fit; between-training-seed variation is reported through the three-seed means and sample SD.
+Three-seed means and sample standard deviations summarize training/search variability on fixed partitions. Sample-level intervals use paired cluster bootstrap with 1,000 fixed-seed resamples of retained predictions. Drug identity defines clusters for the random and unseen-drug interaction sets, and protein sequence defines clusters for the unseen-protein set. Proteomic and cell intervals use compound and intervention clusters, respectively. Both methods in a contrast receive the same resampled clusters. The training-allocation study instead uses 5,000 hierarchical paired resamples: training seeds are drawn first, followed by compound or intervention groups within each sampled seed.
 
-\paragraph{Verification.}
-CPU unit and integration tests cover the common trainer, task adapters, proposal generation, frozen evaluation and cell attention-mask correction. Publication checks bind table cells to completed arms, model versions, checkpoint seals and independent score recomputation. The snapshot includes receipt hashes, aggregate metrics and the complete proposal histories used in this manuscript.
+The accompanying research records contain the executable configurations, proposals, development histories and saved predictions needed to reconstruct these comparisons. The reproducibility statement describes their availability and verification.

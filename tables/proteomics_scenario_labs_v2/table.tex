@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{5pt}
+\caption{One worker per proteomic study. The target training pool is merged into one client; Lin, Ruprecht and decryptE each form one additional client. $K$ counts training clients and $N$ counts training conditions. All four fixed-design arms use 100 rounds, the same initialization (seed 61), and equal-weight evaluation over the original ten target development panels. AP and AUROC are percentages on the common target held-out set; best values are bold.}
+\label{tab:proteomics-study-clients}
+\begin{tabular}{lrrrr}
+\toprule
+Training sources & $K$ & $N$ & AP $\uparrow$ & AUROC $\uparrow$ \\
+\midrule
+Target study & 1 & 386 & 34.41 & 72.33 \\
++ decryptE & 2 & 881 & 36.58 & 73.81 \\
++ Lin + Ruprecht & 3 & 491 & 36.09 & 72.69 \\
++ Lin + Ruprecht + decryptE & 4 & 986 & \textbf{37.53} & \textbf{74.39} \\
+\bottomrule
+\end{tabular}
+\end{table}

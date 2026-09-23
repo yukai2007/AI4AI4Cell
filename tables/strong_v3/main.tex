@@ -1,19 +1,22 @@
-\begin{table}[h!]
+\begin{table}[t]
 \centering\footnotesize
-\setlength{\tabcolsep}{2.5pt}
-\renewcommand{\arraystretch}{1.08}
-\begin{tabularx}{\linewidth}{@{}Xrrrrrr@{}}
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\linewidth}{@{}Xrrrrr@{}}
 \toprule
-\textbf{Method} & \multicolumn{1}{c}{DTI} & \multicolumn{1}{c}{Proteomics} & \multicolumn{3}{c}{Cell perturbation} & \multicolumn{1}{c}{Overall} \\
-\cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(lr){4-6}\cmidrule(l){7-7}
- & \shortstack{TAPB\\AUROC $\uparrow$} & \shortstack{PTPC\\AP $\uparrow$} & \shortstack{VCC\\Top-1 $\uparrow$} & \shortstack{Norman\\Top-1 $\uparrow$} & \shortstack{Tahoe\\Top-1 $\uparrow$} & \shortstack{Mean\\5 endpoints} \\
+\textbf{Model / method} & \multicolumn{1}{c}{DTI} & \multicolumn{1}{c}{Proteomics} & \multicolumn{3}{c}{Cell perturbation} \\
+\cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(l){4-6}
+ & \shortstack{BindingDB\\AUROC $\uparrow$} & \shortstack{PTPC\\AP $\uparrow$} & \shortstack{VCC\\Top-1 $\uparrow$} & \shortstack{Norman\\Top-1 $\uparrow$} & \shortstack{Tahoe\\Top-1 $\uparrow$} \\
 \midrule
-Task model (1 lab) & 82.83 $\pm$ 1.22 & \underline{25.05} $\pm$ 4.56 & \underline{29.94} $\pm$ 0.00 & \textbf{25.56} $\pm$ 0.00 & \underline{19.40} $\pm$ 0.00 & \underline{36.55} $\pm$ 0.82 \\
-Qwen direct (1 lab) & \underline{89.89} $\pm$ 1.02 & 20.13 $\pm$ 0.07 & 21.09 $\pm$ 4.38 & 14.15 $\pm$ 0.00 & 15.42 $\pm$ 6.21 & 32.14 $\pm$ 2.02 \\
+\multicolumn{6}{l}{\textit{Fixed task models, one laboratory}} \\
+TAPB & 82.83 $\pm$ 1.22 & -- & -- & -- & -- \\
+ProteinTalks-derived head & -- & \underline{25.05} $\pm$ 4.56 & -- & -- & -- \\
+scDEBART response head & -- & -- & \underline{29.94} $\pm$ 0.00 & \textbf{25.56} $\pm$ 0.00 & \underline{19.40} $\pm$ 0.00 \\
 \midrule
-\textbf{BioCoLoop} (10 labs) & \textbf{93.76} $\pm$ 1.11 & \textbf{36.99} $\pm$ 0.22 & \textbf{31.54} $\pm$ 0.08 & \underline{22.25} $\pm$ 0.45 & \textbf{22.39} $\pm$ 2.59 & \textbf{41.39} $\pm$ 0.60 \\
+Qwen direct (1 lab) & \underline{89.89} $\pm$ 1.02 & 20.13 $\pm$ 0.07 & 21.09 $\pm$ 4.38 & 14.15 $\pm$ 0.00 & 15.42 $\pm$ 6.21 \\
+\textbf{BioCoLoop} (10 labs) & \textbf{93.76} $\pm$ 1.11 & \textbf{36.99} $\pm$ 0.22 & \textbf{31.54} $\pm$ 0.08 & \underline{22.25} $\pm$ 0.45 & \textbf{22.39} $\pm$ 2.59 \\
 \bottomrule
 \end{tabularx}
-\caption{Main held-out comparison. Task models are TAPB (DTI), a ProteinTalks-derived efficacy head (PTPC) and corrected scDEBART response heads (cells). Qwen direct proposes configurations without evaluation history; BioCoLoop adds collaborative access and evidence feedback. Values are mean $\pm$ sample SD, multiplied by 100; SD is not a confidence interval. Overall summarizes the five endpoints within each seed. Bold and underline mark the best and second-best displayed means. The shared training protocol is in Section 4; all six configurations, seed counts and secondary metrics are in Appendix A.}
+\caption{Main held-out comparison across three task families. Each column uses its named task model in all methods. Direct optimization proposes configurations without evaluation history; BioCoLoop adds collaborative access and evidence feedback. Values are mean $\pm$ sample SD over seeds 42--44, multiplied by 100; SD is not a confidence interval. Bold and underline mark the best and second-best displayed means, including ties. A dash indicates a model for a different task. Full factorial results and secondary metrics are in Appendix A.}
 \label{tab:strong-main}
 \end{table}

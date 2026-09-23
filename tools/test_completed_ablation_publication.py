@@ -127,7 +127,15 @@ class CompletedPublicationTests(unittest.TestCase):
     def test_pdf_figures_are_vector_and_text_stays_inside_canvas(self):
         import fitz
         files = sorted((pub.PAPER / 'assets').glob('completed_*.pdf'))
-        self.assertEqual(len(files), 5)
+        self.assertEqual({f.name for f in files}, {
+            'completed_budget_examples.pdf', 'completed_long24_heldout.pdf',
+            'completed_long24_search.pdf', 'completed_short6_heldout.pdf',
+            'completed_short6_search.pdf', 'completed_short6_search_v2.pdf'})
+        compact = json.loads((pub.PAPER / 'assets/completed_short6_search_v2.provenance.json').read_text())
+        self.assertEqual(compact['source_sha256'], pub.sha(pub.OUT / 'snapshot.json'))
+        self.assertEqual(compact['plotted_series'], 40)
+        self.assertTrue(compact['all_source_points_preserved'])
+        self.assertGreaterEqual(compact['minimum_font_pt'], 6.5)
         for file in files:
             with fitz.open(file) as doc:
                 self.assertEqual(len(doc), 1)

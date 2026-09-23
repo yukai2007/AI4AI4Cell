@@ -4,9 +4,13 @@
 
 BioCoLoop combines **biology**, **collaboration** and an iterative **research loop**. Historical releases retain their original names. The existing repository URL and storage paths remain stable for Overleaf and result provenance.
 
-## Current editorial revision — 23 September 2026
+## Current revision — 24 September 2026
 
-The methods now distinguish fixed-budget proposal search from the separate screening-and-promotion study. They define a training round, keep training duration separate from design IDs, explain restart-based promotion and context-based proposal revision, and distinguish sample-weighted fitting from laboratory-equal checkpoint and candidate selection. Scores, experimental configurations and scientific artifacts are unchanged. The [method revision notes](provenance/method_execution_20260923/RESPONSE.zh-CN.md) document the code checks. The [earlier introduction revision](provenance/intro_clarity_20260923/RESPONSE.zh-CN.md) explains the collaborative framing.
+The second annotated review is addressed in a [27-item response](provenance/coauthor_review_v2_20260923/RESPONSE.zh-CN.md). Introduction and contributions explain the research setting; the method defines inputs, parameter updates, evaluation panels and history-based proposal revision. The first proposal is shared without development feedback; feedback begins at the second proposal. Experiments and results form one section, with named task-model rows, laboratory-count curves and research trajectories in the main text.
+
+The main three-seed benchmark remains a within-study partition experiment. Source-defined clients are reported separately, and the new matched comparison uses four cell scenarios, four clients and 60 perturbation conditions. Matching condition count does not match underlying cell count or gene panels. All twelve new fits and independent score checks are complete: same-source K4/N60 reaches 30.70% Top-1, versus 28.82% for cross-scenario K4/N60. This fixed-design comparison does not establish beneficial cross-scenario transfer. The third independent proteomics source, decryptE, completes four fixed-design controls: all three sources raise AP from 34.98 to 35.68, while target-only retains the higher AUROC. A further strict one-study-per-client comparison merges the target training shards into one lab: adding Lin, Ruprecht and decryptE raises AP from 34.41 to 37.53 and AUROC from 72.33 to 74.39. Both source protocols are reported; neither result is a proposal-loop effect.
+
+The [independent review](provenance/coauthor_review_v2_20260923/RESPONSE.zh-CN.md) distinguishes supported claims from remaining gaps. Anonymous code hosting is not yet established; the manuscript includes a release commitment. Native DTI long24 and proposal-history comparisons on the new matched source partition remain outside the completed scope.
 
 ## Completed-experiment revision — 23 September 2026
 
@@ -15,18 +19,17 @@ The English manuscript incorporates the completed laboratory-count, independent-
 - Main results: five endpoints across DTI, observed-response proteomics and cell perturbation; seeds 42–44; `tables/strong_v3/`.
 - Research-model ablation: Qwen2.5-7B-Instruct and the `gpt-5.6-luna` service, all five endpoints, direct versus feedback loop, 12 designs and six proposal slots.
 - Laboratory count: K=1/2/5/10 for every endpoint, separately increasing participation and repartitioning a fixed total pool. DTI uses seed 61; lighter endpoints use seeds 61–63.
-- Independent sources: three DTI collections, three cell collections and **two** independent proteomics studies. The new proteomics adapter has matched target-only controls. Three additional proteomic cell-line contexts from one study are reported separately.
+- Independent sources: three DTI collections, three cell collections and a two-study proteomics protocol, now supplemented by a separate three-study fixed-design extension. The new proteomics adapter has matched target-only controls. Three additional proteomic cell-line contexts from one study are reported separately.
 - Extended loop: four lighter endpoints, two backends, 36 designs and 24 slots. This is a different design space from the short study. DTI has the completed six-slot comparison, not a 24-slot run.
 - Traceability: all 504 attempted short/long proposal slots, design configurations, development evidence, prefix scores and source hashes are published in `tables/completed_ablation/`.
 
-The completed queue is not equivalent to three independent protein sources or a universal loop benefit. Short-loop feedback gives one held-out gain, one decrease and eight ties; extended search gives seven ties and one decrease. Separately, compute-matched allocation yields four wins, eight ties and no losses, including +10.84 Top-1 points on Norman. These evaluate different research decisions and are not conflated.
+Completing an experiment matrix does not establish a universal loop benefit. Short-loop feedback gives one held-out gain, one decrease and eight ties; extended search gives seven ties and one decrease. Separately, compute-matched allocation yields four wins, eight ties and no losses, including +10.84 Top-1 points on Norman. These evaluate different research decisions and are not conflated.
 
 The readable [completion audit](provenance/completed_ablation_20260923/research/ACCEPTANCE.zh-CN.md) identifies the exact coverage. The [coauthor response register](provenance/coauthor_review_20260922/RESPONSE.zh-CN.md) preserves all 24 written comments and their five highlight anchors. Internal review records contain collaborator information and are not anonymous submission material.
 
 ## Figures and reading copies
 
-Figure 1 compares the research paradigms. Figure 2 uses the user-supplied editable framework slide, converted to a vector PDF with layout-only font and text-box repairs. The original source is unchanged. The current editable derivative uses BioCoLoop and collaborative terminology, with the layout, modules and measurements preserved. The caption relates the illustrated ten laboratories to general K and states the evaluated design scope. The PDF, editable derivative and conversion receipt are in `figures/`.
-
+Figure 1 contrasts biological-AI research settings. Figure 2 is a new native-vector, editable PowerPoint diagram based on the earlier framework layout, with explicit inner/outer data flow, semantic colors, distinct lab scenarios and general K. Original slides remain unchanged. The new assets and structural/visual checks are in `figures/biocoloop_framework_v2.*`. Figure 3 shows laboratory-count sensitivity; Figure 4 shows development and held-out search trajectories.
 The [English completed-experiment PDF](output/pdf/BioCoLoop_manuscript.pdf) is also copied locally to `manuscript.pdf`. The [Chinese section-by-section companion](output/pdf/BioCoLoop_中文伴读版.pdf) is regenerated with:
 
 ```bash
@@ -37,14 +40,14 @@ The companion explains the methods, numerical results, completed ablations and r
 
 ## Editing and compilation
 
-Select `main.tex` as the Overleaf entry and **XeLaTeX** as compiler. `latexmkrc` redirects the default pdfLaTeX command for the bundled fonts. Edit `biocoloop-main.tex` and `sections/`; citations live in `references.bib`. The official ICLR template and its spacing are unchanged.
+Select `main.tex` as the Overleaf entry and **XeLaTeX** as compiler. `latexmkrc` redirects the default pdfLaTeX command for the bundled fonts. Edit `biocoloop-main.tex` and `sections/`; citations live in `references.bib` and `references_v2.bib`. The official ICLR template and its spacing are unchanged.
 
 ```bash
 tectonic --only-cached --keep-intermediates --keep-logs --outdir build main.tex
 python -m unittest discover -s tools -p 'test_*.py'
 ```
 
-The research host requires its compatible cached Tectonic 0.17.0 binary and matching shared libraries, rather than the default local binary. This host-specific setup is not required on Overleaf. Current build and visual-review receipts are in `provenance/method_execution_20260923/`; the historical naming-only receipt remains in `provenance/rename_biocoloop_20260923/`.
+The research host requires its compatible cached Tectonic 0.17.0 binary and matching shared libraries, rather than the default local binary. This host-specific setup is not required on Overleaf. Current review and build receipts are in `provenance/coauthor_review_v2_20260923/`; the historical naming-only receipt remains in `provenance/rename_biocoloop_20260923/`.
 
 ## Data-to-paper publication
 
@@ -54,6 +57,10 @@ The writing repository contains manuscript sources, aggregate records, figure as
 - `tools/publish_completed_ablation.py`: final completed follow-up snapshot, figures, tables and proposal traces. It reads verified results and does not train or run inference.
 - `tools/publish_core_review.py`: historical coauthor-review snapshot, retained for provenance; it is not the source of the current Appendix B.
 - `tables/completed_ablation/provenance.json`: bindings between completed source records and published outputs.
+- `tools/publish_supplemental_proteomics.py`: independently verified third-source controls, kept separate from the earlier two-source loop study.
+- `tables/proteomics_scenario_labs_v2/`: completed one-study-per-lab proteomics controls, separately verified with four CPU fits.
+- `tables/scenario_labs_v2/`: matched source-as-scenario comparison; publication requires twelve completed fits and independent prediction-level rescoring.
+- `tables/completed_ablation/proposal_trace.tsv`: all 504 attempted slots; the manuscript presents representative decisions instead of printing the full log.
 
 The active narrative is collaborative evidence-guided research. The inner process uses sample-weighted local-update aggregation; the outer harness proposes executable configurations and returns accepted, rejected and failed outcomes as evidence for subsequent decisions. Same-host workers simulate laboratory boundaries. Raw-data locality alone is not a formal privacy guarantee.
 

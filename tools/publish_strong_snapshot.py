@@ -265,67 +265,46 @@ def scores(snapshot, task, arm, metric=None):
 def table(snapshot, out, full=False):
     arms = ARMS if full else MAIN_ARMS
     if not full:
-        lines = [r'\begin{table}[h!]', r'\centering\footnotesize', r'\setlength{\tabcolsep}{2.5pt}',
-            r'\renewcommand{\arraystretch}{1.08}',
-            r'\begin{tabularx}{\linewidth}{@{}Xrrrrrr@{}}', r'\toprule',
-            r'\textbf{Method} & \multicolumn{1}{c}{DTI} & \multicolumn{1}{c}{Proteomics} & \multicolumn{3}{c}{Cell perturbation} & \multicolumn{1}{c}{Overall} \\',
-            r'\cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(lr){4-6}\cmidrule(l){7-7}',
-            r' & \shortstack{TAPB\\AUROC $\uparrow$} & \shortstack{PTPC\\AP $\uparrow$} & \shortstack{VCC\\Top-1 $\uparrow$} & \shortstack{Norman\\Top-1 $\uparrow$} & \shortstack{Tahoe\\Top-1 $\uparrow$} & \shortstack{Mean\\5 endpoints} \\',
-            r'\midrule']
         task_order = [task for task, _, _ in TASKS]
-        by_arm, by_arm_sd = {}, {}
-        common_seeds = set.intersection(*(set(seed for seed, run in snapshot['tasks'][task]['runs'].items()
-                                              if run is not None) for task in task_order))
-        for arm, labs, name in arms:
-            endpoint_means, endpoint_sd = [], []
+        means, deviations = {}, {}
+        for arm, _, _ in arms:
+            means[arm], deviations[arm] = [], []
             for task in task_order:
                 values = scores(snapshot, task, arm)
-                endpoint_means.append(None if not values else 100 * stats(values)[0])
-                endpoint_sd.append(100 * stats(values)[1] if len(values) > 1 else None)
-            # Overall variability is across seed-level five-endpoint means,
-            # never the average SD or the spread between unrelated endpoints.
-            overall = [100 * statistics.mean(snapshot['tasks'][task]['runs'][seed]['scores'][arm]['primary']
-                                             for task in task_order) for seed in sorted(common_seeds)]
-            endpoint_means.append(statistics.mean(overall) if overall else None)
-            endpoint_sd.append(statistics.stdev(overall) if len(overall) > 1 else None)
-            by_arm[arm] = endpoint_means
-            by_arm_sd[arm] = endpoint_sd
-
-        displayed = [[None if value is None else round(value, 2) for value in by_arm[arm]]
-                     for arm, _, _ in arms]
-        column_ranks = []
-        for column in range(len(task_order) + 1):
-            values = sorted({row[column] for row in displayed if row[column] is not None}, reverse=True)
-            column_ranks.append((values[0] if values else None,
-                                 values[1] if len(values) > 1 else None))
-
-        def marked(value, rank):
+                mean, sd = stats(values) if values else (None, None)
+                means[arm].append(None if mean is None else round(100 * mean, 2))
+                deviations[arm].append(None if sd is None else 100 * sd)
+        ranks = [sorted({means[arm][j] for arm, _, _ in arms if means[arm][j] is not None},
+                        reverse=True) for j in range(len(task_order))]
+        def cell(arm, j):
+            value = means[arm][j]
             if value is None:
                 return 'N/A'
             text = f'{value:.2f}'
-            best, runner = rank
-            if value == best:
-                return r'\textbf{' + text + r'}'
-            if runner is not None and value == runner:
-                return r'\underline{' + text + r'}'
-            return text
-
-        for row_index, (arm, labs, name) in enumerate(arms):
-            cells = []
-            for column, value in enumerate(displayed[row_index]):
-                text = marked(value, column_ranks[column])
-                sd = by_arm_sd[arm][column]
-                if value is not None:
-                    text += r' $\pm$ ' + (f'{sd:.2f}' if sd is not None else r'\textnormal{N/A}')
-                cells.append(text)
-            method = ({'single_fixed': 'Task model', 'single_direct': 'Qwen direct'}
-                      .get(arm, r'\textbf{BioCoLoop}' if arm == 'federated_loop' else name))
-            if arm == 'federated_loop':
-                lines.append(r'\midrule')
-            lines.append(f'{method} ({labs} lab' + ('' if labs == '1' else 's') + ') & ' +
-                         ' & '.join(cells) + r' \\')
+            if value == ranks[j][0]:
+                text = r'\textbf{' + text + '}'
+            elif len(ranks[j]) > 1 and value == ranks[j][1]:
+                text = r'\underline{' + text + '}'
+            sd = deviations[arm][j]
+            return text + r' $\pm$ ' + (f'{sd:.2f}' if sd is not None else 'N/A')
+        lines = [r'\begin{table}[t]', r'\centering\footnotesize',
+            r'\setlength{\tabcolsep}{3pt}', r'\renewcommand{\arraystretch}{1.12}',
+            r'\begin{tabularx}{\linewidth}{@{}Xrrrrr@{}}', r'\toprule',
+            r'\textbf{Model / method} & \multicolumn{1}{c}{DTI} & \multicolumn{1}{c}{Proteomics} & \multicolumn{3}{c}{Cell perturbation} \\',
+            r'\cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(l){4-6}',
+            r' & \shortstack{BindingDB\\AUROC $\uparrow$} & \shortstack{PTPC\\AP $\uparrow$} & \shortstack{VCC\\Top-1 $\uparrow$} & \shortstack{Norman\\Top-1 $\uparrow$} & \shortstack{Tahoe\\Top-1 $\uparrow$} \\',
+            r'\midrule',
+            r'\multicolumn{6}{l}{\textit{Fixed task models, one laboratory}} \\']
+        for name, columns in [('TAPB', {0}), ('ProteinTalks-derived head', {1}),
+                              ('scDEBART response head', {2, 3, 4})]:
+            lines.append(name + ' & ' + ' & '.join(cell('single_fixed', j) if j in columns else '--'
+                                                  for j in range(5)) + r' \\')
+        lines.append(r'\midrule')
+        for arm, name in [('single_direct', 'Qwen direct (1 lab)'),
+                          ('federated_loop', r'\textbf{BioCoLoop} (10 labs)')]:
+            lines.append(name + ' & ' + ' & '.join(cell(arm, j) for j in range(5)) + r' \\')
         lines += [r'\bottomrule', r'\end{tabularx}',
-            r'\caption{Main held-out comparison. Task models are TAPB (DTI), a ProteinTalks-derived efficacy head (PTPC) and corrected scDEBART response heads (cells). Qwen direct proposes configurations without evaluation history; BioCoLoop adds collaborative access and evidence feedback. Values are mean $\pm$ sample SD, multiplied by 100; SD is not a confidence interval. Overall summarizes the five endpoints within each seed. Bold and underline mark the best and second-best displayed means. The shared training protocol is in Section 4; all six configurations, seed counts and secondary metrics are in Appendix A.}',
+            r'\caption{Main held-out comparison across three task families. Each column uses its named task model in all methods. Direct optimization proposes configurations without evaluation history; BioCoLoop adds collaborative access and evidence feedback. Values are mean $\pm$ sample SD over seeds 42--44, multiplied by 100; SD is not a confidence interval. Bold and underline mark the best and second-best displayed means, including ties. A dash indicates a model for a different task. Full factorial results and secondary metrics are in Appendix A.}',
             r'\label{tab:strong-main}', r'\end{table}']
         (out/'main.tex').write_text('\n'.join(lines)+'\n')
         return

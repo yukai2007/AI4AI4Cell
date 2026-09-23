@@ -1,10 +1,7 @@
-"""Keep the introduction's scenario, design scope and evidence levels explicit."""
+"""Keep motivation, task scope and evidence attribution clear."""
 from pathlib import Path
-import re
 import unittest
-
 PAPER = Path(__file__).resolve().parents[1]
-
 
 class IntroClarityTests(unittest.TestCase):
     def test_abstract_uses_system_comparison_not_allocation_ablation(self):
@@ -17,23 +14,27 @@ class IntroClarityTests(unittest.TestCase):
         self.assertIn("+10.84-point mean effect", results)
         self.assertIn("proposal generation held fixed", results)
 
-    def test_intro_defines_the_collaborative_setting_and_editable_design(self):
+    def test_motivation_and_per_task_predictors(self):
         intro = (PAPER / "sections/01_introduction.tex").read_text()
-        self.assertIn("while retaining their own data", intro)
-        self.assertIn("Each task uses its own predictor", intro)
-        self.assertIn("We define an executable design", intro)
-        self.assertIn("trainable prediction components", intro)
-        self.assertIn("keeping the biological task and laboratory-local training interface fixed", intro)
+        self.assertLess(intro.index("virtual cell"), intro.index("Data-sharing restrictions"))
+        self.assertIn("different cell type", intro)
+        self.assertIn("a laboratory denotes a data holder", intro)
+        self.assertIn("task-specific predictor", intro)
+        self.assertIn("evidence card", intro)
         self.assertNotIn("In our implementation", intro)
+        method = (PAPER / "sections/03_method.tex").read_text()
+        self.assertIn("same biological prediction task", method)
+        self.assertIn("task-specific predictors", method)
+        self.assertIn("optional residual prediction module", method)
 
-    def test_experimental_contribution_names_the_comparisons(self):
+    def test_contributions_are_bullets_and_include_findings(self):
         intro = (PAPER / "sections/01_introduction.tex").read_text()
-        third = intro.split("Third, ", 1)[1]
-        for term in ("laboratory participation", "proposal feedback", "training-budget allocation",
-                     "research model", "participating laboratories", "independent datasets", "research iterations"):
-            self.assertIn(term, third)
+        contributions = intro.split("Our contributions are:", 1)[1]
+        self.assertEqual(contributions.count(r"\item "), 3)
+        self.assertIn("evidence-guided research harness", contributions)
+        self.assertIn("four of five", contributions)
+        self.assertIn("source compatibility", contributions)
         self.assertNotIn("The contribution is this coupling", intro)
-
 
 if __name__ == "__main__":
     unittest.main()

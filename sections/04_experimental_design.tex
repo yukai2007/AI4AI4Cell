@@ -1,56 +1,17 @@
-\section*{4. Experimental design}
-\subsection*{4.1 Shared protocol and comparison methods}
-We evaluate whether collaborative data access and iterative research improve the same task-specific predictor. Training and development groups are assigned to ten disjoint simulated laboratories, balanced by compound or intervention identity. The single-laboratory setting uses preselected client 0; the collaborative setting uses all ten clients. Each comparison uses the same held-out scorer and candidate rosters.
+\section*{4. Experiments}
+\subsection*{4.1 Tasks, datasets and evaluation}
+We study three biological prediction problems, using a separate predictor for each task and the same BioCoLoop research interface. The main comparison uses ten simulated laboratories formed by disjoint groups within each dataset. A complementary source-as-laboratory study assigns different biological collections or scenarios to separate workers. The first setting controls access to data; the second tests transfer between data sources.
 
-\noindent\textbf{Benchmark contracts.}
-\begin{center}\small
-\setlength{\tabcolsep}{4pt}
-\begin{tabularx}{\linewidth}{@{}lXXl@{}}
-\toprule
-Setting & Prediction contract & Task-reference model & Primary metric \\
-\midrule
-DTI & Compound + protein $\rightarrow$ interaction & TAPB & AUROC $\uparrow$ \\
-Proteomics & Proteome + drug $\rightarrow$ efficacy & ProteinTalks-derived head & AP $\uparrow$ \\
-Cell (3 strata) & Response + 5 options $\rightarrow$ identity & Corrected scDEBART head & Macro Top-1 $\uparrow$ \\
-\bottomrule
-\end{tabularx}
-\end{center}
-The cell contract is instantiated for VCC single-gene, Norman double-gene and Tahoe drug perturbations; task-specific held-out units and secondary metrics are specified below.
+\paragraph{Drug--target interactions.}
+Given a compound and a protein sequence, the predictor estimates whether they interact. BindingDB supplies 50,149 training and 5,604 development pairs; canonical compounds define the client groups. The reference is TAPB with frozen ESM2 protein features and trainable drug, fusion and classification modules \citep{lin2025tapb}. The main endpoint is AUROC on 5,505 random-test pairs. Tests with 3,791 unseen-drug and 2,507 unseen-protein pairs assess entity generalization. AP, MCC, accuracy and cross-entropy provide secondary measures.
 
-The main table compares three methods. The \emph{task model} trains the reference architecture above with a fixed optimization recipe on one laboratory's data. \emph{Qwen direct} uses Qwen2.5-7B-Instruct to choose model configurations without receiving evaluation history; these configurations are trained on the same one laboratory. \emph{BioCoLoop} uses the same proposer with evidence-card feedback and all ten laboratories. The language model proposes configurations; the task-specific predictor produces the biological predictions in every method. Direct and loop search share a twelve-design library, six proposal slots and the first proposal. Each candidate receives 100 training rounds, with development evaluation every five rounds. Appendix A records optimizer settings and the proposal interface.
+\paragraph{Observed-response proteomics.}
+Given a drug representation and its measured 6h/24h proteomic response, the predictor estimates binary efficacy. A ProteinTalks PTPC subset supplies 386 training, 105 development and 148 test conditions \citep{Sun2026ProteinTalks}. Compound-group assignment gives each client 49--50 training-plus-development conditions. The reference is a ProteinTalks-derived efficacy head with protein and drug branches, fitted from random initialization. Average precision (AP) is primary; AUROC, accuracy and cross-entropy are secondary. This task uses observed post-treatment measurements, rather than predicting efficacy from an unmeasured proteome.
 
-Two controls separate the causes of improvement. A factorial comparison crosses one/ten laboratories with fixed/direct/loop research, using common seeds 42--44. It tests participation while holding research mode fixed, and research while holding participation fixed. A separate \emph{compute-matched racing} comparison tests whether feedback improves training allocation: both methods receive the same ten designs and all ten laboratories. Uniform allocation gives each design 80 rounds. Evidence-guided allocation screens each for 20 rounds and restarts six promoted designs from their initial parameters for 100-round training and development evaluation. Both spend 800 full-client rounds and 160 development measurements. This experiment uses seeds 53--55 for proteomics and the three cell settings; its fixed candidate slate removes proposal generation as a varying factor.
+\paragraph{Cell perturbation identification.}
+Given an expression response and five candidate interventions, the model identifies the intervention whose predicted response has the highest cosine agreement with the observation. We use VCC single-gene perturbations \citep{arc2025vcc}, Norman double-gene perturbations \citep{norman2019genetic}, and a Tahoe subset of drug perturbations in A549 at 5 $\mu$M \citep{zhang2025tahoe}. Intervention-disjoint training/development/test counts are 60/20/20, 70/20/27 and 180/60/67, respectively. The reference is a frozen scDEBART backbone with a trainable response head \citep{sung2026scdebart}. All arms use the same corrected attention-mask implementation and fixed candidate rosters. Primary scoring is intervention-macro Top-1: accuracy is first averaged within each intervention, then across interventions. Random choice has expectation 20\%. Micro Top-1, MRR, Top-3 and cross-entropy are secondary. Appendix A describes response construction, chemical conditioning, losses and secondary metrics.
 
-Checkpoint selection uses participating laboratories' development data, with equal weight per laboratory. Every selected predictor is evaluated on the common held-out test set. Means and sample SD summarize the specified training/search seeds on fixed partitions. Appendix A supplies all six configurations, secondary metrics and uncertainty estimates; bold marks all best displayed task scores, including ties.
+\subsection*{4.2 Compared methods and shared protocol}
+The \emph{fixed model} trains each reference architecture with a fixed recipe on preselected laboratory 0. \emph{Direct optimization} uses Qwen2.5-7B-Instruct to propose designs without evaluation history, using the same laboratory. \emph{BioCoLoop} supplies evidence-card feedback to the same proposer and trains across ten laboratories. Thus the main comparison measures the benefit of the complete collaborative research setting. A six-arm factorial comparison crosses fixed/direct/loop research with one/ten laboratories to separate data access from proposal feedback.
 
-\subsection*{4.2 Drug--target interaction prediction}
-DTI predicts a binary interaction from a compound and a protein sequence. We use the released BindingDB training/development split of 50,149/5,604 pairs. Canonical-compound groups are assigned to clients with a label-independent size-balancing rule, producing compound-disjoint clients while preserving the source split within each client.
-
-The task reference uses the released TAPB architecture with frozen public ESM2 protein features and freshly initialized drug, fusion and classification modules \citep{lin2025tapb}. A target dictionary derived from client 0's training proteins is shared identically by every arm, ensuring a common initialization. The objective combines TAPB's classification NLL and masked-language loss under the shared batch-64 training pipeline. Candidate designs can add a zero-output residual adapter before TAPB's native confounder-averaged prediction.
-
-Selection uses mean-client AUROC; AP, MCC, accuracy at 0.5 and binary cross-entropy are secondary. The fixed test suite contains 5,505 random, 3,791 unseen-drug and 2,507 unseen-protein pairs. Random-split AUROC is the main-table endpoint, and both unseen-entity endpoints appear in the complete results. All six arms and three seeds complete the full protocol.
-
-DrugBAN supplies an additional architecture reference under the uniform multi-laboratory trainer \citep{Bai2023DrugBAN,DrugBANCode}.
-
-\subsection*{4.3 Proteomics-based efficacy prediction}
-We construct an observed-response efficacy benchmark from a subset of the public ProteinTalks PTPC supplement, which provides measured proteomic responses and binary efficacy labels \citep{Sun2026ProteinTalks}. The task predicts efficacy from a treated condition's observed 6h/24h proteome and drug representation. We partition the 491-condition source pool, spanning 333 compounds, into 386 fitting and 105 development conditions by compound group. Ten clients each own 49--50 total conditions, with compound-disjoint training and development groups and both classes in every local development set. Local fitting sets contain 35--42 conditions.
-
-The task reference is a ProteinTalks-derived observed-response efficacy head: protein and drug convolutional branches followed by a 64--32--1 classifier, trained from random initialization on observed 6h/24h responses and Morgan features. A 24h linear/Morgan model provides a complementary non-neural reference.
-
-Average precision (AP) is primary; AUROC, binary cross-entropy and accuracy at 0.5 are secondary. The 148-condition test role is evaluated after the development-selected checkpoint is frozen.
-
-\subsection*{4.4 Cell perturbation identification}
-Given an observed expression response and five candidate interventions, the model selects the true perturbation by cosine agreement with predicted responses. We construct three inverse-identification benchmarks: VCC-derived single-gene perturbations from the public 2025 training release with internal intervention-disjoint partitions \citep{arc2025vcc}; Norman double-gene overexpression \citep{norman2019genetic}; and a Tahoe-100M subset of 307 compounds in A549 at 5 $\mu$M, from the February 25, 2025 release \citep{zhang2025tahoe}. Whole-intervention train/development/test counts are respectively 60/20/20, 70/20/27 and 180/60/67. Each laboratory owns six/seven/eighteen training interventions and two/two/six development interventions. Assignment balances intervention identities, while retaining the naturally varying number of VCC cells per intervention.
-
-The public CELLxGENE-pretrained scDEBART backbone is frozen and its response MLP is trainable \citep{sung2026scdebart}. Three upstream attention masks are implemented as additive blocking masks and verified by response-free synthetic tests. This correction leaves pretrained weights, targets, splits and candidate rosters unchanged; features are then re-extracted for every arm.
-
-Genetic tasks use the released perturbation encoding and exclude directly perturbed genes from loss and ranking coordinates. Tahoe adds fixed Morgan-projection conditioning for chemical identities. The uniform cell objective combines response MSE with 0.1 times a contrastive loss formed from local training conditions.
-
-Primary scoring is intervention-macro Top-1, with a 20\% random-choice expectation; micro Top-1, MRR, Top-3 and cosine-logit cross-entropy are secondary. All arms receive the same five candidate interventions for each response.
-
-\subsection*{4.5 Participation, independent sources and research budget}
-We vary laboratory count over $K\in\{1,2,5,10\}$ for all five endpoints. Adding the first $K$ original clients increases data access; merging all ten clients into $K$ training groups keeps the total pool fixed. Both use the default recipe and 100 rounds, with the original development scoring units. DTI uses seed 61 and the four lighter endpoints use seeds 61--63.
-
-Independent-source experiments add BioSNAP, Davis and Human to DTI, and Replogle, Nadig and Jiang to VCC. Target-only development selection and a common target test set make the effect of each source directly comparable. For proteomics, two independent studies supply measured protein responses and distinct efficacy endpoints \citep{Lin2026HDAC,Ruprecht2020Proteome}. A supplementary multi-task adapter shares protein/drug representations and retains source-specific output heads; its target-only control uses the same architecture. A separate analysis retains three within-study mtPTDS contexts. Appendix B specifies source filtering, losses and all source combinations.
-
-The proposer comparison uses Qwen2.5-7B-Instruct and \texttt{gpt-5.6-luna} across all five endpoints. Both explore the same twelve designs in six proposal slots, with test prefixes at 0, 1, 2, 4 and 6. A second, longer study explores 36 designs in 24 slots on proteomics and the three cell endpoints. Within each protocol, candidates receive 100 rounds from a common initialization, the first proposal is shared, and direct/loop differ in access to evaluation history. Failed slots consume the budget. DTI short-search results use seed 42; the remaining proposer studies use seed 61. The complete trajectories and fixed-prefix scores allow task-specific analysis of search progress and saturation.
+Direct and loop search share a twelve-design library, six proposal slots and the first proposal. Every candidate starts from the same task/seed initialization and receives 100 training rounds, with development evaluation every five rounds. Selection uses equal-weight development scores over participating laboratories. The main results report mean and sample SD over seeds 42--44 on fixed data partitions. All methods within a task share the held-out test set and scorer. Appendix A gives the full factorial comparison, complete optimization settings and uncertainty estimates.

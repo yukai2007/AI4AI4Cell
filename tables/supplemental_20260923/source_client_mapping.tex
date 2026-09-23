@@ -1,0 +1,15 @@
+\begin{table}[htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{@{}lp{0.25\linewidth}X@{}}
+\toprule
+Task & Client unit & Sources and biological contexts \\
+\midrule
+DTI & Four data collections & Target BindingDB; BioSNAP; Davis; Human. Each collection contributes one client after pair-level de-duplication. \\
+Cell & Four study/scenario clients & Target VCC; Replogle K562; Nadig HepG2; Jiang IFNB/K562. Each auxiliary source contributes one client. \\
+Proteomics & Ten target partitions plus three source clients & Clients 0--9: PTPC partitions; client 10: Lin (A549, H292, PC9, PSC1); client 11: Ruprecht (A549, Calu6, Calu1, 2030, 2122); client 12: decryptE (Jurkat, five doses). \\
+\bottomrule
+\end{tabularx}
+\caption{Source and context mapping in the cross-source experiments. The DTI units are database collections, the cell units preserve their study and biological scenario, and each proteomic auxiliary study owns one client and its response head. The ten PTPC clients remain partitions of one target corpus. Biological contexts within a study are not counted as additional independent studies.}
+\label{tab:supplemental-source-clients}
+\end{table}

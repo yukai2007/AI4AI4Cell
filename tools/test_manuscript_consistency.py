@@ -17,7 +17,7 @@ class ManuscriptConsistencyTests(unittest.TestCase):
         self.assertIn('Collaborative learning typically optimizes fixed models', abstract)
         self.assertIn('Across three biological settings', abstract)
         self.assertNotIn(r'\Strong', abstract)
-        self.assertIn('FedAvg', (PAPER / 'sections/03_method.tex').read_text())
+        self.assertIn(r'\citep{McMahan2017}', (PAPER / 'sections/03_method.tex').read_text())
 
     def test_official_submission_header_and_spacing_are_not_patched(self):
         source = (PAPER / 'biocoloop-main.tex').read_text()
@@ -44,8 +44,8 @@ class ManuscriptConsistencyTests(unittest.TestCase):
     def test_current_uncertainty_is_included(self):
         text = (PAPER / 'sections/22_appendix_unified_protocol.tex').read_text()
         self.assertIn(r'\input{tables/strong_v3/dti_uncertainty}', text)
-        self.assertIn('after training and held-out scoring', text)
-        self.assertIn('between-training-seed', text)
+        self.assertIn('retained predictions', text)
+        self.assertIn('training/search variability on fixed partitions', text)
 
     def test_compute_matched_loop_claims_are_bound_to_public_summary(self):
         summary = json.loads((PAPER / 'provenance/v6_loop_summary.json').read_text())

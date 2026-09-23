@@ -21,8 +21,22 @@ class BrandIdentityTests(unittest.TestCase):
     def test_scientific_artifacts_and_archives_remain_identical(self):
         report=json.loads((PAPER/'provenance/rename_biocoloop_20260923/migration_verification.json').read_text())
         self.assertEqual(report['status'],'PASS')
+        revisions=json.loads((PAPER/'provenance/coauthor_review_v2_20260923/caption_changes.json').read_text())
+        self.assertEqual(revisions['status'], 'CAPTION_ONLY_VERIFIED')
+        self.assertEqual(set(revisions['files']), {'tables/completed_ablation/transfer_independent.tex',
+                                                  'tables/strong_v3/effects.tex'})
         for record in report['scientific_artifacts_unchanged']+report['retained_originals']:
-            self.assertEqual(hashlib.sha256((PAPER/record['path']).read_bytes()).hexdigest(),record['sha256'])
+            data=(PAPER/record['path']).read_bytes()
+            actual=hashlib.sha256(data).hexdigest()
+            if record['path'] in revisions['files']:
+                change=revisions['files'][record['path']]
+                self.assertEqual(change['before_sha256'],record['sha256'])
+                self.assertEqual(actual,change['after_sha256'])
+                body=b"".join(line for line in data.splitlines(keepends=True)
+                              if not line.startswith(b"\\caption{")).rstrip(b"\n")+b"\n"
+                self.assertEqual(hashlib.sha256(body).hexdigest(),change['unchanged_noncaption_sha256'])
+            else:
+                self.assertEqual(actual,record['sha256'])
         self.assertTrue(report['main_table_only_framework_label_changed'])
 
     def test_figures_and_chinese_use_current_brand(self):

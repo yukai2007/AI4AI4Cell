@@ -1,0 +1,82 @@
+{
+  "status": "VERIFIED",
+  "rows": [
+    {
+      "arm": "target_only",
+      "label": "Target study",
+      "K": 1,
+      "N": 386,
+      "ap": 0.34412666660034147,
+      "auroc": 0.7233044733044733,
+      "best_round": 15,
+      "training_seconds": 26.433899176772684
+    },
+    {
+      "arm": "plus_decrypte",
+      "label": "+ decryptE",
+      "K": 2,
+      "N": 881,
+      "ap": 0.36579680384464575,
+      "auroc": 0.7380952380952381,
+      "best_round": 5,
+      "training_seconds": 17.90597232617438
+    },
+    {
+      "arm": "plus_existing2",
+      "label": "+ Lin + Ruprecht",
+      "K": 3,
+      "N": 491,
+      "ap": 0.3609469630778587,
+      "auroc": 0.726911976911977,
+      "best_round": 15,
+      "training_seconds": 16.994193473365158
+    },
+    {
+      "arm": "plus_all3",
+      "label": "+ Lin + Ruprecht + decryptE",
+      "K": 4,
+      "N": 986,
+      "ap": 0.3753201257883583,
+      "auroc": 0.7438672438672439,
+      "best_round": 5,
+      "training_seconds": 12.032246989198029
+    }
+  ],
+  "target_relative_delta_pp": {
+    "target_only": {
+      "ap_delta_pp": 0.0,
+      "auroc_delta_pp": 0.0
+    },
+    "plus_decrypte": {
+      "ap_delta_pp": 2.1670137244304275,
+      "auroc_delta_pp": 1.4790764790764799
+    },
+    "plus_existing2": {
+      "ap_delta_pp": 1.6820296477517205,
+      "auroc_delta_pp": 0.3607503607503615
+    },
+    "plus_all3": {
+      "ap_delta_pp": 3.119345918801686,
+      "auroc_delta_pp": 2.056277056277056
+    }
+  },
+  "original_target_dev_panels": 10,
+  "training_workers_one_per_study": true,
+  "target_train_conditions": 386,
+  "seed": 61,
+  "rounds": 100,
+  "proposal_slots": 0,
+  "campaign_wall_seconds": 76.18179554631934,
+  "cpu_seconds": 110.10506799999999,
+  "gpu_hours": 0,
+  "api_calls": 0,
+  "input_sha256": {
+    "/liziqing/yukai/AI4AI4Cell/results/proteomics_scenario_labs_20260924/protocol.json": "4e3f301dda42141786c761510185116348452fd21068ff3eca79c0c6984e1696",
+    "/liziqing/yukai/AI4AI4Cell/results/proteomics_scenario_labs_20260924/binding.json": "822d422931d4aca4fcd3ff066c4f82d2f56a2953c566057e06607b39255f4ec3",
+    "/liziqing/yukai/AI4AI4Cell/results/proteomics_scenario_labs_20260924/status.json": "40b77365aa918331cfed88ce2784d613fbc0d6dbe355c241e8f1ea948713b93a",
+    "/liziqing/yukai/AI4AI4Cell/results/proteomics_scenario_labs_20260924/heldout/results.json": "d65a1de425eb1f828cb4a10a9b32c964bcf7009ed4fcbc7ca91bbd8934e05dd3",
+    "/liziqing/yukai/AI4AI4Cell/results/proteomics_scenario_labs_20260924/independent_rescore.json": "c679ce2e2b4524ab4ce6f023e1c3bf74ea41e6af1fb5ca7c4a2fbd492fe99c9d"
+  },
+  "table_sha256": "859bebb97d6c68261740ec98a4948e5ba8a799a16dfcf38bfdf4dcb3f9954fb7",
+  "generator_sha256": "31fa9a216002be6a9feea0c620e71b4da440db5fe7bb7a573d541dfb92529544"
+}

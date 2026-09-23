@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{5pt}
+\caption{Fixed-design source--scenario ablation on VCC. $K$: training clients; $N$: training intervention conditions. The two $K=4,N=60$ arms share a 15-condition VCC anchor and differ in the sources of the other three clients. All arms use 100 rounds and the same target evaluation. Mean $\pm$ sample SD over three seeds; best means are bold. Cell counts and gene panels remain source-specific; protocol details are in Appendix B.}
+\label{tab:scenario-labs-matched}
+\begin{tabular}{lrrrr}
+\toprule
+Training sources & $K$ & $N$ & Top-1 (\%) $\uparrow$ & MRR $\uparrow$ \\
+\midrule
+VCC, limited data & 1 & 15 & $29.36\pm0.26$ & $\mathbf{0.5697\pm0.0019}$ \\
+VCC, all target data & 1 & 60 & $29.43\pm0.09$ & $0.5600\pm0.0009$ \\
+VCC, same-source split & 4 & 60 & $\mathbf{30.70\pm0.42}$ & $0.5624\pm0.0004$ \\
+VCC + external studies & 4 & 60 & $28.82\pm0.00$ & $0.5630\pm0.0000$ \\
+\bottomrule
+\end{tabular}
+\end{table}

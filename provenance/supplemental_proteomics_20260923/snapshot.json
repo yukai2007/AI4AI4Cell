@@ -1,0 +1,110 @@
+{
+  "schema": "supplemental-proteomics-publication-v1",
+  "verified_receipt": {
+    "status": "COMPLETE_VERIFIED",
+    "independent_auxiliary_studies": 3,
+    "fixed_design_only": true,
+    "proposal_slots": 0,
+    "seed": 61,
+    "rounds": 100,
+    "device": "cpu",
+    "gpu_hours": 0,
+    "n_target_rows": 148,
+    "results": {
+      "plus_all3_fixed": {
+        "metrics": {
+          "n_rows": 148,
+          "n_labeled": 148,
+          "n_missing_label": 0,
+          "n_positive": 22,
+          "ap": 0.3567974166132734,
+          "auroc": 0.7427849927849929,
+          "accuracy_at_0_5": 0.8513513513513513,
+          "bce": 0.3907405338383574,
+          "undefined_reason": null
+        },
+        "max_absolute_error": 0.0,
+        "prediction_sha256": "996061b5ddb8d5dda5e31acbed7cc36caa2d16f91c9aff1bc31291d90b6d0825",
+        "checkpoint_sha256": "13bb67e8b6f7e2e71dfc019d76b92677bdd3562f0d0bcf6039d49c3a90c5fc7f"
+      },
+      "plus_decrypte_fixed": {
+        "metrics": {
+          "n_rows": 148,
+          "n_labeled": 148,
+          "n_missing_label": 0,
+          "n_positive": 22,
+          "ap": 0.35026098737696015,
+          "auroc": 0.7420634920634921,
+          "accuracy_at_0_5": 0.8513513513513513,
+          "bce": 0.39516978017228993,
+          "undefined_reason": null
+        },
+        "max_absolute_error": 0.0,
+        "prediction_sha256": "d90b0b3cf2577e5bf3d7be2d8bda146dca2f470607d0c2e0e1b540285e653d37",
+        "checkpoint_sha256": "2dc5d2295e0f62d7d6db92a02435c5b1a944a62801c41f3ef9e7234cfbab22bb"
+      },
+      "plus_existing2_fixed": {
+        "metrics": {
+          "n_rows": 148,
+          "n_labeled": 148,
+          "n_missing_label": 0,
+          "n_positive": 22,
+          "ap": 0.35314688158779306,
+          "auroc": 0.7417027417027416,
+          "accuracy_at_0_5": 0.8513513513513513,
+          "bce": 0.391108271741147,
+          "undefined_reason": null
+        },
+        "max_absolute_error": 0.0,
+        "prediction_sha256": "a929733ffb486472bf53474318c512a179c67cb9d2f88f4e602b29e83790a0fe",
+        "checkpoint_sha256": "793c1b15d0ec18b88539d33996741599722d3d35d90c653593503419c3d4fb7b"
+      },
+      "target_only_fixed": {
+        "metrics": {
+          "n_rows": 148,
+          "n_labeled": 148,
+          "n_missing_label": 0,
+          "n_positive": 22,
+          "ap": 0.34978626494033455,
+          "auroc": 0.7474747474747475,
+          "accuracy_at_0_5": 0.8513513513513513,
+          "bce": 0.3949134729029166,
+          "undefined_reason": null
+        },
+        "max_absolute_error": 0.0,
+        "prediction_sha256": "11b13b822b5b1286794e4927dc1cde601e7074a8acc351bac305284aa12efb07",
+        "checkpoint_sha256": "54cd1b5563cec5f5ab7bd18deef4a17470d980e764f615f7b9533ef3838b076b"
+      }
+    },
+    "paired_point_estimate_contrasts": {
+      "plus_decrypte_fixed_minus_target_only_fixed": {
+        "ap_percentage_points": 0.047472243662560754,
+        "auroc_percentage_points": -0.5411255411255422
+      },
+      "plus_existing2_fixed_minus_target_only_fixed": {
+        "ap_percentage_points": 0.3360616647458514,
+        "auroc_percentage_points": -0.5772005772005873
+      },
+      "plus_all3_fixed_minus_target_only_fixed": {
+        "ap_percentage_points": 0.7011151672938865,
+        "auroc_percentage_points": -0.46897546897546327
+      },
+      "plus_all3_fixed_minus_plus_existing2_fixed": {
+        "ap_percentage_points": 0.36505350254803504,
+        "auroc_percentage_points": 0.10822510822512399
+      }
+    },
+    "target_file_sha256": "f6672c2f206c0c20f8c77e9b1821f56a6ffe5da3c738b50f43ca36580d234782",
+    "definition_sha256": "5b5e10e7321fe32c66bb6b0a83134ae4bab700a9dce2a91ddc514a98688f34f5",
+    "results_sha256": "804d7ede777b175fc9369fae2609dd8804570cccb08ed1ef7fef0a56272ea089",
+    "verifier_sha256": "c13912dd74f2adc77c0551cee557869c956bc61ae5020822ce54d62a5e1e6de6",
+    "completed_unix": 1790179738.5152962,
+    "inference": "One-seed source-transfer point estimates; not agentic-loop evidence or cross-seed uncertainty"
+  },
+  "receipt_path": "results/supplemental_20260923/proteomics/seed61_slots0_cpu/independent_rescore.json",
+  "receipt_sha256": "b5fa3aebb01205ba8db57edb29af57e3dfa79a2c0e1cab94d0b2e2ce8c06ab29",
+  "table_path": "tables/supplemental_20260923/proteomics_three_source.tex",
+  "table_sha256": "445325e9fafb884bef91eac48f6441d66cd4324c0d304f3b23cb965663682dc9",
+  "publisher_sha256": "adfa08f65eaf20fa9d2d34ce7b88461aa92cb8b040e521695a8517da6b90355a",
+  "scope": "Four fixed-design source arms; not agentic-loop evidence"
+}

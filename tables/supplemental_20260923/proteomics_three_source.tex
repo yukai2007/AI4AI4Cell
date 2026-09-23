@@ -1,0 +1,16 @@
+\begin{table}[htbp]
+\centering\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabularx}{\linewidth}{@{}Xrrr@{}}
+\toprule
+Additional source & AP $\uparrow$ & AUROC $\uparrow$ & $\Delta$ AP (pp) \\
+\midrule
+Target only & 34.98 & \textbf{74.75} & +0.00 \\
++ decryptE & 35.03 & 74.21 & +0.05 \\
++ Lin + Ruprecht & 35.31 & 74.17 & +0.34 \\
++ Lin + Ruprecht + decryptE & \textbf{35.68} & 74.28 & +0.70 \\
+\bottomrule
+\end{tabularx}
+\caption{Three-source proteomic transfer on PTPC. All four arms use the same four-head adapter, seed 61, 100-round fitting schedule and target-development checkpoint rule. AP and AUROC are multiplied by 100; bold identifies the best value in each metric. The target test set contains 148 observations from 92 compounds. These are fixed-design source comparisons; the separate two-source proposal study appears in Table~\ref{tab:completed-protein-loop}.}
+\label{tab:supplemental-protein-three-source}
+\end{table}

@@ -20,7 +20,7 @@ def fixture():
 
 
 class StrongSnapshotTests(unittest.TestCase):
-    def test_overall_sd_uses_paired_seed_means(self):
+    def test_named_model_rows_keep_endpoint_sd_and_no_heterogeneous_average(self):
         data = fixture()
         for index, (task, _, _) in enumerate(TASKS):
             values = ([.4, .6, .8] if index == 0 else [.8, .6, .4] if index == 1 else [.5, .5, .5])
@@ -31,9 +31,11 @@ class StrongSnapshotTests(unittest.TestCase):
             out = Path(directory)
             table(data, out)
             text = (out/'main.tex').read_text()
-            fixed_row = next(line for line in text.splitlines() if line.startswith('Task model'))
+            fixed_row = next(line for line in text.splitlines() if line.startswith('TAPB'))
             self.assertIn(r'60.00} $\pm$ 20.00', fixed_row)
-            self.assertTrue(fixed_row.endswith(r'54.00} $\pm$ 0.00 \\'))
+            self.assertEqual(fixed_row.count('--'), 4)
+            self.assertNotIn('Overall', text)
+            self.assertIn('scDEBART response head', text)
             self.assertIn('SD is not a confidence interval', text)
 
     def test_duplicate_repetition_seed_is_rejected(self):
@@ -122,13 +124,13 @@ class StrongSnapshotTests(unittest.TestCase):
             table(data,out)
             text=(out/'main.tex').read_text()
             self.assertIn(r'\multicolumn{3}{c}{Cell perturbation}',text)
-            self.assertIn(r'\textbf{Method}',text)
+            self.assertIn(r'\textbf{Model / method}',text)
             self.assertIn(r'\textbf{BioCoLoop} (10 labs)',text)
             self.assertIn(r'\multicolumn{1}{c}{DTI}',text)
-            self.assertIn(r'\shortstack{TAPB\\AUROC $\uparrow$}',text)
+            self.assertIn(r'\shortstack{BindingDB\\AUROC $\uparrow$}',text)
             self.assertIn(r'\shortstack{PTPC\\AP $\uparrow$}',text)
-            self.assertIn('ProteinTalks-derived efficacy head',text)
-            self.assertIn(r'\shortstack{Mean\\5 endpoints}',text)
+            self.assertIn('ProteinTalks-derived head',text)
+            self.assertNotIn(r'\shortstack{Mean\\5 endpoints}',text)
             self.assertNotIn('Task and benchmark',text)
             self.assertNotIn('Completed seeds',text)
             self.assertNotIn('Exact seed counts',text)

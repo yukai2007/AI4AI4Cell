@@ -175,7 +175,7 @@ def render(snapshot):
     def ci(task):
         return '['+', '.join(f'{100*v:.2f}'.replace('-',r'$-$') for v in snapshot['tasks'][task]['ci95'])+']'
     lines += [r'\bottomrule', r'\end{tabularx}',
-        r'\caption{Does early evidence improve training allocation? Held-out scores use the same ten designs, ten laboratories, 800 full-client rounds and 160 development measurements per method. Uniform allocation gives every design 80 rounds; the evidence-guided loop screens all designs and fully validates six promoted candidates. Gain is evidence-guided minus uniform, in percentage points; W/T/L counts seed-level wins, ties and losses (total '+
+        r'\caption{Does early evidence improve training allocation? Held-out scores use the same ten designs, ten laboratories, 800 full-client rounds and 160 aggregate development evaluations per method. Uniform allocation gives every design 80 rounds; the evidence-guided scheduler screens all designs for 20 rounds and restarts six promoted designs for 100-round training. Gain is evidence-guided minus uniform, in percentage points; W/T/L counts seed-level wins, ties and losses (total '+
         '/'.join(map(str,snapshot['wins_ties_losses']))+r'). Norman 95\% CI: '+ci('norman_double_corrected')+
         '; Tahoe: '+ci('tahoe_drug_corrected')+'. The separate DTI development replay is in Appendix A.}',
         r'\label{tab:strong-effects}', r'\end{table}']
