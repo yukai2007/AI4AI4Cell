@@ -14,14 +14,18 @@ native `Error: ` wrapper:
 - `Tool response remained invalid after`
 - `Native required-tool stage ended`
 - `Native stage exhausted with a failed completion/tool receipt`
+- `Native context exceeds declared token limit; no silent truncation.`
 
 Run identity and `fresh-canonical-v3` production identity are checked first.
 New child failures qualify only after a positive exit, owned-descendant cleanup,
 final accounting, and another frozen-source check. Existing failures must bind
 to adopted or previously charged work; failure receipts retain status/definition
 hashes and are revalidated on resume. Other model/controller errors, training or
-infrastructure errors, source/integrity changes, signals and budget limits still
-stop the queue. Failed runs with held-out access/artifacts are never skipped.
+infrastructure errors, source/integrity changes, signals and compute/wall-time
+budget limits still stop the queue. Only the exact declared context-limit error
+above is treated as an unscorable native resource-limit outcome; no context is
+truncated and no model/controller budget is changed. Failed runs with held-out
+access/artifacts or a development selection seal are never skipped.
 
 Each qualifying failure is retained in `supervisor_status.json` under `failed`
 with its job, error, output directory and accounting evidence. It triggers no
@@ -37,6 +41,16 @@ from their status times, model usage and production definition. Each is charged
 The manifest freezes these receipts and hashes. Active/unfinished runs, missing
 receipts, or synthetic execution prevent queue creation; no prequeue PID is
 signaled. Even a completed status must wait for its launcher cleanup to exit.
+This existing adoption path also covers completed `FAILED` runs: with the
+immutable continuation option, an eligible AIRE failure is charged once and
+skipped without rerunning it. A fresh queue may symlink preserved run directories;
+run identity, production definition and status/definition hashes still apply.
+Before creating a successor queue, use the previous ownership ledger to confirm
+that all owned descendants have exited. Source bindings must remain unchanged.
+To preserve prior total cost without double charging adopted runs, set the new
+prior provision to `previous_total - sum(new_adopted_run_charges)`, or round that
+nonnegative remainder upward. Do not pass the previous total itself as prior
+when its completed runs are also being adopted.
 
 `--prior-reserved-gpu-hours` adds an explicit earlier engineering allocation
 (default zero). Use the same value on resume. Both this allocation and adopted

@@ -34,18 +34,18 @@
 - AI-Scientist-v2：`96bd51617cfdbb494a9fc283af00fe090edfae48`。
 - AI-Researcher：`f9a6f8480860c193afff600eeffe3defcee8a978`。
 - 新代码：`/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/`。
-- 正式队列：`/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/`。四个已完成的 AI-Scientist-v2/seed42 运行通过符号链接引用原 `formal_v3` 中未经改写的封存结果；不重训、不移动原始证据。此前工程试运行及 v3/v4 中未完成的 AI-Researcher/PTPC 运行保留原始记录，不提供论文分数。
+- 正式队列：`/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v6/`。四个已完成的 AI-Scientist-v2/seed42 运行通过符号链接引用原 `formal_v3` 中未经改写的封存结果；不重训、不移动原始证据。AI-Researcher/PTPC/seed42 引用 `formal_v5` 中的上下文超限失败记录，不重跑、不提供部分选择的测试分数。此前工程试运行及未完成记录均保留。
 - 监控状态：正式队列根目录的 `supervisor_status.json`。
 - 每次运行保存：`config.json`、`run_status.json`、`model_calls/`、`native_controller/`、`development/`，完成后另存 `heldout/`。
 - 评价后独立重算保存预测的分数，只有验证通过的完整运行进入新增主表收集器。原有六组 factorial 对照及其发布脚本保持独立。
 
-队列采用最多 180 个**预留 GPU·小时**、24 小时上限，为试运行预留余量。计费式记录为“为该子进程预留的 GPU 数 × 运行墙钟时间”，不是 GPU 算子实际利用率测量。失败的基础设施运行不自动当成科学负结果，也不无限重试。
+队列采用最多 180 个**预留 GPU·小时**，当前队列墙钟上限为 23.75 小时，截止不晚于 v5 原先的 24 小时窗口。计费式记录为“为该子进程预留的 GPU 数 × 运行墙钟时间”，不是 GPU 算子实际利用率测量。失败的基础设施运行不自动当成科学负结果，也不无限重试。
 
-队列创建时一并计入此前正式运行和 4.0 GPU·小时的工程试运行预留（覆盖原 3.0 小时预留及 v4 的额外成本）。手动启动的 AI-Scientist-v2 Tahoe/seed42 与 AI-Researcher PTPC/seed42 存在资源共享时段，仍分别按八卡记账，因此这部分是保守预算核算，不是独占硬件下的速度基准。模型调用数、token 数和实际候选拟合数另外逐项记录。
+队列创建时一并计入此前正式运行和 4.02 GPU·小时的工程试运行及调度开销预留。四个成功运行及 v5 的一次失败运行另行按原始记录计入 4.3171 GPU·小时，初始总计 8.3371，未重置此前消耗。手动启动的 AI-Scientist-v2 Tahoe/seed42 与 AI-Researcher PTPC/seed42 存在资源共享时段，仍分别按八卡记账，因此这部分是保守预算核算，不是独占硬件下的速度基准。模型调用数、token 数和实际候选拟合数另外逐项记录。
 
 AI-Researcher 的文本工具桥接规范化含明确工具名及参数的单一调用，包括标准 function/name 形式和唯一工具名作为键的对象；参数绑定、默认值和调用错误交由真正的原生函数处理。不选择模糊或多个调用，不补造参数。v3/v4 的兼容失败均未封存开发选择或检查测试集分数。接管及成本依据保存在队列的 `ADOPTION.md`。
 
-新队列开启 `--continue-controller-failures`：仅对明确定义的 AI-Researcher 工具格式/阶段完成失败记录 N/A 并继续独立任务，不自动重跑或评价部分选择；源码、数据完整性及训练基础设施错误仍停止。包含未完成运行时最终状态为 `FINISHED_WITH_INCOMPLETE_RUNS`，不是全部完成。
+新队列开启 `--continue-controller-failures`：仅对明确定义的 AI-Researcher 工具格式/阶段完成失败，以及声明的 28,000 输入 token 上限失败，记录 N/A 并继续独立任务，不自动重跑或评价部分选择；源码、数据完整性及训练基础设施错误仍停止。v6 只调整调度分类，不改变控制器、Qwen、上下文上限或实验设置。包含未完成运行时最终状态为 `FINISHED_WITH_INCOMPLETE_RUNS`，不是全部完成。
 
 ## 公开源码说明
 

@@ -274,7 +274,7 @@ class SupervisorTests(unittest.TestCase):
         self.assertFalse(read(self.base/'queue_manifest.json')['continue_controller_failures'])
         self.assertEqual(read(self.base/'supervisor_status.json')['status'], 'STOPPED_ON_FAILURE')
 
-    def test_three_exact_prefixes_and_single_native_error_wrapper(self):
+    def test_exact_prefixes_and_single_native_error_wrapper(self):
         for prefix in supervise.CONTROLLER_FAILURE_PREFIXES:
             for wrapper in ('', 'Error: '):
                 with self.subTest(prefix=prefix, wrapper=wrapper):
@@ -293,6 +293,41 @@ class SupervisorTests(unittest.TestCase):
         ais = dict(job, harness='ai_scientist_v2')
         _, run, _ = self.failure_fixture(job=ais)
         self.assertIsNone(supervise.controller_failure(run, ais, read(run/'run_status.json')))
+
+    def test_context_limit_failure_is_adopted_once_without_retry_or_score(self):
+        job, run, args = self.failure_fixture(
+            error='Error: Native context exceeds declared token limit; no silent truncation.')
+        status = read(run/'run_status.json')
+        expected = 8 * (status['completed_unix'] - status['started_unix']) / 3600
+        args.prior_reserved_gpu_hours = 4.02
+        with mock.patch.object(supervise, 'jobs', return_value=[job]), \
+             mock.patch.object(supervise, 'pinned_sources', return_value={}), \
+             mock.patch.object(supervise, 'run_child') as child:
+            supervise.supervise(args)
+            supervise.supervise(args)
+        child.assert_not_called()
+        manifest = read(self.base/'queue_manifest.json')
+        saved = read(self.base/'supervisor_status.json')
+        self.assertEqual(len(manifest['adopted_prequeue_runs']), 1)
+        self.assertEqual(manifest['adopted_prequeue_runs'][0]['reserved_gpu_hours'], expected)
+        self.assertEqual(saved['reserved_gpu_hours'], 4.02 + expected)
+        self.assertEqual(saved['status'], 'FINISHED_WITH_INCOMPLETE_RUNS')
+        self.assertEqual(len(saved['failed']), 1)
+        self.assertEqual(saved['completed'], [])
+        self.assertNotIn('primary', saved['failed'][0])
+        self.assertFalse((run/'heldout').exists())
+        dump(run/'run_status.json', dict(status, error='altered receipt'))
+        with mock.patch.object(supervise, 'jobs', return_value=[job]), \
+             mock.patch.object(supervise, 'pinned_sources', return_value={}):
+            with self.assertRaisesRegex(ValueError, 'Adopted prequeue accounting evidence changed'):
+                supervise.supervise(args)
+
+    def test_sealed_partial_run_is_not_classified_as_unscorable(self):
+        job, run, _ = self.failure_fixture(
+            error='Error: Native context exceeds declared token limit; no silent truncation.')
+        dump(run/'development/selection_seal.json', dict(status='sealed-test-fixture'))
+        with self.assertRaisesRegex(ValueError, 'held-out access/artifacts'):
+            supervise.controller_failure(run, job, read(run/'run_status.json'))
 
     def test_classifier_rejects_identity_nonproduction_and_bad_receipts(self):
         job, run, _ = self.failure_fixture()

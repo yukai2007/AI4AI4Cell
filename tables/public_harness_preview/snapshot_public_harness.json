@@ -1,14 +1,14 @@
 {
   "schema": "public-harness-main-preview-v1",
   "artifact_role": "verified-preview-not-integrated",
-  "created_utc": "2026-09-24T12:35:12.365732+00:00",
+  "created_utc": "2026-09-24T12:46:00.467235+00:00",
   "role": "retrospective held-out; prior historical exposure; not blind confirmation",
   "seeds_requested": [
     42,
     43,
     44
   ],
-  "base": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5",
+  "base": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v6",
   "reference_base": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918",
   "manuscript_modified": false,
   "main_table_replaced": false,
@@ -362,10 +362,10 @@
                 }
               },
               "receipts": {
-                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/ptpc_neural/seed42/heldout/seal.json": "3d5a06eaca1a46d6e90d93789a292b8ad244716d15b2aa9cde72e814d7d0fd86",
-                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/ptpc_neural/seed42/heldout/results.json": "1724516a62829c3a896d8120611890f86aa9cb0db9474a5587f95732b076806d",
-                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/ptpc_neural/seed42/heldout/audit.json": "f8117a6e537f046ac5eb328a4e9d06c7184c61e7a3581284525b51753e3be9ac",
-                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/ptpc_neural/seed42/heldout/verification.json": "095b15fefb8dff957176c7e4ab38a712489832b7590e43eaa64ad9784d82980d"
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v6/ai_scientist_v2/ptpc_neural/seed42/heldout/seal.json": "3d5a06eaca1a46d6e90d93789a292b8ad244716d15b2aa9cde72e814d7d0fd86",
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v6/ai_scientist_v2/ptpc_neural/seed42/heldout/results.json": "1724516a62829c3a896d8120611890f86aa9cb0db9474a5587f95732b076806d",
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v6/ai_scientist_v2/ptpc_neural/seed42/heldout/audit.json": "f8117a6e537f046ac5eb328a4e9d06c7184c61e7a3581284525b51753e3be9ac",
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v6/ai_scientist_v2/ptpc_neural/seed42/heldout/verification.json": "c992192b2607505e682e9dc41dfaae0e975bc2a3620ce9542082da9e82f7b305"
               },
               "definition_path": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v3/ai_scientist_v2/ptpc_neural/seed42/development/definition.json",
               "definition_sha256": "8091929afe35995f2db3e03ac769b3eb06fc6354415cd89a749378f27e158ca2",
@@ -633,10 +633,10 @@
                 }
               },
               "receipts": {
-                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/vcc_corrected/seed42/heldout/seal.json": "712b3d91afcc41ba2c45c49684771ddb5e8640d182d12a059d825ffc80a5256f",
-                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/vcc_corrected/seed42/heldout/results.json": "57b64af76a6709f27cd0bba21d0dc01d51270b52481dc5b48c944895d8453354",
-                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/vcc_corrected/seed42/heldout/audit.json": "ea956bd4cb9e409911dc9d59a5cf6d33786457e5841e3f97a4ba3dcd597c7811",
-                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/vcc_corrected/seed42/heldout/verification.json": "d5907e2226b61803064d834784f479e0bdf6c6099112208fb71104ed6c6a5676"
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v6/ai_scientist_v2/vcc_corrected/seed42/heldout/seal.json": "712b3d91afcc41ba2c45c49684771ddb5e8640d182d12a059d825ffc80a5256f",
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v6/ai_scientist_v2/vcc_corrected/seed42/heldout/results.json": "57b64af76a6709f27cd0bba21d0dc01d51270b52481dc5b48c944895d8453354",
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v6/ai_scientist_v2/vcc_corrected/seed42/heldout/audit.json": "ea956bd4cb9e409911dc9d59a5cf6d33786457e5841e3f97a4ba3dcd597c7811",
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v6/ai_scientist_v2/vcc_corrected/seed42/heldout/verification.json": "d5907e2226b61803064d834784f479e0bdf6c6099112208fb71104ed6c6a5676"
               },
               "definition_path": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v3/ai_scientist_v2/vcc_corrected/seed42/development/definition.json",
               "definition_sha256": "a9039315ff9ec8c6b4668e950368a906890c1db1b83079b0798fd3d394b53fbd",
@@ -907,10 +907,10 @@
                 }
               },
               "receipts": {
-                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/norman_double_corrected/seed42/heldout/seal.json": "bd88048501d19997060c3766e1a006960426bf1561add499988a214b69054866",
-                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/norman_double_corrected/seed42/heldout/results.json": "a98443c77923a0591c55827c4095a2d7d30630da063b5d5f98b9081c360940e9",
-                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/norman_double_corrected/seed42/heldout/audit.json": "285e674a19ab75d1a2245a377810da124ec67362e2967beb4dbbfe732751a899",
-                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/norman_double_corrected/seed42/heldout/verification.json": "e81f5713f9f3a6ebfdd040625fc2d38e655fb410ec7f4ef4a3ca569a3f4cc82b"
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v6/ai_scientist_v2/norman_double_corrected/seed42/heldout/seal.json": "bd88048501d19997060c3766e1a006960426bf1561add499988a214b69054866",
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v6/ai_scientist_v2/norman_double_corrected/seed42/heldout/results.json": "a98443c77923a0591c55827c4095a2d7d30630da063b5d5f98b9081c360940e9",
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v6/ai_scientist_v2/norman_double_corrected/seed42/heldout/audit.json": "285e674a19ab75d1a2245a377810da124ec67362e2967beb4dbbfe732751a899",
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v6/ai_scientist_v2/norman_double_corrected/seed42/heldout/verification.json": "3b6bf50299f0abbee6e2d5ab87d25731fee5bec3a5b9cd41111aa19f2595e5f4"
               },
               "definition_path": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v3/ai_scientist_v2/norman_double_corrected/seed42/development/definition.json",
               "definition_sha256": "14b15b8e6bb35a22d50211834d6a3801185d0e74fdb7045832e2326e397285e8",
@@ -1181,10 +1181,10 @@
                 }
               },
               "receipts": {
-                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/tahoe_drug_corrected/seed42/heldout/seal.json": "085a5ad3b23b7385c410f94d4cd53765de00f200ed56cd4250e646108fd686c3",
-                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/tahoe_drug_corrected/seed42/heldout/results.json": "600521d6e6f085e9322418deae9a62fbf3c682eab19714cec92a3d86c7c4aa0f",
-                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/tahoe_drug_corrected/seed42/heldout/audit.json": "692a2b4e0ad967a20960194771ef50ff4f4e5a77c9d41671695b91d8d8b0b453",
-                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/tahoe_drug_corrected/seed42/heldout/verification.json": "d8ee4798a8d1461a74273aa74968ee575616e7b281d45afdc249b37739468313"
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v6/ai_scientist_v2/tahoe_drug_corrected/seed42/heldout/seal.json": "085a5ad3b23b7385c410f94d4cd53765de00f200ed56cd4250e646108fd686c3",
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v6/ai_scientist_v2/tahoe_drug_corrected/seed42/heldout/results.json": "600521d6e6f085e9322418deae9a62fbf3c682eab19714cec92a3d86c7c4aa0f",
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v6/ai_scientist_v2/tahoe_drug_corrected/seed42/heldout/audit.json": "692a2b4e0ad967a20960194771ef50ff4f4e5a77c9d41671695b91d8d8b0b453",
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v6/ai_scientist_v2/tahoe_drug_corrected/seed42/heldout/verification.json": "d8ee4798a8d1461a74273aa74968ee575616e7b281d45afdc249b37739468313"
               },
               "definition_path": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v3/ai_scientist_v2/tahoe_drug_corrected/seed42/development/definition.json",
               "definition_sha256": "6f40267b301f9b7c403adfada6fc74e0acd08c7e935a308f722c13b78b61b927",

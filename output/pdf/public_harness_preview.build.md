@@ -9,10 +9,12 @@ Other public result cells are N/A,
 and both public three-seed rows remain N/A. No formal manuscript, frozen publisher,
 runtime, training artifact, or evaluation artifact was modified by this refresh.
 
-After the archival refresh to `formal_v5`, all three preview TeX input hashes
-were checked against this receipt and were unchanged. The existing rendered
-PDF was therefore retained; changing the queue base alone did not change the
-four verified seed-42 cells or the page contents.
+At the archival refresh for `formal_v6`, all three preview TeX input hashes
+were checked against this receipt and were unchanged. No additional verified
+score was available: the adopted failed AI-Researcher PTPC run produced no
+heldout score and remains N/A. The existing rendered PDF was therefore retained;
+changing the queue base did not change the four verified seed-42 cells or the
+page contents. No PDF rebuild was needed.
 
 ## Inputs and output
 

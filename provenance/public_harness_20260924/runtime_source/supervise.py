@@ -44,6 +44,7 @@ CONTROLLER_FAILURE_PREFIXES = (
     'Tool response remained invalid after',
     'Native required-tool stage ended',
     'Native stage exhausted with a failed completion/tool receipt',
+    'Native context exceeds declared token limit; no silent truncation.',
 )
 
 
@@ -67,7 +68,7 @@ def _assert_launcher_exited(run, status):
 
 
 def controller_failure(run, job, status):
-    """Classify only production, identity-bound AIRE tool/completion failures.
+    """Classify only production, identity-bound AIRE declared native failures.
 
     This does not authorize continuing: the immutable queue option and, for a
     newly launched child, successful cleanup/final accounting are also required.
@@ -100,7 +101,8 @@ def controller_failure(run, job, status):
                    or not math.isfinite(usage[key]) or usage[key] < 0
                    for key in ('calls', 'input_tokens', 'output_tokens', 'generation_seconds'))):
         raise ValueError(f'Failed run has no complete backend usage receipt: {run}')
-    if status.get('test_read') is not False or (run / 'heldout').exists():
+    if (status.get('test_read') is not False or (run / 'heldout').exists()
+            or (run / 'development/selection_seal.json').exists()):
         raise ValueError(f'Unscorable controller failure has unexpected held-out access/artifacts: {run}')
     return dict(job=dict(job), output=str(run), status='UNSCORABLE_CONTROLLER_FAILURE',
                 error_type=status['error_type'], error=error, test_read=False,
@@ -559,7 +561,7 @@ def main():
     parser.add_argument('--prior-reserved-gpu-hours', type=float, default=0.,
                         help='Fixed earlier engineering allocation, counted inside --max-gpu-hours (must match on resume)')
     parser.add_argument('--continue-controller-failures', action='store_true',
-                        help='Skip only registered unscorable AIRE tool/completion failures; immutable on resume')
+                        help='Skip only registered unscorable AIRE native failures; immutable on resume')
     parser.add_argument('--detach', action='store_true')
     parser.add_argument('--status', action='store_true')
     args = parser.parse_args()
