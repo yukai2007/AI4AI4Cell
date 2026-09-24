@@ -20,17 +20,25 @@ def collect(base):
         return dict(registered=False, resolved=False, scored=0, tasks={})
     manifest = original.read(manifest_path)
     sys.path.insert(0, str(original.EXTENSION))
-    from supervise_compact_repair import source_pins
+    if manifest['schema']=='public-harness-compact-repair-queue-v2':
+        from airesearcher_transport_v2 import source_pins
+        version='airesearcher-task-transport-compact-v2'
+        adapter_file='airesearcher_transport_v2.py'
+    elif manifest['schema']=='public-harness-compact-repair-queue-v1':
+        from supervise_compact_repair import source_pins
+        version=VERSION
+        adapter_file='airesearcher_compact.py'
+    else:
+        raise ValueError('Unknown repair registration')
     expected = {('ai_researcher', task, 42) for task in TASKS}
     registered = [(j['harness'], j['task'], j['seed']) for j in manifest['jobs']]
-    if (manifest['schema']!='public-harness-compact-repair-queue-v1'
-            or len(registered)!=4 or set(registered)!=expected
+    if (len(registered)!=4 or set(registered)!=expected
             or manifest['source_sha256']!=source_pins()
             or manifest['max_gpu_hours']!=2. or manifest['fitting_gpus']!=[0]):
         raise ValueError('Repair registration changed')
     snapshot = original.collect(base)  # Includes independent reconstruction/rescoring.
     result = dict(schema='public-harness-compact-repair-publication-v1',registered=True,
-        adapter_version=VERSION,seed=42,base=str(base),manifest_sha256=original.sha(manifest_path),
+        adapter_version=version,seed=42,base=str(base),manifest_sha256=original.sha(manifest_path),
         source_sha256=manifest['source_sha256'],tasks={},scored=0,resolved=True,
         replaces_original_failures=False,scientific_verification='unchanged full public-harness verifier')
     for task in TASKS:
@@ -39,9 +47,9 @@ def collect(base):
         status = original.read(path) if path.exists() else {}
         measured = snapshot['tasks'][task]['public_harnesses']['ai_researcher']['runs']['42']
         if measured is not None:
-            if status.get('transport_revision')!=VERSION or status.get('status')!='DEVELOPMENT_COMPLETE':
+            if status.get('transport_revision')!=version or status.get('status')!='DEVELOPMENT_COMPLETE':
                 raise ValueError('Scored repair has no matching completed transport revision')
-            expected_adapter=original.EXTENSION/'airesearcher_compact.py'
+            expected_adapter=original.EXTENSION/adapter_file
             if str(expected_adapter) not in measured['adapter_paths']:
                 raise ValueError('Measured repair did not execute the registered compact adapter')
             result['scored']+=1
@@ -74,7 +82,7 @@ def table(snapshot):
         'Method / transport & '+' & '.join(NAMES)+r' \\',r'\midrule',
         'AI-Researcher / repaired & '+' & '.join(cell(t) for t in TASKS)+r' \\',
         'BioCoLoop & '+' & '.join(cell(t,True) for t in TASKS)+r' \\',r'\bottomrule',r'\end{tabularx}',
-        r'\caption{Separate transport-repair study, seed 42, ten laboratories. AI-Researcher uses deduplicated task prompts and an additional unambiguous argument-envelope alias. All scientific budgets and scoring rules remain unchanged. Values are multiplied by 100; bold marks the better value or a tie among scored pairs. Original-adapter failures remain in the preceding comparison.}',
+        r'\caption{Separate transport-repair study, seed 42, ten laboratories. AI-Researcher uses deduplicated task prompts and compatible single-tool envelopes. All scientific budgets and scoring rules remain unchanged. Values are multiplied by 100; bold marks the better value or a tie among scored pairs. Original-adapter failures remain in the preceding comparison.}',
         r'\label{tab:public-harness-compact-repair}',r'\end{table}',''])
 
 

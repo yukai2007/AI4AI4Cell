@@ -151,13 +151,21 @@ def terminal_fingerprint(base, matrix, supervisor):
     terminal_queue = None
     if supervisor.get('status') != 'RUNNING':
         terminal_queue = {key: supervisor.get(key) for key in ('status', 'current_job', 'error_type', 'error')}
-    repair = base.parent/'compact_repair_v1'
-    for path in repair.glob('ai_researcher/*/seed42/heldout/verification.json'):
-        receipts[str(path)] = digest(path)
-    for path in repair.glob('ai_researcher/*/seed42/run_status.json'):
-        if read(path).get('status') in {'FAILED','DEVELOPMENT_COMPLETE'}:
+    for repair in (base.parent/'compact_repair_v1',base.parent/'compact_repair_v2'):
+        manifest_path=repair/'queue_manifest.json'
+        if manifest_path.exists():receipts[str(manifest_path)]=digest(manifest_path)
+        for path in repair.glob('ai_researcher/*/seed42/heldout/verification.json'):
             receipts[str(path)] = digest(path)
+        for path in repair.glob('ai_researcher/*/seed42/run_status.json'):
+            if read(path).get('status') in {'FAILED','DEVELOPMENT_COMPLETE'}:
+                receipts[str(path)] = digest(path)
     return hashlib.sha256(json_bytes(dict(receipts=receipts, terminal_queue=terminal_queue))).hexdigest()
+
+
+def repair_base(base):
+    # Version choice is fixed by registration, never by held-out performance.
+    v2=base.parent/'compact_repair_v2'
+    return v2 if (v2/'queue_manifest.json').exists() else base.parent/'compact_repair_v1'
 
 
 def supervisor_alive(supervisor, base):
@@ -246,7 +254,7 @@ pending runs. Automatic updates await visual review before mainline delivery.
 \clearpage
 \section*{Task-transport repair}
 This separate study removes repeated task packets from stage prompts and
-accepts an unambiguous parameter-envelope alias. Scientific budgets are unchanged.
+accepts compatible single-tool envelopes. Scientific budgets are unchanged.
 \input{tables/public_harness_comparison/compact_repair_seed42.tex}
 \end{document}
 '''.encode()
@@ -377,7 +385,7 @@ class Watcher:
                        '--base', self.base, '--output-dir', output], cwd=self.paper, env=env, timeout=600)
         atomic_write(staging/'publisher.log', log.encode())
         repair_log = command([sys.executable, '-B', self.paper/'tools/publish_public_harness_repair.py',
-                              '--base', self.base.parent/'compact_repair_v1', '--output-dir', output],
+                              '--base', repair_base(self.base), '--output-dir', output],
                              cwd=self.paper, env=env, timeout=600)
         atomic_write(staging/'repair_publisher.log', repair_log.encode())
         if {path.name for path in output.iterdir()} != set(TABLE_NAMES):
@@ -463,7 +471,7 @@ class Watcher:
         manifest = read(self.base/'queue_manifest.json')
         supervisor = read(self.base/'supervisor_status.json')
         observation = queue_observation(self.base, manifest, supervisor)
-        repair_status_path = self.base.parent/'compact_repair_v1/supervisor_status.json'
+        repair_status_path = repair_base(self.base)/'supervisor_status.json'
         if repair_status_path.exists():
             repair_status = read(repair_status_path)
             observation['compact_repair'] = {key:repair_status.get(key) for key in
