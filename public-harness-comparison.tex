@@ -1,0 +1,18 @@
+% Standalone comparison review; the branch manuscript is compiled from main.tex.
+\documentclass{article}
+\usepackage{iclr2027_conference}
+\usepackage{fontspec}
+\setmainfont{texgyretermes-regular.otf}[Path=fonts/,BoldFont=texgyretermes-bold.otf,ItalicFont=texgyretermes-italic.otf,BoldItalicFont=texgyretermes-bolditalic.otf]
+\usepackage{amsmath,booktabs,tabularx,longtable}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\hypersetup{pdftitle={BioCoLoop public-harness comparison: branch review}}
+\begin{document}
+\section*{Public research-controller comparison}
+This review separates predictive scores, declared controller failures and pending runs. All displayed single-seed scores use seed 42. Three-seed means require every registered seed; failures are not assigned zero scores.
+\input{tables/public_harness_comparison/results_public_harness}
+\input{tables/public_harness_comparison/main_public_harness_seed42}
+\clearpage
+\input{tables/public_harness_comparison/completion_public_harness}
+\clearpage
+\input{tables/public_harness_comparison/main_public_harness_three_seed}
+\end{document}

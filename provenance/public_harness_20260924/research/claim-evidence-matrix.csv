@@ -1,3 +1,4 @@
 claim_id,section,claim,source_ids,evidence_location,status,notes
 AIS_TREE,baseline integration,AI-Scientist-v2 uses agentic tree search guided by an experiment manager,AISV2_REPO,ai_scientist/treesearch/agent_manager.py and parallel_agent.py,reported,Task adaptation and executed native stages are documented in README_aiscientist.md and sealed per-run native traces
 AIR_REFINEMENT,baseline integration,AI-Researcher includes implementation and iterative validation/refinement agents,AIRESEARCHER_REPO,research_agent InnoFlow.forward and MetaChain,reported,Task adaptation and executed native stages are documented in README_airesearcher.md and per-run source transformations
+PUBLIC_CITATIONS,Section 4.2 and Appendix C,The two public controller papers are cited with verified full authors and versions,AISV2_PAPER; AIRESEARCHER_PAPER,Versioned title pages and method sections,reported,External method attribution is separate from the locally measured task-adapted performance

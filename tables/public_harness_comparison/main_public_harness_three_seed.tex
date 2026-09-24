@@ -1,0 +1,20 @@
+\begin{table}[t]
+\centering\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\linewidth}{@{}Xrrrrr@{}}
+\toprule
+\textbf{Model / method} & \multicolumn{1}{c}{DTI} & \multicolumn{1}{c}{Proteomics} & \multicolumn{3}{c}{Cell perturbation} \\
+\cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(l){4-6}
+ & \shortstack{BindingDB\\AUROC $\uparrow$} & \shortstack{PTPC\\AP $\uparrow$} & \shortstack{VCC\\Top-1 $\uparrow$} & \shortstack{Norman\\Top-1 $\uparrow$} & \shortstack{Tahoe\\Top-1 $\uparrow$} \\
+\midrule
+Fixed model (1 lab) & 82.83 $\pm$ 1.22 & \underline{25.05} $\pm$ 4.56 & \underline{29.94} $\pm$ 0.00 & \textbf{25.56} $\pm$ 0.00 & \underline{19.40} $\pm$ 0.00 \\
+Qwen direct (1 lab) & \underline{89.89} $\pm$ 1.02 & 20.13 $\pm$ 0.07 & 21.09 $\pm$ 4.38 & 14.15 $\pm$ 0.00 & 15.42 $\pm$ 6.21 \\
+AI-Scientist-v2 (10 labs) & Pending & \shortstack{Pending\\\scriptsize 1S/0F/2P} & \shortstack{Pending\\\scriptsize 1S/0F/2P} & \shortstack{Pending\\\scriptsize 1S/0F/2P} & \shortstack{Pending\\\scriptsize 1S/0F/2P} \\
+AI-Researcher (10 labs) & Pending & \shortstack{Mixed\\\scriptsize 0S/1F/2P} & \shortstack{Mixed\\\scriptsize 0S/1F/2P} & \shortstack{Mixed\\\scriptsize 0S/1F/2P} & \shortstack{Mixed\\\scriptsize 0S/1F/2P} \\
+\textbf{BioCoLoop} (10 labs) & \textbf{93.76} $\pm$ 1.11 & \textbf{36.99} $\pm$ 0.22 & \textbf{31.54} $\pm$ 0.08 & \underline{22.25} $\pm$ 0.45 & \textbf{22.39} $\pm$ 2.59 \\
+\bottomrule
+\end{tabularx}
+\caption{Main comparison (mean $\pm$ sample SD, seeds 42--44). Unfinished cells show scored/failed/pending counts (S/F/P). Scores are multiplied by 100; bold/underline mark best/second-best values, including ties. Public controllers use task-adapted interfaces. Only complete seed sets are averaged; execution outcomes are detailed in Appendix C.}
+\label{tab:public-harness-comparison-three-seed}
+\end{table}

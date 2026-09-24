@@ -1,0 +1,21 @@
+\begin{table}[t]
+\centering\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{@{}Xrrrrrrr@{}}
+\toprule
+Method / seed & Scored & $F_{\mathrm{ctx}}$ & $F_{\mathrm{tool}}$ & $F_{\mathrm{pipe}}$ & Pending & Terminal & Total \\
+\midrule
+AI-Scientist-v2 (10 labs) / 42 & 4 & 0 & 0 & 0 & 1 & 4 & 5 \\
+AI-Scientist-v2 (10 labs) / 43 & 0 & 0 & 0 & 0 & 5 & 0 & 5 \\
+AI-Scientist-v2 (10 labs) / 44 & 0 & 0 & 0 & 0 & 5 & 0 & 5 \\
+\midrule
+AI-Researcher (10 labs) / 42 & 0 & 2 & 2 & 0 & 1 & 4 & 5 \\
+AI-Researcher (10 labs) / 43 & 0 & 0 & 0 & 0 & 5 & 0 & 5 \\
+AI-Researcher (10 labs) / 44 & 0 & 0 & 0 & 0 & 5 & 0 & 5 \\
+\midrule
+Public-controller matrix & 4 & 2 & 2 & 0 & 22 & 8 & 30 \\
+\bottomrule
+\end{tabularx}
+\caption{Public-controller execution outcomes across five endpoints and three seeds. Terminal counts include both scored runs and verified controller failures. Pending denotes unresolved work. These counts describe the public-controller adapter protocol.}
+\label{tab:public-harness-completion}
+\end{table}

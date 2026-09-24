@@ -1,0 +1,20 @@
+\begin{table}[t]
+\centering\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\linewidth}{@{}Xrrrrr@{}}
+\toprule
+\textbf{Model / method} & \multicolumn{1}{c}{DTI} & \multicolumn{1}{c}{Proteomics} & \multicolumn{3}{c}{Cell perturbation} \\
+\cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(l){4-6}
+ & \shortstack{BindingDB\\AUROC $\uparrow$} & \shortstack{PTPC\\AP $\uparrow$} & \shortstack{VCC\\Top-1 $\uparrow$} & \shortstack{Norman\\Top-1 $\uparrow$} & \shortstack{Tahoe\\Top-1 $\uparrow$} \\
+\midrule
+Fixed model (1 lab) & 81.76 & \underline{23.97} & \underline{29.94} & \textbf{25.56} & \underline{19.40} \\
+Qwen direct (1 lab) & \underline{88.82} & 20.21 & 21.73 & 14.15 & 13.43 \\
+AI-Scientist-v2 (10 labs) & Pending & \textbf{37.12} & \textbf{31.63} & \underline{22.74} & \textbf{23.88} \\
+AI-Researcher (10 labs) & Pending & $F_{\mathrm{ctx}}$ & $F_{\mathrm{tool}}$ & $F_{\mathrm{ctx}}$ & $F_{\mathrm{tool}}$ \\
+\textbf{BioCoLoop} (10 labs) & \textbf{94.60} & \textbf{37.12} & \textbf{31.63} & \underline{22.74} & \textbf{23.88} \\
+\bottomrule
+\end{tabularx}
+\caption{Matched seed-42 comparison. Scores are multiplied by 100; bold/underline mark best/second-best values, including ties. Public controllers use task-adapted interfaces. Only complete seed sets are averaged; execution outcomes are detailed in Appendix C. $F_{\mathrm{ctx}}$, $F_{\mathrm{tool}}$ and $F_{\mathrm{pipe}}$ denote context, tool and pipeline failures; Pending is unresolved.}
+\label{tab:public-harness-comparison-seed42}
+\end{table}
