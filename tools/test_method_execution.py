@@ -14,8 +14,8 @@ class MethodExecutionTests(unittest.TestCase):
     def test_duration_is_not_a_design_factor(self):
         self.assertIn("assign each candidate 100 training rounds", self.method)
         self.assertIn(r"not by \texttt{design\_id}", self.method)
-        self.assertIn("learning rate, weight decay, server momentum", self.method)
-        self.assertIn("A separate experiment", self.method)
+        self.assertIn("learning rate, weight decay, coordinator momentum", self.method)
+        self.assertIn("This separate allocation study", self.method)
         self.assertIn("does not generate language-model proposals", self.method)
         for phrase in ("every design for 80 rounds", "each for 20 rounds",
                        "six promoted designs restart from their initial parameters",
@@ -44,13 +44,25 @@ class MethodExecutionTests(unittest.TestCase):
         self.assertIn("only if its score/loss pair is better", self.appendix)
 
     def test_initialization_and_feedback_boundaries(self):
-        for phrase in ("workers initialize identically", "Candidates start afresh",
+        for phrase in ("resets the predictor to its prescribed initialization",
+                       "distributes it to all training laboratories",
                        "first/last training and development diagnostics",
                        "without fine-tuning the research language model",
                        "source-specific head", "original target's development panels"):
             self.assertIn(phrase, self.method)
         self.assertIn("failed fits consume a proposal slot", self.method)
         self.assertNotIn("The research language model remains fixed; adaptation occurs", self.method)
+
+    def test_notation_and_roles_are_consistent(self):
+        self.assertIn(r"\{D_i^{\mathrm{dev}}\}_{i\in\mathcal E}", self.method)
+        self.assertNotIn(r"D_j^{\mathrm{dev}}", self.method)
+        self.assertIn(r"instantiate $f_{a,w}$ as task-specific predictors", self.method)
+        self.assertIn(r"evaluate the aggregated predictor $f_{a,w_r}$", self.method)
+        self.assertNotRegex(self.method.lower(), r"\bworkers?\b|\bserver\b|\bclients?\b")
+        self.assertNotIn(r"\operatorname{Init}(a,z)", self.method)
+        self.assertEqual(self.method.count("Appendix A"), 1)
+        self.assertIn("Floating-point buffers", self.appendix)
+        self.assertIn("study seed", self.appendix)
 
     def test_promotion_and_resampling_are_explicit(self):
         for phrase in ("best screening checkpoint", "round 5 to round 20",

@@ -31,7 +31,9 @@ class EvidenceLedNarrativeTests(unittest.TestCase):
             actual = 100 * mean(run["scores"]["federated_loop"]["primary"]
                                 for run in snapshot["tasks"][task]["runs"].values())
             self.assertEqual(f"{actual:.2f}", display)
-            self.assertIn(display, abstract)
+            self.assertNotIn(display, abstract)
+        self.assertIn("four of five endpoints", abstract)
+        self.assertNotRegex(abstract, r"\bDTI\b|\bAUROC\b|\bAP\b")
         self.assertNotRegex(abstract.lower(), r"\bsota\b|state.of.the.art|all five endpoints")
 
     def test_same_access_controls_remain_visible(self):
@@ -49,14 +51,23 @@ class EvidenceLedNarrativeTests(unittest.TestCase):
         allocation = text.split("3.4 Trajectory-guided training allocation", 1)[1]
         for phrase in ("ten predetermined designs", "20 rounds", "learning-rate group",
                        "round 5 to round 20", "restart from their initial parameters",
-                       "100-round training", "800 full-client rounds",
+                       "100-round training", "800 aggregation rounds",
                        "160 aggregate development evaluations",
                        "does not generate language-model proposals",
-                       "two policies are evaluated independently"):
+                       "they do not use the allocation policy",
+                       "improves Norman Top-1 by 10.84 percentage points"):
             self.assertIn(phrase, allocation)
         results = (PAPER / "sections/05_results.tex").read_text()
         self.assertLess(results.index("4.4 Measured trajectories"),
                         results.index("4.7 How does feedback"))
+
+    def test_training_term_and_figure_action_labels(self):
+        sources = [(PAPER / "biocoloop-main.tex").read_text()]
+        sources.extend(path.read_text() for path in (PAPER / "sections").glob("*.tex"))
+        self.assertNotIn("predictive learning", "\n".join(sources))
+        generator = (PAPER / "tools/draw_paradigm_comparison.py").read_text()
+        self.assertIn("Train locally; share updates", generator)
+        self.assertNotIn("Local fits; share updates", generator)
 
 
 if __name__ == "__main__":

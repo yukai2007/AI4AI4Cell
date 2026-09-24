@@ -36,7 +36,7 @@ class SecondReviewTests(unittest.TestCase):
         self.assertIn('within each dataset',text)
         self.assertIn('source-as-laboratory',text)
         text+=(PAPER/'sections/05_results.tex').read_text()
-        self.assertIn('collection-defined clients',text)
+        self.assertIn('collection-defined laboratories',text)
         self.assertIn('Replogle/K562',text)
         self.assertIn('Nadig/HepG2',text)
         self.assertIn('Jiang/IFNB/K562',text)

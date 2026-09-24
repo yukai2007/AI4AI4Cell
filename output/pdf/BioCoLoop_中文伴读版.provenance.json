@@ -10,8 +10,8 @@
     "AAAAAC+CompanionSC"
   ],
   "text_out_of_bounds_pages": [],
-  "generated_utc": "2026-09-24T06:46:34.856277+00:00",
-  "generator_sha256": "e1904675b5e441e7ee51894c3518d4fa6e206bdaab454bf10383468a90642a84",
+  "generated_utc": "2026-09-24T09:03:28.023910+00:00",
+  "generator_sha256": "fffacb2255c09514f421d82675220f4e12d37c289197604d3ecf33d567b63c2b",
   "embedded_font_source_sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
   "input_sha256": {
     "paper/tables/strong_v3/snapshot.json": "814129bf578ab358de0773b1975ba00257a7fe12c75b3e6b6f1534617cd5749a",
@@ -19,16 +19,16 @@
     "paper/tables/completed_ablation/snapshot.json": "1300ee2702358927af215de29d7de22bf9b1d495923c2d5661a42f5abed79f23",
     "results/tonight_completion_20260923/final_delivery/summary.json": "8eb30ad05acaf714dbaa8c180a0657dcd9bc6c8b9bebccba620f097159eb7541",
     "results/proteomics_external_pilot_20260923/RESULT.zh-CN.md": "e9fc4c7c2424dc12959816efa8a1c1cd758c0414835df386799904c1948b68a9",
-    "paper/assets/paradigm_comparison.pdf": "9fcd37147894126736c2f7a31e4ef560f3a66128d87a308e02648fd08e2ce131",
+    "paper/assets/paradigm_comparison.pdf": "75c235b5d3b3242dfad28b16b61df6ac75f7435b8b260bf9130354a51388ec77",
     "paper/assets/completed_budget_examples.pdf": "2b491a88b837d9e2aed1dd48f28eff547e4010a9db3fefef240243e2304c0f5d",
     "paper/assets/laboratory_sensitivity_v2.pdf": "c89fc89d591bc4dbc10d5a7129df5bd52c232e2be862b95503d19a311e3fdbb0",
     "paper/assets/completed_short6_search.pdf": "3edd2cdc4694529089c4b9095462ef99f8df580692b194e89a2f16100f5ea786",
     "paper/figures/biocoloop_framework_v2.pdf": "dbf7abb5b6d6a6fc76e88259d02d93996e4f6c7dcc1c25bbe8a0eabdac206bee",
     "paper/figures/biocoloop_framework_v2.provenance.json": "3f5b8e207e237d9b78c9225b6f106326388511d0a1adbb7a55c97eab114d22ef",
     "paper/provenance/coauthor_review_v2_20260923/ANNOTATIONS.zh-CN.md": "e93f9742ffbe19924f7117510939e331374684b839c9910fc4536c73bc7e929b",
-    "paper/sections/03_method.tex": "0e07d14fbd00088c5d9622bfcefe27407fd503209cab04867d59a4c2b19309aa",
-    "paper/sections/04_experimental_design.tex": "f754e3bb92d0cc47e8ded3d0f5220cf7c52755398c80163a4a8d21169a12f145",
-    "paper/sections/22_appendix_unified_protocol.tex": "2bd9cd2446ad5cd72525cded8bf4d6edb24daecd89afe6b8a6ee267fbe97ba80",
+    "paper/sections/03_method.tex": "ab00b09aead877d1a88c0c787e94c3c1a0460d0f99a158a4b1f043a75c1a6d6d",
+    "paper/sections/04_experimental_design.tex": "84ca8e46bf70e5a23dca23aa47677b3481b7d7a65abf3b327515059aa9cce266",
+    "paper/sections/22_appendix_unified_protocol.tex": "9ab81c78cc2fae405d3d52307b9e80d030931f0b42508f2ad4d94c11f250e658",
     "results/supplemental_20260923/proteomics/seed61_slots0_cpu/independent_rescore.json": "b5fa3aebb01205ba8db57edb29af57e3dfa79a2c0e1cab94d0b2e2ce8c06ab29",
     "results/supplemental_20260923/proteomics/seed61_slots0_cpu/definition.json": "5b5e10e7321fe32c66bb6b0a83134ae4bab700a9dce2a91ddc514a98688f34f5",
     "results/supplemental_20260923/proteomics/seed61_slots0_cpu/heldout/results.json": "804d7ede777b175fc9369fae2609dd8804570cccb08ed1ef7fef0a56272ea089",
@@ -101,7 +101,7 @@
     }
   },
   "page_count": 20,
-  "output_sha256": "8a404828922c7e15a3834656609fa12f85af4f3d3a6f45b5674b51418a23f078",
+  "output_sha256": "feeaa55d543e3526c76553dfdd36b6d299c8246c67df9854046310b35bf29763",
   "uncompleted_extensions": [
     "additional seeds",
     "DTI long24"

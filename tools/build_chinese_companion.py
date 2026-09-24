@@ -329,7 +329,7 @@ def supplemental_protein_page(data):
     all_gain = contrast['plus_all3_fixed_minus_target_only_fixed']['ap_percentage_points']
     added_gain = contrast['plus_all3_fixed_minus_plus_existing2_fixed']['ap_percentage_points']
     return [p('8.3  三个独立蛋白来源：新补实验', 'h1'),
-            p('Lin、Ruprecht、decryptE 是三项独立辅助研究。本节保留 ProteinTalks 目标的十个训练片，各外源再对应一个 worker；最多为 13 个训练客户端，而不是每个研究只对应一个实验室。共享编码器吸收不同测量信息，各来源保留自己的预测头和损失；严格的一来源一实验室设置见第 8.4 节。四个配置使用相同设计、seed 61 和 100 轮训练，并在同一目标开发集上选 checkpoint。', 'body'),
+            p('Lin、Ruprecht、decryptE 是三项独立辅助研究。本节保留 ProteinTalks 目标的十个训练片，各外源再对应一个模拟实验室；最多为 13 个训练实验室，而不是每个研究只对应一个实验室。共享编码器吸收不同测量信息，各来源保留自己的预测头和损失；严格的一来源一实验室设置见第 8.4 节。四个配置使用相同设计、seed 61 和 100 轮训练，并在同一目标开发集上选 checkpoint。', 'body'),
             table(rows, [67*mm, 29*mm, 31*mm, 44*mm], highlights=[(4, PALE_TEAL)]),
             Spacer(1, 5*mm),
             callout('已经完成的第三来源结果',
@@ -407,11 +407,11 @@ def scenario_page(data):
             table(rows, [65*mm, 14*mm, 20*mm, 36*mm, 36*mm]),
             Spacer(1, 5*mm),
             callout('这组对照分别回答什么',
-                    '15→60 个目标条件：更多目标训练条件的作用；同样 60 个目标条件由 1→4 个 worker：分区的作用；同样 K=4、N=60 时改为四种场景：来源组成的作用。这里 N 统计训练干预条件；原始细胞数与基因面板不属于这项配对约束。',
+                    '15→60 个目标条件：更多目标训练条件的作用；同样 60 个目标条件由 1→4 个实验室持有：分区的作用；同样 K=4、N=60 时改为四种场景：来源组成的作用。这里 N 统计训练干预条件；原始细胞数与基因面板不属于这项配对约束。',
                     PALE_BLUE, BLUE),
             Spacer(1, 4*mm),
             p(f'在 K=4、N=60 的主配对对照中，跨场景相对同源分区的 macro Top-1 均值变化为 {delta:+.2f} 个百分点。MRR 变化为 {mrr_delta:+.2f} 点。所有四臂使用 seeds 61–63，在同一 20 个目标干预、360 个查询上评价；表中为均值 ± 样本标准差。', 'body'),
-            p('这项实验将不同研究或生物背景直接对应为 worker。匹配条件数与 worker 数后，多源组合的 Top-1 仍低于同源对照，说明来源的任务适配性需要单独评价。它检验固定设计的来源迁移，不能替代 LLM 历史反馈对照。跨场景三个 seed 对应不同 checkpoint，交叉熵略有不同，但 Top-1/MRR 汇总相同；离散排序指标没有区分出这些较小的预测变化。', 'note'),
+            p('这项实验将不同研究或生物背景直接对应为实验室。匹配条件数与实验室数后，多源组合的 Top-1 仍低于同源对照，说明来源的任务适配性需要单独评价。它检验固定设计的来源迁移，不能替代 LLM 历史反馈对照。跨场景三个 seed 对应不同 checkpoint，交叉熵略有不同，但 Top-1/MRR 汇总相同；离散排序指标没有区分出这些较小的预测变化。', 'note'),
             PageBreak()]
 
 
@@ -450,7 +450,7 @@ def strict_proteomics_review():
 
 def strict_proteomics_page(study):
     receipt, protocol, status = study['verification'], study['protocol'], study['status']
-    rows = [['参与研究', '训练 lab', '训练条件', 'AP ×100', 'AUROC ×100']]
+    rows = [['参与研究', '实验室数', '训练条件', 'AP ×100', 'AUROC ×100']]
     points = []
     for arm, label in [('target_only', '仅目标 ProteinTalks'),
                        ('plus_decrypte', '+ decryptE'),
@@ -468,7 +468,7 @@ def strict_proteomics_page(study):
     ap_gain = 100*(points[-1][0]-points[0][0])
     auroc_gain = 100*(points[-1][1]-points[0][1])
     return [p('8.4  严格按研究来源定义实验室', 'h1'),
-            p('本节让每个训练实验室与一个研究来源一一对应：把 ProteinTalks 的 386 个目标训练条件合并为一个 worker；Lin、Ruprecht、decryptE 各自组成独立 worker。四种配置因此对应 K=1、2、3、4，不再把目标研究拆成十个训练实验室。各来源共享编码器，并保留自己的预测头和损失。', 'body'),
+            p('本节让每个训练实验室与一个研究来源一一对应：把 ProteinTalks 的 386 个目标训练条件合并到一个实验室；Lin、Ruprecht、decryptE 各自对应一个独立实验室。四种配置因此对应 K=1、2、3、4，不再把目标研究拆成十个训练实验室。各来源共享编码器，并保留自己的预测头和损失。', 'body'),
             table(rows, [66*mm, 22*mm, 27*mm, 28*mm, 28*mm], highlights=[(4, PALE_TEAL)]),
             Spacer(1, 5*mm),
             callout('按来源协作后的实际增益',
@@ -550,7 +550,7 @@ def sensitivity_pages(data, core, supplement, scenario, strict_protein):
           p('DTI 使用 3 个独立来源，VCC 使用 3 项独立研究；蛋白组先用 Lin、Ruprecht 进行共享编码器 pilot，并已补齐 decryptE 第三独立来源。所有来源条件及其组合均保留。分数为同一目标留出集的 AUROC（DTI）、macro Top-1（VCC）或 AP（PTPC），均乘以 100。', 'body'),
           table(source_rows, [30*mm, 49*mm, 44*mm, 48*mm], font='tiny'), Spacer(1, 3*mm),
           p(f'DTI：Davis / Human 为正向点估计，BioSNAP 与三源组合下降。VCC：Jiang 提升 3.58 点，但扰动簇 bootstrap 95% CI 为 [{low:.2f}, {high:.2f}]；三源合并下降 2.15 点。来源兼容性比简单堆叠来源更重要。', 'small'),
-          p('蛋白组：新增共享编码器及来源专属 head，保留目标原有十客户端，外源各为独立客户端；连续 viability / EC50 不改成目标二分类标签。只与同架构 target-only 配对。Ruprecht 提升 0.52 AP 点，药物簇 95% CI 为 [-1.46, 2.64]；四组两槽位 Luna pilot 的 loop-minus-fixed 均为 0。DTI / cell 跨源实验则把目标全池作为一个客户端。', 'small'),
+          p('蛋白组：新增共享编码器及来源专属 head，保留目标原有十个实验室，外源各对应独立实验室；连续 viability / EC50 不改成目标二分类标签。只与同架构 target-only 配对。Ruprecht 提升 0.52 AP 点，药物簇 95% CI 为 [-1.46, 2.64]；四组两槽位 Luna pilot 的 loop-minus-fixed 均为 0。DTI / cell 跨源实验则把目标全池作为一个实验室的数据。', 'small'),
           p(f"同研究背景迁移另列：mtPTDS 的三个细胞背景不是三个独立研究。全部加入时 AP 从 {display_samples(context_base['scores'])} 变为 {display_samples(contexts['scores'])}；配对区间 [{contexts['ci_pp'][0]:.2f}, {contexts['ci_pp'][1]:.2f}]。这三个背景属于同研究的不同场景；三独立来源的固定设计对照见第 8.3 节；严格按研究来源定义实验室的结果见第 8.4 节。", 'note'), PageBreak()]
 
     s += scenario_page(scenario)
@@ -609,9 +609,9 @@ def sensitivity_pages(data, core, supplement, scenario, strict_protein):
                  ['双后端长预算', '4 轻任务 × Qwen/Luna，8 对，完成', '有限预算搜索动态；不含 DTI'],
                  ['实验室 K 两种设置', '5 端点 × 4 档 × 2 设置，完成', '更多数据与固定数据分区的差异'],
                  ['DTI / cell 独立来源', 'DTI 3 源；VCC 3 源，完成', '目标数据不变时外部研究的影响'],
-                 ['同源与跨场景受控对照', 'VCC 4 臂 × 3 seeds，完成', '分开控制条件数、worker 数和来源组成'],
+                 ['同源与跨场景受控对照', 'VCC 4 臂 × 3 seeds，完成', '分开控制条件数、实验室数和来源组成'],
                  ['Protein 独立来源', 'Lin、Ruprecht pilot + 三来源固定设计，完成', '共享编码器及来源专属 head 的目标迁移'],
-                 ['Protein 严格来源实验室', '4 臂，K=1/2/3/4，seed 61，完成', '每个训练 worker 对应一项真实研究'],
+                 ['Protein 严格来源实验室', '4 臂，K=1/2/3/4，seed 61，完成', '每个训练实验室对应一项真实研究'],
                  ['后续扩展', 'DTI long24 未做；更多 seed 待扩展', '扩大预算与独立重复']],
                 [42*mm, 65*mm, 64*mm], font='small'), Spacer(1, 5*mm),
           callout('已验证的收益与进一步的机制分析',
@@ -700,7 +700,7 @@ def story():
                   "外层提出、实例化、评价和修订设计；中部实验室本地拟合，协调器聚合更新与诊断；右侧输出选定设计、预测器和历史；底部是三个任务族。研究 LLM 通过新的证据上下文调整下一提案，其权重保持固定。",
                   PALE_BLUE, BLUE), PageBreak(),
           p("3  Harness 外层到底做什么（续）", "h1"),
-          p("一个 design_id 对应四个选择：学习率、weight decay、server momentum、是否启用残差预测模块。D 是 design 编号，例如 D06 只命名确定配置，不编码 epoch 数。外层从统一菜单中提出候选，任务 adapter 提供输入、预测头与损失。", "body"),
+          p("一个 design_id 对应四个选择：学习率、weight decay、协调器动量、是否启用残差预测模块。D 是 design 编号，例如 D06 只命名确定配置，不编码 epoch 数。外层从统一菜单中提出候选，任务 adapter 提供输入、预测头与损失。", "body"),
           table([["阶段", "输入", "输出 / 作用"],
                  ["1. Hypothesize", "任务契约、incumbent、历史 evidence cards", "提出一个聚焦且可检验的假设"],
                  ["2. Instantiate", "结构化 proposal", "验证 design_id 并编译为可执行配置"],
@@ -723,13 +723,14 @@ def story():
     s += [p("3  本地拟合、开发评价与训练预算（续）", "h1"),
           p("训练时长由评价调度器单独设置，不由 design_id 或 LLM 提案决定。主表和 proposal-history 实验中，每个有效候选均按相同任务和 seed 的初始化规则重新训练 100 轮。这里一轮指所有参与实验室各完成一次本地 epoch，然后协调器聚合参数；不是一个 loop 槽位。", "body"),
           table([["过程", "执行规则"],
-                 ["本地拟合", "各实验室接收当前参数，重新初始化 AdamW，以 batch size 64 完成本地一次 epoch，梯度范数裁剪到 1。协调器按本地训练样本数加权聚合；server momentum 决定聚合更新是否累积前轮速度。"],
+                 ["本地拟合", "各实验室接收当前参数，重新初始化 AdamW，以 batch size 64 完成本地一次 epoch，梯度范数裁剪到 1。协调器按本地训练样本数加权聚合；协调器动量决定聚合更新是否累积前轮速度。"],
                  ["开发评价", "每 5 轮及最后一轮评价，指定开发面板等权平均。主比较用参与实验室的面板，fixed-pool 和跨来源对照保留目标原开发面板；主分数优先、loss 破平，选最佳 checkpoint。"],
                  ["外层选择", "用候选的最佳开发证据与保留设计比较。选定设计和 checkpoint 后，由固定留出 scorer 评价。"],
-                 ["异源目标", "蛋白来源可有不同目标：编码器共享，各专属 head 只在拥有它的 worker 间聚合；目标原有开发面板选择 checkpoint。"],
-                 ["信息边界", "worker 返回参数更新、样本数和开发诊断；研究 LLM 读取聚合 evidence cards，原始测量留在 worker 内。"]],
+                 ["异源目标", "蛋白来源可有不同目标：编码器共享，各专属 head 只在拥有它的实验室间聚合；目标原有开发面板选择 checkpoint。"],
+                 ["信息边界", "实验室返回参数更新、样本数和开发诊断；研究 LLM 读取聚合 evidence cards，原始测量留在实验室内。"]],
                 [35*mm, 136*mm], font="small"), Spacer(1, 4*mm),
           p("两种决策策略：提案修订与训练分配（英文 3.3–3.4）", "h2"),
+          p("英文第 3.4 节的轨迹驱动训练分配用于独立的固定候选对照，结果见英文第 4.4 节及本伴读版第 6 节；该策略未用于主表，主表仍为每候选 100 轮。", "note"),
           table([["实验", "候选训练安排", "作用"],
                  ["提案修订", "每个候选 100 轮", "历史证据影响下一次尝试的设计，不缩短候选训练。"],
                  ["均匀预算分配", "10 个固定候选各 80 轮", "共 800 个聚合轮、8,000 个本地 epoch。"],
@@ -738,7 +739,7 @@ def story():
           callout("轨迹驱动训练分配：可复现的晋级规则",
                   "将固定十候选按三档学习率分组。每组先保留筛选最佳 checkpoint 的开发主分数最高者，再从其余候选中保留第 5 至第 20 轮开发主分数涨幅最大者，共六个不同候选。前者用该最佳 checkpoint 的开发 loss 破平，后者用第 20 轮的开发 loss 破平。晋级后从共同初始化重新训练，并重新选择开发 checkpoint。",
                   PALE_ORANGE, ORANGE), Spacer(1, 3*mm),
-          p("主实验在同一主机上将一个任务数据集划成十个互不重叠的组，控制数据参与度；它不等同于十项真实独立研究。来源实验另将不同研究或场景指定为 worker。参数聚合按训练样本数加权，开发选择按实验室等权。", "note"), PageBreak()]
+          p("主实验在同一主机上将一个任务数据集划成十个互不重叠的组，模拟各实验室的本地训练和评价，控制数据参与度；它不等同于十项真实独立研究。来源实验另将不同研究或场景对应为实验室。参数聚合按训练样本数加权，开发选择按实验室等权。", "note"), PageBreak()]
 
     s += [p("4  三个任务如何统一", "h1"),
           table([["任务", "预测契约", "任务参考模型", "主指标"],
@@ -772,7 +773,7 @@ def story():
           p("六臂对照进一步定位收益：保持有历史提案策略，从一个实验室扩展到十个实验室后，五个端点均提高。同为十个实验室时，direct 与有历史提案选中相同检查点；单实验室 VCC 则不同。十实验室固定配方在蛋白与 Tahoe 的均值更高，完整对照保留于英文附录 A。", "small"), PageBreak()]
 
     s += [p("6  证据如何改进训练预算分配", "h1"),
-          p("早期学习轨迹能够指导后续训练投入。本页固定十个设计，检验证据驱动训练分配是否在相同预算下优于均匀分配；LLM 提案历史另行检验下一次尝试什么设计。两者是不同的研究决策策略，分别评价。", "body"),
+          p("早期学习轨迹能够指导后续训练投入。本页报告英文第 3.4 节策略的独立对照：固定十个设计，检验证据驱动训练分配是否在相同预算下优于均匀分配。该策略未用于主表；主表各候选均训练 100 轮，LLM 提案历史另行检验下一次尝试什么设计。", "body"),
           table([["端点", "均匀分配", "证据分配", "增益", "胜/平/负"],
                  ["Proteomics（留出）", "37.47", "37.47", "+0.00", "0/3/0"],
                  ["VCC（留出）", "20.01", "20.01", "+0.00", "0/3/0"],
@@ -781,7 +782,7 @@ def story():
                 [49*mm, 29*mm, 29*mm, 32*mm, 32*mm], font="tiny",
                 highlights=[(3, PALE_TEAL)]), Spacer(1, 5*mm),
           bullets([
-              "双方使用同样十个设计、十个实验室和 160 次聚合开发评价；每次覆盖十个 worker，共 1,600 次本地开发评价。",
+              "双方使用同样十个设计、十个实验室和 160 次聚合开发评价；每次覆盖十个实验室，共 1,600 次本地开发评价。",
               "均匀分配给每个设计 80 轮；证据分配先各训练 20 轮，按三档学习率各晋级两名，共六个设计从共同初始化重新训练 100 轮，另四个仅做筛选；两者均为 800 个聚合轮，即 8,000 个本地 epoch。",
               "12 个新执行的留出 task-seed 对比为 4 胜、8 平、0 负。Norman 平均提升 10.84 点，95% CI 为 [4.54, 17.73]；Tahoe 平均提升 1.99 点，区间跨零。",
               "DTI 仅有已有开发轨迹回放：均匀分配 525、证据分配 520 个 candidate-round，开发 AUROC 相差 +0.39 点（2 胜、1 平），单列于附录 A。",

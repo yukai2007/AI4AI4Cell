@@ -60,7 +60,7 @@ class CompletedManuscriptTests(unittest.TestCase):
         self.assertIn(r'\input{tables/strong_v3/effects}', text)
         self.assertIn('seven ties and one decrease', text)
         self.assertIn('eight pairs tie', text)
-        self.assertIn('800 full-client rounds', text)
+        self.assertIn('800 aggregation rounds', text)
         self.assertIn('4.7 How does feedback change the research trajectory?', text)
         self.assertIn('4.4 Measured trajectories improve training allocation', text)
         self.assertLess(text.index('4.4 Measured trajectories'),

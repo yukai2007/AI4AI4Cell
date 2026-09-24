@@ -88,7 +88,7 @@ def draw() -> None:
         else:
             for lx, port in zip(lab_x, (x0+1.02, x0+1.88, x0+2.72)):
                 arrow((lx+.455, 2.15), (port, 2.86), MODEL, bidirectional=True)
-            label(x0+1.88, 1.18, "Local fits; share updates", 6.7, SECONDARY)
+            label(x0+1.88, 1.18, "Train locally; share updates", 6.7, SECONDARY)
 
         if mode in {"central", "ours"}:
             arrow((x0+1.34, 5.02), (x0+1.34, 4.67), HARNESS)
