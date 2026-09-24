@@ -326,6 +326,77 @@ def table_text(snapshot, *, seed=None):
     return "\n".join(lines) + "\n"
 
 
+def main_table_text(snapshot, repair_snapshot=None):
+    """Two-panel main table: robust core means and matched public controllers."""
+    if repair_snapshot is None:
+        return table_text(snapshot)
+    if repair_snapshot.get("schema") != "public-harness-final-adapter-publication-v3":
+        raise ValueError("Main table requires the verified final-adapter snapshot")
+
+    core_methods = ("single_fixed", "single_direct", "federated_loop")
+    public_methods = ("single_direct", "ai_scientist_v2", "ai_researcher", "federated_loop")
+
+    def number(task, method, panel):
+        if panel == "core":
+            row = publisher._row(snapshot, task, method)
+            return None if not row["complete"] else round(100 * publisher._finite_primary(row["mean"]), 2)
+        if method == "ai_researcher":
+            item = repair_snapshot["tasks"][task]
+            return None if item["status"] != "Scored" else round(100 * publisher._finite_primary(item["primary"]), 2)
+        run = publisher._row(snapshot, task, method)["runs"].get("42")
+        return None if run is None else round(100 * publisher._finite_primary(run["primary"]), 2)
+
+    values = {(panel, method): [number(task, method, panel) for task in TASKS]
+              for panel, methods in (("core", core_methods), ("public", public_methods))
+              for method in methods}
+    ranks = {(panel, column): sorted({values[(panel, method)][column] for method in methods
+                                      if values[(panel, method)][column] is not None}, reverse=True)
+             for panel, methods in (("core", core_methods), ("public", public_methods))
+             for column in range(len(TASKS))}
+
+    def cell(panel, method, column):
+        value = values[(panel, method)][column]
+        if value is None:
+            if panel == "public" and method == "ai_researcher":
+                return repair_snapshot["tasks"][TASKS[column]]["status"]
+            return "Pending"
+        shown = f"{value:.2f}"
+        ranking = ranks[(panel, column)]
+        if ranking and value == ranking[0]:
+            shown = r"\textbf{" + shown + "}"
+        elif len(ranking) > 1 and value == ranking[1]:
+            shown = r"\underline{" + shown + "}"
+        if panel == "core":
+            row = publisher._row(snapshot, TASKS[column], method)
+            shown += r" $\pm$ " + f"{100 * row['sd']:.2f}"
+        return shown
+
+    def row(panel, method, label=None):
+        label = label or LABELS[method]
+        return label + " & " + " & ".join(cell(panel, method, j) for j in range(5)) + r" \\"
+
+    lines = [r"\begin{table}[t]", r"\centering\footnotesize", r"\setlength{\tabcolsep}{2.6pt}",
+             r"\renewcommand{\arraystretch}{1.00}", r"\begin{tabularx}{\linewidth}{@{}Xrrrrr@{}}", r"\toprule",
+             r"\textbf{Model / method} & \multicolumn{1}{c}{DTI} & \multicolumn{1}{c}{Proteomics} & \multicolumn{3}{c}{Cell perturbation} \\",
+             r"\cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(l){4-6}",
+             r" & \shortstack{BindingDB\\AUROC $\uparrow$} & \shortstack{PTPC\\AP $\uparrow$} & \shortstack{VCC\\Top-1 $\uparrow$} & \shortstack{Norman\\Top-1 $\uparrow$} & \shortstack{Tahoe\\Top-1 $\uparrow$} \\",
+             r"\midrule", r"\multicolumn{6}{l}{\textbf{A. Core comparison, seeds 42--44 (mean $\pm$ SD)}} \\"]
+    lines += [row("core", "single_fixed", "Fixed model (1 lab)"),
+              row("core", "single_direct", "Qwen direct (1 lab)"),
+              row("core", "federated_loop")]
+    lines += [r"\midrule", r"\multicolumn{6}{l}{\textbf{B. Matched research-controller comparison, seed 42}} \\",
+              row("public", "single_direct", "Qwen direct (1 lab)"),
+              row("public", "ai_scientist_v2"),
+              row("public", "ai_researcher", "AI-Researcher / final (10 labs)"),
+              row("public", "federated_loop")]
+    caption = (r"Main results. A: prespecified three-seed core mean $\pm$ SD. "
+               r"B: matched seed-42 task-adapted controllers with 10 laboratories, 12 designs and $\leq6$ candidates. "
+               r"Scores are $\times100$; bold/underline mark best/second-best within each panel; Pending is unresolved.")
+    lines += [r"\bottomrule", r"\end{tabularx}", r"\caption{" + caption + "}",
+              r"\label{tab:public-harness-comparison-three-seed}", r"\end{table}"]
+    return "\n".join(lines) + "\n"
+
+
 def completion_table_text(snapshot):
     lines = [r"\begin{table}[t]", r"\centering\footnotesize", r"\setlength{\tabcolsep}{3pt}",
              r"\begin{tabularx}{\linewidth}{@{}Xrrrrrrr@{}}", r"\toprule",
@@ -364,7 +435,7 @@ def results_text(snapshot):
     return "\n".join(lines) + "\n"
 
 
-def write_comparison(snapshot, output_dir=DEFAULT_OUTPUT):
+def write_comparison(snapshot, output_dir=DEFAULT_OUTPUT, *, repair_snapshot=None):
     if snapshot.get("artifact_role") != "verified-comparison-branch-draft":
         raise ValueError("Unit-test/injected evidence cannot be written as a publication comparison")
     output = Path(output_dir).resolve()
@@ -372,7 +443,7 @@ def write_comparison(snapshot, output_dir=DEFAULT_OUTPUT):
     if any(output == path or path in output.parents for path in (EXTENSION, PAPER / "tables/strong_v3", PAPER / "tables/public_harness_preview")) or output in protected:
         raise ValueError("Use a separate comparison directory; preserve existing/frozen artifacts")
     output.mkdir(parents=True, exist_ok=True)
-    payloads = (table_text(snapshot, seed=42), table_text(snapshot), completion_table_text(snapshot), results_text(snapshot),
+    payloads = (table_text(snapshot, seed=42), main_table_text(snapshot, repair_snapshot), completion_table_text(snapshot), results_text(snapshot),
                 json.dumps(snapshot, indent=2, allow_nan=False) + "\n")
     for name, payload in zip(OUTPUT_FILENAMES, payloads):
         (output / name).write_text(payload)
@@ -382,10 +453,16 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base", type=Path, required=True)
     parser.add_argument("--reference-results", type=Path, default=ROOT / "results/unified_bio_20260918")
+    parser.add_argument("--repair-base", type=Path)
+    parser.add_argument("--repair-dti-base", type=Path)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT)
     args = parser.parse_args()
     snapshot = collect_comparison(args.base, args.reference_results)
-    write_comparison(snapshot, args.output_dir)
+    repair_snapshot = None
+    if args.repair_base:
+        import publish_public_harness_repair as repair
+        repair_snapshot = repair.collect(args.repair_base, args.repair_dti_base)
+    write_comparison(snapshot, args.output_dir, repair_snapshot=repair_snapshot)
     print(json.dumps({key: snapshot[key] for key in
                       ("comparison_resolved", "scores_complete", "seed42_comparison_resolved", "seed42_scores_complete")} |
                      {"completion": snapshot["completion"]["matrix"], "collector_edits_manuscript": False,

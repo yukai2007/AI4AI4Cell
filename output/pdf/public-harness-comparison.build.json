@@ -1,21 +1,14 @@
 {
-  "built_unix": 1790258691.2090442,
-  "comparison_resolved": false,
-  "compiler": "Tectonic 0.16.0; sha256=a6e1ebaba90536e527f2ecd47775a608d9a56bd584efa9f7eee25c1bc7b86349",
-  "cpu_raster_pages": 4,
-  "main_text_page_check": "UNKNOWN",
-  "main_text_pages": null,
-  "manuscript_sources": null,
+  "pdf_sha256": "1edf03429634f54a5576e5d0dca80f96a2913b48ae633ed4ac7bdd8ba9f540b2",
   "pages": 4,
-  "pdf_sha256": "88ce7dbe7ee81e3a657115fe2c1202b9a67f9f2e23786ba79a80dda35394e932",
-  "scores_complete": false,
-  "snapshot_sha256": "c3cb6f6cca5c37ef45d51e4d74bf5fff90323e5e7559935f6f2b07a8a3966fce",
-  "source_sha256": "c5066ac056102b3e540303b5fe4b583a4bdee7269ae0fb0b2948e2236715060f",
-  "submission_ready": false,
-  "text_characters": 4732,
+  "text_characters": 5160,
+  "cpu_raster_pages": 4,
+  "main_text_pages": null,
+  "main_text_page_check": "UNKNOWN",
   "visual_review": "VISUAL_REVIEW_PENDING",
-  "warnings": [
-    "warning: tables/public_harness_comparison/main_public_harness_three_seed.tex:18: Underfull \\hbox (badness 2726) in paragraph at lines 18--18",
-    "warning: tables/public_harness_comparison/main_public_harness_three_seed.tex:18: Underfull \\hbox (badness 2726) in paragraph at lines 18--18"
-  ]
+  "submission_ready": false,
+  "built_unix": 1790261463.4089606,
+  "compiler": "Tectonic 0.16.0; sha256=a6e1ebaba90536e527f2ecd47775a608d9a56bd584efa9f7eee25c1bc7b86349",
+  "source_sha256": "a7e9fe43cf3655aa1d826f5c51da05ff5e1ae4b57a1a7e562c2540829fed4ec0",
+  "warnings": []
 }

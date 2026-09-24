@@ -1,7 +1,7 @@
 {
   "schema": "public-harness-comparison-v1",
   "artifact_role": "verified-comparison-branch-draft",
-  "created_utc": "2026-09-24T14:04:43.061356+00:00",
+  "created_utc": "2026-09-24T14:49:13.046970+00:00",
   "role": "retrospective held-out; prior historical exposure; not blind confirmation",
   "seeds_requested": [
     42,
@@ -2302,7 +2302,7 @@
     "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/heldout_public.py": "2c5a062993b4dae5670f5ce1119cccfdab2ffd123d31cce789610fe7057edc96",
     "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/verify_public.py": "430319cfdf46a89ee1084756cc11db0e61d7566a8139909cc86bda406eeac0ee",
     "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/broker.py": "7edf9244940314fb3eb00bbdbaa536b6e107fbd098b286c49aceaa23dfd2f31c",
-    "/liziqing/yukai/AI4AI4Cell/paper/tools/publish_public_harness_comparison.py": "3204ad94ba0ed8e40aff66476e457a45e90247ba9f658ba568ea8550681fbce4"
+    "/liziqing/yukai/AI4AI4Cell/paper/tools/publish_public_harness_comparison.py": "4b06f73346551872514303d5ce0527304ce2d2ec73d9a8d9dfab1719024499ab"
   },
   "reference_complete": true,
   "ready_for_explicit_manuscript_integration": false,
@@ -2325,9 +2325,9 @@
     "manifest_path": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v6/queue_manifest.json",
     "manifest_sha256": "99f39919b5cb9472bfbf98d93e0871411ee853833aadcc4e9562382d239cbbf2",
     "supervisor_path": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v6/supervisor_status.json",
-    "supervisor_sha256": "18c56cc16af74a082c0f3302c2d91ce6f7767c29ce9bc08081f8ab37f352cd13",
+    "supervisor_sha256": "443b4ea17ee61e9639eb52adcac0afb5a17133b201e14aedf565f3f420b609f3",
     "supervisor_status": "RUNNING",
-    "supervisor_updated_unix": 1790258682.34176,
+    "supervisor_updated_unix": 1790261347.5251093,
     "failure_receipts": [
       {
         "accounting": {

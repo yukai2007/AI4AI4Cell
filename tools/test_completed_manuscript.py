@@ -56,7 +56,7 @@ class CompletedManuscriptTests(unittest.TestCase):
 
     def test_main_result_narrative_distinguishes_proposal_history_and_allocation(self):
         text = (ROOT / 'sections/05_results.tex').read_text()
-        self.assertIn(r'\input{tables/strong_v3/main}', text)
+        self.assertIn(r'\input{tables/public_harness_comparison/main_public_harness_three_seed}', text)
         self.assertIn(r'\input{tables/strong_v3/effects}', text)
         self.assertIn('seven ties and one decrease', text)
         self.assertIn('eight pairs tie', text)

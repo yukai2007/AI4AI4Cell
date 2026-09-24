@@ -151,7 +151,9 @@ def terminal_fingerprint(base, matrix, supervisor):
     terminal_queue = None
     if supervisor.get('status') != 'RUNNING':
         terminal_queue = {key: supervisor.get(key) for key in ('status', 'current_job', 'error_type', 'error')}
-    for repair in (base.parent/'compact_repair_v1',base.parent/'compact_repair_v2'):
+    for repair in (base.parent/'compact_repair_v1', base.parent/'compact_repair_v2',
+                   base.parent/'compact_repair_v3', base.parent/'compact_repair_v4',
+                   base.parent/'seed42_dti_priority_v3'):
         manifest_path=repair/'queue_manifest.json'
         if manifest_path.exists():receipts[str(manifest_path)]=digest(manifest_path)
         for path in repair.glob('ai_researcher/*/seed42/heldout/verification.json'):
@@ -164,8 +166,33 @@ def terminal_fingerprint(base, matrix, supervisor):
 
 def repair_base(base):
     # Version choice is fixed by registration, never by held-out performance.
+    v4=base.parent/'compact_repair_v4'
+    if (v4/'queue_manifest.json').exists():
+        return v4
+    v3=base.parent/'compact_repair_v3'
+    if (v3/'queue_manifest.json').exists():
+        return v3
     v2=base.parent/'compact_repair_v2'
     return v2 if (v2/'queue_manifest.json').exists() else base.parent/'compact_repair_v1'
+
+
+def dti_repair_base(base):
+    return base.parent/'seed42_dti_priority_v3'
+
+
+def process_alive(state, base, script):
+    """Verify an auxiliary queue process without signaling it."""
+    pid = state.get('pid')
+    if not isinstance(pid, int) or pid <= 0:
+        return False
+    try:
+        stat = Path(f'/proc/{pid}/stat').read_text().rsplit(') ', 1)[1].split()
+        argv = [v.decode(errors='replace') for v in Path(f'/proc/{pid}/cmdline').read_bytes().split(b'\0') if v]
+    except (FileNotFoundError, ProcessLookupError):
+        return False
+    return (stat[0] != 'Z' and any(Path(arg).name == script for arg in argv)
+            and '--base' in argv and argv.index('--base') + 1 < len(argv)
+            and Path(argv[argv.index('--base')+1]).resolve() == base.resolve())
 
 
 def supervisor_alive(supervisor, base):
@@ -254,7 +281,9 @@ pending runs. Automatic updates await visual review before mainline delivery.
 \clearpage
 \section*{Task-transport repair}
 This separate study removes repeated task packets from stage prompts and
-accepts compatible single-tool envelopes. Scientific budgets are unchanged.
+accepts compatible single-tool envelopes. Six candidates are a maximum, so a
+native early stop is retained and no additional candidate is imputed. Candidate
+training and held-out scorers are unchanged.
 \input{tables/public_harness_comparison/compact_repair_seed42.tex}
 \end{document}
 '''.encode()
@@ -385,13 +414,16 @@ class Watcher:
         staging = Path(tempfile.mkdtemp(prefix='publication_', dir=self.folder))
         output = staging/TABLE_DIR
         env = dict(os.environ, CUDA_VISIBLE_DEVICES='')
-        log = command([sys.executable, '-B', self.paper/'tools/publish_public_harness_comparison.py',
-                       '--base', self.base, '--output-dir', output], cwd=self.paper, env=env, timeout=600)
-        atomic_write(staging/'publisher.log', log.encode())
         repair_log = command([sys.executable, '-B', self.paper/'tools/publish_public_harness_repair.py',
-                              '--base', repair_base(self.base), '--output-dir', output],
+                              '--base', repair_base(self.base), '--dti-base', dti_repair_base(self.base),
+                              '--output-dir', output],
                              cwd=self.paper, env=env, timeout=600)
         atomic_write(staging/'repair_publisher.log', repair_log.encode())
+        log = command([sys.executable, '-B', self.paper/'tools/publish_public_harness_comparison.py',
+                       '--base', self.base, '--repair-base', repair_base(self.base),
+                       '--repair-dti-base', dti_repair_base(self.base), '--output-dir', output],
+                      cwd=self.paper, env=env, timeout=600)
+        atomic_write(staging/'publisher.log', log.encode())
         if {path.name for path in output.iterdir()} != set(TABLE_NAMES):
             raise RuntimeError('Unexpected comparison publisher output set')
         snapshot = read(output/'snapshot_comparison.json')
@@ -481,6 +513,20 @@ class Watcher:
             repair_status = read(repair_status_path)
             observation['compact_repair'] = {key:repair_status.get(key) for key in
                 ('status','phase','current_job','reserved_gpu_hours','completed','failed','error')}
+        priority_path = dti_repair_base(self.base)/'supervisor_status.json'
+        if priority_path.exists():
+            priority = read(priority_path)
+            observation['dti_priority'] = {key:priority.get(key) for key in
+                ('status','phase','current_job','reserved_gpu_hours','completed','failed','error')}
+            active = {'WAITING_FOR_AIS_DTI', 'STOPPING_SUPERSEDED_CONTINUATION',
+                      'WAITING_FOR_SHORT_REPAIR', 'RUNNING'}
+            if (observation['action_needed'] and priority.get('status') in active
+                    and process_alive(priority, dti_repair_base(self.base), 'prioritize_seed42_dti_v3.py')):
+                observation.update(status='PENDING_PRIORITY_HANDOFF', action_needed=False,
+                                   supervisor_error_type=None, supervisor_error=None)
+            elif observation['action_needed'] and priority.get('status') == 'COMPLETE':
+                observation.update(status='SUPERVISOR_FINISHED', action_needed=False,
+                                   supervisor_error_type=None, supervisor_error=None)
         atomic_write(self.folder/'heartbeat.json', json_bytes(observation))
         fingerprint = terminal_fingerprint(self.base, manifest['jobs'], supervisor)
         # A dead/stale RUNNING supervisor is terminal to this read-only monitor.
@@ -504,6 +550,9 @@ class Watcher:
         if observation['action_needed']:
             return 2 if observation['status'] == 'BUDGET_EXHAUSTED' else 1
         if snapshot['comparison_resolved'] and supervisor.get('status') in {'COMPLETE', 'FINISHED_WITH_INCOMPLETE_RUNS'}:
+            return 0
+        if ((self.state.get('last_snapshot') or {}).get('repair_resolved')
+                and observation.get('dti_priority', {}).get('status') == 'COMPLETE'):
             return 0
         return None
 

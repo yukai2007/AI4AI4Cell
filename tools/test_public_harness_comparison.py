@@ -245,6 +245,20 @@ class ComparisonTests(unittest.TestCase):
         self.assertIn(r"AI-Researcher (10 labs) & \textbf{80.00}", text)
         self.assertIn(r"\textbf{BioCoLoop} (10 labs) & \underline{60.00}", text)
 
+    def test_main_table_separates_three_seed_core_from_seed42_public_controllers(self):
+        for harness in publisher.HARNESSES:
+            for task in publisher.TASKS:
+                self.scored(harness, task, 42, .55)
+        repair = dict(schema='public-harness-final-adapter-publication-v3',
+                      tasks={task:dict(status='Scored',primary=.58) for task in publisher.TASKS})
+        text = comparison.main_table_text(self.collect(), repair)
+        self.assertIn('A. Core comparison, seeds 42--44', text)
+        self.assertIn('B. Matched research-controller comparison, seed 42', text)
+        self.assertIn('AI-Scientist-v2 (10 labs)', text)
+        self.assertIn('AI-Researcher / final (10 labs)', text)
+        self.assertIn(r'58.00', text)
+        self.assertNotIn('S/0F/', text)
+
     def test_all_terminal_is_distinct_from_all_scored(self):
         failures = {}
         for task in publisher.TASKS:
