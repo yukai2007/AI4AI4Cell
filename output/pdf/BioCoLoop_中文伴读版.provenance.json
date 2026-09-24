@@ -10,8 +10,8 @@
     "AAAAAC+CompanionSC"
   ],
   "text_out_of_bounds_pages": [],
-  "generated_utc": "2026-09-24T09:03:28.023910+00:00",
-  "generator_sha256": "fffacb2255c09514f421d82675220f4e12d37c289197604d3ecf33d567b63c2b",
+  "generated_utc": "2026-09-24T09:15:44.192866+00:00",
+  "generator_sha256": "8bc09e627e6b8f8f40414e0e044f77fe9a7d97a31bb72806804ebc0a70eba4bd",
   "embedded_font_source_sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
   "input_sha256": {
     "paper/tables/strong_v3/snapshot.json": "814129bf578ab358de0773b1975ba00257a7fe12c75b3e6b6f1534617cd5749a",
@@ -28,7 +28,7 @@
     "paper/provenance/coauthor_review_v2_20260923/ANNOTATIONS.zh-CN.md": "e93f9742ffbe19924f7117510939e331374684b839c9910fc4536c73bc7e929b",
     "paper/sections/03_method.tex": "ab00b09aead877d1a88c0c787e94c3c1a0460d0f99a158a4b1f043a75c1a6d6d",
     "paper/sections/04_experimental_design.tex": "84ca8e46bf70e5a23dca23aa47677b3481b7d7a65abf3b327515059aa9cce266",
-    "paper/sections/22_appendix_unified_protocol.tex": "9ab81c78cc2fae405d3d52307b9e80d030931f0b42508f2ad4d94c11f250e658",
+    "paper/sections/22_appendix_unified_protocol.tex": "96a471629b1c09dce83defb2e62517e0938dc8fed5940247bb81cadca27a681f",
     "results/supplemental_20260923/proteomics/seed61_slots0_cpu/independent_rescore.json": "b5fa3aebb01205ba8db57edb29af57e3dfa79a2c0e1cab94d0b2e2ce8c06ab29",
     "results/supplemental_20260923/proteomics/seed61_slots0_cpu/definition.json": "5b5e10e7321fe32c66bb6b0a83134ae4bab700a9dce2a91ddc514a98688f34f5",
     "results/supplemental_20260923/proteomics/seed61_slots0_cpu/heldout/results.json": "804d7ede777b175fc9369fae2609dd8804570cccb08ed1ef7fef0a56272ea089",
@@ -101,7 +101,7 @@
     }
   },
   "page_count": 20,
-  "output_sha256": "feeaa55d543e3526c76553dfdd36b6d299c8246c67df9854046310b35bf29763",
+  "output_sha256": "25c1ec4ec9e92a66573feb6e0b48cb3e34b91a34b2b3a80ea849237cef373ff3",
   "uncompleted_extensions": [
     "additional seeds",
     "DTI long24"

@@ -150,10 +150,10 @@ The following tables give the full one/ten-laboratory by fixed/direct/history-gu
 \input{tables/strong_v3/loop_prefix}
 \clearpage
 \input{tables/strong_v3/secondary}
-\input{tables/strong_v3/uncertainty}
 \input{tables/strong_v3/dti_endpoints}
-\input{tables/strong_v3/dti_uncertainty}
 
 Three-seed means and sample standard deviations summarize training/search variability on fixed partitions. Sample-level intervals use paired cluster bootstrap with 1,000 fixed-seed resamples of retained predictions. Drug identity defines clusters for the random and unseen-drug interaction sets, and protein sequence defines clusters for the unseen-protein set. Proteomic and cell intervals use compound and intervention clusters, respectively. Both methods in a contrast receive the same resampled clusters. The training-allocation study instead uses 5,000 hierarchical paired resamples: training seeds are drawn first, followed by compound or intervention groups within each sampled seed.
+
+The accompanying \emph{BioCoLoop Statistical Supplement}, Tables S.1--S.2, reports the complete per-seed differences and confidence intervals for the main contrasts and all three drug--target test sets. It includes every reported contrast and seed, including zero and negative differences. These model-conditional intervals quantify test-sample uncertainty; in several cell comparisons they include zero, so positive mean differences do not uniformly establish significant gains.
 
 The accompanying research records contain the executable configurations, proposals, development histories and saved predictions needed to reconstruct these comparisons. The reproducibility statement describes their availability and verification.

@@ -1,0 +1,23 @@
+\documentclass{article}
+\usepackage{iclr2027_conference}
+\usepackage{fontspec}
+\setmainfont{texgyretermes-regular.otf}[Path=fonts/,BoldFont=texgyretermes-bold.otf,ItalicFont=texgyretermes-italic.otf,BoldItalicFont=texgyretermes-bolditalic.otf]
+\usepackage{amsmath,amssymb,booktabs,longtable,xurl}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\usepackage{microtype}
+\hypersetup{pdftitle={BioCoLoop: Statistical Supplement}}
+\begin{document}
+\title{BioCoLoop: Statistical Supplement}
+\author{Anonymous}
+\maketitle
+\renewcommand{\thetable}{S.\arabic{table}}
+\renewcommand{\theHtable}{S.\arabic{table}}
+
+This supplement accompanies \emph{BioCoLoop: Collaborative Agentic Research for Biological Model Improvement}. It reports all per-seed comparisons from the two complete uncertainty tables, without selecting results by direction or significance. Tables S.1 and S.2 retain their original numerical records. Mean scores, the full six-arm comparison and the decomposition of effects remain in Appendix A of the manuscript.
+
+Intervals are paired cluster-bootstrap 95\% intervals from 1,000 fixed-seed resamples, conditional on the selected trained predictors. Drug identity defines clusters for random and unseen-drug interaction tests, protein sequence for unseen-protein tests, and compound or intervention identity for proteomic or cell tests. Each contrast uses the same sampled clusters for both methods. Seeds 42--44 use fixed data partitions. These intervals measure test-sample uncertainty, separately from training-seed variation.
+
+\input{tables/strong_v3/uncertainty}
+\clearpage
+\input{tables/strong_v3/dti_uncertainty}
+\end{document}

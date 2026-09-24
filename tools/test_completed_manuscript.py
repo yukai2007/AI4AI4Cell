@@ -16,7 +16,7 @@ class CompletedManuscriptTests(unittest.TestCase):
         text = (ROOT / 'sections/23_appendix_core_sensitivity.tex').read_text()
         for name in ('lab_participation', 'lab_fixed_pool', 'transfer_independent',
                      'transfer_protein_loop', 'short6', 'long24', 'dynamics_long24',
-                     'norman_retained_events', 'menu_short6', 'menu_long24'):
+                     'norman_retained_events'):
             self.assertIn(r'\input{tables/completed_ablation/' + name + '}', text)
         for name in ('trace_short6', 'trace_long24'):
             self.assertNotIn(r'\input{tables/completed_ablation/' + name + '}', text)

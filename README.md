@@ -6,9 +6,9 @@ BioCoLoop combines **biology**, **collaboration** and an iterative **research lo
 
 ## Current revision — 24 September 2026
 
-This is the near-final pre-deadline handoff. The submission PDF has nine pages of main text (33 pages including statements, references and appendices); the Chinese companion has 20 pages. The frozen experimental scope and numerical tables are unchanged. The [latest build receipt](provenance/terminology_clarity_20260924/build_receipt.json) records PDF/source hashes, visual checks and 84 passing publication tests. Further changes before the deadline should focus on factual corrections, submission requirements or explicitly requested edits.
+This is the near-final pre-deadline handoff. The submission PDF has nine pages of main text (28 pages including statements, references and appendices); the Chinese companion has 20 pages. A separate five-page anonymous Statistical Supplement retains all per-seed confidence intervals. The frozen experimental scope and numerical tables are unchanged. The [latest build receipt](provenance/appendix_compaction_20260924/build_receipt.json) records PDF/source hashes, visual checks and 88 passing publication tests. Further changes before the deadline should focus on factual corrections, submission requirements or explicitly requested edits.
 
-The active narrative is **collaborative access plus evidence-guided research decisions**. The abstract states the four-of-five advantage over single-laboratory references; absolute task scores remain in the results with their comparison context. The text consistently distinguishes laboratories, the coordinator and the research controller. Method Section 3.4 identifies trajectory-guided allocation as a separate controlled study, with matched-budget results in Section 4.4; the main comparison uses 100 training rounds per candidate. The main-results discussion also gives same-access fixed/direct controls. Proposal-history dynamics, source compatibility and laboratory count provide the subsequent mechanism analysis. The [targeted wording revision](provenance/terminology_clarity_20260924/RESPONSE.zh-CN.md) follows the [evidence-led revision](provenance/evidence_led_revision_20260924/RESPONSE.zh-CN.md); numerical tables, predictions and experiment snapshots are unchanged.
+The active narrative is **collaborative access plus evidence-guided research decisions**. The abstract states the four-of-five advantage over single-laboratory references; absolute task scores remain in the results with their comparison context. The introduction and conclusion separate gains from more participating laboratories, design search at fixed access, and independently evaluated training allocation. Method Section 3.4 identifies the allocation study, with matched-budget results in Section 4.4; the main comparison uses 100 training rounds per candidate. Same-access fixed/direct controls, proposal-history dynamics, source compatibility and laboratory count remain in the paper. The [appendix compaction note](provenance/appendix_compaction_20260924/RESPONSE.zh-CN.md) records the outcome-independent reduction from 21 to 16 appendix pages; numerical tables, predictions and experiment snapshots are unchanged.
 
 The second annotated review remains addressed in a [27-item response](provenance/coauthor_review_v2_20260923/RESPONSE.zh-CN.md). The first proposal is shared without development feedback; feedback begins at the second proposal. Allocation and proposal-history policies are evaluated independently, not presented as a newly tested joint algorithm. Experiments and results form one section, with named task-model rows, laboratory-count curves and research trajectories in the main text.
 
@@ -34,7 +34,7 @@ The readable [completion audit](provenance/completed_ablation_20260923/research/
 ## Figures and reading copies
 
 Figure 1 contrasts biological-AI research settings. Figure 2 is a new native-vector, editable PowerPoint diagram based on the earlier framework layout, with explicit inner/outer data flow, semantic colors, distinct lab scenarios and general K. Original slides remain unchanged. The new assets and structural/visual checks are in `figures/biocoloop_framework_v2.*`. Figure 3 shows laboratory-count sensitivity; Figure 4 shows development and held-out search trajectories.
-The [English completed-experiment PDF](output/pdf/BioCoLoop_manuscript.pdf) is also copied locally to `manuscript.pdf`. The [Chinese section-by-section companion](output/pdf/BioCoLoop_中文伴读版.pdf) is regenerated with:
+The [English completed-experiment PDF](output/pdf/BioCoLoop_manuscript.pdf) is also copied locally to `manuscript.pdf`. Upload the [anonymous Statistical Supplement](output/pdf/BioCoLoop_statistical_supplement.pdf) alongside the manuscript: its two complete tables contain all 162 per-seed contrast rows, including zero and negative results. The [Chinese section-by-section companion](output/pdf/BioCoLoop_中文伴读版.pdf) is regenerated with:
 
 ```bash
 python3 tools/build_chinese_companion.py
@@ -48,10 +48,11 @@ Select `main.tex` as the Overleaf entry and **XeLaTeX** as compiler. `latexmkrc`
 
 ```bash
 tectonic --only-cached --keep-intermediates --keep-logs --outdir build main.tex
+tectonic --only-cached --keep-intermediates --keep-logs --outdir build statistical-supplement.tex
 python -m unittest discover -s tools -p 'test_*.py'
 ```
 
-The research host requires its compatible cached Tectonic 0.17.0 binary and matching shared libraries, rather than the default local binary. This host-specific setup is not required on Overleaf. The latest build receipt is in `provenance/terminology_clarity_20260924/`; second-review records remain in `provenance/coauthor_review_v2_20260923/`, and the historical naming-only receipt remains in `provenance/rename_biocoloop_20260923/`.
+The research host requires its compatible cached Tectonic 0.17.0 binary and matching shared libraries, rather than the default local binary. This host-specific setup is not required on Overleaf. The latest build receipt is in `provenance/appendix_compaction_20260924/`; second-review records remain in `provenance/coauthor_review_v2_20260923/`, and the historical naming-only receipt remains in `provenance/rename_biocoloop_20260923/`.
 
 ## Data-to-paper publication
 
@@ -73,3 +74,5 @@ The active narrative is collaborative evidence-guided research. The inner proces
 The user's Overleaf-linked writing repository is `https://github.com/yukai2007/AI4AI4Cell`, branch `main`. Fetch collaborator changes, review and compile the diff, and use a normal fast-forward push. A GitHub push does not verify an Overleaf pull or remote compilation. Do not publish editable Overleaf sharing links.
 
 Authors must confirm the submission-platform declarations and upload the final anonymous artifacts. The template does not imply submission or acceptance. The template, bibliography styles and bundled fonts retain their original licenses.
+
+Submit the main PDF plus the Statistical Supplement. The Chinese companion and internal provenance/review notes are author reading material, not anonymized submission supplements.

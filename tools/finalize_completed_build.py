@@ -90,7 +90,34 @@ def main():
         raise RuntimeError('Author metadata or review annotations in submission PDF')
     for required in ('85.47','87.95','35.50','35.68','94.60','23.11','30.70','28.82'):
         if required not in joined: raise RuntimeError('Expected completed evidence absent: '+required)
-    files=[PAPER/'main.tex',PAPER/'biocoloop-main.tex',PAPER/'references.bib',PAPER/'references_v2.bib']
+    statistical_pdf=PAPER/'build/statistical-supplement.pdf'
+    statistical_doc=fitz.open(statistical_pdf)
+    statistical_text='\n'.join(page.get_text() for page in statistical_doc)
+    statistical_log=(PAPER/'build/statistical-supplement.log').read_text()
+    statistical_errors=re.findall(r'Overfull[^\n]*|[^\n]*undefined[^\n]*|^!.*',statistical_log,re.M)
+    if statistical_errors: raise RuntimeError(statistical_errors)
+    for required in ('Table S.1:', 'Table S.2:', 'Unseen protein', 'Norman', 'Tahoe'):
+        if required not in statistical_text:
+            raise RuntimeError('Statistical supplement missing content: '+required)
+    for forbidden in ('/liziqing/','yukai2007','Kai Yu','Westlake University'):
+        if forbidden in statistical_text: raise RuntimeError('Anonymous statistical supplement: '+forbidden)
+    if statistical_doc.metadata.get('author') or any(list(page.annots() or []) for page in statistical_doc):
+        raise RuntimeError('Author metadata or review annotations in statistical supplement')
+    statistical_target=PAPER/'output/pdf/BioCoLoop_statistical_supplement.pdf'
+    statistical_target.parent.mkdir(parents=True,exist_ok=True)
+    stage=statistical_target.with_suffix('.pdf.staging')
+    shutil.copy2(statistical_pdf,stage)
+    if sha(stage)!=sha(statistical_pdf): raise RuntimeError('Statistical PDF copy mismatch')
+    stage.replace(statistical_target)
+    statistical_receipt=dict(path=str(statistical_target.relative_to(PAPER)),
+        sha256=sha(statistical_pdf),pages=len(statistical_doc),
+        source_sha256=sha(PAPER/'statistical-supplement.tex'),
+        tables_sha256={name:sha(PAPER/name) for name in
+            ('tables/strong_v3/uncertainty.tex','tables/strong_v3/dti_uncertainty.tex')},
+        all_contrasts_and_seeds_retained=True,overfull_boxes=0,undefined_references=0,
+        submission_instruction='Upload alongside the manuscript as anonymous supplementary material.')
+    files=[PAPER/'main.tex',PAPER/'biocoloop-main.tex',PAPER/'statistical-supplement.tex',
+           PAPER/'references.bib',PAPER/'references_v2.bib']
     files+=list((PAPER/'sections').glob('*.tex'))
     files+=list((PAPER/'tables').rglob('*.tex'))
     files+=list((PAPER/'assets').glob('*.pdf'))
@@ -110,7 +137,7 @@ def main():
         source_sha256={str(x.relative_to(PAPER)):sha(x) for x in sorted(files)},
         completed_snapshot_sha256=sha(PAPER/'tables/completed_ablation/snapshot.json'),
         publication_provenance_sha256=sha(PAPER/'tables/completed_ablation/provenance.json'),
-        supplemental_receipts_sha256=supplemental_receipts,
+        supplemental_receipts_sha256=supplemental_receipts,statistical_supplement=statistical_receipt,
         unit_tests_passed=a.tests_passed,overfull_boxes=0,undefined_references=0,
         visual_review=a.visual_review,
         incorporated=['five-endpoint two-backend short6','five-endpoint lab count, two definitions',

@@ -67,7 +67,6 @@ HCC1143, HCC1806 and MDA-MB-453-1 are drawn from the mtPTDS supplementary collec
 
 \input{tables/completed_ablation/transfer_contexts}
 
-\clearpage
 \subsection*{B.3 Research-model and six-slot proposal comparison}
 The short study uses the 12 executable designs of Appendix A. Direct search receives untried identifiers without measured scores; the loop additionally receives accumulated development evidence. Both modes share initialization and the first proposal. Each slot allows two attempts to return the four-field proposal schema; failed slots consume budget and remain in the trace. Every valid candidate restarts from the common task/seed initialization and is fitted for 100 rounds. Prefixes at 0, 1, 2, 4 and 6 slots are evaluated after the trajectory is complete. An exact fit cache can reuse an identical configuration while retaining its logical training-budget charge.
 
@@ -100,10 +99,25 @@ The eight terminal held-out pairs give seven ties and one decrease with feedback
 \label{fig:completed-long-dev}
 \end{figure}
 
-\clearpage
 \subsection*{B.5 Executed designs and proposal traces}
-Tables~\ref{tab:completed-menu-short6} and \ref{tab:completed-menu-long24} decode the two design libraries. The accompanying reproducibility archive retains all 504 attempted proposal slots and their acceptance decisions: 120 slots in the short protocol and 384 in the extended protocol. Its machine-readable proposal trace records each proposal's full configuration, changes from the incumbent and measured development score; the expanded trace tables are provided with the archive rather than reproduced in the article. Together with the prefix curves, these records connect research decisions to both the executable intervention and its observed outcome.
+The short protocol uses exactly the D00--D11 configurations listed in Appendix A.2. The extended protocol uses all $3\times3\times2\times2=36$ combinations in Table~\ref{tab:completed-menu-long24}. An identifier \texttt{L}$i$\texttt{W}$j$\texttt{M}$k$\texttt{R}$l$ selects the indexed value of each factor, with $i,j\in\{0,1,2\}$ and $k,l\in\{0,1\}$. For example, \texttt{L0W1M0R1} specifies learning rate $10^{-4}$, weight decay $10^{-3}$, zero coordinator momentum and an enabled residual module. Every configuration has proximal coefficient zero; the task-specific prediction interface remains fixed.
+
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{llrrr}
+\toprule
+Factor & Identifier prefix & Index 0 & Index 1 & Index 2 \\
+\midrule
+Learning rate & \texttt{L} & $10^{-4}$ & $10^{-3}$ & $10^{-2}$ \\
+Weight decay & \texttt{W} & $0$ & $10^{-3}$ & $10^{-2}$ \\
+Coordinator momentum & \texttt{M} & $0$ & $0.9$ & -- \\
+Residual module & \texttt{R} & disabled & enabled & -- \\
+\bottomrule
+\end{tabular}
+\caption{Exact factor-to-index mapping for the extended 36-design library. Identifiers concatenate the four prefix--index pairs in L, W, M, R order; all combinations of the listed values are included.}
+\label{tab:completed-menu-long24}
+\end{table}
+
+The accompanying reproducibility archive retains all 504 attempted proposal slots and their acceptance decisions: 120 slots in the short protocol and 384 in the extended protocol. Its machine-readable proposal trace records each proposal's full configuration, changes from the incumbent and measured development score; the expanded trace tables are provided with the archive rather than reproduced in the article. Together with the prefix curves, these records connect research decisions to both the executable intervention and its observed outcome.
 
 \input{tables/completed_ablation/norman_retained_events}
-\input{tables/completed_ablation/menu_short6}
-\input{tables/completed_ablation/menu_long24}

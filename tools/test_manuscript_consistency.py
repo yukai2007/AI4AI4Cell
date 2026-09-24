@@ -43,7 +43,10 @@ class ManuscriptConsistencyTests(unittest.TestCase):
 
     def test_current_uncertainty_is_included(self):
         text = (PAPER / 'sections/22_appendix_unified_protocol.tex').read_text()
-        self.assertIn(r'\input{tables/strong_v3/dti_uncertainty}', text)
+        self.assertIn('BioCoLoop Statistical Supplement', text)
+        supplement = (PAPER / 'statistical-supplement.tex').read_text()
+        self.assertIn(r'\input{tables/strong_v3/dti_uncertainty}', supplement)
+        self.assertIn(r'\input{tables/strong_v3/uncertainty}', supplement)
         self.assertIn('retained predictions', text)
         self.assertIn('training/search variability on fixed partitions', text)
 
