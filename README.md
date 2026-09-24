@@ -33,6 +33,8 @@ The readable [completion audit](provenance/completed_ablation_20260923/research/
 
 ## Figures and reading copies
 
+All five current figures have [editable PowerPoint entry points and a Chinese editing guide](figure_editing/README.zh-CN.md). Figures 1–2 expose native text, shapes and arrows; Figures 3–5 expose native charts with embedded data. These editing counterparts do not replace the active paper artwork until an edited deck has been reviewed and exported.
+
 Figure 1 contrasts biological-AI research settings. Figure 2 is a new native-vector, editable PowerPoint diagram based on the earlier framework layout, with explicit inner/outer data flow, semantic colors, distinct lab scenarios and general K. Original slides remain unchanged. The new assets and structural/visual checks are in `figures/biocoloop_framework_v2.*`. Figure 3 shows laboratory-count sensitivity; Figure 4 shows development and held-out search trajectories.
 The [English completed-experiment PDF](output/pdf/BioCoLoop_manuscript.pdf) is also copied locally to `manuscript.pdf`. Upload the [anonymous Statistical Supplement](output/pdf/BioCoLoop_statistical_supplement.pdf) alongside the manuscript: its two complete tables contain all 162 per-seed contrast rows, including zero and negative results. The [Chinese section-by-section companion](output/pdf/BioCoLoop_中文伴读版.pdf) is regenerated with:
 

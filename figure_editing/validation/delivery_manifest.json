@@ -1,0 +1,118 @@
+{
+  "schema": "editable-figure-handoff-v1",
+  "basis_commit": "56ebc72996b8c363720fe865bc175761356610bc",
+  "manuscript_artwork_replaced": false,
+  "current_artifact_hashes": {
+    "assets/paradigm_comparison.pdf": "75c235b5d3b3242dfad28b16b61df6ac75f7435b8b260bf9130354a51388ec77",
+    "figures/biocoloop_framework_v2.pdf": "dbf7abb5b6d6a6fc76e88259d02d93996e4f6c7dcc1c25bbe8a0eabdac206bee",
+    "assets/laboratory_sensitivity_v2.pdf": "c89fc89d591bc4dbc10d5a7129df5bd52c232e2be862b95503d19a311e3fdbb0",
+    "assets/completed_short6_search_v2.pdf": "79c91fbdcb3069d279b114e9eec3a42f432b5e09c1a0bcf713d2d7e22e506015",
+    "assets/completed_long24_search.pdf": "0e0c74c6528f4e32162683b059807172cdfe506da46db70dd80ba842a65f9495",
+    "figures/biocoloop_framework_v2.pptx": "169ca2fd8b43a1a57b274f2d2e5d99f41b1108702a2fc978037146bca4053f9d",
+    "tables/completed_ablation/snapshot.json": "1300ee2702358927af215de29d7de22bf9b1d495923c2d5661a42f5abed79f23",
+    "output/pdf/BioCoLoop_manuscript.pdf": "4c4fcab15e866fc756af1c3b7001ece873ae1a5e8ec5380effdd6b93f05ec271",
+    "output/pdf/BioCoLoop_statistical_supplement.pdf": "4ad30a38fa2b5d55ded8a6841a77e1cf4bb4d3b0db76e845f7b7563421def0b6",
+    "output/pdf/BioCoLoop_中文伴读版.pdf": "25c1ec4ec9e92a66573feb6e0b48cb3e34b91a34b2b3a80ea849237cef373ff3"
+  },
+  "figures": [
+    {
+      "figure": 1,
+      "editable": "Figure_1_research_paradigms.pptx",
+      "editable_sha256": "d921561f79c9a9696bbc46a7b9909d7e29a75e23d774301f0ee7f98f63187487",
+      "active_pdf": "assets/paradigm_comparison.pdf",
+      "native": {
+        "slides": 1,
+        "native_shapes": 76,
+        "native_charts": 0,
+        "editable_workbooks": 0,
+        "embedded_media": [],
+        "slide_fonts": [
+          "DejaVu Sans"
+        ]
+      },
+      "preview": "previews/Figure_1_research_paradigms.png",
+      "visual_review": "PASSED",
+      "overflow_review": "PASSED"
+    },
+    {
+      "figure": 2,
+      "editable": "Figure_2_framework.pptx",
+      "editable_sha256": "169ca2fd8b43a1a57b274f2d2e5d99f41b1108702a2fc978037146bca4053f9d",
+      "active_pdf": "figures/biocoloop_framework_v2.pdf",
+      "native": {
+        "slides": 1,
+        "native_shapes": 103,
+        "native_charts": 0,
+        "editable_workbooks": 0,
+        "embedded_media": [],
+        "slide_fonts": [
+          "Carlito"
+        ]
+      },
+      "preview": "previews/Figure_2_framework.png",
+      "visual_review": "PASSED",
+      "overflow_review": "PASSED"
+    },
+    {
+      "figure": 3,
+      "editable": "Figure_3_laboratory_count.pptx",
+      "editable_sha256": "3c954b716bed4609ad68fd972789e8a5419d75f7ff01cbc0932a216f883cec6a",
+      "active_pdf": "assets/laboratory_sensitivity_v2.pdf",
+      "native": {
+        "slides": 1,
+        "native_shapes": 17,
+        "native_charts": 5,
+        "editable_workbooks": 5,
+        "embedded_media": [],
+        "slide_fonts": [
+          "DejaVu Sans"
+        ]
+      },
+      "preview": "previews/Figure_3_laboratory_count.png",
+      "visual_review": "PASSED",
+      "overflow_review": "PASSED"
+    },
+    {
+      "figure": 4,
+      "editable": "Figure_4_short_loop.pptx",
+      "editable_sha256": "8338722ee3bc85fc0d47d25de1d097bb77fb6540c747cd343b5e683f221931d6",
+      "active_pdf": "assets/completed_short6_search_v2.pdf",
+      "native": {
+        "slides": 1,
+        "native_shapes": 22,
+        "native_charts": 10,
+        "editable_workbooks": 10,
+        "embedded_media": [],
+        "slide_fonts": [
+          "DejaVu Sans"
+        ]
+      },
+      "preview": "previews/Figure_4_short_loop.png",
+      "visual_review": "PASSED",
+      "overflow_review": "PASSED"
+    },
+    {
+      "figure": 5,
+      "editable": "Figure_5_extended_loop.pptx",
+      "editable_sha256": "83eb2b0b8ecd0848f8f5d0496aab0b42dd612040f12ea434ead8a3cadde6ca5d",
+      "active_pdf": "assets/completed_long24_search.pdf",
+      "native": {
+        "slides": 1,
+        "native_shapes": 38,
+        "native_charts": 8,
+        "editable_workbooks": 8,
+        "embedded_media": [],
+        "slide_fonts": [
+          "DejaVu Sans"
+        ]
+      },
+      "preview": "previews/Figure_5_extended_loop.png",
+      "visual_review": "PASSED",
+      "overflow_review": "PASSED"
+    }
+  ],
+  "chart_points": 840,
+  "numerical_checks": "All chart caches and embedded XLSX values checked against frozen snapshot.",
+  "visual_review": "All five previews inspected; no cropping, overlapping labels or slide overflow.",
+  "fidelity": "Figure 2 is an exact PPTX copy. Figures 1, 3, 4, 5 are native editable counterparts; layout/axis styling may differ."
+}

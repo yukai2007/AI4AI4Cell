@@ -1,0 +1,29 @@
+{
+  "source": "/liziqing/yukai/AI4AI4Cell/paper/figure_editing/work/Figure_2_framework.pptx",
+  "source_sha256": "169ca2fd8b43a1a57b274f2d2e5d99f41b1108702a2fc978037146bca4053f9d",
+  "pdf": "/liziqing/yukai/AI4AI4Cell/paper/figure_editing/work/root_preview/Figure_2_framework/Figure_2_framework.pdf",
+  "pdf_sha256": "59c06c137dfd9f1494f02fd6a365ce8df02997a377c63996e8e69c69d516ea8e",
+  "native": {
+    "slides": 1,
+    "native_shapes": 103,
+    "native_charts": 0,
+    "editable_workbooks": 0,
+    "embedded_media": [],
+    "slide_fonts": [
+      "Carlito"
+    ]
+  },
+  "exported": {
+    "pages": 1,
+    "embedded_images": 0,
+    "vector_paths": 71,
+    "fonts": [
+      "BAAAAA+Carlito-Bold",
+      "CAAAAA+Carlito"
+    ]
+  },
+  "overflow_returncode": 0,
+  "overflow_output": "Test passed. No overflow detected.\n",
+  "visual_review": "REQUIRED",
+  "manuscript_artwork_replaced": false
+}

@@ -1,0 +1,29 @@
+{
+  "source": "/liziqing/yukai/AI4AI4Cell/paper/figure_editing/work/Figure_1_research_paradigms.pptx",
+  "source_sha256": "d921561f79c9a9696bbc46a7b9909d7e29a75e23d774301f0ee7f98f63187487",
+  "pdf": "/liziqing/yukai/AI4AI4Cell/paper/figure_editing/work/root_preview/Figure_1_research_paradigms/Figure_1_research_paradigms.pdf",
+  "pdf_sha256": "960299af7a4ae39f7fa0802600a57bb418fd0d76fa6ba166d7fc15b682561a23",
+  "native": {
+    "slides": 1,
+    "native_shapes": 76,
+    "native_charts": 0,
+    "editable_workbooks": 0,
+    "embedded_media": [],
+    "slide_fonts": [
+      "DejaVu Sans"
+    ]
+  },
+  "exported": {
+    "pages": 1,
+    "embedded_images": 0,
+    "vector_paths": 68,
+    "fonts": [
+      "BAAAAA+DejaVuSans-Bold",
+      "CAAAAA+DejaVuSans"
+    ]
+  },
+  "overflow_returncode": 0,
+  "overflow_output": "Test passed. No overflow detected.\n",
+  "visual_review": "REQUIRED",
+  "manuscript_artwork_replaced": false
+}
