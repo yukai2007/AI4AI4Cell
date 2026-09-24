@@ -1,0 +1,1348 @@
+{
+  "source_name": "AI4AI4Cellv2-yc.pdf",
+  "sha256": "345ba5c0b8a09a8a09890c8bee04bd5f964c68c2030c0217ff8ff2282a8f2d44",
+  "pages": 32,
+  "annotations": [
+    {
+      "page": 1,
+      "xref": 701,
+      "kind": "Highlight",
+      "author": "yc-Reanan",
+      "comment": "",
+      "highlighted_text": "",
+      "rect": [
+        325.63360595703125,
+        311.9283142089844,
+        347.7705078125,
+        321.8908996582031
+      ],
+      "vertices": [
+        [
+          325.63360595703125,
+          311.9283142089844
+        ],
+        [
+          347.7705078125,
+          311.9283142089844
+        ],
+        [
+          325.63360595703125,
+          321.8908996582031
+        ],
+        [
+          347.7705078125,
+          321.8908996582031
+        ]
+      ],
+      "nearby_text": "015\n016\n017\n018\n019\n020\n021\n022\n023\nlaborative learning typically optimizes fixed models, whereas automated model\ndesign and research generally rely on centralized training and evaluation signals.\nBridging the two is nontrivial: distributed evidence must support not only opti-\nmization, but also the evaluation and refinement of computational changes that\ngeneralize beyond their local settings. To tackle this, we introduce BioCoLoop, a\ncollaborative research framework that couples client-local parameter fitting with an\nevidence-guided proposal–evaluation loop. Local training shards update a shared\npredictor, while local development shards produce aggregate evidence cards that\nguide the next executable proposal. Across three biological settings spanning drug–\ntarget interaction prediction, observed-response proteomics, and cell perturbation,\nwe evaluate BioCoLoop with ten simulated laboratories against single-laboratory",
+      "metadata": {
+        "content": "",
+        "name": "",
+        "title": "yc-Reanan",
+        "creationDate": "",
+        "modDate": "D:20260923145121Z00'00'",
+        "subject": "",
+        "id": ""
+      }
+    },
+    {
+      "page": 1,
+      "xref": 708,
+      "kind": "Highlight",
+      "author": "yc-Reanan",
+      "comment": "fixed model， client，这类表示相同含义的用词需要统一，而且尽可能用常见的词汇",
+      "highlighted_text": "fixed models,",
+      "rect": [
+        303.74481201171875,
+        257.13330078125,
+        355.6897888183594,
+        267.09588623046875
+      ],
+      "vertices": [
+        [
+          303.74481201171875,
+          257.13330078125
+        ],
+        [
+          355.6897888183594,
+          257.13330078125
+        ],
+        [
+          303.74481201171875,
+          267.09588623046875
+        ],
+        [
+          355.6897888183594,
+          267.09588623046875
+        ]
+      ],
+      "nearby_text": "011\n012\n013\n014\n015\n016\n017\n018\n019\nBiological data are often distributed across institutions and data holders, where\nprivacy and data-sharing constraints limit centralized access. A key challenge for\nself-improving AI in this setting is to use such distributed evidence to improve\nboth model parameters and the computational solutions built around them. Col-\nlaborative learning typically optimizes fixed models, whereas automated model\ndesign and research generally rely on centralized training and evaluation signals.\nBridging the two is nontrivial: distributed evidence must support not only opti-\nmization, but also the evaluation and refinement of computational changes that\ngeneralize beyond their local settings. To tackle this, we introduce BioCoLoop, a\ncollaborative research framework that couples client-local parameter fitting with an",
+      "metadata": {
+        "content": "fixed model， client，这类表示相同含义的用词需要统一，而且尽可能用常见的词汇",
+        "name": "",
+        "title": "yc-Reanan",
+        "creationDate": "",
+        "modDate": "D:20260923145130Z00'00'",
+        "subject": "",
+        "id": ""
+      }
+    },
+    {
+      "page": 1,
+      "xref": 710,
+      "kind": "Highlight",
+      "author": "yc-Reanan",
+      "comment": "这句话的引入太快了，我感觉逻辑应该是：AI 驱动的生物研究很有价值，（可以引用一下最近cell的一系列工作），说一下趋势正在从手工设计模型，向self-improve演进。现有研究范式主要专注单个场景，有一定局限，因为它忽略在Bio场景上有一个重要的挑战，就是数据共享，\n\n我们这个文章旨在探究，在不共享数据的情况下，能否通过collabrate 假设提出、模型架构设计等经验，使得这部分自进化的经验可以彼此增益？",
+      "highlighted_text": "Privacy and data-sharing constraints often require these measurements to remain at their original institutions",
+      "rect": [
+        108.0,
+        469.01031494140625,
+        503.993408203125,
+        489.931884765625
+      ],
+      "vertices": [
+        [
+          278.95819091796875,
+          469.01031494140625
+        ],
+        [
+          503.993408203125,
+          469.01031494140625
+        ],
+        [
+          278.95819091796875,
+          478.972900390625
+        ],
+        [
+          503.993408203125,
+          478.972900390625
+        ],
+        [
+          108.0,
+          479.96929931640625
+        ],
+        [
+          322.0166015625,
+          479.96929931640625
+        ],
+        [
+          108.0,
+          489.931884765625
+        ],
+        [
+          322.0166015625,
+          489.931884765625
+        ]
+      ],
+      "nearby_text": "029\n030\n031\n032\n033\n034\n035\n036\n037\n1. INTRODUCTION\nBiological laboratories generate valuable measurements for predicting molecular interactions, pro-\ntein responses and cellular perturbations. Privacy and data-sharing constraints often require these\nmeasurements to remain at their original institutions (Sheller et al., 2020; Bakhtiari et al., 2025).\nHow can laboratories use their collective experimental evidence to improve a predictor while retain-\ning their own data? Beyond fitting shared parameters, we aim to automate a second part of model\ndevelopment: choosing and revising prediction components and training configurations using feed-\nback from participating laboratories. This calls for a collaborative research process in which local\nevidence informs both model training and the next design experiment.",
+      "metadata": {
+        "content": "这句话的引入太快了，我感觉逻辑应该是：AI 驱动的生物研究很有价值，（可以引用一下最近cell的一系列工作），说一下趋势正在从手工设计模型，向self-improve演进。现有研究范式主要专注单个场景，有一定局限，因为它忽略在Bio场景上有一个重要的挑战，就是数据共享，\n\n我们这个文章旨在探究，在不共享数据的情况下，能否通过collabrate 假设提出、模型架构设计等经验，使得这部分自进化的经验可以彼此增益？",
+        "name": "",
+        "title": "yc-Reanan",
+        "creationDate": "",
+        "modDate": "D:20260923145304Z00'00'",
+        "subject": "",
+        "id": ""
+      }
+    },
+    {
+      "page": 1,
+      "xref": 724,
+      "kind": "Highlight",
+      "author": "yc-Reanan",
+      "comment": "这不是互补的任务，而是setting的不同",
+      "highlighted_text": "complementary approaches.",
+      "rect": [
+        202.8542938232422,
+        551.7003173828125,
+        313.2398986816406,
+        561.6629028320312
+      ],
+      "vertices": [
+        [
+          202.8542938232422,
+          551.7003173828125
+        ],
+        [
+          313.2398986816406,
+          551.7003173828125
+        ],
+        [
+          202.8542938232422,
+          561.6629028320312
+        ],
+        [
+          313.2398986816406,
+          561.6629028320312
+        ]
+      ],
+      "nearby_text": "035\n036\n037\n038\n039\n040\n041\n042\n043\ning their own data? Beyond fitting shared parameters, we aim to automate a second part of model\ndevelopment: choosing and revising prediction components and training configurations using feed-\nback from participating laboratories. This calls for a collaborative research process in which local\nevidence informs both model training and the next design experiment.\nFigure 1 contrasts two complementary approaches. A centralized research agent iterates on data\naccessible to its execution environment, using experiment outcomes to revise candidate solutions.\nAIDE and the AI Scientist automate this process for computational research (Jiang et al., 2025b; Lu\net al., 2024); DrugEvolve applies algorithm revision, evaluation and memory to drug-development\ntasks (Zhou et al., 2026; GAIR-NLP DrugEvolve contributors, 2026). These workflows turn mea-\nsurements into design feedback. Collaborative learning instead connects several data holders through",
+      "metadata": {
+        "content": "这不是互补的任务，而是setting的不同",
+        "name": "",
+        "title": "yc-Reanan",
+        "creationDate": "",
+        "modDate": "D:20260923145757Z00'00'",
+        "subject": "",
+        "id": ""
+      }
+    },
+    {
+      "page": 1,
+      "xref": 722,
+      "kind": "Highlight",
+      "author": "yc-Reanan",
+      "comment": "最好不用couple，或者combine，会让人觉得我们是A+B，直接叙述我们的框架和核心创新即可",
+      "highlighted_text": "couples these interfaces in a two-level research cycle.",
+      "rect": [
+        157.1156005859375,
+        678.2252807617188,
+        363.77978515625,
+        688.1878662109375
+      ],
+      "vertices": [
+        [
+          157.1156005859375,
+          678.2252807617188
+        ],
+        [
+          363.77978515625,
+          678.2252807617188
+        ],
+        [
+          157.1156005859375,
+          688.1878662109375
+        ],
+        [
+          363.77978515625,
+          688.1878662109375
+        ]
+      ],
+      "nearby_text": "046\n047\n048\n049\n050\n051\n052\n053\n2024). Here, a client is a laboratory’s computational worker, which operates on data held by that\nlaboratory. This approach broadens the evidence available for fitting a specified model. Connecting\nthe two requires a second shared interface: laboratories must also evaluate candidate designs and\nsupply feedback that the research agent can use to choose its next experiment.\nBioCoLoop couples these interfaces in a two-level research cycle. For any candidate design, an inner\ntraining process fits a shared predictor using laboratory-local data. An outer research loop uses the\nresulting development evidence to propose and select subsequent designs. We define an executable\ndesign by its trainable prediction components and its learning-rate, regularization and aggregation\nsettings. These choices let the loop adapt how a predictor learns while keeping the biological task",
+      "metadata": {
+        "content": "最好不用couple，或者combine，会让人觉得我们是A+B，直接叙述我们的框架和核心创新即可",
+        "name": "",
+        "title": "yc-Reanan",
+        "creationDate": "",
+        "modDate": "D:20260923145838Z00'00'",
+        "subject": "",
+        "id": ""
+      }
+    },
+    {
+      "page": 2,
+      "xref": 745,
+      "kind": "Highlight",
+      "author": "yc-Reanan",
+      "comment": "这个题目不准确，应该是AI+bio settingh或者范式的区别",
+      "highlighted_text": "Figure 1: Three ways to use biological measurements.",
+      "rect": [
+        108.0,
+        310.1972961425781,
+        332.7626953125,
+        320.159912109375
+      ],
+      "vertices": [
+        [
+          108.0,
+          310.1972961425781
+        ],
+        [
+          332.7626953125,
+          310.1972961425781
+        ],
+        [
+          108.0,
+          320.159912109375
+        ],
+        [
+          332.7626953125,
+          320.159912109375
+        ]
+      ],
+      "nearby_text": "069\n070\n071\n072\n073\n074\n075\n076\n077\nlocal data\npredictive model\nresearch harness\naggregation / evidence gate\nDashed gray: inactive research harness. K denotes participating laboratories.\nFigure 1: Three ways to use biological measurements. A centralized bio-agent revises a predictor\nusing one accessible dataset. Collaborative training fits a specified model using data held by K\nlaboratories. BioCoLoop also returns aggregate development evidence to the research loop, allowing\ndistributed measurements to guide both parameter fitting and design revision. Colors identify data,\nmodels, research components and aggregation interfaces.",
+      "metadata": {
+        "content": "这个题目不准确，应该是AI+bio settingh或者范式的区别",
+        "name": "",
+        "title": "yc-Reanan",
+        "creationDate": "",
+        "modDate": "D:20260923150826Z00'00'",
+        "subject": "",
+        "id": ""
+      }
+    },
+    {
+      "page": 2,
+      "xref": 742,
+      "kind": "Highlight",
+      "author": "yc-Reanan",
+      "comment": "建议参考其他论文，分点来写",
+      "highlighted_text": "Our contributions are threefold. First,",
+      "rect": [
+        108.0,
+        510.6532897949219,
+        261.772705078125,
+        520.6159057617188
+      ],
+      "vertices": [
+        [
+          108.0,
+          510.6532897949219
+        ],
+        [
+          261.772705078125,
+          510.6532897949219
+        ],
+        [
+          108.0,
+          520.6159057617188
+        ],
+        [
+          261.772705078125,
+          520.6159057617188
+        ]
+      ],
+      "nearby_text": "086\n087\n088\n089\n090\n091\n092\n093\n094\nobserved-response proteomic efficacy classification, and cell perturbation identification spanning\nsingle-gene, double-gene and drug interventions. Each task uses its own predictor, connected to the\nsame training and research interfaces. The main comparison uses ten simulated laboratories for the\ncollaborative system and one for its local references.\nOur contributions are threefold. First, we connect laboratory-local parameter fitting to distributed\nevaluation of executable model designs through a common biological research interface. Second, we\ndevelop an evidence-guided loop mechanism that packages proposal outcomes into reusable research\nhistory and uses measured learning trajectories to select candidates for further validation. Third, we\nevaluate BioCoLoop across the three task families above. Controlled comparisons separate the effects\nof laboratory participation, proposal feedback and training-budget allocation. We also examine how",
+      "metadata": {
+        "content": "建议参考其他论文，分点来写",
+        "name": "",
+        "title": "yc-Reanan",
+        "creationDate": "",
+        "modDate": "D:20260923150944Z00'00'",
+        "subject": "",
+        "id": ""
+      }
+    },
+    {
+      "page": 2,
+      "xref": 743,
+      "kind": "Highlight",
+      "author": "yc-Reanan",
+      "comment": "这个写的是你做了哪些实验，不是贡献，贡献应该是你做了这些实验说明了什么，除了方法有效之外，最好再加上做了实验有哪些发现",
+      "highlighted_text": "Third, we evaluate BioCoLoop across the three task families above. Controlled comparisons separate the effects of laboratory participation, proposal feedback and training-budget allocation. We also examine how performance changes with the research model, the number of participating laboratories, additional independent datasets and the number of research iterations.",
+      "rect": [
+        108.0,
+        543.5302734375,
+        504.36199951171875,
+        597.3289184570312
+      ],
+      "vertices": [
+        [
+          465.6075134277344,
+          543.5302734375
+        ],
+        [
+          504.0033874511719,
+          543.5302734375
+        ],
+        [
+          465.6075134277344,
+          553.492919921875
+        ],
+        [
+          504.0033874511719,
+          553.492919921875
+        ],
+        [
+          108.0,
+          554.4893188476562
+        ],
+        [
+          503.993408203125,
+          554.4893188476562
+        ],
+        [
+          108.0,
+          564.451904296875
+        ],
+        [
+          503.993408203125,
+          564.451904296875
+        ],
+        [
+          108.0,
+          565.4483032226562
+        ],
+        [
+          504.36199951171875,
+          565.4483032226562
+        ],
+        [
+          108.0,
+          575.410888671875
+        ],
+        [
+          504.36199951171875,
+          575.410888671875
+        ],
+        [
+          108.0,
+          576.4072875976562
+        ],
+        [
+          503.993408203125,
+          576.4072875976562
+        ],
+        [
+          108.0,
+          586.369873046875
+        ],
+        [
+          503.993408203125,
+          586.369873046875
+        ],
+        [
+          108.0,
+          587.3663330078125
+        ],
+        [
+          343.5757141113281,
+          587.3663330078125
+        ],
+        [
+          108.0,
+          597.3289184570312
+        ],
+        [
+          343.5757141113281,
+          597.3289184570312
+        ]
+      ],
+      "nearby_text": "089\n090\n091\n092\n093\n094\n095\n096\n097\n098\n099\n100\ncollaborative system and one for its local references.\nOur contributions are threefold. First, we connect laboratory-local parameter fitting to distributed\nevaluation of executable model designs through a common biological research interface. Second, we\ndevelop an evidence-guided loop mechanism that packages proposal outcomes into reusable research\nhistory and uses measured learning trajectories to select candidates for further validation. Third, we\nevaluate BioCoLoop across the three task families above. Controlled comparisons separate the effects\nof laboratory participation, proposal feedback and training-budget allocation. We also examine how\nperformance changes with the research model, the number of participating laboratories, additional\nindependent datasets and the number of research iterations.\n2. RELATED WORK",
+      "metadata": {
+        "content": "这个写的是你做了哪些实验，不是贡献，贡献应该是你做了这些实验说明了什么，除了方法有效之外，最好再加上做了实验有哪些发现",
+        "name": "",
+        "title": "yc-Reanan",
+        "creationDate": "",
+        "modDate": "D:20260923151015Z00'00'",
+        "subject": "",
+        "id": ""
+      }
+    },
+    {
+      "page": 2,
+      "xref": 762,
+      "kind": "Highlight",
+      "author": "yc-Reanan",
+      "comment": "贡献应该是一个框架，文章写作的时候需要适当包装和抽象",
+      "highlighted_text": "we connect laboratory-local parameter fitting to distributed evaluation of executable model designs through a common biological research interface.",
+      "rect": [
+        108.0,
+        510.6532897949219,
+        503.993408203125,
+        531.5748901367188
+      ],
+      "vertices": [
+        [
+          265.0903015136719,
+          510.6532897949219
+        ],
+        [
+          503.993408203125,
+          510.6532897949219
+        ],
+        [
+          265.0903015136719,
+          520.6159057617188
+        ],
+        [
+          503.993408203125,
+          520.6159057617188
+        ],
+        [
+          108.0,
+          521.6123046875
+        ],
+        [
+          453.0049133300781,
+          521.6123046875
+        ],
+        [
+          108.0,
+          531.5748901367188
+        ],
+        [
+          453.0049133300781,
+          531.5748901367188
+        ]
+      ],
+      "nearby_text": "086\n087\n088\n089\n090\n091\n092\n093\n094\n095\nobserved-response proteomic efficacy classification, and cell perturbation identification spanning\nsingle-gene, double-gene and drug interventions. Each task uses its own predictor, connected to the\nsame training and research interfaces. The main comparison uses ten simulated laboratories for the\ncollaborative system and one for its local references.\nOur contributions are threefold. First, we connect laboratory-local parameter fitting to distributed\nevaluation of executable model designs through a common biological research interface. Second, we\ndevelop an evidence-guided loop mechanism that packages proposal outcomes into reusable research\nhistory and uses measured learning trajectories to select candidates for further validation. Third, we\nevaluate BioCoLoop across the three task families above. Controlled comparisons separate the effects\nof laboratory participation, proposal feedback and training-budget allocation. We also examine how\nperformance changes with the research model, the number of participating laboratories, additional",
+      "metadata": {
+        "content": "贡献应该是一个框架，文章写作的时候需要适当包装和抽象",
+        "name": "",
+        "title": "yc-Reanan",
+        "creationDate": "",
+        "modDate": "D:20260923151235Z00'00'",
+        "subject": "",
+        "id": ""
+      }
+    },
+    {
+      "page": 3,
+      "xref": 764,
+      "kind": "Highlight",
+      "author": "yc-Reanan",
+      "comment": "因为是一个新的设定，所以开始需要用数学公式抽象地先说明，输入输出是什么，期望得到什么样的效果，便于读者理解",
+      "highlighted_text": "FRAMEWORK OVERVIEW",
+      "rect": [
+        122.94390106201172,
+        328.5242919921875,
+        216.96099853515625,
+        338.4869079589844
+      ],
+      "vertices": [
+        [
+          122.94390106201172,
+          328.5242919921875
+        ],
+        [
+          216.96099853515625,
+          328.5242919921875
+        ],
+        [
+          122.94390106201172,
+          338.4869079589844
+        ],
+        [
+          216.96099853515625,
+          338.4869079589844
+        ]
+      ],
+      "nearby_text": "125\n126\n127\n128\n129\n130\n131\n132\n133\n2025).\n3. METHOD: COLLABORATIVE AGENTIC BIOLOGICAL RESEARCH\n3.1 FRAMEWORK OVERVIEW\nBioCoLoop takes a task specification, an initial predictor, an editable design space and data held by\nK participating laboratories. The task specification defines prediction inputs and outputs, scorer and\ncomputational budget. Each laboratory maintains training and development partitions. A research\ncontroller proposes a design, a shared training service fits its parameters across laboratories, and",
+      "metadata": {
+        "content": "因为是一个新的设定，所以开始需要用数学公式抽象地先说明，输入输出是什么，期望得到什么样的效果，便于读者理解",
+        "name": "",
+        "title": "yc-Reanan",
+        "creationDate": "",
+        "modDate": "D:20260923151324Z00'00'",
+        "subject": "",
+        "id": ""
+      }
+    },
+    {
+      "page": 3,
+      "xref": 788,
+      "kind": "Highlight",
+      "author": "yc-Reanan",
+      "comment": "补充必要的数学公式，说明网络参数的更新，以及模型Proposal等原则的更新规则",
+      "highlighted_text": "EVIDENCE-GUIDED PROPOSAL AND REVISION",
+      "rect": [
+        122.94390106201172,
+        513.6402587890625,
+        295.4263916015625,
+        523.6029052734375
+      ],
+      "vertices": [
+        [
+          122.94390106201172,
+          513.6402587890625
+        ],
+        [
+          295.4263916015625,
+          513.6402587890625
+        ],
+        [
+          122.94390106201172,
+          523.6029052734375
+        ],
+        [
+          295.4263916015625,
+          523.6029052734375
+        ]
+      ],
+      "nearby_text": "140\n141\n142\n143\n144\n145\n146\n147\n148\na candidate with promising early progress can be promoted for full validation. The outer loop decides\nwhat design to investigate and how to allocate evaluation; the inner process fits parameters for that\ndesign.\n3.2 EVIDENCE-GUIDED PROPOSAL AND REVISION\nThe controller receives the task specification, current design and accumulated evidence cards. It\nreturns a structured proposal with four fields: a hypothesis stating why a change should help, an\nexperiment describing the comparison, an expected_effect identifying the predicted metric or\ndiagnostic response, and a design_id resolving to an executable configuration. A validator checks",
+      "metadata": {
+        "content": "补充必要的数学公式，说明网络参数的更新，以及模型Proposal等原则的更新规则",
+        "name": "",
+        "title": "yc-Reanan",
+        "creationDate": "",
+        "modDate": "D:20260923151728Z00'00'",
+        "subject": "",
+        "id": ""
+      }
+    },
+    {
+      "page": 4,
+      "xref": 780,
+      "kind": "Highlight",
+      "author": "yc-Reanan",
+      "comment": "图中补充Outer和Inner之间的关系和数据流向，另外，这个图例有点糊，你看看能不能搞高清一点，可以去https://www.flaticon.com/类似的网站看看",
+      "highlighted_text": "BioCoLoop couples",
+      "rect": [
+        155.64199829101562,
+        388.4873046875,
+        238.35150146484375,
+        398.44989013671875
+      ],
+      "vertices": [
+        [
+          155.64199829101562,
+          388.4873046875
+        ],
+        [
+          238.35150146484375,
+          388.4873046875
+        ],
+        [
+          155.64199829101562,
+          398.44989013671875
+        ],
+        [
+          238.35150146484375,
+          398.44989013671875
+        ]
+      ],
+      "nearby_text": "184\n185\n186\n187\n188\n189\n190\n191\n192\nPolicies\nmolecule–protein\nprotein response\nsingle / combination\nDTI\nProteomic efficacy\nCell perturbations\nFigure 2:\nBioCoLoop couples an outer proposal–instantiation–evaluation–revision cycle with\nlaboratory-local parameter fitting. The coordinator distributes parameters and aggregates local up-\ndates and development diagnostics; the fixed research model uses this feedback to revise designs.\nThe illustrated ten-laboratory setting is the main experiment’s instance of a general K-laboratory in-\nterface. Executable designs specify trainable prediction components and optimization settings. Task\nadapters support DTI, observed-response proteomics and cell perturbation.",
+      "metadata": {
+        "content": "图中补充Outer和Inner之间的关系和数据流向，另外，这个图例有点糊，你看看能不能搞高清一点，可以去https://www.flaticon.com/类似的网站看看",
+        "name": "",
+        "title": "yc-Reanan",
+        "creationDate": "",
+        "modDate": "D:20260923151449Z00'00'",
+        "subject": "",
+        "id": ""
+      }
+    },
+    {
+      "page": 4,
+      "xref": 790,
+      "kind": "Highlight",
+      "author": "yc-Reanan",
+      "comment": "不建议用缩写，审稿人上来可能就直接先看图",
+      "highlighted_text": "DTI,",
+      "rect": [
+        176.31350708007812,
+        443.28131103515625,
+        192.91119384765625,
+        453.243896484375
+      ],
+      "vertices": [
+        [
+          176.3135986328125,
+          443.28131103515625
+        ],
+        [
+          192.91119384765625,
+          443.28131103515625
+        ],
+        [
+          176.3135986328125,
+          453.243896484375
+        ],
+        [
+          192.91119384765625,
+          453.243896484375
+        ]
+      ],
+      "nearby_text": "188\n189\n190\n191\n192\n193\n194\n195\n196\nFigure 2:\nBioCoLoop couples an outer proposal–instantiation–evaluation–revision cycle with\nlaboratory-local parameter fitting. The coordinator distributes parameters and aggregates local up-\ndates and development diagnostics; the fixed research model uses this feedback to revise designs.\nThe illustrated ten-laboratory setting is the main experiment’s instance of a general K-laboratory in-\nterface. Executable designs specify trainable prediction components and optimization settings. Task\nadapters support DTI, observed-response proteomics and cell perturbation.\nslate racing isolates evidence-dependent allocation. Section 4 and Appendix A specify budgets and\npromotion rules.",
+      "metadata": {
+        "content": "不建议用缩写，审稿人上来可能就直接先看图",
+        "name": "",
+        "title": "yc-Reanan",
+        "creationDate": "",
+        "modDate": "D:20260923151622Z00'00'",
+        "subject": "",
+        "id": ""
+      }
+    },
+    {
+      "page": 4,
+      "xref": 792,
+      "kind": "Highlight",
+      "author": "yc-Reanan",
+      "comment": "这个位置需要改成K",
+      "highlighted_text": "10",
+      "rect": [
+        379.9977111816406,
+        254.4180908203125,
+        386.8485107421875,
+        262.6688232421875
+      ],
+      "vertices": [
+        [
+          379.9977111816406,
+          254.4180908203125
+        ],
+        [
+          386.8485107421875,
+          254.4180908203125
+        ],
+        [
+          379.9977111816406,
+          262.6688232421875
+        ],
+        [
+          386.8485107421875,
+          262.6688232421875
+        ]
+      ],
+      "nearby_text": "173\n174\n175\n176\n177\n178\n179\n180\nShared coordinator\nbroadcast parameters  |  aggregate local updates\nlocal updates / diagnostics\nLaboratory 1\nprivate\ndata\nlocal\ntrain + dev\nmodel\nupdate\nLaboratory 2\nprivate\ndata\nlocal\ntrain + dev\nmodel\nupdate\nLaboratory 10\nprivate\ndata\nlocal\ntrain + dev\nmodel\nupdate\n...\nTask-specific\nfitted models\nReusable\ncomputational\nsolutions\nDesigns\n Data stay local (collaborative learning)",
+      "metadata": {
+        "content": "这个位置需要改成K",
+        "name": "",
+        "title": "yc-Reanan",
+        "creationDate": "",
+        "modDate": "D:20260923151659Z00'00'",
+        "subject": "",
+        "id": ""
+      }
+    },
+    {
+      "page": 5,
+      "xref": 793,
+      "kind": "Highlight",
+      "author": "yc-Reanan",
+      "comment": "实验部分，一般需要介绍数据集，对比的方法，和评价指标（评价指标如果是常见指标可以不展开介绍）",
+      "highlighted_text": "DRUG–TARGET INTERACTION PREDICTION",
+      "rect": [
+        122.94390106201172,
+        568.4462890625,
+        282.7839050292969,
+        578.408935546875
+      ],
+      "vertices": [
+        [
+          122.94390106201172,
+          568.4462890625
+        ],
+        [
+          282.7838134765625,
+          568.4462890625
+        ],
+        [
+          122.94390106201172,
+          578.408935546875
+        ],
+        [
+          282.7838134765625,
+          578.408935546875
+        ]
+      ],
+      "nearby_text": "253\n254\n255\n256\n257\n258\n259\n260\n261\nsummarize the specified training/search seeds on fixed partitions. Appendix A supplies all six con-\nfigurations, secondary metrics and uncertainty estimates; bold marks all best displayed task scores,\nincluding ties.\n4.2 DRUG–TARGET INTERACTION PREDICTION\nDTI predicts a binary interaction from a compound and a protein sequence. We use the released\nBindingDB training/development split of 50,149/5,604 pairs. Canonical-compound groups are as-\nsigned to clients with a label-independent size-balancing rule, producing compound-disjoint clients\nwhile preserving the source split within each client.",
+      "metadata": {
+        "content": "实验部分，一般需要介绍数据集，对比的方法，和评价指标（评价指标如果是常见指标可以不展开介绍）",
+        "name": "",
+        "title": "yc-Reanan",
+        "creationDate": "",
+        "modDate": "D:20260923151827Z00'00'",
+        "subject": "",
+        "id": ""
+      }
+    },
+    {
+      "page": 5,
+      "xref": 795,
+      "kind": "Highlight",
+      "author": "yc-Reanan",
+      "comment": "需要简单介绍任务设定，任务的目标是什么，输入和输出是什么，因为涉及多个子任务，读者可能并不熟悉",
+      "highlighted_text": "Benchmark contracts.",
+      "rect": [
+        108.0,
+        190.33270263671875,
+        199.28729248046875,
+        200.2952880859375
+      ],
+      "vertices": [
+        [
+          108.0,
+          190.33270263671875
+        ],
+        [
+          199.28729248046875,
+          190.33270263671875
+        ],
+        [
+          108.0,
+          200.2952880859375
+        ],
+        [
+          199.28729248046875,
+          200.2952880859375
+        ]
+      ],
+      "nearby_text": "221\n222\n223\n224\n225\n226\n227\n228\n229\npredictor. Training and development groups are assigned to ten disjoint simulated laboratories, bal-\nanced by compound or intervention identity. The single-laboratory setting uses preselected client\n0; the collaborative setting uses all ten clients. Each comparison uses the same held-out scorer and\ncandidate rosters.\nBenchmark contracts.\nSetting\nPrediction contract\nTask-reference model\nPrimary metric\nDTI\nCompound + protein →interaction\nTAPB\nAUROC ↑\nProteomics\nProteome + drug →efficacy\nProteinTalks-derived head\nAP ↑",
+      "metadata": {
+        "content": "需要简单介绍任务设定，任务的目标是什么，输入和输出是什么，因为涉及多个子任务，读者可能并不熟悉",
+        "name": "",
+        "title": "yc-Reanan",
+        "creationDate": "",
+        "modDate": "D:20260923151915Z00'00'",
+        "subject": "",
+        "id": ""
+      }
+    },
+    {
+      "page": 6,
+      "xref": 827,
+      "kind": "Highlight",
+      "author": "yc-Reanan",
+      "comment": "AI感比较重，很多细节可以放在附录",
+      "highlighted_text": "The task reference is a ProteinTalks-derived observed-response eﬀicacy head: protein and drug con- volutional branches followed by a 64–32–1 classifier, trained from random initialization on observed 6h/24h responses and Morgan features. A 24h linear/Morgan model provides a complementary non- neural reference. Average precision (AP) is primary; AUROC, binary cross-entropy and accuracy at 0.5 are secondary. The 148-condition test role is evaluated after the development-selected checkpoint is frozen.",
+      "rect": [
+        107.64099884033203,
+        250.87432861328125,
+        505.7464904785156,
+        321.6098937988281
+      ],
+      "vertices": [
+        [
+          107.69100189208984,
+          250.87432861328125
+        ],
+        [
+          505.6570129394531,
+          250.87432861328125
+        ],
+        [
+          107.69100189208984,
+          260.8369140625
+        ],
+        [
+          505.6570129394531,
+          260.8369140625
+        ],
+        [
+          107.7509994506836,
+          261.83331298828125
+        ],
+        [
+          504.0033874511719,
+          261.83331298828125
+        ],
+        [
+          107.7509994506836,
+          271.7958984375
+        ],
+        [
+          504.0033874511719,
+          271.7958984375
+        ],
+        [
+          108.0,
+          272.79229736328125
+        ],
+        [
+          505.6571960449219,
+          272.79229736328125
+        ],
+        [
+          108.0,
+          282.7549133300781
+        ],
+        [
+          505.6571960449219,
+          282.7549133300781
+        ],
+        [
+          108.0,
+          283.7513122558594
+        ],
+        [
+          174.58999633789062,
+          283.7513122558594
+        ],
+        [
+          108.0,
+          293.7138977050781
+        ],
+        [
+          174.58999633789062,
+          293.7138977050781
+        ],
+        [
+          107.64099884033203,
+          300.68829345703125
+        ],
+        [
+          505.7464904785156,
+          300.68829345703125
+        ],
+        [
+          107.64099884033203,
+          310.6509094238281
+        ],
+        [
+          505.7464904785156,
+          310.6509094238281
+        ],
+        [
+          107.69100189208984,
+          311.6473083496094
+        ],
+        [
+          474.6335144042969,
+          311.6473083496094
+        ],
+        [
+          107.69100189208984,
+          321.6098937988281
+        ],
+        [
+          474.6335144042969,
+          321.6098937988281
+        ]
+      ],
+      "nearby_text": "280\n281\n282\n283\n284\n285\n286\n287\n288\n289\n290\n291\n292\n293\ndrug representation. We partition the 491-condition source pool, spanning 333 compounds, into\n386 fitting and 105 development conditions by compound group. Ten clients each own 49–50 total\nconditions, with compound-disjoint training and development groups and both classes in every local\ndevelopment set. Local fitting sets contain 35–42 conditions.\nThe task reference is a ProteinTalks-derived observed-response efficacy head: protein and drug con-\nvolutional branches followed by a 64–32–1 classifier, trained from random initialization on observed\n6h/24h responses and Morgan features. A 24h linear/Morgan model provides a complementary non-\nneural reference.\nAverage precision (AP) is primary; AUROC, binary cross-entropy and accuracy at 0.5 are secondary.\nThe 148-condition test role is evaluated after the development-selected checkpoint is frozen.\n4.4 CELL PERTURBATION IDENTIFICATION\nGiven an observed expression response and five candidate interventions, the model selects the true",
+      "metadata": {
+        "content": "AI感比较重，很多细节可以放在附录",
+        "name": "",
+        "title": "yc-Reanan",
+        "creationDate": "",
+        "modDate": "D:20260923152027Z00'00'",
+        "subject": "",
+        "id": ""
+      }
+    },
+    {
+      "page": 7,
+      "xref": 844,
+      "kind": "Highlight",
+      "author": "yc-Reanan",
+      "comment": "",
+      "highlighted_text": "",
+      "rect": [
+        -2147483648.0,
+        -2147483648.0,
+        2147483520.0,
+        2147483520.0
+      ],
+      "vertices": [],
+      "nearby_text": "324\n325\n326\n327\n328\n329\n330\n331\n332\n333\n334\n335\n336\n337\n338\n339\n340\n341\n342\n343\n344\n345\n346\n347\n348\n349\n350\n351\n352\n353\n354\n355\n356\n357\n358\n359\n360\n361\n362\n363\n364\n365\n366\n367\n368\n369\n370\n371\n372\n373\n374\n375\n376\n377\nUnder review as a conference paper at ICLR 2027\ntarget-only control uses the same architecture. A separate analysis retains three within-study mtPTDS\ncontexts. Appendix B specifies source filtering, losses and all source combinations.\nThe proposer comparison uses Qwen2.5-7B-Instruct and gpt-5.6-luna across all five endpoints.\nBoth explore the same twelve designs in six proposal slots, with test prefixes at 0, 1, 2, 4 and 6.\nA second, longer study explores 36 designs in 24 slots on proteomics and the three cell endpoints.\nWithin each protocol, candidates receive 100 rounds from a common initialization, the first proposal\nis shared, and direct/loop differ in access to evaluation history. Failed slots consume the budget.\nDTI short-search results use seed 42; the remaining proposer studies use seed 61. The complete\ntrajectories and fixed-prefix scores allow task-specific analysis of search progress and saturation.\n5. RESULTS\n5.1 MAIN HELD-OUT PERFORMANCE\nTable 1 places the three task families in one comparison: DTI and proteomics each contribute one\nendpoint, and cell perturbation contributes three. Each cell reports mean ± sample SD over seeds 42–\n44. This SD measures training/search variability on fixed partitions. The overall column averages\nthe five displayed endpoints within each seed before summarizing across seeds; it is a descriptive\nsummary, not a common biological metric.\nMethod\nDTI\nProteomics\nCell perturbation\nOverall\nTAPB\nAUROC ↑\nPTPC\nAP ↑\nVCC\nTop-1 ↑\nNorman\nTop-1 ↑\nTahoe\nTop-1 ↑\nMean\n5 endpoints\nTask model (1 lab)\n82.83 ± 1.22 25.05 ± 4.56 29.94 ± 0.00 25.56 ± 0.00 19.40 ± 0.00 36.55 ± 0.82\nQwen direct (1 lab)\n89.89 ± 1.02 20.13 ± 0.07 21.09 ± 4.38 14.15 ± 0.00 15.42 ± 6.21 32.14 ± 2.02\nBioCoLoop (10 labs)\n93.76 ± 1.11 36.99 ± 0.22 31.54 ± 0.08 22.25 ± 0.45 22.39 ± 2.59 41.39 ± 0.60\nTable 1: Main held-out comparison. Task models are TAPB (DTI), a ProteinTalks-derived efficacy\nhead (PTPC) and corrected scDEBART response heads (cells). Qwen direct proposes configurations\nwithout evaluation history; BioCoLoop adds collaborative access and evidence feedback. Values are\nmean ± sample SD, multiplied by 100; SD is not a confidence interval. Overall summarizes the five\nendpoints within each seed. Bold and underline mark the best and second-best displayed means. The\nshared training protocol is in Section 4; all six configurations, seed counts and secondary metrics are\nin Appendix A.\nBioCoLoop leads four of five displayed endpoints. TAPB reaches 93.76% random-test AUROC ver-\nsus 89.89% for one-laboratory direct optimization, and proteomic AP reaches 36.99% versus 20.13%.\nRelative to direct optimization, VCC, Norman and Tahoe macro Top-1 increase by +10.45, +8.10 and\n+6.97 points. Norman’s best displayed result remains the one-laboratory fixed recipe at 25.56%, com-\npared with 22.25% for BioCoLoop. The complete system’s five-endpoint mean is 41.39, versus 36.55\nfor the fixed recipe and 32.14 for direct optimization. The main comparison measures collaborative\naccess and research jointly; the following controls separate them.\n5.2 DOES FEEDBACK IMPROVE THE ALLOCATION OF TRAINING COMPUTE?\nThis experiment asks whether early development measurements help allocate a fixed training bud-\nget. The candidate designs and laboratory data are identical. Uniform allocation trains every design\nequally; the evidence-guided loop screens all designs and promotes a subset using current perfor-\nmance and learning progress. Table 2 therefore measures training allocation with proposal generation\nheld fixed.\nAcross 12 newly executed proteomics/cell task–seed comparisons, the loop wins four and ties eight.\nNorman improves from 11.48% to 22.32% macro Top-1, a +10.84-point mean effect with hierarchi-\ncal paired-bootstrap 95% CI [4.54, 17.73]. Tahoe improves by +1.99 points, with one win and two\nties; VCC and proteomics tie. On Norman, a promoted low-learning-rate residual design continues\nimproving beyond the uniform method’s stopping point. Concentrating validation on promising can-\ndidates improves the final predictor at the same total training budget. The DTI development replay\n7",
+      "metadata": {
+        "content": "",
+        "name": "",
+        "title": "yc-Reanan",
+        "creationDate": "",
+        "modDate": "D:20260923152212Z00'00'",
+        "subject": "",
+        "id": ""
+      }
+    },
+    {
+      "page": 7,
+      "xref": 843,
+      "kind": "Highlight",
+      "author": "yc-Reanan",
+      "comment": "强烈建议看一下之前ICLR的写法，results不会单独成一大章，在写experiments的时候就会顺便写了\n\n另外，这个表可以展开一下，把task model展开，写出来具体的名字，这样还可以把他们论文里面引用的其他方法的性能写进来，因为一个模型只能做一个场景，其他场景就写小横线\n\n其实我现在有一个新的想法，就是这几个任务其实就是不同形式的数据集，他们之间能否互相增益呢，这样我们就变成一个模型了，而不是一些子模型，优势更突出",
+      "highlighted_text": "RESULTS 5.1 MAIN HELD-OUT PERFORMANCE Table 1",
+      "rect": [
+        107.69100189208984,
+        204.55609130859375,
+        247.1575927734375,
+        259.81488037109375
+      ],
+      "vertices": [
+        [
+          120.94750213623047,
+          204.55609130859375
+        ],
+        [
+          161.95379638671875,
+          204.55609130859375
+        ],
+        [
+          120.94750213623047,
+          216.51129150390625
+        ],
+        [
+          161.95379638671875,
+          216.51129150390625
+        ],
+        [
+          108.0,
+          229.32928466796875
+        ],
+        [
+          247.1575927734375,
+          229.32928466796875
+        ],
+        [
+          108.0,
+          239.2918701171875
+        ],
+        [
+          247.1575927734375,
+          239.2918701171875
+        ],
+        [
+          107.69100189208984,
+          249.852294921875
+        ],
+        [
+          140.38900756835938,
+          249.852294921875
+        ],
+        [
+          107.69100189208984,
+          259.81488037109375
+        ],
+        [
+          140.38900756835938,
+          259.81488037109375
+        ]
+      ],
+      "nearby_text": "330\n331\n332\n333\n334\n335\n336\n337\n338\n339\n340\n341\n342\nis shared, and direct/loop differ in access to evaluation history. Failed slots consume the budget.\nDTI short-search results use seed 42; the remaining proposer studies use seed 61. The complete\ntrajectories and fixed-prefix scores allow task-specific analysis of search progress and saturation.\n5. RESULTS\n5.1 MAIN HELD-OUT PERFORMANCE\nTable 1 places the three task families in one comparison: DTI and proteomics each contribute one\nendpoint, and cell perturbation contributes three. Each cell reports mean ± sample SD over seeds 42–\n44. This SD measures training/search variability on fixed partitions. The overall column averages\nthe five displayed endpoints within each seed before summarizing across seeds; it is a descriptive\nsummary, not a common biological metric.",
+      "metadata": {
+        "content": "强烈建议看一下之前ICLR的写法，results不会单独成一大章，在写experiments的时候就会顺便写了\n\n另外，这个表可以展开一下，把task model展开，写出来具体的名字，这样还可以把他们论文里面引用的其他方法的性能写进来，因为一个模型只能做一个场景，其他场景就写小横线\n\n其实我现在有一个新的想法，就是这几个任务其实就是不同形式的数据集，他们之间能否互相增益呢，这样我们就变成一个模型了，而不是一些子模型，优势更突出",
+        "name": "",
+        "title": "yc-Reanan",
+        "creationDate": "",
+        "modDate": "D:20260923152222Z00'00'",
+        "subject": "",
+        "id": ""
+      }
+    },
+    {
+      "page": 7,
+      "xref": 845,
+      "kind": "Highlight",
+      "author": "yc-Reanan",
+      "comment": "可以适当用柱状图等展示，突出明显的增益",
+      "highlighted_text": "DOES FEEDBACK IMPROVE THE ALLOCATION OF TRAINING COMPUTE?",
+      "rect": [
+        122.94390106201172,
+        585.9713134765625,
+        387.9989013671875,
+        595.9338989257812
+      ],
+      "vertices": [
+        [
+          122.94390106201172,
+          585.9713134765625
+        ],
+        [
+          387.9989013671875,
+          585.9713134765625
+        ],
+        [
+          122.94390106201172,
+          595.9338989257812
+        ],
+        [
+          387.9989013671875,
+          595.9338989257812
+        ]
+      ],
+      "nearby_text": "362\n363\n364\n365\n366\n367\n368\n369\n370\npared with 22.25% for BioCoLoop. The complete system’s five-endpoint mean is 41.39, versus 36.55\nfor the fixed recipe and 32.14 for direct optimization. The main comparison measures collaborative\naccess and research jointly; the following controls separate them.\n5.2 DOES FEEDBACK IMPROVE THE ALLOCATION OF TRAINING COMPUTE?\nThis experiment asks whether early development measurements help allocate a fixed training bud-\nget. The candidate designs and laboratory data are identical. Uniform allocation trains every design\nequally; the evidence-guided loop screens all designs and promotes a subset using current perfor-\nmance and learning progress. Table 2 therefore measures training allocation with proposal generation",
+      "metadata": {
+        "content": "可以适当用柱状图等展示，突出明显的增益",
+        "name": "",
+        "title": "yc-Reanan",
+        "creationDate": "",
+        "modDate": "D:20260923152536Z00'00'",
+        "subject": "",
+        "id": ""
+      }
+    },
+    {
+      "page": 8,
+      "xref": 856,
+      "kind": "Highlight",
+      "author": "yc-Reanan",
+      "comment": "超参分析，需要做图",
+      "highlighted_text": "HOW DO LABORATORY COUNT AND INDEPENDENT SOURCES",
+      "rect": [
+        130.13690185546875,
+        350.143310546875,
+        342.2605895996094,
+        360.10589599609375
+      ],
+      "vertices": [
+        [
+          130.13690185546875,
+          350.143310546875
+        ],
+        [
+          342.2605895996094,
+          350.143310546875
+        ],
+        [
+          130.13690185546875,
+          360.10589599609375
+        ],
+        [
+          342.2605895996094,
+          360.10589599609375
+        ]
+      ],
+      "nearby_text": "397\n398\n399\n400\n401\n402\n403\n404\n405\nTop-1 points for the cell settings. Appendix A reports all six combinations. In this original three-seed\nsix-proposal comparison, direct and loop select the same checkpoints at fixed access. The allocation\nand proposal-history mechanisms are therefore examined with distinct controls.\n5.3 HOW DO LABORATORY COUNT AND INDEPENDENT SOURCES AFFECT PERFORMANCE?\nIncreasing participation from one to ten laboratories raises DTI AUROC from 83.65 to 93.88 under\nthe default recipe. With the total DTI data pool fixed, K = 1, 2, 5, 10 yields 85.47, 88.96, 88.05\nand 93.88. The other tasks also exhibit partition sensitivity: fixed-pool PTPC AP is 34.59 at K = 1,",
+      "metadata": {
+        "content": "超参分析，需要做图",
+        "name": "",
+        "title": "yc-Reanan",
+        "creationDate": "",
+        "modDate": "D:20260923152607Z00'00'",
+        "subject": "",
+        "id": ""
+      }
+    },
+    {
+      "page": 9,
+      "xref": 864,
+      "kind": "Highlight",
+      "author": "yc-Reanan",
+      "comment": "看起来很多数值完全一样，这个是什么问题，还没做完吗？ 在试验分析部分，除了简要说明实验的结论，还需要用文字写一些分析，即你认为为什么会是这样",
+      "highlighted_text": "Completed research-model and feedback ablation in the original 12-design,",
+      "rect": [
+        142.23899841308594,
+        158.35028076171875,
+        424.4096984863281,
+        168.31292724609375
+      ],
+      "vertices": [
+        [
+          142.23899841308594,
+          158.35028076171875
+        ],
+        [
+          424.4096984863281,
+          158.35028076171875
+        ],
+        [
+          142.23899841308594,
+          168.31292724609375
+        ],
+        [
+          424.4096984863281,
+          168.31292724609375
+        ]
+      ],
+      "nearby_text": "435\n436\n437\n438\n439\n440\n441\n442\n443\nQwen: Loop@6\n94.27\n37.27\n31.50\n22.30\n25.37\nLuna: Direct@6\n94.60\n37.27\n31.50\n22.30\n26.87\nLuna: Loop@6\n94.27\n37.27\n31.50\n23.11\n26.87\nTable 3: Completed research-model and feedback ablation in the original 12-design, six-slot protocol.\nDTI uses AUROC and seed 42; PTPC uses AP and the cell endpoints use macro Top-1, all at seed\n61. Each candidate receives 100 rounds on the same ten clients. The common initial design is\nreported in the full protocol table. Scores are multiplied by 100; bold denotes the best method within\neach task/backend block, including displayed ties. This table does not mix metrics across tasks or\nsubstitute the separate 36-design protocol.",
+      "metadata": {
+        "content": "看起来很多数值完全一样，这个是什么问题，还没做完吗？ 在试验分析部分，除了简要说明实验的结论，还需要用文字写一些分析，即你认为为什么会是这样",
+        "name": "",
+        "title": "yc-Reanan",
+        "creationDate": "",
+        "modDate": "D:20260923152640Z00'00'",
+        "subject": "",
+        "id": ""
+      }
+    },
+    {
+      "page": 9,
+      "xref": 862,
+      "kind": "Highlight",
+      "author": "yc-Reanan",
+      "comment": "可以准备匿名链接，然后开源/直接承诺开源，前者更好",
+      "highlighted_text": "Section 3 specifies",
+      "rect": [
+        108.0,
+        403.33929443359375,
+        181.91250610351562,
+        413.3019104003906
+      ],
+      "vertices": [
+        [
+          108.0,
+          403.33929443359375
+        ],
+        [
+          181.91250610351562,
+          403.33929443359375
+        ],
+        [
+          108.0,
+          413.3019104003906
+        ],
+        [
+          181.91250610351562,
+          413.3019104003906
+        ]
+      ],
+      "nearby_text": "455\n456\n457\n458\n459\n460\n461\n462\n463\nREPRODUCIBILITY STATEMENT\nSection 3 specifies the research and training interfaces; Section 4 defines task inputs, data partitions,\nreference models and metrics. Appendix A provides the executable proposal schema, complete de-\nsign library, optimization settings and matched-budget promotion rule. Appendix B specifies the\nlaboratory-count, source-transfer and proposer-budget studies. The accompanying artifact records\ncode and data hashes, random seeds, proposals, development trajectories, selection decisions and\nsaved predictions. Aggregate tables are generated from completed evaluation records, with inde-",
+      "metadata": {
+        "content": "可以准备匿名链接，然后开源/直接承诺开源，前者更好",
+        "name": "",
+        "title": "yc-Reanan",
+        "creationDate": "",
+        "modDate": "D:20260923152743Z00'00'",
+        "subject": "",
+        "id": ""
+      }
+    },
+    {
+      "page": 9,
+      "xref": 861,
+      "kind": "Highlight",
+      "author": "yc-Reanan",
+      "comment": "这个要比较谨慎，需要看一下其他AI4AI的论文这部分是怎么写的",
+      "highlighted_text": "AI USE STATEMENT",
+      "rect": [
+        108.0,
+        630.0740966796875,
+        197.3531951904297,
+        642.029296875
+      ],
+      "vertices": [
+        [
+          108.0,
+          630.0740966796875
+        ],
+        [
+          197.3531951904297,
+          630.0740966796875
+        ],
+        [
+          108.0,
+          642.029296875
+        ],
+        [
+          197.3531951904297,
+          642.029296875
+        ]
+      ],
+      "nearby_text": "474\n475\n476\n477\n478\n479\n480\n481\n482\nrameter updates and aggregate diagnostics would still require an explicit privacy and security policy\nin a multi-institutional deployment. Predictions are evaluated as research outputs, not as validated\nbiological or therapeutic interventions.\nAI USE STATEMENT\nLocal Qwen2.5-7B-Instruct generates proposals in the main study; the proposer sensitivity study\nadditionally uses the service identified as gpt-5.6-luna. AI assistants contributed to hypothesis\nrefinement, experimental protocol and software development, data processing and checks, result anal-",
+      "metadata": {
+        "content": "这个要比较谨慎，需要看一下其他AI4AI的论文这部分是怎么写的",
+        "name": "",
+        "title": "yc-Reanan",
+        "creationDate": "",
+        "modDate": "D:20260923152829Z00'00'",
+        "subject": "",
+        "id": ""
+      }
+    },
+    {
+      "page": 13,
+      "xref": 866,
+      "kind": "Highlight",
+      "author": "yc-Reanan",
+      "comment": "如果写这些，你的论文必须要提供代码",
+      "highlighted_text": "The reported study uses core_v3.py, run_v3.py and research_v2.py.",
+      "rect": [
+        108.0,
+        109.3187255859375,
+        504.0,
+        130.40972900390625
+      ],
+      "vertices": [
+        [
+          245.59320068359375,
+          109.3187255859375
+        ],
+        [
+          504.0,
+          109.3187255859375
+        ],
+        [
+          245.59320068359375,
+          119.45068359375
+        ],
+        [
+          504.0,
+          119.45068359375
+        ],
+        [
+          108.0,
+          120.39727783203125
+        ],
+        [
+          183.7156982421875,
+          120.39727783203125
+        ],
+        [
+          108.0,
+          130.40972900390625
+        ],
+        [
+          183.7156982421875,
+          130.40972900390625
+        ]
+      ],
+      "nearby_text": "648\n649\n650\n651\n652\n653\n654\n655\nAPPENDIX A. UNIFORM COLLABORATIVE RESEARCH PROTOCOL\nVersioned\nimplementation.\nThe\nreported\nstudy\nuses\ncore_v3.py,\nrun_v3.py\nand\nresearch_v2.py.\nAll task families execute the same optimization, aggregation, proposal\nand retention source through task-specific adapters. TAPB workers use the TAPB environment;\nQwen, proteomics and cell adapters use the LDA environment. Each scientific fit starts from its\ntask-specific public or random initialization, with no reuse of earlier task-trained weights.",
+      "metadata": {
+        "content": "如果写这些，你的论文必须要提供代码",
+        "name": "",
+        "title": "yc-Reanan",
+        "creationDate": "",
+        "modDate": "D:20260923152906Z00'00'",
+        "subject": "",
+        "id": ""
+      }
+    },
+    {
+      "page": 13,
+      "xref": 867,
+      "kind": "Highlight",
+      "author": "yc-Reanan",
+      "comment": "D是什么含义，需要说明",
+      "highlighted_text": "D01–D11",
+      "rect": [
+        208.37319946289062,
+        337.94830322265625,
+        247.6656951904297,
+        347.910888671875
+      ],
+      "vertices": [
+        [
+          208.37319946289062,
+          337.94830322265625
+        ],
+        [
+          247.6656951904297,
+          337.94830322265625
+        ],
+        [
+          208.37319946289062,
+          347.910888671875
+        ],
+        [
+          247.6656951904297,
+          347.910888671875
+        ]
+      ],
+      "nearby_text": "666\n667\n668\n669\n670\n671\n672\n673\n674\nthe proteomic adapter trains its efficacy head from random initialization, and the cell adapters train\nresponse heads on frozen corrected scDEBART features.\nComplete design library.\nEach identifier below compiles to one executable candidate. D00 is\nthe fixed starting recipe; D01–D11 are available to both direct and loop search without within-arm\nrepetition. Six proposal slots define the common budget.\nDesign\nLearning rate\nWeight decay\nMomentum\nResidual adapter\nD00\n0.001\n0.001\n0\nno",
+      "metadata": {
+        "content": "D是什么含义，需要说明",
+        "name": "",
+        "title": "yc-Reanan",
+        "creationDate": "",
+        "modDate": "D:20260923152938Z00'00'",
+        "subject": "",
+        "id": ""
+      }
+    },
+    {
+      "page": 25,
+      "xref": 901,
+      "kind": "Highlight",
+      "author": "yc-Reanan",
+      "comment": "考虑放在正文中",
+      "highlighted_text": "Figure 3: Development selection (upper panels) and held-out performance (lower panels)",
+      "rect": [
+        113.46949768066406,
+        562.9953002929688,
+        464.4906005859375,
+        572.9578857421875
+      ],
+      "vertices": [
+        [
+          113.46949768066406,
+          562.9953002929688
+        ],
+        [
+          464.4906005859375,
+          562.9953002929688
+        ],
+        [
+          113.46949768066406,
+          572.9578857421875
+        ],
+        [
+          464.4906005859375,
+          572.9578857421875
+        ]
+      ],
+      "nearby_text": "1332\n1333\n1334\n1335\n1336\n1337\n1338\n1339\n1340\n0\n2\n4\n6\nProposal slots\nM\n0\n2\n4\n6\nProposal slots\nM\nFigure 3: Development selection (upper panels) and held-out performance (lower panels) in the 12-\ndesign, six-slot protocol across all five endpoints. Each valid proposal receives the same full fitting\nschedule; failed slots still consume research budget. Slot 0 is initialization. Held-out curves evaluate\nthe development-selected checkpoints at every prespecified prefix.",
+      "metadata": {
+        "content": "考虑放在正文中",
+        "name": "",
+        "title": "yc-Reanan",
+        "creationDate": "",
+        "modDate": "D:20260923153014Z00'00'",
+        "subject": "",
+        "id": ""
+      }
+    }
+  ]
+}

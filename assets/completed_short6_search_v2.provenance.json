@@ -1,0 +1,960 @@
+{
+  "schema": "short-search-layout-v2",
+  "source": "tables/completed_ablation/snapshot.json",
+  "source_sha256": "1300ee2702358927af215de29d7de22bf9b1d495923c2d5661a42f5abed79f23",
+  "source_unchanged": true,
+  "input_receipt_sha256": "d155b938bc513d129b360c398b00e8ebf88c3c8a68b3a99d608e8c733ef76591",
+  "generator_sha256": "000dfa46a683039e4cccf4b0391a482c19e9dd2bcfc970c0ee32d86e4e77d711",
+  "protocol": "short6",
+  "dimensions_inches": [
+    5.5,
+    3
+  ],
+  "layout": "5 columns x 2 rows; development above heldout",
+  "minimum_font_pt": 6.5,
+  "panels": 10,
+  "plotted_series": 40,
+  "all_source_points_preserved": true,
+  "exact_line_array_validation": true,
+  "plot_data": [
+    {
+      "task": "native_tapb",
+      "backend": "qwen",
+      "mode": "loop",
+      "role": "development",
+      "seed": 42,
+      "x": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "y_times100": [
+        94.7075486174952,
+        94.7075486174952,
+        94.7075486174952,
+        94.7075486174952,
+        94.7075486174952,
+        94.7075486174952,
+        94.7075486174952
+      ]
+    },
+    {
+      "task": "native_tapb",
+      "backend": "qwen",
+      "mode": "direct",
+      "role": "development",
+      "seed": 42,
+      "x": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "y_times100": [
+        94.7075486174952,
+        94.7075486174952,
+        94.7075486174952,
+        94.7075486174952,
+        94.7075486174952,
+        94.7075486174952,
+        94.7075486174952
+      ]
+    },
+    {
+      "task": "native_tapb",
+      "backend": "luna",
+      "mode": "loop",
+      "role": "development",
+      "seed": 42,
+      "x": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "y_times100": [
+        94.7075486174952,
+        94.7075486174952,
+        94.7075486174952,
+        94.7075486174952,
+        94.7075486174952,
+        94.7075486174952,
+        94.7075486174952
+      ]
+    },
+    {
+      "task": "native_tapb",
+      "backend": "luna",
+      "mode": "direct",
+      "role": "development",
+      "seed": 42,
+      "x": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "y_times100": [
+        94.7075486174952,
+        94.7075486174952,
+        94.7075486174952,
+        94.7075486174952,
+        94.7075486174952,
+        94.7075486174952,
+        94.97312538019983
+      ]
+    },
+    {
+      "task": "native_tapb",
+      "backend": "qwen",
+      "mode": "loop",
+      "role": "heldout",
+      "seed": 42,
+      "x": [
+        0,
+        1,
+        2,
+        4,
+        6
+      ],
+      "y_times100": [
+        94.26791655664114,
+        94.26791655664114,
+        94.26791655664114,
+        94.26791655664114,
+        94.26791655664114
+      ]
+    },
+    {
+      "task": "native_tapb",
+      "backend": "qwen",
+      "mode": "direct",
+      "role": "heldout",
+      "seed": 42,
+      "x": [
+        0,
+        1,
+        2,
+        4,
+        6
+      ],
+      "y_times100": [
+        94.26791655664114,
+        94.26791655664114,
+        94.26791655664114,
+        94.26791655664114,
+        94.26791655664114
+      ]
+    },
+    {
+      "task": "native_tapb",
+      "backend": "luna",
+      "mode": "loop",
+      "role": "heldout",
+      "seed": 42,
+      "x": [
+        0,
+        1,
+        2,
+        4,
+        6
+      ],
+      "y_times100": [
+        94.26791655664114,
+        94.26791655664114,
+        94.26791655664114,
+        94.26791655664114,
+        94.26791655664114
+      ]
+    },
+    {
+      "task": "native_tapb",
+      "backend": "luna",
+      "mode": "direct",
+      "role": "heldout",
+      "seed": 42,
+      "x": [
+        0,
+        1,
+        2,
+        4,
+        6
+      ],
+      "y_times100": [
+        94.26791655664114,
+        94.26791655664114,
+        94.26791655664114,
+        94.26791655664114,
+        94.60002640612622
+      ]
+    },
+    {
+      "task": "ptpc_neural",
+      "backend": "qwen",
+      "mode": "loop",
+      "role": "development",
+      "seed": 61,
+      "x": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "y_times100": [
+        66.72222222222223,
+        66.72222222222223,
+        66.72222222222223,
+        66.72222222222223,
+        66.72222222222223,
+        66.72222222222223,
+        66.72222222222223
+      ]
+    },
+    {
+      "task": "ptpc_neural",
+      "backend": "qwen",
+      "mode": "direct",
+      "role": "development",
+      "seed": 61,
+      "x": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "y_times100": [
+        66.72222222222223,
+        66.72222222222223,
+        66.72222222222223,
+        66.72222222222223,
+        66.72222222222223,
+        66.72222222222223,
+        66.72222222222223
+      ]
+    },
+    {
+      "task": "ptpc_neural",
+      "backend": "luna",
+      "mode": "loop",
+      "role": "development",
+      "seed": 61,
+      "x": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "y_times100": [
+        66.72222222222223,
+        66.72222222222223,
+        66.72222222222223,
+        66.72222222222223,
+        66.72222222222223,
+        66.72222222222223,
+        66.72222222222223
+      ]
+    },
+    {
+      "task": "ptpc_neural",
+      "backend": "luna",
+      "mode": "direct",
+      "role": "development",
+      "seed": 61,
+      "x": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "y_times100": [
+        66.72222222222223,
+        66.72222222222223,
+        66.72222222222223,
+        66.72222222222223,
+        66.72222222222223,
+        66.72222222222223,
+        66.72222222222223
+      ]
+    },
+    {
+      "task": "ptpc_neural",
+      "backend": "qwen",
+      "mode": "loop",
+      "role": "heldout",
+      "seed": 61,
+      "x": [
+        0,
+        1,
+        2,
+        4,
+        6
+      ],
+      "y_times100": [
+        37.274108803093334,
+        37.274108803093334,
+        37.274108803093334,
+        37.274108803093334,
+        37.274108803093334
+      ]
+    },
+    {
+      "task": "ptpc_neural",
+      "backend": "qwen",
+      "mode": "direct",
+      "role": "heldout",
+      "seed": 61,
+      "x": [
+        0,
+        1,
+        2,
+        4,
+        6
+      ],
+      "y_times100": [
+        37.274108803093334,
+        37.274108803093334,
+        37.274108803093334,
+        37.274108803093334,
+        37.274108803093334
+      ]
+    },
+    {
+      "task": "ptpc_neural",
+      "backend": "luna",
+      "mode": "loop",
+      "role": "heldout",
+      "seed": 61,
+      "x": [
+        0,
+        1,
+        2,
+        4,
+        6
+      ],
+      "y_times100": [
+        37.274108803093334,
+        37.274108803093334,
+        37.274108803093334,
+        37.274108803093334,
+        37.274108803093334
+      ]
+    },
+    {
+      "task": "ptpc_neural",
+      "backend": "luna",
+      "mode": "direct",
+      "role": "heldout",
+      "seed": 61,
+      "x": [
+        0,
+        1,
+        2,
+        4,
+        6
+      ],
+      "y_times100": [
+        37.274108803093334,
+        37.274108803093334,
+        37.274108803093334,
+        37.274108803093334,
+        37.274108803093334
+      ]
+    },
+    {
+      "task": "vcc_corrected",
+      "backend": "qwen",
+      "mode": "loop",
+      "role": "development",
+      "seed": 61,
+      "x": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "y_times100": [
+        23.651867296834332,
+        23.651867296834332,
+        23.651867296834332,
+        23.651867296834332,
+        23.651867296834332,
+        23.651867296834332,
+        23.651867296834332
+      ]
+    },
+    {
+      "task": "vcc_corrected",
+      "backend": "qwen",
+      "mode": "direct",
+      "role": "development",
+      "seed": 61,
+      "x": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "y_times100": [
+        23.651867296834332,
+        23.651867296834332,
+        23.651867296834332,
+        23.651867296834332,
+        23.651867296834332,
+        23.651867296834332,
+        23.651867296834332
+      ]
+    },
+    {
+      "task": "vcc_corrected",
+      "backend": "luna",
+      "mode": "loop",
+      "role": "development",
+      "seed": 61,
+      "x": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "y_times100": [
+        23.651867296834332,
+        23.651867296834332,
+        23.651867296834332,
+        23.741393464453807,
+        23.741393464453807,
+        23.741393464453807,
+        24.035009059286445
+      ]
+    },
+    {
+      "task": "vcc_corrected",
+      "backend": "luna",
+      "mode": "direct",
+      "role": "development",
+      "seed": 61,
+      "x": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "y_times100": [
+        23.651867296834332,
+        23.651867296834332,
+        23.651867296834332,
+        24.035009059286445,
+        24.035009059286445,
+        24.035009059286445,
+        24.035009059286445
+      ]
+    },
+    {
+      "task": "vcc_corrected",
+      "backend": "qwen",
+      "mode": "loop",
+      "role": "heldout",
+      "seed": 61,
+      "x": [
+        0,
+        1,
+        2,
+        4,
+        6
+      ],
+      "y_times100": [
+        31.4954912555719,
+        31.4954912555719,
+        31.4954912555719,
+        31.4954912555719,
+        31.4954912555719
+      ]
+    },
+    {
+      "task": "vcc_corrected",
+      "backend": "qwen",
+      "mode": "direct",
+      "role": "heldout",
+      "seed": 61,
+      "x": [
+        0,
+        1,
+        2,
+        4,
+        6
+      ],
+      "y_times100": [
+        31.4954912555719,
+        31.4954912555719,
+        31.4954912555719,
+        31.4954912555719,
+        31.4954912555719
+      ]
+    },
+    {
+      "task": "vcc_corrected",
+      "backend": "luna",
+      "mode": "loop",
+      "role": "heldout",
+      "seed": 61,
+      "x": [
+        0,
+        1,
+        2,
+        4,
+        6
+      ],
+      "y_times100": [
+        31.4954912555719,
+        31.4954912555719,
+        31.4954912555719,
+        16.94232512982513,
+        31.4954912555719
+      ]
+    },
+    {
+      "task": "vcc_corrected",
+      "backend": "luna",
+      "mode": "direct",
+      "role": "heldout",
+      "seed": 61,
+      "x": [
+        0,
+        1,
+        2,
+        4,
+        6
+      ],
+      "y_times100": [
+        31.4954912555719,
+        31.4954912555719,
+        31.4954912555719,
+        31.4954912555719,
+        31.4954912555719
+      ]
+    },
+    {
+      "task": "norman_double_corrected",
+      "backend": "qwen",
+      "mode": "loop",
+      "role": "development",
+      "seed": 61,
+      "x": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "y_times100": [
+        40,
+        40,
+        42.00000000000001,
+        42.00000000000001,
+        51.7,
+        51.7,
+        51.7
+      ]
+    },
+    {
+      "task": "norman_double_corrected",
+      "backend": "qwen",
+      "mode": "direct",
+      "role": "development",
+      "seed": 61,
+      "x": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "y_times100": [
+        40,
+        40,
+        42.00000000000001,
+        51.7,
+        51.7,
+        51.7,
+        51.7
+      ]
+    },
+    {
+      "task": "norman_double_corrected",
+      "backend": "luna",
+      "mode": "loop",
+      "role": "development",
+      "seed": 61,
+      "x": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "y_times100": [
+        40,
+        40,
+        40,
+        40,
+        40,
+        52.1,
+        52.1
+      ]
+    },
+    {
+      "task": "norman_double_corrected",
+      "backend": "luna",
+      "mode": "direct",
+      "role": "development",
+      "seed": 61,
+      "x": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "y_times100": [
+        40,
+        40,
+        42.00000000000001,
+        42.00000000000001,
+        42.00000000000001,
+        51.7,
+        51.7
+      ]
+    },
+    {
+      "task": "norman_double_corrected",
+      "backend": "qwen",
+      "mode": "loop",
+      "role": "heldout",
+      "seed": 61,
+      "x": [
+        0,
+        1,
+        2,
+        4,
+        6
+      ],
+      "y_times100": [
+        15.48148148148148,
+        14.962962962962964,
+        35.48148148148148,
+        22.296296296296294,
+        22.296296296296294
+      ]
+    },
+    {
+      "task": "norman_double_corrected",
+      "backend": "qwen",
+      "mode": "direct",
+      "role": "heldout",
+      "seed": 61,
+      "x": [
+        0,
+        1,
+        2,
+        4,
+        6
+      ],
+      "y_times100": [
+        15.48148148148148,
+        14.962962962962964,
+        35.48148148148148,
+        22.296296296296294,
+        22.296296296296294
+      ]
+    },
+    {
+      "task": "norman_double_corrected",
+      "backend": "luna",
+      "mode": "loop",
+      "role": "heldout",
+      "seed": 61,
+      "x": [
+        0,
+        1,
+        2,
+        4,
+        6
+      ],
+      "y_times100": [
+        15.48148148148148,
+        14.962962962962964,
+        14.962962962962964,
+        15.259259259259258,
+        23.111111111111114
+      ]
+    },
+    {
+      "task": "norman_double_corrected",
+      "backend": "luna",
+      "mode": "direct",
+      "role": "heldout",
+      "seed": 61,
+      "x": [
+        0,
+        1,
+        2,
+        4,
+        6
+      ],
+      "y_times100": [
+        15.48148148148148,
+        14.962962962962964,
+        35.48148148148148,
+        35.48148148148148,
+        22.296296296296294
+      ]
+    },
+    {
+      "task": "tahoe_drug_corrected",
+      "backend": "qwen",
+      "mode": "loop",
+      "role": "development",
+      "seed": 61,
+      "x": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "y_times100": [
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30
+      ]
+    },
+    {
+      "task": "tahoe_drug_corrected",
+      "backend": "qwen",
+      "mode": "direct",
+      "role": "development",
+      "seed": 61,
+      "x": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "y_times100": [
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30
+      ]
+    },
+    {
+      "task": "tahoe_drug_corrected",
+      "backend": "luna",
+      "mode": "loop",
+      "role": "development",
+      "seed": 61,
+      "x": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "y_times100": [
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30
+      ]
+    },
+    {
+      "task": "tahoe_drug_corrected",
+      "backend": "luna",
+      "mode": "direct",
+      "role": "development",
+      "seed": 61,
+      "x": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "y_times100": [
+        30,
+        30,
+        30,
+        30,
+        30,
+        30,
+        30
+      ]
+    },
+    {
+      "task": "tahoe_drug_corrected",
+      "backend": "qwen",
+      "mode": "loop",
+      "role": "heldout",
+      "seed": 61,
+      "x": [
+        0,
+        1,
+        2,
+        4,
+        6
+      ],
+      "y_times100": [
+        25.37313432835821,
+        25.37313432835821,
+        25.37313432835821,
+        25.37313432835821,
+        25.37313432835821
+      ]
+    },
+    {
+      "task": "tahoe_drug_corrected",
+      "backend": "qwen",
+      "mode": "direct",
+      "role": "heldout",
+      "seed": 61,
+      "x": [
+        0,
+        1,
+        2,
+        4,
+        6
+      ],
+      "y_times100": [
+        25.37313432835821,
+        25.37313432835821,
+        25.37313432835821,
+        25.37313432835821,
+        25.37313432835821
+      ]
+    },
+    {
+      "task": "tahoe_drug_corrected",
+      "backend": "luna",
+      "mode": "loop",
+      "role": "heldout",
+      "seed": 61,
+      "x": [
+        0,
+        1,
+        2,
+        4,
+        6
+      ],
+      "y_times100": [
+        25.37313432835821,
+        25.37313432835821,
+        25.37313432835821,
+        26.865671641791046,
+        26.865671641791046
+      ]
+    },
+    {
+      "task": "tahoe_drug_corrected",
+      "backend": "luna",
+      "mode": "direct",
+      "role": "heldout",
+      "seed": 61,
+      "x": [
+        0,
+        1,
+        2,
+        4,
+        6
+      ],
+      "y_times100": [
+        25.37313432835821,
+        25.37313432835821,
+        25.37313432835821,
+        25.37313432835821,
+        26.865671641791046
+      ]
+    }
+  ],
+  "text_within_canvas": true,
+  "artifacts_sha256": {
+    "completed_short6_search_v2.pdf": "79c91fbdcb3069d279b114e9eec3a42f432b5e09c1a0bcf713d2d7e22e506015",
+    "completed_short6_search_v2.png": "20231052d94036a748a969ffcc99046e2cf0621151f23aa6b052aa4f40a44c27"
+  },
+  "visual_review_status": "PASSED",
+  "plotted_points": 240,
+  "visual_review": {
+    "reviewer": "proteomics_third_source",
+    "render_sha256": "20231052d94036a748a969ffcc99046e2cf0621151f23aa6b052aa4f40a44c27",
+    "checks": [
+      "Five endpoint columns with development above heldout",
+      "Shared legend and x-axis label readable at 5.5-inch width",
+      "Embedded minimum font is 6.5pt",
+      "No text clipping or overlap between panels",
+      "Legend and endpoint titles do not intersect",
+      "Every curve and source point is preserved without numerical alteration"
+    ]
+  }
+}

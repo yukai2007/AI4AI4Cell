@@ -1,5 +1,5 @@
 {
-  "schema": "ai4ai4cell-chinese-companion-v2",
+  "schema": "biocoloop-chinese-companion-v3",
   "display_brand": "BioCoLoop",
   "display_title": "BioCoLoop: Collaborative Agentic Research for Biological Model Improvement",
   "branding_verified": true,
@@ -10,8 +10,8 @@
     "AAAAAC+CompanionSC"
   ],
   "text_out_of_bounds_pages": [],
-  "generated_utc": "2026-09-23T13:55:04.457056+00:00",
-  "generator_sha256": "da3d83fadae0aa8c1de1ef24518bb9812643e5387f3e39d496b022f23b2e6ca7",
+  "generated_utc": "2026-09-23T17:31:34.408905+00:00",
+  "generator_sha256": "f92785229a83ceb856bcc77400b0d38d63d3a89b06570b1606d63e18dcb8d838",
   "embedded_font_source_sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
   "input_sha256": {
     "paper/tables/strong_v3/snapshot.json": "814129bf578ab358de0773b1975ba00257a7fe12c75b3e6b6f1534617cd5749a",
@@ -19,11 +19,52 @@
     "paper/tables/completed_ablation/snapshot.json": "1300ee2702358927af215de29d7de22bf9b1d495923c2d5661a42f5abed79f23",
     "results/tonight_completion_20260923/final_delivery/summary.json": "8eb30ad05acaf714dbaa8c180a0657dcd9bc6c8b9bebccba620f097159eb7541",
     "results/proteomics_external_pilot_20260923/RESULT.zh-CN.md": "e9fc4c7c2424dc12959816efa8a1c1cd758c0414835df386799904c1948b68a9",
-    "paper/assets/paradigm_comparison.pdf": "b35200a6cc8152cfab6d1ab2d26628bc476c3067cf9c0e9716355a37147d0660",
-    "paper/assets/completed_budget_examples.pdf": "608d0baba8a6b7f19b50e56ae44d53de2bb9919876af2d72bcedc3454be7e35b",
-    "paper/figures/biocoloop_framework.pdf": "f9fd977ec594b11cfe96a15beb936fb485402691dee2159bcdf24fe5b2372abe"
+    "paper/assets/paradigm_comparison.pdf": "9fcd37147894126736c2f7a31e4ef560f3a66128d87a308e02648fd08e2ce131",
+    "paper/assets/completed_budget_examples.pdf": "2b491a88b837d9e2aed1dd48f28eff547e4010a9db3fefef240243e2304c0f5d",
+    "paper/assets/laboratory_sensitivity_v2.pdf": "c89fc89d591bc4dbc10d5a7129df5bd52c232e2be862b95503d19a311e3fdbb0",
+    "paper/assets/completed_short6_search.pdf": "3edd2cdc4694529089c4b9095462ef99f8df580692b194e89a2f16100f5ea786",
+    "paper/figures/biocoloop_framework_v2.pdf": "dbf7abb5b6d6a6fc76e88259d02d93996e4f6c7dcc1c25bbe8a0eabdac206bee",
+    "paper/figures/biocoloop_framework_v2.provenance.json": "3f5b8e207e237d9b78c9225b6f106326388511d0a1adbb7a55c97eab114d22ef",
+    "paper/provenance/coauthor_review_v2_20260923/ANNOTATIONS.zh-CN.md": "e93f9742ffbe19924f7117510939e331374684b839c9910fc4536c73bc7e929b",
+    "paper/sections/03_method.tex": "23f7d7f38f8f7ecc1b2b00dd618fc260dccb894e3f93885e037c5e9061de2bc0",
+    "paper/sections/04_experimental_design.tex": "f754e3bb92d0cc47e8ded3d0f5220cf7c52755398c80163a4a8d21169a12f145",
+    "paper/sections/22_appendix_unified_protocol.tex": "2bd9cd2446ad5cd72525cded8bf4d6edb24daecd89afe6b8a6ee267fbe97ba80",
+    "results/supplemental_20260923/proteomics/seed61_slots0_cpu/independent_rescore.json": "b5fa3aebb01205ba8db57edb29af57e3dfa79a2c0e1cab94d0b2e2ce8c06ab29",
+    "results/supplemental_20260923/proteomics/seed61_slots0_cpu/definition.json": "5b5e10e7321fe32c66bb6b0a83134ae4bab700a9dce2a91ddc514a98688f34f5",
+    "results/supplemental_20260923/proteomics/seed61_slots0_cpu/heldout/results.json": "804d7ede777b175fc9369fae2609dd8804570cccb08ed1ef7fef0a56272ea089",
+    "results/scenario_labs_20260923/campaign.json": "fe9e8842e5ad9958603ef8c7e5251beb11579682d2305dae073ada56f4e3bef1",
+    "results/scenario_labs_20260923/completion_v2.json": "ac93d8c85000a22edb6565d21cf6c8c28d4ec0ecd2b243cf8d7a497a8e9b5a0d",
+    "results/scenario_labs_20260923/protocol.json": "0d862bd89e426066395f2927073d8be7d4a2b755b34cf8d8f96b7fa15f3e7e05",
+    "results/scenario_labs_20260923/heldout/independent_rescore_v2.json": "b6cadb5f5f34da93fceef78724414d40dc1bf88d84598ce2759a13927160ef60",
+    "results/scenario_labs_20260923/heldout/results.json": "5e57591bd6989bb3b262c99c653c480b27f8cf85a5601efadc296ef7e43d82cf",
+    "results/scenario_labs_20260923/heldout/seal.json": "4cce8efb1ce81932b2f2ef7664ff0f52cb6408758b297b16c6f5c458d33a172a",
+    "results/proteomics_scenario_labs_20260924/status.json": "40b77365aa918331cfed88ce2784d613fbc0d6dbe355c241e8f1ea948713b93a",
+    "results/proteomics_scenario_labs_20260924/protocol.json": "4e3f301dda42141786c761510185116348452fd21068ff3eca79c0c6984e1696",
+    "results/proteomics_scenario_labs_20260924/binding.json": "822d422931d4aca4fcd3ff066c4f82d2f56a2953c566057e06607b39255f4ec3",
+    "results/proteomics_scenario_labs_20260924/independent_rescore.json": "c679ce2e2b4524ab4ce6f023e1c3bf74ea41e6af1fb5ca7c4a2fbd492fe99c9d",
+    "results/proteomics_scenario_labs_20260924/heldout/results.json": "d65a1de425eb1f828cb4a10a9b32c964bcf7009ed4fcbc7ca91bbd8934e05dd3",
+    "results/proteomics_scenario_labs_20260924/heldout/seal.json": "7e5f23c33f202cfbe6df7facf63e731df4782397b0d03778f2663b23f4cc106b"
   },
   "publication_snapshot_sha256": "1300ee2702358927af215de29d7de22bf9b1d495923c2d5661a42f5abed79f23",
+  "supplemental_proteomics_receipt_sha256": "b5fa3aebb01205ba8db57edb29af57e3dfa79a2c0e1cab94d0b2e2ce8c06ab29",
+  "scenario_laboratory_receipt_sha256": "b6cadb5f5f34da93fceef78724414d40dc1bf88d84598ce2759a13927160ef60",
+  "scenario_laboratory_status": "PASS",
+  "strict_proteomics_source_laboratory_receipt_sha256": "c679ce2e2b4524ab4ce6f023e1c3bf74ea41e6af1fb5ca7c4a2fbd492fe99c9d",
+  "strict_proteomics_source_laboratory_status": "PASS",
+  "strict_proteomics_training_K": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "strict_proteomics_development_panels": 10,
+  "strict_proteomics_proposal_slots": 0,
+  "scenario_original_failure_preserved": true,
+  "scenario_rescore_revision": 2,
+  "supplemental_proteomics_status": "COMPLETE_VERIFIED",
+  "supplemental_proteomics_fixed_design_only": true,
+  "coauthor_review_v2_markers": 27,
+  "coauthor_review_v2_text_comments": 25,
   "verified_source_receipts": 164,
   "paired_terminal_signs": {
     "short6": {
@@ -59,12 +100,12 @@
       ]
     }
   },
-  "page_count": 16,
-  "output_sha256": "5bcfa385ca7cda41d05fa471e40cf166f4c28f75bddf53500b0b220d4f5175a7",
+  "page_count": 20,
+  "output_sha256": "e7386d0099b4f65d2c142243e15ffad263e91eb2116d7252f77f6204185da7f0",
   "uncompleted_extensions": [
     "additional seeds",
-    "DTI long24",
-    "third independent protein source decryptE"
+    "DTI long24"
   ],
+  "third_independent_protein_source_status": "COMPLETE_VERIFIED_FIXED_DESIGN_ONLY",
   "original_results_modified": false
 }

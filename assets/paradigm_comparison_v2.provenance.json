@@ -1,0 +1,36 @@
+{
+  "schema": "paradigm-readability-v2",
+  "authoring": "Matplotlib native vector paths and text",
+  "figure_width_inches": 5.5,
+  "figure_height_inches": 3.05,
+  "previous_height_at_5_5_inches": 2.989130434782609,
+  "minimum_active_box_font_pt": 7,
+  "minimum_annotation_font_pt": 6.5,
+  "text_within_boxes": true,
+  "text_within_canvas": true,
+  "semantic_colors": {
+    "data": "#238B7B",
+    "predictor": "#356FA3",
+    "research": "#76539A",
+    "aggregation": "#C76A28"
+  },
+  "inactive_module": "collaborative-training research harness",
+  "generator_sha256": "f2e0c3bc9bbd08baf2f6f45639e2abe35f5364bf96c06d9ff0efb1a250522218",
+  "artifacts_sha256": {
+    "paradigm_comparison.pdf": "9fcd37147894126736c2f7a31e4ef560f3a66128d87a308e02648fd08e2ce131",
+    "paradigm_comparison.svg": "95f959bcdd429c187333aa08f22601b43f00a99d5fad471aa5df4348ffbb4753",
+    "paradigm_comparison.png": "5378a39a4e7c2315dcfbc7a65b7a1dc1d9e73f3a68eb38cc5309b88d65cbef8d"
+  },
+  "visual_review_status": "PASSED",
+  "visual_review": {
+    "reviewer": "proteomics_third_source",
+    "preview_sha256": "5378a39a4e7c2315dcfbc7a65b7a1dc1d9e73f3a68eb38cc5309b88d65cbef8d",
+    "checks": [
+      "Centralized access subtitle fits without overlap",
+      "All other figure content and geometry unchanged",
+      "No text overflow or arrow occlusion"
+    ],
+    "revision": "Replace One dataset with Centralized access"
+  },
+  "post_generation_formatting": "Trailing whitespace only removed from generator; artifact bytes unchanged."
+}

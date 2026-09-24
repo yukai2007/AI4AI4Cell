@@ -4,8 +4,8 @@
 \setcounter{table}{0}
 \renewcommand{\thetable}{B.\arabic{table}}
 \renewcommand{\theHtable}{B.\arabic{table}}
-\paragraph{Completed study design.}
-This appendix reports completed follow-up evaluations with the same target scorers as the main study. Laboratory-count experiments cover all five endpoints at $K\in\{1,2,5,10\}$ under both increasing participation and a fixed total data pool. DTI uses seed 61; the lighter proteomics and cell experiments use seeds 61--63. Independent-source DTI and proteomics use seed 61, and external-source VCC uses seeds 61--63. The two-proposer study has two separate protocols: a 12-design, six-slot study on all five endpoints (DTI seed 42; other endpoints seed 61), and a 36-design, 24-slot study on the four lighter endpoints at seed 61. Each candidate receives 100 training rounds. The latter changes the design space as well as the search budget, so budget comparisons are made within a protocol. Main-table results retain their original seeds 42--44 and protocol.
+\paragraph{Sensitivity study design.}
+We examine collaboration scale, source diversity, proposer choice and research budget using the same target scorers as the main study. Client-count experiments cover all five endpoints at $K\in\{1,2,5,10\}$ under both increasing participation and a fixed total data pool. DTI uses seed 61; the lighter proteomics and cell experiments use seeds 61--63. Independent-source DTI and proteomics use seed 61, and external-source VCC uses seeds 61--63. The two-proposer study has two separate protocols: a 12-design, six-slot study on all five endpoints (DTI seed 42; other endpoints seed 61), and a 36-design, 24-slot study on the four lighter endpoints at seed 61. Each candidate receives 100 training rounds. The latter changes the design space as well as the search budget, so budget comparisons are made within a protocol. Main-table results retain their original seeds 42--44 and protocol.
 
 \subsection*{B.1 Number of laboratories}
 The participation experiment uses a fixed nested set of the first $K$ original clients, increasing both training and development access. The fixed-pool experiment merges the complete ten-client pool into $K$ training groups while retaining equal-weight evaluation over the original ten development panels. Thus its selection population stays fixed as training partitions change. The identical $K=10$ fit is reused by both comparisons. Every unique fit uses the default design and 100 rounds. The cell objective forms contrastive negatives within each local training group, so repartitioning changes the negative pool as well as optimization steps. These comparisons characterize the implemented training pipeline at different collaboration scales. Zero between-seed SD can occur when a fixed pretrained head receives an identical single-batch update; it describes training variability on these fixed partitions.
@@ -14,7 +14,9 @@ The participation experiment uses a fixed nested set of the first $K$ original c
 \input{tables/completed_ablation/lab_fixed_pool}
 
 \subsection*{B.2 Independent sources and target evaluation}
-For DTI and cell transfer, the entire target training pool is one study-level client. Each auxiliary collection contributes a separate local update through sample-weighted aggregation. Only the original target development panels select the checkpoint; every configuration is evaluated on the same target test set. Target-only, individual-source and combined-source configurations start from the same task initialization.
+For DTI and cell transfer, the entire target training pool forms one client, and each auxiliary collection contributes a separate local update through sample-weighted aggregation. Table~\ref{tab:supplemental-source-clients} distinguishes these source-defined clients from the within-corpus partitions used in the client-count study. Only the original target development panels select the checkpoint; every configuration is evaluated on the same target test set. Target-only, individual-source and combined-source configurations start from the same task initialization.
+
+\input{tables/supplemental_20260923/source_client_mapping}
 
 DTI auxiliaries are BioSNAP, Davis and Human from the pinned TAPB release, with 19,092, 1,721 and 2,929 retained training pairs after drug--protein-pair de-duplication against target splits and preceding sources. All five DTI source configurations complete the same 100-round schedule. VCC auxiliary data comprise Replogle K562, Nadig HepG2 and Jiang IFNB/K562, with respectively 60, 60 and 58 retained training interventions \citep{replogle2022perturbseq,nadig2025trade,jiang2025pathways}. Source feature panels preserve measured genes, and target development/test intervention identities are excluded from source training. The source manifest records retained subsets, feature intersections and exclusions.
 
@@ -22,7 +24,12 @@ DTI auxiliaries are BioSNAP, Davis and Human from the pinned TAPB release, with 
 
 The cell study reports mean and SD across three seeds together with a paired intervention-bootstrap analysis. Jiang improves target Top-1 by 3.58 points; its 95\% bootstrap interval is [$-$2.11, 9.51]. This positive point estimate motivates further source-aware evaluation, while the complete table also exposes sources whose updates reduce the target metric.
 
-\paragraph{Independent proteomics pilot.}
+\paragraph{Matched source--scenario clients.}
+Table~\ref{tab:scenario-labs-matched} compares four fixed-design settings: 15 VCC training interventions in one client, all 60 VCC interventions in one client, the same 60 partitioned into four clients, and four source-defined clients with 15 interventions each. The latter uses VCC, Replogle/K562, Nadig/HepG2 and Jiang/IFNB/K562. Both four-client arms share the same 15-intervention VCC anchor. Hash-based sampling fixes the auxiliary identities before fitting, excluding target training, development and test intervention identities as well as duplicates across auxiliary clients. This experiment matches training intervention counts, not raw-cell counts: the same-source arm represents 77,771 cells, versus 33,469 in the cross-scenario arm. Each source retains its measured gene panel and corresponding loss mask.
+
+All four settings use identical head initialization, the default design, 100 rounds and seeds 61--63. The original ten target-development panels select checkpoints; the common target test contains 20 interventions and 360 five-option queries. No proposal search is performed. All twelve fits complete, and saved predictions reproduce the scorer's metrics under independent evaluation. Cross-scenario Top-1 is lower in each seed, with a mean difference of $-1.88$ points relative to the same-source four-client setting. The near-zero MRR difference shows that source composition can affect the top-ranked choice differently from the full ranking. The protocol and source identities remain fixed throughout the comparison.
+
+\paragraph{Two-source proteomic transfer and proposal search.}
 Two independent lung-cancer studies provide auxiliary measurements: Lin et al.\ \citep{Lin2026HDAC} and Ruprecht et al.\ \citep{Ruprecht2020Proteome}. Their continuous response labels differ from the binary target endpoint. A shared masked-protein encoder of width 64 and drug encoder of width 32 therefore feed source-specific prediction heads. Target fitting uses its binary efficacy objective; Lin predicts continuous CellTiter-Glo response, and Ruprecht predicts an interval-valued potency outcome. Target data retain the original ten clients; Lin and Ruprecht each add one study-level client. Shared encoders use sample-weighted aggregation, whereas each private head is updated only by its own source clients. The common local-worker and coordinator interfaces are reused. This adapter is compared against its own target-only control, separately from the main-table PTPC predictor.
 
 The Lin subset contains 28 drug conditions (20 source-training, eight source-development), spanning five training and two development drugs. Inputs are 24-hour, 10-$\mu$M protein log-fold changes, and the response is the mean of the three released CellTiter-Glo ratio measurements. The HCT16/HCT116 alias is excluded from auxiliary training. The Ruprecht subset contains 109 matched drug conditions (85 training, 24 development; 17 and five drugs respectively). Protein log-fold changes at 24 hours are paired with CellTiter-Glo EC50 values in $\log_{10}$ nM: 49 exact, 18 approximate and 42 right-censored outcomes. Squared distance to the encoded potency interval is the loss. The adapter treats explicit lower bounds and values at or above 10,000 nM as right-censored and encodes approximate values with a factor-of-two interval; these are analysis conventions. Profiling dose is not a model input; source acquisition nevertheless uses dose conditions chosen in relation to drug response. The target retains 386 training and 105 development examples, with 148 held-out observations across 92 compounds and 22 positives.
@@ -31,7 +38,27 @@ All four source settings receive the same 100-round procedure. A two-proposal Lu
 
 \input{tables/completed_ablation/transfer_protein_loop}
 
-Target-only AP/AUROC are 34.98/74.75. Adding Lin yields 35.01/74.78, Ruprecht 35.50/74.28 and both 35.31/74.17. Paired compound bootstrap (1,000 resamples) gives 95\% intervals for the AP changes of [$-$0.20, 0.28], [$-$1.46, 2.64] and [$-$1.62, 2.49] points, respectively. These results measure transfer from two independent external studies. The three cell-line contexts below answer a separate, within-study question.
+Target-only AP/AUROC are 34.98/74.75. Adding Lin yields 35.01/74.78, Ruprecht 35.50/74.28 and both 35.31/74.17. Paired compound bootstrap (1,000 resamples) gives 95\% intervals for the AP changes of [$-$0.20, 0.28], [$-$1.46, 2.64] and [$-$1.62, 2.49] points, respectively. These results measure transfer from two independent external studies and provide the source-matched controls for the two-proposal comparison.
+
+\paragraph{Three-source proteomic transfer.}
+The third auxiliary study, decryptE \citep{Eckert2024DecryptE}, measures Jurkat proteomes after 18 hours of drug exposure at 1, 10, 100, 1,000 and 10,000 nM. Its source objective predicts the released continuous metabolic-activity measurement relative to DMSO. We align compounds using the published names, explicit alternative names and structures, and match protein features by UniProt identifier. Inputs comprise log-transformed measured normalized protein intensities, an observation mask, drug fingerprints and dose indicators. Splits group all doses of the same chemical graph together; normalization is fitted on source-training measurements. Target development and test compounds are excluded by canonical identity and stereo-agnostic chemical graph.
+
+The repository's 145 main processed matrices contain one additional manually classified Vincristine copy; the uniform standard release therefore provides 144 compounds. Pre-training identity checks exclude 12 compounds overlapping the target development/test sets, six records with unsupported internal names and two records with conflicting released chemical-identity/structure annotations. The resulting source contains 124 distinct compounds and 620 dose conditions: 495 training observations from 99 compounds and 125 development observations from 25 compounds. The source manifest records every exclusion and preserves the original annotations.
+
+We append a private continuous-response head to the shared adapter and instantiate this same four-head model in every control. All original encoder and head tensors retain identical seed-61 initialization. The four prespecified arms are target only, target plus decryptE, target plus Lin and Ruprecht, and target plus all three studies. Every arm completes 100 rounds with the same local optimizer and sample-weighted shared-parameter aggregation. Checkpoint selection uses equal-client target-development AP with binary cross-entropy as the tiebreaker; auxiliary development scores are diagnostic. These fixed-design comparisons use zero proposal slots and are separate from the preceding two-source research-loop study.
+
+\input{tables/supplemental_20260923/proteomics_three_source}
+
+Combining all three sources raises target AP from 34.98 to 35.68, a 0.70-point gain. Relative to Lin and Ruprecht together, adding decryptE increases AP by 0.37 points and AUROC by 0.11 points. Target-only training retains the highest AUROC across the four arms (74.75 versus 74.28 for all three), showing that the primary AP improvement does not imply uniform gains across ranking metrics. These source-transfer point estimates come from one seed. The four complete CPU fits take 101.21 seconds in total; saved checkpoints and predictions are sealed and independently rescored with exact agreement.
+
+\paragraph{One study per training laboratory.}
+To assign every training client to a distinct source, we additionally merge all 386 target training examples into one client. Lin, Ruprecht and decryptE each remain a separate source client. The four arms use $K=1,2,3,4$ laboratories and respectively 386, 881, 491 and 986 training conditions. Their four-head architecture, seed-61 initialization, local loss, sample-weighted shared-parameter aggregation and source-private head ownership are unchanged. The merged target worker performs seven minibatches per local epoch, instead of aggregating updates from ten smaller target partitions. This is therefore a separately trained protocol, with a matching target-only control.
+
+The original ten target-development panels still select checkpoints with equal panel weights, independently of the number of training laboratories. All four configurations complete 100 rounds and use zero proposal slots. Held-out AP and AUROC are independently recomputed from saved predictions, with maximum absolute discrepancy $1.11\times10^{-16}$. The full CPU run takes 76.18 seconds.
+
+\input{tables/proteomics_scenario_labs_v2/table}
+
+With one client per study, all three auxiliary sources improve target AP from 34.41 to 37.53 and AUROC from 72.33 to 74.39. Adding decryptE to Lin and Ruprecht increases AP by 1.44 points. These single-seed source-transfer comparisons vary available training data as well as participating studies; they measure the effect of those sources under a fixed design, separately from proposal feedback and the matched-condition cell study.
 
 \paragraph{Within-study proteomic contexts.}
 HCC1143, HCC1806 and MDA-MB-453-1 are drawn from the mtPTDS supplementary collection \citep{Sun2026ProteinTalks}, each with 47 retained drug conditions and 3,501 proteins shared with the target panel. They are three biological contexts within one study. Target development/test compounds are excluded from source training. These experiments use the original proteomic adapter and seeds 61--63.
@@ -47,18 +74,12 @@ Qwen uses the local sampling settings in Appendix A. The second proposer is the 
 \input{tables/completed_ablation/short6}
 \input{tables/completed_ablation/dynamics_short6}
 
-All five endpoints have both backends and both search modes. Among the ten direct/loop pairs, Norman/Luna improves by 0.81 Top-1 points, DTI/Luna decreases by 0.33 AUROC points and eight pairs tie. The twenty DTI prefix scores were independently recomputed from saved predictions for all 5,505 test pairs, with checkpoint and output hashes verified. The curves below show the complete prespecified prefix sequence for every endpoint, alongside its development selection trajectory.
+All five endpoints have both backends and both search modes. Among the ten direct/loop pairs, Norman/Luna improves by 0.81 Top-1 points, DTI/Luna decreases by 0.33 AUROC points and eight pairs tie. The twenty DTI prefix scores were independently recomputed from saved predictions for all 5,505 test pairs, with checkpoint and output hashes verified. Figure~\ref{fig:completed-short-dev} in the main text shows the complete prespecified prefix sequence for every endpoint, alongside its development selection trajectory.
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\linewidth]{assets/completed_short6_search.pdf}
-\caption{Development selection (upper panels) and held-out performance (lower panels) in the 12-design, six-slot protocol across all five endpoints. Each valid proposal receives the same full fitting schedule; failed slots still consume research budget. Slot 0 is initialization. Held-out curves evaluate the development-selected checkpoints at every prespecified prefix.}
-\label{fig:completed-short-dev}
-\end{figure}
 
 \clearpage
 \subsection*{B.4 Extended search and task-dependent saturation}
-The extended study increases the design library to 36 configurations: three learning rates, three weight decays, two server-momentum values and two residual-head settings. It runs 24 proposal slots for both backends and modes on PTPC, VCC, Norman and Tahoe. Prefixes are 0, 1, 2, 4, 6, 8, 12, 16, 20 and 24. The settings for initialization, full candidate fitting, development selection and invalid-slot accounting are otherwise unchanged. DTI's backend comparison is the completed six-slot study in B.3; it is not part of this extended protocol.
+The extended study increases the design library to 36 configurations: three learning rates, three weight decays, two server-momentum values and two residual-head settings. It runs 24 proposal slots for both backends and modes on PTPC, VCC, Norman and Tahoe. Prefixes are 0, 1, 2, 4, 6, 8, 12, 16, 20 and 24. The settings for initialization, full candidate fitting, development selection and invalid-slot accounting are otherwise unchanged. DTI's backend comparison is the six-slot study in B.3; it is not part of this extended protocol.
 
 \input{tables/completed_ablation/long24}
 \input{tables/completed_ablation/dynamics_long24}
@@ -79,11 +100,8 @@ The eight terminal held-out pairs give seven ties and one decrease with feedback
 
 \clearpage
 \subsection*{B.5 Executed designs and proposal traces}
-Tables~\ref{tab:completed-menu-short6} and \ref{tab:completed-menu-long24} decode the two design libraries. Tables~\ref{tab:completed-trace-short6} and \ref{tab:completed-trace-long24} retain all 504 attempted proposal slots and their acceptance decisions: 120 slots in the short protocol and 384 in the extended protocol. The accompanying machine-readable trace additionally records each proposal's full configuration, changes from the incumbent and measured development score. Together with the prefix curves, these records connect research decisions to both the executable intervention and its observed outcome.
+Tables~\ref{tab:completed-menu-short6} and \ref{tab:completed-menu-long24} decode the two design libraries. The accompanying reproducibility archive retains all 504 attempted proposal slots and their acceptance decisions: 120 slots in the short protocol and 384 in the extended protocol. Its machine-readable proposal trace records each proposal's full configuration, changes from the incumbent and measured development score; the expanded trace tables are provided with the archive rather than reproduced in the article. Together with the prefix curves, these records connect research decisions to both the executable intervention and its observed outcome.
 
 \input{tables/completed_ablation/norman_retained_events}
 \input{tables/completed_ablation/menu_short6}
 \input{tables/completed_ablation/menu_long24}
-\clearpage
-\input{tables/completed_ablation/trace_short6}
-\input{tables/completed_ablation/trace_long24}
