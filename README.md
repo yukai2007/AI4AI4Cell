@@ -4,9 +4,11 @@
 
 BioCoLoop combines **biology**, **collaboration** and an iterative **research loop**. Historical releases retain their original names. The existing repository URL and storage paths remain stable for Overleaf and result provenance.
 
-## Current revision — 24 September 2026
+## Current revision — 25 September 2026
 
-This is the near-final pre-deadline handoff. The submission PDF has nine pages of main text (28 pages including statements, references and appendices); the Chinese companion has 20 pages. A separate five-page anonymous Statistical Supplement retains all per-seed confidence intervals. The frozen experimental scope and numerical tables are unchanged. The [latest build receipt](provenance/appendix_compaction_20260924/build_receipt.json) records PDF/source hashes, visual checks and 88 passing publication tests. Further changes before the deadline should focus on factual corrections, submission requirements or explicitly requested edits.
+This is the near-final pre-deadline handoff. The submission PDF has nine pages of main text (30 pages including statements, references and appendices); the Chinese companion has 20 pages. A separate five-page anonymous Statistical Supplement retains all per-seed confidence intervals. The [latest build receipt](provenance/public_harness_comparison_20260925/build_receipt.json) records PDF/source hashes, visual checks and 148 passing publication tests. Further changes before the deadline should focus on factual corrections, submission requirements or explicitly requested edits.
+
+The main table now includes task-adapted AI-Scientist-v2 and AI-Researcher controllers under a matched seed-42 protocol. All three research controllers use the same local Qwen2.5-7B-Instruct backend, ten laboratories, twelve-design library, candidate-training schedule and held-out scorers. Nine public-controller cells have independently verified scores. AI-Researcher terminates on DTI after three repeated multi-tool responses violate the registered one-tool-call protocol, so the table reports $F_{\mathrm{tool}}$ rather than a zero or a partial-checkpoint score. The one-page [comparison report](output/pdf/public-harness-comparison.pdf) mirrors the final manuscript table.
 
 The active narrative is **collaborative access plus evidence-guided research decisions**. The abstract states the four-of-five advantage over single-laboratory references; absolute task scores remain in the results with their comparison context. The introduction and conclusion separate gains from more participating laboratories, design search at fixed access, and independently evaluated training allocation. Method Section 3.4 identifies the allocation study, with matched-budget results in Section 4.4; the main comparison uses 100 training rounds per candidate. Same-access fixed/direct controls, proposal-history dynamics, source compatibility and laboratory count remain in the paper. The [appendix compaction note](provenance/appendix_compaction_20260924/RESPONSE.zh-CN.md) records the outcome-independent reduction from 21 to 16 appendix pages; numerical tables, predictions and experiment snapshots are unchanged.
 
@@ -54,7 +56,7 @@ tectonic --only-cached --keep-intermediates --keep-logs --outdir build statistic
 python -m unittest discover -s tools -p 'test_*.py'
 ```
 
-The research host requires its compatible cached Tectonic 0.17.0 binary and matching shared libraries, rather than the default local binary. This host-specific setup is not required on Overleaf. The latest build receipt is in `provenance/appendix_compaction_20260924/`; second-review records remain in `provenance/coauthor_review_v2_20260923/`, and the historical naming-only receipt remains in `provenance/rename_biocoloop_20260923/`.
+The research host requires its compatible cached Tectonic 0.16.0 binary and matching shared libraries, rather than the default local binary. This host-specific setup is not required on Overleaf. The latest build receipt is in `provenance/public_harness_comparison_20260925/`; second-review records remain in `provenance/coauthor_review_v2_20260923/`, and the historical naming-only receipt remains in `provenance/rename_biocoloop_20260923/`.
 
 ## Data-to-paper publication
 

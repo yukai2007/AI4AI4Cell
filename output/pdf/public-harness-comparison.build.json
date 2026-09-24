@@ -1,14 +1,19 @@
 {
-  "pdf_sha256": "1edf03429634f54a5576e5d0dca80f96a2913b48ae633ed4ac7bdd8ba9f540b2",
-  "pages": 4,
-  "text_characters": 5160,
-  "cpu_raster_pages": 4,
+  "pdf_sha256": "c59052fc0808d617a29f3718e358fdeee31c79e83f6a1f677e8c5d70ce032c20",
+  "pages": 1,
+  "text_characters": 2109,
+  "cpu_raster_pages": 1,
   "main_text_pages": null,
   "main_text_page_check": "UNKNOWN",
-  "visual_review": "VISUAL_REVIEW_PENDING",
+  "visual_review": "PASS: title precedes table; all cells, emphasis, caption, and failure marker are legible; no overlap or clipping.",
   "submission_ready": false,
-  "built_unix": 1790261463.4089606,
-  "compiler": "Tectonic 0.16.0; sha256=a6e1ebaba90536e527f2ecd47775a608d9a56bd584efa9f7eee25c1bc7b86349",
-  "source_sha256": "a7e9fe43cf3655aa1d826f5c51da05ff5e1ae4b57a1a7e562c2540829fed4ec0",
-  "warnings": []
+  "built_unix": 1790275078.48122,
+  "source_sha256": "41c9b97075cc28271fa975b9c3821a7d03ab3deb8904979cb932cc6b2243662a",
+  "table_sha256": "fa9a43657a866972c06fc3f7a3e9da608dfc7ef290dbfd608b75e6d38ba8beb7",
+  "repair_snapshot_sha256": "fdd253403c7870d8f0292bd9a769d1714944e824267c6e6a8fbc86ade184ed79",
+  "matched_seed42_complete": true,
+  "independently_verified_scored_cells": 9,
+  "terminal_controller_failures": 1,
+  "pending_cells_in_report": 0,
+  "all_panel_b_research_models": "Qwen2.5-7B-Instruct"
 }

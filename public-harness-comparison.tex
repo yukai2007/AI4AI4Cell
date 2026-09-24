@@ -1,28 +1,19 @@
 % Dedicated comparison report; not a replacement for the manuscript.
 \documentclass{article}
 \usepackage{iclr2027_conference}
-\usepackage{amsmath,booktabs,tabularx,array,fontspec}
+\usepackage{amsmath,booktabs,tabularx,array,fontspec,float}
 \setmainfont{texgyretermes-regular.otf}[Path=fonts/,BoldFont=texgyretermes-bold.otf,ItalicFont=texgyretermes-italic.otf,BoldItalicFont=texgyretermes-bolditalic.otf]
 \title{BioCoLoop: Public-Harness Comparison}
 \author{}
 \date{}
 \begin{document}
 \maketitle
-\noindent\textbf{Comparison branch draft.} Public frameworks use task-adapted
-native experimental controllers and the common biological fitting interface.
-The tables distinguish verified prediction scores, execution failures and
-pending runs. Automatic updates await visual review before mainline delivery.
-\input{tables/public_harness_comparison/results_public_harness.tex}
-\input{tables/public_harness_comparison/completion_public_harness.tex}
-\clearpage
-\input{tables/public_harness_comparison/main_public_harness_seed42.tex}
-\clearpage
+\noindent Public frameworks use their task-adapted native experimental controllers and the common biological fitting interface. All Panel-B controllers use Qwen2.5-7B-Instruct, ten laboratories, the same twelve-design library and at most six candidate proposals. Scored cells pass independent recomputation from saved predictions; $F_{\mathrm{tool}}$ records a terminal controller--tool protocol failure rather than a predictive score.
+
+\let\originaltable\table
+\let\endoriginaltable\endtable
+\renewenvironment{table}[1][]{\originaltable[H]}{\endoriginaltable}
 \input{tables/public_harness_comparison/main_public_harness_three_seed.tex}
-\clearpage
-\section*{Task-transport repair}
-This separate study removes repeated task packets from stage prompts and
-accepts compatible single-tool envelopes. Six candidates are a maximum, so a
-native early stop is retained and no additional candidate is imputed. Candidate
-training and held-out scorers are unchanged.
-\input{tables/public_harness_comparison/compact_repair_seed42.tex}
+
+\paragraph{Outcome.} BioCoLoop is top or tied on proteomics and all three cell-perturbation endpoints. On DTI, it reaches 94.60\% AUROC, 0.47 points below AI-Scientist-v2. AI-Researcher completes and verifies the other four endpoints but fails the registered one-tool-call protocol on DTI after three identical invalid planning responses.
 \end{document}

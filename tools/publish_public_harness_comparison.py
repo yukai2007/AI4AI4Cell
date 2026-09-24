@@ -358,7 +358,8 @@ def main_table_text(snapshot, repair_snapshot=None):
         value = values[(panel, method)][column]
         if value is None:
             if panel == "public" and method == "ai_researcher":
-                return repair_snapshot["tasks"][TASKS[column]]["status"]
+                item = repair_snapshot["tasks"][TASKS[column]]
+                return item.get("display", item["status"])
             return "Pending"
         shown = f"{value:.2f}"
         ranking = ranks[(panel, column)]
@@ -387,11 +388,13 @@ def main_table_text(snapshot, repair_snapshot=None):
     lines += [r"\midrule", r"\multicolumn{6}{l}{\textbf{B. Matched research-controller comparison, seed 42}} \\",
               row("public", "single_direct", "Qwen direct (1 lab)"),
               row("public", "ai_scientist_v2"),
-              row("public", "ai_researcher", "AI-Researcher / final (10 labs)"),
+              row("public", "ai_researcher", "AI-Researcher (10 labs)"),
               row("public", "federated_loop")]
     caption = (r"Main results. A: prespecified three-seed core mean $\pm$ SD. "
                r"B: matched seed-42 task-adapted controllers with 10 laboratories, 12 designs and $\leq6$ candidates. "
-               r"Scores are $\times100$; bold/underline mark best/second-best within each panel; Pending is unresolved.")
+               r"All research controllers in B use Qwen2.5-7B-Instruct. "
+               r"Scores are $\times100$; bold/underline mark best/second-best within each panel; "
+               r"$F_{\mathrm{tool}}$ denotes a controller tool-transport failure.")
     lines += [r"\bottomrule", r"\end{tabularx}", r"\caption{" + caption + "}",
               r"\label{tab:public-harness-comparison-three-seed}", r"\end{table}"]
     return "\n".join(lines) + "\n"

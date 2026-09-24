@@ -3,6 +3,8 @@ BioCoLoop outperforms both single-laboratory references on four of five endpoint
 
 \input{tables/public_harness_comparison/main_public_harness_three_seed}
 
+Against matched seed-42 Qwen controllers, BioCoLoop is top or tied on four endpoints and second on DTI (94.60\% AUROC versus 95.07\% for AI-Scientist-v2); AI-Researcher does not complete DTI because its native controller violates the registered one-tool-call protocol.
+
 \paragraph{Collaborative access improves all five endpoints.}
 Holding loop search fixed, increasing participation from one to ten laboratories adds \StrongDTIFederationEffect{} AUROC points for DTI, \StrongPTPCFederationEffect{} AP points for proteomics, and \StrongVCCFederationEffect{}, \StrongNormanFederationEffect{} and \StrongTahoeFederationEffect{} Top-1 points for VCC, Norman and Tahoe. This contrast measures the value of access to additional local training and development evidence under the same research policy.
 

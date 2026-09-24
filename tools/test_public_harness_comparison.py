@@ -255,7 +255,7 @@ class ComparisonTests(unittest.TestCase):
         self.assertIn('A. Core comparison, seeds 42--44', text)
         self.assertIn('B. Matched research-controller comparison, seed 42', text)
         self.assertIn('AI-Scientist-v2 (10 labs)', text)
-        self.assertIn('AI-Researcher / final (10 labs)', text)
+        self.assertIn('AI-Researcher (10 labs)', text)
         self.assertIn(r'58.00', text)
         self.assertNotIn('S/0F/', text)
 

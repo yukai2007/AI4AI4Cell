@@ -44,7 +44,11 @@ def _run_item(snapshot, base, task, version, adapter_file):
         return _validate_scored(run, measured, version, adapter_file)
     status = original.read(status_path) if status_path.exists() else {}
     if status.get("status") == "FAILED":
-        return {"status": "Failed", "primary": None, "error": status.get("error"),
+        error = status.get("error") or ""
+        tool_failure = error.startswith("Error: Tool response remained invalid after 3 format attempts:")
+        return {"status": "Failed", "primary": None, "error": error,
+                "failure_type": "tool" if tool_failure else "unclassified",
+                "display": r"$F_{\mathrm{tool}}$" if tool_failure else "Failed",
                 "run_status_sha256": original.sha(status_path)}
     return {"status": "Pending", "primary": None}
 
@@ -88,6 +92,42 @@ def collect_budget_cap(base):
         return original.collect(base)
     finally:
         original.verify_readonly = previous
+
+
+def _validate_direct_dti_registration(dti_base):
+    """Validate the pre-heldout identity of the balanced parallel DTI run.
+
+    The direct runner writes the same immutable run configuration and broker
+    definition as the supervised queue.  Accepting this layout avoids moving
+    evidence into a misleading queue directory while keeping publication
+    conditional on the normal heldout verifier below.
+    """
+    run = Path(dti_base) / "ai_researcher" / "native_tapb" / "seed42"
+    config_path = run / "config.json"
+    definition_path = run / "development" / "definition.json"
+    if not config_path.is_file() or not definition_path.is_file():
+        return None
+    config = original.read(config_path)
+    definition = original.read(definition_path)
+    definition_config = definition.get("config", {})
+    expected_adapter = original.EXTENSION / "airesearcher_budget_cap_v4.py"
+    if (config.get("harness") != "ai_researcher"
+            or config.get("task") != "native_tapb"
+            or config.get("seed") != 42
+            or config.get("upstream_commit") != original.HARNESSES["ai_researcher"]["commit"]
+            or str(expected_adapter) not in config.get("adapter_paths", [])):
+        raise ValueError("Direct DTI run identity differs from the registered final adapter")
+    if (definition_config.get("task") != "native_tapb"
+            or definition_config.get("seed") != 42
+            or definition_config.get("harness") != "ai_researcher"
+            or definition.get("rounds") != 100
+            or definition.get("slots") != 6):
+        raise ValueError("Direct DTI run changed the shared candidate-training protocol")
+    return {
+        "config_sha256": original.sha(config_path),
+        "definition_sha256": original.sha(definition_path),
+        "gpu_ids": config.get("gpu_ids"),
+    }
 
 
 def collect(short_base, dti_base=None):
@@ -163,7 +203,15 @@ def collect(short_base, dti_base=None):
                          "airesearcher_budget_cap_v4.py")
         item["source_queue"] = "seed42-dti-priority-v3"
     else:
-        item = {"status": "Pending", "primary": None, "source_queue": None}
+        direct_registration = _validate_direct_dti_registration(dti_base)
+        if direct_registration is None:
+            item = {"status": "Pending", "primary": None, "source_queue": None}
+        else:
+            dti_snapshot = collect_budget_cap(dti_base)
+            item = _run_item(dti_snapshot, dti_base, "native_tapb", VERSION,
+                             "airesearcher_budget_cap_v4.py")
+            item["source_queue"] = "balanced-direct-v5"
+            item["registration"] = direct_registration
     result["tasks"]["native_tapb"] = item
 
     for task in TASKS:
@@ -181,7 +229,7 @@ def table(snapshot):
     def cell(task, reference=False):
         row = snapshot["tasks"][task]
         if not reference and row["status"] != "Scored":
-            return row["status"]
+            return row.get("display", row["status"])
         value = 100 * row["biocoloop_seed42"] if reference else 100 * row["primary"]
         other = row["primary"] if reference else row["biocoloop_seed42"]
         text = f"{value:.2f}"

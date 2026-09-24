@@ -1,7 +1,7 @@
 {
   "schema": "public-harness-comparison-v1",
   "artifact_role": "verified-comparison-branch-draft",
-  "created_utc": "2026-09-24T14:49:13.046970+00:00",
+  "created_utc": "2026-09-24T18:30:46.243198+00:00",
   "role": "retrospective held-out; prior historical exposure; not blind confirmation",
   "seeds_requested": [
     42,
@@ -249,27 +249,169 @@
       "public_harnesses": {
         "ai_scientist_v2": {
           "runs": {
-            "42": null,
+            "42": {
+              "primary": 0.9506748085555848,
+              "metrics": {
+                "accuracy": 0.8653950953678474,
+                "auroc": 0.9506748085555848,
+                "average_precision": 0.947812353061092,
+                "log_loss": 0.3304429388341633,
+                "log_loss_epsilon": 1e-15,
+                "mcc": 0.7388287738628022,
+                "n_negative": 2800,
+                "n_positive": 2705,
+                "n_samples": 5505,
+                "threshold": 0.5
+              },
+              "primary_metric": "auroc",
+              "primary_endpoint": "random",
+              "endpoints": {
+                "random": {
+                  "metrics": {
+                    "accuracy": 0.8653950953678474,
+                    "auroc": 0.9506748085555848,
+                    "average_precision": 0.947812353061092,
+                    "log_loss": 0.3304429388341633,
+                    "log_loss_epsilon": 1e-15,
+                    "mcc": 0.7388287738628022,
+                    "n_negative": 2800,
+                    "n_positive": 2705,
+                    "n_samples": 5505,
+                    "threshold": 0.5
+                  },
+                  "predictions": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v6/ai_scientist_v2/native_tapb/seed42/heldout/random_predictions.csv",
+                  "predictions_sha256": "8069daedd35678afeb51ddff8ac4927208a4e2b863b148cb9116d15f9e92d162",
+                  "primary": 0.9506748085555848,
+                  "rows": 5505
+                },
+                "unseen_drug": {
+                  "metrics": {
+                    "accuracy": 0.8422579794249538,
+                    "auroc": 0.9352155254663013,
+                    "average_precision": 0.9499887297836828,
+                    "log_loss": 0.37691864095838595,
+                    "log_loss_epsilon": 1e-15,
+                    "mcc": 0.68227645629178,
+                    "n_negative": 1649,
+                    "n_positive": 2142,
+                    "n_samples": 3791,
+                    "threshold": 0.5
+                  },
+                  "predictions": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v6/ai_scientist_v2/native_tapb/seed42/heldout/unseen_drug_predictions.csv",
+                  "predictions_sha256": "ce2559e35b270745ac5437891c8af0430a80e24dd6a860de47f1f90e99e85dd9",
+                  "primary": 0.9352155254663013,
+                  "rows": 3791
+                },
+                "unseen_protein": {
+                  "metrics": {
+                    "accuracy": 0.7957718388512166,
+                    "auroc": 0.9082490157467787,
+                    "average_precision": 0.9134654646348687,
+                    "log_loss": 0.47796639111061084,
+                    "log_loss_epsilon": 1e-15,
+                    "mcc": 0.6065027026409202,
+                    "n_negative": 1258,
+                    "n_positive": 1249,
+                    "n_samples": 2507,
+                    "threshold": 0.5
+                  },
+                  "predictions": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v6/ai_scientist_v2/native_tapb/seed42/heldout/unseen_protein_predictions.csv",
+                  "predictions_sha256": "8f094476bdb0cf107d4d409a2dc7adc30b7c0f3e4c67808eee8e3e446a46ca88",
+                  "primary": 0.9082490157467787,
+                  "rows": 2507
+                }
+              },
+              "receipts": {
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v6/ai_scientist_v2/native_tapb/seed42/heldout/seal.json": "e62d8317b798c3cc13d45783a11c777ef5b1492c4a8db59ced2427ef64f4051f",
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v6/ai_scientist_v2/native_tapb/seed42/heldout/results.json": "4a321ed15e906a7c1f9adfc6446d76588baf3efe3b5327ddde4c589bd60ffad5",
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v6/ai_scientist_v2/native_tapb/seed42/heldout/audit.json": "d7699bbbec0c07972f1b08bc97f36f2d6a6e400c983e8393a8b7a93886a8053f",
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v6/ai_scientist_v2/native_tapb/seed42/heldout/verification.json": "403c6c19b2e042f07d2212f730566ae1a3841c1c54dfe0322ef7c8ce2f3c7b73"
+              },
+              "definition_path": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v6/ai_scientist_v2/native_tapb/seed42/development/definition.json",
+              "definition_sha256": "c1df15d1772377ea387ef034f7da63e9500ad3874684d9fcc9ad7d972d53d351",
+              "checkpoint_sha256": "77ae45122117694a19ae0dd568b810d27e268e864c179fcbf057680cd78ce44d",
+              "reference_seal": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/native_tapb/seed42/seal.json",
+              "upstream_commit": "96bd51617cfdbb494a9fc283af00fe090edfae48",
+              "upstream_repo": "/liziqing/yukai/AI4AI4Cell/references/public_harness_20260924/AI-Scientist-v2",
+              "adapter_paths": [
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/aiscientist_adapter.py",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/qwen_backend.py",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/run_baseline.py"
+              ],
+              "source_sha256": {
+                "/liziqing/yukai/AI4AI4Cell/extensions/core_ablation_20260922/common.py": "40249241050a5adf55d0aebe7441411c2802c98f22de90647993c69037240298",
+                "/liziqing/yukai/AI4AI4Cell/extensions/federated_bio_20260918/engine.py": "63fcc6de12bfedd4b846591de1fabd77c84919f471c10da827805fdc3f353430",
+                "/liziqing/yukai/AI4AI4Cell/extensions/federated_bio_20260918/scdebart.py": "25a93300ae0521154dc339c077d19ea6b6a3215eff3da9bf1a86b9b97990d5c1",
+                "/liziqing/yukai/AI4AI4Cell/extensions/proteomics/ptpc_model.py": "1ab5e577076513af2e34c4f78fe5c02b5bf363fea2b945d31e8f640f37ece739",
+                "/liziqing/yukai/AI4AI4Cell/extensions/proteomics/scoring.py": "f5e8e19f7b4265a0c305c3c26ac2875c4db3a29655aae47e1e3beb02a0d80296",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/aiscientist_adapter.py": "0623428ffbc12019813e0d56b2103e00aea5232ac99c4b01c33cdfc93b527892",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/broker.py": "7edf9244940314fb3eb00bbdbaa536b6e107fbd098b286c49aceaa23dfd2f31c",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/qwen_backend.py": "f02201f048b92fe1fd3b9ae9b59ac7961d0512459f770b83fc8e789c51c8f086",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/run_baseline.py": "816a14314dafa1e1455e5a556b6ac0dd32f4076795fcbaf54e573c963006ef6d",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/runtime_worker.py": "62fd597322e7cdbeb54ab41be8e408955864618e8f95515c444c01a5b640a40f",
+                "/liziqing/yukai/AI4AI4Cell/extensions/tapb_reference_20260913/prepare.py": "84835094b02a1349980bad9b36e486aa5cd9585cd000387e0d5308046667bff8",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/adapters.py": "af63c8d49990d862ec7e0955eb65366f03e60ad31a2f108c2d9a50302a184e92",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/core.py": "d358e491d07f11e27607f96d7243e844fdb9152a1c4954effbd77893b6a3370a",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/core_v3.py": "ef53be48dfe17967e7d2faa20a200bc4c6e286ad21ef5406a694d07e26b663ae",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/native_run.py": "b878d3db04d69f96d0da5c50a3e7b029dc03e9b40c16c3e7fdece362ba58c418",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/ptpc_neural_adapter.py": "8032c6d2b68663029d1b53c41bc07b8249a2c43dd132af6af356707d5bd9ee98",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/research_v2.py": "ea0894213b6db722ad37f5541e11755dc2a351c80cf94c1906756f3d96d73184",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/run_native_tapb.py": "84ca0fa06f1b0c47f52f106ef2549c0051ee34a0e965f23ccb47bae7c136792c",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/run_ptpc_neural.py": "0e44b85caa482f9e484227d99d9d58d4d0cf6df7dc38549ce5b792d22fc9ad17",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/run_v3.py": "1abce301e0971c3778f279ee0a237104f0d5e4081d2e24657be23389714726d9",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/tapb_native_adapter.py": "b61de10248c1c066be8363413885c111561417555000632fcb0f25e465a8ccb2",
+                "/liziqing/yukai/AI4AI4Cell/references/performance_first_20260913/TAPB/configs/model_config.yaml": "395bbd74128e3b18e72450abb4caded42ed14d7269183c89024815fea8e5e475",
+                "/liziqing/yukai/AI4AI4Cell/references/performance_first_20260913/TAPB/configs/train_config.yaml": "a558d32180937bce91c7f15fab9fbcc9d0d77680ca86173d8b67d71115ed2295",
+                "/liziqing/yukai/AI4AI4Cell/references/performance_first_20260913/TAPB/dataloader/dataloader.py": "af3a77c21cf76391682e88a5f86af3e1bfb6999abe2bdd9cffe53ebb57efde7a",
+                "/liziqing/yukai/AI4AI4Cell/references/performance_first_20260913/TAPB/models/attention.py": "8795602b829fca231f6a472a4838fe7282cf07322e0a0cefd6ae834b354bd2ef",
+                "/liziqing/yukai/AI4AI4Cell/references/performance_first_20260913/TAPB/models/tapb.py": "61d0b46f755abadf974e401a622cc0fb357654472af8569e722e324c2e179e1a",
+                "/liziqing/yukai/AI4AI4Cell/references/performance_first_20260913/TAPB/models/transformer.py": "4ff01ccac8301291897858aeca3bba3185a7f43136d99d1bba05555d820dc267",
+                "/liziqing/yukai/AI4AI4Cell/references/performance_first_20260913/TAPB/utils/utils.py": "84209dfbd88faedf2489d0b861488bab6fe86957c695e89eb6b91156138997d3",
+                "/liziqing/yukai/AI4AI4Cell/runtime/experiments/drugevolve_transfer/scoring.py": "2ec1689fecea7c12bdfd3b84a235883a43abaa5d1668da94bd0cfa252dc81216"
+              },
+              "data_manifest_sha256": "399876d38731dcff057d233e967ed64fa2db0bc3af81d8d3449ce7b820ce7a0b",
+              "runtime": {
+                "cuda_visible_devices": null,
+                "executable": "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/.venv/bin/python",
+                "gpu_ids": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+                ],
+                "packages": {
+                  "numpy": "1.26.4",
+                  "pandas": "2.2.3",
+                  "torch": "2.6.0",
+                  "transformers": "4.57.0"
+                },
+                "platform": "Linux-3.10.0-1160.el7.x86_64-x86_64-with-glibc2.35",
+                "python": "3.10.20 (main, Mar 11 2026, 17:46:40) [GCC 14.3.0]"
+              }
+            },
             "43": null,
             "44": null
           },
           "pending": {
-            "42": "Missing verified evidence: seal.json, results.json, audit.json, verification.json",
             "43": "Missing verified evidence: seal.json, results.json, audit.json, verification.json",
             "44": "Missing verified evidence: seal.json, results.json, audit.json, verification.json"
           },
           "complete": false,
-          "completed_seeds": [],
-          "n": 0,
+          "completed_seeds": [
+            42
+          ],
+          "n": 1,
           "mean": null,
           "sd": null,
           "statuses": {
             "42": {
-              "status": "Pending",
-              "scored": false,
-              "terminal": false,
-              "primary": null,
-              "reason": "Missing verified evidence: seal.json, results.json, audit.json, verification.json"
+              "status": "Scored",
+              "scored": true,
+              "terminal": true,
+              "primary": 0.9506748085555848
             },
             "43": {
               "status": "Pending",
@@ -287,14 +429,14 @@
             }
           },
           "comparison_counts": {
-            "scored": 0,
+            "scored": 1,
             "failed_context": 0,
             "failed_tool": 0,
             "failed_pipeline": 0,
-            "pending": 3,
+            "pending": 2,
             "denominator": 3,
             "failed": 0,
-            "terminal": 0
+            "terminal": 1
           },
           "comparison_resolved": false
         },
@@ -2302,7 +2444,7 @@
     "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/heldout_public.py": "2c5a062993b4dae5670f5ce1119cccfdab2ffd123d31cce789610fe7057edc96",
     "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/verify_public.py": "430319cfdf46a89ee1084756cc11db0e61d7566a8139909cc86bda406eeac0ee",
     "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/broker.py": "7edf9244940314fb3eb00bbdbaa536b6e107fbd098b286c49aceaa23dfd2f31c",
-    "/liziqing/yukai/AI4AI4Cell/paper/tools/publish_public_harness_comparison.py": "4b06f73346551872514303d5ce0527304ce2d2ec73d9a8d9dfab1719024499ab"
+    "/liziqing/yukai/AI4AI4Cell/paper/tools/publish_public_harness_comparison.py": "86f1467dff0630bf0c10f484d4fcab482e58d0c04aac9655c96f6b1ba098b5bf"
   },
   "reference_complete": true,
   "ready_for_explicit_manuscript_integration": false,
@@ -2313,6 +2455,7 @@
     "complete": false,
     "public_completed_tasks": {
       "ai_scientist_v2": [
+        "native_tapb",
         "ptpc_neural",
         "vcc_corrected",
         "norman_double_corrected",
@@ -2325,9 +2468,9 @@
     "manifest_path": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v6/queue_manifest.json",
     "manifest_sha256": "99f39919b5cb9472bfbf98d93e0871411ee853833aadcc4e9562382d239cbbf2",
     "supervisor_path": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v6/supervisor_status.json",
-    "supervisor_sha256": "443b4ea17ee61e9639eb52adcac0afb5a17133b201e14aedf565f3f420b609f3",
-    "supervisor_status": "RUNNING",
-    "supervisor_updated_unix": 1790261347.5251093,
+    "supervisor_sha256": "02b8c5d73523c962aef6500a312df962abc83d7f814658a1b304bbaf6b589ed3",
+    "supervisor_status": "STOPPED_ON_FAILURE",
+    "supervisor_updated_unix": 1790274531.1209936,
     "failure_receipts": [
       {
         "accounting": {
@@ -2557,14 +2700,14 @@
       "ai_scientist_v2": {
         "by_seed": {
           "42": {
-            "scored": 4,
+            "scored": 5,
             "failed_context": 0,
             "failed_tool": 0,
             "failed_pipeline": 0,
-            "pending": 1,
+            "pending": 0,
             "denominator": 5,
             "failed": 0,
-            "terminal": 4
+            "terminal": 5
           },
           "43": {
             "scored": 0,
@@ -2588,14 +2731,14 @@
           }
         },
         "all_seeds": {
-          "scored": 4,
+          "scored": 5,
           "failed_context": 0,
           "failed_tool": 0,
           "failed_pipeline": 0,
-          "pending": 11,
+          "pending": 10,
           "denominator": 15,
           "failed": 0,
-          "terminal": 4
+          "terminal": 5
         }
       },
       "ai_researcher": {
@@ -2644,24 +2787,24 @@
       }
     },
     "matrix": {
-      "scored": 4,
+      "scored": 5,
       "failed_context": 2,
       "failed_tool": 2,
       "failed_pipeline": 0,
-      "pending": 22,
+      "pending": 21,
       "denominator": 30,
       "failed": 4,
-      "terminal": 8
+      "terminal": 9
     },
     "seed42": {
-      "scored": 4,
+      "scored": 5,
       "failed_context": 2,
       "failed_tool": 2,
       "failed_pipeline": 0,
-      "pending": 2,
+      "pending": 1,
       "denominator": 10,
       "failed": 4,
-      "terminal": 8
+      "terminal": 9
     }
   },
   "scores_complete": false,
