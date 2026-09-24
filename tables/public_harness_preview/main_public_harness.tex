@@ -1,0 +1,24 @@
+\begin{table}[t]
+\centering\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\linewidth}{@{}Xrrrrr@{}}
+\toprule
+\textbf{Model / method} & \multicolumn{1}{c}{DTI} & \multicolumn{1}{c}{Proteomics} & \multicolumn{3}{c}{Cell perturbation} \\
+\cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(l){4-6}
+ & \shortstack{BindingDB\\AUROC $\uparrow$} & \shortstack{PTPC\\AP $\uparrow$} & \shortstack{VCC\\Top-1 $\uparrow$} & \shortstack{Norman\\Top-1 $\uparrow$} & \shortstack{Tahoe\\Top-1 $\uparrow$} \\
+\midrule
+\multicolumn{6}{l}{\textit{Fixed task models, one laboratory}} \\
+TAPB & 82.83 $\pm$ 1.22 & -- & -- & -- & -- \\
+ProteinTalks-derived head & -- & \underline{25.05} $\pm$ 4.56 & -- & -- & -- \\
+scDEBART response head & -- & -- & \underline{29.94} $\pm$ 0.00 & \textbf{25.56} $\pm$ 0.00 & \underline{19.40} $\pm$ 0.00 \\
+\midrule
+Qwen direct (1 lab) & \underline{89.89} $\pm$ 1.02 & 20.13 $\pm$ 0.07 & 21.09 $\pm$ 4.38 & 14.15 $\pm$ 0.00 & 15.42 $\pm$ 6.21 \\
+AI-Scientist-v2 (10 labs) & N/A & N/A & N/A & N/A & N/A \\
+AI-Researcher (10 labs) & N/A & N/A & N/A & N/A & N/A \\
+\textbf{BioCoLoop} (10 labs) & \textbf{93.76} $\pm$ 1.11 & \textbf{36.99} $\pm$ 0.22 & \textbf{31.54} $\pm$ 0.08 & \underline{22.25} $\pm$ 0.45 & \textbf{22.39} $\pm$ 2.59 \\
+\bottomrule
+\end{tabularx}
+\caption{Preview pending manuscript integration. All methods use the named task models. Native AI-Scientist-v2 and AI-Researcher controllers are task-adapted with local Qwen, ten laboratories, a twelve-design menu, six proposal slots and 100-round candidates. Values are mean $\pm$ sample SD over complete seeds 42--44, multiplied by 100; incomplete cells are N/A. Bold and underline mark the best and second-best displayed means across all five methods, including ties.}
+\label{tab:public-harness-preview}
+\end{table}

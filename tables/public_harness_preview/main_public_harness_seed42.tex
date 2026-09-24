@@ -1,0 +1,24 @@
+\begin{table}[t]
+\centering\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\linewidth}{@{}Xrrrrr@{}}
+\toprule
+\textbf{Model / method} & \multicolumn{1}{c}{DTI} & \multicolumn{1}{c}{Proteomics} & \multicolumn{3}{c}{Cell perturbation} \\
+\cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(l){4-6}
+ & \shortstack{BindingDB\\AUROC $\uparrow$} & \shortstack{PTPC\\AP $\uparrow$} & \shortstack{VCC\\Top-1 $\uparrow$} & \shortstack{Norman\\Top-1 $\uparrow$} & \shortstack{Tahoe\\Top-1 $\uparrow$} \\
+\midrule
+\multicolumn{6}{l}{\textit{Fixed task models, one laboratory}} \\
+TAPB & 81.76 & -- & -- & -- & -- \\
+ProteinTalks-derived head & -- & \underline{23.97} & -- & -- & -- \\
+scDEBART response head & -- & -- & \underline{29.94} & \textbf{25.56} & \underline{19.40} \\
+\midrule
+Qwen direct (1 lab) & \underline{88.82} & 20.21 & 21.73 & 14.15 & 13.43 \\
+AI-Scientist-v2 (10 labs) & N/A & \textbf{37.12} & \textbf{31.63} & \underline{22.74} & \textbf{23.88} \\
+AI-Researcher (10 labs) & N/A & N/A & N/A & N/A & N/A \\
+\textbf{BioCoLoop} (10 labs) & \textbf{94.60} & \textbf{37.12} & \textbf{31.63} & \underline{22.74} & \textbf{23.88} \\
+\bottomrule
+\end{tabularx}
+\caption{Matched seed-42 pilot preview. All methods use the same training/search seed 42 and the named task models. Native AI-Scientist-v2 and AI-Researcher controllers are task-adapted with local Qwen, ten laboratories, a twelve-design menu, six proposal slots and 100-round candidates. Scores are multiplied by 100; missing seed-42 results are N/A. Bold and underline mark the best and second-best displayed scores across all five methods, including ties.}
+\label{tab:public-harness-seed42-preview}
+\end{table}

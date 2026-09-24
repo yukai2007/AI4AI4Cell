@@ -1,0 +1,1310 @@
+{
+  "schema": "public-harness-main-preview-v1",
+  "artifact_role": "verified-preview-not-integrated",
+  "created_utc": "2026-09-24T12:35:12.365732+00:00",
+  "role": "retrospective held-out; prior historical exposure; not blind confirmation",
+  "seeds_requested": [
+    42,
+    43,
+    44
+  ],
+  "base": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5",
+  "reference_base": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918",
+  "manuscript_modified": false,
+  "main_table_replaced": false,
+  "harness_registry": {
+    "ai_scientist_v2": {
+      "label": "AI-Scientist-v2 (10 labs)",
+      "commit": "96bd51617cfdbb494a9fc283af00fe090edfae48"
+    },
+    "ai_researcher": {
+      "label": "AI-Researcher (10 labs)",
+      "commit": "f9a6f8480860c193afff600eeffe3defcee8a978"
+    }
+  },
+  "tasks": {
+    "native_tapb": {
+      "original": {
+        "single_fixed": {
+          "runs": {
+            "42": {
+              "primary": 0.8176202138896225,
+              "reference_receipts": {
+                "heldout_v3/native_tapb/seed42/results.json": "9175ecbe4aca2cbdca4aff0cd6f565b6f48c0772a9f617659c8a00f4e61b7bdd",
+                "heldout_v3/native_tapb/seed42/seal.json": "9bf05d62d61e40fd86f84c2763f9c5c4998f95e768152b505a8a11f70b7aa274",
+                "heldout_v3/native_tapb/seed42/audit.json": "c2a64dd37d9ec328d344224238aa3c27e40fef2dfde537b91be4f47050aec41a",
+                "heldout_v3/native_tapb/seed42/verification.json": "6823ffa9da0e0b81fcd05e01f3ab38ca4eddd4480584898b20f789faa0902387",
+                "uncertainty_native_tapb_v1/seed42.json": "b36c7ac5721dd51cfce5ef89abbd66c605b4fda6afe23a35ee81f7ba9f560bae"
+              }
+            },
+            "43": {
+              "primary": 0.841541523633483,
+              "reference_receipts": {
+                "heldout_v3/native_tapb/seed43/results.json": "e74ddf26a94bbbe7d14206769d35903200863c3482d10276e66757a6f1789d74",
+                "heldout_v3/native_tapb/seed43/seal.json": "4b8f7eb990f0d9a4c9f28141a1da901ce95697c1e2357e1a65b7f949c840c07d",
+                "heldout_v3/native_tapb/seed43/audit.json": "c2a64dd37d9ec328d344224238aa3c27e40fef2dfde537b91be4f47050aec41a",
+                "heldout_v3/native_tapb/seed43/verification.json": "f7ab001b3564eb618cf2fb9470e49f05bc4c91beb1ce744b6fbd680e9f022f3d",
+                "uncertainty_native_tapb_v1/seed43.json": "420f591a3a9be0ce406c5e86b0d69dbe19cf37bda6a03d9ab372ca05cc597ce1"
+              }
+            },
+            "44": {
+              "primary": 0.825872194349089,
+              "reference_receipts": {
+                "heldout_v3/native_tapb/seed44/results.json": "65723759b30af231ae8e7cea497b61a01402a8bdbb141ae58ba2af2a3cb6c6ed",
+                "heldout_v3/native_tapb/seed44/seal.json": "de91ee549ac362d31c04843f118044bb450964da0f8698383c533e9c319b6613",
+                "heldout_v3/native_tapb/seed44/audit.json": "c2a64dd37d9ec328d344224238aa3c27e40fef2dfde537b91be4f47050aec41a",
+                "heldout_v3/native_tapb/seed44/verification.json": "cc4519c3a3d172e0dd58e96355bb584a4ae16952f5e4487d4ce1eb8eb84067f3",
+                "uncertainty_native_tapb_v1/seed44.json": "3777acdff5b2c393b8f61da8bc165ccf263508800a023cffdd78bd41aa7c75c7"
+              }
+            }
+          },
+          "complete": true,
+          "completed_seeds": [
+            42,
+            43,
+            44
+          ],
+          "n": 3,
+          "mean": 0.8283446439573982,
+          "sd": 0.0121508032765184
+        },
+        "single_direct": {
+          "runs": {
+            "42": {
+              "primary": 0.8881695273303406,
+              "reference_receipts": {
+                "heldout_v3/native_tapb/seed42/results.json": "9175ecbe4aca2cbdca4aff0cd6f565b6f48c0772a9f617659c8a00f4e61b7bdd",
+                "heldout_v3/native_tapb/seed42/seal.json": "9bf05d62d61e40fd86f84c2763f9c5c4998f95e768152b505a8a11f70b7aa274",
+                "heldout_v3/native_tapb/seed42/audit.json": "c2a64dd37d9ec328d344224238aa3c27e40fef2dfde537b91be4f47050aec41a",
+                "heldout_v3/native_tapb/seed42/verification.json": "6823ffa9da0e0b81fcd05e01f3ab38ca4eddd4480584898b20f789faa0902387",
+                "uncertainty_native_tapb_v1/seed42.json": "b36c7ac5721dd51cfce5ef89abbd66c605b4fda6afe23a35ee81f7ba9f560bae"
+              }
+            },
+            "43": {
+              "primary": 0.9084580802746237,
+              "reference_receipts": {
+                "heldout_v3/native_tapb/seed43/results.json": "e74ddf26a94bbbe7d14206769d35903200863c3482d10276e66757a6f1789d74",
+                "heldout_v3/native_tapb/seed43/seal.json": "4b8f7eb990f0d9a4c9f28141a1da901ce95697c1e2357e1a65b7f949c840c07d",
+                "heldout_v3/native_tapb/seed43/audit.json": "c2a64dd37d9ec328d344224238aa3c27e40fef2dfde537b91be4f47050aec41a",
+                "heldout_v3/native_tapb/seed43/verification.json": "f7ab001b3564eb618cf2fb9470e49f05bc4c91beb1ce744b6fbd680e9f022f3d",
+                "uncertainty_native_tapb_v1/seed43.json": "420f591a3a9be0ce406c5e86b0d69dbe19cf37bda6a03d9ab372ca05cc597ce1"
+              }
+            },
+            "44": {
+              "primary": 0.9002018748349616,
+              "reference_receipts": {
+                "heldout_v3/native_tapb/seed44/results.json": "65723759b30af231ae8e7cea497b61a01402a8bdbb141ae58ba2af2a3cb6c6ed",
+                "heldout_v3/native_tapb/seed44/seal.json": "de91ee549ac362d31c04843f118044bb450964da0f8698383c533e9c319b6613",
+                "heldout_v3/native_tapb/seed44/audit.json": "c2a64dd37d9ec328d344224238aa3c27e40fef2dfde537b91be4f47050aec41a",
+                "heldout_v3/native_tapb/seed44/verification.json": "cc4519c3a3d172e0dd58e96355bb584a4ae16952f5e4487d4ce1eb8eb84067f3",
+                "uncertainty_native_tapb_v1/seed44.json": "3777acdff5b2c393b8f61da8bc165ccf263508800a023cffdd78bd41aa7c75c7"
+              }
+            }
+          },
+          "complete": true,
+          "completed_seeds": [
+            42,
+            43,
+            44
+          ],
+          "n": 3,
+          "mean": 0.8989431608133086,
+          "sd": 0.010202676897975063
+        },
+        "federated_loop": {
+          "runs": {
+            "42": {
+              "primary": 0.9460002640612623,
+              "reference_receipts": {
+                "heldout_v3/native_tapb/seed42/results.json": "9175ecbe4aca2cbdca4aff0cd6f565b6f48c0772a9f617659c8a00f4e61b7bdd",
+                "heldout_v3/native_tapb/seed42/seal.json": "9bf05d62d61e40fd86f84c2763f9c5c4998f95e768152b505a8a11f70b7aa274",
+                "heldout_v3/native_tapb/seed42/audit.json": "c2a64dd37d9ec328d344224238aa3c27e40fef2dfde537b91be4f47050aec41a",
+                "heldout_v3/native_tapb/seed42/verification.json": "6823ffa9da0e0b81fcd05e01f3ab38ca4eddd4480584898b20f789faa0902387",
+                "uncertainty_native_tapb_v1/seed42.json": "b36c7ac5721dd51cfce5ef89abbd66c605b4fda6afe23a35ee81f7ba9f560bae"
+              }
+            },
+            "43": {
+              "primary": 0.9249997359387377,
+              "reference_receipts": {
+                "heldout_v3/native_tapb/seed43/results.json": "e74ddf26a94bbbe7d14206769d35903200863c3482d10276e66757a6f1789d74",
+                "heldout_v3/native_tapb/seed43/seal.json": "4b8f7eb990f0d9a4c9f28141a1da901ce95697c1e2357e1a65b7f949c840c07d",
+                "heldout_v3/native_tapb/seed43/audit.json": "c2a64dd37d9ec328d344224238aa3c27e40fef2dfde537b91be4f47050aec41a",
+                "heldout_v3/native_tapb/seed43/verification.json": "f7ab001b3564eb618cf2fb9470e49f05bc4c91beb1ce744b6fbd680e9f022f3d",
+                "uncertainty_native_tapb_v1/seed43.json": "420f591a3a9be0ce406c5e86b0d69dbe19cf37bda6a03d9ab372ca05cc597ce1"
+              }
+            },
+            "44": {
+              "primary": 0.9418999207816213,
+              "reference_receipts": {
+                "heldout_v3/native_tapb/seed44/results.json": "65723759b30af231ae8e7cea497b61a01402a8bdbb141ae58ba2af2a3cb6c6ed",
+                "heldout_v3/native_tapb/seed44/seal.json": "de91ee549ac362d31c04843f118044bb450964da0f8698383c533e9c319b6613",
+                "heldout_v3/native_tapb/seed44/audit.json": "c2a64dd37d9ec328d344224238aa3c27e40fef2dfde537b91be4f47050aec41a",
+                "heldout_v3/native_tapb/seed44/verification.json": "cc4519c3a3d172e0dd58e96355bb584a4ae16952f5e4487d4ce1eb8eb84067f3",
+                "uncertainty_native_tapb_v1/seed44.json": "3777acdff5b2c393b8f61da8bc165ccf263508800a023cffdd78bd41aa7c75c7"
+              }
+            }
+          },
+          "complete": true,
+          "completed_seeds": [
+            42,
+            43,
+            44
+          ],
+          "n": 3,
+          "mean": 0.9376333069272071,
+          "sd": 0.011131421324037879
+        }
+      },
+      "public_harnesses": {
+        "ai_scientist_v2": {
+          "runs": {
+            "42": null,
+            "43": null,
+            "44": null
+          },
+          "pending": {
+            "42": "Missing verified evidence: seal.json, results.json, audit.json, verification.json",
+            "43": "Missing verified evidence: seal.json, results.json, audit.json, verification.json",
+            "44": "Missing verified evidence: seal.json, results.json, audit.json, verification.json"
+          },
+          "complete": false,
+          "completed_seeds": [],
+          "n": 0,
+          "mean": null,
+          "sd": null
+        },
+        "ai_researcher": {
+          "runs": {
+            "42": null,
+            "43": null,
+            "44": null
+          },
+          "pending": {
+            "42": "Missing verified evidence: seal.json, results.json, audit.json, verification.json",
+            "43": "Missing verified evidence: seal.json, results.json, audit.json, verification.json",
+            "44": "Missing verified evidence: seal.json, results.json, audit.json, verification.json"
+          },
+          "complete": false,
+          "completed_seeds": [],
+          "n": 0,
+          "mean": null,
+          "sd": null
+        }
+      }
+    },
+    "ptpc_neural": {
+      "original": {
+        "single_fixed": {
+          "runs": {
+            "42": {
+              "primary": 0.2396505407073914,
+              "reference_receipts": {
+                "heldout_ptpc_neural/seed42/results.json": "c55a876ec64d780529c76e5c4fc112cdc7c2d64fd50285735591a81733e167c1",
+                "heldout_ptpc_neural/seed42/seal.json": "e0becdec9399fcb5a8db0e03d110558d09d27eaf5d91a0051032409fc2bffcee",
+                "heldout_ptpc_neural/seed42/audit.json": "bfc53af7674f0caab1b421f2dee9ae9ef6ac80f625857cd107f4ecda0526db42",
+                "heldout_ptpc_neural/seed42/verification.json": "cd9a48f3f2c9b44714cbc8c977a752de074d189d75a49f78ab9c3373fac41056",
+                "ptpc_neural/study_v3_seed42/neural_registration.json": "6d6f448ec95740eb97ddce484fc272b3018f41c4e85c1c387c5e1b3d57b6b205"
+              }
+            },
+            "43": {
+              "primary": 0.21123518202682223,
+              "reference_receipts": {
+                "heldout_ptpc_neural/seed43/results.json": "0eaea381903322058947b382bdf3a16963ca0ecfc2207ae14b1521156d12bf89",
+                "heldout_ptpc_neural/seed43/seal.json": "84814e1a6b312b6d5b4ccb550c9dbca44e46e2459cc964da180c7ba569027c95",
+                "heldout_ptpc_neural/seed43/audit.json": "bfc53af7674f0caab1b421f2dee9ae9ef6ac80f625857cd107f4ecda0526db42",
+                "heldout_ptpc_neural/seed43/verification.json": "7c330c84ad6f23d2cf46b0961e814a8509e9c1236f8ada43bcbe2875c9dde56c",
+                "ptpc_neural/study_v3_seed43/neural_registration.json": "6d6f448ec95740eb97ddce484fc272b3018f41c4e85c1c387c5e1b3d57b6b205"
+              }
+            },
+            "44": {
+              "primary": 0.300480174354729,
+              "reference_receipts": {
+                "heldout_ptpc_neural/seed44/results.json": "d9e48e5361b15f47f9a5d7c7dbafd76daa7e756c5585af22846556844032d748",
+                "heldout_ptpc_neural/seed44/seal.json": "cccfe67f80b888c1c5b9bb54ff8af1fd4b6de6b97a9630e7f9979da9ebca59e7",
+                "heldout_ptpc_neural/seed44/audit.json": "bfc53af7674f0caab1b421f2dee9ae9ef6ac80f625857cd107f4ecda0526db42",
+                "heldout_ptpc_neural/seed44/verification.json": "b41d896587925fa17742f40441a6f16157e4ed9860d6743f5c57ebe35203e704",
+                "ptpc_neural/study_v3_seed44/neural_registration.json": "6d6f448ec95740eb97ddce484fc272b3018f41c4e85c1c387c5e1b3d57b6b205"
+              }
+            }
+          },
+          "complete": true,
+          "completed_seeds": [
+            42,
+            43,
+            44
+          ],
+          "n": 3,
+          "mean": 0.2504552990296475,
+          "sd": 0.045593028696323826
+        },
+        "single_direct": {
+          "runs": {
+            "42": {
+              "primary": 0.20212685836749988,
+              "reference_receipts": {
+                "heldout_ptpc_neural/seed42/results.json": "c55a876ec64d780529c76e5c4fc112cdc7c2d64fd50285735591a81733e167c1",
+                "heldout_ptpc_neural/seed42/seal.json": "e0becdec9399fcb5a8db0e03d110558d09d27eaf5d91a0051032409fc2bffcee",
+                "heldout_ptpc_neural/seed42/audit.json": "bfc53af7674f0caab1b421f2dee9ae9ef6ac80f625857cd107f4ecda0526db42",
+                "heldout_ptpc_neural/seed42/verification.json": "cd9a48f3f2c9b44714cbc8c977a752de074d189d75a49f78ab9c3373fac41056",
+                "ptpc_neural/study_v3_seed42/neural_registration.json": "6d6f448ec95740eb97ddce484fc272b3018f41c4e85c1c387c5e1b3d57b6b205"
+              }
+            },
+            "43": {
+              "primary": 0.20081894695272912,
+              "reference_receipts": {
+                "heldout_ptpc_neural/seed43/results.json": "0eaea381903322058947b382bdf3a16963ca0ecfc2207ae14b1521156d12bf89",
+                "heldout_ptpc_neural/seed43/seal.json": "84814e1a6b312b6d5b4ccb550c9dbca44e46e2459cc964da180c7ba569027c95",
+                "heldout_ptpc_neural/seed43/audit.json": "bfc53af7674f0caab1b421f2dee9ae9ef6ac80f625857cd107f4ecda0526db42",
+                "heldout_ptpc_neural/seed43/verification.json": "7c330c84ad6f23d2cf46b0961e814a8509e9c1236f8ada43bcbe2875c9dde56c",
+                "ptpc_neural/study_v3_seed43/neural_registration.json": "6d6f448ec95740eb97ddce484fc272b3018f41c4e85c1c387c5e1b3d57b6b205"
+              }
+            },
+            "44": {
+              "primary": 0.20103243378788083,
+              "reference_receipts": {
+                "heldout_ptpc_neural/seed44/results.json": "d9e48e5361b15f47f9a5d7c7dbafd76daa7e756c5585af22846556844032d748",
+                "heldout_ptpc_neural/seed44/seal.json": "cccfe67f80b888c1c5b9bb54ff8af1fd4b6de6b97a9630e7f9979da9ebca59e7",
+                "heldout_ptpc_neural/seed44/audit.json": "bfc53af7674f0caab1b421f2dee9ae9ef6ac80f625857cd107f4ecda0526db42",
+                "heldout_ptpc_neural/seed44/verification.json": "b41d896587925fa17742f40441a6f16157e4ed9860d6743f5c57ebe35203e704",
+                "ptpc_neural/study_v3_seed44/neural_registration.json": "6d6f448ec95740eb97ddce484fc272b3018f41c4e85c1c387c5e1b3d57b6b205"
+              }
+            }
+          },
+          "complete": true,
+          "completed_seeds": [
+            42,
+            43,
+            44
+          ],
+          "n": 3,
+          "mean": 0.20132607970270328,
+          "sd": 0.0007016616062539355
+        },
+        "federated_loop": {
+          "runs": {
+            "42": {
+              "primary": 0.37122571638534896,
+              "reference_receipts": {
+                "heldout_ptpc_neural/seed42/results.json": "c55a876ec64d780529c76e5c4fc112cdc7c2d64fd50285735591a81733e167c1",
+                "heldout_ptpc_neural/seed42/seal.json": "e0becdec9399fcb5a8db0e03d110558d09d27eaf5d91a0051032409fc2bffcee",
+                "heldout_ptpc_neural/seed42/audit.json": "bfc53af7674f0caab1b421f2dee9ae9ef6ac80f625857cd107f4ecda0526db42",
+                "heldout_ptpc_neural/seed42/verification.json": "cd9a48f3f2c9b44714cbc8c977a752de074d189d75a49f78ab9c3373fac41056",
+                "ptpc_neural/study_v3_seed42/neural_registration.json": "6d6f448ec95740eb97ddce484fc272b3018f41c4e85c1c387c5e1b3d57b6b205"
+              }
+            },
+            "43": {
+              "primary": 0.3710822812416906,
+              "reference_receipts": {
+                "heldout_ptpc_neural/seed43/results.json": "0eaea381903322058947b382bdf3a16963ca0ecfc2207ae14b1521156d12bf89",
+                "heldout_ptpc_neural/seed43/seal.json": "84814e1a6b312b6d5b4ccb550c9dbca44e46e2459cc964da180c7ba569027c95",
+                "heldout_ptpc_neural/seed43/audit.json": "bfc53af7674f0caab1b421f2dee9ae9ef6ac80f625857cd107f4ecda0526db42",
+                "heldout_ptpc_neural/seed43/verification.json": "7c330c84ad6f23d2cf46b0961e814a8509e9c1236f8ada43bcbe2875c9dde56c",
+                "ptpc_neural/study_v3_seed43/neural_registration.json": "6d6f448ec95740eb97ddce484fc272b3018f41c4e85c1c387c5e1b3d57b6b205"
+              }
+            },
+            "44": {
+              "primary": 0.3673186513685702,
+              "reference_receipts": {
+                "heldout_ptpc_neural/seed44/results.json": "d9e48e5361b15f47f9a5d7c7dbafd76daa7e756c5585af22846556844032d748",
+                "heldout_ptpc_neural/seed44/seal.json": "cccfe67f80b888c1c5b9bb54ff8af1fd4b6de6b97a9630e7f9979da9ebca59e7",
+                "heldout_ptpc_neural/seed44/audit.json": "bfc53af7674f0caab1b421f2dee9ae9ef6ac80f625857cd107f4ecda0526db42",
+                "heldout_ptpc_neural/seed44/verification.json": "b41d896587925fa17742f40441a6f16157e4ed9860d6743f5c57ebe35203e704",
+                "ptpc_neural/study_v3_seed44/neural_registration.json": "6d6f448ec95740eb97ddce484fc272b3018f41c4e85c1c387c5e1b3d57b6b205"
+              }
+            }
+          },
+          "complete": true,
+          "completed_seeds": [
+            42,
+            43,
+            44
+          ],
+          "n": 3,
+          "mean": 0.36987554966520325,
+          "sd": 0.002215499962672713
+        }
+      },
+      "public_harnesses": {
+        "ai_scientist_v2": {
+          "runs": {
+            "42": {
+              "primary": 0.37122571638534896,
+              "metrics": {
+                "accuracy_at_0_5": 0.8513513513513513,
+                "ap": 0.37122571638534896,
+                "auroc": 0.7402597402597403,
+                "bce": 0.4001006234394519,
+                "n_labeled": 148,
+                "n_missing_label": 0,
+                "n_positive": 22,
+                "n_rows": 148,
+                "undefined_reason": null
+              },
+              "primary_metric": "ap",
+              "primary_endpoint": "primary",
+              "endpoints": {
+                "primary": {
+                  "metrics": {
+                    "accuracy_at_0_5": 0.8513513513513513,
+                    "ap": 0.37122571638534896,
+                    "auroc": 0.7402597402597403,
+                    "bce": 0.4001006234394519,
+                    "n_labeled": 148,
+                    "n_missing_label": 0,
+                    "n_positive": 22,
+                    "n_rows": 148,
+                    "undefined_reason": null
+                  },
+                  "predictions": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v3/ai_scientist_v2/ptpc_neural/seed42/heldout/primary_predictions.npz",
+                  "predictions_sha256": "3f25ce480e0f618945e3027c0a3add3b8062a9998e27985751a198468f6efc04",
+                  "primary": 0.37122571638534896,
+                  "rows": 148
+                }
+              },
+              "receipts": {
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/ptpc_neural/seed42/heldout/seal.json": "3d5a06eaca1a46d6e90d93789a292b8ad244716d15b2aa9cde72e814d7d0fd86",
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/ptpc_neural/seed42/heldout/results.json": "1724516a62829c3a896d8120611890f86aa9cb0db9474a5587f95732b076806d",
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/ptpc_neural/seed42/heldout/audit.json": "f8117a6e537f046ac5eb328a4e9d06c7184c61e7a3581284525b51753e3be9ac",
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/ptpc_neural/seed42/heldout/verification.json": "095b15fefb8dff957176c7e4ab38a712489832b7590e43eaa64ad9784d82980d"
+              },
+              "definition_path": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v3/ai_scientist_v2/ptpc_neural/seed42/development/definition.json",
+              "definition_sha256": "8091929afe35995f2db3e03ac769b3eb06fc6354415cd89a749378f27e158ca2",
+              "checkpoint_sha256": "3f100a2360e78cab9d56a10116ed0108ab0cf5610e95608655ac150a8a482f4a",
+              "reference_seal": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_ptpc_neural/seed42/seal.json",
+              "upstream_commit": "96bd51617cfdbb494a9fc283af00fe090edfae48",
+              "upstream_repo": "/liziqing/yukai/AI4AI4Cell/references/public_harness_20260924/AI-Scientist-v2",
+              "adapter_paths": [
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/aiscientist_adapter.py",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/qwen_backend.py",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/run_baseline.py"
+              ],
+              "source_sha256": {
+                "/liziqing/yukai/AI4AI4Cell/extensions/core_ablation_20260922/common.py": "40249241050a5adf55d0aebe7441411c2802c98f22de90647993c69037240298",
+                "/liziqing/yukai/AI4AI4Cell/extensions/federated_bio_20260918/engine.py": "63fcc6de12bfedd4b846591de1fabd77c84919f471c10da827805fdc3f353430",
+                "/liziqing/yukai/AI4AI4Cell/extensions/federated_bio_20260918/scdebart.py": "25a93300ae0521154dc339c077d19ea6b6a3215eff3da9bf1a86b9b97990d5c1",
+                "/liziqing/yukai/AI4AI4Cell/extensions/proteomics/ptpc_model.py": "1ab5e577076513af2e34c4f78fe5c02b5bf363fea2b945d31e8f640f37ece739",
+                "/liziqing/yukai/AI4AI4Cell/extensions/proteomics/scoring.py": "f5e8e19f7b4265a0c305c3c26ac2875c4db3a29655aae47e1e3beb02a0d80296",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/aiscientist_adapter.py": "0623428ffbc12019813e0d56b2103e00aea5232ac99c4b01c33cdfc93b527892",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/broker.py": "7edf9244940314fb3eb00bbdbaa536b6e107fbd098b286c49aceaa23dfd2f31c",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/qwen_backend.py": "f02201f048b92fe1fd3b9ae9b59ac7961d0512459f770b83fc8e789c51c8f086",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/run_baseline.py": "816a14314dafa1e1455e5a556b6ac0dd32f4076795fcbaf54e573c963006ef6d",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/runtime_worker.py": "62fd597322e7cdbeb54ab41be8e408955864618e8f95515c444c01a5b640a40f",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/adapters.py": "af63c8d49990d862ec7e0955eb65366f03e60ad31a2f108c2d9a50302a184e92",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/core.py": "d358e491d07f11e27607f96d7243e844fdb9152a1c4954effbd77893b6a3370a",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/core_v3.py": "ef53be48dfe17967e7d2faa20a200bc4c6e286ad21ef5406a694d07e26b663ae",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/native_run.py": "b878d3db04d69f96d0da5c50a3e7b029dc03e9b40c16c3e7fdece362ba58c418",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/ptpc_neural_adapter.py": "8032c6d2b68663029d1b53c41bc07b8249a2c43dd132af6af356707d5bd9ee98",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/research_v2.py": "ea0894213b6db722ad37f5541e11755dc2a351c80cf94c1906756f3d96d73184",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/run_native_tapb.py": "84ca0fa06f1b0c47f52f106ef2549c0051ee34a0e965f23ccb47bae7c136792c",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/run_ptpc_neural.py": "0e44b85caa482f9e484227d99d9d58d4d0cf6df7dc38549ce5b792d22fc9ad17",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/run_v3.py": "1abce301e0971c3778f279ee0a237104f0d5e4081d2e24657be23389714726d9",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/tapb_native_adapter.py": "b61de10248c1c066be8363413885c111561417555000632fcb0f25e465a8ccb2",
+                "/liziqing/yukai/AI4AI4Cell/runtime/experiments/drugevolve_transfer/scoring.py": "2ec1689fecea7c12bdfd3b84a235883a43abaa5d1668da94bd0cfa252dc81216"
+              },
+              "data_manifest_sha256": "4cf60e630f3cf2754db61464e7f9dd6ab572ab914c87866991978d54deda4936",
+              "runtime": {
+                "cuda_visible_devices": null,
+                "executable": "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/.venv/bin/python",
+                "gpu_ids": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+                ],
+                "packages": {
+                  "numpy": "1.26.4",
+                  "pandas": "2.2.3",
+                  "torch": "2.6.0",
+                  "transformers": "4.57.0"
+                },
+                "platform": "Linux-3.10.0-1160.el7.x86_64-x86_64-with-glibc2.35",
+                "python": "3.10.20 (main, Mar 11 2026, 17:46:40) [GCC 14.3.0]"
+              }
+            },
+            "43": null,
+            "44": null
+          },
+          "pending": {
+            "43": "Missing verified evidence: seal.json, results.json, audit.json, verification.json",
+            "44": "Missing verified evidence: seal.json, results.json, audit.json, verification.json"
+          },
+          "complete": false,
+          "completed_seeds": [
+            42
+          ],
+          "n": 1,
+          "mean": null,
+          "sd": null
+        },
+        "ai_researcher": {
+          "runs": {
+            "42": null,
+            "43": null,
+            "44": null
+          },
+          "pending": {
+            "42": "Missing verified evidence: seal.json, results.json, audit.json, verification.json",
+            "43": "Missing verified evidence: seal.json, results.json, audit.json, verification.json",
+            "44": "Missing verified evidence: seal.json, results.json, audit.json, verification.json"
+          },
+          "complete": false,
+          "completed_seeds": [],
+          "n": 0,
+          "mean": null,
+          "sd": null
+        }
+      }
+    },
+    "vcc_corrected": {
+      "original": {
+        "single_fixed": {
+          "runs": {
+            "42": {
+              "primary": 0.2993522913328416,
+              "reference_receipts": {
+                "heldout_v3/vcc_corrected/seed42/results.json": "91aa660c109ca6476f9309d56182b5330e7b1a80782314bc7461d44ff00cce63",
+                "heldout_v3/vcc_corrected/seed42/seal.json": "668ba8162d34c7dcfd3c50a2ed586e8d2a7905d4a2d602d484597086903a8778",
+                "heldout_v3/vcc_corrected/seed42/audit.json": "4749255e661ce18c327bb4f95b3656cfed94864d1d6f81b8c7a34d5f1f70613e",
+                "heldout_v3/vcc_corrected/seed42/verification.json": "e03c62c97b7c609b56416bf7bb0b3b5af60b6b2a5e8b14bd5dc733fc7ec3d2e5",
+                "heldout_v3/vcc_corrected/seed42/version_proof.json": "1981dbb14f7080f6d20283c7adea5c22ced7187bbe4930013a74227ad9e7889a",
+                "vcc_corrected/study_v3_seed42/maskfix_registration.json": "13c211586e782445c6e8227bbe77ca7e3c505dbab4c03a953c0952e1ba3103dc"
+              }
+            },
+            "43": {
+              "primary": 0.2993522913328416,
+              "reference_receipts": {
+                "heldout_v3/vcc_corrected/seed43/results.json": "5d3fc76e89d428e3b6d03aa18eba6bdb241e19525592122cbd590d5e93466316",
+                "heldout_v3/vcc_corrected/seed43/seal.json": "b12c658064531ece24a0d99b9ec13dae9a0bd9adac883c6007afc4912de56ad3",
+                "heldout_v3/vcc_corrected/seed43/audit.json": "4749255e661ce18c327bb4f95b3656cfed94864d1d6f81b8c7a34d5f1f70613e",
+                "heldout_v3/vcc_corrected/seed43/verification.json": "1eacaea7a1b751afda50061702060a582d27a9196b27eb8f03b1b36ec50ea0bb",
+                "heldout_v3/vcc_corrected/seed43/registration_seal.json": "4c2e6ba42e17c41b69293c811c66ba2a0706bb573b553657bcda010af5e7e988",
+                "vcc_corrected/study_v3_seed43/maskfix_registration.json": "13c211586e782445c6e8227bbe77ca7e3c505dbab4c03a953c0952e1ba3103dc"
+              }
+            },
+            "44": {
+              "primary": 0.2993522913328416,
+              "reference_receipts": {
+                "heldout_v3/vcc_corrected/seed44/results.json": "b75873068a4479cc0092d4f6373bca66e765bed6c425f178c15ca06c96da20c0",
+                "heldout_v3/vcc_corrected/seed44/seal.json": "4fb40bc1b634d029fae57c0d55d95ee8ea8a98e78287e8fd53cf983bee50db08",
+                "heldout_v3/vcc_corrected/seed44/audit.json": "4749255e661ce18c327bb4f95b3656cfed94864d1d6f81b8c7a34d5f1f70613e",
+                "heldout_v3/vcc_corrected/seed44/verification.json": "ee6473897f8cdcf20a72baa35703c539ac0b925dbccfd92dca2c00216d37adbc",
+                "heldout_v3/vcc_corrected/seed44/registration_seal.json": "32e01e07f1c8b3b167d662c91632bab8782d7241cca8736a43a0da022869c75d",
+                "vcc_corrected/study_v3_seed44/maskfix_registration.json": "13c211586e782445c6e8227bbe77ca7e3c505dbab4c03a953c0952e1ba3103dc"
+              }
+            }
+          },
+          "complete": true,
+          "completed_seeds": [
+            42,
+            43,
+            44
+          ],
+          "n": 3,
+          "mean": 0.2993522913328416,
+          "sd": 0.0
+        },
+        "single_direct": {
+          "runs": {
+            "42": {
+              "primary": 0.21731260153105506,
+              "reference_receipts": {
+                "heldout_v3/vcc_corrected/seed42/results.json": "91aa660c109ca6476f9309d56182b5330e7b1a80782314bc7461d44ff00cce63",
+                "heldout_v3/vcc_corrected/seed42/seal.json": "668ba8162d34c7dcfd3c50a2ed586e8d2a7905d4a2d602d484597086903a8778",
+                "heldout_v3/vcc_corrected/seed42/audit.json": "4749255e661ce18c327bb4f95b3656cfed94864d1d6f81b8c7a34d5f1f70613e",
+                "heldout_v3/vcc_corrected/seed42/verification.json": "e03c62c97b7c609b56416bf7bb0b3b5af60b6b2a5e8b14bd5dc733fc7ec3d2e5",
+                "heldout_v3/vcc_corrected/seed42/version_proof.json": "1981dbb14f7080f6d20283c7adea5c22ced7187bbe4930013a74227ad9e7889a",
+                "vcc_corrected/study_v3_seed42/maskfix_registration.json": "13c211586e782445c6e8227bbe77ca7e3c505dbab4c03a953c0952e1ba3103dc"
+              }
+            },
+            "43": {
+              "primary": 0.16419504604988475,
+              "reference_receipts": {
+                "heldout_v3/vcc_corrected/seed43/results.json": "5d3fc76e89d428e3b6d03aa18eba6bdb241e19525592122cbd590d5e93466316",
+                "heldout_v3/vcc_corrected/seed43/seal.json": "b12c658064531ece24a0d99b9ec13dae9a0bd9adac883c6007afc4912de56ad3",
+                "heldout_v3/vcc_corrected/seed43/audit.json": "4749255e661ce18c327bb4f95b3656cfed94864d1d6f81b8c7a34d5f1f70613e",
+                "heldout_v3/vcc_corrected/seed43/verification.json": "1eacaea7a1b751afda50061702060a582d27a9196b27eb8f03b1b36ec50ea0bb",
+                "heldout_v3/vcc_corrected/seed43/registration_seal.json": "4c2e6ba42e17c41b69293c811c66ba2a0706bb573b553657bcda010af5e7e988",
+                "vcc_corrected/study_v3_seed43/maskfix_registration.json": "13c211586e782445c6e8227bbe77ca7e3c505dbab4c03a953c0952e1ba3103dc"
+              }
+            },
+            "44": {
+              "primary": 0.2511307347194444,
+              "reference_receipts": {
+                "heldout_v3/vcc_corrected/seed44/results.json": "b75873068a4479cc0092d4f6373bca66e765bed6c425f178c15ca06c96da20c0",
+                "heldout_v3/vcc_corrected/seed44/seal.json": "4fb40bc1b634d029fae57c0d55d95ee8ea8a98e78287e8fd53cf983bee50db08",
+                "heldout_v3/vcc_corrected/seed44/audit.json": "4749255e661ce18c327bb4f95b3656cfed94864d1d6f81b8c7a34d5f1f70613e",
+                "heldout_v3/vcc_corrected/seed44/verification.json": "ee6473897f8cdcf20a72baa35703c539ac0b925dbccfd92dca2c00216d37adbc",
+                "heldout_v3/vcc_corrected/seed44/registration_seal.json": "32e01e07f1c8b3b167d662c91632bab8782d7241cca8736a43a0da022869c75d",
+                "vcc_corrected/study_v3_seed44/maskfix_registration.json": "13c211586e782445c6e8227bbe77ca7e3c505dbab4c03a953c0952e1ba3103dc"
+              }
+            }
+          },
+          "complete": true,
+          "completed_seeds": [
+            42,
+            43,
+            44
+          ],
+          "n": 3,
+          "mean": 0.21087946076679473,
+          "sd": 0.043823423715887856
+        },
+        "federated_loop": {
+          "runs": {
+            "42": {
+              "primary": 0.31630626390707034,
+              "reference_receipts": {
+                "heldout_v3/vcc_corrected/seed42/results.json": "91aa660c109ca6476f9309d56182b5330e7b1a80782314bc7461d44ff00cce63",
+                "heldout_v3/vcc_corrected/seed42/seal.json": "668ba8162d34c7dcfd3c50a2ed586e8d2a7905d4a2d602d484597086903a8778",
+                "heldout_v3/vcc_corrected/seed42/audit.json": "4749255e661ce18c327bb4f95b3656cfed94864d1d6f81b8c7a34d5f1f70613e",
+                "heldout_v3/vcc_corrected/seed42/verification.json": "e03c62c97b7c609b56416bf7bb0b3b5af60b6b2a5e8b14bd5dc733fc7ec3d2e5",
+                "heldout_v3/vcc_corrected/seed42/version_proof.json": "1981dbb14f7080f6d20283c7adea5c22ced7187bbe4930013a74227ad9e7889a",
+                "vcc_corrected/study_v3_seed42/maskfix_registration.json": "13c211586e782445c6e8227bbe77ca7e3c505dbab4c03a953c0952e1ba3103dc"
+              }
+            },
+            "43": {
+              "primary": 0.314954912555719,
+              "reference_receipts": {
+                "heldout_v3/vcc_corrected/seed43/results.json": "5d3fc76e89d428e3b6d03aa18eba6bdb241e19525592122cbd590d5e93466316",
+                "heldout_v3/vcc_corrected/seed43/seal.json": "b12c658064531ece24a0d99b9ec13dae9a0bd9adac883c6007afc4912de56ad3",
+                "heldout_v3/vcc_corrected/seed43/audit.json": "4749255e661ce18c327bb4f95b3656cfed94864d1d6f81b8c7a34d5f1f70613e",
+                "heldout_v3/vcc_corrected/seed43/verification.json": "1eacaea7a1b751afda50061702060a582d27a9196b27eb8f03b1b36ec50ea0bb",
+                "heldout_v3/vcc_corrected/seed43/registration_seal.json": "4c2e6ba42e17c41b69293c811c66ba2a0706bb573b553657bcda010af5e7e988",
+                "vcc_corrected/study_v3_seed43/maskfix_registration.json": "13c211586e782445c6e8227bbe77ca7e3c505dbab4c03a953c0952e1ba3103dc"
+              }
+            },
+            "44": {
+              "primary": 0.314954912555719,
+              "reference_receipts": {
+                "heldout_v3/vcc_corrected/seed44/results.json": "b75873068a4479cc0092d4f6373bca66e765bed6c425f178c15ca06c96da20c0",
+                "heldout_v3/vcc_corrected/seed44/seal.json": "4fb40bc1b634d029fae57c0d55d95ee8ea8a98e78287e8fd53cf983bee50db08",
+                "heldout_v3/vcc_corrected/seed44/audit.json": "4749255e661ce18c327bb4f95b3656cfed94864d1d6f81b8c7a34d5f1f70613e",
+                "heldout_v3/vcc_corrected/seed44/verification.json": "ee6473897f8cdcf20a72baa35703c539ac0b925dbccfd92dca2c00216d37adbc",
+                "heldout_v3/vcc_corrected/seed44/registration_seal.json": "32e01e07f1c8b3b167d662c91632bab8782d7241cca8736a43a0da022869c75d",
+                "vcc_corrected/study_v3_seed44/maskfix_registration.json": "13c211586e782445c6e8227bbe77ca7e3c505dbab4c03a953c0952e1ba3103dc"
+              }
+            }
+          },
+          "complete": true,
+          "completed_seeds": [
+            42,
+            43,
+            44
+          ],
+          "n": 3,
+          "mean": 0.31540536300616945,
+          "sd": 0.0007802030664724593
+        }
+      },
+      "public_harnesses": {
+        "ai_scientist_v2": {
+          "runs": {
+            "42": {
+              "primary": 0.31630626390707034,
+              "metrics": {
+                "accuracy": 0.3416666666666667,
+                "cross_entropy": 1.581246937970461,
+                "macro_accuracy": 0.31630626390707034,
+                "mrr": 0.5644444444444444,
+                "n_interventions": 20,
+                "n_queries": 360,
+                "top3": 0.6944444444444444
+              },
+              "primary_metric": "macro_accuracy",
+              "primary_endpoint": "primary",
+              "endpoints": {
+                "primary": {
+                  "metrics": {
+                    "accuracy": 0.3416666666666667,
+                    "cross_entropy": 1.581246937970461,
+                    "macro_accuracy": 0.31630626390707034,
+                    "mrr": 0.5644444444444444,
+                    "n_interventions": 20,
+                    "n_queries": 360,
+                    "top3": 0.6944444444444444
+                  },
+                  "predictions": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v3/ai_scientist_v2/vcc_corrected/seed42/heldout/primary_predictions.json",
+                  "predictions_sha256": "9d17851f165bd27fe83c452cae55abb86fa22d68227f9fd64c1f295653f14bde",
+                  "primary": 0.31630626390707034,
+                  "rows": 360
+                }
+              },
+              "receipts": {
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/vcc_corrected/seed42/heldout/seal.json": "712b3d91afcc41ba2c45c49684771ddb5e8640d182d12a059d825ffc80a5256f",
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/vcc_corrected/seed42/heldout/results.json": "57b64af76a6709f27cd0bba21d0dc01d51270b52481dc5b48c944895d8453354",
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/vcc_corrected/seed42/heldout/audit.json": "ea956bd4cb9e409911dc9d59a5cf6d33786457e5841e3f97a4ba3dcd597c7811",
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/vcc_corrected/seed42/heldout/verification.json": "d5907e2226b61803064d834784f479e0bdf6c6099112208fb71104ed6c6a5676"
+              },
+              "definition_path": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v3/ai_scientist_v2/vcc_corrected/seed42/development/definition.json",
+              "definition_sha256": "a9039315ff9ec8c6b4668e950368a906890c1db1b83079b0798fd3d394b53fbd",
+              "checkpoint_sha256": "d50380df0887c17847e3d850fb0175c69bf5ec5e9cccc8cfca1af2e5568e1274",
+              "reference_seal": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/vcc_corrected/seed42/seal.json",
+              "upstream_commit": "96bd51617cfdbb494a9fc283af00fe090edfae48",
+              "upstream_repo": "/liziqing/yukai/AI4AI4Cell/references/public_harness_20260924/AI-Scientist-v2",
+              "adapter_paths": [
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/aiscientist_adapter.py",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/qwen_backend.py",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/run_baseline.py"
+              ],
+              "source_sha256": {
+                "/liziqing/yukai/AI4AI4Cell/extensions/core_ablation_20260922/common.py": "40249241050a5adf55d0aebe7441411c2802c98f22de90647993c69037240298",
+                "/liziqing/yukai/AI4AI4Cell/extensions/federated_bio_20260918/engine.py": "63fcc6de12bfedd4b846591de1fabd77c84919f471c10da827805fdc3f353430",
+                "/liziqing/yukai/AI4AI4Cell/extensions/federated_bio_20260918/scdebart.py": "25a93300ae0521154dc339c077d19ea6b6a3215eff3da9bf1a86b9b97990d5c1",
+                "/liziqing/yukai/AI4AI4Cell/extensions/proteomics/ptpc_model.py": "1ab5e577076513af2e34c4f78fe5c02b5bf363fea2b945d31e8f640f37ece739",
+                "/liziqing/yukai/AI4AI4Cell/extensions/proteomics/scoring.py": "f5e8e19f7b4265a0c305c3c26ac2875c4db3a29655aae47e1e3beb02a0d80296",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/aiscientist_adapter.py": "0623428ffbc12019813e0d56b2103e00aea5232ac99c4b01c33cdfc93b527892",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/broker.py": "7edf9244940314fb3eb00bbdbaa536b6e107fbd098b286c49aceaa23dfd2f31c",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/qwen_backend.py": "f02201f048b92fe1fd3b9ae9b59ac7961d0512459f770b83fc8e789c51c8f086",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/run_baseline.py": "816a14314dafa1e1455e5a556b6ac0dd32f4076795fcbaf54e573c963006ef6d",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/runtime_worker.py": "62fd597322e7cdbeb54ab41be8e408955864618e8f95515c444c01a5b640a40f",
+                "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/architecture.py": "d15f65db7148ab8c9ca9421aea14a55e6fa9697ca300e44009f94a740a5ef90d",
+                "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/prepare_features.py": "35a57f932205f79aeac981717139a088829ef7b44ae78c2d9dbcd975ab2a0c00",
+                "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/test_masks.py": "3fd7db9f291fc63701e0a26787bdb8b7516a68e8a5cdc91d7edeab6bf2044868",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/adapters.py": "af63c8d49990d862ec7e0955eb65366f03e60ad31a2f108c2d9a50302a184e92",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/core.py": "d358e491d07f11e27607f96d7243e844fdb9152a1c4954effbd77893b6a3370a",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/core_v3.py": "ef53be48dfe17967e7d2faa20a200bc4c6e286ad21ef5406a694d07e26b663ae",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/native_run.py": "b878d3db04d69f96d0da5c50a3e7b029dc03e9b40c16c3e7fdece362ba58c418",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/ptpc_neural_adapter.py": "8032c6d2b68663029d1b53c41bc07b8249a2c43dd132af6af356707d5bd9ee98",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/research_v2.py": "ea0894213b6db722ad37f5541e11755dc2a351c80cf94c1906756f3d96d73184",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/run_native_tapb.py": "84ca0fa06f1b0c47f52f106ef2549c0051ee34a0e965f23ccb47bae7c136792c",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/run_ptpc_neural.py": "0e44b85caa482f9e484227d99d9d58d4d0cf6df7dc38549ce5b792d22fc9ad17",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/run_v3.py": "1abce301e0971c3778f279ee0a237104f0d5e4081d2e24657be23389714726d9",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/tapb_native_adapter.py": "b61de10248c1c066be8363413885c111561417555000632fcb0f25e465a8ccb2",
+                "/liziqing/yukai/AI4AI4Cell/runtime/experiments/drugevolve_transfer/scoring.py": "2ec1689fecea7c12bdfd3b84a235883a43abaa5d1668da94bd0cfa252dc81216"
+              },
+              "data_manifest_sha256": "0f63700ce858ac39d8486693b542d71780547c3b83023b0498b3512b45cc4e9c",
+              "runtime": {
+                "cuda_visible_devices": null,
+                "executable": "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/.venv/bin/python",
+                "gpu_ids": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+                ],
+                "packages": {
+                  "numpy": "1.26.4",
+                  "pandas": "2.2.3",
+                  "torch": "2.6.0",
+                  "transformers": "4.57.0"
+                },
+                "platform": "Linux-3.10.0-1160.el7.x86_64-x86_64-with-glibc2.35",
+                "python": "3.10.20 (main, Mar 11 2026, 17:46:40) [GCC 14.3.0]"
+              }
+            },
+            "43": null,
+            "44": null
+          },
+          "pending": {
+            "43": "Missing verified evidence: seal.json, results.json, audit.json, verification.json",
+            "44": "Missing verified evidence: seal.json, results.json, audit.json, verification.json"
+          },
+          "complete": false,
+          "completed_seeds": [
+            42
+          ],
+          "n": 1,
+          "mean": null,
+          "sd": null
+        },
+        "ai_researcher": {
+          "runs": {
+            "42": null,
+            "43": null,
+            "44": null
+          },
+          "pending": {
+            "42": "Missing verified evidence: seal.json, results.json, audit.json, verification.json",
+            "43": "Missing verified evidence: seal.json, results.json, audit.json, verification.json",
+            "44": "Missing verified evidence: seal.json, results.json, audit.json, verification.json"
+          },
+          "complete": false,
+          "completed_seeds": [],
+          "n": 0,
+          "mean": null,
+          "sd": null
+        }
+      }
+    },
+    "norman_double_corrected": {
+      "original": {
+        "single_fixed": {
+          "runs": {
+            "42": {
+              "primary": 0.2555555555555556,
+              "reference_receipts": {
+                "heldout_v3/norman_double_corrected/seed42/results.json": "30e674aa16430556a49085f8572a5bce18bc8abb81ba1a2a427fc0daa5a7f53c",
+                "heldout_v3/norman_double_corrected/seed42/seal.json": "99dedf3bb8edb7364dc66a857e36f20168939a7941362ccbd13952a6a14f2883",
+                "heldout_v3/norman_double_corrected/seed42/audit.json": "4edc7574b8d22d5005e560ec66f77ea735e1636e08a9ce9afa9c2340c9a87155",
+                "heldout_v3/norman_double_corrected/seed42/verification.json": "7de0e47a954584cff694c5838e4d22754e965353eadcadaaa478f1664871b51e",
+                "heldout_v3/norman_double_corrected/seed42/registration_seal.json": "76b5e677bfc52e48014c2f64578badf34935b7ded92011501303d34261d9ff85",
+                "norman_double_corrected/study_v3_seed42/maskfix_registration.json": "662294f1b29dc5c9b74de8a161e984dbe52accc185f93fb9298127fbbef3b7ef"
+              }
+            },
+            "43": {
+              "primary": 0.2555555555555556,
+              "reference_receipts": {
+                "heldout_v3/norman_double_corrected/seed43/results.json": "21c6c476eb2df84e5f442297ab4dec087d91a550095281d2dd35a20c82cced00",
+                "heldout_v3/norman_double_corrected/seed43/seal.json": "aa623460434fc2cb2dc1dc4e481b055e65486e1bdf17cbfba3754d8cf3959b39",
+                "heldout_v3/norman_double_corrected/seed43/audit.json": "4edc7574b8d22d5005e560ec66f77ea735e1636e08a9ce9afa9c2340c9a87155",
+                "heldout_v3/norman_double_corrected/seed43/verification.json": "6e67a9cba1d61220a9d14909ae55076741f4fc3715779da498b093bc1d68c819",
+                "heldout_v3/norman_double_corrected/seed43/registration_seal.json": "ee135e6938acdfd32273778d54e0cfc551e8d5b819cc043c7d019464f7a2dd1e",
+                "norman_double_corrected/study_v3_seed43/maskfix_registration.json": "662294f1b29dc5c9b74de8a161e984dbe52accc185f93fb9298127fbbef3b7ef"
+              }
+            },
+            "44": {
+              "primary": 0.2555555555555556,
+              "reference_receipts": {
+                "heldout_v3/norman_double_corrected/seed44/results.json": "f3aaba21d8d9113d0d2e7c1d8b0b8733f6a1cfe71e291bb2f3b80882c2043128",
+                "heldout_v3/norman_double_corrected/seed44/seal.json": "18ef02ed56b4f9e75559d7782cb51c081ae0babcb657b11265b334c3dff918f8",
+                "heldout_v3/norman_double_corrected/seed44/audit.json": "4edc7574b8d22d5005e560ec66f77ea735e1636e08a9ce9afa9c2340c9a87155",
+                "heldout_v3/norman_double_corrected/seed44/verification.json": "6677d3b081acb7377ef1354e5c36a3eedbef79edaf5b70b43880efc88919e3ed",
+                "heldout_v3/norman_double_corrected/seed44/registration_seal.json": "dd19bb67c63ab500ef75015c25d291a358c658975a071cbccf3646dd7736646e",
+                "norman_double_corrected/study_v3_seed44/maskfix_registration.json": "662294f1b29dc5c9b74de8a161e984dbe52accc185f93fb9298127fbbef3b7ef"
+              }
+            }
+          },
+          "complete": true,
+          "completed_seeds": [
+            42,
+            43,
+            44
+          ],
+          "n": 3,
+          "mean": 0.2555555555555556,
+          "sd": 0.0
+        },
+        "single_direct": {
+          "runs": {
+            "42": {
+              "primary": 0.14148148148148149,
+              "reference_receipts": {
+                "heldout_v3/norman_double_corrected/seed42/results.json": "30e674aa16430556a49085f8572a5bce18bc8abb81ba1a2a427fc0daa5a7f53c",
+                "heldout_v3/norman_double_corrected/seed42/seal.json": "99dedf3bb8edb7364dc66a857e36f20168939a7941362ccbd13952a6a14f2883",
+                "heldout_v3/norman_double_corrected/seed42/audit.json": "4edc7574b8d22d5005e560ec66f77ea735e1636e08a9ce9afa9c2340c9a87155",
+                "heldout_v3/norman_double_corrected/seed42/verification.json": "7de0e47a954584cff694c5838e4d22754e965353eadcadaaa478f1664871b51e",
+                "heldout_v3/norman_double_corrected/seed42/registration_seal.json": "76b5e677bfc52e48014c2f64578badf34935b7ded92011501303d34261d9ff85",
+                "norman_double_corrected/study_v3_seed42/maskfix_registration.json": "662294f1b29dc5c9b74de8a161e984dbe52accc185f93fb9298127fbbef3b7ef"
+              }
+            },
+            "43": {
+              "primary": 0.14148148148148149,
+              "reference_receipts": {
+                "heldout_v3/norman_double_corrected/seed43/results.json": "21c6c476eb2df84e5f442297ab4dec087d91a550095281d2dd35a20c82cced00",
+                "heldout_v3/norman_double_corrected/seed43/seal.json": "aa623460434fc2cb2dc1dc4e481b055e65486e1bdf17cbfba3754d8cf3959b39",
+                "heldout_v3/norman_double_corrected/seed43/audit.json": "4edc7574b8d22d5005e560ec66f77ea735e1636e08a9ce9afa9c2340c9a87155",
+                "heldout_v3/norman_double_corrected/seed43/verification.json": "6e67a9cba1d61220a9d14909ae55076741f4fc3715779da498b093bc1d68c819",
+                "heldout_v3/norman_double_corrected/seed43/registration_seal.json": "ee135e6938acdfd32273778d54e0cfc551e8d5b819cc043c7d019464f7a2dd1e",
+                "norman_double_corrected/study_v3_seed43/maskfix_registration.json": "662294f1b29dc5c9b74de8a161e984dbe52accc185f93fb9298127fbbef3b7ef"
+              }
+            },
+            "44": {
+              "primary": 0.14148148148148149,
+              "reference_receipts": {
+                "heldout_v3/norman_double_corrected/seed44/results.json": "f3aaba21d8d9113d0d2e7c1d8b0b8733f6a1cfe71e291bb2f3b80882c2043128",
+                "heldout_v3/norman_double_corrected/seed44/seal.json": "18ef02ed56b4f9e75559d7782cb51c081ae0babcb657b11265b334c3dff918f8",
+                "heldout_v3/norman_double_corrected/seed44/audit.json": "4edc7574b8d22d5005e560ec66f77ea735e1636e08a9ce9afa9c2340c9a87155",
+                "heldout_v3/norman_double_corrected/seed44/verification.json": "6677d3b081acb7377ef1354e5c36a3eedbef79edaf5b70b43880efc88919e3ed",
+                "heldout_v3/norman_double_corrected/seed44/registration_seal.json": "dd19bb67c63ab500ef75015c25d291a358c658975a071cbccf3646dd7736646e",
+                "norman_double_corrected/study_v3_seed44/maskfix_registration.json": "662294f1b29dc5c9b74de8a161e984dbe52accc185f93fb9298127fbbef3b7ef"
+              }
+            }
+          },
+          "complete": true,
+          "completed_seeds": [
+            42,
+            43,
+            44
+          ],
+          "n": 3,
+          "mean": 0.14148148148148149,
+          "sd": 0.0
+        },
+        "federated_loop": {
+          "runs": {
+            "42": {
+              "primary": 0.2274074074074074,
+              "reference_receipts": {
+                "heldout_v3/norman_double_corrected/seed42/results.json": "30e674aa16430556a49085f8572a5bce18bc8abb81ba1a2a427fc0daa5a7f53c",
+                "heldout_v3/norman_double_corrected/seed42/seal.json": "99dedf3bb8edb7364dc66a857e36f20168939a7941362ccbd13952a6a14f2883",
+                "heldout_v3/norman_double_corrected/seed42/audit.json": "4edc7574b8d22d5005e560ec66f77ea735e1636e08a9ce9afa9c2340c9a87155",
+                "heldout_v3/norman_double_corrected/seed42/verification.json": "7de0e47a954584cff694c5838e4d22754e965353eadcadaaa478f1664871b51e",
+                "heldout_v3/norman_double_corrected/seed42/registration_seal.json": "76b5e677bfc52e48014c2f64578badf34935b7ded92011501303d34261d9ff85",
+                "norman_double_corrected/study_v3_seed42/maskfix_registration.json": "662294f1b29dc5c9b74de8a161e984dbe52accc185f93fb9298127fbbef3b7ef"
+              }
+            },
+            "43": {
+              "primary": 0.2185185185185185,
+              "reference_receipts": {
+                "heldout_v3/norman_double_corrected/seed43/results.json": "21c6c476eb2df84e5f442297ab4dec087d91a550095281d2dd35a20c82cced00",
+                "heldout_v3/norman_double_corrected/seed43/seal.json": "aa623460434fc2cb2dc1dc4e481b055e65486e1bdf17cbfba3754d8cf3959b39",
+                "heldout_v3/norman_double_corrected/seed43/audit.json": "4edc7574b8d22d5005e560ec66f77ea735e1636e08a9ce9afa9c2340c9a87155",
+                "heldout_v3/norman_double_corrected/seed43/verification.json": "6e67a9cba1d61220a9d14909ae55076741f4fc3715779da498b093bc1d68c819",
+                "heldout_v3/norman_double_corrected/seed43/registration_seal.json": "ee135e6938acdfd32273778d54e0cfc551e8d5b819cc043c7d019464f7a2dd1e",
+                "norman_double_corrected/study_v3_seed43/maskfix_registration.json": "662294f1b29dc5c9b74de8a161e984dbe52accc185f93fb9298127fbbef3b7ef"
+              }
+            },
+            "44": {
+              "primary": 0.2214814814814815,
+              "reference_receipts": {
+                "heldout_v3/norman_double_corrected/seed44/results.json": "f3aaba21d8d9113d0d2e7c1d8b0b8733f6a1cfe71e291bb2f3b80882c2043128",
+                "heldout_v3/norman_double_corrected/seed44/seal.json": "18ef02ed56b4f9e75559d7782cb51c081ae0babcb657b11265b334c3dff918f8",
+                "heldout_v3/norman_double_corrected/seed44/audit.json": "4edc7574b8d22d5005e560ec66f77ea735e1636e08a9ce9afa9c2340c9a87155",
+                "heldout_v3/norman_double_corrected/seed44/verification.json": "6677d3b081acb7377ef1354e5c36a3eedbef79edaf5b70b43880efc88919e3ed",
+                "heldout_v3/norman_double_corrected/seed44/registration_seal.json": "dd19bb67c63ab500ef75015c25d291a358c658975a071cbccf3646dd7736646e",
+                "norman_double_corrected/study_v3_seed44/maskfix_registration.json": "662294f1b29dc5c9b74de8a161e984dbe52accc185f93fb9298127fbbef3b7ef"
+              }
+            }
+          },
+          "complete": true,
+          "completed_seeds": [
+            42,
+            43,
+            44
+          ],
+          "n": 3,
+          "mean": 0.22246913580246913,
+          "sd": 0.004526000686376135
+        }
+      },
+      "public_harnesses": {
+        "ai_scientist_v2": {
+          "runs": {
+            "42": {
+              "primary": 0.2274074074074074,
+              "metrics": {
+                "accuracy": 0.22740740740740742,
+                "cross_entropy": 1.5881126124531961,
+                "macro_accuracy": 0.2274074074074074,
+                "mrr": 0.5006172839506172,
+                "n_interventions": 27,
+                "n_queries": 1350,
+                "top3": 0.7051851851851851
+              },
+              "primary_metric": "macro_accuracy",
+              "primary_endpoint": "primary",
+              "endpoints": {
+                "primary": {
+                  "metrics": {
+                    "accuracy": 0.22740740740740742,
+                    "cross_entropy": 1.5881126124531961,
+                    "macro_accuracy": 0.2274074074074074,
+                    "mrr": 0.5006172839506172,
+                    "n_interventions": 27,
+                    "n_queries": 1350,
+                    "top3": 0.7051851851851851
+                  },
+                  "predictions": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v3/ai_scientist_v2/norman_double_corrected/seed42/heldout/primary_predictions.json",
+                  "predictions_sha256": "d2f565464f3e87c3076903e651d56dd245acbc648ce96648fe9468bb12e3c10d",
+                  "primary": 0.2274074074074074,
+                  "rows": 1350
+                }
+              },
+              "receipts": {
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/norman_double_corrected/seed42/heldout/seal.json": "bd88048501d19997060c3766e1a006960426bf1561add499988a214b69054866",
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/norman_double_corrected/seed42/heldout/results.json": "a98443c77923a0591c55827c4095a2d7d30630da063b5d5f98b9081c360940e9",
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/norman_double_corrected/seed42/heldout/audit.json": "285e674a19ab75d1a2245a377810da124ec67362e2967beb4dbbfe732751a899",
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/norman_double_corrected/seed42/heldout/verification.json": "e81f5713f9f3a6ebfdd040625fc2d38e655fb410ec7f4ef4a3ca569a3f4cc82b"
+              },
+              "definition_path": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v3/ai_scientist_v2/norman_double_corrected/seed42/development/definition.json",
+              "definition_sha256": "14b15b8e6bb35a22d50211834d6a3801185d0e74fdb7045832e2326e397285e8",
+              "checkpoint_sha256": "d5370f678f4b1344bcd65911972da1fac02e7a9a8a14a2b5a33225fa775f9e8b",
+              "reference_seal": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/norman_double_corrected/seed42/seal.json",
+              "upstream_commit": "96bd51617cfdbb494a9fc283af00fe090edfae48",
+              "upstream_repo": "/liziqing/yukai/AI4AI4Cell/references/public_harness_20260924/AI-Scientist-v2",
+              "adapter_paths": [
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/aiscientist_adapter.py",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/qwen_backend.py",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/run_baseline.py"
+              ],
+              "source_sha256": {
+                "/liziqing/yukai/AI4AI4Cell/extensions/core_ablation_20260922/common.py": "40249241050a5adf55d0aebe7441411c2802c98f22de90647993c69037240298",
+                "/liziqing/yukai/AI4AI4Cell/extensions/federated_bio_20260918/engine.py": "63fcc6de12bfedd4b846591de1fabd77c84919f471c10da827805fdc3f353430",
+                "/liziqing/yukai/AI4AI4Cell/extensions/federated_bio_20260918/scdebart.py": "25a93300ae0521154dc339c077d19ea6b6a3215eff3da9bf1a86b9b97990d5c1",
+                "/liziqing/yukai/AI4AI4Cell/extensions/proteomics/ptpc_model.py": "1ab5e577076513af2e34c4f78fe5c02b5bf363fea2b945d31e8f640f37ece739",
+                "/liziqing/yukai/AI4AI4Cell/extensions/proteomics/scoring.py": "f5e8e19f7b4265a0c305c3c26ac2875c4db3a29655aae47e1e3beb02a0d80296",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/aiscientist_adapter.py": "0623428ffbc12019813e0d56b2103e00aea5232ac99c4b01c33cdfc93b527892",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/broker.py": "7edf9244940314fb3eb00bbdbaa536b6e107fbd098b286c49aceaa23dfd2f31c",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/qwen_backend.py": "f02201f048b92fe1fd3b9ae9b59ac7961d0512459f770b83fc8e789c51c8f086",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/run_baseline.py": "816a14314dafa1e1455e5a556b6ac0dd32f4076795fcbaf54e573c963006ef6d",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/runtime_worker.py": "62fd597322e7cdbeb54ab41be8e408955864618e8f95515c444c01a5b640a40f",
+                "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/architecture.py": "d15f65db7148ab8c9ca9421aea14a55e6fa9697ca300e44009f94a740a5ef90d",
+                "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/prepare_features.py": "35a57f932205f79aeac981717139a088829ef7b44ae78c2d9dbcd975ab2a0c00",
+                "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/test_masks.py": "3fd7db9f291fc63701e0a26787bdb8b7516a68e8a5cdc91d7edeab6bf2044868",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/adapters.py": "af63c8d49990d862ec7e0955eb65366f03e60ad31a2f108c2d9a50302a184e92",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/core.py": "d358e491d07f11e27607f96d7243e844fdb9152a1c4954effbd77893b6a3370a",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/core_v3.py": "ef53be48dfe17967e7d2faa20a200bc4c6e286ad21ef5406a694d07e26b663ae",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/native_run.py": "b878d3db04d69f96d0da5c50a3e7b029dc03e9b40c16c3e7fdece362ba58c418",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/ptpc_neural_adapter.py": "8032c6d2b68663029d1b53c41bc07b8249a2c43dd132af6af356707d5bd9ee98",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/research_v2.py": "ea0894213b6db722ad37f5541e11755dc2a351c80cf94c1906756f3d96d73184",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/run_native_tapb.py": "84ca0fa06f1b0c47f52f106ef2549c0051ee34a0e965f23ccb47bae7c136792c",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/run_ptpc_neural.py": "0e44b85caa482f9e484227d99d9d58d4d0cf6df7dc38549ce5b792d22fc9ad17",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/run_v3.py": "1abce301e0971c3778f279ee0a237104f0d5e4081d2e24657be23389714726d9",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/tapb_native_adapter.py": "b61de10248c1c066be8363413885c111561417555000632fcb0f25e465a8ccb2",
+                "/liziqing/yukai/AI4AI4Cell/runtime/experiments/drugevolve_transfer/scoring.py": "2ec1689fecea7c12bdfd3b84a235883a43abaa5d1668da94bd0cfa252dc81216"
+              },
+              "data_manifest_sha256": "340d9df6de0d6f05215b60c2c393f8e6a4ec3f6df14763ae10748709e6f23527",
+              "runtime": {
+                "cuda_visible_devices": null,
+                "executable": "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/.venv/bin/python",
+                "gpu_ids": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+                ],
+                "packages": {
+                  "numpy": "1.26.4",
+                  "pandas": "2.2.3",
+                  "torch": "2.6.0",
+                  "transformers": "4.57.0"
+                },
+                "platform": "Linux-3.10.0-1160.el7.x86_64-x86_64-with-glibc2.35",
+                "python": "3.10.20 (main, Mar 11 2026, 17:46:40) [GCC 14.3.0]"
+              }
+            },
+            "43": null,
+            "44": null
+          },
+          "pending": {
+            "43": "Missing verified evidence: seal.json, results.json, audit.json, verification.json",
+            "44": "Missing verified evidence: seal.json, results.json, audit.json, verification.json"
+          },
+          "complete": false,
+          "completed_seeds": [
+            42
+          ],
+          "n": 1,
+          "mean": null,
+          "sd": null
+        },
+        "ai_researcher": {
+          "runs": {
+            "42": null,
+            "43": null,
+            "44": null
+          },
+          "pending": {
+            "42": "Missing verified evidence: seal.json, results.json, audit.json, verification.json",
+            "43": "Missing verified evidence: seal.json, results.json, audit.json, verification.json",
+            "44": "Missing verified evidence: seal.json, results.json, audit.json, verification.json"
+          },
+          "complete": false,
+          "completed_seeds": [],
+          "n": 0,
+          "mean": null,
+          "sd": null
+        }
+      }
+    },
+    "tahoe_drug_corrected": {
+      "original": {
+        "single_fixed": {
+          "runs": {
+            "42": {
+              "primary": 0.19402985074626866,
+              "reference_receipts": {
+                "heldout_v3/tahoe_drug_corrected/seed42/results.json": "c7c6a49a2c800ee0460df98377b1871a5feb5678be2756a93b27ea3fb7ca4267",
+                "heldout_v3/tahoe_drug_corrected/seed42/seal.json": "8f94dd203f37f78c38efc1cb6cf3b39fd7746c830043c3bf2c100d696a32cba5",
+                "heldout_v3/tahoe_drug_corrected/seed42/audit.json": "84a631de95289093f14fbce4861f1fa803298e92cc58c842401ce495a2ee6afa",
+                "heldout_v3/tahoe_drug_corrected/seed42/verification.json": "c7e34cf1e0cdcdc522d5ff8589be2ab9ebae994ff129706acefafa95a42d79bd",
+                "heldout_v3/tahoe_drug_corrected/seed42/registration_seal.json": "e196a8447c59f2721c6947beec0e65afcc31b1640d3126f23e5df14e16694bfa",
+                "tahoe_drug_corrected/study_v3_seed42/maskfix_registration.json": "cf1cf94ee493f6dbe3723376c32ee62bbbafc599fb9b526e8164b93d35beb545"
+              }
+            },
+            "43": {
+              "primary": 0.19402985074626866,
+              "reference_receipts": {
+                "heldout_v3/tahoe_drug_corrected/seed43/results.json": "667def01a12716c01b39e9ab9413e5fa459316f2145b9be117a1cdc5eadb4b10",
+                "heldout_v3/tahoe_drug_corrected/seed43/seal.json": "0ec13610a1d76b525363db78247d083058b55450cc5cbd906763570839d2ccb7",
+                "heldout_v3/tahoe_drug_corrected/seed43/audit.json": "84a631de95289093f14fbce4861f1fa803298e92cc58c842401ce495a2ee6afa",
+                "heldout_v3/tahoe_drug_corrected/seed43/verification.json": "fa5c33e85f8f307677aea51e8ac1a8bca1c19dabe9fbaae398b9aa20ab7a00ef",
+                "heldout_v3/tahoe_drug_corrected/seed43/registration_seal.json": "f5e4394aded7dd2ce6a7d2a37687e33cb6945ed1bc3d0f4ec2edf43cfe5878a6",
+                "tahoe_drug_corrected/study_v3_seed43/maskfix_registration.json": "cf1cf94ee493f6dbe3723376c32ee62bbbafc599fb9b526e8164b93d35beb545"
+              }
+            },
+            "44": {
+              "primary": 0.19402985074626866,
+              "reference_receipts": {
+                "heldout_v3/tahoe_drug_corrected/seed44/results.json": "86c422283b93d55e195ffcd3db9a234180033f781d51f5d2b7272e91512a239b",
+                "heldout_v3/tahoe_drug_corrected/seed44/seal.json": "d366c6ad8a2a29312ba15546bc3f96195184bdb85a9533044d5b4c8eb5750423",
+                "heldout_v3/tahoe_drug_corrected/seed44/audit.json": "84a631de95289093f14fbce4861f1fa803298e92cc58c842401ce495a2ee6afa",
+                "heldout_v3/tahoe_drug_corrected/seed44/verification.json": "c588012e139cf5eced3d64ded0f3541502c07194d874079934482ba735b42655",
+                "heldout_v3/tahoe_drug_corrected/seed44/registration_seal.json": "96652be8c3354233fa3e40a47c4a1ca1ad653e7275b3090c0a1e462a5f72041d",
+                "tahoe_drug_corrected/study_v3_seed44/maskfix_registration.json": "cf1cf94ee493f6dbe3723376c32ee62bbbafc599fb9b526e8164b93d35beb545"
+              }
+            }
+          },
+          "complete": true,
+          "completed_seeds": [
+            42,
+            43,
+            44
+          ],
+          "n": 3,
+          "mean": 0.19402985074626866,
+          "sd": 0.0
+        },
+        "single_direct": {
+          "runs": {
+            "42": {
+              "primary": 0.13432835820895522,
+              "reference_receipts": {
+                "heldout_v3/tahoe_drug_corrected/seed42/results.json": "c7c6a49a2c800ee0460df98377b1871a5feb5678be2756a93b27ea3fb7ca4267",
+                "heldout_v3/tahoe_drug_corrected/seed42/seal.json": "8f94dd203f37f78c38efc1cb6cf3b39fd7746c830043c3bf2c100d696a32cba5",
+                "heldout_v3/tahoe_drug_corrected/seed42/audit.json": "84a631de95289093f14fbce4861f1fa803298e92cc58c842401ce495a2ee6afa",
+                "heldout_v3/tahoe_drug_corrected/seed42/verification.json": "c7e34cf1e0cdcdc522d5ff8589be2ab9ebae994ff129706acefafa95a42d79bd",
+                "heldout_v3/tahoe_drug_corrected/seed42/registration_seal.json": "e196a8447c59f2721c6947beec0e65afcc31b1640d3126f23e5df14e16694bfa",
+                "tahoe_drug_corrected/study_v3_seed42/maskfix_registration.json": "cf1cf94ee493f6dbe3723376c32ee62bbbafc599fb9b526e8164b93d35beb545"
+              }
+            },
+            "43": {
+              "primary": 0.1044776119402985,
+              "reference_receipts": {
+                "heldout_v3/tahoe_drug_corrected/seed43/results.json": "667def01a12716c01b39e9ab9413e5fa459316f2145b9be117a1cdc5eadb4b10",
+                "heldout_v3/tahoe_drug_corrected/seed43/seal.json": "0ec13610a1d76b525363db78247d083058b55450cc5cbd906763570839d2ccb7",
+                "heldout_v3/tahoe_drug_corrected/seed43/audit.json": "84a631de95289093f14fbce4861f1fa803298e92cc58c842401ce495a2ee6afa",
+                "heldout_v3/tahoe_drug_corrected/seed43/verification.json": "fa5c33e85f8f307677aea51e8ac1a8bca1c19dabe9fbaae398b9aa20ab7a00ef",
+                "heldout_v3/tahoe_drug_corrected/seed43/registration_seal.json": "f5e4394aded7dd2ce6a7d2a37687e33cb6945ed1bc3d0f4ec2edf43cfe5878a6",
+                "tahoe_drug_corrected/study_v3_seed43/maskfix_registration.json": "cf1cf94ee493f6dbe3723376c32ee62bbbafc599fb9b526e8164b93d35beb545"
+              }
+            },
+            "44": {
+              "primary": 0.22388059701492538,
+              "reference_receipts": {
+                "heldout_v3/tahoe_drug_corrected/seed44/results.json": "86c422283b93d55e195ffcd3db9a234180033f781d51f5d2b7272e91512a239b",
+                "heldout_v3/tahoe_drug_corrected/seed44/seal.json": "d366c6ad8a2a29312ba15546bc3f96195184bdb85a9533044d5b4c8eb5750423",
+                "heldout_v3/tahoe_drug_corrected/seed44/audit.json": "84a631de95289093f14fbce4861f1fa803298e92cc58c842401ce495a2ee6afa",
+                "heldout_v3/tahoe_drug_corrected/seed44/verification.json": "c588012e139cf5eced3d64ded0f3541502c07194d874079934482ba735b42655",
+                "heldout_v3/tahoe_drug_corrected/seed44/registration_seal.json": "96652be8c3354233fa3e40a47c4a1ca1ad653e7275b3090c0a1e462a5f72041d",
+                "tahoe_drug_corrected/study_v3_seed44/maskfix_registration.json": "cf1cf94ee493f6dbe3723376c32ee62bbbafc599fb9b526e8164b93d35beb545"
+              }
+            }
+          },
+          "complete": true,
+          "completed_seeds": [
+            42,
+            43,
+            44
+          ],
+          "n": 3,
+          "mean": 0.15422885572139303,
+          "sd": 0.062139283566153225
+        },
+        "federated_loop": {
+          "runs": {
+            "42": {
+              "primary": 0.23880597014925373,
+              "reference_receipts": {
+                "heldout_v3/tahoe_drug_corrected/seed42/results.json": "c7c6a49a2c800ee0460df98377b1871a5feb5678be2756a93b27ea3fb7ca4267",
+                "heldout_v3/tahoe_drug_corrected/seed42/seal.json": "8f94dd203f37f78c38efc1cb6cf3b39fd7746c830043c3bf2c100d696a32cba5",
+                "heldout_v3/tahoe_drug_corrected/seed42/audit.json": "84a631de95289093f14fbce4861f1fa803298e92cc58c842401ce495a2ee6afa",
+                "heldout_v3/tahoe_drug_corrected/seed42/verification.json": "c7e34cf1e0cdcdc522d5ff8589be2ab9ebae994ff129706acefafa95a42d79bd",
+                "heldout_v3/tahoe_drug_corrected/seed42/registration_seal.json": "e196a8447c59f2721c6947beec0e65afcc31b1640d3126f23e5df14e16694bfa",
+                "tahoe_drug_corrected/study_v3_seed42/maskfix_registration.json": "cf1cf94ee493f6dbe3723376c32ee62bbbafc599fb9b526e8164b93d35beb545"
+              }
+            },
+            "43": {
+              "primary": 0.23880597014925373,
+              "reference_receipts": {
+                "heldout_v3/tahoe_drug_corrected/seed43/results.json": "667def01a12716c01b39e9ab9413e5fa459316f2145b9be117a1cdc5eadb4b10",
+                "heldout_v3/tahoe_drug_corrected/seed43/seal.json": "0ec13610a1d76b525363db78247d083058b55450cc5cbd906763570839d2ccb7",
+                "heldout_v3/tahoe_drug_corrected/seed43/audit.json": "84a631de95289093f14fbce4861f1fa803298e92cc58c842401ce495a2ee6afa",
+                "heldout_v3/tahoe_drug_corrected/seed43/verification.json": "fa5c33e85f8f307677aea51e8ac1a8bca1c19dabe9fbaae398b9aa20ab7a00ef",
+                "heldout_v3/tahoe_drug_corrected/seed43/registration_seal.json": "f5e4394aded7dd2ce6a7d2a37687e33cb6945ed1bc3d0f4ec2edf43cfe5878a6",
+                "tahoe_drug_corrected/study_v3_seed43/maskfix_registration.json": "cf1cf94ee493f6dbe3723376c32ee62bbbafc599fb9b526e8164b93d35beb545"
+              }
+            },
+            "44": {
+              "primary": 0.19402985074626866,
+              "reference_receipts": {
+                "heldout_v3/tahoe_drug_corrected/seed44/results.json": "86c422283b93d55e195ffcd3db9a234180033f781d51f5d2b7272e91512a239b",
+                "heldout_v3/tahoe_drug_corrected/seed44/seal.json": "d366c6ad8a2a29312ba15546bc3f96195184bdb85a9533044d5b4c8eb5750423",
+                "heldout_v3/tahoe_drug_corrected/seed44/audit.json": "84a631de95289093f14fbce4861f1fa803298e92cc58c842401ce495a2ee6afa",
+                "heldout_v3/tahoe_drug_corrected/seed44/verification.json": "c588012e139cf5eced3d64ded0f3541502c07194d874079934482ba735b42655",
+                "heldout_v3/tahoe_drug_corrected/seed44/registration_seal.json": "96652be8c3354233fa3e40a47c4a1ca1ad653e7275b3090c0a1e462a5f72041d",
+                "tahoe_drug_corrected/study_v3_seed44/maskfix_registration.json": "cf1cf94ee493f6dbe3723376c32ee62bbbafc599fb9b526e8164b93d35beb545"
+              }
+            }
+          },
+          "complete": true,
+          "completed_seeds": [
+            42,
+            43,
+            44
+          ],
+          "n": 3,
+          "mean": 0.22388059701492538,
+          "sd": 0.025851504590580252
+        }
+      },
+      "public_harnesses": {
+        "ai_scientist_v2": {
+          "runs": {
+            "42": {
+              "primary": 0.23880597014925373,
+              "metrics": {
+                "accuracy": 0.23880597014925373,
+                "cross_entropy": 1.6066668485679525,
+                "macro_accuracy": 0.23880597014925373,
+                "mrr": 0.49552238805970156,
+                "n_interventions": 67,
+                "n_queries": 67,
+                "top3": 0.6567164179104478
+              },
+              "primary_metric": "macro_accuracy",
+              "primary_endpoint": "primary",
+              "endpoints": {
+                "primary": {
+                  "metrics": {
+                    "accuracy": 0.23880597014925373,
+                    "cross_entropy": 1.6066668485679525,
+                    "macro_accuracy": 0.23880597014925373,
+                    "mrr": 0.49552238805970156,
+                    "n_interventions": 67,
+                    "n_queries": 67,
+                    "top3": 0.6567164179104478
+                  },
+                  "predictions": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v3/ai_scientist_v2/tahoe_drug_corrected/seed42/heldout/primary_predictions.json",
+                  "predictions_sha256": "752ba2faef4f691f0ad2f5ec68f419c7fd45592af94b0c2f0da9e03eda25a415",
+                  "primary": 0.23880597014925373,
+                  "rows": 67
+                }
+              },
+              "receipts": {
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/tahoe_drug_corrected/seed42/heldout/seal.json": "085a5ad3b23b7385c410f94d4cd53765de00f200ed56cd4250e646108fd686c3",
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/tahoe_drug_corrected/seed42/heldout/results.json": "600521d6e6f085e9322418deae9a62fbf3c682eab19714cec92a3d86c7c4aa0f",
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/tahoe_drug_corrected/seed42/heldout/audit.json": "692a2b4e0ad967a20960194771ef50ff4f4e5a77c9d41671695b91d8d8b0b453",
+                "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/tahoe_drug_corrected/seed42/heldout/verification.json": "d8ee4798a8d1461a74273aa74968ee575616e7b281d45afdc249b37739468313"
+              },
+              "definition_path": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v3/ai_scientist_v2/tahoe_drug_corrected/seed42/development/definition.json",
+              "definition_sha256": "6f40267b301f9b7c403adfada6fc74e0acd08c7e935a308f722c13b78b61b927",
+              "checkpoint_sha256": "522cac6f0dfa82d78b5889b056778d7d924b8e3ec6e2a25ab801c296ba875645",
+              "reference_seal": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_v3/tahoe_drug_corrected/seed42/seal.json",
+              "upstream_commit": "96bd51617cfdbb494a9fc283af00fe090edfae48",
+              "upstream_repo": "/liziqing/yukai/AI4AI4Cell/references/public_harness_20260924/AI-Scientist-v2",
+              "adapter_paths": [
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/aiscientist_adapter.py",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/qwen_backend.py",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/run_baseline.py"
+              ],
+              "source_sha256": {
+                "/liziqing/yukai/AI4AI4Cell/extensions/core_ablation_20260922/common.py": "40249241050a5adf55d0aebe7441411c2802c98f22de90647993c69037240298",
+                "/liziqing/yukai/AI4AI4Cell/extensions/federated_bio_20260918/engine.py": "63fcc6de12bfedd4b846591de1fabd77c84919f471c10da827805fdc3f353430",
+                "/liziqing/yukai/AI4AI4Cell/extensions/federated_bio_20260918/scdebart.py": "25a93300ae0521154dc339c077d19ea6b6a3215eff3da9bf1a86b9b97990d5c1",
+                "/liziqing/yukai/AI4AI4Cell/extensions/proteomics/ptpc_model.py": "1ab5e577076513af2e34c4f78fe5c02b5bf363fea2b945d31e8f640f37ece739",
+                "/liziqing/yukai/AI4AI4Cell/extensions/proteomics/scoring.py": "f5e8e19f7b4265a0c305c3c26ac2875c4db3a29655aae47e1e3beb02a0d80296",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/aiscientist_adapter.py": "0623428ffbc12019813e0d56b2103e00aea5232ac99c4b01c33cdfc93b527892",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/broker.py": "7edf9244940314fb3eb00bbdbaa536b6e107fbd098b286c49aceaa23dfd2f31c",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/qwen_backend.py": "f02201f048b92fe1fd3b9ae9b59ac7961d0512459f770b83fc8e789c51c8f086",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/run_baseline.py": "816a14314dafa1e1455e5a556b6ac0dd32f4076795fcbaf54e573c963006ef6d",
+                "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/runtime_worker.py": "62fd597322e7cdbeb54ab41be8e408955864618e8f95515c444c01a5b640a40f",
+                "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/architecture.py": "d15f65db7148ab8c9ca9421aea14a55e6fa9697ca300e44009f94a740a5ef90d",
+                "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/prepare_features.py": "35a57f932205f79aeac981717139a088829ef7b44ae78c2d9dbcd975ab2a0c00",
+                "/liziqing/yukai/AI4AI4Cell/extensions/scdebart_maskfix_20260918/test_masks.py": "3fd7db9f291fc63701e0a26787bdb8b7516a68e8a5cdc91d7edeab6bf2044868",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/adapters.py": "af63c8d49990d862ec7e0955eb65366f03e60ad31a2f108c2d9a50302a184e92",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/core.py": "d358e491d07f11e27607f96d7243e844fdb9152a1c4954effbd77893b6a3370a",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/core_v3.py": "ef53be48dfe17967e7d2faa20a200bc4c6e286ad21ef5406a694d07e26b663ae",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/native_run.py": "b878d3db04d69f96d0da5c50a3e7b029dc03e9b40c16c3e7fdece362ba58c418",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/ptpc_neural_adapter.py": "8032c6d2b68663029d1b53c41bc07b8249a2c43dd132af6af356707d5bd9ee98",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/research_v2.py": "ea0894213b6db722ad37f5541e11755dc2a351c80cf94c1906756f3d96d73184",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/run_native_tapb.py": "84ca0fa06f1b0c47f52f106ef2549c0051ee34a0e965f23ccb47bae7c136792c",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/run_ptpc_neural.py": "0e44b85caa482f9e484227d99d9d58d4d0cf6df7dc38549ce5b792d22fc9ad17",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/run_v3.py": "1abce301e0971c3778f279ee0a237104f0d5e4081d2e24657be23389714726d9",
+                "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/tapb_native_adapter.py": "b61de10248c1c066be8363413885c111561417555000632fcb0f25e465a8ccb2",
+                "/liziqing/yukai/AI4AI4Cell/runtime/experiments/drugevolve_transfer/scoring.py": "2ec1689fecea7c12bdfd3b84a235883a43abaa5d1668da94bd0cfa252dc81216"
+              },
+              "data_manifest_sha256": "ca6d46b952c79dbae6f323c9fe663bdb268c46eb5a594a291c62b5ebbb5133ec",
+              "runtime": {
+                "cuda_visible_devices": null,
+                "executable": "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/.venv/bin/python",
+                "gpu_ids": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+                ],
+                "packages": {
+                  "numpy": "1.26.4",
+                  "pandas": "2.2.3",
+                  "torch": "2.6.0",
+                  "transformers": "4.57.0"
+                },
+                "platform": "Linux-3.10.0-1160.el7.x86_64-x86_64-with-glibc2.35",
+                "python": "3.10.20 (main, Mar 11 2026, 17:46:40) [GCC 14.3.0]"
+              }
+            },
+            "43": null,
+            "44": null
+          },
+          "pending": {
+            "43": "Missing verified evidence: seal.json, results.json, audit.json, verification.json",
+            "44": "Missing verified evidence: seal.json, results.json, audit.json, verification.json"
+          },
+          "complete": false,
+          "completed_seeds": [
+            42
+          ],
+          "n": 1,
+          "mean": null,
+          "sd": null
+        },
+        "ai_researcher": {
+          "runs": {
+            "42": null,
+            "43": null,
+            "44": null
+          },
+          "pending": {
+            "42": "Missing verified evidence: seal.json, results.json, audit.json, verification.json",
+            "43": "Missing verified evidence: seal.json, results.json, audit.json, verification.json",
+            "44": "Missing verified evidence: seal.json, results.json, audit.json, verification.json"
+          },
+          "complete": false,
+          "completed_seeds": [],
+          "n": 0,
+          "mean": null,
+          "sd": null
+        }
+      }
+    }
+  },
+  "matrix_complete": false,
+  "source_sha256": {
+    "/liziqing/yukai/AI4AI4Cell/paper/tools/publish_public_harness.py": "d99a84aba14730e4352d4c53f1145c5641ddb8aa8c4ec56905ba8b9be4fdfe68",
+    "/liziqing/yukai/AI4AI4Cell/paper/tools/publish_strong_snapshot.py": "a0406116a84ced9b19064c9b9a772a8665e629b551335a3512b47bf95ca31d7c",
+    "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/heldout_public.py": "2c5a062993b4dae5670f5ce1119cccfdab2ffd123d31cce789610fe7057edc96",
+    "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/verify_public.py": "430319cfdf46a89ee1084756cc11db0e61d7566a8139909cc86bda406eeac0ee",
+    "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/broker.py": "7edf9244940314fb3eb00bbdbaa536b6e107fbd098b286c49aceaa23dfd2f31c"
+  },
+  "reference_complete": true,
+  "ready_for_explicit_manuscript_integration": false,
+  "seed42_preview": {
+    "seed": 42,
+    "reported_as": "matched single-seed pilot; no seed-averaging or SD",
+    "same_seed_for_all_methods": true,
+    "complete": false,
+    "public_completed_tasks": {
+      "ai_scientist_v2": [
+        "ptpc_neural",
+        "vcc_corrected",
+        "norman_double_corrected",
+        "tahoe_drug_corrected"
+      ],
+      "ai_researcher": []
+    },
+    "manuscript_modified": false
+  }
+}

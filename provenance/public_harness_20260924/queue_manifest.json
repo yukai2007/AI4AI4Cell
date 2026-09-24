@@ -1,0 +1,276 @@
+{
+  "accounting": "Reserved GPU count times monotonic child duration; crash gaps conservatively charged through recovery",
+  "adopted_prequeue_runs": [
+    {
+      "completed_unix": 1790250765.942589,
+      "evidence_sha256": {
+        "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/ptpc_neural/seed42/development/definition.json": "8091929afe35995f2db3e03ac769b3eb06fc6354415cd89a749378f27e158ca2",
+        "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/ptpc_neural/seed42/run_status.json": "372bcf9d789a0a237c5fd44c81df1540dbce78f8737871131951fd92a36cf8e9"
+      },
+      "harness": "ai_scientist_v2",
+      "output": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/ptpc_neural/seed42",
+      "reserved_gpu_hours": 0.884876758257548,
+      "reserved_gpus": 8,
+      "seed": 42,
+      "started_unix": 1790250367.7480478,
+      "task": "ptpc_neural",
+      "usage": {
+        "calls": 42,
+        "generation_seconds": 161.37017992744222,
+        "input_tokens": 128789,
+        "model": "/liziqing/yukai/.cache/modelscope/Qwen2.5-7B-Instruct",
+        "output_tokens": 7585,
+        "seed": 42
+      }
+    },
+    {
+      "completed_unix": 1790251167.327509,
+      "evidence_sha256": {
+        "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/norman_double_corrected/seed42/development/definition.json": "14b15b8e6bb35a22d50211834d6a3801185d0e74fdb7045832e2326e397285e8",
+        "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/norman_double_corrected/seed42/run_status.json": "15847ae44da584e67389356db94abc0222d41f7e55d5dbacdb4ab8cdc38995ae"
+      },
+      "harness": "ai_scientist_v2",
+      "output": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/norman_double_corrected/seed42",
+      "reserved_gpu_hours": 0.7321164231830173,
+      "reserved_gpus": 8,
+      "seed": 42,
+      "started_unix": 1790250837.8751185,
+      "task": "norman_double_corrected",
+      "usage": {
+        "calls": 38,
+        "generation_seconds": 125.93673532782122,
+        "input_tokens": 99202,
+        "model": "/liziqing/yukai/.cache/modelscope/Qwen2.5-7B-Instruct",
+        "output_tokens": 5973,
+        "seed": 42
+      }
+    },
+    {
+      "completed_unix": 1790251646.0091481,
+      "evidence_sha256": {
+        "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/vcc_corrected/seed42/development/definition.json": "a9039315ff9ec8c6b4668e950368a906890c1db1b83079b0798fd3d394b53fbd",
+        "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/vcc_corrected/seed42/run_status.json": "edd30cba62d2c560d654cb5e3c6f45a7131e452793cc3f691c471bd9f0e425c8"
+      },
+      "harness": "ai_scientist_v2",
+      "output": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/vcc_corrected/seed42",
+      "reserved_gpu_hours": 0.7755933035744561,
+      "reserved_gpus": 8,
+      "seed": 42,
+      "started_unix": 1790251296.9921615,
+      "task": "vcc_corrected",
+      "usage": {
+        "calls": 37,
+        "generation_seconds": 138.77220931695774,
+        "input_tokens": 105751,
+        "model": "/liziqing/yukai/.cache/modelscope/Qwen2.5-7B-Instruct",
+        "output_tokens": 6457,
+        "seed": 42
+      }
+    },
+    {
+      "completed_unix": 1790252118.853957,
+      "evidence_sha256": {
+        "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/tahoe_drug_corrected/seed42/development/definition.json": "6f40267b301f9b7c403adfada6fc74e0acd08c7e935a308f722c13b78b61b927",
+        "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/tahoe_drug_corrected/seed42/run_status.json": "060510f4e1028dfc0d2e61adb047a4e17a5c0c1ffb1ed1b10b10f8a8f92bc895"
+      },
+      "harness": "ai_scientist_v2",
+      "output": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v5/ai_scientist_v2/tahoe_drug_corrected/seed42",
+      "reserved_gpu_hours": 0.9995880847507053,
+      "reserved_gpus": 8,
+      "seed": 42,
+      "started_unix": 1790251669.0393188,
+      "task": "tahoe_drug_corrected",
+      "usage": {
+        "calls": 46,
+        "generation_seconds": 221.89524690946564,
+        "input_tokens": 129175,
+        "model": "/liziqing/yukai/.cache/modelscope/Qwen2.5-7B-Instruct",
+        "output_tokens": 8627,
+        "seed": 42
+      }
+    }
+  ],
+  "automatic_development_retries": false,
+  "automatic_git_push": false,
+  "continue_controller_failures": true,
+  "created_unix": 1790253291.2501369,
+  "fitting_gpus": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "initial_reserved_gpu_hours": 7.392174569765727,
+  "jobs": [
+    {
+      "harness": "ai_scientist_v2",
+      "seed": 42,
+      "task": "ptpc_neural"
+    },
+    {
+      "harness": "ai_researcher",
+      "seed": 42,
+      "task": "ptpc_neural"
+    },
+    {
+      "harness": "ai_scientist_v2",
+      "seed": 42,
+      "task": "norman_double_corrected"
+    },
+    {
+      "harness": "ai_researcher",
+      "seed": 42,
+      "task": "norman_double_corrected"
+    },
+    {
+      "harness": "ai_scientist_v2",
+      "seed": 42,
+      "task": "vcc_corrected"
+    },
+    {
+      "harness": "ai_researcher",
+      "seed": 42,
+      "task": "vcc_corrected"
+    },
+    {
+      "harness": "ai_scientist_v2",
+      "seed": 42,
+      "task": "tahoe_drug_corrected"
+    },
+    {
+      "harness": "ai_researcher",
+      "seed": 42,
+      "task": "tahoe_drug_corrected"
+    },
+    {
+      "harness": "ai_scientist_v2",
+      "seed": 42,
+      "task": "native_tapb"
+    },
+    {
+      "harness": "ai_researcher",
+      "seed": 42,
+      "task": "native_tapb"
+    },
+    {
+      "harness": "ai_scientist_v2",
+      "seed": 43,
+      "task": "ptpc_neural"
+    },
+    {
+      "harness": "ai_researcher",
+      "seed": 43,
+      "task": "ptpc_neural"
+    },
+    {
+      "harness": "ai_scientist_v2",
+      "seed": 43,
+      "task": "norman_double_corrected"
+    },
+    {
+      "harness": "ai_researcher",
+      "seed": 43,
+      "task": "norman_double_corrected"
+    },
+    {
+      "harness": "ai_scientist_v2",
+      "seed": 43,
+      "task": "vcc_corrected"
+    },
+    {
+      "harness": "ai_researcher",
+      "seed": 43,
+      "task": "vcc_corrected"
+    },
+    {
+      "harness": "ai_scientist_v2",
+      "seed": 43,
+      "task": "tahoe_drug_corrected"
+    },
+    {
+      "harness": "ai_researcher",
+      "seed": 43,
+      "task": "tahoe_drug_corrected"
+    },
+    {
+      "harness": "ai_scientist_v2",
+      "seed": 43,
+      "task": "native_tapb"
+    },
+    {
+      "harness": "ai_researcher",
+      "seed": 43,
+      "task": "native_tapb"
+    },
+    {
+      "harness": "ai_scientist_v2",
+      "seed": 44,
+      "task": "ptpc_neural"
+    },
+    {
+      "harness": "ai_researcher",
+      "seed": 44,
+      "task": "ptpc_neural"
+    },
+    {
+      "harness": "ai_scientist_v2",
+      "seed": 44,
+      "task": "norman_double_corrected"
+    },
+    {
+      "harness": "ai_researcher",
+      "seed": 44,
+      "task": "norman_double_corrected"
+    },
+    {
+      "harness": "ai_scientist_v2",
+      "seed": 44,
+      "task": "vcc_corrected"
+    },
+    {
+      "harness": "ai_researcher",
+      "seed": 44,
+      "task": "vcc_corrected"
+    },
+    {
+      "harness": "ai_scientist_v2",
+      "seed": 44,
+      "task": "tahoe_drug_corrected"
+    },
+    {
+      "harness": "ai_researcher",
+      "seed": 44,
+      "task": "tahoe_drug_corrected"
+    },
+    {
+      "harness": "ai_scientist_v2",
+      "seed": 44,
+      "task": "native_tapb"
+    },
+    {
+      "harness": "ai_researcher",
+      "seed": 44,
+      "task": "native_tapb"
+    }
+  ],
+  "max_gpu_hours": 180.0,
+  "max_wall_hours": 24.0,
+  "model_gpu": 0,
+  "prior_reserved_gpu_hours": 4.0,
+  "schema": "public-harness-queue-v1",
+  "source_sha256": {
+    "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/airesearcher_adapter.py": "1fdd8fe59a83423d03f72224afdd6d64f2efbcbc54b6fe343546eb432702baf9",
+    "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/aiscientist_adapter.py": "0623428ffbc12019813e0d56b2103e00aea5232ac99c4b01c33cdfc93b527892",
+    "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/broker.py": "7edf9244940314fb3eb00bbdbaa536b6e107fbd098b286c49aceaa23dfd2f31c",
+    "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/heldout_public.py": "2c5a062993b4dae5670f5ce1119cccfdab2ffd123d31cce789610fe7057edc96",
+    "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/qwen_backend.py": "f02201f048b92fe1fd3b9ae9b59ac7961d0512459f770b83fc8e789c51c8f086",
+    "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/run_baseline.py": "816a14314dafa1e1455e5a556b6ac0dd32f4076795fcbaf54e573c963006ef6d",
+    "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/runtime_worker.py": "62fd597322e7cdbeb54ab41be8e408955864618e8f95515c444c01a5b640a40f",
+    "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/supervise.py": "f0b132b4590b9e32716a5715876d6e9504dda0fcd8a4822ec2400d5454c3912e",
+    "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/verify_public.py": "430319cfdf46a89ee1084756cc11db0e61d7566a8139909cc86bda406eeac0ee",
+    "/liziqing/yukai/AI4AI4Cell/paper/tools/publish_public_harness.py": "d99a84aba14730e4352d4c53f1145c5641ddb8aa8c4ec56905ba8b9be4fdfe68"
+  }
+}
