@@ -10,8 +10,8 @@
     "AAAAAC+CompanionSC"
   ],
   "text_out_of_bounds_pages": [],
-  "generated_utc": "2026-09-23T17:31:34.408905+00:00",
-  "generator_sha256": "f92785229a83ceb856bcc77400b0d38d63d3a89b06570b1606d63e18dcb8d838",
+  "generated_utc": "2026-09-24T06:46:34.856277+00:00",
+  "generator_sha256": "e1904675b5e441e7ee51894c3518d4fa6e206bdaab454bf10383468a90642a84",
   "embedded_font_source_sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
   "input_sha256": {
     "paper/tables/strong_v3/snapshot.json": "814129bf578ab358de0773b1975ba00257a7fe12c75b3e6b6f1534617cd5749a",
@@ -26,7 +26,7 @@
     "paper/figures/biocoloop_framework_v2.pdf": "dbf7abb5b6d6a6fc76e88259d02d93996e4f6c7dcc1c25bbe8a0eabdac206bee",
     "paper/figures/biocoloop_framework_v2.provenance.json": "3f5b8e207e237d9b78c9225b6f106326388511d0a1adbb7a55c97eab114d22ef",
     "paper/provenance/coauthor_review_v2_20260923/ANNOTATIONS.zh-CN.md": "e93f9742ffbe19924f7117510939e331374684b839c9910fc4536c73bc7e929b",
-    "paper/sections/03_method.tex": "23f7d7f38f8f7ecc1b2b00dd618fc260dccb894e3f93885e037c5e9061de2bc0",
+    "paper/sections/03_method.tex": "0e07d14fbd00088c5d9622bfcefe27407fd503209cab04867d59a4c2b19309aa",
     "paper/sections/04_experimental_design.tex": "f754e3bb92d0cc47e8ded3d0f5220cf7c52755398c80163a4a8d21169a12f145",
     "paper/sections/22_appendix_unified_protocol.tex": "2bd9cd2446ad5cd72525cded8bf4d6edb24daecd89afe6b8a6ee267fbe97ba80",
     "results/supplemental_20260923/proteomics/seed61_slots0_cpu/independent_rescore.json": "b5fa3aebb01205ba8db57edb29af57e3dfa79a2c0e1cab94d0b2e2ce8c06ab29",
@@ -101,7 +101,7 @@
     }
   },
   "page_count": 20,
-  "output_sha256": "e7386d0099b4f65d2c142243e15ffad263e91eb2116d7252f77f6204185da7f0",
+  "output_sha256": "8a404828922c7e15a3834656609fa12f85af4f3d3a6f45b5674b51418a23f078",
   "uncompleted_extensions": [
     "additional seeds",
     "DTI long24"

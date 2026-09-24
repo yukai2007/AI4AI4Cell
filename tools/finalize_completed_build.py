@@ -123,7 +123,7 @@ def main():
         unresolved_experimental_scope=['native DTI long24 not executed',
                                        'proposal-history ablation on the new matched scenario partition not executed',
                                        'additional ablation seeds deferred'],
-        scientific_interpretation='Allocation gains and proposal-history effects are distinct; feedback does not universally improve heldout scores.',
+        scientific_interpretation='Controlled comparisons support collaborative access and trajectory-guided training allocation. Proposal-history effects and source compatibility are evaluated separately; the main table does not combine allocation and proposal revision.',
         platform_status='This build does not submit to OpenReview or verify Overleaf remote compilation.')
     out=PAPER/'provenance'/a.revision_id/'build_receipt.json'
     out.parent.mkdir(parents=True,exist_ok=True)

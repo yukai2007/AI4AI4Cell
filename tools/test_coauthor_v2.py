@@ -65,7 +65,8 @@ class SecondReviewTests(unittest.TestCase):
         text=(PAPER/'sections/03_method.tex').read_text()
         labels=re.findall(r'\\label\{([^}]+)\}',text)
         self.assertEqual(len(labels),len(set(labels)))
-        self.assertEqual(text.count(r'\subsection*'),3)
+        self.assertEqual(text.count(r'\subsection*'),4)
+        self.assertIn('3.4 Trajectory-guided training allocation',text)
         for line in text.splitlines():
             self.assertEqual(len(re.findall(r'(?<!\\)\$',line)) % 2,0,line)
         self.assertIn('loss on panel $i$. The coordinator computes',text)

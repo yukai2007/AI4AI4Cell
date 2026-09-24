@@ -1,22 +1,31 @@
-\subsection*{4.3 Main performance and attribution}
-Table~\ref{tab:strong-main} displays the three task families together. BioCoLoop leads four of five endpoints: DTI AUROC reaches \StrongDTIHarness{}\%, proteomic AP reaches \StrongPTPCHarness{}\%, and VCC and Tahoe Top-1 reach 31.54\% and 22.39\%. Compared with one-laboratory direct optimization, the three cell gains are \StrongVCCDeltaDirect{}, \StrongNormanDeltaDirect{} and \StrongTahoeDeltaDirect{} percentage points. The one-laboratory fixed model remains best on Norman at 25.56\%, versus 22.25\% for BioCoLoop.
+\subsection*{4.3 Collaborative research improves task performance}
+BioCoLoop outperforms both single-laboratory references on four of five endpoints (Table~\ref{tab:strong-main}). DTI AUROC reaches \StrongDTIHarness{}\%, proteomic AP reaches \StrongPTPCHarness{}\%, and VCC and Tahoe Top-1 reach 31.54\% and 22.39\%. These exceed the stronger single-laboratory reference in each column by 3.87, 11.94, 1.61 and 2.99 percentage points, respectively. Norman gains \StrongNormanDeltaDirect{} points over direct optimization; its one-laboratory fixed model remains best at 25.56\%, versus 22.25\%.
 
 \input{tables/strong_v3/main}
 
-What drives these differences? Holding loop search fixed, increasing participation from one to ten laboratories adds \StrongDTIFederationEffect{} AUROC points for DTI, \StrongPTPCFederationEffect{} AP points for proteomics, and \StrongVCCFederationEffect{}, \StrongNormanFederationEffect{} and \StrongTahoeFederationEffect{} Top-1 points for the cell tasks. At fixed access, direct and loop select identical checkpoints in this three-seed, six-proposal experiment. Their identical scores are therefore outcomes of the completed searches. The following studies examine source composition, search trajectories and training allocation separately.
+\paragraph{Collaborative access improves all five endpoints.}
+Holding loop search fixed, increasing participation from one to ten laboratories adds \StrongDTIFederationEffect{} AUROC points for DTI, \StrongPTPCFederationEffect{} AP points for proteomics, and \StrongVCCFederationEffect{}, \StrongNormanFederationEffect{} and \StrongTahoeFederationEffect{} Top-1 points for VCC, Norman and Tahoe. This contrast measures the value of access to additional local training and development evidence under the same research policy.
 
-\subsection*{4.4 Learning from different laboratory scenarios}
+\paragraph{Design search and evidence-dependent decisions.}
+At ten laboratories, search improves over the fixed recipe by 1.96 DTI AUROC points and 6.77 Norman Top-1 points. Direct and history-guided search reach identical checkpoints at this access level. The fixed ten-laboratory recipe scores higher on proteomics and Tahoe (37.07 AP and 25.87 Top-1), while VCC ties. The full factorial table in Appendix A locates these effects; the next experiment isolates a further role for feedback: deciding where to allocate training.
+
+\subsection*{4.4 Measured trajectories improve training allocation}
+We apply the policy in Section 3.4 to the same ten designs and ten laboratories under both schedules. Each spends 800 full-client rounds and 160 aggregate development evaluations: uniform allocation uses $10\times80$ rounds, while screening and promotion use $10\times20+6\times100$.
+
+\input{tables/strong_v3/effects}
+
+With proposal generation held fixed, trajectory-guided allocation improves Norman from 11.48\% to 22.32\% Top-1: a +10.84-point mean effect, positive in every seed, with hierarchical paired-bootstrap 95\% CI [4.54, 17.73]. A promoted low-learning-rate residual design benefits from training beyond uniform allocation's stopping point. Thus evidence improves a consequential research decision even when the candidate designs and total budget are fixed. Across all twelve task--seed comparisons (seeds 53--55), the policy gives four wins and eight ties; Tahoe gains 1.99 points on average, while VCC and proteomics tie. Table~\ref{tab:strong-effects} reports task-specific uncertainty.
+
+\subsection*{4.5 Learning from different laboratory scenarios}
 In source-as-laboratory experiments, each auxiliary collection remains a separate training client. The target's original development panels select checkpoints, and a common target test measures transfer. For DTI, BindingDB, BioSNAP, Davis and Human form four collection-defined clients. For VCC, the auxiliary clients are Replogle/K562, Nadig/HepG2 and Jiang/IFNB/K562: they differ in study, cellular background or stimulation, rather than being random shards of VCC. Appendix B gives their identities, sizes and exclusions.
-
-DTI target-only AUROC is 85.47; Davis and Human raise it to 87.86 and 87.95, whereas BioSNAP and all three combined yield 82.44 and 84.30. Adding Jiang raises VCC Top-1 from 29.49 to 33.07; combining all sources gives 27.33. The Jiang change is +3.58 points, with paired intervention-bootstrap 95\% CI [$-$2.11, 9.51].
 
 For proteomics, we assign each of four studies to one training laboratory: the target PTPC collection, Lin, Ruprecht and decryptE \citep{Lin2026HDAC,Ruprecht2020Proteome,Eckert2024DecryptE}. A source-aware adapter shares encoders and retains private response heads to accommodate their different supervised objectives. Under the same fixed recipe and target-only development selection, adding all three external studies raises target AP from 34.41 to 37.53 and AUROC from 72.33 to 74.39. Table~\ref{tab:proteomics-study-clients} reports all four controls; Appendix B also retains the separate protocol with ten target training shards. Together, these studies show that external measurements can improve target prediction, while source compatibility matters alongside data volume.
 
+DTI likewise benefits from compatible collections: Davis and Human raise target-only AUROC from 85.47 to 87.86 and 87.95. BioSNAP and all three combined yield 82.44 and 84.30. Adding Jiang raises VCC Top-1 from 29.49 to 33.07, with paired intervention-bootstrap 95\% CI [$-$2.11, 9.51] for the +3.58-point difference; combining all sources gives 27.33.
+
 To compare source composition at matched participation and condition count, we fix a 15-intervention VCC anchor client and add three clients of 15 interventions each: either further VCC conditions or one collection from each external study. Table~\ref{tab:scenario-labs-matched} shows that cross-scenario training reaches 28.82\% Top-1, compared with 30.70\% for the same-source split; MRR is nearly unchanged (0.5630 versus 0.5624). Under this fixed design, heterogeneous updates do not improve target identification. Matching $K$ and intervention counts isolates this comparison from increasing client count or condition count, while source-specific cell coverage and gene panels remain part of the distribution shift.
 
-\input{tables/scenario_labs_v2/table}
-
-\subsection*{4.5 How many laboratories should participate?}
+\subsection*{4.6 How many laboratories should participate?}
 We vary $K\in\{1,2,5,10\}$ in two ways: adding the first $K$ clients increases available data; merging the full pool into $K$ groups holds total data fixed. Both use the default design and 100 rounds. The fixed-pool comparison retains the original ten development panels. DTI uses seed 61; the other endpoints use seeds 61--63.
 
 \begin{figure}[t]
@@ -26,9 +35,9 @@ We vary $K\in\{1,2,5,10\}$ in two ways: adding the first $K$ clients increases a
 \label{fig:lab-sensitivity}
 \end{figure}
 
-Figure~\ref{fig:lab-sensitivity} separates the two effects. Increasing participation raises DTI AUROC from 83.65 to 93.88. With the DTI pool fixed, $K=1,2,5,10$ gives 85.47, 88.96, 88.05 and 93.88. The fixed-pool optimum varies by task: proteomics reaches 39.19 AP at $K=5$, whereas Norman falls from 49.63 to 15.48 Top-1 between $K=1$ and $K=10$. Smaller local partitions change optimizer steps and the cell objective's contrastive negative pool. More participants therefore do not automatically imply a better optimization setting.
+Figure~\ref{fig:lab-sensitivity} separates access from partitioning. Increasing participation raises DTI AUROC from 83.65 to 93.88. With the DTI pool fixed, $K=1,2,5,10$ gives 85.47, 88.96, 88.05 and 93.88. The fixed-pool optimum is task-specific: proteomics reaches 39.19 AP at $K=5$, whereas Norman falls from 49.63 to 15.48 Top-1 between $K=1$ and $K=10$. Smaller local partitions change optimizer steps and the cell objective's contrastive negative pool. Collaboration scale therefore interacts with the training objective, motivating task-specific partitioning and design evaluation.
 
-\subsection*{4.6 How does feedback change the research trajectory?}
+\subsection*{4.7 How does feedback change the research trajectory?}
 We compare Qwen2.5-7B-Instruct and the \texttt{gpt-5.6-luna} service under a common six-slot protocol on all five endpoints. Direct and loop share the twelve designs, initial proposal, training schedule and selection rule; only loop receives measured history. DTI uses seed 42 and the other tasks seed 61. Figure~\ref{fig:completed-short-dev} shows development-selected test performance at prespecified proposal prefixes.
 
 \begin{figure}[t]
@@ -38,11 +47,6 @@ We compare Qwen2.5-7B-Instruct and the \texttt{gpt-5.6-luna} service under a com
 \label{fig:completed-short-dev}
 \end{figure}
 
-Across ten direct/loop pairs, Norman/Luna improves by 0.81 Top-1 points, DTI/Luna decreases by 0.33 AUROC points, and eight pairs tie. A separate 36-design, 24-slot study on proteomics and the three cell tasks reveals differences in search speed. Luna reaches Norman's common development target at slot 4 with feedback versus slot 22 without it; both finish at 23.11\% test Top-1. Direct reaches Tahoe's common target sooner (5 versus 13 slots), and proteomics retains its initial design. The eight terminal comparisons give seven ties and one decrease with feedback. Qwen's VCC test Top-1 falls from 31.50 at prefix 6 to 19.61 at prefix 24 despite improved development selection. Thus the useful research budget depends on the task: faster development progress and better final generalization are distinct outcomes. Appendix B connects these trajectories to the executed configuration changes.
+History changes the route through the design space. Across ten short direct/loop pairs, Norman/Luna improves by 0.81 Top-1 points, DTI/Luna decreases by 0.33 AUROC points, and eight pairs tie. In a separate 36-design, 24-slot study, Luna reaches Norman's common development target at slot 4 with feedback versus slot 22 without it; both finish at 23.11\% test Top-1. The executed proposals connect this early progress to lower learning rates and subsequent residual-head changes (Appendix B).
 
-\subsection*{4.7 Can measured trajectories improve training allocation?}
-To isolate allocation from proposal generation, we give both schedulers the same ten designs and all ten laboratories. Uniform allocation trains every design for 80 rounds. Evidence-guided allocation screens every design for 20 rounds, then restarts six promoted designs for 100-round training. Both spend 800 full-client rounds and 160 aggregate development evaluations. The promotion rule combines the best screening score with improvement from round 5 to round 20 (Appendix A).
-
-\input{tables/strong_v3/effects}
-
-With proposal generation held fixed, evidence-guided allocation yields four wins and eight ties across twelve task--seed comparisons (seeds 53--55). Norman improves from 11.48\% to 22.32\% Top-1, a +10.84-point mean effect with hierarchical paired-bootstrap 95\% CI [4.54, 17.73]. A promoted low-learning-rate residual design benefits from training beyond uniform allocation's stopping point. Tahoe gains 1.99 points; VCC and proteomics tie. This result supports using learning trajectories to decide where to spend training compute, separately from the proposal-history effects in Section 4.6.
+Search dynamics vary by task: direct reaches Tahoe's common target sooner (5 versus 13 slots), and proteomics retains its initial design. The eight terminal comparisons give seven ties and one decrease with feedback. Qwen's VCC test Top-1 falls from 31.50 at prefix 6 to 19.61 at prefix 24 despite improved development selection. These trajectories identify distinct roles for research feedback: history can accelerate a useful design choice, while the fixed-candidate control in Section 4.4 establishes a held-out benefit from trajectory-guided training allocation. Proposal count, development progress and final predictive quality are therefore evaluated separately.
