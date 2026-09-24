@@ -232,9 +232,9 @@ def milestone_names(snapshot, observation):
 
 def report_source():
     return r'''% Dedicated comparison report; not a replacement for the manuscript.
-\documentclass[10pt]{article}
-\usepackage[margin=1in]{geometry}
-\usepackage{booktabs,tabularx,array,fontspec}
+\documentclass{article}
+\usepackage{iclr2027_conference}
+\usepackage{amsmath,booktabs,tabularx,array,fontspec}
 \setmainfont{texgyretermes-regular.otf}[Path=fonts/,BoldFont=texgyretermes-bold.otf,ItalicFont=texgyretermes-italic.otf,BoldItalicFont=texgyretermes-bolditalic.otf]
 \title{BioCoLoop: Public-Harness Comparison}
 \author{}
@@ -365,9 +365,13 @@ class Watcher:
         env = dict(os.environ, FONTCONFIG_FILE=str(self.args.fontconfig/'fonts.conf'),
                    FONTCONFIG_PATH=str(self.args.fontconfig), CUDA_VISIBLE_DEVICES='')
         output_dir.mkdir(parents=True, exist_ok=True)
-        log = command([self.args.tectonic, '--only-cached', '-Z', 'search-path=' + str(FONT_CACHE),
-                       '--keep-logs', '--outdir', output_dir, source],
-                      cwd=cwd, env=env, timeout=600)
+        try:
+            log = command([self.args.tectonic, '--only-cached', '-Z', 'search-path=' + str(FONT_CACHE),
+                           '--keep-logs', '--outdir', output_dir, source],
+                          cwd=cwd, env=env, timeout=600)
+        except subprocess.CalledProcessError as exc:
+            atomic_write(output_dir/'watch_build.log', (exc.stdout or '').encode())
+            raise
         atomic_write(output_dir/'watch_build.log', log.encode())
         validated = output_dir/'validated.pdf'
         receipt = validate_pdf(output_dir/(Path(source).stem + '.pdf'), validated, manuscript=manuscript)
@@ -396,6 +400,7 @@ class Watcher:
             if not isinstance(snapshot.get(key), bool):
                 raise RuntimeError('Missing typed publisher completion flag: ' + key)
         (staging/'fonts').symlink_to(self.paper/'fonts', target_is_directory=True)
+        (staging/'iclr2027_conference.sty').symlink_to(self.paper/'iclr2027_conference.sty')
         atomic_write(staging/REPORT_TEX, report_source())
         pdf, receipt = self.compile(REPORT_TEX, staging, staging/'build')
         receipt.update(snapshot_sha256=digest(output/'snapshot_comparison.json'),
