@@ -26,6 +26,7 @@ PAPER = Path(__file__).resolve().parents[1]
 BRANCH = 'comparison/public-harness-20260924'
 ANCHOR = '676660d'
 TECTONIC = Path('/liziqing/yukai/project_collab_auto_research_cell_federated/.tools/tectonic-0.16.0/tectonic')
+TECTONIC_SHA256 = 'a6e1ebaba90536e527f2ecd47775a608d9a56bd584efa9f7eee25c1bc7b86349'
 FONTCONFIG = Path('/liziqing/yukai/.local/opt/fontconfig/etc/fonts')
 FONT_CACHE = Path('/liziqing/yukai/.cache/tectonic/bundles/data/6ffe055852f8faf66c0acbe1a7fb27f87b869a90bad1204f3bf4d9683f597c7c')
 TABLE_DIR = Path('tables/public_harness_comparison')
@@ -348,9 +349,11 @@ class Watcher:
         self.save()
 
     def compile(self, source, cwd, output_dir, *, manuscript=False):
-        version = command([self.args.tectonic, '--version'], cwd=cwd, timeout=30)
-        if not re.search(r'\b0\.16\.0\b', version):
-            raise RuntimeError('Expected the registered Tectonic 0.16.0')
+        # This registered legacy CLI has no --version flag. Pin the actual
+        # executable instead of relying on an unsupported CLI version query.
+        if digest(self.args.tectonic) != TECTONIC_SHA256:
+            raise RuntimeError('Expected the registered Tectonic executable hash')
+        version = 'Tectonic 0.16.0; sha256=' + TECTONIC_SHA256
         env = dict(os.environ, FONTCONFIG_FILE=str(self.args.fontconfig/'fonts.conf'),
                    FONTCONFIG_PATH=str(self.args.fontconfig), CUDA_VISIBLE_DEVICES='')
         output_dir.mkdir(parents=True, exist_ok=True)

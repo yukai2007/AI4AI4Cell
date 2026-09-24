@@ -272,7 +272,11 @@ class WatcherTests(unittest.TestCase):
             out.mkdir(exist_ok=True)
             (out/'validated.pdf').write_bytes(b'fixture')
             return 'fixture compilation'
+        real_digest = watch.digest
+        def fixture_digest(path):
+            return watch.TECTONIC_SHA256 if path == self.args.tectonic else real_digest(path)
         with mock.patch.object(watch, 'command', side_effect=fake_command) as run, \
+             mock.patch.object(watch, 'digest', side_effect=fixture_digest), \
              mock.patch.object(watch, 'validate_pdf', return_value={'visual_review':watch.VISUAL_REVIEW}):
             self.watcher.compile(source, self.paper, out)
         env = run.call_args.kwargs['env']
