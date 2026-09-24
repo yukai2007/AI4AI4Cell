@@ -1,18 +1,26 @@
-% Standalone comparison review; the branch manuscript is compiled from main.tex.
+% Dedicated comparison report; not a replacement for the manuscript.
 \documentclass{article}
 \usepackage{iclr2027_conference}
-\usepackage{fontspec}
+\usepackage{amsmath,booktabs,tabularx,array,fontspec}
 \setmainfont{texgyretermes-regular.otf}[Path=fonts/,BoldFont=texgyretermes-bold.otf,ItalicFont=texgyretermes-italic.otf,BoldItalicFont=texgyretermes-bolditalic.otf]
-\usepackage{amsmath,booktabs,tabularx,longtable}
-\usepackage[colorlinks=true,allcolors=blue]{hyperref}
-\hypersetup{pdftitle={BioCoLoop public-harness comparison: branch review}}
+\title{BioCoLoop: Public-Harness Comparison}
+\author{}
+\date{}
 \begin{document}
-\section*{Public research-controller comparison}
-This review separates predictive scores, declared controller failures and pending runs. All displayed single-seed scores use seed 42. Three-seed means require every registered seed; failures are not assigned zero scores.
-\input{tables/public_harness_comparison/results_public_harness}
-\input{tables/public_harness_comparison/main_public_harness_seed42}
+\maketitle
+\noindent\textbf{Comparison branch draft.} Public frameworks use task-adapted
+native experimental controllers and the common biological fitting interface.
+The tables distinguish verified prediction scores, execution failures and
+pending runs. Automatic updates await visual review before mainline delivery.
+\input{tables/public_harness_comparison/results_public_harness.tex}
+\input{tables/public_harness_comparison/completion_public_harness.tex}
 \clearpage
-\input{tables/public_harness_comparison/completion_public_harness}
+\input{tables/public_harness_comparison/main_public_harness_seed42.tex}
 \clearpage
-\input{tables/public_harness_comparison/main_public_harness_three_seed}
+\input{tables/public_harness_comparison/main_public_harness_three_seed.tex}
+\clearpage
+\section*{Task-transport repair}
+This separate study removes repeated task packets from stage prompts and
+accepts compatible single-tool envelopes. Scientific budgets are unchanged.
+\input{tables/public_harness_comparison/compact_repair_seed42.tex}
 \end{document}

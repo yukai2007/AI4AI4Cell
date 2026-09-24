@@ -1,17 +1,18 @@
 {
-  "adapter_version": "airesearcher-task-transport-compact-v1",
-  "base": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/compact_repair_v1",
-  "manifest_sha256": "51fd3044f87890c27082b1868ab2d413cb0dfa371f4aa55a1d74b851474459f4",
+  "adapter_version": "airesearcher-task-transport-compact-v2",
+  "base": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/compact_repair_v2",
+  "manifest_sha256": "7168c8daebbe570d513a7b6a802f3d7917819fcb12cd944cd9c225c3ba8cfbef",
   "registered": true,
   "replaces_original_failures": false,
   "resolved": false,
   "schema": "public-harness-compact-repair-publication-v1",
   "scientific_verification": "unchanged full public-harness verifier",
-  "scored": 1,
+  "scored": 0,
   "seed": 42,
   "source_sha256": {
     "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/airesearcher_adapter.py": "1fdd8fe59a83423d03f72224afdd6d64f2efbcbc54b6fe343546eb432702baf9",
     "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/airesearcher_compact.py": "ee525155a0fd66bf0277a8008852807c18ef12d2e77295a4a6d1a0d219027392",
+    "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/airesearcher_transport_v2.py": "2785fb7acc7e304fa9eda4730ac87d616774a6419594823141568d843a4413d4",
     "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/aiscientist_adapter.py": "0623428ffbc12019813e0d56b2103e00aea5232ac99c4b01c33cdfc93b527892",
     "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/broker.py": "7edf9244940314fb3eb00bbdbaa536b6e107fbd098b286c49aceaa23dfd2f31c",
     "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/heldout_public.py": "2c5a062993b4dae5670f5ce1119cccfdab2ffd123d31cce789610fe7057edc96",
@@ -20,7 +21,6 @@
     "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/run_baseline.py": "816a14314dafa1e1455e5a556b6ac0dd32f4076795fcbaf54e573c963006ef6d",
     "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/runtime_worker.py": "62fd597322e7cdbeb54ab41be8e408955864618e8f95515c444c01a5b640a40f",
     "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/supervise.py": "9708e3620bbfe5fd0f69fb58e5236f7781348cba13ec9c571040570d609f2996",
-    "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/supervise_compact_repair.py": "3e406bf39577bccb44fd2d4c9e31836314b3c3116edf96a7b26c3bf32bc69ad8",
     "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/verify_public.py": "430319cfdf46a89ee1084756cc11db0e61d7566a8139909cc86bda406eeac0ee",
     "/liziqing/yukai/AI4AI4Cell/paper/tools/publish_public_harness.py": "d99a84aba14730e4352d4c53f1145c5641ddb8aa8c4ec56905ba8b9be4fdfe68"
   },
@@ -32,101 +32,8 @@
     },
     "ptpc_neural": {
       "biocoloop_seed42": 0.37122571638534896,
-      "primary": 0.37122571638534896,
-      "receipt": {
-        "adapter_paths": [
-          "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/airesearcher_adapter.py",
-          "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/airesearcher_compact.py",
-          "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/qwen_backend.py",
-          "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/run_airesearcher_compact.py"
-        ],
-        "checkpoint_sha256": "42241c6da30584f7827439c61fa8d5bc516969f59a87ae672d00fa783f77f04f",
-        "data_manifest_sha256": "4cf60e630f3cf2754db61464e7f9dd6ab572ab914c87866991978d54deda4936",
-        "definition_path": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/compact_repair_v1/ai_researcher/ptpc_neural/seed42/development/definition.json",
-        "definition_sha256": "a99f29893b88a7caa648e2fd4e73c84982b57495d403a365f14dc972449ae1c3",
-        "endpoints": {
-          "primary": {
-            "metrics": {
-              "accuracy_at_0_5": 0.8513513513513513,
-              "ap": 0.37122571638534896,
-              "auroc": 0.7402597402597403,
-              "bce": 0.40010039913478024,
-              "n_labeled": 148,
-              "n_missing_label": 0,
-              "n_positive": 22,
-              "n_rows": 148,
-              "undefined_reason": null
-            },
-            "predictions": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/compact_repair_v1/ai_researcher/ptpc_neural/seed42/heldout/primary_predictions.npz",
-            "predictions_sha256": "aaa72c3d404ad771a34ea5749e7e099c9c877dfdcb96852eb17ca1f76502c5da",
-            "primary": 0.37122571638534896,
-            "rows": 148
-          }
-        },
-        "metrics": {
-          "accuracy_at_0_5": 0.8513513513513513,
-          "ap": 0.37122571638534896,
-          "auroc": 0.7402597402597403,
-          "bce": 0.40010039913478024,
-          "n_labeled": 148,
-          "n_missing_label": 0,
-          "n_positive": 22,
-          "n_rows": 148,
-          "undefined_reason": null
-        },
-        "primary": 0.37122571638534896,
-        "primary_endpoint": "primary",
-        "primary_metric": "ap",
-        "receipts": {
-          "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/compact_repair_v1/ai_researcher/ptpc_neural/seed42/heldout/audit.json": "23c934cd90cfcfec3961cff07119bf67300dfc63fed4c62b9242b7ad2c6802fb",
-          "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/compact_repair_v1/ai_researcher/ptpc_neural/seed42/heldout/results.json": "6ebd6c519b11eb31d7982d0d52ca960d6b6674758c0211461b31364ac0fb1cf8",
-          "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/compact_repair_v1/ai_researcher/ptpc_neural/seed42/heldout/seal.json": "84f0b8d2cdc8b886a9f41bc935e0e90c3431e1f842f0b92d0bb16891b9ce537c",
-          "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/compact_repair_v1/ai_researcher/ptpc_neural/seed42/heldout/verification.json": "3fa86a81691633bc3b4b129d3fdc0d7649728676c7740b549c90818585a1a918"
-        },
-        "reference_seal": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/heldout_ptpc_neural/seed42/seal.json",
-        "runtime": {
-          "cuda_visible_devices": null,
-          "executable": "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/.venv/bin/python",
-          "gpu_ids": [
-            0
-          ],
-          "packages": {
-            "numpy": "1.26.4",
-            "pandas": "2.2.3",
-            "torch": "2.6.0",
-            "transformers": "4.57.0"
-          },
-          "platform": "Linux-3.10.0-1160.el7.x86_64-x86_64-with-glibc2.35",
-          "python": "3.10.20 (main, Mar 11 2026, 17:46:40) [GCC 14.3.0]"
-        },
-        "source_sha256": {
-          "/liziqing/yukai/AI4AI4Cell/extensions/core_ablation_20260922/common.py": "40249241050a5adf55d0aebe7441411c2802c98f22de90647993c69037240298",
-          "/liziqing/yukai/AI4AI4Cell/extensions/federated_bio_20260918/engine.py": "63fcc6de12bfedd4b846591de1fabd77c84919f471c10da827805fdc3f353430",
-          "/liziqing/yukai/AI4AI4Cell/extensions/federated_bio_20260918/scdebart.py": "25a93300ae0521154dc339c077d19ea6b6a3215eff3da9bf1a86b9b97990d5c1",
-          "/liziqing/yukai/AI4AI4Cell/extensions/proteomics/ptpc_model.py": "1ab5e577076513af2e34c4f78fe5c02b5bf363fea2b945d31e8f640f37ece739",
-          "/liziqing/yukai/AI4AI4Cell/extensions/proteomics/scoring.py": "f5e8e19f7b4265a0c305c3c26ac2875c4db3a29655aae47e1e3beb02a0d80296",
-          "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/airesearcher_adapter.py": "1fdd8fe59a83423d03f72224afdd6d64f2efbcbc54b6fe343546eb432702baf9",
-          "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/airesearcher_compact.py": "ee525155a0fd66bf0277a8008852807c18ef12d2e77295a4a6d1a0d219027392",
-          "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/broker.py": "7edf9244940314fb3eb00bbdbaa536b6e107fbd098b286c49aceaa23dfd2f31c",
-          "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/qwen_backend.py": "f02201f048b92fe1fd3b9ae9b59ac7961d0512459f770b83fc8e789c51c8f086",
-          "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/run_airesearcher_compact.py": "8a319756c49d1359d58e4b6aa27150e62850cf336cb167a1f785783a44dbc741",
-          "/liziqing/yukai/AI4AI4Cell/extensions/public_harness_20260924/runtime_worker.py": "62fd597322e7cdbeb54ab41be8e408955864618e8f95515c444c01a5b640a40f",
-          "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/adapters.py": "af63c8d49990d862ec7e0955eb65366f03e60ad31a2f108c2d9a50302a184e92",
-          "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/core.py": "d358e491d07f11e27607f96d7243e844fdb9152a1c4954effbd77893b6a3370a",
-          "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/core_v3.py": "ef53be48dfe17967e7d2faa20a200bc4c6e286ad21ef5406a694d07e26b663ae",
-          "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/native_run.py": "b878d3db04d69f96d0da5c50a3e7b029dc03e9b40c16c3e7fdece362ba58c418",
-          "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/ptpc_neural_adapter.py": "8032c6d2b68663029d1b53c41bc07b8249a2c43dd132af6af356707d5bd9ee98",
-          "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/research_v2.py": "ea0894213b6db722ad37f5541e11755dc2a351c80cf94c1906756f3d96d73184",
-          "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/run_native_tapb.py": "84ca0fa06f1b0c47f52f106ef2549c0051ee34a0e965f23ccb47bae7c136792c",
-          "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/run_ptpc_neural.py": "0e44b85caa482f9e484227d99d9d58d4d0cf6df7dc38549ce5b792d22fc9ad17",
-          "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/run_v3.py": "1abce301e0971c3778f279ee0a237104f0d5e4081d2e24657be23389714726d9",
-          "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/tapb_native_adapter.py": "b61de10248c1c066be8363413885c111561417555000632fcb0f25e465a8ccb2",
-          "/liziqing/yukai/AI4AI4Cell/runtime/experiments/drugevolve_transfer/scoring.py": "2ec1689fecea7c12bdfd3b84a235883a43abaa5d1668da94bd0cfa252dc81216"
-        },
-        "upstream_commit": "f9a6f8480860c193afff600eeffe3defcee8a978",
-        "upstream_repo": "/liziqing/yukai/AI4AI4Cell/references/public_harness_20260924/AI-Researcher"
-      },
-      "status": "Scored"
+      "primary": null,
+      "status": "Pending"
     },
     "tahoe_drug_corrected": {
       "biocoloop_seed42": 0.23880597014925373,

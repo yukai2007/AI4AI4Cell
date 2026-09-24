@@ -1,7 +1,7 @@
 {
   "schema": "public-harness-comparison-v1",
   "artifact_role": "verified-comparison-branch-draft",
-  "created_utc": "2026-09-24T13:48:28.351491+00:00",
+  "created_utc": "2026-09-24T14:04:43.061356+00:00",
   "role": "retrospective held-out; prior historical exposure; not blind confirmation",
   "seeds_requested": [
     42,
@@ -2325,9 +2325,9 @@
     "manifest_path": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v6/queue_manifest.json",
     "manifest_sha256": "99f39919b5cb9472bfbf98d93e0871411ee853833aadcc4e9562382d239cbbf2",
     "supervisor_path": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260924/formal_v6/supervisor_status.json",
-    "supervisor_sha256": "a591e7ef1f39d8fcc7a06a0270f609d5932f25982430936e985e16d130f0c4c4",
+    "supervisor_sha256": "18c56cc16af74a082c0f3302c2d91ce6f7767c29ce9bc08081f8ab37f352cd13",
     "supervisor_status": "RUNNING",
-    "supervisor_updated_unix": 1790257704.3909125,
+    "supervisor_updated_unix": 1790258682.34176,
     "failure_receipts": [
       {
         "accounting": {
