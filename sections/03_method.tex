@@ -1,80 +1,81 @@
 \section*{3. Method: collaborative biological model improvement}
-\subsection*{3.1 Problem and research setting}
-
-Consider $K$ laboratories working on a common biological prediction task.
-Laboratory $i$ holds local training data $D_i^{\mathrm{train}}$ and, when specified by the evaluation protocol, a development panel $D_i^{\mathrm{dev}}$.
-A task specification $\mathcal T$ defines the prediction inputs, outputs, training objective, and evaluation metric.
-We denote a task model by $f_{a,w}$, where $a\in\mathcal A$ specifies its model and training design and $w$ denotes its trainable parameters.
-
-Conventional collaborative learning assumes that $a$ is fixed and uses distributed data to optimize $w$.
-BioCoLoop instead treats model development itself as part of the collaborative process.
-Given a design space $\mathcal A$ and a research budget, laboratories jointly provide two signals for each candidate design: local model updates for parameter fitting and local evaluation outcomes for model-development decisions.
-The raw data remain within each laboratory.
-
-BioCoLoop organizes these signals into an inner collaborative fitting-and-evaluation process and an outer research loop (Figure~\ref{fig:research-interface}).
-For a proposed design, the laboratories fit and evaluate the corresponding model locally, while the coordinator aggregates model states and development evidence.
-The resulting evidence is accumulated in a research history and reused to decide what design to investigate next and which candidates warrant further training.
-We instantiate these two roles through history-guided proposal revision (Section~3.3) and trajectory-guided training allocation (Section~3.4).
-
-
 % \subsection*{3.1 Problem and research setting}
-% Consider $K$ laboratories working on the same biological prediction task. Laboratory $i$ holds training data $D_i^{\mathrm{train}}$, with $n_i=|D_i^{\mathrm{train}}|$. Evaluation uses laboratory-local development panels $\{D_i^{\mathrm{dev}}\}_{i\in\mathcal E}$, where $\mathcal E$ indexes the panels specified by the evaluation protocol. A task specification $\mathcal T$ defines the prediction inputs, outputs, training loss and evaluation metric. We write the task predictor as $f_{a,w}$, where $a\in\mathcal A$ specifies its design and $w$ its trainable parameters. Given an initial design, a design library $\mathcal A$ and a research budget, BioCoLoop seeks a design and fitted predictor that perform well on the designated evaluation population. The three task families instantiate $f_{a,w}$ as task-specific predictors within this shared research procedure.
 
-% Our design library varies four choices: learning rate, weight decay, coordinator momentum and an optional residual prediction module. A \texttt{design\_id} names one configuration of these choices. The harness coordinates candidate selection, local fitting, evaluation and the return of evidence to the research controller (Figure~\ref{fig:research-interface}). We use the common fitting interface to study two policies: history-guided proposal revision (Section 3.3) and trajectory-guided training allocation (Section 3.4). Raw measurements stay at each laboratory; model states support parameter fitting, while aggregate development measurements support research decisions. The experiments simulate separate laboratories on one host.
+% Consider $K$ laboratories working on a common biological prediction task.
+% Laboratory $i$ holds local training data $D_i^{\mathrm{train}}$ and, when specified by the evaluation protocol, a development panel $D_i^{\mathrm{dev}}$.
+% A task specification $\mathcal T$ defines the prediction inputs, outputs, training objective, and evaluation metric, while $\mathcal A$ denotes the space of candidate model and training designs.
 
-% \begin{figure}[t]
-% \centering
-% \includegraphics[width=\linewidth]{figures/biocoloop_framework_v2.pdf}
-% \caption{Data flow in BioCoLoop. The outer research loop proposes a model design and receives aggregate development evidence after its evaluation. The inner training process distributes model parameters to $K$ laboratories, fits them locally and aggregates the returned updates. The next proposal uses the accumulated research history. Task adapters implement drug--target interaction prediction, observed-response proteomic efficacy prediction and cell perturbation identification.}
-% \label{fig:research-interface}
-% \end{figure}
-
-% \subsection*{3.2 Local fitting and shared evaluation}
-% For each candidate $a$, the coordinator resets the predictor to its prescribed initialization $w_0$ and distributes it to all training laboratories. Let $\operatorname{LocalEpoch}_a$ denote one full local AdamW epoch with the candidate's learning rate and weight decay, batch size 64 and gradient-norm clipping at one. The optimizer state resets at each round. With sample weights $\pi_i=n_i/\sum_{j=1}^{K}n_j$, coordinator momentum coefficient $\beta_a$ and initial velocity $v_0=0$, round $r$ updates the trainable parameters by
+% Given a research budget $B$, BioCoLoop maps the distributed task specification to a selected design, its fitted parameters, and the accumulated research history:
 % \begin{equation}
-% \begin{aligned}
-% u_{i,r}&=\operatorname{LocalEpoch}_a(w_{r-1};D_i^{\mathrm{train}}),
-% &\bar w_r&=\sum_{i=1}^{K}\pi_i u_{i,r},\\
-% v_r&=\beta_a v_{r-1}+\bar w_r-w_{r-1},
-% &w_r&=w_{r-1}+v_r.
-% \end{aligned}
-% \label{eq:local-fitting}
+% (\widehat a,\widehat w,H)
+% =
+% \operatorname{BioCoLoop}
+% \left(
+% \mathcal T,\mathcal A,B;
+% \{D_i^{\mathrm{train}},D_i^{\mathrm{dev}}\}_{i=1}^{K}
+% \right),
+% \label{eq:problem}
 % \end{equation}
-% The coordinator carries momentum across aggregation rounds through $v_r$; $\beta_a=0$ gives sample-weighted parameter averaging \citep{McMahan2017}. Frozen feature extractors remain unchanged. Task adapters supply the biological inputs, trainable prediction components and local loss.
+% where the raw data $D_i^{\mathrm{train}}$ and $D_i^{\mathrm{dev}}$ remain local to laboratory $i$ throughout the process.
 
-% Every five rounds and at the final round, the laboratories evaluate the aggregated predictor $f_{a,w_r}$ on the development panels indexed by $\mathcal E$. In the main comparison these are the participating laboratories' panels; fixed-pool repartitioning retains all ten original panels, and source-transfer studies use the original target panels. Define $s_i(a,r)$ and $\ell_i^{\mathrm{dev}}(a,r)$ as the primary score and loss on panel $i$. The coordinator computes
-% \begin{equation}
-% S(a,r)=\frac{1}{|\mathcal E|}\sum_{i\in\mathcal E}s_i(a,r),
-% \qquad
-% L(a,r)=\frac{1}{|\mathcal E|}\sum_{i\in\mathcal E}\ell_i^{\mathrm{dev}}(a,r).
-% \label{eq:shared-evaluation}
-% \end{equation}
-% The selected round $\widehat r_a$ maximizes $S(a,r)$, with lower $L(a,r)$ breaking ties and the earlier round retained on a complete tie. Its parameters are $\widehat w_a=w_{\widehat r_a}$; the pair $q(a)=(S(a,\widehat r_a),-L(a,\widehat r_a))$ ranks the design. Training therefore weights examples, whereas selection weights the designated development panels equally. The main proposal-search experiments assign each candidate 100 training rounds; training duration is specified by the evaluation schedule, not by \texttt{design\_id}.
+\subsection*{3.1 Problem and research setting}
+Consider $K$ laboratories working on the same biological prediction task. Laboratory $i$ holds training data $D_i^{\mathrm{train}}$, with $n_i=|D_i^{\mathrm{train}}|$. Evaluation uses laboratory-local development panels $\{D_i^{\mathrm{dev}}\}_{i\in\mathcal E}$, where $\mathcal E$ indexes the panels specified by the evaluation protocol. A task specification $\mathcal T$ defines the prediction inputs, outputs, training loss and evaluation metric. We write the task predictor as $f_{a,w}$, where $a\in\mathcal A$ specifies its design and $w$ its trainable parameters. Given an initial design, a design library $\mathcal A$ and a research budget, BioCoLoop seeks a design and fitted predictor that perform well on the designated evaluation population. The three task families instantiate $f_{a,w}$ as task-specific predictors within this shared research procedure.
 
-% For auxiliary-source studies with different prediction targets, shared encoders follow the same update rule, while each source-specific head is aggregated only over laboratories using that prediction target. Checkpoint selection then uses the original target's development panels. This allows auxiliary measurements to improve the shared representation while preserving each source's prediction objective.
+Our design library varies four choices: learning rate, weight decay, coordinator momentum and an optional residual prediction module. A \texttt{design\_id} names one configuration of these choices. The harness coordinates candidate selection, local fitting, evaluation and the return of evidence to the research controller (Figure~\ref{fig:research-interface}). We use the common fitting interface to study two policies: history-guided proposal revision (Section 3.3) and trajectory-guided training allocation (Section 3.4). Raw measurements stay at each laboratory; model states support parameter fitting, while aggregate development measurements support research decisions. The experiments simulate separate laboratories on one host.
 
-% \subsection*{3.3 Proposal revision from research history}
-% The first proposal is generated once without development feedback and shared by direct and loop search. History feedback begins with the second proposal. For subsequent research steps $t$, let $a_t$ be the retained design, $H_t$ the ordered history of previous trials and $\mathcal U_t$ the untried configurations. The controller, with fixed language-model weights $\theta$, generates a proposal $p_t$ and the coordinator maps its \texttt{design\_id}, denoted $\operatorname{id}(p_t)$, to the candidate:
-% \begin{equation}
-% p_t\sim P_\theta(\,\cdot\mid\mathcal T,a_t,H_t,\mathcal U_t),
-% \qquad
-% \widetilde a_t=\operatorname{Compile}(\operatorname{id}(p_t)).
-% \label{eq:proposal}
-% \end{equation}
-% The proposal also contains a \texttt{hypothesis}, an \texttt{experiment} and an \texttt{expected\_effect}: these describe the motivation, intended comparison and anticipated outcome. They provide an interpretable account of the proposed experiment. The identifier determines the executed configuration, and measured development performance determines selection.
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/biocoloop_framework_v2.pdf}
+\caption{Data flow in BioCoLoop. The outer research loop proposes a model design and receives aggregate development evidence after its evaluation. The inner training process distributes model parameters to $K$ laboratories, fits them locally and aggregates the returned updates. The next proposal uses the accumulated research history. Task adapters implement drug--target interaction prediction, observed-response proteomic efficacy prediction and cell perturbation identification.}
+\label{fig:research-interface}
+\end{figure}
 
-% After training $\widetilde a_t$, the coordinator creates an \emph{evidence card} $e_t$: its executed configuration and hypothesis, selected score and loss, selected round, first/last training and development diagnostics, and acceptance decision. Using lexicographic comparison of $q$---higher score, then lower loss---the research state becomes
-% \begin{equation}
-% a_{t+1}=\begin{cases}
-% \widetilde a_t,&q(\widetilde a_t)>_{\mathrm{lex}}q(a_t),\\
-% a_t,&\text{otherwise},
-% \end{cases}
-% \qquad H_{t+1}=H_t\mathbin{\|}[e_t],
-% \label{eq:research-update}
-% \end{equation}
-% where $\|$ appends a card to the history. Unsuccessful trials remain in that history; invalid proposals and numerically failed fits consume a proposal slot and leave the incumbent unchanged. Subsequent proposals therefore respond to measured outcomes through updated context, without fine-tuning the research language model. After the proposal budget is exhausted, the retained design and its selected checkpoint are evaluated on the held-out task.
+\subsection*{3.2 Local fitting and shared evaluation}
+For each candidate $a$, the coordinator resets the predictor to its prescribed initialization $w_0$ and distributes it to all training laboratories. Let $\operatorname{LocalEpoch}_a$ denote one full local AdamW epoch with the candidate's learning rate and weight decay, batch size 64 and gradient-norm clipping at one. The optimizer state resets at each round. With sample weights $\pi_i=n_i/\sum_{j=1}^{K}n_j$, coordinator momentum coefficient $\beta_a$ and initial velocity $v_0=0$, round $r$ updates the trainable parameters by
+\begin{equation}
+\begin{aligned}
+u_{i,r}&=\operatorname{LocalEpoch}_a(w_{r-1};D_i^{\mathrm{train}}),
+&\bar w_r&=\sum_{i=1}^{K}\pi_i u_{i,r},\\
+v_r&=\beta_a v_{r-1}+\bar w_r-w_{r-1},
+&w_r&=w_{r-1}+v_r.
+\end{aligned}
+\label{eq:local-fitting}
+\end{equation}
+The coordinator carries momentum across aggregation rounds through $v_r$; $\beta_a=0$ gives sample-weighted parameter averaging \citep{McMahan2017}. Frozen feature extractors remain unchanged. Task adapters supply the biological inputs, trainable prediction components and local loss.
 
-% \subsection*{3.4 Trajectory-guided training allocation}
-% We use trajectory-guided allocation in a controlled study (Section 4.4) to test whether early evaluation evidence improves the use of a fixed training budget. The screening--promotion policy retains both high-scoring and still-improving candidates. It screens ten predetermined designs for 20 rounds, evaluating every five rounds through Equation~\ref{eq:shared-evaluation}. Within each of three learning-rate groups, it promotes the best-scoring design and, among the remaining designs, the one with the largest score improvement from round 5 to round 20. Development loss breaks score ties. The six promoted designs restart from their initial parameters for 100-round training; their best development checkpoints determine the final predictor.
+Every five rounds and at the final round, the laboratories evaluate the aggregated predictor $f_{a,w_r}$ on the development panels indexed by $\mathcal E$. In the main comparison these are the participating laboratories' panels; fixed-pool repartitioning retains all ten original panels, and source-transfer studies use the original target panels. Define $s_i(a,r)$ and $\ell_i^{\mathrm{dev}}(a,r)$ as the primary score and loss on panel $i$. The coordinator computes
+\begin{equation}
+S(a,r)=\frac{1}{|\mathcal E|}\sum_{i\in\mathcal E}s_i(a,r),
+\qquad
+L(a,r)=\frac{1}{|\mathcal E|}\sum_{i\in\mathcal E}\ell_i^{\mathrm{dev}}(a,r).
+\label{eq:shared-evaluation}
+\end{equation}
+The selected round $\widehat r_a$ maximizes $S(a,r)$, with lower $L(a,r)$ breaking ties and the earlier round retained on a complete tie. Its parameters are $\widehat w_a=w_{\widehat r_a}$; the pair $q(a)=(S(a,\widehat r_a),-L(a,\widehat r_a))$ ranks the design. Training therefore weights examples, whereas selection weights the designated development panels equally. The main proposal-search experiments assign each candidate 100 training rounds; training duration is specified by the evaluation schedule, not by \texttt{design\_id}.
 
-% The control trains all ten designs for 80 rounds. Both schedules use 800 aggregation rounds and 160 aggregate development evaluations; the scheduler does not generate language-model proposals. This separate allocation study improves Norman Top-1 by 10.84 percentage points on average (Section 4.4). The main comparison and proposal-history experiments use 100 training rounds per candidate to compare design selection at a fixed training duration; they do not use the allocation policy. Appendix A collects the complete proposal schema, algorithm and allocation rules.
+For auxiliary-source studies with different prediction targets, shared encoders follow the same update rule, while each source-specific head is aggregated only over laboratories using that prediction target. Checkpoint selection then uses the original target's development panels. This allows auxiliary measurements to improve the shared representation while preserving each source's prediction objective.
+
+\subsection*{3.3 Proposal revision from research history}
+The first proposal is generated once without development feedback and shared by direct and loop search. History feedback begins with the second proposal. For subsequent research steps $t$, let $a_t$ be the retained design, $H_t$ the ordered history of previous trials and $\mathcal U_t$ the untried configurations. The controller, with fixed language-model weights $\theta$, generates a proposal $p_t$ and the coordinator maps its \texttt{design\_id}, denoted $\operatorname{id}(p_t)$, to the candidate:
+\begin{equation}
+p_t\sim P_\theta(\,\cdot\mid\mathcal T,a_t,H_t,\mathcal U_t),
+\qquad
+\widetilde a_t=\operatorname{Compile}(\operatorname{id}(p_t)).
+\label{eq:proposal}
+\end{equation}
+The proposal also contains a \texttt{hypothesis}, an \texttt{experiment} and an \texttt{expected\_effect}: these describe the motivation, intended comparison and anticipated outcome. They provide an interpretable account of the proposed experiment. The identifier determines the executed configuration, and measured development performance determines selection.
+
+After training $\widetilde a_t$, the coordinator creates an \emph{evidence card} $e_t$: its executed configuration and hypothesis, selected score and loss, selected round, first/last training and development diagnostics, and acceptance decision. Using lexicographic comparison of $q$---higher score, then lower loss---the research state becomes
+\begin{equation}
+a_{t+1}=\begin{cases}
+\widetilde a_t,&q(\widetilde a_t)>_{\mathrm{lex}}q(a_t),\\
+a_t,&\text{otherwise},
+\end{cases}
+\qquad H_{t+1}=H_t\mathbin{\|}[e_t],
+\label{eq:research-update}
+\end{equation}
+where $\|$ appends a card to the history. Unsuccessful trials remain in that history; invalid proposals and numerically failed fits consume a proposal slot and leave the incumbent unchanged. Subsequent proposals therefore respond to measured outcomes through updated context, without fine-tuning the research language model. After the proposal budget is exhausted, the retained design and its selected checkpoint are evaluated on the held-out task.
+
+\subsection*{3.4 Trajectory-guided training allocation}
+We use trajectory-guided allocation in a controlled study (Section 4.4) to test whether early evaluation evidence improves the use of a fixed training budget. The screening--promotion policy retains both high-scoring and still-improving candidates. It screens ten predetermined designs for 20 rounds, evaluating every five rounds through Equation~\ref{eq:shared-evaluation}. Within each of three learning-rate groups, it promotes the best-scoring design and, among the remaining designs, the one with the largest score improvement from round 5 to round 20. Development loss breaks score ties. The six promoted designs restart from their initial parameters for 100-round training; their best development checkpoints determine the final predictor.
+
+The control trains all ten designs for 80 rounds. Both schedules use 800 aggregation rounds and 160 aggregate development evaluations; the scheduler does not generate language-model proposals. This separate allocation study improves Norman Top-1 by 10.84 percentage points on average (Section 4.4). The main comparison and proposal-history experiments use 100 training rounds per candidate to compare design selection at a fixed training duration; they do not use the allocation policy. Appendix A collects the complete proposal schema, algorithm and allocation rules.
