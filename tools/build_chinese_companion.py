@@ -20,7 +20,7 @@ from fontTools import subset
 from fontTools.ttLib import TTFont as SourceFont
 from fontTools.varLib.instancer import instantiateVariableFont
 from reportlab.platypus import (
-    BaseDocTemplate, Frame, Image, PageBreak, PageTemplate, Paragraph,
+    BaseDocTemplate, Frame, Image, KeepTogether, PageBreak, PageTemplate, Paragraph,
     Spacer, Table, TableStyle,
 )
 
@@ -621,6 +621,104 @@ def sensitivity_pages(data, core, supplement, scenario, strict_protein):
           p('既有消融与英文附录 B 共享 completed_ablation 出版快照；第三蛋白来源使用独立复核 receipt。各协议分别报告，主表不把不同含义的指标合成 Overall。', 'note'), PageBreak()]
     return s
 
+GROUPED_HARNESS_SNAPSHOT = ROOT / 'tables/public_harness_comparison/snapshot_llm_grouped_three_seed.json'
+GROUPED_TASKS = (('native_tapb', 'DTI AUROC'), ('ptpc_neural', 'PTPC AP'),
+                 ('vcc_corrected', 'VCC Top-1'), ('norman_double_corrected', 'Norman Top-1'),
+                 ('tahoe_drug_corrected', 'Tahoe Top-1'))
+GROUPED_METHODS = (('single_fixed', '固定配方（1 lab）'), ('single_direct', 'direct（1 lab）'),
+                   ('ai_scientist_v2', 'AI-Scientist-v2（1 lab）'),
+                   ('ai_researcher', 'AI-Researcher（1 lab）'),
+                   ('federated_loop', '<b>BioCoLoop</b>（10 labs）'))
+GROUPED_MODELS = (('qwen', 'Qwen2.5-7B-Instruct'), ('luna', 'GPT-5.6 Luna（low reasoning）'))
+GROUPED_TOKENS = (('ctx', 'F_ctx'), ('svc', 'F_svc'), ('tool', 'F_tool'), ('pipe', 'F_pipe'))
+
+
+def grouped_token_label(token):
+    for key, label in GROUPED_TOKENS:
+        if key in token:
+            return label
+    return token
+
+
+def grouped_cell(record):
+    """Render one controller cell without imputing an unsealed selection."""
+    if not record.get('complete'):
+        tokens = '、'.join(grouped_token_label(tok) for tok in record.get('failure_tokens', []))
+        count = f"（{record.get('completed', 0)}/{record.get('attempted', 0)}）"
+        if not record.get('completed'):
+            return (tokens or 'F') + ' ' + count
+        value = f"{100*record['mean']:.2f}"
+        if record.get('sd') is not None:
+            value += f" ± {100*record['sd']:.2f}"
+        if tokens:
+            value += f"，{tokens}"
+        return value + ' ' + count
+    return f"{100*record['mean']:.2f} ± {100*record['sd']:.2f}"
+
+
+def grouped_harness_page():
+    """Grouped Qwen2.5/GPT-5.6 Luna public-controller comparison from the frozen snapshot."""
+    snapshot = json.loads(GROUPED_HARNESS_SNAPSHOT.read_text())
+    protocol = snapshot['protocol']
+    flow = [
+        p("5（续）公开 harness 基线：Qwen2.5 与 GPT-5.6 Luna 双模型对照", "h1"),
+        p(f"英文 4.3 节的主表把两个公开科研框架的任务适配版本纳入同一协议，使用 seeds "
+          f"{'–'.join(map(str, protocol['seeds']))}。AI-Scientist-v2 与 AI-Researcher 保留各自的原生科研控制流程"
+          "（实验管理、树搜索与评审，以及 idea 选择、规划、实现与迭代分析），但接入与 BioCoLoop 相同的"
+          f"生物拟合和留出评分服务。两个公开框架只访问实验室 {protocol['public_controller_laboratories']}，"
+          f"BioCoLoop 使用十个实验室；同一模型块内的所有行共享 {protocol['designs']} 设计库、至多 "
+          f"{protocol['candidate_cap']} 个候选提案、每个有效候选 {protocol['candidate_rounds']} 轮训练和同一个"
+          "留出评分器。", "body"),
+    ]
+    for model, label in GROUPED_MODELS:
+        rows = [['方法'] + [name for _, name in GROUPED_TASKS]]
+        ranking = {}
+        for task, _ in GROUPED_TASKS:
+            complete = sorted({round(100 * snapshot['models'][model][task][method]['mean'], 2)
+                               for method, _ in GROUPED_METHODS
+                               if snapshot['models'][model][task][method].get('complete')},
+                              reverse=True)
+            ranking[task] = complete
+        for method, method_label in GROUPED_METHODS:
+            row = [method_label]
+            for task, _ in GROUPED_TASKS:
+                record = snapshot['models'][model][task][method]
+                shown = grouped_cell(record)
+                if record.get('complete'):
+                    rounded = round(100 * record['mean'], 2)
+                    if rounded == ranking[task][0]:
+                        shown = f"<b>{shown}</b>"
+                    elif len(ranking[task]) > 1 and rounded == ranking[task][1]:
+                        shown = f"<u>{shown}</u>"
+                row.append(shown)
+            rows.append(row)
+        flow += [p(f"{label} 块", "h2"),
+                 table(rows, [45*mm, 25.2*mm, 25.2*mm, 25.2*mm, 25.2*mm, 25.2*mm],
+                       font="tiny", highlights=[(5, PALE_TEAL)]), Spacer(1, 4*mm)]
+    flow += [
+        PageBreak(),
+        bullets([
+            "分数为 seeds 42–44 的均值 ± 样本标准差，乘以 100；加粗与下划线表示该模型块内该端点的最优与"
+            "次优完整结果。Norman 的最高分仍属于单实验室固定配方（25.56），BioCoLoop 在其余四个端点领先。",
+            "公开控制器在封存开发选择前终止的单元格保留类型化失败标记与完成计数 (n/3)，不以均值填补："
+            "F_ctx 为声明的上下文上限终止，F_svc 为 Luna 服务/传输终止，F_tool 为原生工具传输终止，"
+            "F_pipe 为原生流程终止。",
+            "Qwen 使用已登记的生成种子；Luna 服务不暴露生成种子，因此 seed 标签只标识训练/搜索重复，"
+            "相同提案与候选训练预算不代表相同的语言模型开销。",
+            "每个计分单元格在开发选择封存后由独立复核器重新载入保存的预测、重算指标并核对所选取的"
+            "检查点与产物哈希；DTI 重算与存储指标的差不超过 1e-15。",
+            "控制器适配、transport 修订与逐运行 receipt 见英文 Appendix C；失败是执行结果，不用于事后"
+            "修改控制器或替换分数。",
+        ]), Spacer(1, 4*mm),
+        KeepTogether(callout("公开基线对照的结论",
+                "在两个研究模型块中，BioCoLoop 都在五个主要端点中的四个取得最优；唯一例外是 Norman，"
+                "其最高分由单实验室固定配方保持。公开框架受实验室 0 访问限制，且 AI-Researcher 在 Luna 块"
+                "触及上下文上限而未能完成任何端点（0/3）。该表因此把研究模型身份、数据访问、控制器身份与"
+                "执行覆盖放在同一张主表内，而不是把未完成的运行换算成分数。",
+                PALE_TEAL, TEAL))]
+    return flow
+
+
 def annotation_page():
     return [p('12  第二轮师姐批注如何落实', 'h1'),
             p('第二版批注 PDF 共 27 个标记，其中 25 条有文字意见；两个空文字高亮保留为定位锚点。以下按阅读问题归并，逐项原文与处理说明保留在第二轮批注目录。', 'body'),
@@ -772,6 +870,8 @@ def story():
                   PALE_TEAL, TEAL), Spacer(1, 4*mm),
           p("六臂对照进一步定位收益：保持有历史提案策略，从一个实验室扩展到十个实验室后，五个端点均提高。同为十个实验室时，direct 与有历史提案选中相同检查点；单实验室 VCC 则不同。十实验室固定配方在蛋白与 Tahoe 的均值更高，完整对照保留于英文附录 A。", "small"), PageBreak()]
 
+    s += grouped_harness_page()
+
     s += [p("6  证据如何改进训练预算分配", "h1"),
           p("早期学习轨迹能够指导后续训练投入。本页报告英文第 3.4 节策略的独立对照：固定十个设计，检验证据驱动训练分配是否在相同预算下优于均匀分配。该策略未用于主表；主表各候选均训练 100 轮，LLM 提案历史另行检验下一次尝试什么设计。", "body"),
           table([["端点", "均匀分配", "证据分配", "增益", "胜/平/负"],
@@ -795,13 +895,14 @@ def story():
     s += annotation_page()
     s += [p("13  当前论文如何阅读", "h1"),
           table([["部分", "核心内容"],
-                 ["Abstract / Introduction", "提出协作式生物研究问题，以协作访问与证据驱动研究决策组织贡献。"],
+                 ["Abstract / Introduction", "提出协作式生物研究问题，以协作访问与证据驱动研究决策组织贡献；并点名公开 harness 基线与匹配的 Qwen2.5/GPT-5.6 Luna 对照。"],
                  ["Related Work", "把 AIDE、AI Scientist、DrugEvolve、协作训练、FedEx、Helmsman 放入统一坐标。"],
                  ["Method", "定义实验室、设计和参数；给出拟合/聚合、开发选择、3.3 提案历史更新与 3.4 训练分配规则。"],
-                 ["Experiments", "4.1–4.2 任务和协议；4.3 主结果；4.4 训练分配；4.5 来源；4.6 实验室数；4.7 提案轨迹。"],
+                 ["Experiments", "4.1–4.2 任务和协议；4.3 公开 harness 基线与 Qwen2.5/GPT-5.6 Luna 双模型主表；4.4 训练分配；4.5 来源；4.6 实验室数；4.7 提案轨迹。"],
                  ["Conclusion", "从既有模型出发，总结更多数据、固定数据量下方案搜索及独立训练分配的实际收益。"],
                  ["Appendix A", "设计菜单、proposal JSON、优化设置、六配置结果、次指标与统计方法。"],
                  ["Appendix B", "K、独立来源、双后端短/长预算、全部前缀曲线；用索引规则紧凑定义全部设计。"],
+                 ["Appendix C", "公开框架的适配方式、统一任务接口、类型化失败与独立复核记录。"],
                  ["Statistical Supplement", "全部逐 seed 差值与置信区间，正、零、负结果均保留；与论文一并提交。"]],
                 [43*mm, 128*mm]), Spacer(1, 6*mm),
           callout("目前最强的论文信息",
@@ -816,6 +917,7 @@ def main():
     OUT.parent.mkdir(parents=True, exist_ok=True)
     bound_snapshot = ROOT / 'tables/completed_ablation/snapshot.json'
     before_sha = hashlib.sha256(bound_snapshot.read_bytes()).hexdigest()
+    grouped_before_sha = hashlib.sha256(GROUPED_HARNESS_SNAPSHOT.read_bytes()).hexdigest()
     _, supplement_before_sha = proteomics_supplement()
     _, scenario_before_sha = scenario_review()
     _, strict_protein_before_sha = strict_proteomics_review()
@@ -829,9 +931,13 @@ def main():
     assert scenario_sha == scenario_before_sha, 'Scenario supplemental receipt changed during rendering'
     strict_protein, strict_protein_sha = strict_proteomics_review()
     assert strict_protein_sha == strict_protein_before_sha, 'Strict protein-source receipt changed during rendering'
+    assert (hashlib.sha256(GROUPED_HARNESS_SNAPSHOT.read_bytes()).hexdigest()
+            == grouped_before_sha), 'Grouped harness snapshot changed during rendering'
     inputs = [ROOT / 'tables/strong_v3/snapshot.json',
               ROOT / 'tables/core_review/snapshot.json',
               ROOT / 'tables/completed_ablation/snapshot.json',
+              GROUPED_HARNESS_SNAPSHOT,
+              ROOT / 'provenance/luna_main_core_20260925/independent_verification.json',
               ROOT.parent / 'results/tonight_completion_20260923/final_delivery/summary.json',
               ROOT.parent / 'results/proteomics_external_pilot_20260923/RESULT.zh-CN.md',
               ROOT / 'assets/paradigm_comparison.pdf',
@@ -898,6 +1004,8 @@ def main():
         'input_sha256': {str(path.relative_to(ROOT.parent)): hashlib.sha256(path.read_bytes()).hexdigest()
                          for path in inputs},
         'publication_snapshot_sha256': snapshot_sha,
+        'grouped_harness_snapshot_sha256': grouped_before_sha,
+        'grouped_harness_models': ['Qwen2.5-7B-Instruct', 'GPT-5.6 Luna (low reasoning)'],
         'supplemental_proteomics_receipt_sha256': supplement_sha,
         'scenario_laboratory_receipt_sha256': scenario_sha,
         'scenario_laboratory_status': scenario['status'],
