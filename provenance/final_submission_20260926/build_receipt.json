@@ -3,8 +3,8 @@
   "revision_id": "final_submission_20260926_overleaf_preserved",
   "revision_description": "Final manuscript after migrating the latest Overleaf abstract, introduction and method revision into the branch that carries the new public-harness and grouped Qwen2.5/GPT-5.6 Luna experiments. The Overleaf prose is retained; the only Revisions are a clause in the abstract and introduction that names the newer matched baselines, the restored contribution sentence, and the user-requested method clarifications. Float separation was tightened so the main text still ends on page 9.",
   "branding_migration_record_sha256": "766b7c77c628113918a811cabd0b0eaf462f24e45035329955308e15ddaa4bf2",
-  "built_utc": "2026-09-25T18:55:12.799725+00:00",
-  "manuscript_sha256": "fa3565da381a390eba845909ed1b3282313b31db92d2cbd7a5bd0ea87658b5dd",
+  "built_utc": "2026-09-25T19:23:55.070529+00:00",
+  "manuscript_sha256": "01e06c67783a438f548549ec693202a6859d5a5b11c9e2bae126552a8dd45038",
   "total_pages": 31,
   "main_text_ends_page": 9,
   "statements_start_page": 10,
@@ -30,7 +30,7 @@
     "references_v2.bib": "d5a1065f61ec804bdde0b9d5e412d838a832f5615c20b60962626e17af61bf9a",
     "sections/01_introduction.tex": "935728fee4e66866d0793d1223681123522960c105a7395183802aa794162b57",
     "sections/02_related_work.tex": "bb4e9034027ad6988bf450f85c17f926afb4271f25b9d71f267216a812029131",
-    "sections/03_method.tex": "6abb55e8ba249654b9e79b91711b16b5238db6a6226c86d6d311a0df852cb46c",
+    "sections/03_method.tex": "27f4c76114953931c07141232600a0667f7f63c71ea44f927993fc746bfb72fd",
     "sections/04_experimental_design.tex": "4ed10e11ac8880bcbbd4d385052109078d5a3149e91164352f20c72b1817749e",
     "sections/05_results.tex": "455160ed0b68e9550b40ef955c35fb7650176aa30c51348d5a2952cb5e479754",
     "sections/07_conclusion.tex": "96269ab2024306b6eb2cb269f0a1d3564c11f459c2f35ca730257d8ff3774bf9",
@@ -107,7 +107,7 @@
   },
   "statistical_supplement": {
     "path": "output/pdf/BioCoLoop_statistical_supplement.pdf",
-    "sha256": "2aceeaea40a333e9b32a87636bd6d5f0d81ff50c4cf560ce5bc2701e48e9aa8e",
+    "sha256": "c1b6b3b965d1fcf899d5054b9d7b8583d665881cdc815fdc557b8a9cffcc4331",
     "pages": 5,
     "source_sha256": "8b67b34ec0a5bf89412c21a2d8a2bab019be4d3cad18c85e266b2cd42d2e9591",
     "tables_sha256": {
@@ -172,7 +172,7 @@
       "biocoloop-main.tex abstract"
     ],
     "additions": [
-      "one clause in the introduction and abstract naming the task-adapted AI-Scientist-v2/AI-Researcher and matched Qwen2.5/GPT-5.6 Luna comparisons",
+      "one clause in the introduction and abstract naming the task-adapted AI-Scientist-v2/AI-Researcher and matched Qwen2.5/GPT-5.6 Luna comparisons; the method captions and \"design_id\" sentence keep the Overleaf wording verbatim",
       "user-requested method clarifications (executable recipe, shared coordinator, evidence card, selection rule)",
       "grouped Qwen2.5/Luna and task-adapted public-controller results, main table and Appendix C"
     ],
