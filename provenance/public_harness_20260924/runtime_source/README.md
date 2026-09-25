@@ -10,7 +10,7 @@ comparison are unchanged. It is an explicitly **task-adapted** comparison.
 - `aiscientist_adapter.py` / `airesearcher_adapter.py`: native controller flow
   with recorded domain/transport adaptations; no generated Python is executed.
 - `qwen_backend.py`: local Qwen2.5-7B-Instruct generation, complete call receipts.
-- `broker.py` / `runtime_worker.py`: fresh D00, six charged proposal slots,
+- `broker.py` / `runtime_worker.py`: fresh D00, a six-proposal maximum,
   twelve registered designs, ten clients, 100 rounds per valid new design.
 - `run_baseline.py`: one controller/task/seed run; development only.
 - `heldout_public.py` / `verify_public.py`: separate frozen-checkpoint evaluation
@@ -21,7 +21,15 @@ comparison are unchanged. It is an explicitly **task-adapted** comparison.
 The shared native model backend uses the same sampling settings and 512-token
 per-call limit as the original main-table controller. Native workflows make
 different numbers of calls; these inference costs are reported separately.
-Exactly matched budgets here refer to proposal slots and candidate fitting.
+Matched budgets here refer to a common proposal cap and identical candidate
+fits. A native controller may stop early; `budget_cap_protocol_v4.py` seals and
+audits the requests it actually made without imputing an additional candidate.
+
+The final AI-Researcher path is `airesearcher_budget_cap_v4.py`, with
+`heldout_public_budget_cap_v4.py` and `verify_public_budget_cap_v4.py` retaining
+the original task scorers while validating one through six immutable proposal
+receipts. `prioritize_seed42_dti_v3.py` reserves the seven fitting GPUs for the
+final DTI run only after the active AI-Scientist DTI score is sealed.
 
 ## Environment
 

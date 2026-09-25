@@ -78,9 +78,9 @@ text('controller_label', 'Research language model: fixed weights', 6.77, 1.19, 4
 
 const cards = [
   { x: 0.50, title: 'Propose', body: 'Hypothesis +\ndesign identifier' },
-  { x: 3.26, title: 'Instantiate', body: 'Prediction head +\ntraining settings' },
-  { x: 6.02, title: 'Train + evaluate', body: 'Run candidate;\ncollect diagnostics' },
-  { x: 8.78, title: 'Retain / revise', body: 'Compare development;\nrecord trial outcome' },
+  { x: 3.26, title: 'Instantiate', body: 'Resolve full recipe;\nbuild executable candidate' },
+  { x: 6.02, title: 'Train + evaluate', body: 'Fit locally; return\nscores + diagnostics' },
+  { x: 8.78, title: 'Retain / revise', body: 'Higher mean dev score;\ntie → lower mean loss' },
 ];
 cards.forEach((card, i) => {
   rect('research_card_' + i, card.x, 1.92, 2.35, 1.20, c.white, c.research, 0.10, 1.25);
@@ -97,14 +97,14 @@ text('history_feedback_label', 'Evidence cards + previous trials', 3.81, 1.48, 4
 
 text('inner_label', 'INNER COLLABORATIVE TRAINING', 0.50, 4.025, 6.6, 0.28, 17.0, c.ink, true);
 rect('coordinator', 0.50, 4.43, 8.72, 0.72, c.gateFill, c.gate, 0.11, 1.4);
-text('coordinator_title', 'Coordinator: aggregate parameters and development scores', 0.70, 4.50, 8.30, 0.29, 17.3, c.ink, true, 'center');
-text('coordinator_subtitle', 'Send shared parameters; receive local updates and evaluation metrics', 0.70, 4.84, 8.30, 0.23, 14.2, c.muted, false, 'center');
+text('coordinator_title', 'Shared coordinator: run, aggregate, select', 0.70, 4.50, 8.30, 0.29, 17.3, c.ink, true, 'center');
+text('coordinator_subtitle', 'Broadcast parameters; aggregate local states + development scores', 0.70, 4.84, 8.30, 0.23, 14.2, c.muted, false, 'center');
 
 // These three distinct channels are separated in x; no forward/backward crossings.
 line('candidate_design', 7.195, 3.12, 7.195, 4.43, c.research, true, 2.0);
-text('candidate_label', 'Candidate design', 5.10, 3.50, 1.90, 0.29, 14.2, c.research, false, 'right');
+text('candidate_label', 'Candidate recipe (full config)', 5.10, 3.50, 1.90, 0.29, 14.2, c.research, false, 'right');
 pathLine('aggregate_evidence', [[8.90, 4.43], [8.90, 3.54], [9.43, 3.54], [9.43, 3.12]], c.gate, 2.0);
-text('evidence_label', 'Development\nevidence', 7.46, 3.40, 1.27, 0.43, 13.7, c.gate, false, 'center');
+text('evidence_label', 'Dev evidence:\nscore + loss + diagnostics', 7.46, 3.40, 1.27, 0.43, 13.7, c.gate, false, 'center');
 line('retained_outputs', 10.65, 3.12, 10.65, 4.30, c.research, true, 1.8);
 text('selected_label', 'Selected', 10.81, 3.62, 0.88, 0.25, 13.6, c.research);
 

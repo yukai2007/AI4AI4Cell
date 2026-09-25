@@ -26,13 +26,13 @@ class EvidenceLedNarrativeTests(unittest.TestCase):
             "vcc_corrected": "1.61", "tahoe_drug_corrected": "2.99"})
         entry = (PAPER / "biocoloop-main.tex").read_text()
         abstract = entry.split(r"\begin{abstract}", 1)[1].split(r"\end{abstract}", 1)[0]
-        self.assertIn("single-laboratory fixed-model and direct-optimization baselines", abstract)
+        self.assertIn("matched Qwen2.5 and GPT-5.6 Luna comparisons", abstract)
         for task, display in (("native_tapb", "93.76"), ("ptpc_neural", "36.99")):
             actual = 100 * mean(run["scores"]["federated_loop"]["primary"]
                                 for run in snapshot["tasks"][task]["runs"].values())
             self.assertEqual(f"{actual:.2f}", display)
             self.assertNotIn(display, abstract)
-        self.assertIn("four of five endpoints", abstract)
+        self.assertIn("four of five primary endpoints", abstract)
         self.assertNotRegex(abstract, r"\bDTI\b|\bAUROC\b|\bAP\b")
         self.assertNotRegex(abstract.lower(), r"\bsota\b|state.of.the.art|all five endpoints")
 

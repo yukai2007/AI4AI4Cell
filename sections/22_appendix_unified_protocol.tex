@@ -35,7 +35,7 @@ The implementation calls each laboratory a \emph{client} or \emph{worker}; its c
 Full-training candidates receive 100 aggregation rounds, with development evaluation every five rounds. The selection key is mean primary score followed by negative mean loss over the development panels designated by the protocol (Section 3.2). In the main experiment these panels are the participating laboratories. A complete tie retains the earlier checkpoint or incumbent. Training-example counts refer to the adapter's training rows: for the cell tasks these are intervention-level training profiles, rather than the number of cells underlying a profile.
 
 \subsection*{A.2 Design library, proposals and evidence}
-The prefix \texttt{D} stands for \emph{design}; its two-digit suffix is an identifier, not a training duration or ranking. D00 denotes the starting recipe. The main study selects six further proposals from D01--D11 without repeating a design within a search. Each identifier maps to the complete four-factor configuration below. The extended library and its identifiers are given in Appendix B.
+The prefix \texttt{D} stands for \emph{design}; its two-digit suffix is an identifier, not a training duration or ranking. A candidate is the complete executable recipe addressed by one identifier (optimizer settings plus any registered model toggle), not a single generic module such as an MLP or MHA. D00 denotes the starting recipe. The main study selects six further proposals from D01--D11 without repeating a design within a search. Each identifier maps to the complete four-factor configuration below. In this menu the only architecture change is the optional zero-initialized width-32 residual prediction module; the task adapter supplies the backbone and prediction head. The extended library and its identifiers are given in Appendix B.
 
 \begin{center}\small
 \begin{tabular}{lrrrr}
@@ -58,7 +58,7 @@ D11 & 0.001 & 0.01 & 0 & yes \\
 \end{tabular}
 \end{center}
 
-The main-study controller is Qwen2.5-7B-Instruct, using bfloat16 inference, temperature 0.7, top-$p$ 0.9 and at most 512 new tokens. For zero-indexed proposal slot $t$ and generation attempt $b\in\{0,1\}$, its sampling seed is $z+t+10{,}000b$, where $z$ is the study seed. An invalid identifier, a repeated configuration or a malformed response triggers the second attempt; a second failure consumes the slot without fitting a candidate. A numerically failed fit likewise leaves the incumbent unchanged and is recorded as negative evidence.
+The main comparison has two controller blocks. Qwen2.5-7B-Instruct uses bfloat16 inference, temperature 0.7, top-$p$ 0.9 and at most 512 new tokens. For zero-indexed proposal slot $t$ and generation attempt $b\in\{0,1\}$, its sampling seed is $z+t+10{,}000b$, where $z$ is the study seed. GPT-5.6 Luna is queried through a text-only bridge at low reasoning effort with tools disabled and the same bounded proposal protocol; its service does not expose a generation seed. The Luna runs retain the seed labels for training and search repetition identity, but do not claim deterministic language-model sampling. An invalid identifier, a repeated configuration or a malformed response triggers the second attempt; a second failure consumes the slot without fitting a candidate. A numerically failed fit likewise leaves the incumbent unchanged and is recorded as negative evidence.
 
 A proposal has exactly four fields:
 \begin{verbatim}

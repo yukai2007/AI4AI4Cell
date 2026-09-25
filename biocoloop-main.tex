@@ -2,9 +2,12 @@
 \usepackage{iclr2027_conference}
 \usepackage{fontspec}
 \setmainfont{texgyretermes-regular.otf}[Path=fonts/,BoldFont=texgyretermes-bold.otf,ItalicFont=texgyretermes-italic.otf,BoldItalicFont=texgyretermes-bolditalic.otf]
-\usepackage{amsmath,amssymb,booktabs,tabularx,longtable,xurl,graphicx}
+\usepackage{amsmath,amssymb,booktabs,tabularx,longtable,xurl,graphicx,placeins}
 \usepackage[colorlinks=true,allcolors=blue]{hyperref}
 \usepackage{microtype}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\textfloatsep}{11pt plus 2pt minus 2pt}
+\setlength{\intextsep}{9pt plus 2pt minus 2pt}
 \hypersetup{pdftitle={BioCoLoop: Collaborative Agentic Research for Biological Model Improvement}}
 \begin{document}
 % Build with Tectonic 0.17.0 or XeLaTeX/BibTeX.
@@ -14,9 +17,8 @@
 \maketitle
 \input{tables/strong_v3/snapshot_stats}
 \begin{abstract}
-Biological data are often distributed across institutions, where privacy and data-sharing constraints limit centralized access. Collaborative learning can train shared models from distributed data, but typically assumes fixed model designs, while automated model development relies on centralized evaluation. To fill in this gap, we introduce BioCoLoop, a collaborative research framework that turns laboratory-local measurements into both model updates and persistent research evidence. Its harness instantiates model-development hypotheses as executable designs, evaluates them across participating laboratories, and records their outcomes to guide subsequent proposals and training allocation. Across drug–target interaction prediction, observed-response proteomic efficacy prediction, and cell perturbation identification, collaborative access consistently improves performance. Under matched training and evaluation budgets, trajectory-guided evidence can improve training allocation. More broadly, BioCoLoop extends collaboration from parameter fitting to model development itself, allowing laboratory-local measurements to become shared empirical evidence that steers subsequent research decisions.
+Biological data are often distributed across institutions, where privacy and data-sharing constraints limit centralized access. Collaborative learning can train shared models from distributed data, but typically assumes fixed model designs, while automated model development relies on centralized evaluation. To fill in this gap, we introduce BioCoLoop, a collaborative research framework that turns laboratory-local measurements into both model updates and persistent research evidence. Its harness instantiates model-development hypotheses as executable designs, evaluates them across participating laboratories, and records their outcomes to guide subsequent proposals and training allocation. Across drug--target interaction prediction, observed-response proteomic efficacy prediction, and cell perturbation identification, collaborative access consistently improves performance; the matched Qwen2.5 and GPT-5.6 Luna comparisons place BioCoLoop ahead of fixed, direct, AI-Scientist-v2 and AI-Researcher baselines on four of five primary endpoints in each block. Under matched training and evaluation budgets, trajectory-guided evidence can improve training allocation. More broadly, BioCoLoop extends collaboration from parameter fitting to model development itself, allowing laboratory-local measurements to become shared empirical evidence that steers subsequent research decisions.
 
-% Biological data are often distributed across institutions and data holders, where privacy and data-sharing constraints limit centralized access. Using this evidence for self-improving biological AI requires improving both model parameters and the computational designs built around them. Collaborative learning typically optimizes fixed models, whereas automated model design and research generally rely on centralized training and evaluation signals. We introduce BioCoLoop, a collaborative research framework that turns laboratory-local measurements into model updates and reusable evidence for research decisions. Its harness translates hypotheses into executable designs, evaluates them at participating laboratories and packages their outcomes into a persistent research history. We study two uses of this evidence: revising subsequent proposals and allocating training to promising candidates. Across three biological settings spanning drug--target interaction prediction, observed-response proteomics, and cell perturbation, BioCoLoop with ten simulated laboratories outperforms single-laboratory fixed-model and direct-optimization baselines on four of five endpoints. Controlled comparisons establish gains from collaborative access and trajectory-guided training allocation; source-defined laboratory studies further demonstrate beneficial transfer in drug--target prediction and proteomics. BioCoLoop enables distributed biological measurements to contribute to both model training and evidence-guided model development without centralizing the raw data.
 \end{abstract}
 
 \input{sections/01_introduction}
@@ -38,5 +40,7 @@ Biological data are often distributed across institutions, where privacy and dat
 \input{sections/22_appendix_unified_protocol}
 
 \input{sections/23_appendix_core_sensitivity}
+
+\input{sections/24_appendix_public_harness}
 
 \end{document}

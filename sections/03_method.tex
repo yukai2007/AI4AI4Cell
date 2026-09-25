@@ -1,32 +1,15 @@
 \section*{3. Method: collaborative biological model improvement}
-% \subsection*{3.1 Problem and research setting}
-
-% Consider $K$ laboratories working on a common biological prediction task.
-% Laboratory $i$ holds local training data $D_i^{\mathrm{train}}$ and, when specified by the evaluation protocol, a development panel $D_i^{\mathrm{dev}}$.
-% A task specification $\mathcal T$ defines the prediction inputs, outputs, training objective, and evaluation metric, while $\mathcal A$ denotes the space of candidate model and training designs.
-
-% Given a research budget $B$, BioCoLoop maps the distributed task specification to a selected design, its fitted parameters, and the accumulated research history:
-% \begin{equation}
-% (\widehat a,\widehat w,H)
-% =
-% \operatorname{BioCoLoop}
-% \left(
-% \mathcal T,\mathcal A,B;
-% \{D_i^{\mathrm{train}},D_i^{\mathrm{dev}}\}_{i=1}^{K}
-% \right),
-% \label{eq:problem}
-% \end{equation}
-% where the raw data $D_i^{\mathrm{train}}$ and $D_i^{\mathrm{dev}}$ remain local to laboratory $i$ throughout the process.
-
 \subsection*{3.1 Problem and research setting}
 Consider $K$ laboratories working on the same biological prediction task. Laboratory $i$ holds training data $D_i^{\mathrm{train}}$, with $n_i=|D_i^{\mathrm{train}}|$. Evaluation uses laboratory-local development panels $\{D_i^{\mathrm{dev}}\}_{i\in\mathcal E}$, where $\mathcal E$ indexes the panels specified by the evaluation protocol. A task specification $\mathcal T$ defines the prediction inputs, outputs, training loss and evaluation metric. We write the task predictor as $f_{a,w}$, where $a\in\mathcal A$ specifies its design and $w$ its trainable parameters. Given an initial design, a design library $\mathcal A$ and a research budget, BioCoLoop seeks a design and fitted predictor that perform well on the designated evaluation population. The three task families instantiate $f_{a,w}$ as task-specific predictors within this shared research procedure.
 
-Our design library varies four choices: learning rate, weight decay, coordinator momentum and an optional residual prediction module. A \texttt{design\_id} names one configuration of these choices. The harness coordinates candidate selection, local fitting, evaluation and the return of evidence to the research controller (Figure~\ref{fig:research-interface}). We use the common fitting interface to study two policies: history-guided proposal revision (Section 3.3) and trajectory-guided training allocation (Section 3.4). Raw measurements stay at each laboratory; model states support parameter fitting, while aggregate development measurements support research decisions. The experiments simulate separate laboratories on one host.
+Our design library varies four choices: learning rate, weight decay, coordinator momentum and an optional residual prediction module. A \texttt{design\_id} names one complete configuration of these choices. Thus, in the reported study a candidate is an executable training-and-model recipe, not an arbitrary isolated neural block: MLP or MHA alternatives would be candidates only if they were explicitly registered in the design library. Here the only architecture toggle in the menu is a zero-initialized, width-32 residual prediction module; the task-specific backbone and prediction head are supplied by the adapter.
+
+Here \emph{coordinator} means the trusted execution/orchestration service, not the research language model, a trainable neural layer, or an additional laboratory. It resolves a registered design identifier, initializes and broadcasts the predictor, coordinates local fitting, aggregates local model states, aggregates bounded development measurements, and applies the checkpoint/design-selection rule. \emph{Shared coordinator} means that all participating laboratories use this same logical protocol and decision point: they receive the same candidate state and schedule, while their raw training and development measurements remain local. The coordinator returns only the parameter state or update information needed for collaborative fitting and the declared aggregate scores/diagnostics needed for research decisions. The harness therefore coordinates candidate selection, local fitting, evaluation and the return of evidence to the research controller (Figure~\ref{fig:research-interface}). We use the common fitting interface to study two policies: history-guided proposal revision (Section 3.3) and trajectory-guided training allocation (Section 3.4). The experiments simulate separate laboratories on one host.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\linewidth]{figures/biocoloop_framework_v2.pdf}
-\caption{Data flow in BioCoLoop. The outer research loop proposes a model design and receives aggregate development evidence after its evaluation. The inner training process distributes model parameters to $K$ laboratories, fits them locally and aggregates the returned updates. The next proposal uses the accumulated research history. Task adapters implement drug--target interaction prediction, observed-response proteomic efficacy prediction and cell perturbation identification.}
+\caption{Data flow in BioCoLoop. The outer research loop proposes a complete candidate recipe and receives structured development evidence (scores, loss and bounded trajectory diagnostics) after its evaluation. The inner training process distributes model parameters to $K$ laboratories, fits them locally and aggregates the returned states. The next proposal uses the accumulated research history. Task adapters implement drug--target interaction prediction, observed-response proteomic efficacy prediction and cell perturbation identification.}
 \label{fig:research-interface}
 \end{figure}
 
@@ -41,16 +24,16 @@ v_r&=\beta_a v_{r-1}+\bar w_r-w_{r-1},
 \end{aligned}
 \label{eq:local-fitting}
 \end{equation}
-The coordinator carries momentum across aggregation rounds through $v_r$; $\beta_a=0$ gives sample-weighted parameter averaging \citep{McMahan2017}. Frozen feature extractors remain unchanged. Task adapters supply the biological inputs, trainable prediction components and local loss.
+The coordinator carries momentum across aggregation rounds through $v_r$; $\beta_a=0$ gives sample-weighted parameter averaging \citep{McMahan2017}. In one round, the coordinator sends the current trainable state and fixed candidate settings to each laboratory; laboratory $i$ returns its locally fitted state $u_{i,r}$ (and its training-example count $n_i$) for aggregation. Frozen feature extractors remain unchanged. Task adapters supply the biological inputs, trainable prediction components and local loss. The laboratories never send raw examples, expression profiles, labels or per-example identifiers to the coordinator or research controller.
 
-Every five rounds and at the final round, the laboratories evaluate the aggregated predictor $f_{a,w_r}$ on the development panels indexed by $\mathcal E$. In the main comparison these are the participating laboratories' panels; fixed-pool repartitioning retains all ten original panels, and source-transfer studies use the original target panels. Define $s_i(a,r)$ and $\ell_i^{\mathrm{dev}}(a,r)$ as the primary score and loss on panel $i$. The coordinator computes
+Every five rounds and at the final round, the laboratories evaluate the aggregated predictor $f_{a,w_r}$ on the development panels indexed by $\mathcal E$. Each laboratory returns scalar primary score $s_i(a,r)$, development loss $\ell_i^{\mathrm{dev}}(a,r)$ and the bounded trajectory diagnostics required by the protocol; it does not return its underlying observations. In the main comparison these are the participating laboratories' panels; fixed-pool repartitioning retains all ten original panels, and source-transfer studies use the original target panels. Define $s_i(a,r)$ and $\ell_i^{\mathrm{dev}}(a,r)$ as the primary score and loss on panel $i$. The coordinator computes
 \begin{equation}
 S(a,r)=\frac{1}{|\mathcal E|}\sum_{i\in\mathcal E}s_i(a,r),
 \qquad
 L(a,r)=\frac{1}{|\mathcal E|}\sum_{i\in\mathcal E}\ell_i^{\mathrm{dev}}(a,r).
 \label{eq:shared-evaluation}
 \end{equation}
-The selected round $\widehat r_a$ maximizes $S(a,r)$, with lower $L(a,r)$ breaking ties and the earlier round retained on a complete tie. Its parameters are $\widehat w_a=w_{\widehat r_a}$; the pair $q(a)=(S(a,\widehat r_a),-L(a,\widehat r_a))$ ranks the design. Training therefore weights examples, whereas selection weights the designated development panels equally. The main proposal-search experiments assign each candidate 100 training rounds; training duration is specified by the evaluation schedule, not by \texttt{design\_id}.
+The selected round $\widehat r_a$ maximizes $S(a,r)$, with lower $L(a,r)$ breaking ties and the earlier round retained on a complete tie. Its parameters are $\widehat w_a=w_{\widehat r_a}$; the pair $q(a)=(S(a,\widehat r_a),-L(a,\widehat r_a))$ ranks the design. In plain terms, the candidate checkpoint with the highest equal-laboratory mean development primary score is selected; if scores tie, the one with the lower equal-laboratory mean development loss is selected; if both tie, the earlier checkpoint is selected. Training therefore weights examples, whereas selection weights the designated development panels equally. The main proposal-search experiments assign each candidate 100 training rounds; training duration is specified by the evaluation schedule, not by \texttt{design\_id}.
 
 For auxiliary-source studies with different prediction targets, shared encoders follow the same update rule, while each source-specific head is aggregated only over laboratories using that prediction target. Checkpoint selection then uses the original target's development panels. This allows auxiliary measurements to improve the shared representation while preserving each source's prediction objective.
 
@@ -62,9 +45,9 @@ p_t\sim P_\theta(\,\cdot\mid\mathcal T,a_t,H_t,\mathcal U_t),
 \widetilde a_t=\operatorname{Compile}(\operatorname{id}(p_t)).
 \label{eq:proposal}
 \end{equation}
-The proposal also contains a \texttt{hypothesis}, an \texttt{experiment} and an \texttt{expected\_effect}: these describe the motivation, intended comparison and anticipated outcome. They provide an interpretable account of the proposed experiment. The identifier determines the executed configuration, and measured development performance determines selection.
+The proposal also contains a \texttt{hypothesis}, an \texttt{experiment} and an \texttt{expected\_effect}: these describe the motivation, intended comparison and anticipated outcome. They provide an interpretable account of the proposed experiment. The identifier determines the executed configuration, and measured development performance determines selection; the prose cannot override the registered configuration or the measured result.
 
-After training $\widetilde a_t$, the coordinator creates an \emph{evidence card} $e_t$: its executed configuration and hypothesis, selected score and loss, selected round, first/last training and development diagnostics, and acceptance decision. Using lexicographic comparison of $q$---higher score, then lower loss---the research state becomes
+After training $\widetilde a_t$, the coordinator creates an \emph{evidence card} $e_t$. This is a compact, structured record of what was run and what was observed: the executed configuration and hypothesis; the candidate's best development primary score and loss; the selected round; first/last training and development diagnostics (training loss, development score and loss); changes between those endpoints; optional worst-laboratory and coverage counts; and the acceptance decision. It is therefore more than a single loss or metric, but it is not raw data or free-form biological evidence. Using lexicographic comparison of $q$---higher score, then lower loss---the research state becomes
 \begin{equation}
 a_{t+1}=\begin{cases}
 \widetilde a_t,&q(\widetilde a_t)>_{\mathrm{lex}}q(a_t),\\

@@ -1,0 +1,19 @@
+{
+  "all_panel_b_research_models": "Qwen2.5-7B-Instruct and GPT-5.6 Luna (low reasoning)",
+  "built_unix": 1790362513.198704,
+  "cpu_raster_pages": 1,
+  "independently_verified_scored_cells": 9,
+  "main_text_page_check": "UNKNOWN",
+  "main_text_pages": null,
+  "matched_seed42_complete": true,
+  "pages": 1,
+  "pdf_sha256": "cacafeba917721e119ab11078621ab724b0ffccbe72ab48d804a7ad1a26d502e",
+  "pending_cells_in_report": 0,
+  "repair_snapshot_sha256": "fdd253403c7870d8f0292bd9a769d1714944e824267c6e6a8fbc86ade184ed79",
+  "source_sha256": "a6a1e9c93b7c31352ee317d329296d591274cc237499ebe819c721d4789396bc",
+  "submission_ready": false,
+  "table_sha256": "ba3659653ec3b07f968bbaac31136f2fb79f5c2991fb5a7260827bf7e373c4b8",
+  "terminal_controller_failures": 1,
+  "text_characters": 2586,
+  "visual_review": "PASS: title precedes table; all cells, emphasis, caption, and failure marker are legible; no overlap or clipping."
+}

@@ -131,7 +131,7 @@
     },
     {
       "id": "research_body_1",
-      "text": "Prediction head +\ntraining settings",
+      "text": "Resolve full recipe;\nbuild executable candidate",
       "x": 3.3899999999999997,
       "y": 2.48,
       "w": 2.09,
@@ -158,7 +158,7 @@
     },
     {
       "id": "research_body_2",
-      "text": "Run candidate;\ncollect diagnostics",
+      "text": "Fit locally; return\nscores + diagnostics",
       "x": 6.1499999999999995,
       "y": 2.48,
       "w": 2.09,
@@ -185,7 +185,7 @@
     },
     {
       "id": "research_body_3",
-      "text": "Compare development;\nrecord trial outcome",
+      "text": "Higher mean dev score;\ntie → lower mean loss",
       "x": 8.91,
       "y": 2.48,
       "w": 2.09,
@@ -212,7 +212,7 @@
     },
     {
       "id": "coordinator_title",
-      "text": "Coordinator: aggregate parameters and development scores",
+      "text": "Shared coordinator: run, aggregate, select",
       "x": 0.7,
       "y": 4.5,
       "w": 8.3,
@@ -221,7 +221,7 @@
     },
     {
       "id": "coordinator_subtitle",
-      "text": "Send shared parameters; receive local updates and evaluation metrics",
+      "text": "Broadcast parameters; aggregate local states + development scores",
       "x": 0.7,
       "y": 4.84,
       "w": 8.3,
@@ -230,7 +230,7 @@
     },
     {
       "id": "candidate_label",
-      "text": "Candidate design",
+      "text": "Candidate recipe (full config)",
       "x": 5.1,
       "y": 3.5,
       "w": 1.9,
@@ -239,7 +239,7 @@
     },
     {
       "id": "evidence_label",
-      "text": "Development\nevidence",
+      "text": "Dev evidence:\nscore + loss + diagnostics",
       "x": 7.46,
       "y": 3.4,
       "w": 1.27,

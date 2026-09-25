@@ -20,6 +20,10 @@
 
 User decision (2026-09-24): task-adapted experimental controllers, prioritizing the main-table comparison; use the common ten-laboratory fitter/scorer and disable literature retrieval and paper generation. Native experimental proposal/revision/management flow must be retained. The confirmed scope is not an end-to-end autonomous paper-generation reproduction.
 
+Follow-up decision (2026-09-24): explicitly distinguish verified context/tool/pipeline failures from pending work, and deliver the comparison on `comparison/public-harness-20260924` for user approval before any merge to main. The three-seed primary table retains original means; the matched seed-42 view and execution outcomes are reported separately. Completed comparisons may include recorded controller failures, but this does not make all methods' predictive scores available.
+
+Writing workflow note: the literature-review skill's optional sibling paper-writing and general-writing packages are absent in this environment. Source verification, manual prose review, citation checks and rendered-PDF inspection are used with the existing manuscript structure.
+
 ## Comparison axes
 
 1. Authentic proposal, revision, experiment selection and history mechanisms preserved from upstream.
