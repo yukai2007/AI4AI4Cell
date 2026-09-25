@@ -1,12 +1,15 @@
 # Active public-harness table
 
 The manuscript and the standalone comparison report include
-`main_public_harness_three_seed.tex`. Its public-controller panel uses the
-correct access contract: AI-Scientist-v2 and AI-Researcher receive laboratory
-0, while BioCoLoop receives all ten laboratories. `snapshot_one_lab.json`
-contains the source hashes, selected checkpoints and verification receipts for
-that table.
+`main_public_harness_three_seed.tex`. It is a single flat three-seed table
+using the local Qwen2.5-7B-Instruct backend: fixed model, Qwen direct,
+AI-Scientist-v2, AI-Researcher and BioCoLoop. AI-Scientist-v2 and
+AI-Researcher receive laboratory 0, while BioCoLoop receives all ten
+laboratories. `snapshot_multiseed.json` records source hashes, selected
+checkpoints, independent verification and typed controller failures;
+incomplete cells show their completed count rather than an imputed score. The
+separate Luna sensitivity record remains outside this endpoint table.
 
 The other files in this directory are retained as historical artifacts from
-the earlier ten-laboratory adapter run. They are not included in the submitted
-manuscript and must not be used as the current comparison.
+earlier adapters. They are not included in the submitted manuscript and must
+not be used as the current comparison.
