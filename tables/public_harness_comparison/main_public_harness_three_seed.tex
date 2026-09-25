@@ -13,13 +13,13 @@ Fixed model (1 lab) & 82.83 $\pm$ 1.22 & \underline{25.05} $\pm$ 4.56 & \underli
 Qwen direct (1 lab) & \underline{89.89} $\pm$ 1.02 & 20.13 $\pm$ 0.07 & 21.09 $\pm$ 4.38 & 14.15 $\pm$ 0.00 & 15.42 $\pm$ 6.21 \\
 \textbf{BioCoLoop} (10 labs) & \textbf{93.76} $\pm$ 1.11 & \textbf{36.99} $\pm$ 0.22 & \textbf{31.54} $\pm$ 0.08 & \underline{22.25} $\pm$ 0.45 & \textbf{22.39} $\pm$ 2.59 \\
 \midrule
-\multicolumn{6}{l}{\textbf{B. Matched research-controller comparison, seed 42}} \\
-Qwen direct (1 lab) & 88.82 & \underline{20.21} & \underline{21.73} & \underline{14.15} & \underline{13.43} \\
-AI-Scientist-v2 (10 labs) & \textbf{95.07} & \textbf{37.12} & \textbf{31.63} & \textbf{22.74} & \textbf{23.88} \\
-AI-Researcher (10 labs) & $F_{\mathrm{tool}}$ & \textbf{37.12} & \textbf{31.63} & \textbf{22.74} & \textbf{23.88} \\
-\textbf{BioCoLoop} (10 labs) & \underline{94.60} & \textbf{37.12} & \textbf{31.63} & \textbf{22.74} & \textbf{23.88} \\
+\multicolumn{6}{l}{\textbf{B. Research-controller comparison, seed 42}} \\
+Qwen direct (1 lab) & \underline{88.82} & \underline{20.21} & \underline{21.73} & 14.15 & 13.43 \\
+AI-Scientist-v2 (1 lab) & $F_{\mathrm{pipe}}$ & 20.19 & \underline{21.73} & 14.15 & 13.43 \\
+AI-Researcher (1 lab) & 86.01 & 20.17 & \underline{21.73} & \textbf{25.56} & \underline{19.40} \\
+\textbf{BioCoLoop} (10 labs) & \textbf{94.60} & \textbf{37.12} & \textbf{31.63} & \underline{22.74} & \textbf{23.88} \\
 \bottomrule
 \end{tabularx}
-\caption{Main results. A: prespecified three-seed core mean $\pm$ SD. B: matched seed-42 task-adapted controllers with 10 laboratories, 12 designs and $\leq6$ candidates. All research controllers in B use Qwen2.5-7B-Instruct. Scores are $\times100$; bold/underline mark best/second-best within each panel; $F_{\mathrm{tool}}$ denotes a controller tool-transport failure.}
+\caption{Main results. A: core mean $\pm$ SD over seeds 42--44. B: seed-42 task-adapted public controllers use laboratory 0 and BioCoLoop uses ten laboratories. All use Qwen2.5-7B-Instruct, 12 designs, at most six candidates and 100 rounds per candidate. Scores are $\times100$; bold/underline mark the best/second-best in each panel. $F_{\mathrm{pipe}}$ denotes a terminal controller-pipeline failure.}
 \label{tab:public-harness-comparison-three-seed}
 \end{table}

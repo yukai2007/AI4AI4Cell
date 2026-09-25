@@ -8,12 +8,12 @@
 \date{}
 \begin{document}
 \maketitle
-\noindent Public frameworks use their task-adapted native experimental controllers and the common biological fitting interface. All Panel-B controllers use Qwen2.5-7B-Instruct, ten laboratories, the same twelve-design library and at most six candidate proposals. Scored cells pass independent recomputation from saved predictions; $F_{\mathrm{tool}}$ records a terminal controller--tool protocol failure rather than a predictive score.
+\noindent Public frameworks use their task-adapted native experimental controllers and the common biological fitting interface. In Panel B, AI-Scientist-v2 and AI-Researcher access laboratory 0, whereas BioCoLoop accesses ten laboratories. All Panel-B methods use Qwen2.5-7B-Instruct, the same twelve-design library and at most six candidate proposals. Scored cells pass independent recomputation from saved predictions; failure tokens record terminal controller outcomes rather than predictive scores.
 
 \let\originaltable\table
 \let\endoriginaltable\endtable
 \renewenvironment{table}[1][]{\originaltable[H]}{\endoriginaltable}
 \input{tables/public_harness_comparison/main_public_harness_three_seed.tex}
 
-\paragraph{Outcome.} BioCoLoop is top or tied on proteomics and all three cell-perturbation endpoints. On DTI, it reaches 94.60\% AUROC, 0.47 points below AI-Scientist-v2. AI-Researcher completes and verifies the other four endpoints but fails the registered one-tool-call protocol on DTI after three identical invalid planning responses.
+\paragraph{Outcome.} BioCoLoop leads four of five endpoints: DTI (94.60\% AUROC), proteomics (37.12\% AP), VCC (31.63\% Top-1) and Tahoe (23.88\% Top-1). AI-Researcher leads Norman with 25.56\% Top-1, versus 22.74\% for BioCoLoop. AI-Scientist-v2's DTI tree-search terminates after three trained candidates when its native substage generator fails schema validation; the table reports $F_{\mathrm{pipe}}$ rather than an imputed score.
 \end{document}
