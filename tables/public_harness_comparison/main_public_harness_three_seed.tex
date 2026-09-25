@@ -1,7 +1,7 @@
 \begin{table}[t]
 \centering\scriptsize
 \setlength{\tabcolsep}{1.55pt}
-\renewcommand{\arraystretch}{0.88}
+\renewcommand{\arraystretch}{0.82}
 \begin{tabularx}{\linewidth}{@{}Xrrrrr@{}}
 \toprule
 \textbf{Model / method} & \multicolumn{1}{c}{DTI} & \multicolumn{1}{c}{Proteomics} & \multicolumn{3}{c}{Cell perturbation} \\
@@ -23,6 +23,6 @@ AI-Researcher (1 lab) & $F_{\mathrm{ctx}}$/$F_{\mathrm{svc}}$\,(0/3) & $F_{\math
 \textbf{BioCoLoop} (10 labs) & \textbf{93.67} $\pm$ 0.98 & \textbf{37.11} $\pm$ 0.01 & \textbf{31.50} $\pm$ 0.00 & \underline{22.69} $\pm$ 0.73 & \textbf{22.39} $\pm$ 2.59 \\
 \bottomrule
 \end{tabularx}
-\caption{Main comparison by research model (mean $\pm$ sample SD; seeds 42--44). Public controllers use laboratory 0 and BioCoLoop uses ten; all rows share the design library, candidate cap, 100-round fits and held-out scorer. Scores are $\times100$; bold/underline mark the best/second-best complete result within each block. $(n/3)$ reports completed seeds without imputing failures.}
+\caption{Main comparison by research model (mean $\pm$ sample SD, seeds 42--44). Public controllers use laboratory 0 and BioCoLoop uses ten; all rows share the design library, candidate cap, 100-round fits and held-out scorer. Scores are $\times100$; bold/underline mark the best/second-best complete result per block, and $(n/3)$ reports completed seeds without imputing failures.}
 \label{tab:public-harness-comparison-three-seed}
 \end{table}

@@ -1,10 +1,10 @@
 {
   "framework_name": "BioCoLoop",
-  "revision_id": "final_submission_20260926_overleaf_migrated",
-  "revision_description": "Final manuscript build after migrating the latest Overleaf abstract/introduction/method revision into the public-harness comparison branch; retains the grouped Qwen2.5/Luna and task-adapted public-controller results.",
+  "revision_id": "final_submission_20260926_overleaf_preserved",
+  "revision_description": "Final manuscript after migrating the latest Overleaf abstract, introduction and method revision into the branch that carries the new public-harness and grouped Qwen2.5/GPT-5.6 Luna experiments. The Overleaf prose is retained; the only Revisions are a clause in the abstract and introduction that names the newer matched baselines, the restored contribution sentence, and the user-requested method clarifications. Float separation was tightened so the main text still ends on page 9.",
   "branding_migration_record_sha256": "766b7c77c628113918a811cabd0b0eaf462f24e45035329955308e15ddaa4bf2",
-  "built_utc": "2026-09-25T18:33:33.141903+00:00",
-  "manuscript_sha256": "a8a12160d1629aef77f8351df809fd3f51b25930a669c478c1b455823957612c",
+  "built_utc": "2026-09-25T18:55:12.799725+00:00",
+  "manuscript_sha256": "fa3565da381a390eba845909ed1b3282313b31db92d2cbd7a5bd0ea87658b5dd",
   "total_pages": 31,
   "main_text_ends_page": 9,
   "statements_start_page": 10,
@@ -21,18 +21,18 @@
     "assets/laboratory_sensitivity_v2.pdf": "c89fc89d591bc4dbc10d5a7129df5bd52c232e2be862b95503d19a311e3fdbb0",
     "assets/paradigm_comparison.pdf": "75c235b5d3b3242dfad28b16b61df6ac75f7435b8b260bf9130354a51388ec77",
     "assets/unified_pipeline.pdf": "09a2d030489082ed4a5ec3d2b2aa6efa9b4e4ce7aceb525e6d58a50cbe2ca375",
-    "biocoloop-main.tex": "0c2907f8706a4814b227d3208b19ae59a7baba07eb21668d9890509844608bee",
+    "biocoloop-main.tex": "151b902ae2f986c6bb3bdcf3d91da3d7239d7b9bf94c50d2ba2ae01c68bf00fa",
     "figures/biocoloop_framework.pdf": "f9fd977ec594b11cfe96a15beb936fb485402691dee2159bcdf24fe5b2372abe",
     "figures/biocoloop_framework_v2.pdf": "a075612c1aa40daa2f909925c423b663bf0c0296570fd115f829e791e437dabf",
     "figures/framework_user_20260923_readable_original_labels.pdf": "6a4a4a203db6941df6ac3ed24736a23007307f4e1f950bb4dfa9e99a16b75368",
     "main.tex": "42ee170812615d83af2ce62d6c38fa8f273ee7c78dd8d5930303370c862ab907",
     "references.bib": "ec0cb84ea4e4558cb44cf1ee5f8ee248b3ab52008c1206eb7f204e371e1b4d8e",
     "references_v2.bib": "d5a1065f61ec804bdde0b9d5e412d838a832f5615c20b60962626e17af61bf9a",
-    "sections/01_introduction.tex": "7c1e38bdfe9fdf60f0600fe1e957f6c79e873956c8a8a8662a78a2210e0a7825",
+    "sections/01_introduction.tex": "935728fee4e66866d0793d1223681123522960c105a7395183802aa794162b57",
     "sections/02_related_work.tex": "bb4e9034027ad6988bf450f85c17f926afb4271f25b9d71f267216a812029131",
     "sections/03_method.tex": "6abb55e8ba249654b9e79b91711b16b5238db6a6226c86d6d311a0df852cb46c",
     "sections/04_experimental_design.tex": "4ed10e11ac8880bcbbd4d385052109078d5a3149e91164352f20c72b1817749e",
-    "sections/05_results.tex": "8d979afb91e41b431c7551699d9585e982b111ce33b6d2b1dc78561460ab7782",
+    "sections/05_results.tex": "455160ed0b68e9550b40ef955c35fb7650176aa30c51348d5a2952cb5e479754",
     "sections/07_conclusion.tex": "96269ab2024306b6eb2cb269f0a1d3564c11f459c2f35ca730257d8ff3774bf9",
     "sections/08_reproducibility.tex": "41a9ec79cd7efb03c575cbce7a9f6c01bc9870345e68a0fa6b533f481d05a329",
     "sections/22_appendix_unified_protocol.tex": "3a5d2c1df8aabed75f303c0edf9ede9d5edb4eb53da614ee194f8d2e6f8c7643",
@@ -64,7 +64,7 @@
     "tables/public_harness_comparison/compact_repair_seed42.tex": "d703a77c64727f355a67758b51bde914f1cdd5bc14326a7042d31cf6aabb2aae",
     "tables/public_harness_comparison/completion_public_harness.tex": "0a1f42df4440752d5de9ab842235bd4c64432bf5fb76e836f7f62856548163d0",
     "tables/public_harness_comparison/main_public_harness_seed42.tex": "434940cd2f47f163679ca864b75cc91aed71af330bdde35f28b5636ab3a0c05a",
-    "tables/public_harness_comparison/main_public_harness_three_seed.tex": "71e91f0e2d0b48a8e4f971938f2f05231c64dfd88941746f8afb8b6a957f2604",
+    "tables/public_harness_comparison/main_public_harness_three_seed.tex": "ba3659653ec3b07f968bbaac31136f2fb79f5c2991fb5a7260827bf7e373c4b8",
     "tables/public_harness_comparison/results_public_harness.tex": "f4786b4a4d27b5768404d100384e9f8f0851f90ef106bed8c979dd5270f51733",
     "tables/public_harness_preview/main_public_harness.tex": "cf9f97403db49cb96100994b06dffea3f381d0f9bd85f571cd96cdbff5262c5f",
     "tables/public_harness_preview/main_public_harness_seed42.tex": "93cb8f67b42ae0da1b6b425a6b205e56b8da06b47625122ff2cad594b969f1a3",
@@ -92,7 +92,7 @@
     "tables/unified_v3/secondary.tex": "6a67d0e5fa0d1f6345bbec4de641af1d834a3a9dd48002caf26a5269feccdc65",
     "tables/unified_v3/snapshot_stats.tex": "e61d9b8bfd8a53dbc7dc47fddda449edddaa037f63287171bc21268528ed4d30",
     "tables/public_harness_comparison/snapshot_llm_grouped_three_seed.json": "ab0d773b756d0c0b60266ed78bc0f9b68054054290138fe0a879edba64bc8d73",
-    "tools/publish_llm_grouped_main.py": "5995bd6140a66cd427b8a21e7b774f3305547c43a98e08b6d9410b911ed21a3f",
+    "tools/publish_llm_grouped_main.py": "bad7af87557cfd6f3e6e87530b2ba69cd7406daddd58e840309bbb325699388c",
     "tools/verify_luna_main_core.py": "1aec31219b314284376a6d62bdcc82505b016f0e935a7f40f0e664ae959728ab",
     "provenance/luna_main_core_20260925/independent_verification.json": "759948fa9e9fb2d8e78603af8b992946bb2fff2231403e85e62a37d2aa1e0070"
   },
@@ -107,7 +107,7 @@
   },
   "statistical_supplement": {
     "path": "output/pdf/BioCoLoop_statistical_supplement.pdf",
-    "sha256": "8f4a2b3a6375784ae421817c06892190a614f7c532f1b843eab6d54d9992b994",
+    "sha256": "2aceeaea40a333e9b32a87636bd6d5f0d81ff50c4cf560ce5bc2701e48e9aa8e",
     "pages": 5,
     "source_sha256": "8b67b34ec0a5bf89412c21a2d8a2bab019be4d3cad18c85e266b2cd42d2e9591",
     "tables_sha256": {
@@ -119,10 +119,10 @@
     "undefined_references": 0,
     "submission_instruction": "Upload alongside the manuscript as anonymous supplementary material."
   },
-  "unit_tests_passed": 155,
+  "unit_tests_passed": 156,
   "overfull_boxes": 0,
   "undefined_references": 0,
-  "visual_review": "STRUCTURAL PASS: compiled PDF has 31 pages with conclusion ending on page 9; figure generator checks, PDF embedded-image checks and slide checks pass. Manual raster review was not available in this container.",
+  "visual_review": "STRUCTURAL PASS: compiled PDF has 31 pages with the conclusion ending on page 9; main text, grouped table, figures and Appendix C render without overfull boxes or undefined references. 156 publication tests pass. Manual raster review of every page was not available in this container.",
   "incorporated": [
     "five-endpoint two-backend short6",
     "five-endpoint lab count, two definitions",
@@ -163,5 +163,20 @@
     "runs": 15,
     "predictions": 90,
     "max_abs_error": 0.0
-  }
+  },
+  "overleaf_preservation": {
+    "source_commit": "e9855b1",
+    "source_branch": "origin/main",
+    "preserved_verbatim": [
+      "sections/01_introduction.tex paragraphs and contribution sentences",
+      "biocoloop-main.tex abstract"
+    ],
+    "additions": [
+      "one clause in the introduction and abstract naming the task-adapted AI-Scientist-v2/AI-Researcher and matched Qwen2.5/GPT-5.6 Luna comparisons",
+      "user-requested method clarifications (executable recipe, shared coordinator, evidence card, selection rule)",
+      "grouped Qwen2.5/Luna and task-adapted public-controller results, main table and Appendix C"
+    ],
+    "layout_note": "float/text float separation reduced from the article defaults to keep the nine-page main-text budget after restoring the longer Overleaf introduction"
+  },
+  "missing_source_files": []
 }

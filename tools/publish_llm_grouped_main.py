@@ -429,7 +429,7 @@ def table_text(snapshot):
 
     lines = [
         r"\begin{table}[t]", r"\centering\scriptsize", r"\setlength{\tabcolsep}{1.55pt}",
-        r"\renewcommand{\arraystretch}{0.88}",
+        r"\renewcommand{\arraystretch}{0.82}",
         r"\begin{tabularx}{\linewidth}{@{}Xrrrrr@{}}", r"\toprule",
         r"\textbf{Model / method} & \multicolumn{1}{c}{DTI} & \multicolumn{1}{c}{Proteomics} & \multicolumn{3}{c}{Cell perturbation} \\",
         r"\cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(l){4-6}",
@@ -443,10 +443,10 @@ def table_text(snapshot):
         lines.extend(row(model, method) for method in METHODS)
     lines += [
         r"\bottomrule", r"\end{tabularx}",
-        (r"\caption{Main comparison by research model (mean $\pm$ sample SD; seeds 42--44). "
+        (r"\caption{Main comparison by research model (mean $\pm$ sample SD, seeds 42--44). "
          r"Public controllers use laboratory 0 and BioCoLoop uses ten; all rows share the design library, "
          r"candidate cap, 100-round fits and held-out scorer. Scores are $\times100$; bold/underline mark "
-         r"the best/second-best complete result within each block. $(n/3)$ reports completed seeds without "
+         r"the best/second-best complete result per block, and $(n/3)$ reports completed seeds without "
          r"imputing failures.}"),
         r"\label{tab:public-harness-comparison-three-seed}", r"\end{table}",
     ]

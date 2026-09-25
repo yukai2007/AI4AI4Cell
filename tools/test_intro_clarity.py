@@ -10,6 +10,7 @@ class IntroClarityTests(unittest.TestCase):
         self.assertNotRegex(abstract, r"10\.84|eight ties|twelve task|four held-out wins|main-table")
         self.assertIn("matched Qwen2.5 and GPT-5.6 Luna comparisons", abstract)
         self.assertIn("four of five primary endpoints", abstract)
+        self.assertIn("AI-Scientist-v2 and AI-Researcher baselines", abstract)
         results = (PAPER / "sections/05_results.tex").read_text()
         self.assertIn("+10.84-point mean effect", results)
         self.assertIn("proposal generation held fixed", results)
@@ -34,8 +35,8 @@ class IntroClarityTests(unittest.TestCase):
         contributions = intro.split("Our contributions are summarized as:", 1)[1]
         self.assertEqual(contributions.count(r"\item "), 3)
         self.assertIn("inner loop for collaborative training and evaluation", contributions)
-        self.assertIn("four of five primary endpoints", contributions)
-        self.assertIn("accumulated evaluation evidence can improve research decisions", contributions)
+        self.assertIn("using early evaluation results to decide which models continue training can improve performance", contributions)
+        self.assertIn("AI-Scientist-v2 and AI-Researcher baselines", intro)
         self.assertIn("drug--target", contributions)
         self.assertNotIn("The contribution is this coupling", intro)
 

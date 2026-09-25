@@ -1,3 +1,4 @@
+import json
 import sys
 import unittest
 from pathlib import Path
@@ -43,6 +44,16 @@ class GroupedMainTableTests(unittest.TestCase):
         self.assertEqual(row.count(r"$F_{\mathrm{ctx}}$"), len(publisher.TASKS))
         self.assertNotIn(r"\underline", row)
         self.assertNotIn(r"\textbf", row)
+
+    def test_committed_artifact_matches_generator(self):
+        snapshot = json.loads(
+            (publisher.PAPER / "tables/public_harness_comparison"
+             / "snapshot_llm_grouped_three_seed.json").read_text())
+        on_disk = (publisher.PAPER / "tables/public_harness_comparison"
+                   / "main_public_harness_three_seed.tex").read_text()
+        self.assertEqual(publisher.table_text(snapshot), on_disk)
+        self.assertIn(r"\renewcommand{\arraystretch}{0.82}", on_disk)
+        self.assertIn("best/second-best complete result per block", on_disk)
 
     def test_transient_service_failure_has_explicit_token(self):
         self.assertEqual(

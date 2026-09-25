@@ -1,5 +1,5 @@
 \subsection*{4.3 Collaborative research improves task performance}
-Table~\ref{tab:public-harness-comparison-three-seed} presents matched Qwen2.5-7B-Instruct and GPT-5.6 Luna blocks. Each block uses the same partitions, design library, candidate budget and held-out scorer; public controllers access laboratory 0 and BioCoLoop accesses ten laboratories. Values are means $\pm$ sample SD over seeds 42--44 when complete. Public-controller cells that terminate before a valid held-out selection instead retain typed failure tokens and completed counts; no unsealed selection is converted into a score, and Luna context-limit and service-transport failures are handled identically. The fixed reference is repeated for direct within-block comparison; its one-laboratory fixed model remains best at 25.56\% on Norman.
+Table~\ref{tab:public-harness-comparison-three-seed} presents matched Qwen2.5-7B-Instruct and GPT-5.6 Luna blocks over seeds 42--44. Each block uses the same partitions, design library, candidate budget and held-out scorer; public controllers access laboratory 0 and BioCoLoop accesses ten, and cells that terminate before a valid held-out selection retain typed failure tokens and completed counts rather than imputing a score. The fixed reference is repeated for direct within-block comparison; its one-laboratory fixed model remains best at 25.56\% on Norman.
 
 \input{tables/public_harness_comparison/main_public_harness_three_seed}
 \FloatBarrier
@@ -17,7 +17,7 @@ We apply the policy in Section 3.4 to the same ten designs and ten laboratories 
 With proposal generation held fixed, trajectory-guided allocation improves Norman from 11.48\% to 22.32\% Top-1: a +10.84-point mean effect, positive in every seed, with hierarchical paired-bootstrap 95\% CI [4.54, 17.73]. A promoted low-learning-rate residual design therefore benefits from training beyond the uniform stopping point, so evidence improves a consequential research decision even when the candidate designs and total budget are fixed. Across all twelve task--seed comparisons (seeds 53--55), the policy gives four wins and eight ties; Tahoe gains 1.99 points on average, while VCC and proteomics tie. Table~\ref{tab:strong-effects} reports task-specific uncertainty.
 
 \subsection*{4.5 Learning from different laboratory scenarios}
-In source-as-laboratory experiments, each auxiliary collection represents a separate training laboratory. The target's original development panels select checkpoints, and a common target test measures transfer. For DTI, BindingDB, BioSNAP, Davis and Human form four collection-defined laboratories. For VCC, the auxiliary laboratories hold Replogle/K562, Nadig/HepG2 and Jiang/IFNB/K562 data: they differ in study, cellular background or stimulation, rather than being random shards of VCC. Appendix B gives their identities, sizes and exclusions.
+In source-as-laboratory experiments, each auxiliary collection represents a separate training laboratory. The target's original development panels select checkpoints, and a common target test measures transfer. For DTI, BindingDB, BioSNAP, Davis and Human form four collection-defined laboratories. For VCC, the auxiliary laboratories hold Replogle/K562, Nadig/HepG2 and Jiang/IFNB/K562 data, differing in study, cellular background or stimulation rather than being random shards. Appendix B gives their identities, sizes and exclusions.
 
 For proteomics, we assign each of four studies to one training laboratory: the target PTPC collection, Lin, Ruprecht and decryptE \citep{Lin2026HDAC,Ruprecht2020Proteome,Eckert2024DecryptE}. A source-aware adapter shares encoders and retains private response heads to accommodate their different supervised objectives. Under the same fixed recipe and target-only development selection, adding all three external studies raises target AP from 34.41 to 37.53 and AUROC from 72.33 to 74.39. Table~\ref{tab:proteomics-study-clients} reports all four controls; Appendix B also retains the separate protocol with ten target training shards. Together, these studies show that external measurements can improve target prediction, while source compatibility matters alongside data volume.
 
@@ -30,7 +30,7 @@ We vary $K\in\{1,2,5,10\}$ in two ways: adding the first $K$ laboratories increa
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.92\linewidth]{assets/laboratory_sensitivity_v2.pdf}
+\includegraphics[width=0.84\linewidth]{assets/laboratory_sensitivity_v2.pdf}
 \caption{Laboratory-count sensitivity. Solid lines add participating laboratories and data; dashed lines repartition the full training pool. Points are means over the study seeds; full values and SD are in Appendix B. Each panel uses its task's primary metric; tested $K$ settings are equally spaced.}
 \label{fig:lab-sensitivity}
 \end{figure}
@@ -42,7 +42,7 @@ We compare Qwen2.5-7B-Instruct and the \texttt{gpt-5.6-luna} service under a com
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.62\linewidth]{assets/completed_short6_search_v2.pdf}
+\includegraphics[width=0.58\linewidth]{assets/completed_short6_search_v2.pdf}
 \caption{Research trajectories with and without evidence history. Curves report development selection and held-out scores at each proposal prefix; each candidate receives 100 rounds and slot 0 is the initial design.}
 \label{fig:completed-short-dev}
 \end{figure}
