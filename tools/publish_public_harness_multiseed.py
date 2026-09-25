@@ -110,6 +110,19 @@ def _score_at(run, harness, task, seed):
     }
 
 
+def _retry_is_terminal(run):
+    """Use a retry only after it has a sealed score or terminal failure."""
+    run = Path(run)
+    if not run.exists():
+        return False
+    if (run / "heldout" / "results.json").is_file():
+        return True
+    status = run / "run_status.json"
+    if not status.is_file():
+        return False
+    return read(status).get("status") == "FAILED"
+
+
 def summarize(runs):
     values = [run["primary"] for run in runs.values() if run["status"] == "scored"]
     failures = [run["display"] for run in runs.values() if run["status"] != "scored"]
@@ -123,9 +136,10 @@ def summarize(runs):
     return result
 
 
-def collect(seed42_base, additional_base, reference_base):
+def collect(seed42_base, additional_base, reference_base, retry_base=None):
     seed42 = one.collect(seed42_base, reference_base)
     additional_base = Path(additional_base).resolve()
+    retry_base = Path(retry_base).resolve() if retry_base is not None else None
     manifest = read(additional_base / "queue_manifest.json")
     supervisor = read(additional_base / "supervisor_status.json")
     if (manifest.get("schema") != "public-harness-one-lab-additional-seeds-v1"
@@ -143,9 +157,16 @@ def collect(seed42_base, additional_base, reference_base):
         core = seed42["tasks"][task]["core"]
         public = {}
         for harness in PUBLIC:
-            runs = {"42": seed42["tasks"][task]["public"][harness]}
+            retry = (retry_base / harness / task / "seed42"
+                     if retry_base is not None else None)
+            runs = {"42": (_score_at(retry, harness, task, 42)
+                            if retry is not None and _retry_is_terminal(retry)
+                            else seed42["tasks"][task]["public"][harness])}
             for seed in (43, 44):
-                path = additional_base / harness / task / f"seed{seed}"
+                retry = (retry_base / harness / task / f"seed{seed}"
+                         if retry_base is not None else None)
+                path = (retry if retry is not None and _retry_is_terminal(retry)
+                        else additional_base / harness / task / f"seed{seed}")
                 runs[str(seed)] = _score_at(path, harness, task, seed)
             public[harness] = summarize(runs)
         tasks[task] = {"core": core, "public": public}
@@ -154,6 +175,7 @@ def collect(seed42_base, additional_base, reference_base):
         "created_utc": datetime.now(timezone.utc).isoformat(),
         "seed42_base": str(Path(seed42_base).resolve()),
         "additional_base": str(additional_base),
+        "retry_base": str(retry_base) if retry_base is not None else None,
         "reference_base": str(Path(reference_base).resolve()),
         "protocol": {
             "seeds": list(SEEDS), "public_controller_laboratories": [0],
@@ -239,9 +261,12 @@ if __name__ == "__main__":
     parser.add_argument("--additional-base", type=Path, required=True)
     parser.add_argument("--reference-results", type=Path,
                         default=ROOT / "results/unified_bio_20260918")
+    parser.add_argument("--retry-base", type=Path,
+                        help="Optional fresh retry tree; existing positions override the original run")
     parser.add_argument("--output-dir", type=Path,
                         default=PAPER / "tables/public_harness_comparison")
     args = parser.parse_args()
-    snapshot = collect(args.seed42_base, args.additional_base, args.reference_results)
+    snapshot = collect(args.seed42_base, args.additional_base, args.reference_results,
+                       retry_base=args.retry_base)
     write(snapshot, args.output_dir)
     print(json.dumps({"status": "PUBLISHED", "protocol": snapshot["protocol"]}, indent=2))

@@ -54,7 +54,7 @@ def main():
     words = page.get_text()
     required = ['Lab 1', 'Lab 2', 'Lab K', 'Scenario A', 'Scenario B', 'Scenario K',
                 'Drug-target interactions', 'Proteomic efficacy', 'Cell perturbations',
-                'Candidate design', 'Development', 'evidence', 'Research history', 'fitted predictor']
+                'Candidate recipe', 'Dev evidence', 'evidence', 'Research history', 'fitted predictor']
     missing = [value for value in required if value not in words]
     assert not missing, missing
     assert 'Programs' not in words and 'Policies' not in words and 'Laboratory 10' not in words
