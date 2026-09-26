@@ -1,0 +1,108 @@
+{
+  "status": "PRESENTATION_ONLY_VERIFIED",
+  "baseline_commit": "e9f2d0d50683464d05daa7d4429e6ff58e2b4d8c",
+  "files": {
+    "tables/strong_v3/ablation.tex": {
+      "before_sha256": "c5dc1ac7edf7a0138d4614ef4e36816d2999137f1357a6359ceb0cb368f9e763",
+      "after_sha256": "79fef3233ef440652809edfa98e614512d20260ae189bc512c83d8e4ebeb6a3e",
+      "kind": "caption-above",
+      "reason": "Caption and label moved above the tabular body; no cell changed."
+    },
+    "tables/strong_v3/effects.tex": {
+      "before_sha256": "f800012667b74158ccffa8987e8744a1c43d7eb13d9eb22866f68cc74e6ad371",
+      "after_sha256": "975bc2c91b10e7376c8f735315e1590c5c3c06dada741e088c7cbeaf7a95c40c",
+      "kind": "caption-above",
+      "reason": "Caption and label moved above the tabular body; no cell changed."
+    },
+    "tables/strong_v3/effects_full.tex": {
+      "before_sha256": "e6431cccf9c7c866bb40f7ed0255477045fbf0fb5e84c3946fc62b910223b8ec",
+      "after_sha256": "a25f6579e6882574cf25abf9aece1b905c20c9dda80d1ea70ce4489d39bc0824",
+      "kind": "caption-above",
+      "reason": "Caption and label moved above the tabular body; no cell changed."
+    },
+    "tables/strong_v3/loop_prefix.tex": {
+      "before_sha256": "64722bace309226c240298198304071e548f7a3fb0dd2e92d9747ef8c9f03634",
+      "after_sha256": "7202feb0ca2e9fbfc2f65d1f8db6faff8b08f3bfdcaffe1d71f77071d6b56c4a",
+      "kind": "caption-above",
+      "reason": "Caption and label moved above the tabular body; no cell changed."
+    },
+    "tables/completed_ablation/dynamics_long24.tex": {
+      "before_sha256": "4e376da1ce734e358cbc322ce95ca7766c8306db725167d6f84c4caa0ad59bcf",
+      "after_sha256": "3c016b76e43219f3ce09310bad6523e5da18eb96dd9994b47f68c21f5f22036f",
+      "kind": "caption-above",
+      "reason": "Caption and label moved above the tabular body; no cell changed."
+    },
+    "tables/completed_ablation/dynamics_short6.tex": {
+      "before_sha256": "9552d64a6f5a8ec988b02905c92e062c738e58367b4fb4f50ee63c75aac18a68",
+      "after_sha256": "f12adf39fd07a2bf71bfb66647c109fc555703037e24be99ca4738348706ceae",
+      "kind": "caption-above",
+      "reason": "Caption and label moved above the tabular body; no cell changed."
+    },
+    "tables/completed_ablation/lab_fixed_pool.tex": {
+      "before_sha256": "2abfd0cffd64ebeec883411c1170498db4d92d630ebd7931ae0ac6db653acc44",
+      "after_sha256": "8a8c151b408686c8b38b087171687063cb6a2703af96e8ba602aafc1db040069",
+      "kind": "caption-above",
+      "reason": "Caption and label moved above the tabular body; no cell changed."
+    },
+    "tables/completed_ablation/lab_participation.tex": {
+      "before_sha256": "0d5e29da49c57658e62aad617d195ad338e5ecb153046ab3f1c6da0c67465eb9",
+      "after_sha256": "ce6630622ecf9e642114b4a35d34284159e4423844dd4cd24d2889b3fdb1a48e",
+      "kind": "caption-above",
+      "reason": "Caption and label moved above the tabular body; no cell changed."
+    },
+    "tables/completed_ablation/long24.tex": {
+      "before_sha256": "2485f5af2a592d243c865797a8b8ea41a2cce792cd2180b7be631fc68ea3de64",
+      "after_sha256": "8440e46dbf19a0291f14a375444dd968bf7ecccade6d1c18a632b5c367b7cb0e",
+      "kind": "caption-above",
+      "reason": "Caption and label moved above the tabular body; no cell changed."
+    },
+    "tables/completed_ablation/menu_long24.tex": {
+      "before_sha256": "cff47710b3bde87fd4c1afc46542dcf206cc458ebd7367e05daab601b3df41a2",
+      "after_sha256": "5c8e2bc0ee9cf0e023ef12664b543c6635f6eb257447f0fc28c30684fee1c513",
+      "kind": "caption-above",
+      "reason": "Caption and label moved above the tabular body; no cell changed."
+    },
+    "tables/completed_ablation/menu_short6.tex": {
+      "before_sha256": "98364a965292e283548d08dbde9c0259b4d0e2258e164343b11c46fd99fca0bd",
+      "after_sha256": "c944ee972cd69ad0edcc51e4f3c9d96145b980b050ab6f4adbfdf3bc9c157b03",
+      "kind": "caption-above",
+      "reason": "Caption and label moved above the tabular body; no cell changed."
+    },
+    "tables/completed_ablation/norman_retained_events.tex": {
+      "before_sha256": "9d92288db2929565eb8a7961fb8c6800181d34ab794e3583a14f7d3bb95d2d6d",
+      "after_sha256": "51a17869d49e1ce4fe0f9244298a7d38e0c237726e370b0eeb8ad7f0e114642a",
+      "kind": "retired-redundant-design-column",
+      "reason": "Design ids such as L0W1M0R0 duplicate the executed configuration printed beside them, so the id column was dropped."
+    },
+    "tables/completed_ablation/short6.tex": {
+      "before_sha256": "b5dfe895d023cea6c53853b04e003dd820b31a8c456826b6d13b5ba77e54e214",
+      "after_sha256": "6c1f1346355d1f321913cc12cdd15107eec1154f82af020b466ab66c712cb297",
+      "kind": "caption-above",
+      "reason": "Caption and label moved above the tabular body; no cell changed."
+    },
+    "tables/completed_ablation/summary.tex": {
+      "before_sha256": "5cdd02ef6e188d1100813acfcb3dbe8ac0cefadf394fade52da77f55bdb798f4",
+      "after_sha256": "6408567d87113b6b29bf1c5b35721c28a94bee4b46f5eeb245550f307475d4b5",
+      "kind": "caption-above",
+      "reason": "Caption and label moved above the tabular body; no cell changed."
+    },
+    "tables/completed_ablation/transfer_contexts.tex": {
+      "before_sha256": "7bcbe6874ee89b88c28d028a2db4ddfa474533252fbb2f4d8a93d0ebff66b513",
+      "after_sha256": "a1f3f8bebbd14cd6a96112d5054ddc303f5efeac6b21090013556e5a396103ef",
+      "kind": "caption-above",
+      "reason": "Caption and label moved above the tabular body; no cell changed."
+    },
+    "tables/completed_ablation/transfer_independent.tex": {
+      "before_sha256": "a5f7bfb6d5b68377119ff8b20697e275b01ba410a6192c44cee12111a568f4af",
+      "after_sha256": "28254e25ad7d62d702971b0ed05f879dc638de92feb61bbf61a1143132e71896",
+      "kind": "caption-above",
+      "reason": "Caption and label moved above the tabular body; no cell changed."
+    },
+    "tables/completed_ablation/transfer_protein_loop.tex": {
+      "before_sha256": "bee3944238b547533afeef68c44552677ebba78fd757e7b884f3261153eb4aed",
+      "after_sha256": "9a6689da03597ebd11889df6b1ef73a651932d0dccd58ee2bd6d73d0550df7a2",
+      "kind": "caption-above",
+      "reason": "Caption and label moved above the tabular body; no cell changed."
+    }
+  }
+}

@@ -1,4 +1,6 @@
 \begin{table}[htbp]
+\caption{Fixed data pool. All target data are retained and merged into $K$ clients; only the partition count changes. The default design and 100-round trainer are fixed. DTI uses seed 61; the four light endpoints report mean $\pm$ sample SD over seeds 61--63. Scores are metric $\times100$; bold denotes the best $K$ within each row, including displayed ties.}
+\label{tab:completed-partition}
 \centering\small
 \setlength{\tabcolsep}{4pt}
 \begin{tabularx}{\linewidth}{@{}lXrrrr@{}}
@@ -12,6 +14,4 @@ Norman & Macro Top-1 & \textbf{49.63 $\pm$ 4.20} & 19.56 $\pm$ 0.20 & 26.12 $\pm
 Tahoe & Macro Top-1 & 22.39 $\pm$ 0.00 & 21.39 $\pm$ 0.86 & 20.40 $\pm$ 0.86 & \textbf{26.37 $\pm$ 0.86} \\
 \bottomrule
 \end{tabularx}
-\caption{Fixed data pool. All target data are retained and merged into $K$ clients; only the partition count changes. The default design and 100-round trainer are fixed. DTI uses seed 61; the four light endpoints report mean $\pm$ sample SD over seeds 61--63. Scores are metric $\times100$; bold denotes the best $K$ within each row, including displayed ties.}
-\label{tab:completed-partition}
 \end{table}

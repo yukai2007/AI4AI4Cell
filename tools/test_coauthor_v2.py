@@ -35,11 +35,13 @@ class SecondReviewTests(unittest.TestCase):
         text=(PAPER/'sections/04_experimental_design.tex').read_text()
         self.assertIn('within each dataset',text)
         self.assertIn('source-as-laboratory',text)
-        text+=(PAPER/'sections/05_results.tex').read_text()
-        self.assertIn('collection-defined laboratories',text)
-        self.assertIn('Replogle/K562',text)
-        self.assertIn('Nadig/HepG2',text)
-        self.assertIn('Jiang/IFNB/K562',text)
+        self.assertIn('tests transfer between data sources',text)
+        self.assertIn('the second tests transfer between data sources',text)
+        appendix=(PAPER/'sections/23_appendix_core_sensitivity.tex').read_text()
+        appendix+=(PAPER/'tables/supplemental_20260923/source_client_mapping.tex').read_text()
+        self.assertIn('Replogle',appendix)
+        self.assertIn('Nadig',appendix)
+        self.assertIn('Jiang',appendix)
 
     def test_laboratory_plot_preserves_all_points(self):
         receipt=json.loads((PAPER/'assets/laboratory_sensitivity_v2.json').read_text())

@@ -104,7 +104,7 @@
   "receipt_path": "results/supplemental_20260923/proteomics/seed61_slots0_cpu/independent_rescore.json",
   "receipt_sha256": "b5fa3aebb01205ba8db57edb29af57e3dfa79a2c0e1cab94d0b2e2ce8c06ab29",
   "table_path": "tables/supplemental_20260923/proteomics_three_source.tex",
-  "table_sha256": "445325e9fafb884bef91eac48f6441d66cd4324c0d304f3b23cb965663682dc9",
-  "publisher_sha256": "adfa08f65eaf20fa9d2d34ce7b88461aa92cb8b040e521695a8517da6b90355a",
+  "table_sha256": "9a470b6a1ba1956b5a79c947f1e75190794ab41a258ecefaa6e8eba0e73f403a",
+  "publisher_sha256": "41f4988094ffc159413458b63b3c708c21764162b992b1a10559d3922494abc1",
   "scope": "Four fixed-design source arms; not agentic-loop evidence"
 }

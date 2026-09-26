@@ -287,7 +287,10 @@ def table(snapshot, out, full=False):
                 text = r'\underline{' + text + '}'
             sd = deviations[arm][j]
             return text + r' $\pm$ ' + (f'{sd:.2f}' if sd is not None else 'N/A')
-        lines = [r'\begin{table}[t]', r'\centering\footnotesize',
+        caption = (r'Main held-out comparison across three task families. Each column uses its named task model in all methods. Direct optimization proposes configurations without evaluation history; BioCoLoop adds collaborative access and evidence feedback. Values are mean $\pm$ sample SD over seeds 42--44, multiplied by 100; SD is not a confidence interval. Bold and underline mark the best and second-best displayed means, including ties. A dash indicates a model for a different task. Full factorial results and secondary metrics are in Appendix A.')
+        lines = [r'\begin{table}[t]', r'\caption{' + caption + r'}',
+            r'\label{tab:strong-main}',
+            r'\centering\footnotesize',
             r'\setlength{\tabcolsep}{3pt}', r'\renewcommand{\arraystretch}{1.12}',
             r'\begin{tabularx}{\linewidth}{@{}Xrrrrr@{}}', r'\toprule',
             r'\textbf{Model / method} & \multicolumn{1}{c}{DTI} & \multicolumn{1}{c}{Proteomics} & \multicolumn{3}{c}{Cell perturbation} \\',
@@ -303,13 +306,17 @@ def table(snapshot, out, full=False):
         for arm, name in [('single_direct', 'Qwen direct (1 lab)'),
                           ('federated_loop', r'\textbf{BioCoLoop} (10 labs)')]:
             lines.append(name + ' & ' + ' & '.join(cell(arm, j) for j in range(5)) + r' \\')
-        lines += [r'\bottomrule', r'\end{tabularx}',
-            r'\caption{Main held-out comparison across three task families. Each column uses its named task model in all methods. Direct optimization proposes configurations without evaluation history; BioCoLoop adds collaborative access and evidence feedback. Values are mean $\pm$ sample SD over seeds 42--44, multiplied by 100; SD is not a confidence interval. Bold and underline mark the best and second-best displayed means, including ties. A dash indicates a model for a different task. Full factorial results and secondary metrics are in Appendix A.}',
-            r'\label{tab:strong-main}', r'\end{table}']
+        lines += [r'\bottomrule', r'\end{tabularx}', r'\end{table}']
         (out/'main.tex').write_text('\n'.join(lines)+'\n')
         return
 
-    lines = [r'\begin{table}[t]',r'\centering\small',r'\setlength{\tabcolsep}{3pt}',
+    caption=('Six-arm ablation of the task-reference models. Entries are held-out mean $\\pm$ sample SD '
+             'across completed training/search seeds, multiplied by 100. '
+             'The data partitions remain fixed; this SD measures run-to-run variation, not dataset uncertainty. '
+             'DTI uses the random held-out endpoint. Bold marks all displayed maxima.')
+    label='tab:strong-ablation' if full else 'tab:strong-main'
+    lines = [r'\begin{table}[t]',r'\caption{'+caption+'}',r'\label{'+label+'}',
+        r'\centering\small',r'\setlength{\tabcolsep}{3pt}',
         r'\begin{tabular}{clrrrrr}',r'\toprule',
         r' & & DTI & Proteomics & \multicolumn{3}{c}{Cell perturbation} \\',r'\cmidrule(lr){5-7}',
         r'Labs & Method & AUROC & AP & VCC & Norman & Tahoe \\',
@@ -329,13 +336,8 @@ def table(snapshot, out, full=False):
         lines.append(f'{labs} & {name} & '+' & '.join(cells)+r' \\')
     requested = len(snapshot.get('seeds_requested', SEEDS))
     lines += [r'\midrule',r'\multicolumn{2}{l}{Completed seeds ($n/'+str(requested)+r'$)} & '+' & '.join(
-        f'{len(runs(snapshot,t))}/{requested}' for t,_,_ in TASKS)+r' \\',r'\bottomrule',r'\end{tabular}']
-    caption=('Six-arm ablation of the task-reference models. Entries are held-out mean $\\pm$ sample SD '
-             'across completed training/search seeds, multiplied by 100. '
-             'The data partitions remain fixed; this SD measures run-to-run variation, not dataset uncertainty. '
-             'DTI uses the random held-out endpoint. Bold marks all displayed maxima.')
-    label='tab:strong-ablation' if full else 'tab:strong-main'
-    lines += [r'\caption{'+caption+'}',r'\label{'+label+'}',r'\end{table}']
+        f'{len(runs(snapshot,t))}/{requested}' for t,_,_ in TASKS)+r' \\',r'\bottomrule',r'\end{tabular}',
+        r'\end{table}']
     (out/('ablation.tex' if full else 'main.tex')).write_text('\n'.join(lines)+'\n')
 
 
@@ -353,7 +355,10 @@ def effects(snapshot,out,full=False):
             ('Feedback effect', 'federated_loop', 'federated_direct'),
             ('Participation effect', 'federated_loop', 'single_loop'),
         ]
-        lines = [r'\begin{table}[h!]', r'\centering\small', r'\setlength{\tabcolsep}{7pt}',
+        caption = (r'Does early evidence improve training allocation? Held-out scores use the same ten designs, ten laboratories, 800 full-client rounds and 160 aggregate development evaluations per method. Uniform allocation gives every design 80 rounds; the evidence-guided scheduler screens all designs for 20 rounds and restarts six promoted designs for 100-round training. Gain is evidence-guided minus uniform, in percentage points; W/T/L counts seed-level wins, ties and losses (total 4/8/0). Norman 95\% CI: [4.54, 17.73]; Tahoe: [$-$1.00, 7.46]. The separate DTI development replay is in Appendix A.')
+        lines = [r'\begin{table}[h!]', r'\caption{' + caption + r'}',
+            r'\label{tab:strong-effects}',
+            r'\centering\small', r'\setlength{\tabcolsep}{7pt}',
             r'\renewcommand{\arraystretch}{1.08}',
             r'\begin{tabularx}{\linewidth}{@{}Xrrr@{}}', r'\toprule',
             r'\textbf{Benchmark} & \shortstack{Design search\\10 labs} & '
@@ -366,13 +371,14 @@ def effects(snapshot,out,full=False):
                           for run in runs(snapshot, task)]
                 cells.append(f'{statistics.mean(values):+.2f}' if values else 'N/A')
             lines.append(row_labels[task] + ' & ' + ' & '.join(cells) + r' \\')
-        lines += [r'\bottomrule', r'\end{tabularx}',
-            r'\caption{Factorial attribution on the five held-out endpoints, in percentage points. Design search is loop $-$ fixed at ten laboratories; feedback is loop $-$ matched-budget direct at ten laboratories; participation is ten $-$ one laboratory with the loop fixed. Participation combines additional training data, development evidence and computation. Appendix A reports seed-level effects and uncertainty.}',
-            r'\label{tab:strong-effects}', r'\end{table}']
+        lines += [r'\bottomrule', r'\end{tabularx}', r'\end{table}']
         (out/'effects.tex').write_text('\n'.join(lines)+'\n')
         return
 
-    lines=[r'\begin{table}[t]',r'\centering\small',r'\setlength{\tabcolsep}{3pt}',
+    caption=('Complete decomposition into design-search improvement (loop minus fixed), feedback-specific improvement (loop minus matched-budget direct), and laboratory-participation improvement (ten minus one lab with loop fixed). Mean paired held-out differences are in percentage points over the three seeds and are computed before rounding.')
+    label='tab:strong-effects-full' if full else 'tab:strong-effects'
+    lines=[r'\begin{table}[t]',r'\caption{'+caption+'}',r'\label{'+label+'}',
+        r'\centering\small',r'\setlength{\tabcolsep}{3pt}',
         r'\begin{tabular}{lrrrrr}',r'\toprule',
         r'Held-out contrast & DTI & Proteomics & VCC & Norman & Tahoe \\',r'\midrule']
     comparisons = [('Loop $-$ fixed (1 lab)','single_loop','single_fixed'),

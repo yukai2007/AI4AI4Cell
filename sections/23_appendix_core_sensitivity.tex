@@ -103,6 +103,8 @@ The eight terminal held-out pairs give seven ties and one decrease with feedback
 The short protocol uses exactly the D00--D11 configurations listed in Appendix A.2. The extended protocol uses all $3\times3\times2\times2=36$ combinations in Table~\ref{tab:completed-menu-long24}. An identifier \texttt{L}$i$\texttt{W}$j$\texttt{M}$k$\texttt{R}$l$ selects the indexed value of each factor, with $i,j\in\{0,1,2\}$ and $k,l\in\{0,1\}$. For example, \texttt{L0W1M0R1} specifies learning rate $10^{-4}$, weight decay $10^{-3}$, zero coordinator momentum and an enabled residual module. Every configuration has proximal coefficient zero; the task-specific prediction interface remains fixed.
 
 \begin{table}[htbp]
+\caption{Exact factor-to-index mapping for the extended 36-design library. Identifiers concatenate the four prefix--index pairs in L, W, M, R order; all combinations of the listed values are included.}
+\label{tab:completed-menu-long24}
 \centering\small
 \begin{tabular}{llrrr}
 \toprule
@@ -114,8 +116,6 @@ Coordinator momentum & \texttt{M} & $0$ & $0.9$ & -- \\
 Residual module & \texttt{R} & disabled & enabled & -- \\
 \bottomrule
 \end{tabular}
-\caption{Exact factor-to-index mapping for the extended 36-design library. Identifiers concatenate the four prefix--index pairs in L, W, M, R order; all combinations of the listed values are included.}
-\label{tab:completed-menu-long24}
 \end{table}
 
 The accompanying reproducibility archive retains all 504 attempted proposal slots and their acceptance decisions: 120 slots in the short protocol and 384 in the extended protocol. Its machine-readable proposal trace records each proposal's full configuration, changes from the incumbent and measured development score; the expanded trace tables are provided with the archive rather than reproduced in the article. Together with the prefix curves, these records connect research decisions to both the executable intervention and its observed outcome.

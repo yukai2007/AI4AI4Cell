@@ -11,28 +11,28 @@
     "AAAAAD+CompanionSC"
   ],
   "text_out_of_bounds_pages": [],
-  "generated_utc": "2026-09-26T05:00:07.824508+00:00",
+  "generated_utc": "2026-09-26T07:55:35.240018+00:00",
   "generator_sha256": "7709ed8ad30adc182f60a7594224a434f132d6b9bf757823c8cd6d3c8ade8c23",
   "embedded_font_source_sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
   "input_sha256": {
     "paper/tables/strong_v3/snapshot.json": "814129bf578ab358de0773b1975ba00257a7fe12c75b3e6b6f1534617cd5749a",
     "paper/tables/core_review/snapshot.json": "ea19d08df451ffaeb07e791536b5f8278d0886acd941c79304fd9cc328de8529",
     "paper/tables/completed_ablation/snapshot.json": "1300ee2702358927af215de29d7de22bf9b1d495923c2d5661a42f5abed79f23",
-    "paper/tables/public_harness_comparison/snapshot_llm_grouped_three_seed.json": "0a183a2a97d0b28eaff457f7515bfa05eb1d3c787568fe7ab68e9cd7a59f3d4e",
+    "paper/tables/public_harness_comparison/snapshot_llm_grouped_three_seed.json": "8d26d2d2fe6cdda25d200669b9134a60e37ece987f36eb6fab85e45fc67d6711",
     "paper/provenance/luna_main_core_20260925/independent_verification.json": "759948fa9e9fb2d8e78603af8b992946bb2fff2231403e85e62a37d2aa1e0070",
     "results/tonight_completion_20260923/final_delivery/summary.json": "8eb30ad05acaf714dbaa8c180a0657dcd9bc6c8b9bebccba620f097159eb7541",
     "results/proteomics_external_pilot_20260923/RESULT.zh-CN.md": "e9fc4c7c2424dc12959816efa8a1c1cd758c0414835df386799904c1948b68a9",
-    "paper/assets/paradigm_comparison_v3.pdf": "c475a0e3530eb10c635b541a02da8a2c8e03b2605f365830d65d3b2cbfd303f6",
-    "paper/assets/paradigm_comparison_v3.provenance.json": "0505190e302af267e88126591c3b58efd36d1ef4f891194c063be7cdfb2e6e7f",
+    "paper/assets/paradigm_comparison_v3.pdf": "4a8950d3ba7df9e76f41d07f7e40b2359a2a037334b5399fe1bf500027f4cd0c",
+    "paper/assets/paradigm_comparison_v3.provenance.json": "e4b0be08a5295b4243a7eeee9df491c2bb69ac77e5984fb724fad4c106b8b04a",
     "paper/assets/completed_budget_examples.pdf": "2b491a88b837d9e2aed1dd48f28eff547e4010a9db3fefef240243e2304c0f5d",
     "paper/assets/laboratory_sensitivity_v2.pdf": "c89fc89d591bc4dbc10d5a7129df5bd52c232e2be862b95503d19a311e3fdbb0",
     "paper/assets/completed_short6_search.pdf": "3edd2cdc4694529089c4b9095462ef99f8df580692b194e89a2f16100f5ea786",
-    "paper/figures/biocoloop_framework_v3.pdf": "5284e5662d7f9eebd49cebf48d45582e9b9139d0c4858a1a1dd26befb0a32c8f",
-    "paper/figures/biocoloop_framework_v3.provenance.json": "547bd1cb6b1938718d25a1114f57e181fddbc491a8f581cdb710d8b198c4cf01",
+    "paper/figures/biocoloop_framework_v3.pdf": "beb88747c5584a21e8be99fa7942a71a5a789bae4532b5ae4daf6826ea1f3585",
+    "paper/figures/biocoloop_framework_v3.provenance.json": "1b4a3e1f6095a36e600278836e67a30c7c83310e4c4fca04191051716315bb0f",
     "paper/provenance/coauthor_review_v2_20260923/ANNOTATIONS.zh-CN.md": "e93f9742ffbe19924f7117510939e331374684b839c9910fc4536c73bc7e929b",
     "paper/sections/03_method.tex": "20cc9772370c5900b41521e126f76deae1b8d80cd18fe28a2ac020b5277a2a47",
-    "paper/sections/04_experimental_design.tex": "b6867bbf19336a863cc5ffddfeeb2453cfca466e79b19ac4db28dafb204dfd54",
-    "paper/sections/22_appendix_unified_protocol.tex": "dd2769938ac3515c53fbe7d00ffd56bc3b0782651176422324b75d36868cf59c",
+    "paper/sections/04_experimental_design.tex": "9830724ee5a14f757c622dd2d59e15b5f6ecad827796c7ac07f4bbc14f40c248",
+    "paper/sections/22_appendix_unified_protocol.tex": "00b1a620d3622c4504245cdec1f7c3406a134745a5ab3331480f157da16a3806",
     "results/supplemental_20260923/proteomics/seed61_slots0_cpu/independent_rescore.json": "b5fa3aebb01205ba8db57edb29af57e3dfa79a2c0e1cab94d0b2e2ce8c06ab29",
     "results/supplemental_20260923/proteomics/seed61_slots0_cpu/definition.json": "5b5e10e7321fe32c66bb6b0a83134ae4bab700a9dce2a91ddc514a98688f34f5",
     "results/supplemental_20260923/proteomics/seed61_slots0_cpu/heldout/results.json": "804d7ede777b175fc9369fae2609dd8804570cccb08ed1ef7fef0a56272ea089",
@@ -50,7 +50,7 @@
     "results/proteomics_scenario_labs_20260924/heldout/seal.json": "7e5f23c33f202cfbe6df7facf63e731df4782397b0d03778f2663b23f4cc106b"
   },
   "publication_snapshot_sha256": "1300ee2702358927af215de29d7de22bf9b1d495923c2d5661a42f5abed79f23",
-  "grouped_harness_snapshot_sha256": "0a183a2a97d0b28eaff457f7515bfa05eb1d3c787568fe7ab68e9cd7a59f3d4e",
+  "grouped_harness_snapshot_sha256": "8d26d2d2fe6cdda25d200669b9134a60e37ece987f36eb6fab85e45fc67d6711",
   "grouped_harness_models": [
     "Qwen2.5-7B-Instruct",
     "GPT-5.6 Luna (low reasoning)"
@@ -110,7 +110,7 @@
     }
   },
   "page_count": 22,
-  "output_sha256": "86e44cad574f1206fffc135fbecb60cd4e03480588267946a893d51531574723",
+  "output_sha256": "76daf56de3f32a578855491ee5415290ae658ed4b7cf717f93684b08bfcc3188",
   "uncompleted_extensions": [
     "additional seeds",
     "DTI long24"

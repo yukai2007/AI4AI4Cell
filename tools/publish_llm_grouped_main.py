@@ -501,7 +501,10 @@ def table_text(snapshot):
         if not summary["complete"]:
             if summary["completed"] == 0:
                 return r"\TblZero"
-            value = f"{100 * summary['mean']:.2f} $\pm$ {100 * summary['sd']:.2f}"
+            if summary.get("sd") is None:
+                value = f"{100 * summary['mean']:.2f}\,({count})"
+            else:
+                value = f"{100 * summary['mean']:.2f} $\pm$ {100 * summary['sd']:.2f}"
             return value + r"\TblPartial"
         rounded = round(100 * summary["mean"], 2)
         shown = f"{rounded:.2f}"
@@ -513,14 +516,17 @@ def table_text(snapshot):
         star = r"\TblStar" if summary.get("extended_context_seeds") else ""
         return shown + r" $\pm$ " + f"{100 * summary['sd']:.2f}" + star
 
+    best_rank = {model: min(value for value in mean_rank[model].values()
+                            if value is not None) for model in MODEL_LABELS}
+
     def rank_cell(model, method):
         value = mean_rank[model].get(method)
         baseline = mean_rank[model].get("single_fixed")
         if value is None:
             return r"\textcolor{TblInk}{--}"
-        if baseline is None:
-            return f"{value:.2f}"
         shown = f"{value:.2f}"
+        if value == best_rank[model]:
+            shown = r"\textbf{" + shown + "}"
         if method == "single_fixed":
             return shown
         delta = baseline - value
@@ -536,9 +542,8 @@ def table_text(snapshot):
             [cell(model, method, task) for task in TASKS] + [rank_cell(model, method)]
         ) + r" \\"
 
-    lines = list(TABLE_PREAMBLE)
-    lines += [
-        r"\begin{table}[t]", r"\centering\scriptsize",
+    body = [
+        r"\centering\scriptsize",
         r"\setlength{\tabcolsep}{2.0pt}", r"\renewcommand{\arraystretch}{0.84}",
         r"\begin{tabularx}{\linewidth}{@{}LQQQQQQ@{}}", r"\toprule",
         (r"\textbf{Model / method} & \multicolumn{1}{c}{DTI} & "
@@ -552,22 +557,40 @@ def table_text(snapshot):
     ]
     for index, model in enumerate(MODEL_LABELS):
         if index:
-            lines.append(r"\midrule")
-        lines.append(r"\multicolumn{7}{@{}l}{\textbf{" + MODEL_LABELS[model] + r"}} \\")
-        lines.extend(row(model, method) for method in METHODS)
-    star_note = (
-        r" $\star$ marks a cell whose controller was admitted under an extended "
-        r"native-context budget (Appendix~C)."
-    ) if any(r"\TblStar" in line and r"\providecommand" not in line for line in lines) else ""
+            body.append(r"\midrule")
+        body.append(r"\multicolumn{7}{@{}l}{\textbf{" + MODEL_LABELS[model] + r"}} \\")
+        body.extend(row(model, method) for method in METHODS)
+    star_note = ""
+    if any(r"\TblStar" in line and r"\providecommand" not in line for line in body):
+        star_note = (r" $\star$ marks a cell whose controller was admitted under an extended "
+                     r"native-context budget")
+        missing = [(_plain_label(MODEL_LABELS[model]).split(" (")[0], _plain_label(METHOD_LABELS[method]),
+                    TASK_SHORT[task])
+                   for model in MODEL_LABELS for method in METHODS for task in TASKS
+                   if not snapshot["models"][model][task][method]["complete"]
+                   and snapshot["models"][model][task][method]["completed"] == 0]
+        if missing:
+            listed = ", ".join(" ".join(parts) for parts in missing)
+            star_note += (r"; the cell it does not score is " + listed +
+                          r", whose native trajectory did not finish inside that budget")
+        star_note += r" (Appendix~C)."
+    lines = list(TABLE_PREAMBLE)
     lines += [
-        r"\bottomrule", r"\end{tabularx}",
+        r"\begin{table}[t]",
         (r"\caption{Main comparison by self-improving model (mean $\pm$ sample SD, seeds 42--44; scores "
          r"$\times100$). Public self-improving agents use laboratory 0 and BioCoLoop ten under a shared design "
-         r"library, fits and held-out scorer. Bold/underline mark the best/second-best complete result; "
-         r"$\dagger$ partial and {\TblZero} unscored cells are not imputed; the last column averages "
-         r"each method's rank over completed endpoints (Appendix~C)."
+         r"library, fits and held-out scorer. Bold marks the best complete value per endpoint and the lowest "
+         r"mean rank; underline marks the runner-up; $\dagger$ partial and {\TblZero} unscored cells are not "
+         r"imputed. Mean rank ranks the methods of a block from 1 (best) to 5 on every endpoint they completed "
+         r"and averages those ranks, so lower is better and the $\uparrow$/$\downarrow$ offset is the gap to "
+         r"that block's fixed reference. The three cell endpoints are five-option identification tasks with a "
+         r"20\% chance level, so their headroom above chance is small."
          + star_note + "}"),
         r"\label{tab:public-harness-comparison-three-seed}",
+    ]
+    lines += body
+    lines += [
+        r"\bottomrule", r"\end{tabularx}",
         r"\end{table}",
     ]
     return "\n".join(lines) + "\n"

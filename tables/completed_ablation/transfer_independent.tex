@@ -1,4 +1,6 @@
 \begin{table}[htbp]
+\caption{Independent-source transfer on the same target heldout set, including every prespecified source and their combination. DTI (seed 61) adds BioSNAP, Davis or Human; VCC (seeds 61--63, mean $\pm$ SD) adds Replogle, Nadig or Jiang. The PTPC auxiliary multi-task model (seed 61) adds Lin or Ruprecht and is compared only with its matched auxiliary target-only model. The two-source PTPC protocol shown here uses Lin and Ruprecht; the three-source extension is reported separately in Table~\ref{tab:supplemental-protein-three-source}. Changes are paired against target-only training; bold marks the best score within a target/model block. Scores are multiplied by 100.}
+\label{tab:completed-independent-transfer}
 \centering\small
 \setlength{\tabcolsep}{4pt}
 \begin{tabularx}{\linewidth}{@{}lXlrr@{}}
@@ -23,6 +25,4 @@ PTPC auxiliary & + Ruprecht & AP & \textbf{35.50} & +0.52 \\
 PTPC auxiliary & + Both & AP & 35.31 & +0.34 \\
 \bottomrule
 \end{tabularx}
-\caption{Independent-source transfer on the same target heldout set, including every prespecified source and their combination. DTI (seed 61) adds BioSNAP, Davis or Human; VCC (seeds 61--63, mean $\pm$ SD) adds Replogle, Nadig or Jiang. The PTPC auxiliary multi-task model (seed 61) adds Lin or Ruprecht and is compared only with its matched auxiliary target-only model. The two-source PTPC protocol shown here uses Lin and Ruprecht; the three-source extension is reported separately in Table~\ref{tab:supplemental-protein-three-source}. Changes are paired against target-only training; bold marks the best score within a target/model block. Scores are multiplied by 100.}
-\label{tab:completed-independent-transfer}
 \end{table}

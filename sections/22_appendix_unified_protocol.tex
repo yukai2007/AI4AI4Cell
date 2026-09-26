@@ -90,7 +90,7 @@ Norman, seed 42 & D08 & 0.519000 & 1.538505 & 3 / 2 \\
 \end{tabular}
 \end{center}
 
-PTPC selects stronger weight decay through the loss tie-break at equal AP, whereas VCC retains its initial design. Across the 15 ten-laboratory task--seed trajectories, the two-proposal history-guided search is better in two, tied in thirteen and worse in none, with a mean development-primary difference of +0.78 percentage points. At six proposals, direct and history-guided search select the same checkpoints. These observations describe search progress within the twelve-design library.
+PTPC selects stronger weight decay through the loss tie-break at equal AP, whereas VCC retains its initial design. Across the 15 ten-laboratory task--seed trajectories, the two-proposal history-guided search is better in two, tied in thirteen and worse in none, with a mean development-primary difference of +0.78 percentage points; the feedback channel acts mainly on search efficiency within the fixed proposal budget, and its measurable held-out effect is concentrated in the allocation study of Section~4.4. These observations describe search progress within the twelve-design library.
 
 \subsection*{A.3 Independent training-allocation control}
 This study fixes the candidate set and changes only the allocation of training rounds. It uses seeds 53--55 on proteomics and the three cell settings. The ten configurations cover the following factor combinations; every configuration uses the same ten laboratories.
@@ -143,10 +143,9 @@ For each query, predicted candidate responses and the observed response are L2-n
 Thus each intervention receives equal weight even when it contributes a different number of query profiles. Micro Top-1, mean reciprocal rank and Top-3 average over individual queries. The development loss is cross-entropy over the five cosine scores divided by temperature 0.1. Development selection first computes these scores within each laboratory and then averages laboratories equally.
 
 \subsection*{A.5 Complete comparisons and uncertainty}
-The following tables give the full one/ten-laboratory by fixed/direct/history-guided comparison, method contrasts, proposal-prefix results, secondary metrics and all three drug--target test sets. Bold marks the best displayed value within a task and metric, including ties. Higher is better except for binary cross-entropy and cell cross-entropy.
+The following tables give the full one/ten-laboratory by fixed/direct/history-guided comparison, proposal-prefix results, secondary metrics and all three drug--target test sets. Bold marks the best displayed value within a task and metric, including ties. Higher is better except for binary cross-entropy and cell cross-entropy.
 
 \input{tables/strong_v3/ablation}
-\input{tables/strong_v3/effects_full}
 \input{tables/strong_v3/loop_prefix}
 \clearpage
 \input{tables/strong_v3/secondary}
@@ -157,3 +156,6 @@ Three-seed means and sample standard deviations summarize training/search variab
 The accompanying \emph{BioCoLoop Statistical Supplement}, Tables S.1--S.2, reports the complete per-seed differences and confidence intervals for the main contrasts and all three drug--target test sets. It includes every reported contrast and seed, including zero and negative differences. These model-conditional intervals quantify test-sample uncertainty; in several cell comparisons they include zero, so positive mean differences do not uniformly establish significant gains.
 
 The accompanying research records contain the executable configurations, proposals, development histories and saved predictions needed to reconstruct these comparisons. The reproducibility statement describes their availability and verification.
+
+\subsection*{A.6 Scope and limitations}
+All experiments simulate separate laboratories on a single host and use disjoint partitions of public data, so they do not exercise real non-IID device populations, communication cost, stragglers or secure aggregation, and no differential-privacy or update-inversion analysis is provided; the framework should be read as a research interface, not a deployable privacy mechanism. The design library covers four training factors with one optional residual module, so model development here means recipe selection within a registered menu rather than architecture search. Half of the main comparison uses a proprietary service without a reproducible generation seed, and the public self-improving agents are task-adapted re-implementations that do not complete every endpoint. The identification tasks have a 20\% chance level and small headroom, and the proposal-history channel has no measurable held-out effect under the fixed proposal budget; we report both as bounds on the present evidence. A random sweep of the registered library is the natural additional control for the proposal channel, alongside the direct search control used in Appendix~A.

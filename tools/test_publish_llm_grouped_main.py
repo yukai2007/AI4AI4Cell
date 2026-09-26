@@ -71,7 +71,7 @@ class GroupedMainTableTests(unittest.TestCase):
         self.assertIn(r"\renewcommand{\arraystretch}{0.84}", on_disk)
         self.assertIn(r"\usepackage{xcolor}",
                       (publisher.PAPER / "biocoloop-main.tex").read_text())
-        self.assertIn("averages each method's rank over completed endpoints", on_disk)
+        self.assertIn("averages those ranks, so lower is better", on_disk)
         self.assertIn(r"\providecommand{\TblZero}", on_disk)
         self.assertIn(r"\definecolor{TblUp}{RGB}", on_disk)
 
@@ -92,6 +92,18 @@ class GroupedMainTableTests(unittest.TestCase):
             ],
             r"$F_{\mathrm{svc}}$",
         )
+
+    def test_single_completed_seed_shows_count_without_fabricated_sd(self):
+        snapshot = self.snapshot()
+        snapshot["models"]["luna"]["native_tapb"]["ai_researcher"] = {
+            "complete": False, "completed": 1, "attempted": 3,
+            "mean": .35, "sd": None, "failure_tokens": [r"$F_{\mathrm{ctx}}$"],
+        }
+        text = publisher.table_text(snapshot)
+        luna = text.split("GPT-5.6 Luna (low reasoning)", 1)[1]
+        row = next(line for line in luna.splitlines() if line.startswith("AI-Researcher"))
+        self.assertIn(r"35.00\,(1/3)\TblPartial", row)
+        self.assertNotIn("None", row)
 
 
 if __name__ == "__main__":

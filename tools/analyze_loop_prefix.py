@@ -109,6 +109,10 @@ def write_latex(result: dict, path: Path) -> None:
     )
     text = "\n".join([
         r"\begin{table}[t]",
+        (r"\caption{Executed-prefix analysis of all 15 ten-laboratory development trajectories "
+         r"at common proposal budgets. At two proposals, the positive cases are " + cases +
+         r" percentage points, with thirteen ties and no regressions.}"),
+        r"\label{tab:loop-prefix}",
         r"\centering\small",
         r"\setlength{\tabcolsep}{6pt}",
         r"\begin{tabular}{rrrrr}",
@@ -119,10 +123,6 @@ def write_latex(result: dict, path: Path) -> None:
         *rows,
         r"\bottomrule",
         r"\end{tabular}",
-        (r"\caption{Executed-prefix analysis of all 15 ten-laboratory development trajectories "
-         r"at common proposal budgets. At two proposals, the positive cases are " + cases +
-         r" percentage points, with thirteen ties and no regressions.}"),
-        r"\label{tab:loop-prefix}",
         r"\end{table}",
         "",
     ])

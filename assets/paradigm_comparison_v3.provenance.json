@@ -5,8 +5,21 @@
   "source_deck": "/liziqing/yukai/AI4AI4Cell/paradigm_comparison_editable.pptx",
   "source_deck_sha256": "7dad57eb214d22b6c03d457d24afa3385ab64d926e360de3561df1b04801393e",
   "source_deck_unchanged": true,
-  "declared_repairs": [],
-  "aspect_ratio": "1.7306",
+  "declared_repairs": [
+    {
+      "id": "trim_canvas",
+      "shape": "p:sldSz",
+      "change": "cy 7045325 -> 6714176 EMU",
+      "reason": "bottom canvas margin matched to the 187372 EMU top margin; nothing clipped"
+    },
+    {
+      "id": "centre_middle_panel",
+      "shape": "19 panel-(b) objects",
+      "change": "translate down by 125938 EMU",
+      "reason": "centre the sparse middle panel between its title row and the canvas bottom"
+    }
+  ],
+  "aspect_ratio": "1.8159",
   "required_labels_present": [
     "(a)",
     "Centralized bio-agent",
@@ -34,9 +47,9 @@
   "slides_test_returncode": 0,
   "slides_test_output": "Test passed. No overflow detected.",
   "artifacts": {
-    "paradigm_comparison_v3.pptx": "7dad57eb214d22b6c03d457d24afa3385ab64d926e360de3561df1b04801393e",
-    "paradigm_comparison_v3.pdf": "c475a0e3530eb10c635b541a02da8a2c8e03b2605f365830d65d3b2cbfd303f6",
-    "paradigm_comparison_v3.png": "747fe636a69f924e91b9cb76faeeece4722c80adfd2317e50979d81bb67e1ae7"
+    "paradigm_comparison_v3.pptx": "5bf5d3f7601f279f8f2fed213141c333a2e7c6925e622b61dcef42b6b95333cb",
+    "paradigm_comparison_v3.pdf": "4a8950d3ba7df9e76f41d07f7e40b2359a2a037334b5399fe1bf500027f4cd0c",
+    "paradigm_comparison_v3.png": "8cd733fe282e75c91b7efa40a1df310ad13f8fd4d72ddcb6ffd0558f440b2946"
   },
   "visual_review_required": true
 }

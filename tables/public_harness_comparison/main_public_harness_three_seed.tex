@@ -9,6 +9,8 @@
 \newcolumntype{L}{>{\raggedright\arraybackslash}X}
 \newcolumntype{Q}{>{\centering\arraybackslash}X}
 \begin{table}[t]
+\caption{Main comparison by self-improving model (mean $\pm$ sample SD, seeds 42--44; scores $\times100$). Public self-improving agents use laboratory 0 and BioCoLoop ten under a shared design library, fits and held-out scorer. Bold marks the best complete value per endpoint and the lowest mean rank; underline marks the runner-up; $\dagger$ partial and {\TblZero} unscored cells are not imputed. Mean rank ranks the methods of a block from 1 (best) to 5 on every endpoint they completed and averages those ranks, so lower is better and the $\uparrow$/$\downarrow$ offset is the gap to that block's fixed reference. The three cell endpoints are five-option identification tasks with a 20\% chance level, so their headroom above chance is small. $\star$ marks a cell whose controller was admitted under an extended native-context budget; the cell it does not score is GPT-5.6 Luna AI-Researcher DTI, whose native trajectory did not finish inside that budget (Appendix~C).}
+\label{tab:public-harness-comparison-three-seed}
 \centering\scriptsize
 \setlength{\tabcolsep}{2.0pt}
 \renewcommand{\arraystretch}{0.84}
@@ -22,17 +24,15 @@
 Fixed model & 82.83 $\pm$ 1.22 & \underline{25.05} $\pm$ 4.56 & \underline{29.94} $\pm$ 0.00 & \textbf{25.56} $\pm$ 0.00 & \underline{19.40} $\pm$ 0.00 & 2.40 \\
 Direct & \underline{89.89} $\pm$ 1.02 & 20.13 $\pm$ 0.07 & 21.09 $\pm$ 4.38 & 14.15 $\pm$ 0.00 & 15.42 $\pm$ 6.21 & 3.40\,\TblDown{1.0} \\
 AI-Scientist-v2 & 89.68 $\pm$ 0.80 & 20.18 $\pm$ 0.43 & 18.61 $\pm$ 2.78 & 14.12 $\pm$ 0.04 & 15.42 $\pm$ 6.21 & 3.80\,\TblDown{1.4} \\
-AI-Researcher & 86.09 $\pm$ 0.88 & 20.12 $\pm$ 0.05 & 18.61 $\pm$ 2.78 & 21.73 $\pm$ 6.63 & 17.41 $\pm$ 6.21 & 3.80\,\TblDown{1.4} \\
-\textbf{BioCoLoop} & \textbf{93.76} $\pm$ 1.11 & \textbf{36.99} $\pm$ 0.22 & \textbf{31.54} $\pm$ 0.08 & \underline{22.25} $\pm$ 0.45 & \textbf{22.39} $\pm$ 2.59 & 1.20\,\TblUp{1.2} \\
+AI-Researcher & 86.09 $\pm$ 0.88 & 20.12 $\pm$ 0.05 & 19.70 $\pm$ 2.87\TblPartial & 21.73 $\pm$ 6.63 & 17.41 $\pm$ 6.21 & 3.75\,\TblDown{1.4} \\
+\textbf{BioCoLoop} & \textbf{93.76} $\pm$ 1.11 & \textbf{36.99} $\pm$ 0.22 & \textbf{31.54} $\pm$ 0.08 & \underline{22.25} $\pm$ 0.45 & \textbf{22.39} $\pm$ 2.59 & \textbf{1.20}\,\TblUp{1.2} \\
 \midrule
 \multicolumn{7}{@{}l}{\textbf{GPT-5.6 Luna (low reasoning)}} \\
 Fixed model & 82.83 $\pm$ 1.22 & \underline{25.05} $\pm$ 4.56 & \underline{29.94} $\pm$ 0.00 & \textbf{25.56} $\pm$ 0.00 & \underline{19.40} $\pm$ 0.00 & 2.20 \\
-Direct & \underline{89.89} $\pm$ 1.02 & 20.17 $\pm$ 0.42 & 18.61 $\pm$ 2.78 & 21.75 $\pm$ 6.59 & 15.92 $\pm$ 6.03 & 3.00\,\TblDown{0.8} \\
+Direct & \underline{89.89} $\pm$ 1.02 & 20.17 $\pm$ 0.42 & 18.61 $\pm$ 2.78 & 21.75 $\pm$ 6.59 & 15.92 $\pm$ 6.03 & 3.20\,\TblDown{1.0} \\
 AI-Scientist-v2 & 89.59 $\pm$ 0.95 & 23.37 $\pm$ 5.89 & 18.61 $\pm$ 2.78 & 14.12 $\pm$ 0.04 & 11.94 $\pm$ 2.11\TblPartial & 3.25\,\TblDown{1.0} \\
-AI-Researcher & \TblZero & \TblZero & \TblZero & \TblZero & \TblZero & \textcolor{TblInk}{--} \\
-\textbf{BioCoLoop} & \textbf{93.67} $\pm$ 0.98 & \textbf{37.11} $\pm$ 0.01 & \textbf{31.50} $\pm$ 0.00 & \underline{22.69} $\pm$ 0.73 & \textbf{22.39} $\pm$ 2.59 & 1.20\,\TblUp{1.0} \\
+AI-Researcher & \TblZero & 20.29 $\pm$ 0.27\TblStar & 18.61 $\pm$ 2.78\TblStar & 14.12 $\pm$ 0.04\TblStar & 15.42 $\pm$ 6.21\TblStar & 3.75\,\TblDown{1.5} \\
+\textbf{BioCoLoop} & \textbf{93.67} $\pm$ 0.98 & \textbf{37.11} $\pm$ 0.01 & \textbf{31.50} $\pm$ 0.00 & \underline{22.69} $\pm$ 0.73 & \textbf{22.39} $\pm$ 2.59 & \textbf{1.20}\,\TblUp{1.0} \\
 \bottomrule
 \end{tabularx}
-\caption{Main comparison by self-improving model (mean $\pm$ sample SD, seeds 42--44; scores $\times100$). Public self-improving agents use laboratory 0 and BioCoLoop ten under a shared design library, fits and held-out scorer. Bold/underline mark the best/second-best complete result; $\dagger$ partial and {\TblZero} unscored cells are not imputed; the last column averages each method's rank over completed endpoints (Appendix~C).}
-\label{tab:public-harness-comparison-three-seed}
 \end{table}

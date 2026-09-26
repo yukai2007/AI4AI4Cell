@@ -35,7 +35,10 @@ def main():
         assert item['max_absolute_error'] == 0.0
     OUT.mkdir(parents=True, exist_ok=True)
     PROVENANCE.mkdir(parents=True, exist_ok=True)
-    lines = [r'\begin{table}[htbp]', r'\centering\small',
+    lines = [r'\begin{table}[htbp]',
+             r'\caption{Three-source proteomic transfer on PTPC. All four arms use the same four-head adapter, seed 61, 100-round fitting schedule and target-development checkpoint rule. AP and AUROC are multiplied by 100; bold identifies the best value in each metric. The target test set contains 148 observations from 92 compounds. These are fixed-design source comparisons; the separate two-source proposal study appears in Table~\ref{tab:completed-protein-loop}.}',
+             r'\label{tab:supplemental-protein-three-source}',
+             r'\centering\small',
              r'\setlength{\tabcolsep}{5pt}',
              r'\begin{tabularx}{\linewidth}{@{}Xrrr@{}}',
              r'\toprule',
@@ -54,9 +57,7 @@ def main():
             values.append(r'\textbf{' + cell + '}' if round(value, 2) == best[name] else cell)
         values.append(f"{100 * (metric['ap'] - baseline):+.2f}")
         lines.append(' & '.join([label] + values) + r' \\')
-    lines += [r'\bottomrule', r'\end{tabularx}',
-        r'\caption{Three-source proteomic transfer on PTPC. All four arms use the same four-head adapter, seed 61, 100-round fitting schedule and target-development checkpoint rule. AP and AUROC are multiplied by 100; bold identifies the best value in each metric. The target test set contains 148 observations from 92 compounds. These are fixed-design source comparisons; the separate two-source proposal study appears in Table~\ref{tab:completed-protein-loop}.}',
-        r'\label{tab:supplemental-protein-three-source}', r'\end{table}']
+    lines += [r'\bottomrule', r'\end{tabularx}', r'\end{table}']
     target = OUT / 'proteomics_three_source.tex'
     target.write_text('\n'.join(lines) + '\n')
     snapshot = dict(schema='supplemental-proteomics-publication-v1',

@@ -32,18 +32,25 @@ class EvidenceLedNarrativeTests(unittest.TestCase):
                                 for run in snapshot["tasks"][task]["runs"].values())
             self.assertEqual(f"{actual:.2f}", display)
             self.assertNotIn(display, abstract)
-        self.assertIn("four of five primary endpoints", abstract)
+        self.assertIn("four of the five primary endpoints", abstract)
         self.assertNotRegex(abstract, r"\bDTI\b|\bAUROC\b|\bAP\b")
         self.assertNotRegex(abstract.lower(), r"\bsota\b|state.of.the.art|all five endpoints")
 
     def test_same_access_controls_remain_visible(self):
         text = (PAPER / "sections/05_results.tex").read_text()
-        self.assertIn("At ten laboratories", text)
-        self.assertIn("37.07 AP and 25.87 Top-1", text)
-        self.assertIn("its one-laboratory fixed model remains best at 25.56", text)
+        manuscript = text + (PAPER / "sections/23_appendix_core_sensitivity.tex").read_text()
+        self.assertIn("blocks are not matched in access", text)
+        self.assertIn("use laboratory 0, while BioCoLoop uses ten", text)
+        self.assertIn("increasing participation from one to ten laboratories", text)
+        self.assertIn("collaborative access improves four of the five endpoints", text)
+        self.assertIn("37.07 versus 36.99 AP", text)
+        self.assertIn("25.87 versus 22.39 Top-1", text)
+        self.assertIn("one-laboratory fixed reference at 25.56", text)
         self.assertNotIn("At fixed access, direct and loop select identical", text)
         for outcome in ("eight pairs tie", "seven ties and one decrease",
-                        "28.82", "30.70", "82.44", "84.30"):
+                        "28.82", "30.70"):
+            self.assertIn(outcome, manuscript)
+        for outcome in ("83.65", "93.88"):
             self.assertIn(outcome, text)
 
     def test_allocation_is_an_explicit_separately_evaluated_policy(self):

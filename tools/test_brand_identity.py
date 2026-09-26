@@ -1,10 +1,15 @@
 """Guard the new presentation name without rewriting experiment identities."""
 from pathlib import Path
 import hashlib
+import importlib
 import json
 import re
+import subprocess
+import sys
 import unittest
 import fitz
+
+sys.path.insert(0,str(Path(__file__).resolve().parent))
 
 PAPER=Path(__file__).resolve().parents[1]
 
@@ -25,9 +30,25 @@ class BrandIdentityTests(unittest.TestCase):
         self.assertEqual(revisions['status'], 'CAPTION_ONLY_VERIFIED')
         self.assertEqual(set(revisions['files']), {'tables/completed_ablation/transfer_independent.tex',
                                                   'tables/strong_v3/effects.tex'})
+        edits=json.loads((PAPER/'provenance/presentation_edits_20260926/edits.json').read_text())
+        self.assertEqual(edits['status'],'PRESENTATION_ONLY_VERIFIED')
+        baseline=json.loads((PAPER/'provenance/presentation_edits_20260926/baseline.json').read_text())['commit']
+        for path,change in edits['files'].items():
+            before=subprocess.check_output(['git','show',f'{baseline}:{path}'],cwd=PAPER)
+            after=(PAPER/path).read_bytes()
+            self.assertEqual(hashlib.sha256(before).hexdigest(),change['before_sha256'])
+            self.assertEqual(hashlib.sha256(after).hexdigest(),change['after_sha256'])
+            recorder=importlib.import_module('record_presentation_edits')
+            if path==recorder.COLUMN_REMOVED:
+                self.assertEqual(recorder.retired_column_body(before),recorder.retired_column_body(after))
+            else:
+                self.assertEqual(recorder.caption_body(before),recorder.caption_body(after))
         for record in report['scientific_artifacts_unchanged']+report['retained_originals']:
             data=(PAPER/record['path']).read_bytes()
             actual=hashlib.sha256(data).hexdigest()
+            if record['path'] in edits['files']:
+                self.assertEqual(actual,edits['files'][record['path']]['after_sha256'])
+                continue
             if record['path'] in revisions['files']:
                 change=revisions['files'][record['path']]
                 self.assertEqual(change['before_sha256'],record['sha256'])

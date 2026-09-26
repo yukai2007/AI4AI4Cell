@@ -1,6 +1,6 @@
 {
   "schema": "qwen-luna-grouped-main-three-seed-v1",
-  "created_utc": "2026-09-26T01:48:55.709616+00:00",
+  "created_utc": "2026-09-26T06:11:12.033601+00:00",
   "protocol": {
     "seeds": [
       42,
@@ -32,7 +32,7 @@
     "schema": "qwen-public-controller-three-seed-evidence-v1",
     "seed42_evidence": {
       "schema": "public-harness-one-lab-publication-v1",
-      "created_utc": "2026-09-26T01:47:15.008525+00:00",
+      "created_utc": "2026-09-26T06:09:38.181501+00:00",
       "base": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260925/one_lab_v1",
       "reference_base": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918",
       "protocol": {
@@ -319,7 +319,7 @@
       }
     },
     "additional_base": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260925/one_lab_multiseed_v1",
-    "retry_base": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260925/retries_v2",
+    "retry_base": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260925/retries_v1",
     "manifest_sha256": "22ef02ea4f2f3f2b42a1fbb0069c476a753eb532585f36c6286122e8a3f23506",
     "supervisor_sha256": "1b84016fb3529969900f21359cce94554b7a9880af302b7fab611b4402dd2c23",
     "tasks": {
@@ -351,12 +351,12 @@
                 "selected_round": 65,
                 "proposal_slots_used": 6,
                 "receipts": {
-                  "seal.json": "4476c557167c05e869db04bdf98d753d4b9d568b24713ca3dfee13aee7e9c025",
-                  "results.json": "89d19e3a03e41425a5ff9d7d1f0c0b5c23ed7873516d930a3805db2bf02d8a85",
+                  "seal.json": "5af6219841478f260373f8829b231ae83e04504e4e8c778cbef99c18f613b17e",
+                  "results.json": "9ac5bebc049c62716c40d9693d632c1afd2c4cdf36dca8a357b8687b8dd8c308",
                   "audit.json": "d7699bbbec0c07972f1b08bc97f36f2d6a6e400c983e8393a8b7a93886a8053f",
-                  "verification.json": "2fa7a8abff79b3b920a68434ad06e39f059c795df2858f5443ddc1c595224cc8"
+                  "verification.json": "737caa2af095a9ef878b36da998a14c3a6551754ab95646ea731250f4e7a715b"
                 },
-                "definition_sha256": "c9309365e7b297118e9e322bab937388904f9875057a110fbaaf690941df813b",
+                "definition_sha256": "b1f6290bfe9545c6f921d45e99b509c2f5ae5a4cbe333bb7357a67f3ccdf05ca",
                 "checkpoint_sha256": "af8cc573893ad99b69b573b83cfd5c973c2609ea3a98b312916c33ffec6d3bb1"
               },
               "43": {
@@ -682,19 +682,11 @@
                 "checkpoint_sha256": "ecb4adbe2142f2f1824f050f89d47326e54968fdf34c5764c54087d6b4c1785b"
               },
               "43": {
-                "status": "scored",
-                "primary": 0.16419504604988475,
-                "selected_design": "D05",
-                "selected_round": 90,
-                "proposal_slots_used": 6,
-                "receipts": {
-                  "seal.json": "afd15acceca0964ebe7fea83824264967ec8e8c281d2ae3a0a9c2da33ba74f0f",
-                  "results.json": "9072fbbe9661989e62586de19c5bb88e166ae2336e4fb1d5d948ed906e43fad2",
-                  "audit.json": "3263ae645ff8d0e49c96460b89c96f65ae9532938d54bce312efea88cf332161",
-                  "verification.json": "bf2e6574a96ca98488607578aa6374c1f5494f8d9b93349cab57b39cc12a0549"
-                },
-                "definition_sha256": "2a45e7fb87791ee904c48d52566cd13b12ea2211ed9f62614ef78cd49d580ab1",
-                "checkpoint_sha256": "4a536b830f0a4c9353af834637635f083e8b184d3257d6c5811d404badfa22bd"
+                "status": "failed",
+                "display": "$F_{\\mathrm{tool}}$",
+                "error": "Tool response remained invalid after 3 format attempts: Extra data: line 3 column 1 (char 133)",
+                "run_status_sha256": "98507f594d2a038b669acbf9ed2169e3e2e4c83ebcd1f546155de8007669350c",
+                "definition_sha256": "26f7c3983527b8f7751bdff38b2e439e16a2e6c48adfefcc3c7804707128e045"
               },
               "44": {
                 "status": "scored",
@@ -712,13 +704,15 @@
                 "checkpoint_sha256": "0a68a0b0e8e046b139846b8f6dcce98327fe052bdbbb5c9736326246433d98a6"
               }
             },
-            "completed": 3,
+            "completed": 2,
             "attempted": 3,
-            "complete": true,
-            "failure_tokens": [],
+            "complete": false,
+            "failure_tokens": [
+              "$F_{\\mathrm{tool}}$"
+            ],
             "extended_context_seeds": [],
-            "mean": 0.1860887220647657,
-            "sd": 0.027760731211682915
+            "mean": 0.19703556007220618,
+            "sd": 0.028676067035905584
           }
         }
       },
@@ -898,12 +892,12 @@
                 "selected_round": 50,
                 "proposal_slots_used": 6,
                 "receipts": {
-                  "seal.json": "1ae4063f76036822f268a88facfd52def3913cb5e71e1738492dcb4d6769ac01",
-                  "results.json": "70af98c2c55175a27849691a9d6f49030044b0d72e6a4c9e6b39a7a4eb27b46f",
+                  "seal.json": "d5b53f77919bb0643d76596672e9ea92a56d410bca037a8faf3ec12ba29e4f1e",
+                  "results.json": "bbfca8a7db5ad2a62c17c0a982e73ae2d65e47ef1cc0eaa7577e18e3259bda67",
                   "audit.json": "a3056de30ede4de1dd3e0be80f51c2873a531faf9838ea37f452edeb1bd71094",
-                  "verification.json": "91285317a801fc2b73af742776dfddf15fc541871ff65ae5054d9a500897d6b7"
+                  "verification.json": "ec99600194985adf8d4d996f7df890320a23658978d1fd11fee73f31d05d52e0"
                 },
-                "definition_sha256": "80373722d3ac50d44f3f79137b804b67a311debe5789586b2b7aa0367d7633cf",
+                "definition_sha256": "81c87ba4572e830def9eb2e5f3a9c24cfeeb081014cad144e2d82ee950c47684",
                 "checkpoint_sha256": "a6d6c71c066c685ac26d6ac8f15e9595da030689a4357e224c3cc8d1ab85af64"
               },
               "44": {
@@ -992,7 +986,7 @@
   },
   "luna_public_evidence": {
     "base": "/liziqing/yukai/AI4AI4Cell/results/public_harness_luna_20260925/one_lab_three_seed_v3",
-    "retry_base": null,
+    "retry_base": "/liziqing/yukai/AI4AI4Cell/results/public_harness_luna_20260926/retries_luna_v1",
     "manifest_sha256": "db54da41e2b8a06cf67f6f23372c56cb113d2ab24b54c0b836776cbebe1b9afa",
     "supervisor_sha256": "74f5e94725bc0f2d0d23cf56c25e03c5e2f1b4083de1b685a6964707cbdeff56",
     "tasks": {
@@ -1159,34 +1153,68 @@
         "ai_researcher": {
           "runs": {
             "42": {
-              "status": "failed",
-              "display": "$F_{\\mathrm{ctx}}$",
-              "error": "Native context uses 29170 matched-budget tokens, above the declared 28000-token cap",
-              "run_status_sha256": "9bcfe41db8cf3292496a584a557087b31b5a530d41bc3e4921d0568326c985bd",
-              "definition_sha256": "d4a0ec82875427cb1c69d9c619b03ce2a4e5a98df22b68ced968ee4f62e70221"
+              "status": "scored",
+              "primary": 0.2019343708791866,
+              "selected_design": "D09",
+              "selected_round": 55,
+              "proposal_slots_used": 6,
+              "receipts": {
+                "seal.json": "837205062832a58ff6760add632ac4a61541562bb638664911020332b360a371",
+                "results.json": "c6ba19945b6af080580bd5443039490844b4bc18a11ab6cb6674e059320fd2b8",
+                "audit.json": "23c934cd90cfcfec3961cff07119bf67300dfc63fed4c62b9242b7ad2c6802fb",
+                "verification.json": "670de0bc54802a00657e17f2d73fb4923b645b2528f17ee124d3c67f3f0977df"
+              },
+              "definition_sha256": "18c04d80863a66378faf01003457d805777fcc80bbd3a8a3ad7ff51a4e718868",
+              "backend_sha256": "6db3dba4f6b3f0389cab0dda16593970dd58e835b54a405aadc2e4145a045557",
+              "checkpoint_sha256": "01ea299d4023e42f04f0afed86df12dc5813ecf36464207ddebedf40da5378ba",
+              "declared_input_cap": 65536
             },
             "43": {
-              "status": "failed",
-              "display": "$F_{\\mathrm{ctx}}$",
-              "error": "Native context uses 29318 matched-budget tokens, above the declared 28000-token cap",
-              "run_status_sha256": "e3f02cf705fb6c35b4836db62985d2ec88106bff8f3ba338daddac0ada088be3",
-              "definition_sha256": "2664c016b8430bc1f027b2231b2d874ae161cac0364fbd0c8f24aae95c741718"
+              "status": "scored",
+              "primary": 0.20081894695272912,
+              "selected_design": "D09",
+              "selected_round": 60,
+              "proposal_slots_used": 6,
+              "receipts": {
+                "seal.json": "488f05239588dfce368c2498f1c95011e4f6e1f42e18951deddef378df45037a",
+                "results.json": "6334f682576e1426650e6dd47072f1e7381117aa62dab7e0a6e097c99853ab00",
+                "audit.json": "5a40597d9c25f7d695af1ad5805797d31c9234cdbbe3d702efb5fc94bda7f0f5",
+                "verification.json": "ae413d6ef8fdd8ff07787d769f5b610225c80b9b69baf2766c250b5fab5ea744"
+              },
+              "definition_sha256": "32f3e4722ae120016ab3f322aab370334d4a41030c82f4ee8f96a55d52450295",
+              "backend_sha256": "06e1958ea75b3328787a17d003fc52107aca552e990cae1d660210dfda33318c",
+              "checkpoint_sha256": "7e8799e338e12e0507e302fe6f2233237d103bf0119a0d966f16575177ed771d",
+              "declared_input_cap": 65536
             },
             "44": {
-              "status": "failed",
-              "display": "$F_{\\mathrm{ctx}}$",
-              "error": "Native context uses 29246 matched-budget tokens, above the declared 28000-token cap",
-              "run_status_sha256": "f38b8e18357584904aaed4f376856d70e0fb5078f347b014fe2c9dce39528f8e",
-              "definition_sha256": "754599f0d806cf50855f647d5c76389c30bdf975cbfe2002b76e8851ec1e337f"
+              "status": "scored",
+              "primary": 0.20596733552766475,
+              "selected_design": "D06",
+              "selected_round": 40,
+              "proposal_slots_used": 6,
+              "receipts": {
+                "seal.json": "184af5e5de9aa7afe5f0080d8ce8a066e40e77481a5572337b2a9d5c0f328adb",
+                "results.json": "2dd0d4c85c401b1f4c1d7b6e64b98d0223e2b28b314a5e52ce480a67fdc14bff",
+                "audit.json": "98612fcead88583d576dc4892f53fd529002caec03bac116f6e94774a58a49c1",
+                "verification.json": "f4ac4a5c39fd9d0a5d3913c529dd986305165d4aa4b7f6324857e1e6f28c049e"
+              },
+              "definition_sha256": "40ca0dfa2e469ef14d360582806140e41e67c713f5a00c1eddc06ea08db02713",
+              "backend_sha256": "4df77f0899a3b81ec388812d92d5cdc3b18ef30c2ed348cbf1d1f72db9c13d67",
+              "checkpoint_sha256": "d3da0501ee1204f6476d436948c858ecf4dfd74b6961ff1b6e911def5e4ac22f",
+              "declared_input_cap": 65536
             }
           },
-          "completed": 0,
+          "completed": 3,
           "attempted": 3,
-          "complete": false,
-          "failure_tokens": [
-            "$F_{\\mathrm{ctx}}$"
+          "complete": true,
+          "failure_tokens": [],
+          "extended_context_seeds": [
+            "42",
+            "43",
+            "44"
           ],
-          "extended_context_seeds": []
+          "mean": 0.2029068844531935,
+          "sd": 0.0027084706419587944
         }
       },
       "vcc_corrected": {
@@ -1255,34 +1283,68 @@
         "ai_researcher": {
           "runs": {
             "42": {
-              "status": "failed",
-              "display": "$F_{\\mathrm{ctx}}$",
-              "error": "Native context uses 28764 matched-budget tokens, above the declared 28000-token cap",
-              "run_status_sha256": "a0434cfaecac8252f447e367c55cedc485f2ae75fbd291b766c2062e095b7483",
-              "definition_sha256": "5a0b2941e0fc2f1820ef3b7f701c3f6186549b5b97df9eb566adb23efda1060a"
+              "status": "scored",
+              "primary": 0.21731260153105506,
+              "selected_design": "D07",
+              "selected_round": 95,
+              "proposal_slots_used": 6,
+              "receipts": {
+                "seal.json": "da61aa0385ff0b1a4723f98af86993be711c0daf514cb31d688730bcc76f7452",
+                "results.json": "4aebe0ae1e3e1682e982813a82545e5dde7cb3361c25bd2497c3d4999aabfb2e",
+                "audit.json": "ddfb332f4882846e2b4890e58bc4e2329b3a9c718b352086bb4d7d24047ca1ef",
+                "verification.json": "af52a02178f44826315c69ae56e411f3b0cd743f36c2698c4b9a6abafb9eb925"
+              },
+              "definition_sha256": "14cc51ce28be9a6c1779be420c78b8134939205f77f709e9b8f7e4b8df9a4df2",
+              "backend_sha256": "6db3dba4f6b3f0389cab0dda16593970dd58e835b54a405aadc2e4145a045557",
+              "checkpoint_sha256": "ecb4adbe2142f2f1824f050f89d47326e54968fdf34c5764c54087d6b4c1785b",
+              "declared_input_cap": 65536
             },
             "43": {
-              "status": "failed",
-              "display": "$F_{\\mathrm{ctx}}$",
-              "error": "Native context uses 28832 matched-budget tokens, above the declared 28000-token cap",
-              "run_status_sha256": "48eb28398f5436b54897d254151286adbf58a6a6985b727bf1b07ccdd20a1eec",
-              "definition_sha256": "0da9fb8c2294f50774e6a775d796aadba1fd72c4afd83e840779bfab57fb1a35"
+              "status": "scored",
+              "primary": 0.16419504604988475,
+              "selected_design": "D05",
+              "selected_round": 90,
+              "proposal_slots_used": 6,
+              "receipts": {
+                "seal.json": "1f57ae5ea38e6046cba7c51403939076b6159ca7bec46f64ae426bfa4ca019b5",
+                "results.json": "21f6b75f64dbb1b5d399511b8d512d9e7cf778b50218feada512dc6c80b8b7f7",
+                "audit.json": "3263ae645ff8d0e49c96460b89c96f65ae9532938d54bce312efea88cf332161",
+                "verification.json": "c69824a5db2082a2b7447724a66e9c6a98008ef56a541ba04ff5ddd4fa207f4f"
+              },
+              "definition_sha256": "30b9caff6cbfb1932f7a215ff471e37566dfe2353a37a085943c6a5399e69714",
+              "backend_sha256": "06e1958ea75b3328787a17d003fc52107aca552e990cae1d660210dfda33318c",
+              "checkpoint_sha256": "4a536b830f0a4c9353af834637635f083e8b184d3257d6c5811d404badfa22bd",
+              "declared_input_cap": 65536
             },
             "44": {
-              "status": "failed",
-              "display": "$F_{\\mathrm{ctx}}$",
-              "error": "Native context uses 28158 matched-budget tokens, above the declared 28000-token cap",
-              "run_status_sha256": "5c352a7a03d6d638d3fedc56401672054776092b571102e8a623d38f613b29e9",
-              "definition_sha256": "48cb4811bb9f966b59f9c722d2e16188e596b6214a099b7af848426e75bbdcff"
+              "status": "scored",
+              "primary": 0.17675851861335734,
+              "selected_design": "D05",
+              "selected_round": 90,
+              "proposal_slots_used": 6,
+              "receipts": {
+                "seal.json": "61c04ff31946366e9641ded4d1d35cd77001f562c0caa30ce15318142703e2cb",
+                "results.json": "1fb069cff82a6394c71177557bb5f01b8d3241cc7dadac00311e57ad8bc944d6",
+                "audit.json": "98d60125964ae60bd0715ad89d92ae8e10a05294e79e798af4694dbd019fe3a7",
+                "verification.json": "4808ba2e6a13ac1b34302936a15d6886c70f4b169e317e192924e8585428f16f"
+              },
+              "definition_sha256": "730412c5219d8e5bc6be0552fd09ebfe06fc1f34b3a5d35a2f5ac26f1399a1b9",
+              "backend_sha256": "4df77f0899a3b81ec388812d92d5cdc3b18ef30c2ed348cbf1d1f72db9c13d67",
+              "checkpoint_sha256": "0a68a0b0e8e046b139846b8f6dcce98327fe052bdbbb5c9736326246433d98a6",
+              "declared_input_cap": 65536
             }
           },
-          "completed": 0,
+          "completed": 3,
           "attempted": 3,
-          "complete": false,
-          "failure_tokens": [
-            "$F_{\\mathrm{ctx}}$"
+          "complete": true,
+          "failure_tokens": [],
+          "extended_context_seeds": [
+            "42",
+            "43",
+            "44"
           ],
-          "extended_context_seeds": []
+          "mean": 0.1860887220647657,
+          "sd": 0.027760731211682915
         }
       },
       "norman_double_corrected": {
@@ -1351,34 +1413,68 @@
         "ai_researcher": {
           "runs": {
             "42": {
-              "status": "failed",
-              "display": "$F_{\\mathrm{ctx}}$",
-              "error": "Native context uses 28124 matched-budget tokens, above the declared 28000-token cap",
-              "run_status_sha256": "82d8fb03584a6f5f40f68386bbc8ed02aec3f3d8ff97441a1d48f6bc96479931",
-              "definition_sha256": "0a765dc5e4c97de0041dbbc3b6ce7b526f05edefc9de8e08c8670c57301a368b"
+              "status": "scored",
+              "primary": 0.14148148148148149,
+              "selected_design": "D08",
+              "selected_round": 25,
+              "proposal_slots_used": 6,
+              "receipts": {
+                "seal.json": "d4eed9ebd6911746922f399480af6f85607a132e6c6cf9a0330372327221e68e",
+                "results.json": "b6d6f16c687697f92992e781fe791cacec2ccdbf9e27fe73158ddb22f261dcc7",
+                "audit.json": "3870f3c5a2a0b1496e424924488e27d5535b4ebc6261e2b0254c9a80da408955",
+                "verification.json": "74429f1822e7d392fc0b3f87dab77d74f3e974f2a629d1cf642033ee0ac895fe"
+              },
+              "definition_sha256": "4e433b867dccaacd45d521f80b3d9fde5279c848353622a228cd204dfb233eab",
+              "backend_sha256": "6db3dba4f6b3f0389cab0dda16593970dd58e835b54a405aadc2e4145a045557",
+              "checkpoint_sha256": "b1838a4fda3b9e86712215b39f61e92c05471fdaae9156e3680c2a89eb877ccd",
+              "declared_input_cap": 65536
             },
             "43": {
-              "status": "failed",
-              "display": "$F_{\\mathrm{ctx}}$",
-              "error": "Native context uses 28509 matched-budget tokens, above the declared 28000-token cap",
-              "run_status_sha256": "fe30ea3d9469a3579278ffdb8da7cfc6fb413c778bd109a431e05f682f2e3c53",
-              "definition_sha256": "f5f93ac6eabeee92cc7cc7de785f1b20fb380665b029f41f9540d412645c39ca"
+              "status": "scored",
+              "primary": 0.14074074074074072,
+              "selected_design": "D01",
+              "selected_round": 25,
+              "proposal_slots_used": 6,
+              "receipts": {
+                "seal.json": "725d3b0e62d97e5f50b02065b96135f7d4b84d3d5d158b8744cb74d6326fdc38",
+                "results.json": "8a33ebccab973f79a4ec74ae4d5dd8335840b6ea66442ec4046e8a90406eec69",
+                "audit.json": "1197d450a4f8ecdc98696e986e31a63f61e1a287c36afe8bd9120db41cbcc1bb",
+                "verification.json": "16ef9757d5d1f93da504e7844497d2c7d2464424b4a8666ea4d964b82e6a0638"
+              },
+              "definition_sha256": "d7c816d96070a5d38e8e1cab1c0c6954ec8916209edbf45bed10f84d8e5d7ada",
+              "backend_sha256": "06e1958ea75b3328787a17d003fc52107aca552e990cae1d660210dfda33318c",
+              "checkpoint_sha256": "8625e111716148d34c4569b9c58f1cab7871414ddb8a327083eae95658dd841b",
+              "declared_input_cap": 65536
             },
             "44": {
-              "status": "failed",
-              "display": "$F_{\\mathrm{ctx}}$",
-              "error": "Native context uses 28068 matched-budget tokens, above the declared 28000-token cap",
-              "run_status_sha256": "83811adbc2fff322c0209df3f91e613a6a50474d641564e810fb5c13fd28b795",
-              "definition_sha256": "aae0b0a5304cb8ba599d8f356210ee32833a6a4ec9fffa395af6281c1d59c624"
+              "status": "scored",
+              "primary": 0.14148148148148149,
+              "selected_design": "D08",
+              "selected_round": 25,
+              "proposal_slots_used": 6,
+              "receipts": {
+                "seal.json": "09baa38d60c2aeb9ea51ddd4d4d7e2060834e112b4315a6a0966366532aad75d",
+                "results.json": "88271faa3d23c08c6fe9676c108ea57593f949e2106beefcea02d90c2c0adafc",
+                "audit.json": "c910a8fadc9f5b9f1dfad7245a5a2c81eae31edc7c82bf4077654bd70d6ac8f9",
+                "verification.json": "912bf72de10a2861f85616e39c123b07c36c3333d86bf0ce026e6438adfd4326"
+              },
+              "definition_sha256": "d0838a0d3d51459816742db223eee5a227a4594178ee89aa8e7cbf77ed6985a9",
+              "backend_sha256": "4df77f0899a3b81ec388812d92d5cdc3b18ef30c2ed348cbf1d1f72db9c13d67",
+              "checkpoint_sha256": "20738ce67747a24015e907130ed7a7fb32e30842438b30911ae3ec4dc4615ff1",
+              "declared_input_cap": 65536
             }
           },
-          "completed": 0,
+          "completed": 3,
           "attempted": 3,
-          "complete": false,
-          "failure_tokens": [
-            "$F_{\\mathrm{ctx}}$"
+          "complete": true,
+          "failure_tokens": [],
+          "extended_context_seeds": [
+            "42",
+            "43",
+            "44"
           ],
-          "extended_context_seeds": []
+          "mean": 0.14123456790123456,
+          "sd": 0.0004276668660664029
         }
       },
       "tahoe_drug_corrected": {
@@ -1439,35 +1535,68 @@
         "ai_researcher": {
           "runs": {
             "42": {
-              "status": "failed",
-              "display": "$F_{\\mathrm{ctx}}$",
-              "error": "Native context uses 28950 matched-budget tokens, above the declared 28000-token cap",
-              "run_status_sha256": "94443a73dde41a40154f385ec319b54abf2aaf6ae0ac518dc59ecb5fe1702b14",
-              "definition_sha256": "a3d6c60e4d09ac0aca063dc6092e1c3270f8664ed6a6bd8a803cf1a1ab3ce090"
+              "status": "scored",
+              "primary": 0.13432835820895522,
+              "selected_design": "D09",
+              "selected_round": 55,
+              "proposal_slots_used": 6,
+              "receipts": {
+                "seal.json": "4bfde924ceaab576502a74e542cf2d5466c855a9bb56dea0921c8be48c205110",
+                "results.json": "05e91daf178d6ddfe001943cfbb947c5450f9910bd8ae2d2ac0c216efa01e504",
+                "audit.json": "22843c249de40497b354d6f3d834d66dd50dcbc12d812a9da136dde8b8bb4044",
+                "verification.json": "83099b34c5045cb08c5af05153cd3f0a4829f49269f968645da67ba7338f2c2a"
+              },
+              "definition_sha256": "f25aed0abd0045331caa3f547019672a07402d73c9e0e8d3b53af8c3cc09aac0",
+              "backend_sha256": "6db3dba4f6b3f0389cab0dda16593970dd58e835b54a405aadc2e4145a045557",
+              "checkpoint_sha256": "f505ebe9f778aee21916135777321ec557c01a7a1e3d83e0fdd69f1771bfdd9e",
+              "declared_input_cap": 65536
             },
             "43": {
-              "status": "failed",
-              "display": "$F_{\\mathrm{svc}}$",
-              "error": "GPT-5.6 Luna transport/tool-isolation failure: /liziqing/yukai/AI4AI4Cell/results/public_harness_luna_20260925/one_lab_three_seed_v3/ai_researcher/tahoe_drug_corrected/seed43/model_calls/transcripts/call_0019",
-              "run_status_sha256": "2c2d9191ffaf4c6c5248cde85dc14b312104296f3d8a8a8920686242c9ccd075",
-              "definition_sha256": "57c4462f1f8cc9a80ef0ebc3244501f43c5b2a8ff615aed80519d1d5fd84d960"
+              "status": "scored",
+              "primary": 0.1044776119402985,
+              "selected_design": "D07",
+              "selected_round": 50,
+              "proposal_slots_used": 6,
+              "receipts": {
+                "seal.json": "c6ae0877c1cb110df6e0de459deb190c2549e4473def296d22413cf727ff7afd",
+                "results.json": "0ab3d95ea4625410844546aa40c5da9bdce45c5d0701547040d34819ddd897df",
+                "audit.json": "494bd3e4a24d530694c7bc3e81db7a76714b570b127710e2a0b6f237084feb8d",
+                "verification.json": "9efa2cb1e30d909069ba2d7cc9daebf61cdf96e665f054965bc8d8bd387e6594"
+              },
+              "definition_sha256": "bdcef913c035d5325585de353c4d529a0ae905df6da2a91518531e64cd6db3da",
+              "backend_sha256": "06e1958ea75b3328787a17d003fc52107aca552e990cae1d660210dfda33318c",
+              "checkpoint_sha256": "a6d6c71c066c685ac26d6ac8f15e9595da030689a4357e224c3cc8d1ab85af64",
+              "declared_input_cap": 65536
             },
             "44": {
-              "status": "failed",
-              "display": "$F_{\\mathrm{svc}}$",
-              "error": "GPT-5.6 Luna transport/tool-isolation failure: /liziqing/yukai/AI4AI4Cell/results/public_harness_luna_20260925/one_lab_three_seed_v3/ai_researcher/tahoe_drug_corrected/seed44/model_calls/transcripts/call_0004",
-              "run_status_sha256": "318d3e780d5c852389b22e257f78f733ccb72a1cbb84ea2e90bb068ce7dbc9ba",
-              "definition_sha256": "7329d7a9b0402cc342ee975b7ecd5bef17c3818d72aeb8daebaf798a60bbe3e9"
+              "status": "scored",
+              "primary": 0.22388059701492538,
+              "selected_design": "D07",
+              "selected_round": 25,
+              "proposal_slots_used": 6,
+              "receipts": {
+                "seal.json": "ec0dc2a5e1ceeec04e5456d4ba24d543c2629a683cf6374da7c9c96255230dfe",
+                "results.json": "2a023d54331580b5aed1a81ab8e2b760d10099680711e9ce3983e527f7146ff3",
+                "audit.json": "16f41bb6af980c58431d4a49bf2ec54408d215c7da0504fbb9d35e67d9d1a854",
+                "verification.json": "e6e4bd3c4dedfa2fe69ef23ed089e2aec5dcb992106085a249becf7a54473338"
+              },
+              "definition_sha256": "e9958a050812d9ef7d4102e2d193c8d367ffd5d55c4be3630aae38d518f5b191",
+              "backend_sha256": "4df77f0899a3b81ec388812d92d5cdc3b18ef30c2ed348cbf1d1f72db9c13d67",
+              "checkpoint_sha256": "c22f0421e2331b081ccce8a10b0298143f17eafa39e77205a52e5c984999b4e1",
+              "declared_input_cap": 65536
             }
           },
-          "completed": 0,
+          "completed": 3,
           "attempted": 3,
-          "complete": false,
-          "failure_tokens": [
-            "$F_{\\mathrm{ctx}}$",
-            "$F_{\\mathrm{svc}}$"
+          "complete": true,
+          "failure_tokens": [],
+          "extended_context_seeds": [
+            "42",
+            "43",
+            "44"
           ],
-          "extended_context_seeds": []
+          "mean": 0.15422885572139303,
+          "sd": 0.062139283566153225
         }
       }
     }
@@ -1720,12 +1849,12 @@
               "selected_round": 65,
               "proposal_slots_used": 6,
               "receipts": {
-                "seal.json": "4476c557167c05e869db04bdf98d753d4b9d568b24713ca3dfee13aee7e9c025",
-                "results.json": "89d19e3a03e41425a5ff9d7d1f0c0b5c23ed7873516d930a3805db2bf02d8a85",
+                "seal.json": "5af6219841478f260373f8829b231ae83e04504e4e8c778cbef99c18f613b17e",
+                "results.json": "9ac5bebc049c62716c40d9693d632c1afd2c4cdf36dca8a357b8687b8dd8c308",
                 "audit.json": "d7699bbbec0c07972f1b08bc97f36f2d6a6e400c983e8393a8b7a93886a8053f",
-                "verification.json": "2fa7a8abff79b3b920a68434ad06e39f059c795df2858f5443ddc1c595224cc8"
+                "verification.json": "737caa2af095a9ef878b36da998a14c3a6551754ab95646ea731250f4e7a715b"
               },
-              "definition_sha256": "c9309365e7b297118e9e322bab937388904f9875057a110fbaaf690941df813b",
+              "definition_sha256": "b1f6290bfe9545c6f921d45e99b509c2f5ae5a4cbe333bb7357a67f3ccdf05ca",
               "checkpoint_sha256": "af8cc573893ad99b69b573b83cfd5c973c2609ea3a98b312916c33ffec6d3bb1"
             },
             "43": {
@@ -2061,19 +2190,11 @@
               "checkpoint_sha256": "ecb4adbe2142f2f1824f050f89d47326e54968fdf34c5764c54087d6b4c1785b"
             },
             "43": {
-              "status": "scored",
-              "primary": 0.16419504604988475,
-              "selected_design": "D05",
-              "selected_round": 90,
-              "proposal_slots_used": 6,
-              "receipts": {
-                "seal.json": "afd15acceca0964ebe7fea83824264967ec8e8c281d2ae3a0a9c2da33ba74f0f",
-                "results.json": "9072fbbe9661989e62586de19c5bb88e166ae2336e4fb1d5d948ed906e43fad2",
-                "audit.json": "3263ae645ff8d0e49c96460b89c96f65ae9532938d54bce312efea88cf332161",
-                "verification.json": "bf2e6574a96ca98488607578aa6374c1f5494f8d9b93349cab57b39cc12a0549"
-              },
-              "definition_sha256": "2a45e7fb87791ee904c48d52566cd13b12ea2211ed9f62614ef78cd49d580ab1",
-              "checkpoint_sha256": "4a536b830f0a4c9353af834637635f083e8b184d3257d6c5811d404badfa22bd"
+              "status": "failed",
+              "display": "$F_{\\mathrm{tool}}$",
+              "error": "Tool response remained invalid after 3 format attempts: Extra data: line 3 column 1 (char 133)",
+              "run_status_sha256": "98507f594d2a038b669acbf9ed2169e3e2e4c83ebcd1f546155de8007669350c",
+              "definition_sha256": "26f7c3983527b8f7751bdff38b2e439e16a2e6c48adfefcc3c7804707128e045"
             },
             "44": {
               "status": "scored",
@@ -2091,13 +2212,15 @@
               "checkpoint_sha256": "0a68a0b0e8e046b139846b8f6dcce98327fe052bdbbb5c9736326246433d98a6"
             }
           },
-          "completed": 3,
+          "completed": 2,
           "attempted": 3,
-          "complete": true,
-          "failure_tokens": [],
+          "complete": false,
+          "failure_tokens": [
+            "$F_{\\mathrm{tool}}$"
+          ],
           "extended_context_seeds": [],
-          "mean": 0.1860887220647657,
-          "sd": 0.027760731211682915
+          "mean": 0.19703556007220618,
+          "sd": 0.028676067035905584
         }
       },
       "norman_double_corrected": {
@@ -2287,12 +2410,12 @@
               "selected_round": 50,
               "proposal_slots_used": 6,
               "receipts": {
-                "seal.json": "1ae4063f76036822f268a88facfd52def3913cb5e71e1738492dcb4d6769ac01",
-                "results.json": "70af98c2c55175a27849691a9d6f49030044b0d72e6a4c9e6b39a7a4eb27b46f",
+                "seal.json": "d5b53f77919bb0643d76596672e9ea92a56d410bca037a8faf3ec12ba29e4f1e",
+                "results.json": "bbfca8a7db5ad2a62c17c0a982e73ae2d65e47ef1cc0eaa7577e18e3259bda67",
                 "audit.json": "a3056de30ede4de1dd3e0be80f51c2873a531faf9838ea37f452edeb1bd71094",
-                "verification.json": "91285317a801fc2b73af742776dfddf15fc541871ff65ae5054d9a500897d6b7"
+                "verification.json": "ec99600194985adf8d4d996f7df890320a23658978d1fd11fee73f31d05d52e0"
               },
-              "definition_sha256": "80373722d3ac50d44f3f79137b804b67a311debe5789586b2b7aa0367d7633cf",
+              "definition_sha256": "81c87ba4572e830def9eb2e5f3a9c24cfeeb081014cad144e2d82ee950c47684",
               "checkpoint_sha256": "a6d6c71c066c685ac26d6ac8f15e9595da030689a4357e224c3cc8d1ab85af64"
             },
             "44": {
@@ -2609,34 +2732,68 @@
         "ai_researcher": {
           "runs": {
             "42": {
-              "status": "failed",
-              "display": "$F_{\\mathrm{ctx}}$",
-              "error": "Native context uses 29170 matched-budget tokens, above the declared 28000-token cap",
-              "run_status_sha256": "9bcfe41db8cf3292496a584a557087b31b5a530d41bc3e4921d0568326c985bd",
-              "definition_sha256": "d4a0ec82875427cb1c69d9c619b03ce2a4e5a98df22b68ced968ee4f62e70221"
+              "status": "scored",
+              "primary": 0.2019343708791866,
+              "selected_design": "D09",
+              "selected_round": 55,
+              "proposal_slots_used": 6,
+              "receipts": {
+                "seal.json": "837205062832a58ff6760add632ac4a61541562bb638664911020332b360a371",
+                "results.json": "c6ba19945b6af080580bd5443039490844b4bc18a11ab6cb6674e059320fd2b8",
+                "audit.json": "23c934cd90cfcfec3961cff07119bf67300dfc63fed4c62b9242b7ad2c6802fb",
+                "verification.json": "670de0bc54802a00657e17f2d73fb4923b645b2528f17ee124d3c67f3f0977df"
+              },
+              "definition_sha256": "18c04d80863a66378faf01003457d805777fcc80bbd3a8a3ad7ff51a4e718868",
+              "backend_sha256": "6db3dba4f6b3f0389cab0dda16593970dd58e835b54a405aadc2e4145a045557",
+              "checkpoint_sha256": "01ea299d4023e42f04f0afed86df12dc5813ecf36464207ddebedf40da5378ba",
+              "declared_input_cap": 65536
             },
             "43": {
-              "status": "failed",
-              "display": "$F_{\\mathrm{ctx}}$",
-              "error": "Native context uses 29318 matched-budget tokens, above the declared 28000-token cap",
-              "run_status_sha256": "e3f02cf705fb6c35b4836db62985d2ec88106bff8f3ba338daddac0ada088be3",
-              "definition_sha256": "2664c016b8430bc1f027b2231b2d874ae161cac0364fbd0c8f24aae95c741718"
+              "status": "scored",
+              "primary": 0.20081894695272912,
+              "selected_design": "D09",
+              "selected_round": 60,
+              "proposal_slots_used": 6,
+              "receipts": {
+                "seal.json": "488f05239588dfce368c2498f1c95011e4f6e1f42e18951deddef378df45037a",
+                "results.json": "6334f682576e1426650e6dd47072f1e7381117aa62dab7e0a6e097c99853ab00",
+                "audit.json": "5a40597d9c25f7d695af1ad5805797d31c9234cdbbe3d702efb5fc94bda7f0f5",
+                "verification.json": "ae413d6ef8fdd8ff07787d769f5b610225c80b9b69baf2766c250b5fab5ea744"
+              },
+              "definition_sha256": "32f3e4722ae120016ab3f322aab370334d4a41030c82f4ee8f96a55d52450295",
+              "backend_sha256": "06e1958ea75b3328787a17d003fc52107aca552e990cae1d660210dfda33318c",
+              "checkpoint_sha256": "7e8799e338e12e0507e302fe6f2233237d103bf0119a0d966f16575177ed771d",
+              "declared_input_cap": 65536
             },
             "44": {
-              "status": "failed",
-              "display": "$F_{\\mathrm{ctx}}$",
-              "error": "Native context uses 29246 matched-budget tokens, above the declared 28000-token cap",
-              "run_status_sha256": "f38b8e18357584904aaed4f376856d70e0fb5078f347b014fe2c9dce39528f8e",
-              "definition_sha256": "754599f0d806cf50855f647d5c76389c30bdf975cbfe2002b76e8851ec1e337f"
+              "status": "scored",
+              "primary": 0.20596733552766475,
+              "selected_design": "D06",
+              "selected_round": 40,
+              "proposal_slots_used": 6,
+              "receipts": {
+                "seal.json": "184af5e5de9aa7afe5f0080d8ce8a066e40e77481a5572337b2a9d5c0f328adb",
+                "results.json": "2dd0d4c85c401b1f4c1d7b6e64b98d0223e2b28b314a5e52ce480a67fdc14bff",
+                "audit.json": "98612fcead88583d576dc4892f53fd529002caec03bac116f6e94774a58a49c1",
+                "verification.json": "f4ac4a5c39fd9d0a5d3913c529dd986305165d4aa4b7f6324857e1e6f28c049e"
+              },
+              "definition_sha256": "40ca0dfa2e469ef14d360582806140e41e67c713f5a00c1eddc06ea08db02713",
+              "backend_sha256": "4df77f0899a3b81ec388812d92d5cdc3b18ef30c2ed348cbf1d1f72db9c13d67",
+              "checkpoint_sha256": "d3da0501ee1204f6476d436948c858ecf4dfd74b6961ff1b6e911def5e4ac22f",
+              "declared_input_cap": 65536
             }
           },
-          "completed": 0,
+          "completed": 3,
           "attempted": 3,
-          "complete": false,
-          "failure_tokens": [
-            "$F_{\\mathrm{ctx}}$"
+          "complete": true,
+          "failure_tokens": [],
+          "extended_context_seeds": [
+            "42",
+            "43",
+            "44"
           ],
-          "extended_context_seeds": []
+          "mean": 0.2029068844531935,
+          "sd": 0.0027084706419587944
         }
       },
       "vcc_corrected": {
@@ -2739,34 +2896,68 @@
         "ai_researcher": {
           "runs": {
             "42": {
-              "status": "failed",
-              "display": "$F_{\\mathrm{ctx}}$",
-              "error": "Native context uses 28764 matched-budget tokens, above the declared 28000-token cap",
-              "run_status_sha256": "a0434cfaecac8252f447e367c55cedc485f2ae75fbd291b766c2062e095b7483",
-              "definition_sha256": "5a0b2941e0fc2f1820ef3b7f701c3f6186549b5b97df9eb566adb23efda1060a"
+              "status": "scored",
+              "primary": 0.21731260153105506,
+              "selected_design": "D07",
+              "selected_round": 95,
+              "proposal_slots_used": 6,
+              "receipts": {
+                "seal.json": "da61aa0385ff0b1a4723f98af86993be711c0daf514cb31d688730bcc76f7452",
+                "results.json": "4aebe0ae1e3e1682e982813a82545e5dde7cb3361c25bd2497c3d4999aabfb2e",
+                "audit.json": "ddfb332f4882846e2b4890e58bc4e2329b3a9c718b352086bb4d7d24047ca1ef",
+                "verification.json": "af52a02178f44826315c69ae56e411f3b0cd743f36c2698c4b9a6abafb9eb925"
+              },
+              "definition_sha256": "14cc51ce28be9a6c1779be420c78b8134939205f77f709e9b8f7e4b8df9a4df2",
+              "backend_sha256": "6db3dba4f6b3f0389cab0dda16593970dd58e835b54a405aadc2e4145a045557",
+              "checkpoint_sha256": "ecb4adbe2142f2f1824f050f89d47326e54968fdf34c5764c54087d6b4c1785b",
+              "declared_input_cap": 65536
             },
             "43": {
-              "status": "failed",
-              "display": "$F_{\\mathrm{ctx}}$",
-              "error": "Native context uses 28832 matched-budget tokens, above the declared 28000-token cap",
-              "run_status_sha256": "48eb28398f5436b54897d254151286adbf58a6a6985b727bf1b07ccdd20a1eec",
-              "definition_sha256": "0da9fb8c2294f50774e6a775d796aadba1fd72c4afd83e840779bfab57fb1a35"
+              "status": "scored",
+              "primary": 0.16419504604988475,
+              "selected_design": "D05",
+              "selected_round": 90,
+              "proposal_slots_used": 6,
+              "receipts": {
+                "seal.json": "1f57ae5ea38e6046cba7c51403939076b6159ca7bec46f64ae426bfa4ca019b5",
+                "results.json": "21f6b75f64dbb1b5d399511b8d512d9e7cf778b50218feada512dc6c80b8b7f7",
+                "audit.json": "3263ae645ff8d0e49c96460b89c96f65ae9532938d54bce312efea88cf332161",
+                "verification.json": "c69824a5db2082a2b7447724a66e9c6a98008ef56a541ba04ff5ddd4fa207f4f"
+              },
+              "definition_sha256": "30b9caff6cbfb1932f7a215ff471e37566dfe2353a37a085943c6a5399e69714",
+              "backend_sha256": "06e1958ea75b3328787a17d003fc52107aca552e990cae1d660210dfda33318c",
+              "checkpoint_sha256": "4a536b830f0a4c9353af834637635f083e8b184d3257d6c5811d404badfa22bd",
+              "declared_input_cap": 65536
             },
             "44": {
-              "status": "failed",
-              "display": "$F_{\\mathrm{ctx}}$",
-              "error": "Native context uses 28158 matched-budget tokens, above the declared 28000-token cap",
-              "run_status_sha256": "5c352a7a03d6d638d3fedc56401672054776092b571102e8a623d38f613b29e9",
-              "definition_sha256": "48cb4811bb9f966b59f9c722d2e16188e596b6214a099b7af848426e75bbdcff"
+              "status": "scored",
+              "primary": 0.17675851861335734,
+              "selected_design": "D05",
+              "selected_round": 90,
+              "proposal_slots_used": 6,
+              "receipts": {
+                "seal.json": "61c04ff31946366e9641ded4d1d35cd77001f562c0caa30ce15318142703e2cb",
+                "results.json": "1fb069cff82a6394c71177557bb5f01b8d3241cc7dadac00311e57ad8bc944d6",
+                "audit.json": "98d60125964ae60bd0715ad89d92ae8e10a05294e79e798af4694dbd019fe3a7",
+                "verification.json": "4808ba2e6a13ac1b34302936a15d6886c70f4b169e317e192924e8585428f16f"
+              },
+              "definition_sha256": "730412c5219d8e5bc6be0552fd09ebfe06fc1f34b3a5d35a2f5ac26f1399a1b9",
+              "backend_sha256": "4df77f0899a3b81ec388812d92d5cdc3b18ef30c2ed348cbf1d1f72db9c13d67",
+              "checkpoint_sha256": "0a68a0b0e8e046b139846b8f6dcce98327fe052bdbbb5c9736326246433d98a6",
+              "declared_input_cap": 65536
             }
           },
-          "completed": 0,
+          "completed": 3,
           "attempted": 3,
-          "complete": false,
-          "failure_tokens": [
-            "$F_{\\mathrm{ctx}}$"
+          "complete": true,
+          "failure_tokens": [],
+          "extended_context_seeds": [
+            "42",
+            "43",
+            "44"
           ],
-          "extended_context_seeds": []
+          "mean": 0.1860887220647657,
+          "sd": 0.027760731211682915
         }
       },
       "norman_double_corrected": {
@@ -2869,34 +3060,68 @@
         "ai_researcher": {
           "runs": {
             "42": {
-              "status": "failed",
-              "display": "$F_{\\mathrm{ctx}}$",
-              "error": "Native context uses 28124 matched-budget tokens, above the declared 28000-token cap",
-              "run_status_sha256": "82d8fb03584a6f5f40f68386bbc8ed02aec3f3d8ff97441a1d48f6bc96479931",
-              "definition_sha256": "0a765dc5e4c97de0041dbbc3b6ce7b526f05edefc9de8e08c8670c57301a368b"
+              "status": "scored",
+              "primary": 0.14148148148148149,
+              "selected_design": "D08",
+              "selected_round": 25,
+              "proposal_slots_used": 6,
+              "receipts": {
+                "seal.json": "d4eed9ebd6911746922f399480af6f85607a132e6c6cf9a0330372327221e68e",
+                "results.json": "b6d6f16c687697f92992e781fe791cacec2ccdbf9e27fe73158ddb22f261dcc7",
+                "audit.json": "3870f3c5a2a0b1496e424924488e27d5535b4ebc6261e2b0254c9a80da408955",
+                "verification.json": "74429f1822e7d392fc0b3f87dab77d74f3e974f2a629d1cf642033ee0ac895fe"
+              },
+              "definition_sha256": "4e433b867dccaacd45d521f80b3d9fde5279c848353622a228cd204dfb233eab",
+              "backend_sha256": "6db3dba4f6b3f0389cab0dda16593970dd58e835b54a405aadc2e4145a045557",
+              "checkpoint_sha256": "b1838a4fda3b9e86712215b39f61e92c05471fdaae9156e3680c2a89eb877ccd",
+              "declared_input_cap": 65536
             },
             "43": {
-              "status": "failed",
-              "display": "$F_{\\mathrm{ctx}}$",
-              "error": "Native context uses 28509 matched-budget tokens, above the declared 28000-token cap",
-              "run_status_sha256": "fe30ea3d9469a3579278ffdb8da7cfc6fb413c778bd109a431e05f682f2e3c53",
-              "definition_sha256": "f5f93ac6eabeee92cc7cc7de785f1b20fb380665b029f41f9540d412645c39ca"
+              "status": "scored",
+              "primary": 0.14074074074074072,
+              "selected_design": "D01",
+              "selected_round": 25,
+              "proposal_slots_used": 6,
+              "receipts": {
+                "seal.json": "725d3b0e62d97e5f50b02065b96135f7d4b84d3d5d158b8744cb74d6326fdc38",
+                "results.json": "8a33ebccab973f79a4ec74ae4d5dd8335840b6ea66442ec4046e8a90406eec69",
+                "audit.json": "1197d450a4f8ecdc98696e986e31a63f61e1a287c36afe8bd9120db41cbcc1bb",
+                "verification.json": "16ef9757d5d1f93da504e7844497d2c7d2464424b4a8666ea4d964b82e6a0638"
+              },
+              "definition_sha256": "d7c816d96070a5d38e8e1cab1c0c6954ec8916209edbf45bed10f84d8e5d7ada",
+              "backend_sha256": "06e1958ea75b3328787a17d003fc52107aca552e990cae1d660210dfda33318c",
+              "checkpoint_sha256": "8625e111716148d34c4569b9c58f1cab7871414ddb8a327083eae95658dd841b",
+              "declared_input_cap": 65536
             },
             "44": {
-              "status": "failed",
-              "display": "$F_{\\mathrm{ctx}}$",
-              "error": "Native context uses 28068 matched-budget tokens, above the declared 28000-token cap",
-              "run_status_sha256": "83811adbc2fff322c0209df3f91e613a6a50474d641564e810fb5c13fd28b795",
-              "definition_sha256": "aae0b0a5304cb8ba599d8f356210ee32833a6a4ec9fffa395af6281c1d59c624"
+              "status": "scored",
+              "primary": 0.14148148148148149,
+              "selected_design": "D08",
+              "selected_round": 25,
+              "proposal_slots_used": 6,
+              "receipts": {
+                "seal.json": "09baa38d60c2aeb9ea51ddd4d4d7e2060834e112b4315a6a0966366532aad75d",
+                "results.json": "88271faa3d23c08c6fe9676c108ea57593f949e2106beefcea02d90c2c0adafc",
+                "audit.json": "c910a8fadc9f5b9f1dfad7245a5a2c81eae31edc7c82bf4077654bd70d6ac8f9",
+                "verification.json": "912bf72de10a2861f85616e39c123b07c36c3333d86bf0ce026e6438adfd4326"
+              },
+              "definition_sha256": "d0838a0d3d51459816742db223eee5a227a4594178ee89aa8e7cbf77ed6985a9",
+              "backend_sha256": "4df77f0899a3b81ec388812d92d5cdc3b18ef30c2ed348cbf1d1f72db9c13d67",
+              "checkpoint_sha256": "20738ce67747a24015e907130ed7a7fb32e30842438b30911ae3ec4dc4615ff1",
+              "declared_input_cap": 65536
             }
           },
-          "completed": 0,
+          "completed": 3,
           "attempted": 3,
-          "complete": false,
-          "failure_tokens": [
-            "$F_{\\mathrm{ctx}}$"
+          "complete": true,
+          "failure_tokens": [],
+          "extended_context_seeds": [
+            "42",
+            "43",
+            "44"
           ],
-          "extended_context_seeds": []
+          "mean": 0.14123456790123456,
+          "sd": 0.0004276668660664029
         }
       },
       "tahoe_drug_corrected": {
@@ -2991,35 +3216,68 @@
         "ai_researcher": {
           "runs": {
             "42": {
-              "status": "failed",
-              "display": "$F_{\\mathrm{ctx}}$",
-              "error": "Native context uses 28950 matched-budget tokens, above the declared 28000-token cap",
-              "run_status_sha256": "94443a73dde41a40154f385ec319b54abf2aaf6ae0ac518dc59ecb5fe1702b14",
-              "definition_sha256": "a3d6c60e4d09ac0aca063dc6092e1c3270f8664ed6a6bd8a803cf1a1ab3ce090"
+              "status": "scored",
+              "primary": 0.13432835820895522,
+              "selected_design": "D09",
+              "selected_round": 55,
+              "proposal_slots_used": 6,
+              "receipts": {
+                "seal.json": "4bfde924ceaab576502a74e542cf2d5466c855a9bb56dea0921c8be48c205110",
+                "results.json": "05e91daf178d6ddfe001943cfbb947c5450f9910bd8ae2d2ac0c216efa01e504",
+                "audit.json": "22843c249de40497b354d6f3d834d66dd50dcbc12d812a9da136dde8b8bb4044",
+                "verification.json": "83099b34c5045cb08c5af05153cd3f0a4829f49269f968645da67ba7338f2c2a"
+              },
+              "definition_sha256": "f25aed0abd0045331caa3f547019672a07402d73c9e0e8d3b53af8c3cc09aac0",
+              "backend_sha256": "6db3dba4f6b3f0389cab0dda16593970dd58e835b54a405aadc2e4145a045557",
+              "checkpoint_sha256": "f505ebe9f778aee21916135777321ec557c01a7a1e3d83e0fdd69f1771bfdd9e",
+              "declared_input_cap": 65536
             },
             "43": {
-              "status": "failed",
-              "display": "$F_{\\mathrm{svc}}$",
-              "error": "GPT-5.6 Luna transport/tool-isolation failure: /liziqing/yukai/AI4AI4Cell/results/public_harness_luna_20260925/one_lab_three_seed_v3/ai_researcher/tahoe_drug_corrected/seed43/model_calls/transcripts/call_0019",
-              "run_status_sha256": "2c2d9191ffaf4c6c5248cde85dc14b312104296f3d8a8a8920686242c9ccd075",
-              "definition_sha256": "57c4462f1f8cc9a80ef0ebc3244501f43c5b2a8ff615aed80519d1d5fd84d960"
+              "status": "scored",
+              "primary": 0.1044776119402985,
+              "selected_design": "D07",
+              "selected_round": 50,
+              "proposal_slots_used": 6,
+              "receipts": {
+                "seal.json": "c6ae0877c1cb110df6e0de459deb190c2549e4473def296d22413cf727ff7afd",
+                "results.json": "0ab3d95ea4625410844546aa40c5da9bdce45c5d0701547040d34819ddd897df",
+                "audit.json": "494bd3e4a24d530694c7bc3e81db7a76714b570b127710e2a0b6f237084feb8d",
+                "verification.json": "9efa2cb1e30d909069ba2d7cc9daebf61cdf96e665f054965bc8d8bd387e6594"
+              },
+              "definition_sha256": "bdcef913c035d5325585de353c4d529a0ae905df6da2a91518531e64cd6db3da",
+              "backend_sha256": "06e1958ea75b3328787a17d003fc52107aca552e990cae1d660210dfda33318c",
+              "checkpoint_sha256": "a6d6c71c066c685ac26d6ac8f15e9595da030689a4357e224c3cc8d1ab85af64",
+              "declared_input_cap": 65536
             },
             "44": {
-              "status": "failed",
-              "display": "$F_{\\mathrm{svc}}$",
-              "error": "GPT-5.6 Luna transport/tool-isolation failure: /liziqing/yukai/AI4AI4Cell/results/public_harness_luna_20260925/one_lab_three_seed_v3/ai_researcher/tahoe_drug_corrected/seed44/model_calls/transcripts/call_0004",
-              "run_status_sha256": "318d3e780d5c852389b22e257f78f733ccb72a1cbb84ea2e90bb068ce7dbc9ba",
-              "definition_sha256": "7329d7a9b0402cc342ee975b7ecd5bef17c3818d72aeb8daebaf798a60bbe3e9"
+              "status": "scored",
+              "primary": 0.22388059701492538,
+              "selected_design": "D07",
+              "selected_round": 25,
+              "proposal_slots_used": 6,
+              "receipts": {
+                "seal.json": "ec0dc2a5e1ceeec04e5456d4ba24d543c2629a683cf6374da7c9c96255230dfe",
+                "results.json": "2a023d54331580b5aed1a81ab8e2b760d10099680711e9ce3983e527f7146ff3",
+                "audit.json": "16f41bb6af980c58431d4a49bf2ec54408d215c7da0504fbb9d35e67d9d1a854",
+                "verification.json": "e6e4bd3c4dedfa2fe69ef23ed089e2aec5dcb992106085a249becf7a54473338"
+              },
+              "definition_sha256": "e9958a050812d9ef7d4102e2d193c8d367ffd5d55c4be3630aae38d518f5b191",
+              "backend_sha256": "4df77f0899a3b81ec388812d92d5cdc3b18ef30c2ed348cbf1d1f72db9c13d67",
+              "checkpoint_sha256": "c22f0421e2331b081ccce8a10b0298143f17eafa39e77205a52e5c984999b4e1",
+              "declared_input_cap": 65536
             }
           },
-          "completed": 0,
+          "completed": 3,
           "attempted": 3,
-          "complete": false,
-          "failure_tokens": [
-            "$F_{\\mathrm{ctx}}$",
-            "$F_{\\mathrm{svc}}$"
+          "complete": true,
+          "failure_tokens": [],
+          "extended_context_seeds": [
+            "42",
+            "43",
+            "44"
           ],
-          "extended_context_seeds": []
+          "mean": 0.15422885572139303,
+          "sd": 0.062139283566153225
         }
       }
     }

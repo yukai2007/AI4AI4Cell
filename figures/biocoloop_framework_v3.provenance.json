@@ -39,6 +39,12 @@
       "shape": "Text 3",
       "change": "label luminance 65 % -> 45 %",
       "reason": "label was near-invisible after figure scaling"
+    },
+    {
+      "id": "drop_local_data_note",
+      "shape": "Text 83",
+      "change": "delete the standalone caption \"Raw data remain within each laboratory\"",
+      "reason": "authors asked to drop it; locality is stated in the text and carried by the lock icons and private-data labels"
     }
   ],
   "aspect_ratio": "4:3",
@@ -63,7 +69,6 @@
     "Drug\u2013target",
     "Proteomic efficacy",
     "Cell perturbations",
-    "Raw data remain within each laboratory",
     "generates new hypothesis",
     "design id",
     "Fixed research language model"
@@ -105,14 +110,14 @@
     "ppt/media/image9.png"
   ],
   "pdf_embedded_images": 15,
-  "vector_path_count": 62,
+  "vector_path_count": 61,
   "text_outside_canvas": [],
   "slides_test_returncode": 0,
   "slides_test_output": "Test passed. No overflow detected.",
   "artifacts": {
-    "biocoloop_framework_v3.pptx": "295e7056ac93d980a567f08fc40c9c861e37a8611b44887c0d054b1e002e6900",
-    "biocoloop_framework_v3.pdf": "5284e5662d7f9eebd49cebf48d45582e9b9139d0c4858a1a1dd26befb0a32c8f",
-    "biocoloop_framework_v3.png": "46ff974bc635144009f58587d3b74c0d6a9946cf0d318f2d909fa378da79f5c2"
+    "biocoloop_framework_v3.pptx": "16fc2ca92cad9d280196eb25ebe71068802504a695e44a8cad5a46f0c4ad97ec",
+    "biocoloop_framework_v3.pdf": "beb88747c5584a21e8be99fa7942a71a5a789bae4532b5ae4daf6826ea1f3585",
+    "biocoloop_framework_v3.png": "91c73aa70c269c99b80bcdfd044ae2479088270bcc4c7111a1ccea7a3ebe5ba6"
   },
   "visual_review_required": true
 }

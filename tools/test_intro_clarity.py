@@ -9,11 +9,11 @@ class IntroClarityTests(unittest.TestCase):
         abstract = source.split(r"\begin{abstract}", 1)[1].split(r"\end{abstract}", 1)[0]
         self.assertNotRegex(abstract, r"10\.84|eight ties|twelve task|four held-out wins|main-table")
         self.assertIn("matched Qwen2.5 and GPT-5.6 Luna comparisons", abstract)
-        self.assertIn("four of five primary endpoints", abstract)
-        self.assertIn("AI-Scientist-v2 and AI-Researcher baselines", abstract)
+        self.assertIn("four of the five primary endpoints", abstract)
+        self.assertIn("AI-Scientist-v2 and AI-Researcher", abstract)
         results = (PAPER / "sections/05_results.tex").read_text()
         self.assertIn("+10.84-point mean effect", results)
-        self.assertIn("proposal generation held fixed", results)
+        self.assertIn("retain the same checkpoint", results)
 
     def test_motivation_and_per_task_predictors(self):
         intro = (PAPER / "sections/01_introduction.tex").read_text()

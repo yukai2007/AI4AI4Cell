@@ -56,10 +56,11 @@ class CompletedManuscriptTests(unittest.TestCase):
 
     def test_main_result_narrative_distinguishes_proposal_history_and_allocation(self):
         text = (ROOT / 'sections/05_results.tex').read_text()
+        appendix_text = (ROOT / 'sections/23_appendix_core_sensitivity.tex').read_text()
         self.assertIn(r'\input{tables/public_harness_comparison/main_public_harness_three_seed}', text)
         self.assertIn(r'\input{tables/strong_v3/effects}', text)
-        self.assertIn('seven ties and one decrease', text)
-        self.assertIn('eight pairs tie', text)
+        self.assertIn('seven ties and one decrease', text + appendix_text)
+        self.assertIn('eight pairs tie', text + appendix_text)
         self.assertIn('800 aggregation rounds', text)
         self.assertIn('4.7 How does feedback change the research trajectory?', text)
         self.assertIn('4.4 Measured trajectories improve training allocation', text)
@@ -86,7 +87,8 @@ class CompletedManuscriptTests(unittest.TestCase):
         self.assertEqual(sha(Path(receipt['source_deck'])), receipt['source_deck_sha256'])
         repairs = {item['id'] for item in receipt['declared_repairs']}
         self.assertEqual(repairs, {'flatten_alternate_content', 'math_run_to_text',
-                                   'propose_card_fit', 'fixed_model_label_contrast'})
+                                   'propose_card_fit', 'fixed_model_label_contrast',
+                                   'drop_local_data_note'})
         self.assertEqual(receipt['embedded_raster_assets'],
                          sorted(receipt['embedded_raster_assets']))
         self.assertEqual(receipt['pdf_embedded_images'],
@@ -107,16 +109,18 @@ class CompletedManuscriptTests(unittest.TestCase):
         receipt = json.loads((ROOT / 'assets/paradigm_comparison_v3.provenance.json').read_text())
         self.assertEqual(receipt['status'],
                          'STRUCTURAL_CHECKS_PASSED_VISUAL_REVIEW_REQUIRED')
-        self.assertEqual(receipt['declared_repairs'], [])
+        repairs = {item['id']: item for item in receipt['declared_repairs']}
+        self.assertEqual(set(repairs), {'trim_canvas', 'centre_middle_panel'})
+        self.assertIn('7045325 -> 6714176 EMU', repairs['trim_canvas']['change'])
         self.assertTrue(receipt['source_deck_unchanged'])
         self.assertEqual(receipt['source_deck'],
                          str(Path('/liziqing/yukai/AI4AI4Cell/paradigm_comparison_editable.pptx')))
         self.assertEqual(sha(Path(receipt['source_deck'])), receipt['source_deck_sha256'])
         copied = ROOT / 'assets/paradigm_comparison_v3.pptx'
-        self.assertEqual(sha(copied), receipt['source_deck_sha256'])
+        self.assertEqual(sha(copied), receipt['artifacts']['paradigm_comparison_v3.pptx'])
         self.assertEqual(receipt['text_outside_canvas'], [])
         self.assertEqual(receipt['slides_test_returncode'], 0)
-        self.assertAlmostEqual(float(receipt['aspect_ratio']), 12192000 / 7045325, places=3)
+        self.assertAlmostEqual(float(receipt['aspect_ratio']), 12192000 / 6714176, places=3)
         for filename, digest in receipt['artifacts'].items():
             self.assertEqual(sha(ROOT / 'assets' / filename), digest)
         adapter = (ROOT / 'tools/adapt_paradigm_v3.py').read_text()

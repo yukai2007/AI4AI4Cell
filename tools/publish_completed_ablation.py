@@ -108,13 +108,15 @@ def best_flags(values):
 
 
 def table(filename, header, rows, caption, label, columns, small='small'):
-    lines = [r'\begin{table}[htbp]', r'\centering' + '\\' + small, r'\setlength{\tabcolsep}{4pt}',
+    # Journal style: the caption stays above the tabular so every table in the
+    # manuscript is read caption-first.
+    lines = [r'\begin{table}[htbp]', r'\caption{' + caption + '}', r'\label{' + label + '}',
+             r'\centering' + '\\' + small, r'\setlength{\tabcolsep}{4pt}',
              r'\begin{tabularx}{\linewidth}{@{}' + columns + '@{}}', r'\toprule',
              ' & '.join(header) + r' \\', r'\midrule']
     for row in rows:
         lines.append(r'\midrule' if row is None else ' & '.join(row) + r' \\')
-    lines += [r'\bottomrule', r'\end{tabularx}', r'\caption{' + caption + '}',
-              r'\label{' + label + '}', r'\end{table}']
+    lines += [r'\bottomrule', r'\end{tabularx}', r'\end{table}']
     atomic_text(OUT / filename, '\n'.join(lines) + '\n')
 
 
@@ -408,7 +410,7 @@ def accepted_event_table(snapshot):
                and r['backend'] == 'luna' and r['protocol'] == 'long24')
     rows = []
     for mode in ('direct', 'loop'):
-        rows.append([mode.capitalize(), '0', 'Initial', 'Common initial design',
+        rows.append([mode.capitalize(), '0', 'Common initial recipe',
                      score([run['modes'][mode]['trajectory'][0]['primary']])])
         for trace in run['traces']:
             if trace['mode'] != mode or trace['outcome'] != 'retained':
@@ -416,11 +418,13 @@ def accepted_event_table(snapshot):
             config = trace['config']
             change = ', '.join([f'lr={config["lr"]:g}', f'wd={config["weight_decay"]:g}',
                                f'm={config["server_momentum"]:g}', 'R=' + str(int(config['residual']))])
-            rows.append([mode.capitalize(), str(trace['slot']), escape(trace['design_id']), change,
+            rows.append([mode.capitalize(), str(trace['slot']), change,
                          score([trace['incumbent_primary']])])
-    table('norman_retained_events.tex', ['Mode', 'Slot', 'Design', 'Retained configuration', 'Dev. Top-1'], rows,
+    # The executed design id is omitted: it is a lookup key for the configuration
+    # printed beside it, so the columns would repeat the same information twice.
+    table('norman_retained_events.tex', ['Mode', 'Slot', 'Executed configuration', 'Dev. Top-1'], rows,
           r'All retained proposals for the Norman/Luna extended 36-design, 24-slot study, seed 61. The two modes share initialization and first proposal. lr, wd, m and R denote learning rate, weight decay, server momentum and residual-head indicator. Development selection is followed by evaluation at every prespecified heldout prefix; the full attempted-slot trace is retained separately.',
-          'tab:completed-norman-events', 'llXlr', 'small')
+          'tab:completed-norman-events', 'llXr', 'small')
 
 
 def figures(snapshot):

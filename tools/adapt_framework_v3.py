@@ -16,6 +16,10 @@ repairs are applied only to the copy stored in this repository:
    that the final line (``design id``) is no longer clipped.
 4. the ``Fixed research language model`` label is darkened from 65 % to 45 %
    luminance so it stays legible after journal-size scaling.
+5. the standalone italic caption ``Raw data remain within each laboratory`` is
+   deleted at the authors' request: data locality is already stated in the
+   manuscript text and carried by the lock icons and ``private data`` labels of
+   the laboratory cards, so the caption only repeated it.
 Steps 1 and 2 together remove every Office-2010 math extension and every
 clipped screenshot from the figure.
 
@@ -57,7 +61,7 @@ REQUIRED_WORDS = [
     'Train + evaluate', 'Retain / revise', 'Shared coordinator', 'Laboratory 1',
     'Laboratory 2', 'Laboratory K', 'private', 'model', 'OUTPUTS', 'Designs',
     'Programs', 'Policies', 'BIOLOGICAL VALIDATION SETTINGS', 'Drug–target',
-    'Proteomic efficacy', 'Cell perturbations', 'Raw data remain within each laboratory',
+    'Proteomic efficacy', 'Cell perturbations',
     'generates new hypothesis', 'design id', 'Fixed research language model',
 ]
 
@@ -129,6 +133,20 @@ def apply_declared_repairs(xml: str) -> tuple[str, list[dict]]:
         edits.append({'id': 'fixed_model_label_contrast', 'shape': 'Text 3',
                       'change': 'label luminance 65 % -> 45 %',
                       'reason': 'label was near-invisible after figure scaling'})
+
+    removed_note = False
+    for block in SP_RE.findall(xml):
+        if 'Raw data remain within each laboratory' not in block:
+            continue
+        assert 'name="Text 83"' in block, 'local-data caption shape changed upstream'
+        xml = xml.replace(block, '')
+        removed_note = True
+        edits.append({'id': 'drop_local_data_note', 'shape': 'Text 83',
+                      'change': 'delete the standalone caption '
+                                '"Raw data remain within each laboratory"',
+                      'reason': 'authors asked to drop it; locality is stated in the text and '
+                                'carried by the lock icons and private-data labels'})
+    assert removed_note, 'local-data caption not found'
 
     assert '<a:blipFill>' not in xml, 'unexpected picture-filled shape remains'
     assert '<a14:m>' not in xml and 'mc:AlternateContent' not in xml
