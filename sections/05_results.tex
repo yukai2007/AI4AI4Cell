@@ -6,16 +6,6 @@ Besides, Appendix~A provides matched comparisons with the same laboratory access
 
 
 
-
-
-% \subsection*{4.4 Collaborative access improves task performance}
-% Table~\ref{tab:public-harness-comparison-three-seed} presents Qwen2.5-7B-Instruct and GPT-5.6 Luna blocks over seeds 42--44, sharing partitions, design library, candidate budget and held-out scorer. The blocks are not matched in access: the fixed and direct references and the public self-improving agents use laboratory 0, while BioCoLoop uses ten, so we read the table with the six-arm matched-access control of Appendix~A (Table~\ref{tab:strong-ablation}). Cells that terminate before a valid held-out selection remain marked rather than imputed (Appendix~C).
-
-% \input{tables/public_harness_comparison/main_public_harness_three_seed}
-% \FloatBarrier
-
-% Holding the search mode fixed, increasing participation from one to ten laboratories adds \StrongDTIFederationEffect{} AUROC points for DTI, \StrongPTPCFederationEffect{} AP points for proteomics, and \StrongVCCFederationEffect{}, \StrongNormanFederationEffect{} and \StrongTahoeFederationEffect{} Top-1 points for VCC, Norman and Tahoe, so collaborative access improves four of the five endpoints. Design search over the registered library adds less on top of the collaborative default recipe: 1.96 DTI AUROC and 6.77 Norman Top-1 points, while the default stays better on proteomics (37.07 versus 36.99 AP) and Tahoe (25.87 versus 22.39 Top-1) and ties VCC (31.54). The identification endpoints have little headroom: chance is 20\%, the best Norman value is the one-laboratory fixed reference at 25.56, and the collaborative default falls to 15.48, so we treat them as a low-headroom stress test and base the primary conclusions on the drug--target and proteomic endpoints.
-
 \subsection*{4.4 Early evaluation results guide further training}
 
 We next test whether evaluation results obtained early in training can help decide which models should receive further training. We compare uniform training of all ten models for 80 rounds with a procedure that first trains all ten models for 20 rounds and then selects six for 100-round training. Both procedures use the same total of 800 training rounds and 160 development evaluations.
@@ -28,13 +18,10 @@ The largest improvement appears on Norman, where Top-1 increases from 11.48\% to
 \subsection*{4.5 Learning from different data sources}
 
 We next consider laboratories containing data from different biological datasets or experimental settings. For DTI, we combine BindingDB with BioSNAP, Davis, and Human. For cell perturbation, VCC is combined with three external single-cell studies. For proteomics, PTPC is combined with Lin, Ruprecht, and decryptE \citep{Lin2026HDAC,Ruprecht2020Proteome,Eckert2024DecryptE}. All models are selected using the target development data and evaluated on the same target test set.
-
 External data can improve target performance, but the effect depends on the source. For example, adding all three proteomic studies improves target AP, while Davis and Human improve DTI AUROC. In contrast, external single-cell studies do not outperform additional data drawn from the same VCC dataset when the number of laboratories and training conditions are matched. These results suggest that additional data are most useful when their biological information transfers well to the target task.
 
 
-\subsection*{4.6 Effect of the number of laboratories}
 
-We vary $K\in\{1,2,5,10\}$ in two settings. In the first, additional laboratories also provide additional training data. In the second, the same training data are divided across different numbers of laboratories.
 
 \begin{figure}[t]
 \centering
@@ -48,11 +35,10 @@ Full results are reported in Appendix B.
 \label{fig:lab-sensitivity}
 \end{figure}
 
+\subsection*{4.6 Effect of the number of laboratories}
+
+We vary $K\in\{1,2,5,10\}$ in two settings. In the first, additional laboratories also provide additional training data. In the second, the same training data are divided across different numbers of laboratories.
 Figure~\ref{fig:lab-sensitivity} shows that adding laboratories together with additional data can improve performance, whereas increasing the number of laboratories with the total data fixed does not produce a consistent gain. For example, proteomics performs best at an intermediate $K$, while Norman degrades when the same data are split across more laboratories. The gains in the main experiment therefore cannot be explained by the number of laboratories alone. They depend on both access to additional data and how those data are divided during training.
-
-\subsection*{4.7 How previous evaluation results affect subsequent proposals}
-
-We finally compare direct optimization and BioCoLoop under the same proposal space, first proposal, training procedure, and selection rule. The only difference is that BioCoLoop receives results from completed experiments when generating subsequent proposals.
 
 \begin{figure}[t]
 \centering
@@ -65,6 +51,9 @@ Each proposed model receives 100 training rounds.
 \label{fig:completed-short-dev}
 \end{figure}
 
+\subsection*{4.7 How previous evaluation results affect subsequent proposals}
+
+We finally compare direct optimization and BioCoLoop under the same proposal space, first proposal, training procedure, and selection rule. The only difference is that BioCoLoop receives results from completed experiments when generating subsequent proposals.
 Previous evaluation results affect the proposal sequence more clearly than final held-out performance. Most short comparisons finish with the same test score, but on Norman the larger search shows that Luna reaches the same development target after four proposals with previous results, compared with 22 proposals without them. Both eventually reach the same held-out Top-1. This suggests that results from completed experiments can help identify useful model changes earlier, although faster improvement on the development set does not necessarily lead to a better final model.
 
 
