@@ -6,11 +6,13 @@
 \providecommand{\TblStar}{\textsuperscript{\textcolor{TblInk}{$\star$}}}
 \providecommand{\TblUp}[1]{\textcolor{TblUp}{$\uparrow$#1}}
 \providecommand{\TblDown}[1]{\textcolor{TblDown}{$\downarrow$#1}}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{Q}{>{\centering\arraybackslash}X}
 \begin{table}[t]
 \centering\scriptsize
 \setlength{\tabcolsep}{2.0pt}
 \renewcommand{\arraystretch}{0.84}
-\begin{tabularx}{\linewidth}{@{}Xrrrrrr@{}}
+\begin{tabularx}{\linewidth}{@{}LQQQQQQ@{}}
 \toprule
 \textbf{Model / method} & \multicolumn{1}{c}{DTI} & \multicolumn{1}{c}{Proteomics} & \multicolumn{3}{c}{Cell perturbation} & \multicolumn{1}{c}{Average} \\
 \cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(lr){4-6}\cmidrule(l){7-7}

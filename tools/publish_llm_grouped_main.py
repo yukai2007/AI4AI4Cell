@@ -428,6 +428,10 @@ TABLE_PREAMBLE = [
     r"\providecommand{\TblStar}{\textsuperscript{\textcolor{TblInk}{$\star$}}}",
     r"\providecommand{\TblUp}[1]{\textcolor{TblUp}{$\uparrow$#1}}",
     r"\providecommand{\TblDown}[1]{\textcolor{TblDown}{$\downarrow$#1}}",
+    # Seven equal-width columns: the label column is ragged right, the six
+    # endpoint/rank columns are centred so no single column absorbs the slack.
+    r"\newcolumntype{L}{>{\raggedright\arraybackslash}X}",
+    r"\newcolumntype{Q}{>{\centering\arraybackslash}X}",
 ]
 
 
@@ -536,7 +540,7 @@ def table_text(snapshot):
     lines += [
         r"\begin{table}[t]", r"\centering\scriptsize",
         r"\setlength{\tabcolsep}{2.0pt}", r"\renewcommand{\arraystretch}{0.84}",
-        r"\begin{tabularx}{\linewidth}{@{}Xrrrrrr@{}}", r"\toprule",
+        r"\begin{tabularx}{\linewidth}{@{}LQQQQQQ@{}}", r"\toprule",
         (r"\textbf{Model / method} & \multicolumn{1}{c}{DTI} & "
          r"\multicolumn{1}{c}{Proteomics} & \multicolumn{3}{c}{Cell perturbation} & "
          r"\multicolumn{1}{c}{Average} \\"),
