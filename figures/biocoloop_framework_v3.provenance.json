@@ -2,7 +2,7 @@
   "status": "STRUCTURAL_CHECKS_PASSED_VISUAL_REVIEW_REQUIRED",
   "figure": "Figure 2 (BioCoLoop framework)",
   "authoring": "author-supplied PowerPoint-native deck (icons are embedded raster assets)",
-  "source_deck": "/liziqing/yukai/AI4AI4Cell/0925_repaired_v3.pptx",
+  "source_deck": "/liziqing/yukai/AI4AI4Cell/paper/figures/0925_repaired_v3.pptx",
   "source_deck_sha256": "f2dbfa1d4de87404664ac9dfa7afdc2bdbf2a86f255344bda200b8695308e45c",
   "source_deck_unchanged": true,
   "declared_repairs": [
@@ -143,8 +143,8 @@
   "slides_test_returncode": 0,
   "slides_test_output": "Test passed. No overflow detected.",
   "artifacts": {
-    "biocoloop_framework_v3.pptx": "386d1cfb2b373926bcb4adce5300ffd5e2e9c6b9f2a2c3856581112e6c3f794e",
-    "biocoloop_framework_v3.pdf": "b4bf086c294a3af855637cf7fbb39669b35420d136bc87bb5c12b6655f29827d",
+    "biocoloop_framework_v3.pptx": "325abba84d8e024179e267f619181b4282a7d97b01fa9c0a41256dd8011dd751",
+    "biocoloop_framework_v3.pdf": "b02e6b3c0873256b9e33d79389def91d223a8c3a2e36aabd95823dd928b65512",
     "biocoloop_framework_v3.png": "3aa55b079e27e040402ba0b3a11ebf9869008094734e72c912c9dbfd7fe63073"
   },
   "visual_review_required": true

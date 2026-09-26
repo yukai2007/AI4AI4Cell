@@ -84,7 +84,7 @@ class CompletedManuscriptTests(unittest.TestCase):
         self.assertEqual(receipt['aspect_ratio'], '4:3')
         self.assertTrue(receipt['source_deck_unchanged'])
         self.assertEqual(receipt['source_deck'],
-                         str(Path('/liziqing/yukai/AI4AI4Cell/0925_repaired_v3.pptx')))
+                         str(ROOT / 'figures/0925_repaired_v3.pptx'))
         self.assertEqual(sha(Path(receipt['source_deck'])), receipt['source_deck_sha256'])
         repairs = {item['id'] for item in receipt['declared_repairs']}
         self.assertEqual(repairs, {'flatten_alternate_content', 'math_run_to_text',

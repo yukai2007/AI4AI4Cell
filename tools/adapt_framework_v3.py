@@ -1,6 +1,7 @@
 """Adopt the author-supplied repaired deck as Figure 2 (framework v3).
 
-``/liziqing/yukai/AI4AI4Cell/0925_repaired_v3.pptx`` becomes the active Figure 2.
+``figures/0925_repaired_v3.pptx`` (the author's current repaired deck, copied
+into this repository) becomes the active Figure 2.
 The author's original file is never modified; declared, geometry-preserving
 repairs are applied only to the copy stored in this repository:
 
@@ -52,7 +53,7 @@ import fitz
 PAPER = Path(__file__).resolve().parents[1]
 ROOT = PAPER.parent
 SKILL = Path('/liziqing/yukai/.codex/skills/slides/scripts')
-DEFAULT_SOURCE = ROOT / '0925_repaired_v3.pptx'
+DEFAULT_SOURCE = PAPER / 'figures/0925_repaired_v3.pptx'
 
 SLIDE_MEMBER = 'ppt/slides/slide1.xml'
 SP_RE = re.compile(r'<p:sp>.*?</p:sp>', re.S)
