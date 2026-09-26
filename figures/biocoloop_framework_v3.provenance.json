@@ -45,6 +45,12 @@
       "shape": "Text 83",
       "change": "delete the standalone caption \"Raw data remain within each laboratory\"",
       "reason": "authors asked to drop it; locality is stated in the text and carried by the lock icons and private-data labels"
+    },
+    {
+      "id": "update_figure_terms",
+      "shape": "text runs",
+      "change": "\"recipe\" -> \"design\"; \"design id\" -> \"design_id\"",
+      "reason": "match the method terminology (a candidate is an executable design or configuration; design_id is the proposal field)"
     }
   ],
   "aspect_ratio": "4:3",
@@ -70,7 +76,8 @@
     "Proteomic efficacy",
     "Cell perturbations",
     "generates new hypothesis",
-    "design id",
+    "design_id",
+    "Candidate design",
     "Fixed research language model"
   ],
   "embedded_raster_assets": [
@@ -115,9 +122,9 @@
   "slides_test_returncode": 0,
   "slides_test_output": "Test passed. No overflow detected.",
   "artifacts": {
-    "biocoloop_framework_v3.pptx": "16fc2ca92cad9d280196eb25ebe71068802504a695e44a8cad5a46f0c4ad97ec",
-    "biocoloop_framework_v3.pdf": "beb88747c5584a21e8be99fa7942a71a5a789bae4532b5ae4daf6826ea1f3585",
-    "biocoloop_framework_v3.png": "91c73aa70c269c99b80bcdfd044ae2479088270bcc4c7111a1ccea7a3ebe5ba6"
+    "biocoloop_framework_v3.pptx": "38868ac484671effeb392cbcefe1ec1a6c54ae5715448d938d1860460258dbb9",
+    "biocoloop_framework_v3.pdf": "4548b4b75f61cde990532896548cbd44d01cda3281943d65dbf172eebe0b8065",
+    "biocoloop_framework_v3.png": "5f604614f26d945a96c6fa3429c48f1603f21795aa116a866ce5bdbdbd9cc77e"
   },
   "visual_review_required": true
 }

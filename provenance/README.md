@@ -31,7 +31,7 @@ and seeds 42/43/44. The clean main comparison is fixed/one lab,
 direct optimization/one lab, and collaborative research loop/ten labs. All six
 factorial arms are retained to separate participation, total search, and
 feedback effects. All three prespecified seeds are complete for the five
-main endpoints. Appendix A contains the complete six-arm comparison,
+main endpoints. Appendix A contains the complete comparison,
 secondary metrics, proposal-prefix analysis and uncertainty.
 
 ### Compute-matched loop follow-up (22 September 2026)
@@ -130,7 +130,7 @@ artifacts are indexed here, **not copied into the manuscript repository**.
 
 | Family | Evaluator and output location |
 | --- | --- |
-| TAPB | `U/heldout_native_tapb.py`, original scorer `runtime/experiments/drugevolve_transfer/scoring.py`; existing watcher root `R/heldout_v3/native_tapb/`. Per-seed outputs are emitted only after complete six-arm selection. `R/native_tapb/development_prediction_parity.json` records mandatory adapter/scorer parity. |
+| TAPB | `U/heldout_native_tapb.py`, original scorer `runtime/experiments/drugevolve_transfer/scoring.py`; existing watcher root `R/heldout_v3/native_tapb/`. Per-seed outputs are emitted only after complete factorial selection. `R/native_tapb/development_prediction_parity.json` records mandatory adapter/scorer parity. |
 | Proteomics | `U/heldout_ptpc_neural.py`; completed `R/heldout_ptpc_neural/seed{42,43,44}/` |
 | Corrected cells | `C/evaluate_corrected.py` plus `C/version_proof.py`; ranking metrics in `U/heldout_v3.py::metrics_from_rows`; `R/heldout_v3/{vcc_corrected,norman_double_corrected,tahoe_drug_corrected}/seed*/` |
 

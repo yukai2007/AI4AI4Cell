@@ -8,12 +8,14 @@ class IntroClarityTests(unittest.TestCase):
         source = (PAPER / "biocoloop-main.tex").read_text()
         abstract = source.split(r"\begin{abstract}", 1)[1].split(r"\end{abstract}", 1)[0]
         self.assertNotRegex(abstract, r"10\.84|eight ties|twelve task|four held-out wins|main-table")
-        self.assertIn("matched Qwen2.5 and GPT-5.6 Luna comparisons", abstract)
-        self.assertIn("four of the five primary endpoints", abstract)
-        self.assertIn("AI-Scientist-v2 and AI-Researcher", abstract)
+        # The abstract reports the coupling qualitatively and leaves numbers to the main text.
+        self.assertIn("inner loop", abstract)
+        self.assertIn("outer loop", abstract)
+        intro = (PAPER / "sections/01_introduction.tex").read_text()
+        self.assertIn("AI-Scientist-v2 and AI-Researcher", intro)
         results = (PAPER / "sections/05_results.tex").read_text()
         self.assertIn("+10.84-point mean effect", results)
-        self.assertIn("retain the same checkpoint", results)
+        self.assertIn(r"Norman from 11.48\% to 22.32\% Top-1", results)
 
     def test_motivation_and_per_task_predictors(self):
         intro = (PAPER / "sections/01_introduction.tex").read_text()

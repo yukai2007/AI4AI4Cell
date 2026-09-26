@@ -1,5 +1,5 @@
 \begin{table}[t]
-\caption{Six-arm ablation of the task-reference models. Entries are held-out mean $\pm$ sample SD across completed training/search seeds, multiplied by 100. The data partitions remain fixed; this SD measures run-to-run variation, not dataset uncertainty. DTI uses the random held-out endpoint. Bold marks all displayed maxima.}
+\caption{Control comparison for the task-reference models. The fixed and feedback-free direct references train or search on a single site, so they are reported on one laboratory; BioCoLoop is reported at one and ten laboratories so that the effect of laboratory participation can be read under the same research loop. Entries are held-out mean $\pm$ sample SD across completed training/search seeds, multiplied by 100. The data partitions remain fixed; this SD measures run-to-run variation, not dataset uncertainty. DTI uses the random held-out endpoint. Bold marks all displayed maxima.}
 \label{tab:strong-ablation}
 \centering\small
 \setlength{\tabcolsep}{3pt}
@@ -14,9 +14,7 @@ Labs & Method & AUROC & AP & VCC & Norman & Tahoe \\
 1 & Direct & 89.89{\scriptsize$\pm1.02$} & 20.13{\scriptsize$\pm0.07$} & 21.09{\scriptsize$\pm4.38$} & 14.15{\scriptsize$\pm0.00$} & 15.42{\scriptsize$\pm6.21$} \\
 1 & Our loop & 89.89{\scriptsize$\pm1.02$} & 20.13{\scriptsize$\pm0.07$} & 20.22{\scriptsize$\pm2.22$} & 14.15{\scriptsize$\pm0.00$} & 15.42{\scriptsize$\pm6.21$} \\
 \midrule
-10 & Fixed model & 91.80{\scriptsize$\pm2.55$} & \textbf{37.07}{\scriptsize$\pm0.08$} & \textbf{31.54}{\scriptsize$\pm0.08$} & 15.48{\scriptsize$\pm0.00$} & \textbf{25.87}{\scriptsize$\pm1.72$} \\
-10 & Direct & \textbf{93.76}{\scriptsize$\pm1.11$} & 36.99{\scriptsize$\pm0.22$} & \textbf{31.54}{\scriptsize$\pm0.08$} & 22.25{\scriptsize$\pm0.45$} & 22.39{\scriptsize$\pm2.59$} \\
-10 & Our loop & \textbf{93.76}{\scriptsize$\pm1.11$} & 36.99{\scriptsize$\pm0.22$} & \textbf{31.54}{\scriptsize$\pm0.08$} & 22.25{\scriptsize$\pm0.45$} & 22.39{\scriptsize$\pm2.59$} \\
+10 & Our loop & \textbf{93.76}{\scriptsize$\pm1.11$} & \textbf{36.99}{\scriptsize$\pm0.22$} & \textbf{31.54}{\scriptsize$\pm0.08$} & 22.25{\scriptsize$\pm0.45$} & \textbf{22.39}{\scriptsize$\pm2.59$} \\
 \midrule
 \multicolumn{2}{l}{Completed seeds ($n/3$)} & 3/3 & 3/3 & 3/3 & 3/3 & 3/3 \\
 \bottomrule

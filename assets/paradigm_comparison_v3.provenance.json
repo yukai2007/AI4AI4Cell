@@ -2,24 +2,18 @@
   "status": "STRUCTURAL_CHECKS_PASSED_VISUAL_REVIEW_REQUIRED",
   "figure": "Figure 1 (research settings for biological AI)",
   "authoring": "author-supplied PowerPoint-native deck (icons are embedded raster assets)",
-  "source_deck": "/liziqing/yukai/AI4AI4Cell/paradigm_comparison_editable.pptx",
-  "source_deck_sha256": "7dad57eb214d22b6c03d457d24afa3385ab64d926e360de3561df1b04801393e",
+  "source_deck": "/liziqing/yukai/AI4AI4Cell/try/paradigm_comparison_editable.pptx",
+  "source_deck_sha256": "412926bb33a23c6ee3f35c7da646af9a71656a47c14913a57037234300926003",
   "source_deck_unchanged": true,
   "declared_repairs": [
     {
       "id": "trim_canvas",
       "shape": "p:sldSz",
-      "change": "cy 7045325 -> 6714176 EMU",
-      "reason": "bottom canvas margin matched to the 187372 EMU top margin; nothing clipped"
-    },
-    {
-      "id": "centre_middle_panel",
-      "shape": "19 panel-(b) objects",
-      "change": "translate down by 125938 EMU",
-      "reason": "centre the sparse middle panel between its title row and the canvas bottom"
+      "change": "cy 7045325 -> 5136739 EMU",
+      "reason": "author height-compressed the panels; bottom canvas margin matched to the 187371 EMU top margin, nothing clipped"
     }
   ],
-  "aspect_ratio": "1.8159",
+  "aspect_ratio": "2.3735",
   "required_labels_present": [
     "(a)",
     "Centralized bio-agent",
@@ -41,15 +35,15 @@
     "(design fixed in advance)",
     "(design revised between rounds)"
   ],
-  "pdf_embedded_images": 16,
-  "vector_path_count": 48,
+  "pdf_embedded_images": 15,
+  "vector_path_count": 46,
   "text_outside_canvas": [],
   "slides_test_returncode": 0,
   "slides_test_output": "Test passed. No overflow detected.",
   "artifacts": {
-    "paradigm_comparison_v3.pptx": "5bf5d3f7601f279f8f2fed213141c333a2e7c6925e622b61dcef42b6b95333cb",
-    "paradigm_comparison_v3.pdf": "4a8950d3ba7df9e76f41d07f7e40b2359a2a037334b5399fe1bf500027f4cd0c",
-    "paradigm_comparison_v3.png": "8cd733fe282e75c91b7efa40a1df310ad13f8fd4d72ddcb6ffd0558f440b2946"
+    "paradigm_comparison_v3.pptx": "1da7023504d91430053c40eecfe03d368298a120e8b4d4a3d97ea5e0552f1a39",
+    "paradigm_comparison_v3.pdf": "6ac58df804e1263b4af4ff76e8c0024e4812e5a125ebfccbda75ccd9e1a2d99a",
+    "paradigm_comparison_v3.png": "fb2ee4211bdfb7abe16d5a9203af0ed97041c39078c0675b4fa4dbd77ea79ed5"
   },
   "visual_review_required": true
 }

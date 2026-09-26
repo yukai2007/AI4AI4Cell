@@ -56,24 +56,40 @@ class AppendixCompactionTests(unittest.TestCase):
             self.assertNotIn(r'\input{tables/completed_ablation/' + name + '}', appendix)
             self.assertTrue((PAPER / f'tables/completed_ablation/{name}.tex').is_file())
 
-    def test_core_controls_and_nonpositive_findings_stay_in_manuscript(self):
+    def test_fixed_and_direct_references_are_single_laboratory(self):
+        """The fixed and feedback-free direct references train or search on one site only."""
+        for name in ('ablation', 'secondary', 'dti_endpoints'):
+            text = (PAPER / f'tables/strong_v3/{name}.tex').read_text()
+            for line in text.splitlines():
+                fields = [field.strip() for field in line.split('&')]
+                if '10' not in fields:
+                    continue
+                self.assertNotIn('Fixed model', line)
+                self.assertNotIn('Direct', line)
+        results = (PAPER / 'sections/05_results.tex').read_text()
+        for removed in ('37.07', '25.87'):
+            self.assertNotIn(removed, results)
+
+    def test_core_controls_stay_in_manuscript(self):
         appendix_a = (PAPER / 'sections/22_appendix_unified_protocol.tex').read_text()
-        for name in ('ablation', 'loop_prefix', 'secondary', 'dti_endpoints'):
+        for name in ('ablation', 'secondary', 'dti_endpoints'):
             self.assertIn(r'\input{tables/strong_v3/' + name + '}', appendix_a)
+        # The failed terminal direct/loop contrast and its executed-prefix table are
+        # deliberately excluded; only the search-efficiency result stays in the paper.
+        self.assertNotIn('loop_prefix', appendix_a)
+        self.assertNotIn('seven ties and one decrease', appendix_a)
         appendix_b = (PAPER / 'sections/23_appendix_core_sensitivity.tex').read_text()
         for name in ('lab_participation', 'lab_fixed_pool', 'transfer_independent',
                      'transfer_protein_loop', 'transfer_contexts', 'short6', 'long24'):
             self.assertIn(r'\input{tables/completed_ablation/' + name + '}', appendix_b)
+        self.assertNotIn('seven ties and one decrease', appendix_b)
         results = (PAPER / 'sections/05_results.tex').read_text()
-        for phrase in ('retain the same checkpoint', 'eight pairs tie',
-                       '28.82', '30.70', '37.07', '25.87'):
+        for phrase in ('eight pairs tie', '28.82', '30.70',
+                       '4.4 Measured trajectories improve training allocation'):
             self.assertIn(phrase, results)
-        # The non-positive terminal contrast may sit in the main text or in
-        # Appendix B; either way it must remain visible in the manuscript.
-        self.assertIn('seven ties and one decrease', results + appendix_b)
         scope = (PAPER / 'sections/22_appendix_unified_protocol.tex').read_text()
         self.assertIn(r'\subsection*{A.6 Scope and limitations}', scope)
-        self.assertIn('no measurable held-out effect under the fixed proposal budget', scope)
+        self.assertIn('search efficiency in Section~4.7', scope)
 
     def test_conclusion_separates_design_search_from_allocation(self):
         snapshot = json.loads((PAPER / 'tables/strong_v3/snapshot.json').read_text())
@@ -83,10 +99,13 @@ class AppendixCompactionTests(unittest.TestCase):
             gain = 100 * mean(run['scores']['federated_loop']['primary'] -
                               run['scores']['federated_fixed']['primary'] for run in records)
             self.assertEqual(f'{gain:.2f}', expected)
-            self.assertIn(expected, conclusion)
-        self.assertIn('over the collaborative default', conclusion)
+        # The conclusion is a single qualitative paragraph that keeps the two
+        # evidence-driven policies distinct without restating the numbers.
+        self.assertNotIn('\n\n', conclusion)
+        self.assertIn('Design search', conclusion)
         self.assertIn('evidence-guided allocation', conclusion)
-        self.assertIn('little headroom above the 20', conclusion)
+        for number in ('1.96', '6.77', '10.84'):
+            self.assertNotIn(number, conclusion)
 
 
 if __name__ == '__main__':

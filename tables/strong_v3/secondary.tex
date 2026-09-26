@@ -1,46 +1,36 @@
 \begin{longtable}{llrrrr}
-\caption{Held-out secondary metrics for the task-reference models, averaged over seeds 42--44. Bold indicates all tied maxima, or minima for loss.}\label{tab:strong-secondary}\\
+\caption{Held-out secondary metrics for the task-reference models, averaged over seeds 42--44 and multiplied by 100. Bold indicates all tied maxima, or minima for loss.}\label{tab:strong-secondary}\\
 \toprule Method & Labs & Metric 1 & Metric 2 & Metric 3 & Metric 4 \\ \midrule\endfirsthead
 \toprule Method & Labs & Metric 1 & Metric 2 & Metric 3 & Metric 4 \\ \midrule\endhead
 \multicolumn{2}{l}{\textbf{DTI ($n=3$)}} & AUROC & AP & MCC & BCE \\
-Fixed model & 1 & 0.8283 & 0.8157 & 0.4995 & 0.5237 \\
-Direct & 1 & 0.8989 & 0.8777 & 0.6571 & 0.6102 \\
-Our loop & 1 & 0.8989 & 0.8777 & 0.6571 & 0.6102 \\
-Fixed model & 10 & 0.9180 & 0.8936 & 0.7239 & \textbf{0.3654} \\
-Direct & 10 & \textbf{0.9376} & \textbf{0.9273} & \textbf{0.7371} & 0.3659 \\
-Our loop & 10 & \textbf{0.9376} & \textbf{0.9273} & \textbf{0.7371} & 0.3659 \\
+Fixed model & 1 & 82.83 & 81.57 & 49.95 & 52.37 \\
+Direct & 1 & 89.89 & 87.77 & 65.71 & 61.02 \\
+Our loop & 1 & 89.89 & 87.77 & 65.71 & 61.02 \\
+Our loop & 10 & \textbf{93.76} & \textbf{92.73} & \textbf{73.71} & \textbf{36.59} \\
 \midrule
 \multicolumn{2}{l}{\textbf{Proteomics ($n=3$)}} & AP & AUROC & BCE & Acc. \\
-Fixed model & 1 & 0.2505 & 0.6549 & 0.4265 & \textbf{0.8514} \\
-Direct & 1 & 0.2013 & 0.6180 & 0.4434 & 0.8176 \\
-Our loop & 1 & 0.2013 & 0.6180 & 0.4434 & 0.8176 \\
-Fixed model & 10 & \textbf{0.3707} & \textbf{0.7406} & \textbf{0.3978} & \textbf{0.8514} \\
-Direct & 10 & 0.3699 & 0.7387 & 0.3983 & \textbf{0.8514} \\
-Our loop & 10 & 0.3699 & 0.7387 & 0.3983 & \textbf{0.8514} \\
+Fixed model & 1 & 25.05 & 65.49 & 42.65 & \textbf{85.14} \\
+Direct & 1 & 20.13 & 61.80 & 44.34 & 81.76 \\
+Our loop & 1 & 20.13 & 61.80 & 44.34 & 81.76 \\
+Our loop & 10 & \textbf{36.99} & \textbf{73.87} & \textbf{39.83} & \textbf{85.14} \\
 \midrule
 \multicolumn{2}{l}{\textbf{VCC ($n=3$)}} & Micro Top-1 & MRR & Top-3 & CE \\
-Fixed model & 1 & 0.3361 & \textbf{0.5653} & \textbf{0.7389} & \textbf{1.5451} \\
-Direct & 1 & 0.2148 & 0.4710 & 0.6278 & 1.6082 \\
-Our loop & 1 & 0.2074 & 0.4694 & 0.6426 & 1.6086 \\
-Fixed model & 10 & \textbf{0.3398} & 0.5634 & 0.6944 & 1.5814 \\
-Direct & 10 & \textbf{0.3398} & 0.5634 & 0.6944 & 1.5814 \\
-Our loop & 10 & \textbf{0.3398} & 0.5634 & 0.6944 & 1.5814 \\
+Fixed model & 1 & 33.61 & \textbf{56.53} & \textbf{73.89} & \textbf{154.51} \\
+Direct & 1 & 21.48 & 47.10 & 62.78 & 160.82 \\
+Our loop & 1 & 20.74 & 46.94 & 64.26 & 160.86 \\
+Our loop & 10 & \textbf{33.98} & 56.34 & 69.44 & 158.14 \\
 \midrule
 \multicolumn{2}{l}{\textbf{Norman ($n=3$)}} & Micro Top-1 & MRR & Top-3 & CE \\
-Fixed model & 1 & \textbf{0.2556} & 0.4850 & 0.6393 & 1.5874 \\
-Direct & 1 & 0.1415 & 0.4212 & 0.5835 & 1.6039 \\
-Our loop & 1 & 0.1415 & 0.4212 & 0.5835 & 1.6039 \\
-Fixed model & 10 & 0.1548 & 0.4526 & 0.6563 & \textbf{1.5806} \\
-Direct & 10 & 0.2225 & \textbf{0.5007} & \textbf{0.7096} & 1.5883 \\
-Our loop & 10 & 0.2225 & \textbf{0.5007} & \textbf{0.7096} & 1.5883 \\
+Fixed model & 1 & \textbf{25.56} & 48.50 & 63.93 & \textbf{158.74} \\
+Direct & 1 & 14.15 & 42.12 & 58.35 & 160.39 \\
+Our loop & 1 & 14.15 & 42.12 & 58.35 & 160.39 \\
+Our loop & 10 & 22.25 & \textbf{50.07} & \textbf{70.96} & 158.83 \\
 \midrule
 \multicolumn{2}{l}{\textbf{Tahoe ($n=3$)}} & Micro Top-1 & MRR & Top-3 & CE \\
-Fixed model & 1 & 0.1940 & 0.4500 & 0.5821 & 1.6308 \\
-Direct & 1 & 0.1542 & 0.4260 & 0.5672 & 1.6190 \\
-Our loop & 1 & 0.1542 & 0.4260 & 0.5672 & 1.6190 \\
-Fixed model & 10 & \textbf{0.2587} & \textbf{0.5020} & \textbf{0.6517} & \textbf{1.6061} \\
-Direct & 10 & 0.2239 & 0.4799 & 0.6169 & 1.6075 \\
-Our loop & 10 & 0.2239 & 0.4795 & 0.6119 & 1.6075 \\
+Fixed model & 1 & 19.40 & 45.00 & 58.21 & 163.08 \\
+Direct & 1 & 15.42 & 42.60 & 56.72 & 161.90 \\
+Our loop & 1 & 15.42 & 42.60 & 56.72 & 161.90 \\
+Our loop & 10 & \textbf{22.39} & \textbf{47.95} & \textbf{61.19} & \textbf{160.75} \\
 \midrule
 \bottomrule
 \end{longtable}

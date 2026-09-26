@@ -62,7 +62,8 @@ REQUIRED_WORDS = [
     'Laboratory 2', 'Laboratory K', 'private', 'model', 'OUTPUTS', 'Designs',
     'Programs', 'Policies', 'BIOLOGICAL VALIDATION SETTINGS', 'Drug–target',
     'Proteomic efficacy', 'Cell perturbations',
-    'generates new hypothesis', 'design id', 'Fixed research language model',
+    'generates new hypothesis', 'design_id', 'Candidate design',
+    'Fixed research language model',
 ]
 
 
@@ -147,6 +148,17 @@ def apply_declared_repairs(xml: str) -> tuple[str, list[dict]]:
                       'reason': 'authors asked to drop it; locality is stated in the text and '
                                 'carried by the lock icons and private-data labels'})
     assert removed_note, 'local-data caption not found'
+
+    term_changes = []
+    for source_text, target_text in (('recipe', 'design'), ('design id', 'design_id')):
+        pattern = f'<a:t>{source_text}</a:t>'
+        assert xml.count(pattern) == 1, (source_text, xml.count(pattern))
+        xml = xml.replace(pattern, f'<a:t>{target_text}</a:t>')
+        term_changes.append(f'"{source_text}" -> "{target_text}"')
+    edits.append({'id': 'update_figure_terms', 'shape': 'text runs',
+                  'change': '; '.join(term_changes),
+                  'reason': 'match the method terminology (a candidate is an executable design '
+                            'or configuration; design_id is the proposal field)'})
 
     assert '<a:blipFill>' not in xml, 'unexpected picture-filled shape remains'
     assert '<a14:m>' not in xml and 'mc:AlternateContent' not in xml

@@ -59,17 +59,17 @@ class CompletedManuscriptTests(unittest.TestCase):
         appendix_text = (ROOT / 'sections/23_appendix_core_sensitivity.tex').read_text()
         self.assertIn(r'\input{tables/public_harness_comparison/main_public_harness_three_seed}', text)
         self.assertIn(r'\input{tables/strong_v3/effects}', text)
-        self.assertIn('seven ties and one decrease', text + appendix_text)
         self.assertIn('eight pairs tie', text + appendix_text)
+        self.assertNotIn('seven ties and one decrease', text + appendix_text)
         self.assertIn('800 aggregation rounds', text)
         self.assertIn('4.7 How does feedback change the research trajectory?', text)
         self.assertIn('4.4 Measured trajectories improve training allocation', text)
         self.assertLess(text.index('4.4 Measured trajectories'),
                         text.index('4.5 Learning from different'))
         self.assertNotIn(r'\input{tables/completed_ablation/summary}', text)
-        self.assertIn(r'\label{fig:completed-short-dev}', text)
+        self.assertNotIn(r'\label{fig:completed-short-dev}', text)
         appendix = (ROOT / 'sections/23_appendix_core_sensitivity.tex').read_text()
-        self.assertNotIn(r'\label{fig:completed-short-dev}', appendix)
+        self.assertIn(r'\label{fig:completed-short-dev}', appendix)
         self.assertIn(r'\label{fig:completed-long-dev}', appendix)
 
     def test_active_framework_is_the_repaired_author_deck(self):
@@ -88,7 +88,7 @@ class CompletedManuscriptTests(unittest.TestCase):
         repairs = {item['id'] for item in receipt['declared_repairs']}
         self.assertEqual(repairs, {'flatten_alternate_content', 'math_run_to_text',
                                    'propose_card_fit', 'fixed_model_label_contrast',
-                                   'drop_local_data_note'})
+                                   'drop_local_data_note', 'update_figure_terms'})
         self.assertEqual(receipt['embedded_raster_assets'],
                          sorted(receipt['embedded_raster_assets']))
         self.assertEqual(receipt['pdf_embedded_images'],
@@ -101,7 +101,7 @@ class CompletedManuscriptTests(unittest.TestCase):
             self.assertEqual(sha(ROOT / 'figures' / filename), digest)
         adapter = (ROOT / 'tools/adapt_framework_v3.py').read_text()
         self.assertIn('mc:AlternateContent', adapter)
-        self.assertIn('design id', adapter)
+        self.assertIn('design_id', adapter)
 
     def test_active_paradigm_figure_is_the_author_deck(self):
         intro = (ROOT / 'sections/01_introduction.tex').read_text()
@@ -110,17 +110,17 @@ class CompletedManuscriptTests(unittest.TestCase):
         self.assertEqual(receipt['status'],
                          'STRUCTURAL_CHECKS_PASSED_VISUAL_REVIEW_REQUIRED')
         repairs = {item['id']: item for item in receipt['declared_repairs']}
-        self.assertEqual(set(repairs), {'trim_canvas', 'centre_middle_panel'})
-        self.assertIn('7045325 -> 6714176 EMU', repairs['trim_canvas']['change'])
+        self.assertEqual(set(repairs), {'trim_canvas'})
+        self.assertIn('7045325 -> 5136739 EMU', repairs['trim_canvas']['change'])
         self.assertTrue(receipt['source_deck_unchanged'])
         self.assertEqual(receipt['source_deck'],
-                         str(Path('/liziqing/yukai/AI4AI4Cell/paradigm_comparison_editable.pptx')))
+                         str(Path('/liziqing/yukai/AI4AI4Cell/try/paradigm_comparison_editable.pptx')))
         self.assertEqual(sha(Path(receipt['source_deck'])), receipt['source_deck_sha256'])
         copied = ROOT / 'assets/paradigm_comparison_v3.pptx'
         self.assertEqual(sha(copied), receipt['artifacts']['paradigm_comparison_v3.pptx'])
         self.assertEqual(receipt['text_outside_canvas'], [])
         self.assertEqual(receipt['slides_test_returncode'], 0)
-        self.assertAlmostEqual(float(receipt['aspect_ratio']), 12192000 / 6714176, places=3)
+        self.assertAlmostEqual(float(receipt['aspect_ratio']), 12192000 / 5136739, places=3)
         for filename, digest in receipt['artifacts'].items():
             self.assertEqual(sha(ROOT / 'assets' / filename), digest)
         adapter = (ROOT / 'tools/adapt_paradigm_v3.py').read_text()

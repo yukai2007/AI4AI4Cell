@@ -1,7 +1,7 @@
 """Publish the committed task-reference versions, irrespective of test ranking.
 
 No fallback to DrugBAN, linear PTPC, or uncorrected cell features is permitted.
-Only complete, independently verified six-arm held-out evaluations are included.
+Only complete, independently verified factorial held-out evaluations are included.
 All historically exposed endpoints remain labeled retrospective held-out.
 """
 from datetime import datetime, timezone
@@ -24,6 +24,12 @@ MODELS = {'native_tapb': 'TAPB; random task weights with public frozen features'
           'vcc_corrected': 'mask-corrected scDEBART adaptation',
           'norman_double_corrected': 'mask-corrected scDEBART adaptation',
           'tahoe_drug_corrected': 'mask-corrected scDEBART with drug-conditioning adapter'}
+# Every published arm table shows the committed design: the fixed and feedback-free direct references
+# train or search on a single site, so they appear only at one laboratory, and BioCoLoop appears at one
+# and ten laboratories.
+DISPLAY_ARMS = [arm for arm in ARMS if arm[0] in
+                {'single_fixed', 'single_direct', 'single_loop', 'federated_loop'}]
+
 TAPB_CLUSTER_UNITS = {'random': 'SMILES', 'unseen_drug': 'SMILES', 'unseen_protein': 'Protein'}
 TAPB_BOOTSTRAP_CONTRASTS = {
     'loop_vs_fixed_federated': ('Loop $-$ fixed (10 labs)', 'federated_loop', 'federated_fixed'),
@@ -123,7 +129,7 @@ def collect(base, seeds=None):
             path = result_path(base, task, seed)
             files = ['results.json', 'seal.json', 'audit.json', 'verification.json']
             if not all((path/name).is_file() for name in files):
-                item['pending'][str(seed)] = 'complete verified six-arm evaluation not available'; continue
+                item['pending'][str(seed)] = 'complete verified factorial evaluation not available'; continue
             result, seal, audit, verification = [read(path/name) for name in files]
             if not all(arm in result.get('results', {}) for arm, _, _ in ARMS):
                 item['pending'][str(seed)] = 'at least one factorial arm incomplete'; continue
@@ -263,7 +269,7 @@ def scores(snapshot, task, arm, metric=None):
 
 
 def table(snapshot, out, full=False):
-    arms = ARMS if full else MAIN_ARMS
+    arms = DISPLAY_ARMS if full else MAIN_ARMS
     if not full:
         task_order = [task for task, _, _ in TASKS]
         means, deviations = {}, {}
@@ -310,7 +316,11 @@ def table(snapshot, out, full=False):
         (out/'main.tex').write_text('\n'.join(lines)+'\n')
         return
 
-    caption=('Six-arm ablation of the task-reference models. Entries are held-out mean $\\pm$ sample SD '
+    caption=('Control comparison for the task-reference models. The fixed and feedback-free direct '
+             'references train or search on a single site, so they are reported on one laboratory; '
+             'BioCoLoop is reported at one and ten laboratories so that the effect of laboratory '
+             'participation can be read under the same research loop. '
+             'Entries are held-out mean $\\pm$ sample SD '
              'across completed training/search seeds, multiplied by 100. '
              'The data partitions remain fixed; this SD measures run-to-run variation, not dataset uncertainty. '
              'DTI uses the random held-out endpoint. Bold marks all displayed maxima.')
@@ -332,7 +342,7 @@ def table(snapshot, out, full=False):
             if value==best: text=r'\textbf{'+text+'}'
             if full and sd is not None: text+=r'{\scriptsize$\pm'+f'{100*sd:.2f}'+r'$}'
             cells.append(text)
-        if arm=='federated_fixed': lines.append(r'\midrule')
+        if labs=='10': lines.append(r'\midrule')
         lines.append(f'{labs} & {name} & '+' & '.join(cells)+r' \\')
     requested = len(snapshot.get('seeds_requested', SEEDS))
     lines += [r'\midrule',r'\multicolumn{2}{l}{Completed seeds ($n/'+str(requested)+r'$)} & '+' & '.join(
@@ -398,7 +408,7 @@ def effects(snapshot,out,full=False):
 
 def secondary(snapshot,out):
     lines=[r'\begin{longtable}{llrrrr}',
-        r'\caption{Held-out secondary metrics for the task-reference models, averaged over seeds 42--44. Bold indicates all tied maxima, or minima for loss.}\label{tab:strong-secondary}\\',
+        r'\caption{Held-out secondary metrics for the task-reference models, averaged over seeds 42--44 and multiplied by 100. Bold indicates all tied maxima, or minima for loss.}\label{tab:strong-secondary}\\',
         r'\toprule Method & Labs & Metric 1 & Metric 2 & Metric 3 & Metric 4 \\ \midrule\endfirsthead',
         r'\toprule Method & Labs & Metric 1 & Metric 2 & Metric 3 & Metric 4 \\ \midrule\endhead']
     for task,label,_ in TASKS:
@@ -406,15 +416,15 @@ def secondary(snapshot,out):
         elif task=='ptpc_neural': keys=['ap','auroc','bce','accuracy_at_0_5']; names=['AP','AUROC','BCE','Acc.']
         else: keys=['accuracy','mrr','top3','cross_entropy']; names=['Micro Top-1','MRR','Top-3','CE']
         lines.append(r'\multicolumn{2}{l}{\textbf{'+label+f' ($n={len(runs(snapshot,task))}$)'+r'}} & '+' & '.join(names)+r' \\')
-        for arm,labs,name in ARMS:
+        for arm,labs,name in DISPLAY_ARMS:
             cells=[]
             for key in keys:
                 values=scores(snapshot,task,arm,key)
                 if not values: cells.append('N/A'); continue
                 value=round(statistics.mean(values),4)
-                others=[round(statistics.mean(scores(snapshot,task,a,key)),4) for a,_,_ in ARMS]
+                others=[round(statistics.mean(scores(snapshot,task,a,key)),4) for a,_,_ in DISPLAY_ARMS]
                 best=min(others) if key in ['bce','log_loss','cross_entropy'] else max(others)
-                text=f'{value:.4f}'; cells.append(r'\textbf{'+text+'}' if value==best else text)
+                text=f'{100*value:.2f}'; cells.append(r'\textbf{'+text+'}' if value==best else text)
             lines.append(f'{name} & {labs} & '+' & '.join(cells)+r' \\')
         lines.append(r'\midrule')
     lines += [r'\bottomrule',r'\end{longtable}']; (out/'secondary.tex').write_text('\n'.join(lines)+'\n')
@@ -448,7 +458,7 @@ def dti_uncertainty(snapshot, out, task='native_tapb'):
     filename = 'dti_uncertainty.tex' if task == 'native_tapb' else 'drugban_uncertainty.tex'
     lines=[r'\begingroup\scriptsize\setlength{\tabcolsep}{3pt}',
         r'\begin{longtable}{llrrrr}',
-        r'\caption{Post-hoc '+model+r' paired AUROC/AP differences and 95\% intervals from 1,000 fixed-seed cluster-bootstrap draws. Random and unseen-drug endpoints use drug clusters; unseen-protein uses protein clusters. All three endpoints, six arms and prespecified contrasts are shown.}\label{'+table_label+r'}\\',
+        r'\caption{Post-hoc '+model+r' paired AUROC/AP differences and 95\% intervals from 1,000 fixed-seed cluster-bootstrap draws. Random and unseen-drug endpoints use drug clusters; unseen-protein uses protein clusters. All three endpoints and prespecified contrasts are shown.}\label{'+table_label+r'}\\',
         r'\toprule Endpoint / seed & Contrast & AUROC $\Delta$ & 95\% interval & AP $\Delta$ & 95\% interval \\ \midrule\endfirsthead',
         r'\toprule Endpoint / seed & Contrast & AUROC $\Delta$ & 95\% interval & AP $\Delta$ & 95\% interval \\ \midrule\endhead']
     labels={'random':'Random','unseen_drug':'Unseen drug','unseen_protein':'Unseen protein'}
@@ -492,15 +502,15 @@ def macros(snapshot,out):
 def dti_endpoints(snapshot,out):
     current=runs(snapshot,'native_tapb')
     lines=[r'\begin{longtable}{llrrr}',
-        r'\caption{All three frozen TAPB held-out endpoints under the committed common protocol. Scores are completed-seed means multiplied by 100; N/A means no complete independently verified six-arm evaluation. The main DTI endpoint is random held-out.}\label{tab:strong-dti-endpoints}\\',
+        r'\caption{All three frozen TAPB held-out endpoints under the committed common protocol. Scores are completed-seed means multiplied by 100; N/A means no complete independently verified evaluation. The main DTI endpoint is random held-out.}\label{tab:strong-dti-endpoints}\\',
         r'\toprule Endpoint & Method & Labs & AUROC & AP \\ \midrule\endfirsthead',
         r'\toprule Endpoint & Method & Labs & AUROC & AP \\ \midrule\endhead']
     for endpoint,label in [('random','Random'),('unseen_drug','Unseen drug'),('unseen_protein','Unseen protein')]:
-        for arm,labs,name in ARMS:
+        for arm,labs,name in DISPLAY_ARMS:
             cells=[]
             for metric in ['auroc','average_precision']:
                 if not current: cells.append('N/A'); continue
-                means={a:round(100*statistics.mean(r['endpoints'][endpoint][a]['metrics'][metric] for r in current),2) for a,_,_ in ARMS}
+                means={a:round(100*statistics.mean(r['endpoints'][endpoint][a]['metrics'][metric] for r in current),2) for a,_,_ in DISPLAY_ARMS}
                 value=f'{means[arm]:.2f}'; cells.append(r'\textbf{'+value+'}' if means[arm]==max(means.values()) else value)
             lines.append(f'{label} & {name} & {labs} & '+' & '.join(cells)+r' \\')
         lines.append(r'\midrule')

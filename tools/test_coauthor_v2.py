@@ -33,10 +33,9 @@ class SecondReviewTests(unittest.TestCase):
 
     def test_main_partition_and_source_studies_are_not_equated(self):
         text=(PAPER/'sections/04_experimental_design.tex').read_text()
-        self.assertIn('within each dataset',text)
-        self.assertIn('source-as-laboratory',text)
-        self.assertIn('tests transfer between data sources',text)
-        self.assertIn('the second tests transfer between data sources',text)
+        self.assertIn('divided into ten disjoint groups',text)
+        self.assertIn('treated as separate laboratories',text)
+        self.assertIn('tests whether information can transfer across genuinely different data sources',text)
         appendix=(PAPER/'sections/23_appendix_core_sensitivity.tex').read_text()
         appendix+=(PAPER/'tables/supplemental_20260923/source_client_mapping.tex').read_text()
         self.assertIn('Replogle',appendix)
@@ -68,7 +67,7 @@ class SecondReviewTests(unittest.TestCase):
         labels=re.findall(r'\\label\{([^}]+)\}',text)
         self.assertEqual(len(labels),len(set(labels)))
         self.assertEqual(text.count(r'\subsection*'),4)
-        self.assertIn('3.4 Trajectory-guided training allocation',text)
+        self.assertIn('3.4 Evidence-guided training allocation',text)
         for line in text.splitlines():
             self.assertEqual(len(re.findall(r'(?<!\\)\$',line)) % 2,0,line)
         self.assertIn('loss on panel $i$. The coordinator computes',text)

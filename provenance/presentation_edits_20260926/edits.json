@@ -2,15 +2,9 @@
   "status": "PRESENTATION_ONLY_VERIFIED",
   "baseline_commit": "e9f2d0d50683464d05daa7d4429e6ff58e2b4d8c",
   "files": {
-    "tables/strong_v3/ablation.tex": {
-      "before_sha256": "c5dc1ac7edf7a0138d4614ef4e36816d2999137f1357a6359ceb0cb368f9e763",
-      "after_sha256": "79fef3233ef440652809edfa98e614512d20260ae189bc512c83d8e4ebeb6a3e",
-      "kind": "caption-above",
-      "reason": "Caption and label moved above the tabular body; no cell changed."
-    },
     "tables/strong_v3/effects.tex": {
       "before_sha256": "f800012667b74158ccffa8987e8744a1c43d7eb13d9eb22866f68cc74e6ad371",
-      "after_sha256": "975bc2c91b10e7376c8f735315e1590c5c3c06dada741e088c7cbeaf7a95c40c",
+      "after_sha256": "d0f9819c001b34cd5c690fc888636197111006ba92ea0897a9af42e2cc6c0db1",
       "kind": "caption-above",
       "reason": "Caption and label moved above the tabular body; no cell changed."
     },

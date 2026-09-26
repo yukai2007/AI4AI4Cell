@@ -75,10 +75,15 @@ Qwen uses the local sampling settings in Appendix A. The second proposer is the 
 \input{tables/completed_ablation/short6}
 \input{tables/completed_ablation/dynamics_short6}
 
-All five endpoints have both backends and both search modes. Among the ten direct/loop pairs, Norman/Luna improves by 0.81 Top-1 points, DTI/Luna decreases by 0.33 AUROC points and eight pairs tie. The twenty DTI prefix scores were independently recomputed from saved predictions for all 5,505 test pairs, with checkpoint and output hashes verified. Figure~\ref{fig:completed-short-dev} in the main text shows the complete prespecified prefix sequence for every endpoint, alongside its development selection trajectory.
+All five endpoints have both backends and both search modes. Among the ten direct/loop pairs, Norman/Luna improves by 0.81 Top-1 points, DTI/Luna decreases by 0.33 AUROC points and eight pairs tie. The twenty DTI prefix scores were independently recomputed from saved predictions for all 5,505 test pairs, with checkpoint and output hashes verified. Figure~\ref{fig:completed-short-dev} shows the complete prespecified prefix sequence for every endpoint, alongside its development selection trajectory.
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.62\linewidth]{assets/completed_short6_search_v2.pdf}
+\caption{Research trajectories with and without evidence history in the six-slot protocol. Curves report development selection and held-out scores at each proposal prefix; each candidate receives 100 rounds and slot 0 is the initial design.}
+\label{fig:completed-short-dev}
+\end{figure}
 
-\clearpage
 \subsection*{B.4 Extended search and task-dependent saturation}
 The extended study increases the design library to 36 configurations: three learning rates, three weight decays, two coordinator-momentum values and two residual-head settings. It runs 24 proposal slots for both backends and modes on PTPC, VCC, Norman and Tahoe. Prefixes are 0, 1, 2, 4, 6, 8, 12, 16, 20 and 24. The settings for initialization, full candidate fitting, development selection and invalid-slot accounting are otherwise unchanged. DTI's backend comparison is the six-slot study in B.3; it is not part of this extended protocol.
 
@@ -90,7 +95,7 @@ Luna produces valid designs in all 192 attempted slots, and Qwen in 116 of 192. 
 Table~\ref{tab:completed-dynamics-long24} measures the first slot attaining the smaller terminal development score within each direct/loop pair, a common target reached by both modes. Luna reaches Norman's common target earlier with feedback (4 versus 22 slots), whereas direct search reaches Tahoe's target earlier (5 versus 13). Proteomics retains the initial design. Table~\ref{tab:completed-norman-events} connects Norman's trajectory to concrete configuration changes: reducing the learning rate to $10^{-4}$ gives an early development gain, and removing the residual head reaches the final primary-score target. Subsequent loss-tiebreak selections can change the retained design without increasing that primary score.
 
 
-The eight terminal held-out pairs give seven ties and one decrease with feedback (VCC/Luna, $-0.22$ points). Within this extended protocol, Qwen's VCC held-out Top-1 decreases from 31.50 at slot 6 to 19.61 at slot 24 while development selection improves. This separates the speed of finding a strong development design from generalization of the selected predictor. The complete development and held-out curves support task-specific budget analysis alongside the proposal-validity and remaining-space diagnostics.
+Within this extended protocol, Qwen's VCC held-out Top-1 decreases from 31.50 at slot 6 to 19.61 at slot 24 while development selection improves. This separates the speed of finding a strong development design from generalization of the selected predictor. The complete development and held-out curves support task-specific budget analysis alongside the proposal-validity and remaining-space diagnostics.
 
 \begin{figure}[htbp]
 \centering

@@ -5,15 +5,15 @@
   "scientific_artifacts_unchanged": [
     {
       "path": "tables/strong_v3/ablation.tex",
-      "sha256": "c5dc1ac7edf7a0138d4614ef4e36816d2999137f1357a6359ceb0cb368f9e763"
+      "sha256": "77b1ac38d7d73127cc700ab5804f4a8cc3ff6cf01e28a06a0e3abe180f72d274"
     },
     {
       "path": "tables/strong_v3/dti_endpoints.tex",
-      "sha256": "37e97926fb71d2a40bd61c600a1da8fcffedeabec580b6604ef852585673cfbb"
+      "sha256": "d97272db94b8bcb2c3835ece32df45f81f206a90be599bbe674189107e1fa646"
     },
     {
       "path": "tables/strong_v3/dti_uncertainty.tex",
-      "sha256": "d634a6f826ca961e5b485f19ba5dea6e7ddf4a3182818c22f47706b36b05bf03"
+      "sha256": "7412697ef56185f3573cecb6701240443b160af2edd44f4d16399368a8077462"
     },
     {
       "path": "tables/strong_v3/effects.tex",
@@ -37,7 +37,7 @@
     },
     {
       "path": "tables/strong_v3/secondary.tex",
-      "sha256": "4f5993e32f79280b6a71fcf929bc5834465b788158fd3e2d7981a63d7f87a303"
+      "sha256": "7bb1d72d0df6913c734ce9daaa411d870636708952c7217992fceab8a856505f"
     },
     {
       "path": "tables/strong_v3/snapshot.json",

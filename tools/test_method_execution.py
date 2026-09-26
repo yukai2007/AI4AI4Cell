@@ -33,9 +33,9 @@ class MethodExecutionTests(unittest.TestCase):
                         self.method.index(r"\label{eq:local-fitting}"))
         for token in (r"\pi_i=n_i/\sum_{j=1}^{K}n_j",
                       r"v_r&=\beta_a v_{r-1}+\bar w_r-w_{r-1}",
-                      r"S(a,r)=\frac{1}{|\mathcal E|}\sum_{i\in\mathcal E}s_i(a,r)",
-                      r"L(a,r)=\frac{1}{|\mathcal E|}\sum_{i\in\mathcal E}\ell_i^{\mathrm{dev}}(a,r)",
-                      r"H_{t+1}=H_t\mathbin{\|}[e_t]"):
+                      r"\bar s(a,r)=\frac{1}{|\mathcal P|}\sum_{i\in\mathcal P}s_i(a,r)",
+                      r"\bar\ell(a,r)=\frac{1}{|\mathcal P|}\sum_{i\in\mathcal P}\ell_i^{\mathrm{dev}}(a,r)",
+                      r"\mathcal E_{t+1}=\mathcal E_t\mathbin{\|}[e_t]"):
             self.assertIn(token, self.method)
         self.assertIn("earlier round retained on a complete tie", self.method)
         self.assertIn("History feedback begins with the second proposal", self.method)
@@ -46,7 +46,7 @@ class MethodExecutionTests(unittest.TestCase):
     def test_initialization_and_feedback_boundaries(self):
         for phrase in ("resets the predictor to its prescribed initialization",
                        "distributes it to all training laboratories",
-                       "first/last training and development diagnostics",
+                       "first and last development-evaluation rounds",
                        "without fine-tuning the self-improving model",
                        "source-specific head", "original target's development panels"):
             self.assertIn(phrase, self.method)
@@ -54,7 +54,7 @@ class MethodExecutionTests(unittest.TestCase):
         self.assertNotIn("The research language model remains fixed; adaptation occurs", self.method)
 
     def test_notation_and_roles_are_consistent(self):
-        self.assertIn(r"\{D_i^{\mathrm{dev}}\}_{i\in\mathcal E}", self.method)
+        self.assertIn(r"\{D_i^{\mathrm{dev}}\}_{i\in\mathcal P}", self.method)
         self.assertNotIn(r"D_j^{\mathrm{dev}}", self.method)
         self.assertIn(r"instantiate $f_{a,w}$ as task-specific predictors", self.method)
         self.assertIn(r"evaluate the aggregated predictor $f_{a,w_r}$", self.method)
@@ -73,7 +73,7 @@ class MethodExecutionTests(unittest.TestCase):
     def test_design_schema_does_not_execute_rationale(self):
         for key in ("hypothesis", "experiment", "expected_effect", "design_id"):
             self.assertIn('"' + key + '"', self.appendix)
-        self.assertIn("D00 denotes the starting recipe", self.appendix)
+        self.assertIn("D00 denotes the starting configuration", self.appendix)
         self.assertIn("not an additional executable instruction or a measured result", self.appendix)
         self.assertIn("same", self.appendix.split("Five-option queries and scoring.")[1])
         self.assertIn("fixed shuffled option order", self.appendix)

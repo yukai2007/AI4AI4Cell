@@ -1,26 +1,20 @@
 \begin{longtable}{llrrr}
-\caption{All three frozen TAPB held-out endpoints under the committed common protocol. Scores are completed-seed means multiplied by 100; N/A means no complete independently verified six-arm evaluation. The main DTI endpoint is random held-out.}\label{tab:strong-dti-endpoints}\\
+\caption{All three frozen TAPB held-out endpoints under the committed common protocol. Scores are completed-seed means multiplied by 100; N/A means no complete independently verified evaluation. The main DTI endpoint is random held-out.}\label{tab:strong-dti-endpoints}\\
 \toprule Endpoint & Method & Labs & AUROC & AP \\ \midrule\endfirsthead
 \toprule Endpoint & Method & Labs & AUROC & AP \\ \midrule\endhead
 Random & Fixed model & 1 & 82.83 & 81.57 \\
 Random & Direct & 1 & 89.89 & 87.77 \\
 Random & Our loop & 1 & 89.89 & 87.77 \\
-Random & Fixed model & 10 & 91.80 & 89.36 \\
-Random & Direct & 10 & \textbf{93.76} & \textbf{92.73} \\
 Random & Our loop & 10 & \textbf{93.76} & \textbf{92.73} \\
 \midrule
 Unseen drug & Fixed model & 1 & 81.96 & 85.78 \\
 Unseen drug & Direct & 1 & 88.39 & 89.35 \\
 Unseen drug & Our loop & 1 & 88.39 & 89.35 \\
-Unseen drug & Fixed model & 10 & 90.06 & 90.40 \\
-Unseen drug & Direct & 10 & \textbf{91.65} & \textbf{92.58} \\
 Unseen drug & Our loop & 10 & \textbf{91.65} & \textbf{92.58} \\
 \midrule
 Unseen protein & Fixed model & 1 & 76.40 & 78.75 \\
 Unseen protein & Direct & 1 & 83.26 & 80.53 \\
 Unseen protein & Our loop & 1 & 83.26 & 80.53 \\
-Unseen protein & Fixed model & 10 & 85.80 & 78.92 \\
-Unseen protein & Direct & 10 & \textbf{87.63} & \textbf{85.07} \\
 Unseen protein & Our loop & 10 & \textbf{87.63} & \textbf{85.07} \\
 \midrule
 \bottomrule

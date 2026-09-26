@@ -49,7 +49,7 @@ def main():
     body = []
     for row in rows:
         top1 = f"{100*row['macro_accuracy_mean']:.2f}\\pm{100*row['macro_accuracy_sample_std']:.2f}"
-        mrr = f"{row['mrr_mean']:.4f}\\pm{row['mrr_sample_std']:.4f}"
+        mrr = f"{100*row['mrr_mean']:.2f}\\pm{100*row['mrr_sample_std']:.2f}"
         if row['macro_accuracy_mean'] == best_top1:
             top1 = r'\mathbf{' + top1 + '}'
         if row['mrr_mean'] == best_mrr:
@@ -64,7 +64,7 @@ def main():
     tex = '\n'.join([r'\begin{table}[t]', r'\centering', r'\small',
         r'\setlength{\tabcolsep}{5pt}', r'\caption{'+caption+'}',
         r'\label{tab:scenario-labs-matched}', r'\begin{tabular}{lrrrr}', r'\toprule',
-        r'Training sources & $K$ & $N$ & Top-1 (\%) $\uparrow$ & MRR $\uparrow$ \\',
+        r'Training sources & $K$ & $N$ & Top-1 (\%) $\uparrow$ & MRR (\%) $\uparrow$ \\',
         r'\midrule', *body, r'\bottomrule', r'\end{tabular}', r'\end{table}', ''])
     (HERE/'table.tex').write_text(tex)
     with (HERE/'results.csv').open('w', newline='') as stream:
@@ -86,7 +86,7 @@ def main():
     summary = [
         '# 固定样本量的来源/场景实验室消融', '',
         '12/12 个 CPU fit 均完整100轮；seed61/62/63。原始scorer与独立prediction-only复算全部一致。', '',
-        '| 配置 | K | 训练条件N | Top-1 (%) | MRR |', '|---|---:|---:|---:|---:|']
+        '| 配置 | K | 训练条件N | Top-1 (%) | MRR (%) |', '|---|---:|---:|---:|---:|']
     for r in rows:
         summary.append(f"| {r['label']} | {r['K']} | {r['N']} | {r['macro_accuracy_mean']*100:.2f} ± {r['macro_accuracy_sample_std']*100:.2f} | {r['mrr_mean']:.4f} ± {r['mrr_sample_std']:.4f} |")
     summary.extend(['',

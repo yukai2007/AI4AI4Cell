@@ -11,10 +11,10 @@
     },
     "tables/strong_v3/effects.tex": {
       "before_sha256": "9a3e5aa53bbc0997ab6b2f09a781fbdc8dd77bf72fe263791e6e9d10b6b5ae7c",
-      "after_sha256": "f800012667b74158ccffa8987e8744a1c43d7eb13d9eb22866f68cc74e6ad371",
+      "after_sha256": "d0f9819c001b34cd5c690fc888636197111006ba92ea0897a9af42e2cc6c0db1",
       "unchanged_noncaption_sha256": "baa9f1504dfffe3362a4c6992c806295992bc75453ff494782acafa9dac1fdee",
       "before_caption": "\\caption{Does early evidence improve training allocation? Held-out scores use the same ten designs, ten laboratories, 800 full-client rounds and 160 development measurements per method. Uniform allocation gives every design 80 rounds; the evidence-guided loop screens all designs and fully validates six promoted candidates. Gain is evidence-guided minus uniform, in percentage points; W/T/L counts seed-level wins, ties and losses (total 4/8/0). Norman 95\\% CI: [4.54, 17.73]; Tahoe: [$-$1.00, 7.46]. The separate DTI development replay is in Appendix A.}",
-      "after_caption": "\\caption{Does early evidence improve training allocation? Held-out scores use the same ten designs, ten laboratories, 800 full-client rounds and 160 aggregate development evaluations per method. Uniform allocation gives every design 80 rounds; the evidence-guided scheduler screens all designs for 20 rounds and restarts six promoted designs for 100-round training. Gain is evidence-guided minus uniform, in percentage points; W/T/L counts seed-level wins, ties and losses (total 4/8/0). Norman 95\\% CI: [4.54, 17.73]; Tahoe: [$-$1.00, 7.46]. The separate DTI development replay is in Appendix A.}"
+      "after_caption": "\\caption{Evidence-guided training allocation at a matched budget. Held-out scores use the same ten designs, ten laboratories, 800 full-client aggregation rounds and 160 aggregate development evaluations per method. Uniform allocation gives every design 80 rounds; the evidence-guided scheduler screens all designs for 20 rounds and restarts six promoted designs for 100-round training. Gain is evidence-guided minus uniform, in percentage points; W/T/L counts seed-level wins, ties and losses (total 4/8/0). Norman 95\\% CI: [4.54, 17.73]; Tahoe: [$-$1.00, 7.46]. The separate DTI development replay is in Appendix A.}"
     }
   }
 }

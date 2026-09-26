@@ -14,7 +14,7 @@ class ManuscriptConsistencyTests(unittest.TestCase):
         abstract = source.split(r'\begin{abstract}', 1)[1].split(r'\end{abstract}', 1)[0]
         self.assertNotRegex(abstract.lower(), r'federat|\bsota\b')
         self.assertIn('BioCoLoop, a collaborative research framework', abstract)
-        self.assertIn('Collaborative learning can train shared models', abstract)
+        self.assertIn('Collaborative learning allows multiple laboratories to train a shared model', abstract)
         self.assertIn('Across drug--target interaction prediction', abstract)
         self.assertNotIn(r'\Strong', abstract)
         self.assertIn(r'\citep{McMahan2017}', (PAPER / 'sections/03_method.tex').read_text())

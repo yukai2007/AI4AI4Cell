@@ -207,7 +207,7 @@ class StrongSnapshotTests(unittest.TestCase):
             self.assertIsNone(data['tasks']['native_tapb']['runs']['42']['uncertainty'])
             uncertainty(data,base); dti_endpoints(data,base)
             self.assertIn('Bootstrap intervals pending',(base/'uncertainty.tex').read_text())
-            self.assertEqual((base/'dti_endpoints.tex').read_text().count(r'\textbf{70.00}'),18)
+            self.assertEqual((base/'dti_endpoints.tex').read_text().count(r'\textbf{70.00}'),12)
 
     def test_relative_result_root_with_registered_neural_receipt(self):
         with tempfile.TemporaryDirectory() as directory:
