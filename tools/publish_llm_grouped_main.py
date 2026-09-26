@@ -27,11 +27,11 @@ SEEDS = (42, 43, 44)
 METHODS = ("single_fixed", "single_direct", "ai_scientist_v2",
            "ai_researcher", "federated_loop")
 METHOD_LABELS = {
-    "single_fixed": "Fixed model (1 lab)",
-    "single_direct": "Direct (1 lab)",
-    "ai_scientist_v2": "AI-Scientist-v2 (1 lab)",
-    "ai_researcher": "AI-Researcher (1 lab)",
-    "federated_loop": r"\textbf{BioCoLoop} (10 labs)",
+    "single_fixed": "Fixed model",
+    "single_direct": "Direct",
+    "ai_scientist_v2": "AI-Scientist-v2",
+    "ai_researcher": "AI-Researcher",
+    "federated_loop": r"\textbf{BioCoLoop}",
 }
 MODEL_LABELS = {
     "qwen": "Qwen2.5-7B-Instruct",
@@ -557,8 +557,8 @@ def table_text(snapshot):
     ) if any(r"\TblStar" in line and r"\providecommand" not in line for line in lines) else ""
     lines += [
         r"\bottomrule", r"\end{tabularx}",
-        (r"\caption{Main comparison by research model (mean $\pm$ sample SD, seeds 42--44; scores "
-         r"$\times100$). Public controllers use laboratory 0 and BioCoLoop ten under a shared design "
+        (r"\caption{Main comparison by self-improving model (mean $\pm$ sample SD, seeds 42--44; scores "
+         r"$\times100$). Public self-improving agents use laboratory 0 and BioCoLoop ten under a shared design "
          r"library, fits and held-out scorer. Bold/underline mark the best/second-best complete result; "
          r"$\dagger$ partial and {\TblZero} unscored cells are not imputed; the last column averages "
          r"each method's rank over completed endpoints (Appendix~C)."

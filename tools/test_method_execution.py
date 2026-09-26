@@ -47,7 +47,7 @@ class MethodExecutionTests(unittest.TestCase):
         for phrase in ("resets the predictor to its prescribed initialization",
                        "distributes it to all training laboratories",
                        "first/last training and development diagnostics",
-                       "without fine-tuning the research language model",
+                       "without fine-tuning the self-improving model",
                        "source-specific head", "original target's development panels"):
             self.assertIn(phrase, self.method)
         self.assertIn("failed fits consume a proposal slot", self.method)

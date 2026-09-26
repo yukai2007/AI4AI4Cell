@@ -316,7 +316,7 @@ def table_text(snapshot, *, seed=None):
     scope = ("Matched seed-42 comparison. " if seed == 42 else
              r"Main comparison (mean $\pm$ sample SD, seeds 42--44). Unfinished cells show scored/failed/pending counts (S/F/P). ")
     caption = (scope + "Scores are multiplied by 100; bold/underline mark best/second-best values, including ties. "
-               "Public controllers use task-adapted interfaces. Only complete seed sets are averaged; "
+               "Public self-improving agents use task-adapted interfaces. Only complete seed sets are averaged; "
                "execution outcomes are detailed in Appendix C.")
     if seed == 42:
         caption += (r" $F_{\mathrm{ctx}}$, $F_{\mathrm{tool}}$ and $F_{\mathrm{pipe}}$ denote context, tool and pipeline failures; Pending is unresolved.")

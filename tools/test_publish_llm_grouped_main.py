@@ -32,11 +32,11 @@ class GroupedMainTableTests(unittest.TestCase):
         text = publisher.table_text(self.snapshot())
         for label in publisher.MODEL_LABELS.values():
             self.assertIn(label, text)
-        self.assertEqual(text.count("Fixed model (1 lab)"), 2)
-        self.assertEqual(text.count("AI-Researcher (1 lab)"), 2)
+        self.assertEqual(text.count("Fixed model"), 2)
+        self.assertEqual(text.count("AI-Researcher"), 2)
         self.assertIn(r"\textbf{50.00} $\pm$ 1.00", text)
         self.assertEqual(text.count(r"\cmidrule(lr){4-6}"), 1)
-        self.assertIn(r"\textbf{BioCoLoop} (10 labs)", text)
+        self.assertIn(r"\textbf{BioCoLoop}", text)
         self.assertIn(r"\shortstack{Mean rank\\$\downarrow$}", text)
 
     def test_incomplete_method_is_not_ranked_or_imputed(self):

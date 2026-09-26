@@ -337,7 +337,7 @@ def supplemental_protein_page(data):
                     PALE_TEAL, TEAL),
             Spacer(1, 4*mm),
             p('该补实验已全部完成，并根据 148 个目标测试条件的冻结预测独立重算。表内保留 AP 与 AUROC：三源组合提高主指标 AP，而 AUROC 略低于 target-only，因此“增益”具体指 AP 的点估计。', 'body'),
-            p('本次使用 slots=0，检验固定模型设计下的来源迁移；研究 LLM 的历史反馈另设对照。已有双来源 Luna 两槽位 pilot 与本次三来源固定设计实验分开报告。多 seed 以及三来源条件下的提案历史对照可进一步量化稳定性和交互作用。', 'note'),
+            p('本次使用 slots=0，检验固定模型设计下的来源迁移；自我改进模型的历史反馈另设对照。已有双来源 Luna 两槽位 pilot 与本次三来源固定设计实验分开报告。多 seed 以及三来源条件下的提案历史对照可进一步量化稳定性和交互作用。', 'note'),
             PageBreak()]
 
 
@@ -625,10 +625,10 @@ GROUPED_HARNESS_SNAPSHOT = ROOT / 'tables/public_harness_comparison/snapshot_llm
 GROUPED_TASKS = (('native_tapb', 'DTI AUROC'), ('ptpc_neural', 'PTPC AP'),
                  ('vcc_corrected', 'VCC Top-1'), ('norman_double_corrected', 'Norman Top-1'),
                  ('tahoe_drug_corrected', 'Tahoe Top-1'))
-GROUPED_METHODS = (('single_fixed', '固定配方（1 lab）'), ('single_direct', 'direct（1 lab）'),
-                   ('ai_scientist_v2', 'AI-Scientist-v2（1 lab）'),
-                   ('ai_researcher', 'AI-Researcher（1 lab）'),
-                   ('federated_loop', '<b>BioCoLoop</b>（10 labs）'))
+GROUPED_METHODS = (('single_fixed', '固定配方'), ('single_direct', 'direct'),
+                   ('ai_scientist_v2', 'AI-Scientist-v2'),
+                   ('ai_researcher', 'AI-Researcher'),
+                   ('federated_loop', '<b>BioCoLoop</b>'))
 GROUPED_MODELS = (('qwen', 'Qwen2.5-7B-Instruct'), ('luna', 'GPT-5.6 Luna（low reasoning）'))
 GROUPED_TOKENS = (('ctx', 'F_ctx'), ('svc', 'F_svc'), ('tool', 'F_tool'), ('pipe', 'F_pipe'))
 
@@ -701,7 +701,7 @@ def grouped_harness_page():
         bullets([
             "分数为 seeds 42–44 的均值 ± 样本标准差，乘以 100；加粗与下划线表示该模型块内该端点的最优与"
             "次优完整结果。Norman 的最高分仍属于单实验室固定配方（25.56），BioCoLoop 在其余四个端点领先。",
-            "公开控制器在封存开发选择前终止的单元格不以均值填补：† 表示部分完成，– 表示该端点没有计分运行。"
+            "公开自我改进智能体在封存开发选择前终止的单元格不以均值填补：† 表示部分完成，– 表示该端点没有计分运行。"
             "各单元格的完成计数与类型化失败标记为：Qwen2.5 AI-Researcher 的 VCC 完成 2/3（F_tool）；"
             "Luna AI-Scientist-v2 的 Tahoe 完成 2/3（F_svc）；Luna AI-Researcher 在五个端点均完成 0/3"
             "（F_ctx，DTI 与 Tahoe 另有 F_svc）。F_ctx 为声明的上下文上限终止，F_svc 为 Luna 服务/传输终止，"
@@ -714,9 +714,9 @@ def grouped_harness_page():
             "修改控制器或替换分数。",
         ]), Spacer(1, 4*mm),
         KeepTogether(callout("公开基线对照的结论",
-                "在两个研究模型块中，BioCoLoop 都在五个主要端点中的四个取得最优；唯一例外是 Norman，"
+                "在两个自我改进模型块中，BioCoLoop 都在五个主要端点中的四个取得最优；唯一例外是 Norman，"
                 "其最高分由单实验室固定配方保持。公开框架受实验室 0 访问限制，且 AI-Researcher 在 Luna 块"
-                "触及上下文上限而未能完成任何端点（0/3）。该表因此把研究模型身份、数据访问、控制器身份与"
+                "触及上下文上限而未能完成任何端点（0/3）。该表因此把自我改进模型身份、数据访问、智能体身份与"
                 "执行覆盖放在同一张主表内，而不是把未完成的运行换算成分数。",
                 PALE_TEAL, TEAL))]
     return flow
@@ -798,7 +798,7 @@ def story():
           Spacer(1, 4*mm),
           p("新版架构图使用作者给的可编辑幻灯片：淡蓝为外层研究循环、绿色为内层协同训练、紫色为可复用产出、底部为三个生物学任务族。候选设计向下送达协调器，聚合开发证据向上返回外层，历史再流向下一次提案。Lab 1、2、K 表示同一任务下的不同实验室或场景。", "note"),
           callout("读图顺序",
-                  "外层提出、实例化、评价和修订设计；中部实验室本地拟合，协调器聚合更新与诊断；右侧输出选定设计、预测器和历史；底部是三个任务族。研究 LLM 通过新的证据上下文调整下一提案，其权重保持固定。",
+                  "外层提出、实例化、评价和修订设计；中部实验室本地拟合，协调器聚合更新与诊断；右侧输出选定设计、预测器和历史；底部是三个任务族。自我改进模型通过新的证据上下文调整下一提案，其权重保持固定。",
                   PALE_BLUE, BLUE), PageBreak(),
           p("3  Harness 外层到底做什么（续）", "h1"),
           p("一个 design_id 对应四个选择：学习率、weight decay、协调器动量、是否启用残差预测模块。D 是 design 编号，例如 D06 只命名确定配置，不编码 epoch 数。外层从统一菜单中提出候选，任务 adapter 提供输入、预测头与损失。", "body"),
@@ -819,7 +819,7 @@ def story():
           callout("为什么历史记录重要",
                   "下一轮 loop 接收各 trial 的配置、假设、接受状态、best round 与开发 metric/loss，以及首末训练/开发诊断和差值。这些 evidence cards 是全部试验的摘要历史；逐轮学习曲线另存于 fit 记录，不直接作为整条曲线输入 LLM。",
                   PALE_ORANGE, ORANGE), Spacer(1, 3*mm),
-          p("Qwen direct 始终接收固定起始配方及未尝试的 design_id，不接收开发反馈；loop 接收当前保留配置和全部 trial 的摘要历史。第一个提案按无反馈方式生成并共享，第二个槽位起 loop 才读取历史。研究 LLM 不微调；学习发生在任务预测器的梯度训练，以及证据上下文驱动的后续设计选择中。", "note"), PageBreak()]
+          p("Qwen direct 始终接收固定起始配方及未尝试的 design_id，不接收开发反馈；loop 接收当前保留配置和全部 trial 的摘要历史。第一个提案按无反馈方式生成并共享，第二个槽位起 loop 才读取历史。自我改进模型不微调；学习发生在任务预测器的梯度训练，以及证据上下文驱动的后续设计选择中。", "note"), PageBreak()]
 
     s += [p("3  本地拟合、开发评价与训练预算（续）", "h1"),
           p("训练时长由评价调度器单独设置，不由 design_id 或 LLM 提案决定。主表和 proposal-history 实验中，每个有效候选均按相同任务和 seed 的初始化规则重新训练 100 轮。这里一轮指所有参与实验室各完成一次本地 epoch，然后协调器聚合参数；不是一个 loop 槽位。", "body"),
@@ -828,7 +828,7 @@ def story():
                  ["开发评价", "每 5 轮及最后一轮评价，指定开发面板等权平均。主比较用参与实验室的面板，fixed-pool 和跨来源对照保留目标原开发面板；主分数优先、loss 破平，选最佳 checkpoint。"],
                  ["外层选择", "用候选的最佳开发证据与保留设计比较。选定设计和 checkpoint 后，由固定留出 scorer 评价。"],
                  ["异源目标", "蛋白来源可有不同目标：编码器共享，各专属 head 只在拥有它的实验室间聚合；目标原有开发面板选择 checkpoint。"],
-                 ["信息边界", "实验室返回参数更新、样本数和开发诊断；研究 LLM 读取聚合 evidence cards，原始测量留在实验室内。"]],
+                 ["信息边界", "实验室返回参数更新、样本数和开发诊断；自我改进模型读取聚合 evidence cards，原始测量留在实验室内。"]],
                 [35*mm, 136*mm], font="small"), Spacer(1, 4*mm),
           p("两种决策策略：提案修订与训练分配（英文 3.3–3.4）", "h2"),
           p("英文第 3.4 节的轨迹驱动训练分配用于独立的固定候选对照，结果见英文第 4.4 节及本伴读版第 6 节；该策略未用于主表，主表仍为每候选 100 轮。", "note"),

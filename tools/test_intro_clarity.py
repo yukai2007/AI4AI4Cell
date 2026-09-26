@@ -17,13 +17,13 @@ class IntroClarityTests(unittest.TestCase):
 
     def test_motivation_and_per_task_predictors(self):
         intro = (PAPER / "sections/01_introduction.tex").read_text()
-        self.assertLess(intro.index("AI-for-AI systems"), intro.index("data-sharing constraints"))
+        self.assertLess(intro.index("self-improving agents"), intro.index("data-sharing constraints"))
         self.assertIn("different cell types", intro)
-        self.assertIn("Raw data remain within each laboratory", intro)
+        self.assertIn("without pooling the underlying data", intro)
         self.assertIn("extends collaboration from parameter fitting to model development", intro)
         self.assertIn("inner loop for collaborative training and evaluation", intro)
-        self.assertIn("This can be restrictive when laboratories contain data with different biological or experimental characteristics", intro)
-        self.assertIn("This leaves a gap between these two lines of work", intro)
+        self.assertIn("can be restrictive when laboratories hold data with different biological or experimental characteristics", intro)
+        self.assertIn("This leaves a gap between the two settings", intro)
         self.assertNotIn("In our implementation", intro)
         method = (PAPER / "sections/03_method.tex").read_text()
         self.assertIn("same biological prediction task", method)

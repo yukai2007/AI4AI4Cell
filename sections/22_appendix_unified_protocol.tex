@@ -58,7 +58,7 @@ D11 & 0.001 & 0.01 & 0 & yes \\
 \end{tabular}
 \end{center}
 
-The main comparison has two controller blocks. Qwen2.5-7B-Instruct uses bfloat16 inference, temperature 0.7, top-$p$ 0.9 and at most 512 new tokens. For zero-indexed proposal slot $t$ and generation attempt $b\in\{0,1\}$, its sampling seed is $z+t+10{,}000b$, where $z$ is the study seed. GPT-5.6 Luna is queried through a text-only bridge at low reasoning effort with tools disabled and the same bounded proposal protocol; its service does not expose a generation seed. The Luna runs retain the seed labels for training and search repetition identity, but do not claim deterministic language-model sampling. An invalid identifier, a repeated configuration or a malformed response triggers the second attempt; a second failure consumes the slot without fitting a candidate. A numerically failed fit likewise leaves the incumbent unchanged and is recorded as negative evidence.
+The main comparison has two self-improving model blocks. Qwen2.5-7B-Instruct uses bfloat16 inference, temperature 0.7, top-$p$ 0.9 and at most 512 new tokens. For zero-indexed proposal slot $t$ and generation attempt $b\in\{0,1\}$, its sampling seed is $z+t+10{,}000b$, where $z$ is the study seed. GPT-5.6 Luna is queried through a text-only bridge at low reasoning effort with tools disabled and the same bounded proposal protocol; its service does not expose a generation seed. The Luna runs retain the seed labels for training and search repetition identity, but do not claim deterministic language-model sampling. An invalid identifier, a repeated configuration or a malformed response triggers the second attempt; a second failure consumes the slot without fitting a candidate. A numerically failed fit likewise leaves the incumbent unchanged and is recorded as negative evidence.
 
 A proposal has exactly four fields:
 \begin{verbatim}
@@ -69,7 +69,7 @@ A proposal has exactly four fields:
   "design_id": "D08"
 }
 \end{verbatim}
-The three descriptive fields must be nonempty strings. The identifier must belong to the available design library. The executed configuration is obtained from that identifier; the text records the controller's rationale, not an additional executable instruction or a measured result.
+The three descriptive fields must be nonempty strings. The identifier must belong to the available design library. The executed configuration is obtained from that identifier; the text records the self-improving agent's rationale, not an additional executable instruction or a measured result.
 
 An evidence card contains the executed configuration, its hypothesis, the best development score and loss, the selected round, and the acceptance decision. Its trajectory summary includes the first and last development-evaluation rounds, their sample-weighted training losses, equal-laboratory development scores and losses, and the last-minus-first changes in development score and loss. For a 100-round fit these endpoints are rounds 5 and 100. In the main comparison, the development summary also records the worst laboratory score and the number of evaluating laboratories. Training participation and the designated evaluation panels are specified separately for source-transfer and repartitioning studies. Ordered cards are supplied as context; unsuccessful trials are not removed.
 
