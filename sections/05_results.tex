@@ -20,7 +20,7 @@ External data can improve target performance, but the effect depends on the sour
 
 \subsection*{4.6 Effect of the number of laboratories}
 
-We vary $K\in\{1,2,5,10\}$ in two settings. In the first, additional laboratories also provide additional training data. In the second, the same training data are divided across different numbers of laboratories.
+We vary $K\in\{1,2,5,10\}$ in two settings. In the first, additional laboratories also provide additional training data. In the second, the same training data are divided across different numbers of laboratories. Figure~\ref{fig:lab-sensitivity} shows that adding laboratories together with additional data can improve performance, whereas increasing the number of laboratories with the total data fixed does not produce a consistent gain. For example, proteomics performs best at an intermediate $K$, while Norman degrades when the same data are split across more laboratories. The gains in the main experiment therefore cannot be explained by the number of laboratories alone. They depend on both access to additional data and how those data are divided during training.
 
 \begin{figure}[t]
 \centering
@@ -34,7 +34,6 @@ Full results are reported in Appendix B.
 \label{fig:lab-sensitivity}
 \end{figure}
 
-Figure~\ref{fig:lab-sensitivity} shows that adding laboratories together with additional data can improve performance, whereas increasing the number of laboratories with the total data fixed does not produce a consistent gain. For example, proteomics performs best at an intermediate $K$, while Norman degrades when the same data are split across more laboratories. The gains in the main experiment therefore cannot be explained by the number of laboratories alone. They depend on both access to additional data and how those data are divided during training.
 
 \subsection*{4.7 How previous evaluation results affect subsequent proposals}
 
