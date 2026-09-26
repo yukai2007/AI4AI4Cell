@@ -101,6 +101,28 @@ class CompletedManuscriptTests(unittest.TestCase):
         self.assertIn('mc:AlternateContent', adapter)
         self.assertIn('design id', adapter)
 
+    def test_active_paradigm_figure_is_the_author_deck(self):
+        intro = (ROOT / 'sections/01_introduction.tex').read_text()
+        self.assertIn('assets/paradigm_comparison_v3.pdf', intro)
+        receipt = json.loads((ROOT / 'assets/paradigm_comparison_v3.provenance.json').read_text())
+        self.assertEqual(receipt['status'],
+                         'STRUCTURAL_CHECKS_PASSED_VISUAL_REVIEW_REQUIRED')
+        self.assertEqual(receipt['declared_repairs'], [])
+        self.assertTrue(receipt['source_deck_unchanged'])
+        self.assertEqual(receipt['source_deck'],
+                         str(Path('/liziqing/yukai/AI4AI4Cell/paradigm_comparison_editable.pptx')))
+        self.assertEqual(sha(Path(receipt['source_deck'])), receipt['source_deck_sha256'])
+        copied = ROOT / 'assets/paradigm_comparison_v3.pptx'
+        self.assertEqual(sha(copied), receipt['source_deck_sha256'])
+        self.assertEqual(receipt['text_outside_canvas'], [])
+        self.assertEqual(receipt['slides_test_returncode'], 0)
+        self.assertAlmostEqual(float(receipt['aspect_ratio']), 12192000 / 7045325, places=3)
+        for filename, digest in receipt['artifacts'].items():
+            self.assertEqual(sha(ROOT / 'assets' / filename), digest)
+        adapter = (ROOT / 'tools/adapt_paradigm_v3.py').read_text()
+        self.assertIn('paradigm_comparison_editable.pptx', adapter)
+        self.assertIn('Centralized bio-agent', adapter)
+
     def test_previous_framework_and_user_source_remain_preserved(self):
         old = json.loads((ROOT / 'figures/biocoloop_framework.provenance.json').read_text())
         new = json.loads((ROOT / 'figures/biocoloop_framework_v2.provenance.json').read_text())

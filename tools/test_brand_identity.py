@@ -40,7 +40,7 @@ class BrandIdentityTests(unittest.TestCase):
         self.assertTrue(report['main_table_only_framework_label_changed'])
 
     def test_figures_and_chinese_use_current_brand(self):
-        for relative in ['assets/paradigm_comparison.pdf','figures/biocoloop_framework.pdf',
+        for relative in ['assets/paradigm_comparison_v3.pdf','figures/biocoloop_framework_v3.pdf',
                          'output/pdf/BioCoLoop_中文伴读版.pdf']:
             with fitz.open(PAPER/relative) as doc:
                 text='\n'.join(page.get_text() for page in doc)

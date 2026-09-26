@@ -1,0 +1,42 @@
+{
+  "status": "STRUCTURAL_CHECKS_PASSED_VISUAL_REVIEW_REQUIRED",
+  "figure": "Figure 1 (research settings for biological AI)",
+  "authoring": "author-supplied PowerPoint-native deck (icons are embedded raster assets)",
+  "source_deck": "/liziqing/yukai/AI4AI4Cell/paradigm_comparison_editable.pptx",
+  "source_deck_sha256": "7dad57eb214d22b6c03d457d24afa3385ab64d926e360de3561df1b04801393e",
+  "source_deck_unchanged": true,
+  "declared_repairs": [],
+  "aspect_ratio": "1.7306",
+  "required_labels_present": [
+    "(a)",
+    "Centralized bio-agent",
+    "(b)",
+    "Collaborative training",
+    "(c)",
+    "BioCoLoop",
+    "Research / design loop",
+    "Accessible dataset",
+    "Accessible data",
+    "model parameters",
+    "Design revision",
+    "Aggregate development evidence",
+    "Lab 1",
+    "Lab 2",
+    "Lab K",
+    "Local update",
+    "Model",
+    "(design fixed in advance)",
+    "(design revised between rounds)"
+  ],
+  "pdf_embedded_images": 16,
+  "vector_path_count": 48,
+  "text_outside_canvas": [],
+  "slides_test_returncode": 0,
+  "slides_test_output": "Test passed. No overflow detected.",
+  "artifacts": {
+    "paradigm_comparison_v3.pptx": "7dad57eb214d22b6c03d457d24afa3385ab64d926e360de3561df1b04801393e",
+    "paradigm_comparison_v3.pdf": "c475a0e3530eb10c635b541a02da8a2c8e03b2605f365830d65d3b2cbfd303f6",
+    "paradigm_comparison_v3.png": "747fe636a69f924e91b9cb76faeeece4722c80adfd2317e50979d81bb67e1ae7"
+  },
+  "visual_review_required": true
+}

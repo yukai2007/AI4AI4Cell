@@ -782,9 +782,9 @@ def story():
                  ["跨任务实证", "完整系统在五端点中的四个领先所列单实验室参考方法；协作访问改善五个端点，训练分配提高 Norman 表现，来源与提案实验进一步刻画适用条件。"]],
                 [42*mm, 129*mm]), PageBreak()]
 
-    s += [p("2  三种研究范式", "h1"), figure("paradigm_comparison", 171),
+    s += [p("2  三种研究范式", "h1"), figure("paradigm_comparison_v3", 171),
           Spacer(1, 3*mm),
-          p("绿色表示本地数据，蓝色表示预测模型，紫色表示研究 harness，橙色表示聚合。K 是参与实验室数。灰色虚线对应不启用 harness 的固定设计配置；集中式面板展示可访问数据，完整框架由跨实验室聚合证据推动设计修订。", "note"),
+          p("作者稿件按三联画给出三种研究设置：绿色为研究/设计循环与聚合证据，蓝色为模型参数与本地更新，彩色数据库为各实验室本地数据，K 为参与实验室数。(a) 集中式 bio-agent 在可访问数据上训练、评价并修订设计；(b) 协作训练只共享本地更新、设计提前固定；(c) BioCoLoop 在共享本地更新的同时，用聚合开发证据驱动跨轮次的设计修订。", "note"),
           Spacer(1, 5*mm),
           table([["范式", "具备的能力", "关键差异"],
                  ["Centralized bio-agent", "在集中可访问数据上训练、评价并迭代设计", "缺少多实验室聚合"],
@@ -943,7 +943,8 @@ def main():
               ROOT / 'provenance/luna_main_core_20260925/independent_verification.json',
               ROOT.parent / 'results/tonight_completion_20260923/final_delivery/summary.json',
               ROOT.parent / 'results/proteomics_external_pilot_20260923/RESULT.zh-CN.md',
-              ROOT / 'assets/paradigm_comparison.pdf',
+              ROOT / 'assets/paradigm_comparison_v3.pdf',
+              ROOT / 'assets/paradigm_comparison_v3.provenance.json',
               ROOT / 'assets/completed_budget_examples.pdf',
               ROOT / 'assets/laboratory_sensitivity_v2.pdf',
               ROOT / 'assets/completed_short6_search.pdf',
@@ -971,7 +972,7 @@ def main():
     # Figure PDFs are rasterized for this companion; inspect their source text
     # as well as the final PDF so visible labels cannot retain the retired name.
     retired = ''.join(('AI4', 'AI4', 'Cell')).lower()
-    for source in (ROOT / 'assets/paradigm_comparison.pdf',
+    for source in (ROOT / 'assets/paradigm_comparison_v3.pdf',
                    ROOT / 'figures/biocoloop_framework_v3.pdf'):
         with fitz.open(source) as figure_doc:
             figure_text = ''.join(page.get_text() for page in figure_doc)
