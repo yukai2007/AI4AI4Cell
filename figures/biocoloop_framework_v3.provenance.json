@@ -49,8 +49,26 @@
     {
       "id": "update_figure_terms",
       "shape": "text runs",
-      "change": "\"recipe\" -> \"design\"; \"design id\" -> \"design_id\"",
-      "reason": "match the method terminology (a candidate is an executable design or configuration; design_id is the proposal field)"
+      "change": "\"design id\" -> \"design_id\"",
+      "reason": "design_id is the proposal field named in Section 3.3"
+    },
+    {
+      "id": "candidate_configuration_label",
+      "shape": "Text 47 (Candidate recipe)",
+      "change": "Candidate | model design and | training hyperparameters (box <a:off x=\"4393952\" y=\"2752438\"/><a:ext cx=\"922457\" cy=\"265424\"/> -> <a:off x=\"3810000\" y=\"2600000\"/><a:ext cx=\"1498600\" cy=\"444500\"/>)",
+      "reason": "the down arrow carries a candidate that is a model design together with its training hyperparameters, so \"Candidate recipe\" is replaced by the configuration wording used in Section 3.1"
+    },
+    {
+      "id": "development_evidence_label",
+      "shape": "Text 51 (Development evidence)",
+      "change": "Development | evidence \u2130\u209c | (one card per trial) (box <a:off x=\"5771504\" y=\"2697068\"/><a:ext cx=\"1161288\" cy=\"393192\"/> -> <a:off x=\"5524500\" y=\"2595700\"/><a:ext cx=\"1206500\" cy=\"596900\"/>)",
+      "reason": "names the accumulated set \u2130_t of Section 3.2 and states that it gains one development-evidence card per trial"
+    },
+    {
+      "id": "aggregated_evidence_label",
+      "shape": "Text 32 (Aggregated development evidence)",
+      "change": "Aggregated development evidence \u2130\u209c | (configuration, dev score, decision) (box <a:off x=\"3144925\" y=\"1173300\"/><a:ext cx=\"2675902\" cy=\"266700\"/> -> <a:off x=\"2850800\" y=\"1116700\"/><a:ext cx=\"3290000\" cy=\"380000\"/>)",
+      "reason": "the feedback arrow returns \u2130_t to the research model; the second line lists the card contents and reuses the \"dev score\" term of the retention label"
     }
   ],
   "aspect_ratio": "4:3",
@@ -77,7 +95,10 @@
     "Cell perturbations",
     "generates new hypothesis",
     "design_id",
-    "Candidate design",
+    "model design and training hyperparameters",
+    "(one card per trial)",
+    "(configuration, dev score, decision)",
+    "evidence \u2130\u209c",
     "Fixed research language model"
   ],
   "embedded_raster_assets": [
@@ -122,9 +143,9 @@
   "slides_test_returncode": 0,
   "slides_test_output": "Test passed. No overflow detected.",
   "artifacts": {
-    "biocoloop_framework_v3.pptx": "38868ac484671effeb392cbcefe1ec1a6c54ae5715448d938d1860460258dbb9",
-    "biocoloop_framework_v3.pdf": "4548b4b75f61cde990532896548cbd44d01cda3281943d65dbf172eebe0b8065",
-    "biocoloop_framework_v3.png": "5f604614f26d945a96c6fa3429c48f1603f21795aa116a866ce5bdbdbd9cc77e"
+    "biocoloop_framework_v3.pptx": "386d1cfb2b373926bcb4adce5300ffd5e2e9c6b9f2a2c3856581112e6c3f794e",
+    "biocoloop_framework_v3.pdf": "b4bf086c294a3af855637cf7fbb39669b35420d136bc87bb5c12b6655f29827d",
+    "biocoloop_framework_v3.png": "3aa55b079e27e040402ba0b3a11ebf9869008094734e72c912c9dbfd7fe63073"
   },
   "visual_review_required": true
 }

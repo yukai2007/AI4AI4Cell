@@ -20,6 +20,14 @@ repairs are applied only to the copy stored in this repository:
    deleted at the authors' request: data locality is already stated in the
    manuscript text and carried by the lock icons and ``private data`` labels of
    the laboratory cards, so the caption only repeated it.
+6. the three arrow labels that carried the terms ``Candidate recipe``,
+   ``Development evidence`` and ``Aggregated development evidence`` are
+   rewritten so that the figure states what the paper states: a candidate is a
+   model design together with its training hyperparameters, and the
+   development evidence is the persistent set ``E_t`` that gains one card per
+   trial, each card holding the configuration, the dev score and the decision.
+   The rewritten labels keep the author's colours, alignment and typography and
+   only grow their boxes enough to hold the new lines.
 Steps 1 and 2 together remove every Office-2010 math extension and every
 clipped screenshot from the figure.
 
@@ -62,13 +70,92 @@ REQUIRED_WORDS = [
     'Laboratory 2', 'Laboratory K', 'private', 'model', 'OUTPUTS', 'Designs',
     'Programs', 'Policies', 'BIOLOGICAL VALIDATION SETTINGS', 'Drug–target',
     'Proteomic efficacy', 'Cell perturbations',
-    'generates new hypothesis', 'design_id', 'Candidate design',
+    'generates new hypothesis', 'design_id',
+    'model design and training hyperparameters', '(one card per trial)',
+    '(configuration, dev score, decision)', 'evidence ℰₜ',
     'Fixed research language model',
+]
+
+ARIAL = ('<a:latin typeface="Arial" panose="020B0604020202020204" pitchFamily="34" '
+         'charset="0"/><a:ea typeface="Arial"/><a:cs typeface="Arial" '
+         'panose="020B0604020202020204" pitchFamily="34" charset="0"/>')
+
+# The three arrow labels are rebuilt from scratch: (marker, old geometry,
+# new geometry, lines, reason).  ``marker`` pins the shape by its unique text
+# run, the geometry anchors keep the edit local to that text box.
+LABEL_REWRITES = [
+    {
+        'id': 'candidate_configuration_label',
+        'shape': 'Text 47 (Candidate recipe)',
+        'marker': 'recipe',
+        'old_box': '<a:off x="4393952" y="2752438"/><a:ext cx="922457" cy="265424"/>',
+        'new_box': '<a:off x="3810000" y="2600000"/><a:ext cx="1498600" cy="444500"/>',
+        'lines': [('Candidate', '1000', '0A51A1', False),
+                  ('model design and', '1000', '0A51A1', False),
+                  ('training hyperparameters', '1000', '0A51A1', False)],
+        'reason': 'the down arrow carries a candidate that is a model design together '
+                  'with its training hyperparameters, so "Candidate recipe" is replaced '
+                  'by the configuration wording used in Section 3.1',
+    },
+    {
+        'id': 'development_evidence_label',
+        'shape': 'Text 51 (Development evidence)',
+        'marker': 'evidence',
+        'old_box': '<a:off x="5771504" y="2697068"/><a:ext cx="1161288" cy="393192"/>',
+        'new_box': '<a:off x="5524500" y="2595700"/><a:ext cx="1206500" cy="596900"/>',
+        'lines': [('Development', '1275', '087A62', False),
+                  ('evidence ℰₜ', '1275', '087A62', False),
+                  ('(one card per trial)', '950', '087A62', True)],
+        'reason': 'names the accumulated set ℰ_t of Section 3.2 and states that it gains '
+                  'one development-evidence card per trial',
+    },
+    {
+        'id': 'aggregated_evidence_label',
+        'shape': 'Text 32 (Aggregated development evidence)',
+        'marker': 'Aggregated development evidence',
+        'old_box': '<a:off x="3144925" y="1173300"/><a:ext cx="2675902" cy="266700"/>',
+        'new_box': '<a:off x="2850800" y="1116700"/><a:ext cx="3290000" cy="380000"/>',
+        'lines': [('Aggregated development evidence ℰₜ', '1275', '0A51A1', True),
+                  ('(configuration, dev score, decision)', '950', '0A51A1', True)],
+        'reason': 'the feedback arrow returns ℰ_t to the research model; the second line '
+                  'lists the card contents and reuses the "dev score" term of the '
+                  'retention label',
+    },
 ]
 
 
 def sha(path: Path) -> str:
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def textbox(lines: list[tuple[str, str, str, bool]]) -> str:
+    """Serialise centred paragraphs in the author's Arial style."""
+    parts = ['<p:txBody><a:bodyPr wrap="square" lIns="19050" tIns="19050" '
+             'rIns="19050" bIns="19050" anchor="ctr"><a:noAutofit/></a:bodyPr>'
+             '<a:lstStyle/>']
+    for text, size, colour, italic in lines:
+        weight = ' i="1"' if italic else ''
+        parts.append(
+            '<a:p><a:pPr marL="0" indent="0" algn="ctr"><a:lnSpc>'
+            '<a:spcPct val="100000"/></a:lnSpc><a:buNone/></a:pPr>'
+            f'<a:r><a:rPr lang="en-US" sz="{size}"{weight}>'
+            f'<a:solidFill><a:srgbClr val="{colour}"/></a:solidFill>{ARIAL}'
+            f'</a:rPr><a:t>{text}</a:t></a:r></a:p>')
+    parts.append('</p:txBody>')
+    return ''.join(parts)
+
+
+def rewrite_label(xml: str, spec: dict) -> str:
+    blocks = [block for block in SP_RE.findall(xml)
+              if spec['old_box'] in block and f'<a:t>{spec["marker"]}</a:t>' in block]
+    assert len(blocks) == 1, (spec['marker'], len(blocks))
+    block = blocks[0]
+    rebuilt = re.sub(r'<p:txBody>.*?</p:txBody>', textbox(spec['lines']), block,
+                     count=1, flags=re.S)
+    assert rebuilt != block, spec['marker']
+    rebuilt = rebuilt.replace(spec['old_box'], spec['new_box'])
+    assert rebuilt.count(spec['new_box']) == 1, spec['marker']
+    return xml.replace(block, rebuilt)
 
 
 def render_environment() -> dict[str, str]:
@@ -150,15 +237,22 @@ def apply_declared_repairs(xml: str) -> tuple[str, list[dict]]:
     assert removed_note, 'local-data caption not found'
 
     term_changes = []
-    for source_text, target_text in (('recipe', 'design'), ('design id', 'design_id')):
+    for source_text, target_text in (('design id', 'design_id'),):
         pattern = f'<a:t>{source_text}</a:t>'
         assert xml.count(pattern) == 1, (source_text, xml.count(pattern))
         xml = xml.replace(pattern, f'<a:t>{target_text}</a:t>')
         term_changes.append(f'"{source_text}" -> "{target_text}"')
     edits.append({'id': 'update_figure_terms', 'shape': 'text runs',
                   'change': '; '.join(term_changes),
-                  'reason': 'match the method terminology (a candidate is an executable design '
-                            'or configuration; design_id is the proposal field)'})
+                  'reason': 'design_id is the proposal field named in Section 3.3'})
+
+    for spec in LABEL_REWRITES:
+        xml = rewrite_label(xml, spec)
+        edits.append({'id': spec['id'],
+                      'shape': spec['shape'],
+                      'change': ' | '.join(line[0] for line in spec['lines'])
+                                + f' (box {spec["old_box"]} -> {spec["new_box"]})',
+                      'reason': spec['reason']})
 
     assert '<a:blipFill>' not in xml, 'unexpected picture-filled shape remains'
     assert '<a14:m>' not in xml and 'mc:AlternateContent' not in xml

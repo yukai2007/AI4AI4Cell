@@ -89,7 +89,15 @@ class CompletedManuscriptTests(unittest.TestCase):
         repairs = {item['id'] for item in receipt['declared_repairs']}
         self.assertEqual(repairs, {'flatten_alternate_content', 'math_run_to_text',
                                    'propose_card_fit', 'fixed_model_label_contrast',
-                                   'drop_local_data_note', 'update_figure_terms'})
+                                   'drop_local_data_note', 'update_figure_terms',
+                                   'candidate_configuration_label',
+                                   'development_evidence_label',
+                                   'aggregated_evidence_label'})
+        for label in ['model design and training hyperparameters',
+                      'evidence ℰₜ', '(one card per trial)',
+                      '(configuration, dev score, decision)']:
+            self.assertIn(label, receipt['required_labels_present'])
+        self.assertNotIn('Candidate design', receipt['required_labels_present'])
         self.assertEqual(receipt['embedded_raster_assets'],
                          sorted(receipt['embedded_raster_assets']))
         self.assertEqual(receipt['pdf_embedded_images'],
