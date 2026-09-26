@@ -84,8 +84,9 @@ class AppendixCompactionTests(unittest.TestCase):
             self.assertIn(r'\input{tables/completed_ablation/' + name + '}', appendix_b)
         self.assertNotIn('seven ties and one decrease', appendix_b)
         results = (PAPER / 'sections/05_results.tex').read_text()
-        for phrase in ('eight pairs tie', '28.82', '30.70',
-                       '4.4 Measured trajectories improve training allocation'):
+        for phrase in ('Most short comparisons finish with the same test score',
+                       'do not outperform additional data drawn from the same VCC dataset',
+                       '4.4 Early evaluation results guide further training'):
             self.assertIn(phrase, results)
         scope = (PAPER / 'sections/22_appendix_unified_protocol.tex').read_text()
         self.assertIn(r'\subsection*{A.6 Scope and limitations}', scope)

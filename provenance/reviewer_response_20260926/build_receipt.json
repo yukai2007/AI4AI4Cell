@@ -1,10 +1,10 @@
 {
   "framework_name": "BioCoLoop",
   "revision_id": "reviewer_response_20260926",
-  "revision_description": "Ten-laboratory fixed and direct rows removed from every appendix arm table, six-arm framing retired, guards and the dependent negative-result sentences removed, related work closes with our approach, Figure 1 uses the author's compressed deck, and the author's Overleaf prose revision is merged.",
+  "revision_description": "Manually merged the Overleaf branch: the author's new results narrative is kept, the same-access control sentence and the single-site reference wording are folded in, superseded commented-out blocks are deleted, the duplicated trajectory figure is left in Appendix B, and the affected tests now assert the new wording.",
   "branding_migration_record_sha256": "a2e664f79e425ec0238853abcae81979da43b2f6047f7504d6a8971d60899a08",
-  "built_utc": "2026-09-26T09:35:14.981847+00:00",
-  "manuscript_sha256": "2dac2cce0679c62ba09824ec48e8c35482c631aebbf4679a9443b9e3a82aa267",
+  "built_utc": "2026-09-26T09:39:42.563634+00:00",
+  "manuscript_sha256": "ea0c9922a1c4c1114d24474c854e11952d8444691a0fbfdcfc9ebf7f418314bb",
   "total_pages": 32,
   "main_text_ends_page": 9,
   "statements_start_page": 10,
@@ -34,7 +34,7 @@
     "sections/02_related_work.tex": "a41bd4a10d7800f417577b34de92394f54595b0ca6175f8d7321d6c1a422a3d7",
     "sections/03_method.tex": "111e979f20a85e00f4ce83870c492dfd83e909013a134491b79542dc1d36787d",
     "sections/04_experimental_design.tex": "84c4f5a24b8b1e3773391aea60ff37c353bba9fce06f827115dc9ecea2c2dab2",
-    "sections/05_results.tex": "6db6f422d551e006e5b6df1c18562e7854d3309fa714953bc66f9b12b494a3e6",
+    "sections/05_results.tex": "25f79ab5e6f5d5f63201a7111ea9dd9f476e86582d07f3cac23cea95786530d5",
     "sections/07_conclusion.tex": "25d75176d6e746315aaadb200b0286e1b4a6b80cb3d8bfeb538e5b9f29cf88d0",
     "sections/08_reproducibility.tex": "1822bb2ef37647b1f71c0ff2f5955c890066cedbc05ab4b00edb8c3d92da3e00",
     "sections/22_appendix_unified_protocol.tex": "91c4efd9fa5e3f1f0066c90af9a16763e3d9a2b5c30fd47095ea4175a0660dd7",
@@ -105,7 +105,7 @@
   },
   "statistical_supplement": {
     "path": "output/pdf/BioCoLoop_statistical_supplement.pdf",
-    "sha256": "ae05ba7496eaa5cab0d5377ee128291f21c9a422c05e4a8f579a771f581e50c8",
+    "sha256": "3282d3e27c16ac397fdb3b856737cba9ec4f43bebefcc96925d9462eeeed14d1",
     "pages": 5,
     "source_sha256": "af93701811d692a9a69d8d73b3d2b0ec5def0514559009e99ef1fbbe411173f7",
     "tables_sha256": {
@@ -120,7 +120,7 @@
   "unit_tests_passed": 160,
   "overfull_boxes": 0,
   "undefined_references": 0,
-  "visual_review": "Merged the author's Overleaf revision with this pass; Figure 1 (author's compressed deck, single trim_canvas repair) and appendix Tables A.1-A.3 rendered and inspected; the reproduction page check passed and the statistical supplement renders.",
+  "visual_review": "Merged the author's overleaf-2026-09-26-0941 branch (new Sections 4.3-4.7) with this pass; main text ends on page 9 with the reproduction statement on page 10, no overfull boxes or multiply-defined labels, and Figure 1, Figure 2, the lab-count figure and appendix Tables A.1-A.3 were inspected after the merge.",
   "incorporated": [
     "five-endpoint two-backend short6",
     "five-endpoint lab count, two definitions",

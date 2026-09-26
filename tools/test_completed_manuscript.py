@@ -61,13 +61,14 @@ class CompletedManuscriptTests(unittest.TestCase):
         self.assertIn(r'\input{tables/strong_v3/effects}', text)
         self.assertIn('eight pairs tie', text + appendix_text)
         self.assertNotIn('seven ties and one decrease', text + appendix_text)
-        self.assertIn('800 aggregation rounds', text)
-        self.assertIn('4.7 How does feedback change the research trajectory?', text)
-        self.assertIn('4.4 Measured trajectories improve training allocation', text)
-        self.assertLess(text.index('4.4 Measured trajectories'),
+        self.assertIn('800 training rounds and 160 development evaluations', text)
+        self.assertIn('4.7 How previous evaluation results affect subsequent proposals', text)
+        self.assertIn('4.4 Early evaluation results guide further training', text)
+        self.assertLess(text.index('4.4 Early evaluation'),
                         text.index('4.5 Learning from different'))
         self.assertNotIn(r'\input{tables/completed_ablation/summary}', text)
         self.assertNotIn(r'\label{fig:completed-short-dev}', text)
+        self.assertIn(r'Figure~\ref{fig:completed-short-dev}', text)
         appendix = (ROOT / 'sections/23_appendix_core_sensitivity.tex').read_text()
         self.assertIn(r'\label{fig:completed-short-dev}', appendix)
         self.assertIn(r'\label{fig:completed-long-dev}', appendix)

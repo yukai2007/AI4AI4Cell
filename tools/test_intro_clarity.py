@@ -14,8 +14,8 @@ class IntroClarityTests(unittest.TestCase):
         intro = (PAPER / "sections/01_introduction.tex").read_text()
         self.assertIn("AI-Scientist-v2 and AI-Researcher", intro)
         results = (PAPER / "sections/05_results.tex").read_text()
-        self.assertIn("+10.84-point mean effect", results)
-        self.assertIn(r"Norman from 11.48\% to 22.32\% Top-1", results)
+        self.assertIn(r"Top-1 increases from 11.48\% to 22.32\%", results)
+        self.assertIn("with positive gains in all three seeds", results)
 
     def test_motivation_and_per_task_predictors(self):
         intro = (PAPER / "sections/01_introduction.tex").read_text()

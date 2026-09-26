@@ -43,18 +43,20 @@ class EvidenceLedNarrativeTests(unittest.TestCase):
     def test_same_access_controls_remain_visible(self):
         text = (PAPER / "sections/05_results.tex").read_text()
         manuscript = text + (PAPER / "sections/23_appendix_core_sensitivity.tex").read_text()
-        self.assertIn("blocks are not matched in access", text)
-        self.assertIn("use laboratory 0, while BioCoLoop uses the ten-laboratory pool", text)
-        self.assertIn("increasing participation from one to ten laboratories", text)
-        self.assertIn("collaborative access improves four of the five endpoints", text)
-        self.assertIn("best displayed Norman value is 25.56", text)
-        self.assertIn("reported on one laboratory only", text)
+        self.assertIn("same-access control", text)
+        self.assertIn("single-site methods and are reported on one laboratory", text)
+        self.assertIn("while BioCoLoop is reported at one and ten laboratories", text)
+        self.assertIn("whether the gains come from access to additional data", text)
         self.assertNotIn("At fixed access, direct and loop select identical", text)
-        for outcome in ("eight pairs tie", "28.82", "30.70"):
-            self.assertIn(outcome, manuscript)
+        self.assertIn("eight pairs tie", manuscript)
+        scenario = (PAPER / "tables/scenario_labs_v2/table.tex").read_text()
+        for outcome in ("28.82", "30.70"):
+            self.assertIn(outcome, scenario)
         self.assertNotIn("seven ties and one decrease", manuscript)
         for outcome in ("83.65", "93.88"):
-            self.assertIn(outcome, text)
+            appendix_tables = (PAPER / "tables/completed_ablation/lab_participation.tex").read_text()
+            self.assertIn(outcome, appendix_tables)
+        self.assertIn("laboratory_sensitivity_v2.pdf", text)
 
     def test_allocation_is_an_explicit_separately_evaluated_policy(self):
         text = (PAPER / "sections/03_method.tex").read_text()
@@ -68,8 +70,8 @@ class EvidenceLedNarrativeTests(unittest.TestCase):
                        "improves Norman Top-1 by 10.84 percentage points"):
             self.assertIn(phrase, allocation)
         results = (PAPER / "sections/05_results.tex").read_text()
-        self.assertLess(results.index("4.4 Measured trajectories"),
-                        results.index("4.7 How does feedback"))
+        self.assertLess(results.index("4.4 Early evaluation results"),
+                        results.index("4.7 How previous evaluation results"))
 
     def test_training_term_and_figure_action_labels(self):
         sources = [(PAPER / "biocoloop-main.tex").read_text()]
