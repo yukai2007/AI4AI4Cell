@@ -1,0 +1,118 @@
+{
+  "status": "STRUCTURAL_CHECKS_PASSED_VISUAL_REVIEW_REQUIRED",
+  "figure": "Figure 2 (BioCoLoop framework)",
+  "authoring": "author-supplied PowerPoint-native deck (icons are embedded raster assets)",
+  "source_deck": "/liziqing/yukai/AI4AI4Cell/0925_repaired_v3.pptx",
+  "source_deck_sha256": "f2dbfa1d4de87404664ac9dfa7afdc2bdbf2a86f255344bda200b8695308e45c",
+  "source_deck_unchanged": true,
+  "declared_repairs": [
+    {
+      "id": "flatten_alternate_content",
+      "shape": "mc:Choice (a14)",
+      "change": "unwrap mc:AlternateContent, keep a14 choice, drop fallback",
+      "dropped_fallback_screenshots": [
+        "rId14",
+        "rId19"
+      ],
+      "reason": "fallback screenshots were clipped and hid the vector text"
+    },
+    {
+      "id": "math_run_to_text",
+      "shape": "oMath run",
+      "change": "OMML math run \"S\" -> italic text run (same size and colour)",
+      "reason": "removes the Office-2010 math extension dependency"
+    },
+    {
+      "id": "math_run_to_text",
+      "shape": "oMath run",
+      "change": "OMML math run \"S\" -> italic text run (same size and colour)",
+      "reason": "removes the Office-2010 math extension dependency"
+    },
+    {
+      "id": "propose_card_fit",
+      "shape": "Text 32",
+      "change": "box height 0.84 in -> 0.99 in, body 12 pt -> 11 pt",
+      "reason": "final line \"design id\" was clipped by the text box"
+    },
+    {
+      "id": "fixed_model_label_contrast",
+      "shape": "Text 3",
+      "change": "label luminance 65 % -> 45 %",
+      "reason": "label was near-invisible after figure scaling"
+    }
+  ],
+  "aspect_ratio": "4:3",
+  "required_labels_present": [
+    "OUTER RESEARCH LOOP",
+    "INNER COLLABORATIVE TRAINING",
+    "Propose",
+    "Instantiate",
+    "Train + evaluate",
+    "Retain / revise",
+    "Shared coordinator",
+    "Laboratory 1",
+    "Laboratory 2",
+    "Laboratory K",
+    "private",
+    "model",
+    "OUTPUTS",
+    "Designs",
+    "Programs",
+    "Policies",
+    "BIOLOGICAL VALIDATION SETTINGS",
+    "Drug\u2013target",
+    "Proteomic efficacy",
+    "Cell perturbations",
+    "Raw data remain within each laboratory",
+    "generates new hypothesis",
+    "design id",
+    "Fixed research language model"
+  ],
+  "embedded_raster_assets": [
+    "ppt/media/image1.png",
+    "ppt/media/image10.png",
+    "ppt/media/image11.png",
+    "ppt/media/image12.png",
+    "ppt/media/image13.png",
+    "ppt/media/image14.png",
+    "ppt/media/image15.png",
+    "ppt/media/image16.png",
+    "ppt/media/image17.png",
+    "ppt/media/image2.png",
+    "ppt/media/image3.png",
+    "ppt/media/image4.png",
+    "ppt/media/image5.png",
+    "ppt/media/image6.png",
+    "ppt/media/image7.png",
+    "ppt/media/image8.png",
+    "ppt/media/image9.png"
+  ],
+  "placed_raster_assets": [
+    "ppt/media/image1.png",
+    "ppt/media/image10.png",
+    "ppt/media/image11.png",
+    "ppt/media/image13.png",
+    "ppt/media/image14.png",
+    "ppt/media/image15.png",
+    "ppt/media/image16.png",
+    "ppt/media/image2.png",
+    "ppt/media/image3.png",
+    "ppt/media/image4.png",
+    "ppt/media/image5.png",
+    "ppt/media/image6.png",
+    "ppt/media/image7.png",
+    "ppt/media/image8.png",
+    "ppt/media/image9.png"
+  ],
+  "pdf_embedded_images": 15,
+  "vector_path_count": 62,
+  "text_outside_canvas": [],
+  "slides_test_returncode": 0,
+  "slides_test_output": "Test passed. No overflow detected.",
+  "artifacts": {
+    "biocoloop_framework_v3.pptx": "295e7056ac93d980a567f08fc40c9c861e37a8611b44887c0d054b1e002e6900",
+    "biocoloop_framework_v3.pdf": "5284e5662d7f9eebd49cebf48d45582e9b9139d0c4858a1a1dd26befb0a32c8f",
+    "biocoloop_framework_v3.png": "46ff974bc635144009f58587d3b74c0d6a9946cf0d318f2d909fa378da79f5c2"
+  },
+  "visual_review_required": true
+}

@@ -11,14 +11,14 @@
     "AAAAAD+CompanionSC"
   ],
   "text_out_of_bounds_pages": [],
-  "generated_utc": "2026-09-25T19:01:05.687660+00:00",
-  "generator_sha256": "39bd7849c44862b87f92fd59a07beb332232028179d0d0daa6847796708fcd41",
+  "generated_utc": "2026-09-26T04:15:09.161413+00:00",
+  "generator_sha256": "05d69434da18b17be852fc178884f48a5ce032b77e81c94b152844acb01822c1",
   "embedded_font_source_sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
   "input_sha256": {
     "paper/tables/strong_v3/snapshot.json": "814129bf578ab358de0773b1975ba00257a7fe12c75b3e6b6f1534617cd5749a",
     "paper/tables/core_review/snapshot.json": "ea19d08df451ffaeb07e791536b5f8278d0886acd941c79304fd9cc328de8529",
     "paper/tables/completed_ablation/snapshot.json": "1300ee2702358927af215de29d7de22bf9b1d495923c2d5661a42f5abed79f23",
-    "paper/tables/public_harness_comparison/snapshot_llm_grouped_three_seed.json": "ab0d773b756d0c0b60266ed78bc0f9b68054054290138fe0a879edba64bc8d73",
+    "paper/tables/public_harness_comparison/snapshot_llm_grouped_three_seed.json": "0a183a2a97d0b28eaff457f7515bfa05eb1d3c787568fe7ab68e9cd7a59f3d4e",
     "paper/provenance/luna_main_core_20260925/independent_verification.json": "759948fa9e9fb2d8e78603af8b992946bb2fff2231403e85e62a37d2aa1e0070",
     "results/tonight_completion_20260923/final_delivery/summary.json": "8eb30ad05acaf714dbaa8c180a0657dcd9bc6c8b9bebccba620f097159eb7541",
     "results/proteomics_external_pilot_20260923/RESULT.zh-CN.md": "e9fc4c7c2424dc12959816efa8a1c1cd758c0414835df386799904c1948b68a9",
@@ -26,10 +26,10 @@
     "paper/assets/completed_budget_examples.pdf": "2b491a88b837d9e2aed1dd48f28eff547e4010a9db3fefef240243e2304c0f5d",
     "paper/assets/laboratory_sensitivity_v2.pdf": "c89fc89d591bc4dbc10d5a7129df5bd52c232e2be862b95503d19a311e3fdbb0",
     "paper/assets/completed_short6_search.pdf": "3edd2cdc4694529089c4b9095462ef99f8df580692b194e89a2f16100f5ea786",
-    "paper/figures/biocoloop_framework_v2.pdf": "a075612c1aa40daa2f909925c423b663bf0c0296570fd115f829e791e437dabf",
-    "paper/figures/biocoloop_framework_v2.provenance.json": "109f957a153534309cd0a92d8361b59c67d8e88c78f53ce5ef0ddc2422cc5294",
+    "paper/figures/biocoloop_framework_v3.pdf": "5284e5662d7f9eebd49cebf48d45582e9b9139d0c4858a1a1dd26befb0a32c8f",
+    "paper/figures/biocoloop_framework_v3.provenance.json": "547bd1cb6b1938718d25a1114f57e181fddbc491a8f581cdb710d8b198c4cf01",
     "paper/provenance/coauthor_review_v2_20260923/ANNOTATIONS.zh-CN.md": "e93f9742ffbe19924f7117510939e331374684b839c9910fc4536c73bc7e929b",
-    "paper/sections/03_method.tex": "6abb55e8ba249654b9e79b91711b16b5238db6a6226c86d6d311a0df852cb46c",
+    "paper/sections/03_method.tex": "ff6d8a461fb28ccab04d2a8aaa3f8cd5ff6cde4c1b80be6dfcf6d8ae42f3d550",
     "paper/sections/04_experimental_design.tex": "4ed10e11ac8880bcbbd4d385052109078d5a3149e91164352f20c72b1817749e",
     "paper/sections/22_appendix_unified_protocol.tex": "3a5d2c1df8aabed75f303c0edf9ede9d5edb4eb53da614ee194f8d2e6f8c7643",
     "results/supplemental_20260923/proteomics/seed61_slots0_cpu/independent_rescore.json": "b5fa3aebb01205ba8db57edb29af57e3dfa79a2c0e1cab94d0b2e2ce8c06ab29",
@@ -49,7 +49,7 @@
     "results/proteomics_scenario_labs_20260924/heldout/seal.json": "7e5f23c33f202cfbe6df7facf63e731df4782397b0d03778f2663b23f4cc106b"
   },
   "publication_snapshot_sha256": "1300ee2702358927af215de29d7de22bf9b1d495923c2d5661a42f5abed79f23",
-  "grouped_harness_snapshot_sha256": "ab0d773b756d0c0b60266ed78bc0f9b68054054290138fe0a879edba64bc8d73",
+  "grouped_harness_snapshot_sha256": "0a183a2a97d0b28eaff457f7515bfa05eb1d3c787568fe7ab68e9cd7a59f3d4e",
   "grouped_harness_models": [
     "Qwen2.5-7B-Instruct",
     "GPT-5.6 Luna (low reasoning)"
@@ -108,8 +108,8 @@
       ]
     }
   },
-  "page_count": 21,
-  "output_sha256": "2014a690286061696a4536b221fb280c027d0e518d46f83791ac22b4808bac23",
+  "page_count": 22,
+  "output_sha256": "23e4399385ba9668d8828dadfcb8a295ba2dadcff7b98afb95f4b3e2ddcffd11",
   "uncompleted_extensions": [
     "additional seeds",
     "DTI long24"

@@ -35,15 +35,31 @@ class GroupedMainTableTests(unittest.TestCase):
         self.assertEqual(text.count("Fixed model (1 lab)"), 2)
         self.assertEqual(text.count("AI-Researcher (1 lab)"), 2)
         self.assertIn(r"\textbf{50.00} $\pm$ 1.00", text)
+        self.assertEqual(text.count(r"\cmidrule(lr){4-6}"), 1)
+        self.assertIn(r"\textbf{BioCoLoop} (10 labs)", text)
+        self.assertIn(r"\shortstack{Mean rank\\$\downarrow$}", text)
 
     def test_incomplete_method_is_not_ranked_or_imputed(self):
         text = publisher.table_text(self.snapshot(incomplete=True))
         luna = text.split("GPT-5.6 Luna (low reasoning)", 1)[1]
         row = next(line for line in luna.splitlines() if line.startswith("AI-Researcher"))
-        self.assertEqual(row.count(r"35.00 $\pm$ 2.00,\,$F_{\mathrm{ctx}}$\,(2/3)"), len(publisher.TASKS))
-        self.assertEqual(row.count(r"$F_{\mathrm{ctx}}$"), len(publisher.TASKS))
+        self.assertEqual(row.count(r"\TblPartial"), len(publisher.TASKS))
         self.assertNotIn(r"\underline", row)
         self.assertNotIn(r"\textbf", row)
+        self.assertIn(r"$\dagger$ partial and {\TblZero} unscored cells are not imputed", text)
+        zero = publisher.table_text(self.zero_snapshot())
+        self.assertIn(r"\TblZero", zero)
+        self.assertIn(r"\textcolor{TblInk}{--}", zero)
+        self.assertNotIn(r"$F_{\mathrm{ctx}}$\,(0/3)", zero)
+
+    def test_rank_column_marks_change_against_the_fixed_reference(self):
+        text = publisher.table_text(self.snapshot())
+        ranks = publisher.task_ranks(self.snapshot(), "qwen")
+        self.assertAlmostEqual(ranks["federated_loop"], 1.0)
+        self.assertAlmostEqual(ranks["single_fixed"], 5.0)
+        for delta in ("1.0", "2.0", "3.0", "4.0"):
+            self.assertEqual(text.count(r"\TblUp{" + delta + "}"), 2)
+        self.assertEqual(text.count(r"\TblDown{"), 0)
 
     def test_committed_artifact_matches_generator(self):
         snapshot = json.loads(
@@ -52,8 +68,22 @@ class GroupedMainTableTests(unittest.TestCase):
         on_disk = (publisher.PAPER / "tables/public_harness_comparison"
                    / "main_public_harness_three_seed.tex").read_text()
         self.assertEqual(publisher.table_text(snapshot), on_disk)
-        self.assertIn(r"\renewcommand{\arraystretch}{0.82}", on_disk)
-        self.assertIn("best/second-best complete result per block", on_disk)
+        self.assertIn(r"\renewcommand{\arraystretch}{0.84}", on_disk)
+        self.assertIn(r"\usepackage{xcolor}",
+                      (publisher.PAPER / "biocoloop-main.tex").read_text())
+        self.assertIn("averages each method's rank over completed endpoints", on_disk)
+        self.assertIn(r"\providecommand{\TblZero}", on_disk)
+        self.assertIn(r"\definecolor{TblUp}{RGB}", on_disk)
+
+    def zero_snapshot(self):
+        snapshot = self.snapshot()
+        for task in publisher.TASKS:
+            snapshot["models"]["luna"][task]["ai_researcher"] = {
+                "complete": False, "completed": 0, "attempted": 3,
+                "mean": None, "sd": None,
+                "failure_tokens": [r"$F_{\mathrm{ctx}}$", r"$F_{\mathrm{svc}}$"],
+            }
+        return snapshot
 
     def test_transient_service_failure_has_explicit_token(self):
         self.assertEqual(

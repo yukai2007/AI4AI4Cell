@@ -7,6 +7,7 @@ import hashlib
 import json
 import math
 from pathlib import Path
+import re
 import statistics
 import sys
 
@@ -41,6 +42,11 @@ LUNA_FAILURE_TOKENS = {
     "Native context uses ": r"$F_{\mathrm{ctx}}$",
     "GPT-5.6 Luna transport/tool-isolation failure": r"$F_{\mathrm{svc}}$",
 }
+# Native-message admission budgets accepted for the Luna public controllers.
+# 28000 is the registered matched budget; 65536 is the extended admission used
+# for the AI-Researcher rows whose accumulated native history exceeded it.
+LUNA_ADMISSION_CAPS = (28000, 65536)
+EXTENDED_NATIVE_TOKEN_CAP = 65536
 
 
 def read(path):
@@ -124,7 +130,7 @@ def luna_public_score(run, harness, task, seed):
     if (backend.get("model") != "gpt-5.6-luna"
             or backend.get("reasoning_effort") != "low"
             or backend.get("generation_seed_supported") is not False
-            or backend.get("declared_input_cap") != 28000
+            or backend.get("declared_input_cap") not in LUNA_ADMISSION_CAPS
             or backend.get("max_calls") != 160
             or backend.get("tool_events_allowed") is not False):
         raise ValueError("Unexpected Luna public-controller backend")
@@ -143,6 +149,7 @@ def luna_public_score(run, harness, task, seed):
         "receipts": {name: sha(heldout / name) for name in one.REQUIRED},
         "definition_sha256": sha(definition_path), "backend_sha256": sha(backend_path),
         "checkpoint_sha256": result.get("checkpoint_sha256"),
+        "declared_input_cap": backend.get("declared_input_cap"),
     }
 
 
@@ -152,6 +159,9 @@ def summarize_public(runs):
     summary = {"runs": runs, "completed": len(values), "attempted": len(runs),
                "complete": len(values) == len(runs),
                "failure_tokens": sorted(set(failures))}
+    summary["extended_context_seeds"] = sorted(
+        seed for seed, run in runs.items()
+        if (run.get("declared_input_cap") or 28000) > 28000)
     if values:
         summary["mean"] = statistics.mean(values)
         summary["sd"] = statistics.stdev(values) if len(values) > 1 else None
@@ -263,7 +273,7 @@ def collect_qwen(seed42_base, additional_base, reference_results, retry_base=Non
     }
 
 
-def collect_luna_public(base):
+def collect_luna_public(base, retry_base=None):
     base = Path(base).resolve()
     manifest, supervisor = read(base / "queue_manifest.json"), read(base / "supervisor_status.json")
     if (manifest.get("schema") != "public-harness-one-lab-luna-three-seed-v1"
@@ -278,15 +288,21 @@ def collect_luna_public(base):
             or supervisor.get("status") not in ("COMPLETE", "COMPLETE_WITH_FAILURES")
             or supervisor.get("active") or supervisor.get("pending")):
         raise ValueError("Luna public-controller matrix is incomplete or uses another protocol")
+    retry_base = Path(retry_base).resolve() if retry_base is not None else None
     tasks = {}
     for task in TASKS:
         tasks[task] = {}
         for harness in PUBLIC:
-            runs = {str(seed): luna_public_score(
-                base / harness / task / f"seed{seed}", harness, task, seed
-            ) for seed in SEEDS}
+            runs = {}
+            for seed in SEEDS:
+                retry = (retry_base / harness / task / f"seed{seed}"
+                         if retry_base is not None else None)
+                path = (retry if retry is not None and _retry_is_terminal(retry)
+                        else base / harness / task / f"seed{seed}")
+                runs[str(seed)] = luna_public_score(path, harness, task, seed)
             tasks[task][harness] = summarize_public(runs)
-    return {"base": str(base), "manifest_sha256": sha(base / "queue_manifest.json"),
+    return {"base": str(base), "retry_base": str(retry_base) if retry_base is not None else None,
+            "manifest_sha256": sha(base / "queue_manifest.json"),
             "supervisor_sha256": sha(base / "supervisor_status.json"), "tasks": tasks}
 
 
@@ -338,10 +354,10 @@ def collect_luna_core(base, verification_path):
 
 
 def collect(qwen_seed42, qwen_additional, luna_public, luna_core, luna_verification,
-            reference_results, retry_base=None):
+            reference_results, retry_base=None, luna_retry_base=None):
     qwen = collect_qwen(qwen_seed42, qwen_additional, reference_results,
                         retry_base=retry_base)
-    public_luna = collect_luna_public(luna_public)
+    public_luna = collect_luna_public(luna_public, retry_base=luna_retry_base)
     core_luna = collect_luna_core(luna_core, luna_verification)
     models = {"qwen": {}, "luna": {}}
     for task in TASKS:
@@ -389,6 +405,81 @@ def collect(qwen_seed42, qwen_additional, luna_public, luna_core, luna_verificat
     }
 
 
+TASK_SHORT = {
+    "native_tapb": "DTI",
+    "ptpc_neural": "Proteomics",
+    "vcc_corrected": "VCC",
+    "norman_double_corrected": "Norman",
+    "tahoe_drug_corrected": "Tahoe",
+}
+TASK_HEADER = {
+    "native_tapb": r"\shortstack{BindingDB\\AUROC $\uparrow$}",
+    "ptpc_neural": r"\shortstack{PTPC\\AP $\uparrow$}",
+    "vcc_corrected": r"\shortstack{VCC\\Top-1 $\uparrow$}",
+    "norman_double_corrected": r"\shortstack{Norman\\Top-1 $\uparrow$}",
+    "tahoe_drug_corrected": r"\shortstack{Tahoe\\Top-1 $\uparrow$}",
+}
+TABLE_PREAMBLE = [
+    r"\definecolor{TblInk}{gray}{0.45}",
+    r"\definecolor{TblUp}{RGB}{20,84,150}",
+    r"\definecolor{TblDown}{RGB}{183,58,52}",
+    r"\providecommand{\TblPartial}{\textsuperscript{\textcolor{TblInk}{$\dagger$}}}",
+    r"\providecommand{\TblZero}{\textcolor{TblInk}{--}}",
+    r"\providecommand{\TblStar}{\textsuperscript{\textcolor{TblInk}{$\star$}}}",
+    r"\providecommand{\TblUp}[1]{\textcolor{TblUp}{$\uparrow$#1}}",
+    r"\providecommand{\TblDown}[1]{\textcolor{TblDown}{$\downarrow$#1}}",
+]
+
+
+def task_ranks(snapshot, model):
+    """Average rank of every complete method on every endpoint of one block."""
+    ranks = {}
+    for task in TASKS:
+        scored = [(method, round(100 * snapshot["models"][model][task][method]["mean"], 2))
+                  for method in METHODS
+                  if snapshot["models"][model][task][method]["complete"]]
+        ordered = sorted({value for _, value in scored}, reverse=True)
+        position = {value: [index + 1 for index, kept in enumerate(ordered) if kept == value]
+                    for value in ordered}
+        for method, value in scored:
+            ranks.setdefault(method, []).append(statistics.mean(position[value]))
+    return {method: (statistics.mean(values) if values else None)
+            for method, values in ranks.items()}
+
+
+def _plain_label(value):
+    return re.sub(r"\\textbf\{|\}|\\", "", value)
+
+
+SHORT_BLOCK = {"qwen": "Qwen2.5", "luna": "Luna"}
+
+
+def incomplete_note(snapshot):
+    """Name the cells that did not complete, keeping counts and typed failures."""
+    parts = []
+    for model in MODEL_LABELS:
+        for method in METHODS:
+            entries = []
+            for task in TASKS:
+                summary = snapshot["models"][model][task][method]
+                if summary["complete"]:
+                    continue
+                tokens = "/".join(sorted(set(summary.get("failure_tokens", [])))) or r"$F$"
+                entries.append((TASK_SHORT[task], f"{summary['completed']}/"
+                                f"{summary['attempted']}", tokens))
+            if not entries:
+                continue
+            counts = sorted({count for _, count, _ in entries})
+            listed = ("all five" if len(entries) == len(TASKS) else
+                      ", ".join(task for task, _, _ in entries))
+            tokens = "/".join(sorted({token for _, _, token in entries}))
+            label = _plain_label(METHOD_LABELS[method]).split(" (")[0]
+            parts.append(f"{SHORT_BLOCK[model]} {label} {listed} "
+                         f"{'/'.join(counts)} ({tokens})")
+    return (r"\emph{Incomplete cells} ($\dagger$ partial, {\TblZero} unscored; typed "
+            r"failures and counts: " + "; ".join(parts) + r"; details in Appendix~C).")
+
+
 def table_text(snapshot):
     rankings = {}
     for model in MODEL_LABELS:
@@ -398,21 +489,16 @@ def table_text(snapshot):
                 for method in METHODS
                 if snapshot["models"][model][task][method]["complete"]
             }, reverse=True)
+    mean_rank = {model: task_ranks(snapshot, model) for model in MODEL_LABELS}
 
     def cell(model, method, task):
         summary = snapshot["models"][model][task][method]
+        count = f"{summary['completed']}/{summary['attempted']}"
         if not summary["complete"]:
-            count = f"({summary['completed']}/{summary['attempted']})"
-            tokens = "/".join(summary.get("failure_tokens", []))
             if summary["completed"] == 0:
-                token = tokens or r"$F$"
-                return token + r"\," + count
-            value = f"{100 * summary['mean']:.2f}"
-            if summary.get("sd") is not None:
-                value += r" $\pm$ " + f"{100 * summary['sd']:.2f}"
-            if tokens:
-                value += r",\," + tokens
-            return value + r"\," + count
+                return r"\TblZero"
+            value = f"{100 * summary['mean']:.2f} $\pm$ {100 * summary['sd']:.2f}"
+            return value + r"\TblPartial"
         rounded = round(100 * summary["mean"], 2)
         shown = f"{rounded:.2f}"
         ranking = rankings[model, task]
@@ -420,35 +506,65 @@ def table_text(snapshot):
             shown = r"\textbf{" + shown + "}"
         elif len(ranking) > 1 and rounded == ranking[1]:
             shown = r"\underline{" + shown + "}"
-        return shown + r" $\pm$ " + f"{100 * summary['sd']:.2f}"
+        star = r"\TblStar" if summary.get("extended_context_seeds") else ""
+        return shown + r" $\pm$ " + f"{100 * summary['sd']:.2f}" + star
+
+    def rank_cell(model, method):
+        value = mean_rank[model].get(method)
+        baseline = mean_rank[model].get("single_fixed")
+        if value is None:
+            return r"\textcolor{TblInk}{--}"
+        if baseline is None:
+            return f"{value:.2f}"
+        shown = f"{value:.2f}"
+        if method == "single_fixed":
+            return shown
+        delta = baseline - value
+        if delta >= 0.05:
+            return shown + r"\,\TblUp{" + f"{delta:.1f}" + "}"
+        if delta <= -0.05:
+            return shown + r"\,\TblDown{" + f"{abs(delta):.1f}" + "}"
+        return shown
 
     def row(model, method):
-        return METHOD_LABELS[method] + " & " + " & ".join(
-            cell(model, method, task) for task in TASKS
+        label = METHOD_LABELS[method]
+        return label + " & " + " & ".join(
+            [cell(model, method, task) for task in TASKS] + [rank_cell(model, method)]
         ) + r" \\"
 
-    lines = [
-        r"\begin{table}[t]", r"\centering\scriptsize", r"\setlength{\tabcolsep}{1.55pt}",
-        r"\renewcommand{\arraystretch}{0.82}",
-        r"\begin{tabularx}{\linewidth}{@{}Xrrrrr@{}}", r"\toprule",
-        r"\textbf{Model / method} & \multicolumn{1}{c}{DTI} & \multicolumn{1}{c}{Proteomics} & \multicolumn{3}{c}{Cell perturbation} \\",
-        r"\cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(l){4-6}",
-        r" & \shortstack{BindingDB\\AUROC $\uparrow$} & \shortstack{PTPC\\AP $\uparrow$} & \shortstack{VCC\\Top-1 $\uparrow$} & \shortstack{Norman\\Top-1 $\uparrow$} & \shortstack{Tahoe\\Top-1 $\uparrow$} \\",
+    lines = list(TABLE_PREAMBLE)
+    lines += [
+        r"\begin{table}[t]", r"\centering\scriptsize",
+        r"\setlength{\tabcolsep}{2.0pt}", r"\renewcommand{\arraystretch}{0.84}",
+        r"\begin{tabularx}{\linewidth}{@{}Xrrrrrr@{}}", r"\toprule",
+        (r"\textbf{Model / method} & \multicolumn{1}{c}{DTI} & "
+         r"\multicolumn{1}{c}{Proteomics} & \multicolumn{3}{c}{Cell perturbation} & "
+         r"\multicolumn{1}{c}{Average} \\"),
+        r"\cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(lr){4-6}\cmidrule(l){7-7}",
+        (r" & \shortstack{BindingDB\\AUROC $\uparrow$} & \shortstack{PTPC\\AP $\uparrow$} & "
+         r"\shortstack{VCC\\Top-1 $\uparrow$} & \shortstack{Norman\\Top-1 $\uparrow$} & "
+         r"\shortstack{Tahoe\\Top-1 $\uparrow$} & \shortstack{Mean rank\\$\downarrow$} \\"),
         r"\midrule",
     ]
     for index, model in enumerate(MODEL_LABELS):
         if index:
             lines.append(r"\midrule")
-        lines.append(r"\multicolumn{6}{l}{\textbf{" + MODEL_LABELS[model] + r"}} \\")
+        lines.append(r"\multicolumn{7}{@{}l}{\textbf{" + MODEL_LABELS[model] + r"}} \\")
         lines.extend(row(model, method) for method in METHODS)
+    star_note = (
+        r" $\star$ marks a cell whose controller was admitted under an extended "
+        r"native-context budget (Appendix~C)."
+    ) if any(r"\TblStar" in line and r"\providecommand" not in line for line in lines) else ""
     lines += [
         r"\bottomrule", r"\end{tabularx}",
-        (r"\caption{Main comparison by research model (mean $\pm$ sample SD, seeds 42--44). "
-         r"Public controllers use laboratory 0 and BioCoLoop uses ten; all rows share the design library, "
-         r"candidate cap, 100-round fits and held-out scorer. Scores are $\times100$; bold/underline mark "
-         r"the best/second-best complete result per block, and $(n/3)$ reports completed seeds without "
-         r"imputing failures.}"),
-        r"\label{tab:public-harness-comparison-three-seed}", r"\end{table}",
+        (r"\caption{Main comparison by research model (mean $\pm$ sample SD, seeds 42--44; scores "
+         r"$\times100$). Public controllers use laboratory 0 and BioCoLoop ten under a shared design "
+         r"library, fits and held-out scorer. Bold/underline mark the best/second-best complete result; "
+         r"$\dagger$ partial and {\TblZero} unscored cells are not imputed; the last column averages "
+         r"each method's rank over completed endpoints (Appendix~C)."
+         + star_note + "}"),
+        r"\label{tab:public-harness-comparison-three-seed}",
+        r"\end{table}",
     ]
     return "\n".join(lines) + "\n"
 
@@ -468,6 +584,7 @@ if __name__ == "__main__":
     parser.add_argument("--qwen-additional-base", type=Path, required=True)
     parser.add_argument("--qwen-retry-base", type=Path)
     parser.add_argument("--luna-public-base", type=Path, required=True)
+    parser.add_argument("--luna-retry-base", type=Path)
     parser.add_argument("--luna-core-base", type=Path, required=True)
     parser.add_argument("--luna-verification", type=Path, required=True)
     parser.add_argument("--reference-results", type=Path,
@@ -478,7 +595,7 @@ if __name__ == "__main__":
     evidence = collect(
         args.qwen_seed42_base, args.qwen_additional_base, args.luna_public_base,
         args.luna_core_base, args.luna_verification, args.reference_results,
-        retry_base=args.qwen_retry_base,
+        retry_base=args.qwen_retry_base, luna_retry_base=args.luna_retry_base,
     )
     write(evidence, args.output_dir)
     print(json.dumps({"status": "PUBLISHED", "protocol": evidence["protocol"]}, indent=2))
