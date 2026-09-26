@@ -1,5 +1,6 @@
 % Dedicated comparison report; not a replacement for the manuscript.
 \documentclass{article}
+\usepackage{xcolor}
 \usepackage{iclr2027_conference}
 \usepackage{amsmath,booktabs,tabularx,array,fontspec,float}
 \setmainfont{texgyretermes-regular.otf}[Path=fonts/,BoldFont=texgyretermes-bold.otf,ItalicFont=texgyretermes-italic.otf,BoldItalicFont=texgyretermes-bolditalic.otf]
@@ -15,5 +16,5 @@
 \renewenvironment{table}[1][]{\originaltable[H]}{\endoriginaltable}
 \input{tables/public_harness_comparison/main_public_harness_three_seed.tex}
 
-\paragraph{Outcome.} Each model block reports the three-seed mean and sample SD for every complete cell, and preserves the completion count for public-controller failures. Bold and underline identify the best and second-best complete values within each model and endpoint; no incomplete controller cell is ranked.
+\paragraph{Outcome.} Each model block reports the three-seed mean and sample SD for every complete cell, marks a partial cell with a dagger and an unscored cell with a dash; Section C.2 of the manuscript lists the completed count and typed failure of every incomplete cell. Bold and underline identify the best and second-best complete values within each model and endpoint; no incomplete controller cell is ranked. The final column gives the mean rank over each method's complete endpoints and its colored change against the block's fixed reference.
 \end{document}

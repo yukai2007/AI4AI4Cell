@@ -71,20 +71,35 @@ class CompletedManuscriptTests(unittest.TestCase):
         self.assertNotIn(r'\label{fig:completed-short-dev}', appendix)
         self.assertIn(r'\label{fig:completed-long-dev}', appendix)
 
-    def test_active_framework_is_verified_vector_redesign(self):
-        stem = 'biocoloop_framework_v2'
+    def test_active_framework_is_the_repaired_author_deck(self):
         method = (ROOT / 'sections/03_method.tex').read_text()
-        self.assertIn('figures/' + stem + '.pdf', method)
-        receipt = json.loads((ROOT / 'figures' / (stem + '.provenance.json')).read_text())
-        self.assertIn(receipt['status'], ('STRUCTURAL_AND_VISUAL_CHECKS_PASSED', 'STRUCTURAL_CHECKS_PASSED_VISUAL_REVIEW_REQUIRED'))
-        self.assertEqual(receipt['embedded_raster_assets'], [])
-        self.assertEqual(receipt['pdf_embedded_images'], 0)
+        self.assertIn('figures/biocoloop_framework_v3.pdf', method)
+        receipt = json.loads((ROOT / 'figures/biocoloop_framework_v3.provenance.json').read_text())
+        self.assertEqual(receipt['status'],
+                         'STRUCTURAL_CHECKS_PASSED_VISUAL_REVIEW_REQUIRED')
         self.assertEqual(receipt['text_outside_canvas'], [])
         self.assertEqual(receipt['slides_test_returncode'], 0)
-        self.assertEqual(receipt.get('visual_review_required'), True)
-        self.assertEqual(sha(ROOT / 'tools/draw_framework_v2.js'), receipt['source_js_sha256'])
+        self.assertEqual(receipt['aspect_ratio'], '4:3')
+        self.assertTrue(receipt['source_deck_unchanged'])
+        self.assertEqual(receipt['source_deck'],
+                         str(Path('/liziqing/yukai/AI4AI4Cell/0925_repaired_v3.pptx')))
+        self.assertEqual(sha(Path(receipt['source_deck'])), receipt['source_deck_sha256'])
+        repairs = {item['id'] for item in receipt['declared_repairs']}
+        self.assertEqual(repairs, {'flatten_alternate_content', 'math_run_to_text',
+                                   'propose_card_fit', 'fixed_model_label_contrast'})
+        self.assertEqual(receipt['embedded_raster_assets'],
+                         sorted(receipt['embedded_raster_assets']))
+        self.assertEqual(receipt['pdf_embedded_images'],
+                         len(receipt['placed_raster_assets']))
+        self.assertEqual(sorted(receipt['placed_raster_assets']),
+                         sorted(set(receipt['placed_raster_assets'])))
+        dropped = set(receipt['embedded_raster_assets']) - set(receipt['placed_raster_assets'])
+        self.assertEqual(len(dropped), 2)
         for filename, digest in receipt['artifacts'].items():
             self.assertEqual(sha(ROOT / 'figures' / filename), digest)
+        adapter = (ROOT / 'tools/adapt_framework_v3.py').read_text()
+        self.assertIn('mc:AlternateContent', adapter)
+        self.assertIn('design id', adapter)
 
     def test_previous_framework_and_user_source_remain_preserved(self):
         old = json.loads((ROOT / 'figures/biocoloop_framework.provenance.json').read_text())

@@ -1,6 +1,6 @@
 {
   "schema": "qwen-luna-grouped-main-three-seed-v1",
-  "created_utc": "2026-09-25T16:38:38.171010+00:00",
+  "created_utc": "2026-09-26T01:48:55.709616+00:00",
   "protocol": {
     "seeds": [
       42,
@@ -32,7 +32,7 @@
     "schema": "qwen-public-controller-three-seed-evidence-v1",
     "seed42_evidence": {
       "schema": "public-harness-one-lab-publication-v1",
-      "created_utc": "2026-09-25T16:37:44.309881+00:00",
+      "created_utc": "2026-09-26T01:47:15.008525+00:00",
       "base": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260925/one_lab_v1",
       "reference_base": "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918",
       "protocol": {
@@ -319,7 +319,7 @@
       }
     },
     "additional_base": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260925/one_lab_multiseed_v1",
-    "retry_base": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260925/retries_v1",
+    "retry_base": "/liziqing/yukai/AI4AI4Cell/results/public_harness_20260925/retries_v2",
     "manifest_sha256": "22ef02ea4f2f3f2b42a1fbb0069c476a753eb532585f36c6286122e8a3f23506",
     "supervisor_sha256": "1b84016fb3529969900f21359cce94554b7a9880af302b7fab611b4402dd2c23",
     "tasks": {
@@ -351,12 +351,12 @@
                 "selected_round": 65,
                 "proposal_slots_used": 6,
                 "receipts": {
-                  "seal.json": "5af6219841478f260373f8829b231ae83e04504e4e8c778cbef99c18f613b17e",
-                  "results.json": "9ac5bebc049c62716c40d9693d632c1afd2c4cdf36dca8a357b8687b8dd8c308",
+                  "seal.json": "4476c557167c05e869db04bdf98d753d4b9d568b24713ca3dfee13aee7e9c025",
+                  "results.json": "89d19e3a03e41425a5ff9d7d1f0c0b5c23ed7873516d930a3805db2bf02d8a85",
                   "audit.json": "d7699bbbec0c07972f1b08bc97f36f2d6a6e400c983e8393a8b7a93886a8053f",
-                  "verification.json": "737caa2af095a9ef878b36da998a14c3a6551754ab95646ea731250f4e7a715b"
+                  "verification.json": "2fa7a8abff79b3b920a68434ad06e39f059c795df2858f5443ddc1c595224cc8"
                 },
-                "definition_sha256": "b1f6290bfe9545c6f921d45e99b509c2f5ae5a4cbe333bb7357a67f3ccdf05ca",
+                "definition_sha256": "c9309365e7b297118e9e322bab937388904f9875057a110fbaaf690941df813b",
                 "checkpoint_sha256": "af8cc573893ad99b69b573b83cfd5c973c2609ea3a98b312916c33ffec6d3bb1"
               },
               "43": {
@@ -394,6 +394,7 @@
             "attempted": 3,
             "complete": true,
             "failure_tokens": [],
+            "extended_context_seeds": [],
             "mean": 0.8968298785318194,
             "sd": 0.00804030783235853
           },
@@ -449,6 +450,7 @@
             "attempted": 3,
             "complete": true,
             "failure_tokens": [],
+            "extended_context_seeds": [],
             "mean": 0.8608944195053252,
             "sd": 0.008826420611934779
           }
@@ -525,6 +527,7 @@
             "attempted": 3,
             "complete": true,
             "failure_tokens": [],
+            "extended_context_seeds": [],
             "mean": 0.20179038123835766,
             "sd": 0.004250778552159959
           },
@@ -580,6 +583,7 @@
             "attempted": 3,
             "complete": true,
             "failure_tokens": [],
+            "extended_context_seeds": [],
             "mean": 0.2011914225278105,
             "sd": 0.0004724774024156079
           }
@@ -656,6 +660,7 @@
             "attempted": 3,
             "complete": true,
             "failure_tokens": [],
+            "extended_context_seeds": [],
             "mean": 0.1860887220647657,
             "sd": 0.027760731211682915
           },
@@ -677,11 +682,19 @@
                 "checkpoint_sha256": "ecb4adbe2142f2f1824f050f89d47326e54968fdf34c5764c54087d6b4c1785b"
               },
               "43": {
-                "status": "failed",
-                "display": "$F_{\\mathrm{tool}}$",
-                "error": "Tool response remained invalid after 3 format attempts: Extra data: line 3 column 1 (char 133)",
-                "run_status_sha256": "98507f594d2a038b669acbf9ed2169e3e2e4c83ebcd1f546155de8007669350c",
-                "definition_sha256": "26f7c3983527b8f7751bdff38b2e439e16a2e6c48adfefcc3c7804707128e045"
+                "status": "scored",
+                "primary": 0.16419504604988475,
+                "selected_design": "D05",
+                "selected_round": 90,
+                "proposal_slots_used": 6,
+                "receipts": {
+                  "seal.json": "afd15acceca0964ebe7fea83824264967ec8e8c281d2ae3a0a9c2da33ba74f0f",
+                  "results.json": "9072fbbe9661989e62586de19c5bb88e166ae2336e4fb1d5d948ed906e43fad2",
+                  "audit.json": "3263ae645ff8d0e49c96460b89c96f65ae9532938d54bce312efea88cf332161",
+                  "verification.json": "bf2e6574a96ca98488607578aa6374c1f5494f8d9b93349cab57b39cc12a0549"
+                },
+                "definition_sha256": "2a45e7fb87791ee904c48d52566cd13b12ea2211ed9f62614ef78cd49d580ab1",
+                "checkpoint_sha256": "4a536b830f0a4c9353af834637635f083e8b184d3257d6c5811d404badfa22bd"
               },
               "44": {
                 "status": "scored",
@@ -699,14 +712,13 @@
                 "checkpoint_sha256": "0a68a0b0e8e046b139846b8f6dcce98327fe052bdbbb5c9736326246433d98a6"
               }
             },
-            "completed": 2,
+            "completed": 3,
             "attempted": 3,
-            "complete": false,
-            "failure_tokens": [
-              "$F_{\\mathrm{tool}}$"
-            ],
-            "mean": 0.19703556007220618,
-            "sd": 0.028676067035905584
+            "complete": true,
+            "failure_tokens": [],
+            "extended_context_seeds": [],
+            "mean": 0.1860887220647657,
+            "sd": 0.027760731211682915
           }
         }
       },
@@ -781,6 +793,7 @@
             "attempted": 3,
             "complete": true,
             "failure_tokens": [],
+            "extended_context_seeds": [],
             "mean": 0.14123456790123456,
             "sd": 0.0004276668660664029
           },
@@ -836,6 +849,7 @@
             "attempted": 3,
             "complete": true,
             "failure_tokens": [],
+            "extended_context_seeds": [],
             "mean": 0.21728395061728398,
             "sd": 0.0662883642402904
           }
@@ -884,12 +898,12 @@
                 "selected_round": 50,
                 "proposal_slots_used": 6,
                 "receipts": {
-                  "seal.json": "d5b53f77919bb0643d76596672e9ea92a56d410bca037a8faf3ec12ba29e4f1e",
-                  "results.json": "bbfca8a7db5ad2a62c17c0a982e73ae2d65e47ef1cc0eaa7577e18e3259bda67",
+                  "seal.json": "1ae4063f76036822f268a88facfd52def3913cb5e71e1738492dcb4d6769ac01",
+                  "results.json": "70af98c2c55175a27849691a9d6f49030044b0d72e6a4c9e6b39a7a4eb27b46f",
                   "audit.json": "a3056de30ede4de1dd3e0be80f51c2873a531faf9838ea37f452edeb1bd71094",
-                  "verification.json": "ec99600194985adf8d4d996f7df890320a23658978d1fd11fee73f31d05d52e0"
+                  "verification.json": "91285317a801fc2b73af742776dfddf15fc541871ff65ae5054d9a500897d6b7"
                 },
-                "definition_sha256": "81c87ba4572e830def9eb2e5f3a9c24cfeeb081014cad144e2d82ee950c47684",
+                "definition_sha256": "80373722d3ac50d44f3f79137b804b67a311debe5789586b2b7aa0367d7633cf",
                 "checkpoint_sha256": "a6d6c71c066c685ac26d6ac8f15e9595da030689a4357e224c3cc8d1ab85af64"
               },
               "44": {
@@ -912,6 +926,7 @@
             "attempted": 3,
             "complete": true,
             "failure_tokens": [],
+            "extended_context_seeds": [],
             "mean": 0.15422885572139303,
             "sd": 0.062139283566153225
           },
@@ -967,6 +982,7 @@
             "attempted": 3,
             "complete": true,
             "failure_tokens": [],
+            "extended_context_seeds": [],
             "mean": 0.17412935323383086,
             "sd": 0.062139283566153225
           }
@@ -976,6 +992,7 @@
   },
   "luna_public_evidence": {
     "base": "/liziqing/yukai/AI4AI4Cell/results/public_harness_luna_20260925/one_lab_three_seed_v3",
+    "retry_base": null,
     "manifest_sha256": "db54da41e2b8a06cf67f6f23372c56cb113d2ab24b54c0b836776cbebe1b9afa",
     "supervisor_sha256": "74f5e94725bc0f2d0d23cf56c25e03c5e2f1b4083de1b685a6964707cbdeff56",
     "tasks": {
@@ -996,7 +1013,8 @@
               },
               "definition_sha256": "d122a118899df348149ec03d285f5f30b594ff458cd7c0e8eaabb2b1390015c0",
               "backend_sha256": "2d94f7262c7f40f5ce2c0c9dff99038bb6c4c0b91539d12cf982a88d7eab4ef5",
-              "checkpoint_sha256": "af8cc573893ad99b69b573b83cfd5c973c2609ea3a98b312916c33ffec6d3bb1"
+              "checkpoint_sha256": "af8cc573893ad99b69b573b83cfd5c973c2609ea3a98b312916c33ffec6d3bb1",
+              "declared_input_cap": 28000
             },
             "43": {
               "status": "scored",
@@ -1012,7 +1030,8 @@
               },
               "definition_sha256": "69a5de9292f459abb1bf53171a0b129725363f9e333c12b6d38a383a7514689e",
               "backend_sha256": "979e867d0ab063b6c03ffbb1cb18a824353cdb1615f557168b0e58606d86eae5",
-              "checkpoint_sha256": "e7e23c64fbd7ae9d1ca8cc73114f00cb38a3a3058677099f48a7f0c7d86a6905"
+              "checkpoint_sha256": "e7e23c64fbd7ae9d1ca8cc73114f00cb38a3a3058677099f48a7f0c7d86a6905",
+              "declared_input_cap": 28000
             },
             "44": {
               "status": "scored",
@@ -1028,13 +1047,15 @@
               },
               "definition_sha256": "18c1798d71cbe6c1be853008af1f98c9a3384956fead67bef8ceb7ba0cec71bc",
               "backend_sha256": "eff481a3f3592b869790292d7899d543327822efda0b6e9dd2cf29a12462cd66",
-              "checkpoint_sha256": "8ab250718de5066d705c26d843c697f1e1525e83481ce90ca5b0f1779d7a4131"
+              "checkpoint_sha256": "8ab250718de5066d705c26d843c697f1e1525e83481ce90ca5b0f1779d7a4131",
+              "declared_input_cap": 28000
             }
           },
           "completed": 3,
           "attempted": 3,
           "complete": true,
           "failure_tokens": [],
+          "extended_context_seeds": [],
           "mean": 0.8958500572132735,
           "sd": 0.009474254031610804
         },
@@ -1068,7 +1089,8 @@
           "failure_tokens": [
             "$F_{\\mathrm{ctx}}$",
             "$F_{\\mathrm{svc}}$"
-          ]
+          ],
+          "extended_context_seeds": []
         }
       },
       "ptpc_neural": {
@@ -1088,7 +1110,8 @@
               },
               "definition_sha256": "cb0729ca7076cd70702ab717101f1c85a4a24fb89128ffb9cf76b26d87b57da7",
               "backend_sha256": "2d94f7262c7f40f5ce2c0c9dff99038bb6c4c0b91539d12cf982a88d7eab4ef5",
-              "checkpoint_sha256": "01ea299d4023e42f04f0afed86df12dc5813ecf36464207ddebedf40da5378ba"
+              "checkpoint_sha256": "01ea299d4023e42f04f0afed86df12dc5813ecf36464207ddebedf40da5378ba",
+              "declared_input_cap": 28000
             },
             "43": {
               "status": "scored",
@@ -1104,7 +1127,8 @@
               },
               "definition_sha256": "fd7d87574cb5e819dfd4347872b4302c9c70911be3d0a7c322bd259c34adade7",
               "backend_sha256": "979e867d0ab063b6c03ffbb1cb18a824353cdb1615f557168b0e58606d86eae5",
-              "checkpoint_sha256": "eab154c42d9b2d19021640396b4149d630c6e3b7c95944e704ee7a7ab18fa928"
+              "checkpoint_sha256": "eab154c42d9b2d19021640396b4149d630c6e3b7c95944e704ee7a7ab18fa928",
+              "declared_input_cap": 28000
             },
             "44": {
               "status": "scored",
@@ -1120,13 +1144,15 @@
               },
               "definition_sha256": "b944b98c438236f51c1465d4d3236eed6555aae2eed5e91f43b4b8d184ba2e25",
               "backend_sha256": "eff481a3f3592b869790292d7899d543327822efda0b6e9dd2cf29a12462cd66",
-              "checkpoint_sha256": "fc839c413a16f5659711fe763486455d16b235e35edeac93fdb08c8f7f5804c0"
+              "checkpoint_sha256": "fc839c413a16f5659711fe763486455d16b235e35edeac93fdb08c8f7f5804c0",
+              "declared_input_cap": 28000
             }
           },
           "completed": 3,
           "attempted": 3,
           "complete": true,
           "failure_tokens": [],
+          "extended_context_seeds": [],
           "mean": 0.23370816917193862,
           "sd": 0.058942871508450796
         },
@@ -1159,7 +1185,8 @@
           "complete": false,
           "failure_tokens": [
             "$F_{\\mathrm{ctx}}$"
-          ]
+          ],
+          "extended_context_seeds": []
         }
       },
       "vcc_corrected": {
@@ -1179,7 +1206,8 @@
               },
               "definition_sha256": "19a32f9fbf95efd31bb6bfb00cb4e1c762f8b615103cb9d9242723b2c7846af8",
               "backend_sha256": "2d94f7262c7f40f5ce2c0c9dff99038bb6c4c0b91539d12cf982a88d7eab4ef5",
-              "checkpoint_sha256": "ecb4adbe2142f2f1824f050f89d47326e54968fdf34c5764c54087d6b4c1785b"
+              "checkpoint_sha256": "ecb4adbe2142f2f1824f050f89d47326e54968fdf34c5764c54087d6b4c1785b",
+              "declared_input_cap": 28000
             },
             "43": {
               "status": "scored",
@@ -1195,7 +1223,8 @@
               },
               "definition_sha256": "9398659ea395ea4a549afb23cda826f1098db6488a54eaa47a42da9a1d1b3fe1",
               "backend_sha256": "979e867d0ab063b6c03ffbb1cb18a824353cdb1615f557168b0e58606d86eae5",
-              "checkpoint_sha256": "4a536b830f0a4c9353af834637635f083e8b184d3257d6c5811d404badfa22bd"
+              "checkpoint_sha256": "4a536b830f0a4c9353af834637635f083e8b184d3257d6c5811d404badfa22bd",
+              "declared_input_cap": 28000
             },
             "44": {
               "status": "scored",
@@ -1211,13 +1240,15 @@
               },
               "definition_sha256": "6be4bb1dbf98b4ea18b5fc19e58b70f6ef53952930576501310a5af45b34aa0f",
               "backend_sha256": "eff481a3f3592b869790292d7899d543327822efda0b6e9dd2cf29a12462cd66",
-              "checkpoint_sha256": "0a68a0b0e8e046b139846b8f6dcce98327fe052bdbbb5c9736326246433d98a6"
+              "checkpoint_sha256": "0a68a0b0e8e046b139846b8f6dcce98327fe052bdbbb5c9736326246433d98a6",
+              "declared_input_cap": 28000
             }
           },
           "completed": 3,
           "attempted": 3,
           "complete": true,
           "failure_tokens": [],
+          "extended_context_seeds": [],
           "mean": 0.1860887220647657,
           "sd": 0.027760731211682915
         },
@@ -1250,7 +1281,8 @@
           "complete": false,
           "failure_tokens": [
             "$F_{\\mathrm{ctx}}$"
-          ]
+          ],
+          "extended_context_seeds": []
         }
       },
       "norman_double_corrected": {
@@ -1270,7 +1302,8 @@
               },
               "definition_sha256": "5124899b7ee76872a24ddedf6ed08a5fb488dfbfcf7d868f17b4c78f1e5d7026",
               "backend_sha256": "2d94f7262c7f40f5ce2c0c9dff99038bb6c4c0b91539d12cf982a88d7eab4ef5",
-              "checkpoint_sha256": "b1838a4fda3b9e86712215b39f61e92c05471fdaae9156e3680c2a89eb877ccd"
+              "checkpoint_sha256": "b1838a4fda3b9e86712215b39f61e92c05471fdaae9156e3680c2a89eb877ccd",
+              "declared_input_cap": 28000
             },
             "43": {
               "status": "scored",
@@ -1286,7 +1319,8 @@
               },
               "definition_sha256": "db5014cb37c1ec7c21e437ce268acc6872fa96e18ef7b09086a63c530b0dfe3e",
               "backend_sha256": "979e867d0ab063b6c03ffbb1cb18a824353cdb1615f557168b0e58606d86eae5",
-              "checkpoint_sha256": "02379a14334dcc01d9591fce64ef54fd0472205e71793cf81412b63724dffff1"
+              "checkpoint_sha256": "02379a14334dcc01d9591fce64ef54fd0472205e71793cf81412b63724dffff1",
+              "declared_input_cap": 28000
             },
             "44": {
               "status": "scored",
@@ -1302,13 +1336,15 @@
               },
               "definition_sha256": "161cb22c6ab20efd59d5939036c591a369a9ca5fb46dfffae6fc4fa37bb5902a",
               "backend_sha256": "eff481a3f3592b869790292d7899d543327822efda0b6e9dd2cf29a12462cd66",
-              "checkpoint_sha256": "ef53acc9bcc09378de8aa961137dd7bc6ab34c9afa3a986875051b61867ce5b9"
+              "checkpoint_sha256": "ef53acc9bcc09378de8aa961137dd7bc6ab34c9afa3a986875051b61867ce5b9",
+              "declared_input_cap": 28000
             }
           },
           "completed": 3,
           "attempted": 3,
           "complete": true,
           "failure_tokens": [],
+          "extended_context_seeds": [],
           "mean": 0.14123456790123456,
           "sd": 0.0004276668660664029
         },
@@ -1341,7 +1377,8 @@
           "complete": false,
           "failure_tokens": [
             "$F_{\\mathrm{ctx}}$"
-          ]
+          ],
+          "extended_context_seeds": []
         }
       },
       "tahoe_drug_corrected": {
@@ -1361,7 +1398,8 @@
               },
               "definition_sha256": "eeebc26e51eca2b0c28cc7cabc13990595f23b9c22e824b0e75e0dc886ef42ff",
               "backend_sha256": "2d94f7262c7f40f5ce2c0c9dff99038bb6c4c0b91539d12cf982a88d7eab4ef5",
-              "checkpoint_sha256": "f505ebe9f778aee21916135777321ec557c01a7a1e3d83e0fdd69f1771bfdd9e"
+              "checkpoint_sha256": "f505ebe9f778aee21916135777321ec557c01a7a1e3d83e0fdd69f1771bfdd9e",
+              "declared_input_cap": 28000
             },
             "43": {
               "status": "scored",
@@ -1377,7 +1415,8 @@
               },
               "definition_sha256": "bcadd84b510213bd2f19e3fdcbcda9aef1d50ae8c006482e4880346f82ba039b",
               "backend_sha256": "979e867d0ab063b6c03ffbb1cb18a824353cdb1615f557168b0e58606d86eae5",
-              "checkpoint_sha256": "a6d6c71c066c685ac26d6ac8f15e9595da030689a4357e224c3cc8d1ab85af64"
+              "checkpoint_sha256": "a6d6c71c066c685ac26d6ac8f15e9595da030689a4357e224c3cc8d1ab85af64",
+              "declared_input_cap": 28000
             },
             "44": {
               "status": "failed",
@@ -1393,6 +1432,7 @@
           "failure_tokens": [
             "$F_{\\mathrm{svc}}$"
           ],
+          "extended_context_seeds": [],
           "mean": 0.11940298507462686,
           "sd": 0.021107665110046196
         },
@@ -1426,7 +1466,8 @@
           "failure_tokens": [
             "$F_{\\mathrm{ctx}}$",
             "$F_{\\mathrm{svc}}$"
-          ]
+          ],
+          "extended_context_seeds": []
         }
       }
     }
@@ -1679,12 +1720,12 @@
               "selected_round": 65,
               "proposal_slots_used": 6,
               "receipts": {
-                "seal.json": "5af6219841478f260373f8829b231ae83e04504e4e8c778cbef99c18f613b17e",
-                "results.json": "9ac5bebc049c62716c40d9693d632c1afd2c4cdf36dca8a357b8687b8dd8c308",
+                "seal.json": "4476c557167c05e869db04bdf98d753d4b9d568b24713ca3dfee13aee7e9c025",
+                "results.json": "89d19e3a03e41425a5ff9d7d1f0c0b5c23ed7873516d930a3805db2bf02d8a85",
                 "audit.json": "d7699bbbec0c07972f1b08bc97f36f2d6a6e400c983e8393a8b7a93886a8053f",
-                "verification.json": "737caa2af095a9ef878b36da998a14c3a6551754ab95646ea731250f4e7a715b"
+                "verification.json": "2fa7a8abff79b3b920a68434ad06e39f059c795df2858f5443ddc1c595224cc8"
               },
-              "definition_sha256": "b1f6290bfe9545c6f921d45e99b509c2f5ae5a4cbe333bb7357a67f3ccdf05ca",
+              "definition_sha256": "c9309365e7b297118e9e322bab937388904f9875057a110fbaaf690941df813b",
               "checkpoint_sha256": "af8cc573893ad99b69b573b83cfd5c973c2609ea3a98b312916c33ffec6d3bb1"
             },
             "43": {
@@ -1722,6 +1763,7 @@
           "attempted": 3,
           "complete": true,
           "failure_tokens": [],
+          "extended_context_seeds": [],
           "mean": 0.8968298785318194,
           "sd": 0.00804030783235853
         },
@@ -1777,6 +1819,7 @@
           "attempted": 3,
           "complete": true,
           "failure_tokens": [],
+          "extended_context_seeds": [],
           "mean": 0.8608944195053252,
           "sd": 0.008826420611934779
         }
@@ -1858,6 +1901,7 @@
           "attempted": 3,
           "complete": true,
           "failure_tokens": [],
+          "extended_context_seeds": [],
           "mean": 0.20179038123835766,
           "sd": 0.004250778552159959
         },
@@ -1913,6 +1957,7 @@
           "attempted": 3,
           "complete": true,
           "failure_tokens": [],
+          "extended_context_seeds": [],
           "mean": 0.2011914225278105,
           "sd": 0.0004724774024156079
         }
@@ -1994,6 +2039,7 @@
           "attempted": 3,
           "complete": true,
           "failure_tokens": [],
+          "extended_context_seeds": [],
           "mean": 0.1860887220647657,
           "sd": 0.027760731211682915
         },
@@ -2015,11 +2061,19 @@
               "checkpoint_sha256": "ecb4adbe2142f2f1824f050f89d47326e54968fdf34c5764c54087d6b4c1785b"
             },
             "43": {
-              "status": "failed",
-              "display": "$F_{\\mathrm{tool}}$",
-              "error": "Tool response remained invalid after 3 format attempts: Extra data: line 3 column 1 (char 133)",
-              "run_status_sha256": "98507f594d2a038b669acbf9ed2169e3e2e4c83ebcd1f546155de8007669350c",
-              "definition_sha256": "26f7c3983527b8f7751bdff38b2e439e16a2e6c48adfefcc3c7804707128e045"
+              "status": "scored",
+              "primary": 0.16419504604988475,
+              "selected_design": "D05",
+              "selected_round": 90,
+              "proposal_slots_used": 6,
+              "receipts": {
+                "seal.json": "afd15acceca0964ebe7fea83824264967ec8e8c281d2ae3a0a9c2da33ba74f0f",
+                "results.json": "9072fbbe9661989e62586de19c5bb88e166ae2336e4fb1d5d948ed906e43fad2",
+                "audit.json": "3263ae645ff8d0e49c96460b89c96f65ae9532938d54bce312efea88cf332161",
+                "verification.json": "bf2e6574a96ca98488607578aa6374c1f5494f8d9b93349cab57b39cc12a0549"
+              },
+              "definition_sha256": "2a45e7fb87791ee904c48d52566cd13b12ea2211ed9f62614ef78cd49d580ab1",
+              "checkpoint_sha256": "4a536b830f0a4c9353af834637635f083e8b184d3257d6c5811d404badfa22bd"
             },
             "44": {
               "status": "scored",
@@ -2037,14 +2091,13 @@
               "checkpoint_sha256": "0a68a0b0e8e046b139846b8f6dcce98327fe052bdbbb5c9736326246433d98a6"
             }
           },
-          "completed": 2,
+          "completed": 3,
           "attempted": 3,
-          "complete": false,
-          "failure_tokens": [
-            "$F_{\\mathrm{tool}}$"
-          ],
-          "mean": 0.19703556007220618,
-          "sd": 0.028676067035905584
+          "complete": true,
+          "failure_tokens": [],
+          "extended_context_seeds": [],
+          "mean": 0.1860887220647657,
+          "sd": 0.027760731211682915
         }
       },
       "norman_double_corrected": {
@@ -2124,6 +2177,7 @@
           "attempted": 3,
           "complete": true,
           "failure_tokens": [],
+          "extended_context_seeds": [],
           "mean": 0.14123456790123456,
           "sd": 0.0004276668660664029
         },
@@ -2179,6 +2233,7 @@
           "attempted": 3,
           "complete": true,
           "failure_tokens": [],
+          "extended_context_seeds": [],
           "mean": 0.21728395061728398,
           "sd": 0.0662883642402904
         }
@@ -2232,12 +2287,12 @@
               "selected_round": 50,
               "proposal_slots_used": 6,
               "receipts": {
-                "seal.json": "d5b53f77919bb0643d76596672e9ea92a56d410bca037a8faf3ec12ba29e4f1e",
-                "results.json": "bbfca8a7db5ad2a62c17c0a982e73ae2d65e47ef1cc0eaa7577e18e3259bda67",
+                "seal.json": "1ae4063f76036822f268a88facfd52def3913cb5e71e1738492dcb4d6769ac01",
+                "results.json": "70af98c2c55175a27849691a9d6f49030044b0d72e6a4c9e6b39a7a4eb27b46f",
                 "audit.json": "a3056de30ede4de1dd3e0be80f51c2873a531faf9838ea37f452edeb1bd71094",
-                "verification.json": "ec99600194985adf8d4d996f7df890320a23658978d1fd11fee73f31d05d52e0"
+                "verification.json": "91285317a801fc2b73af742776dfddf15fc541871ff65ae5054d9a500897d6b7"
               },
-              "definition_sha256": "81c87ba4572e830def9eb2e5f3a9c24cfeeb081014cad144e2d82ee950c47684",
+              "definition_sha256": "80373722d3ac50d44f3f79137b804b67a311debe5789586b2b7aa0367d7633cf",
               "checkpoint_sha256": "a6d6c71c066c685ac26d6ac8f15e9595da030689a4357e224c3cc8d1ab85af64"
             },
             "44": {
@@ -2260,6 +2315,7 @@
           "attempted": 3,
           "complete": true,
           "failure_tokens": [],
+          "extended_context_seeds": [],
           "mean": 0.15422885572139303,
           "sd": 0.062139283566153225
         },
@@ -2315,6 +2371,7 @@
           "attempted": 3,
           "complete": true,
           "failure_tokens": [],
+          "extended_context_seeds": [],
           "mean": 0.17412935323383086,
           "sd": 0.062139283566153225
         }
@@ -2372,7 +2429,8 @@
               },
               "definition_sha256": "d122a118899df348149ec03d285f5f30b594ff458cd7c0e8eaabb2b1390015c0",
               "backend_sha256": "2d94f7262c7f40f5ce2c0c9dff99038bb6c4c0b91539d12cf982a88d7eab4ef5",
-              "checkpoint_sha256": "af8cc573893ad99b69b573b83cfd5c973c2609ea3a98b312916c33ffec6d3bb1"
+              "checkpoint_sha256": "af8cc573893ad99b69b573b83cfd5c973c2609ea3a98b312916c33ffec6d3bb1",
+              "declared_input_cap": 28000
             },
             "43": {
               "status": "scored",
@@ -2388,7 +2446,8 @@
               },
               "definition_sha256": "69a5de9292f459abb1bf53171a0b129725363f9e333c12b6d38a383a7514689e",
               "backend_sha256": "979e867d0ab063b6c03ffbb1cb18a824353cdb1615f557168b0e58606d86eae5",
-              "checkpoint_sha256": "e7e23c64fbd7ae9d1ca8cc73114f00cb38a3a3058677099f48a7f0c7d86a6905"
+              "checkpoint_sha256": "e7e23c64fbd7ae9d1ca8cc73114f00cb38a3a3058677099f48a7f0c7d86a6905",
+              "declared_input_cap": 28000
             },
             "44": {
               "status": "scored",
@@ -2404,13 +2463,15 @@
               },
               "definition_sha256": "18c1798d71cbe6c1be853008af1f98c9a3384956fead67bef8ceb7ba0cec71bc",
               "backend_sha256": "eff481a3f3592b869790292d7899d543327822efda0b6e9dd2cf29a12462cd66",
-              "checkpoint_sha256": "8ab250718de5066d705c26d843c697f1e1525e83481ce90ca5b0f1779d7a4131"
+              "checkpoint_sha256": "8ab250718de5066d705c26d843c697f1e1525e83481ce90ca5b0f1779d7a4131",
+              "declared_input_cap": 28000
             }
           },
           "completed": 3,
           "attempted": 3,
           "complete": true,
           "failure_tokens": [],
+          "extended_context_seeds": [],
           "mean": 0.8958500572132735,
           "sd": 0.009474254031610804
         },
@@ -2444,7 +2505,8 @@
           "failure_tokens": [
             "$F_{\\mathrm{ctx}}$",
             "$F_{\\mathrm{svc}}$"
-          ]
+          ],
+          "extended_context_seeds": []
         }
       },
       "ptpc_neural": {
@@ -2498,7 +2560,8 @@
               },
               "definition_sha256": "cb0729ca7076cd70702ab717101f1c85a4a24fb89128ffb9cf76b26d87b57da7",
               "backend_sha256": "2d94f7262c7f40f5ce2c0c9dff99038bb6c4c0b91539d12cf982a88d7eab4ef5",
-              "checkpoint_sha256": "01ea299d4023e42f04f0afed86df12dc5813ecf36464207ddebedf40da5378ba"
+              "checkpoint_sha256": "01ea299d4023e42f04f0afed86df12dc5813ecf36464207ddebedf40da5378ba",
+              "declared_input_cap": 28000
             },
             "43": {
               "status": "scored",
@@ -2514,7 +2577,8 @@
               },
               "definition_sha256": "fd7d87574cb5e819dfd4347872b4302c9c70911be3d0a7c322bd259c34adade7",
               "backend_sha256": "979e867d0ab063b6c03ffbb1cb18a824353cdb1615f557168b0e58606d86eae5",
-              "checkpoint_sha256": "eab154c42d9b2d19021640396b4149d630c6e3b7c95944e704ee7a7ab18fa928"
+              "checkpoint_sha256": "eab154c42d9b2d19021640396b4149d630c6e3b7c95944e704ee7a7ab18fa928",
+              "declared_input_cap": 28000
             },
             "44": {
               "status": "scored",
@@ -2530,13 +2594,15 @@
               },
               "definition_sha256": "b944b98c438236f51c1465d4d3236eed6555aae2eed5e91f43b4b8d184ba2e25",
               "backend_sha256": "eff481a3f3592b869790292d7899d543327822efda0b6e9dd2cf29a12462cd66",
-              "checkpoint_sha256": "fc839c413a16f5659711fe763486455d16b235e35edeac93fdb08c8f7f5804c0"
+              "checkpoint_sha256": "fc839c413a16f5659711fe763486455d16b235e35edeac93fdb08c8f7f5804c0",
+              "declared_input_cap": 28000
             }
           },
           "completed": 3,
           "attempted": 3,
           "complete": true,
           "failure_tokens": [],
+          "extended_context_seeds": [],
           "mean": 0.23370816917193862,
           "sd": 0.058942871508450796
         },
@@ -2569,7 +2635,8 @@
           "complete": false,
           "failure_tokens": [
             "$F_{\\mathrm{ctx}}$"
-          ]
+          ],
+          "extended_context_seeds": []
         }
       },
       "vcc_corrected": {
@@ -2623,7 +2690,8 @@
               },
               "definition_sha256": "19a32f9fbf95efd31bb6bfb00cb4e1c762f8b615103cb9d9242723b2c7846af8",
               "backend_sha256": "2d94f7262c7f40f5ce2c0c9dff99038bb6c4c0b91539d12cf982a88d7eab4ef5",
-              "checkpoint_sha256": "ecb4adbe2142f2f1824f050f89d47326e54968fdf34c5764c54087d6b4c1785b"
+              "checkpoint_sha256": "ecb4adbe2142f2f1824f050f89d47326e54968fdf34c5764c54087d6b4c1785b",
+              "declared_input_cap": 28000
             },
             "43": {
               "status": "scored",
@@ -2639,7 +2707,8 @@
               },
               "definition_sha256": "9398659ea395ea4a549afb23cda826f1098db6488a54eaa47a42da9a1d1b3fe1",
               "backend_sha256": "979e867d0ab063b6c03ffbb1cb18a824353cdb1615f557168b0e58606d86eae5",
-              "checkpoint_sha256": "4a536b830f0a4c9353af834637635f083e8b184d3257d6c5811d404badfa22bd"
+              "checkpoint_sha256": "4a536b830f0a4c9353af834637635f083e8b184d3257d6c5811d404badfa22bd",
+              "declared_input_cap": 28000
             },
             "44": {
               "status": "scored",
@@ -2655,13 +2724,15 @@
               },
               "definition_sha256": "6be4bb1dbf98b4ea18b5fc19e58b70f6ef53952930576501310a5af45b34aa0f",
               "backend_sha256": "eff481a3f3592b869790292d7899d543327822efda0b6e9dd2cf29a12462cd66",
-              "checkpoint_sha256": "0a68a0b0e8e046b139846b8f6dcce98327fe052bdbbb5c9736326246433d98a6"
+              "checkpoint_sha256": "0a68a0b0e8e046b139846b8f6dcce98327fe052bdbbb5c9736326246433d98a6",
+              "declared_input_cap": 28000
             }
           },
           "completed": 3,
           "attempted": 3,
           "complete": true,
           "failure_tokens": [],
+          "extended_context_seeds": [],
           "mean": 0.1860887220647657,
           "sd": 0.027760731211682915
         },
@@ -2694,7 +2765,8 @@
           "complete": false,
           "failure_tokens": [
             "$F_{\\mathrm{ctx}}$"
-          ]
+          ],
+          "extended_context_seeds": []
         }
       },
       "norman_double_corrected": {
@@ -2748,7 +2820,8 @@
               },
               "definition_sha256": "5124899b7ee76872a24ddedf6ed08a5fb488dfbfcf7d868f17b4c78f1e5d7026",
               "backend_sha256": "2d94f7262c7f40f5ce2c0c9dff99038bb6c4c0b91539d12cf982a88d7eab4ef5",
-              "checkpoint_sha256": "b1838a4fda3b9e86712215b39f61e92c05471fdaae9156e3680c2a89eb877ccd"
+              "checkpoint_sha256": "b1838a4fda3b9e86712215b39f61e92c05471fdaae9156e3680c2a89eb877ccd",
+              "declared_input_cap": 28000
             },
             "43": {
               "status": "scored",
@@ -2764,7 +2837,8 @@
               },
               "definition_sha256": "db5014cb37c1ec7c21e437ce268acc6872fa96e18ef7b09086a63c530b0dfe3e",
               "backend_sha256": "979e867d0ab063b6c03ffbb1cb18a824353cdb1615f557168b0e58606d86eae5",
-              "checkpoint_sha256": "02379a14334dcc01d9591fce64ef54fd0472205e71793cf81412b63724dffff1"
+              "checkpoint_sha256": "02379a14334dcc01d9591fce64ef54fd0472205e71793cf81412b63724dffff1",
+              "declared_input_cap": 28000
             },
             "44": {
               "status": "scored",
@@ -2780,13 +2854,15 @@
               },
               "definition_sha256": "161cb22c6ab20efd59d5939036c591a369a9ca5fb46dfffae6fc4fa37bb5902a",
               "backend_sha256": "eff481a3f3592b869790292d7899d543327822efda0b6e9dd2cf29a12462cd66",
-              "checkpoint_sha256": "ef53acc9bcc09378de8aa961137dd7bc6ab34c9afa3a986875051b61867ce5b9"
+              "checkpoint_sha256": "ef53acc9bcc09378de8aa961137dd7bc6ab34c9afa3a986875051b61867ce5b9",
+              "declared_input_cap": 28000
             }
           },
           "completed": 3,
           "attempted": 3,
           "complete": true,
           "failure_tokens": [],
+          "extended_context_seeds": [],
           "mean": 0.14123456790123456,
           "sd": 0.0004276668660664029
         },
@@ -2819,7 +2895,8 @@
           "complete": false,
           "failure_tokens": [
             "$F_{\\mathrm{ctx}}$"
-          ]
+          ],
+          "extended_context_seeds": []
         }
       },
       "tahoe_drug_corrected": {
@@ -2873,7 +2950,8 @@
               },
               "definition_sha256": "eeebc26e51eca2b0c28cc7cabc13990595f23b9c22e824b0e75e0dc886ef42ff",
               "backend_sha256": "2d94f7262c7f40f5ce2c0c9dff99038bb6c4c0b91539d12cf982a88d7eab4ef5",
-              "checkpoint_sha256": "f505ebe9f778aee21916135777321ec557c01a7a1e3d83e0fdd69f1771bfdd9e"
+              "checkpoint_sha256": "f505ebe9f778aee21916135777321ec557c01a7a1e3d83e0fdd69f1771bfdd9e",
+              "declared_input_cap": 28000
             },
             "43": {
               "status": "scored",
@@ -2889,7 +2967,8 @@
               },
               "definition_sha256": "bcadd84b510213bd2f19e3fdcbcda9aef1d50ae8c006482e4880346f82ba039b",
               "backend_sha256": "979e867d0ab063b6c03ffbb1cb18a824353cdb1615f557168b0e58606d86eae5",
-              "checkpoint_sha256": "a6d6c71c066c685ac26d6ac8f15e9595da030689a4357e224c3cc8d1ab85af64"
+              "checkpoint_sha256": "a6d6c71c066c685ac26d6ac8f15e9595da030689a4357e224c3cc8d1ab85af64",
+              "declared_input_cap": 28000
             },
             "44": {
               "status": "failed",
@@ -2905,6 +2984,7 @@
           "failure_tokens": [
             "$F_{\\mathrm{svc}}$"
           ],
+          "extended_context_seeds": [],
           "mean": 0.11940298507462686,
           "sd": 0.021107665110046196
         },
@@ -2938,7 +3018,8 @@
           "failure_tokens": [
             "$F_{\\mathrm{ctx}}$",
             "$F_{\\mathrm{svc}}$"
-          ]
+          ],
+          "extended_context_seeds": []
         }
       }
     }

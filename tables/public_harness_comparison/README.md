@@ -7,7 +7,10 @@ direct optimization, AI-Scientist-v2, AI-Researcher and BioCoLoop. AI-Scientist-
 AI-Researcher receive laboratory 0, while BioCoLoop receives all ten
 laboratories. `snapshot_llm_grouped_three_seed.json` records source hashes, selected
 checkpoints, independent verification and typed controller failures;
-incomplete cells show their completed count rather than an imputed score.
+incomplete cells are marked ($\dagger$ partial, -- unscored) rather than imputed, and the
+completed count and typed failure of every such cell is recorded in Section C.2. The final
+column reports each method's mean rank over its complete endpoints and its colored change
+against the fixed reference.
 
 The other files in this directory are retained as historical artifacts from
 earlier adapters. They are not included in the submitted manuscript and must

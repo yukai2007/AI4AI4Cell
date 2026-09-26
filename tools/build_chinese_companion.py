@@ -641,18 +641,19 @@ def grouped_token_label(token):
 
 
 def grouped_cell(record):
-    """Render one controller cell without imputing an unsealed selection."""
+    """Render one controller cell without imputing an unsealed selection.
+
+    Mirrors the English main table: a partial cell keeps its mean and SD with a
+    dagger, an endpoint with no scored run shows a dash, and every completed
+    count and typed failure is listed in the note below the block.
+    """
     if not record.get('complete'):
-        tokens = '、'.join(grouped_token_label(tok) for tok in record.get('failure_tokens', []))
-        count = f"（{record.get('completed', 0)}/{record.get('attempted', 0)}）"
         if not record.get('completed'):
-            return (tokens or 'F') + ' ' + count
+            return '–'
         value = f"{100*record['mean']:.2f}"
         if record.get('sd') is not None:
             value += f" ± {100*record['sd']:.2f}"
-        if tokens:
-            value += f"，{tokens}"
-        return value + ' ' + count
+        return value + ' †'
     return f"{100*record['mean']:.2f} ± {100*record['sd']:.2f}"
 
 
@@ -700,9 +701,11 @@ def grouped_harness_page():
         bullets([
             "分数为 seeds 42–44 的均值 ± 样本标准差，乘以 100；加粗与下划线表示该模型块内该端点的最优与"
             "次优完整结果。Norman 的最高分仍属于单实验室固定配方（25.56），BioCoLoop 在其余四个端点领先。",
-            "公开控制器在封存开发选择前终止的单元格保留类型化失败标记与完成计数 (n/3)，不以均值填补："
-            "F_ctx 为声明的上下文上限终止，F_svc 为 Luna 服务/传输终止，F_tool 为原生工具传输终止，"
-            "F_pipe 为原生流程终止。",
+            "公开控制器在封存开发选择前终止的单元格不以均值填补：† 表示部分完成，– 表示该端点没有计分运行。"
+            "各单元格的完成计数与类型化失败标记为：Qwen2.5 AI-Researcher 的 VCC 完成 2/3（F_tool）；"
+            "Luna AI-Scientist-v2 的 Tahoe 完成 2/3（F_svc）；Luna AI-Researcher 在五个端点均完成 0/3"
+            "（F_ctx，DTI 与 Tahoe 另有 F_svc）。F_ctx 为声明的上下文上限终止，F_svc 为 Luna 服务/传输终止，"
+            "F_tool 为原生工具传输终止，F_pipe 为原生流程终止。",
             "Qwen 使用已登记的生成种子；Luna 服务不暴露生成种子，因此 seed 标签只标识训练/搜索重复，"
             "相同提案与候选训练预算不代表相同的语言模型开销。",
             "每个计分单元格在开发选择封存后由独立复核器重新载入保存的预测、重算指标并核对所选取的"
@@ -790,10 +793,10 @@ def story():
                 [43*mm, 65*mm, 63*mm], highlights=[(3, PALE_TEAL)]), PageBreak()]
 
     s += [p("3  架构总览", "h1"),
-          figure('framework_v2', 171,
-                 ROOT / 'figures/biocoloop_framework_v2.pdf'),
+          figure('framework_v3', 171,
+                 ROOT / 'figures/biocoloop_framework_v3.pdf'),
           Spacer(1, 4*mm),
-          p("新版架构图使用可编辑矢量模块：绿色为数据、蓝色为预测器、紫色为研究循环、琥珀色为聚合。候选设计向下送达协调器，聚合开发证据向上返回外层，历史再流向下一次提案。Lab 1、2、K 表示同一任务下的不同实验室或场景。", "note"),
+          p("新版架构图使用作者给的可编辑幻灯片：淡蓝为外层研究循环、绿色为内层协同训练、紫色为可复用产出、底部为三个生物学任务族。候选设计向下送达协调器，聚合开发证据向上返回外层，历史再流向下一次提案。Lab 1、2、K 表示同一任务下的不同实验室或场景。", "note"),
           callout("读图顺序",
                   "外层提出、实例化、评价和修订设计；中部实验室本地拟合，协调器聚合更新与诊断；右侧输出选定设计、预测器和历史；底部是三个任务族。研究 LLM 通过新的证据上下文调整下一提案，其权重保持固定。",
                   PALE_BLUE, BLUE), PageBreak(),
@@ -944,8 +947,8 @@ def main():
               ROOT / 'assets/completed_budget_examples.pdf',
               ROOT / 'assets/laboratory_sensitivity_v2.pdf',
               ROOT / 'assets/completed_short6_search.pdf',
-              ROOT / 'figures/biocoloop_framework_v2.pdf',
-              ROOT / 'figures/biocoloop_framework_v2.provenance.json',
+              ROOT / 'figures/biocoloop_framework_v3.pdf',
+              ROOT / 'figures/biocoloop_framework_v3.provenance.json',
               ROOT / 'provenance/coauthor_review_v2_20260923/ANNOTATIONS.zh-CN.md',
               ROOT / 'sections/03_method.tex',
               ROOT / 'sections/04_experimental_design.tex',
@@ -969,7 +972,7 @@ def main():
     # as well as the final PDF so visible labels cannot retain the retired name.
     retired = ''.join(('AI4', 'AI4', 'Cell')).lower()
     for source in (ROOT / 'assets/paradigm_comparison.pdf',
-                   ROOT / 'figures/biocoloop_framework_v2.pdf'):
+                   ROOT / 'figures/biocoloop_framework_v3.pdf'):
         with fitz.open(source) as figure_doc:
             figure_text = ''.join(page.get_text() for page in figure_doc)
             assert retired not in figure_text.lower(), f'Retired label remains in {source.name}'
