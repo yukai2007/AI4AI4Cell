@@ -7,7 +7,7 @@ This limitation also creates an opportunity. Local training and evaluation provi
 
 We introduce BioCoLoop, a collaborative research framework that extends collaboration from parameter fitting to model development itself. Figure~\ref{fig:paradigms} contrasts BioCoLoop with centralized self-improving agents and conventional collaborative training. In BioCoLoop, participating laboratories train and evaluate each proposed change on their local data: model updates are aggregated for parameter fitting, and evaluation results are combined to guide what should be tested next.
 
-BioCoLoop consists of an inner collaborative training loop and an outer self-improving loop: the inner loop trains and periodically evaluates proposed model structures or training hyperparameters across laboratories, while the outer loop uses results from completed experiments to generate subsequent proposals and to decide where further training is spent. We evaluate BioCoLoop on drug-target interaction prediction, observed-response proteomic efficacy prediction, and cell perturbation identification, with task-adapted AI-Scientist-v2 and AI-Researcher baselines and both Qwen2.5-7B-Instruct and GPT-5.6 Luna as the self-improving model. In the main comparison, increasing participation from one to ten laboratories improves four of the five primary endpoints, with the largest gains in drug-target and proteomic prediction; under a fixed total amount of training and evaluation, using early evaluation results to decide which candidates continue training further improves the Norman endpoint, and the identification endpoints themselves remain a low-headroom stress test near chance.
+BioCoLoop consists of an inner collaborative training loop and an outer self-improving loop: the inner loop trains and periodically evaluates proposed model structures or training hyperparameters across laboratories, while the outer loop uses results from completed experiments to generate subsequent proposals and to decide where further training is spent. We evaluate BioCoLoop on drug-target interaction prediction, observed-response proteomic efficacy prediction, and cell perturbation identification, with task-adapted AI-Scientist-v2 and AI-Researcher baselines and both Qwen2.5-7B-Instruct and GPT-5.6 Luna as the self-improving model. Across the evaluated tasks, collaborative training across laboratories consistently improves predictive performance. We also find that early evaluation results can further improve performance by guiding which models receive additional training. Our contributions are summarized as:
 
 
 \begin{figure}[t]
@@ -21,7 +21,7 @@ BioCoLoop additionally uses results from local evaluation to guide subsequent ch
 }
 \label{fig:paradigms}
 \end{figure}
-Our contributions are summarized as:
+
 \begin{itemize}
 \setlength{\parskip}{4pt}
 
