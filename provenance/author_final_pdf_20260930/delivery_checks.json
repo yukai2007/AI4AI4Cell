@@ -1,0 +1,36 @@
+{
+  "checked_utc": "2026-09-29T20:07:28.027349+00:00",
+  "unit_tests_passed": 164,
+  "test_log_sha256": "8748c27ccfc0f4c1d9fd51728d7e00248df49ae45f0db7288b344a8f446621dd",
+  "pdf_sha256": "fab5a19bd1d56661e24449adc2a563323cbbe32e16e1b36ac59c5c5e09c4ea2d",
+  "visual_review": {
+    "pages": [
+      1,
+      2,
+      4,
+      7,
+      8,
+      9,
+      15,
+      16,
+      18,
+      19,
+      20,
+      22,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "result": "PASS: no clipped text, crossed table boundaries or new layout defects observed; retain author-approved whitespace and figure sizing"
+  },
+  "compiled_main_text_pages": 9,
+  "compiled_total_pages": 31,
+  "overfull_boxes": 0,
+  "undefined_references": 0,
+  "toolchain": "Tectonic 0.16.0; standard bundle cache restored for the final rebuild",
+  "experiments_started": 0,
+  "numerical_tables_or_figure_assets_changed": 0,
+  "remote_scope": "GitHub main; no direct Overleaf/OpenReview action"
+}

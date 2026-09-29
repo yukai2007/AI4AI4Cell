@@ -30,7 +30,7 @@ class CompletedManuscriptTests(unittest.TestCase):
     def test_scope_and_adapter_are_explicit(self):
         text = (ROOT / 'sections/23_appendix_core_sensitivity.tex').read_text()
         for phrase in ('two independent external studies', 'source-specific prediction heads',
-                       'not part of this extended protocol', 'DTI seed 42',
+                       'DTI\'s backend comparison is reported in the six-slot study in B.3', 'DTI seed 42',
                        '100 training rounds', '12-design', '36-design',
                        '124 distinct compounds', '620 dose conditions',
                        'zero proposal slots', 'private continuous-response head'):
@@ -60,15 +60,15 @@ class CompletedManuscriptTests(unittest.TestCase):
         self.assertIn(r'\input{tables/public_harness_comparison/main_public_harness_three_seed}', text)
         self.assertIn(r'\input{tables/strong_v3/effects}', text)
         self.assertIn('eight pairs tie', text + appendix_text)
-        self.assertNotIn('seven ties and one decrease', text + appendix_text)
-        self.assertIn('800 training rounds and 160 development evaluations', text)
-        self.assertIn('4.7 How previous evaluation results affect subsequent proposals', text)
-        self.assertIn('4.4 Early evaluation results guide further training', text)
-        self.assertLess(text.index('4.4 Early evaluation'),
+        self.assertIn('seven ties and one decrease', text + appendix_text)
+        self.assertIn('800 aggregation rounds and 160 development evaluations', text)
+        self.assertIn('4.7 Development history and proposal trajectories', text)
+        self.assertIn('4.4 Evidence-guided training allocation', text)
+        self.assertLess(text.index('4.4 Evidence-guided'),
                         text.index('4.5 Learning from different'))
         self.assertNotIn(r'\input{tables/completed_ablation/summary}', text)
         self.assertNotIn(r'\label{fig:completed-short-dev}', text)
-        self.assertIn(r'Figure~\ref{fig:completed-short-dev}', text)
+        self.assertIn(r'Figures~\ref{fig:completed-short-dev}', text)
         appendix = (ROOT / 'sections/23_appendix_core_sensitivity.tex').read_text()
         self.assertIn(r'\label{fig:completed-short-dev}', appendix)
         self.assertIn(r'\label{fig:completed-long-dev}', appendix)

@@ -22,12 +22,12 @@ DTI auxiliaries are BioSNAP, Davis and Human from the pinned TAPB release, with 
 
 \input{tables/completed_ablation/transfer_independent}
 
-The cell study reports mean and SD across three seeds together with a paired intervention-bootstrap analysis. Jiang improves target Top-1 by 3.58 points, with a 95\% bootstrap interval of [$-$2.11, 9.51]. This positive point estimate motivates further source-aware evaluation, while the complete table also exposes sources whose updates reduce the target metric.
+The cell study reports mean and SD across three seeds with a paired intervention-bootstrap analysis. Jiang improves target Top-1 by 3.58 points, with a 95\% bootstrap interval of [$-$2.11, 9.51]. Source-specific gains and decreases are reported in Table~\ref{tab:completed-independent-transfer}.
 
 \paragraph{Matched source--scenario laboratories.}
 Table~\ref{tab:scenario-labs-matched} compares four fixed-design settings: 15 VCC training interventions in one laboratory, all 60 VCC interventions in one laboratory, the same 60 partitioned into four laboratories, and four source-defined laboratories with 15 interventions each. The latter uses VCC, Replogle/K562, Nadig/HepG2 and Jiang/IFNB/K562. Both four-laboratory arms share the same 15-intervention VCC anchor. Hash-based sampling fixes the auxiliary identities before fitting, excluding target training, development and test intervention identities as well as duplicates across auxiliary laboratories. This experiment matches training intervention counts, not raw-cell counts: the same-source arm represents 77,771 cells, versus 33,469 in the cross-scenario arm. Each source retains its measured gene panel and corresponding loss mask.
 
-All four settings use identical head initialization, the default design, 100 rounds and seeds 61--63. The original ten target-development panels select checkpoints, and the common target test contains 20 interventions and 360 five-option queries. No proposal search is performed. All twelve fits complete, and saved predictions reproduce the scorer's metrics under independent evaluation. Cross-scenario Top-1 is lower in each seed, with a mean difference of $-1.88$ points relative to the same-source four-laboratory setting. The near-zero MRR difference shows that source composition can affect the top-ranked choice differently from the full ranking. The protocol and source identities remain fixed throughout the comparison.
+All four settings use identical head initialization, the default design, 100 rounds and seeds 61--63. The original ten target-development panels select checkpoints, and the common target test contains 20 interventions and 360 five-option queries. No proposal search is performed. All twelve fits complete, and independent evaluation of saved predictions reproduces the metrics. Cross-scenario Top-1 is lower in each seed, with a mean difference of $-1.88$ points relative to the same-source four-laboratory setting; the MRR difference is near zero. The protocol and source identities remain fixed throughout the comparison.
 
 \input{tables/scenario_labs_v2/table}
 
@@ -36,7 +36,7 @@ Two independent lung-cancer studies provide auxiliary measurements: Lin et al.\ 
 
 The Lin subset contains 28 drug conditions (20 source-training, eight source-development), spanning five training and two development drugs. Inputs are 24-hour, 10-$\mu$M protein log-fold changes, and the response is the mean of the three released CellTiter-Glo ratio measurements. The HCT16/HCT116 alias is excluded from auxiliary training. The Ruprecht subset contains 109 matched drug conditions (85 training, 24 development; 17 and five drugs respectively). Protein log-fold changes at 24 hours are paired with CellTiter-Glo EC50 values in $\log_{10}$ nM: 49 exact, 18 approximate and 42 right-censored outcomes. Squared distance to the encoded potency interval is the loss. The adapter treats explicit lower bounds and values at or above 10,000 nM as right-censored and encodes approximate values with a factor-of-two interval. These are analysis conventions. Profiling dose is not a model input, although source acquisition uses dose conditions chosen in relation to drug response. The target retains 386 training and 105 development examples, with 148 held-out observations across 92 compounds and 22 positives.
 
-All four source settings receive the same 100-round procedure. A two-proposal Luna loop is also executed independently for each setting. These 12 fits and eight valid proposal calls produce eight fixed/loop evaluations. Fixed and loop selection have identical held-out ranking scores in each source arm (Table~\ref{tab:completed-protein-loop}). The source effect and the proposal-history effect are thus measured separately.
+All four source settings receive the same 100-round procedure. A two-proposal Luna loop is executed independently for each setting. These 12 fits and eight valid proposal calls produce eight fixed/loop evaluations, with identical held-out ranking scores within each source arm (Table~\ref{tab:completed-protein-loop}).
 
 \input{tables/completed_ablation/transfer_protein_loop}
 
@@ -51,7 +51,7 @@ We append a private continuous-response head to the shared adapter and instantia
 
 \input{tables/supplemental_20260923/proteomics_three_source}
 
-Combining all three sources raises target AP from 34.98 to 35.68, a 0.70-point gain. Relative to Lin and Ruprecht together, adding decryptE increases AP by 0.37 points and AUROC by 0.11 points. Target-only training retains the highest AUROC across the four arms (74.75 versus 74.28 for all three), showing that the primary AP improvement does not imply uniform gains across ranking metrics. These source-transfer point estimates come from one seed. The four complete CPU fits take 101.21 seconds in total, and saved checkpoints and predictions are sealed and independently rescored with exact agreement.
+Combining all three sources raises target AP from 34.98 to 35.68, a 0.70-point gain. Relative to Lin and Ruprecht together, adding decryptE increases AP by 0.37 points and AUROC by 0.11 points. Target-only training retains the highest AUROC across the four arms (74.75 versus 74.28 for all three). These source-transfer estimates use one seed. The four complete CPU fits take 101.21 seconds in total, and sealed checkpoints and predictions are independently rescored with exact agreement.
 
 \paragraph{One study per training laboratory.}
 To assign every training laboratory to a distinct source, we additionally merge all 386 target training examples into one laboratory. Lin, Ruprecht and decryptE each remain a separate source laboratory. The four arms use $K=1,2,3,4$ laboratories and respectively 386, 881, 491 and 986 training conditions. Their four-head architecture, seed-61 initialization, local loss, sample-weighted shared-parameter aggregation and source-private head ownership are unchanged. The merged target laboratory performs seven minibatches per local epoch, instead of aggregating updates from ten smaller target partitions. This is therefore a separately trained protocol, with a matching target-only control.
@@ -60,7 +60,7 @@ The original ten target-development panels still select checkpoints with equal p
 
 \input{tables/proteomics_scenario_labs_v2/table}
 
-With one laboratory per study, all three auxiliary sources improve target AP from 34.41 to 37.53 and AUROC from 72.33 to 74.39. Adding decryptE to Lin and Ruprecht increases AP by 1.44 points. These single-seed source-transfer comparisons vary available training data as well as participating studies, so they measure the effect of those sources under a fixed design, separately from proposal feedback and the matched-condition cell study.
+With one laboratory per study, all three auxiliary sources improve target AP from 34.41 to 37.53 and AUROC from 72.33 to 74.39. Adding decryptE to Lin and Ruprecht increases AP by 1.44 points. These single-seed comparisons measure source transfer under a fixed design, varying available training data and participating studies.
 
 \paragraph{Within-study proteomic contexts.}
 HCC1143, HCC1806 and MDA-MB-453-1 are drawn from the mtPTDS supplementary collection \citep{Sun2026ProteinTalks}, each with 47 retained drug conditions and 3,501 proteins shared with the target panel. They are three biological contexts within one study. Target development/test compounds are excluded from source training. These experiments use the original proteomic adapter and seeds 61--63.
@@ -68,7 +68,7 @@ HCC1143, HCC1806 and MDA-MB-453-1 are drawn from the mtPTDS supplementary collec
 \input{tables/completed_ablation/transfer_contexts}
 
 \subsection*{B.3 Research-model and six-slot proposal comparison}
-The short study uses the 12 executable designs of Appendix A. Direct search receives untried identifiers without measured scores, while the loop additionally receives accumulated development evidence. Both modes share initialization and the first proposal. Each slot allows two attempts to return the four-field proposal schema, and failed slots consume budget and remain in the trace. Every valid candidate restarts from the common task/seed initialization and is fitted for 100 rounds. Prefixes at 0, 1, 2, 4 and 6 slots are evaluated after the trajectory is complete. An exact fit cache can reuse an identical configuration while retaining its logical training-budget charge.
+The short study uses the 12 configurations in the registered executable design space of Appendix A. Direct search receives untried identifiers without measured scores, while the loop additionally receives accumulated development evidence. Both modes share initialization and the first proposal. Each slot allows two attempts to return the four-field proposal schema, and failed slots consume budget and remain in the trace. Every valid candidate restarts from the common task/seed initialization and is fitted for 100 rounds. Prefixes at 0, 1, 2, 4 and 6 slots are evaluated after the trajectory is complete. An exact fit cache can reuse an identical configuration while retaining its logical training-budget charge.
 
 Qwen uses the local sampling settings in Appendix A. The second proposer is the \texttt{gpt-5.6-luna} service, accessed in a text-only session with tool use disabled, with request metadata and responses retained. The comparison holds task messages, editable designs, training procedure and proposal budget fixed across backends. Service-level decoding controls and parameter count are not exposed by the Luna interface.
 
@@ -85,17 +85,17 @@ All five endpoints have both backends and both search modes. Among the ten direc
 \end{figure}
 
 \subsection*{B.4 Extended search and task-dependent saturation}
-The extended study increases the design library to 36 configurations: three learning rates, three weight decays, two coordinator-momentum values and two residual-head settings. It runs 24 proposal slots for both backends and modes on PTPC, VCC, Norman and Tahoe. Prefixes are 0, 1, 2, 4, 6, 8, 12, 16, 20 and 24. The settings for initialization, full candidate fitting, development selection and invalid-slot accounting are otherwise unchanged. DTI's backend comparison is the six-slot study in B.3, and it is not part of this extended protocol.
+The extended study expands the registered executable design space to 36 configurations: three learning rates, three weight decays, two coordinator-momentum values and two residual-head settings. It runs 24 proposal slots for both backends and modes on PTPC, VCC, Norman and Tahoe. Prefixes are 0, 1, 2, 4, 6, 8, 12, 16, 20 and 24. Initialization, full candidate fitting, development selection and invalid-slot accounting are unchanged. DTI's backend comparison is reported in the six-slot study in B.3.
 
 \input{tables/completed_ablation/long24}
 \input{tables/completed_ablation/dynamics_long24}
 
-Luna produces valid designs in all 192 attempted slots, and Qwen in 116 of 192. Across 16 mode trajectories, the primary development score is unchanged in the final eight slots in 12 cases, and the full score/loss selection key is unchanged in ten. Each trajectory retains 11--24 unvisited designs. A plateau therefore characterizes finite-budget search with a particular backend, rather than exhaustion of the design space.
+Luna produces valid designs in all 192 attempted slots, and Qwen in 116 of 192. Across 16 mode trajectories, the primary development score is unchanged in the final eight slots in 12 cases, and the full score/loss selection key is unchanged in ten. Each trajectory retains 11--24 unvisited designs, so these plateaus occur before the registered executable design space is exhausted.
 
 Table~\ref{tab:completed-dynamics-long24} measures the first slot attaining the smaller terminal development score within each direct/loop pair, a common target reached by both modes. Luna reaches Norman's common target earlier with feedback (4 versus 22 slots), whereas direct search reaches Tahoe's target earlier (5 versus 13). Proteomics retains the initial design. Table~\ref{tab:completed-norman-events} connects Norman's trajectory to concrete configuration changes: reducing the learning rate to $10^{-4}$ gives an early development gain, and removing the residual head reaches the final primary-score target. Subsequent loss-tiebreak selections can change the retained design without increasing that primary score.
 
 
-Within this extended protocol, Qwen's VCC held-out Top-1 decreases from 31.50 at slot 6 to 19.61 at slot 24 while development selection improves. This separates the speed of finding a strong development design from generalization of the selected predictor. The complete development and held-out curves support task-specific budget analysis alongside the proposal-validity and remaining-space diagnostics.
+Within this extended protocol, Qwen's VCC held-out Top-1 decreases from 31.50 at slot 6 to 19.61 at slot 24 while development selection improves. The development and held-out curves report this divergence alongside proposal validity and the remaining unvisited configurations.
 
 \begin{figure}[htbp]
 \centering
@@ -105,7 +105,7 @@ Within this extended protocol, Qwen's VCC held-out Top-1 decreases from 31.50 at
 \end{figure}
 
 \subsection*{B.5 Executed designs and proposal traces}
-The short protocol uses exactly the D00--D11 configurations listed in Appendix A.2. The extended protocol uses all $3\times3\times2\times2=36$ combinations in Table~\ref{tab:completed-menu-long24}. An identifier \texttt{L}$i$\texttt{W}$j$\texttt{M}$k$\texttt{R}$l$ selects the indexed value of each factor, with $i,j\in\{0,1,2\}$ and $k,l\in\{0,1\}$. For example, \texttt{L0W1M0R1} specifies learning rate $10^{-4}$, weight decay $10^{-3}$, zero coordinator momentum and an enabled residual module. Every configuration has proximal coefficient zero, and the task-specific prediction interface remains fixed.
+The short protocol uses the D00--D11 configurations in Appendix A.2. The extended registered executable design space contains all $3\times3\times2\times2=36$ combinations in Table~\ref{tab:completed-menu-long24}. An identifier \texttt{L}$i$\texttt{W}$j$\texttt{M}$k$\texttt{R}$l$ selects the indexed value of each factor, with $i,j\in\{0,1,2\}$ and $k,l\in\{0,1\}$. For example, \texttt{L0W1M0R1} specifies learning rate $10^{-4}$, weight decay $10^{-3}$, zero coordinator momentum and an enabled residual module. Every configuration has proximal coefficient zero, and the task-specific prediction interface remains fixed.
 
 \begin{table}[htbp]
 \caption{Exact factor-to-index mapping for the extended 36-design library. Identifiers concatenate the four prefix--index pairs in L, W, M, R order, and all combinations of the listed values are included.}
@@ -123,6 +123,6 @@ Residual module & \texttt{R} & disabled & enabled & -- \\
 \end{tabular}
 \end{table}
 
-The accompanying reproducibility archive retains all 504 attempted proposal slots and their acceptance decisions: 120 slots in the short protocol and 384 in the extended protocol. Its machine-readable proposal trace records each proposal's full configuration, changes from the incumbent and measured development score. The expanded trace tables are provided with the archive rather than reproduced in the article. Together with the prefix curves, these records connect research decisions to both the executable intervention and its observed outcome.
+The reproducibility archive retains all 504 attempted proposal slots and their acceptance decisions: 120 slots in the short protocol and 384 in the extended protocol. Its machine-readable trace and expanded tables record each proposal's configuration, changes from the incumbent and measured development score.
 
 \input{tables/completed_ablation/norman_retained_events}

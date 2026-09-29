@@ -33,9 +33,9 @@ class SecondReviewTests(unittest.TestCase):
 
     def test_main_partition_and_source_studies_are_not_equated(self):
         text=(PAPER/'sections/04_experimental_design.tex').read_text()
-        self.assertIn('divided into ten disjoint groups',text)
-        self.assertIn('treated as separate laboratories',text)
-        self.assertIn('tests whether information can transfer across genuinely different data sources',text)
+        self.assertIn('partitions each dataset into ten disjoint groups',text)
+        self.assertIn('distinct biological datasets or experimental scenarios as laboratories',text)
+        self.assertIn('to evaluate source transfer',text)
         appendix=(PAPER/'sections/23_appendix_core_sensitivity.tex').read_text()
         appendix+=(PAPER/'tables/supplemental_20260923/source_client_mapping.tex').read_text()
         self.assertIn('Replogle',appendix)
@@ -70,7 +70,7 @@ class SecondReviewTests(unittest.TestCase):
         self.assertIn('3.4 Evidence-guided training allocation',text)
         for line in text.splitlines():
             self.assertEqual(len(re.findall(r'(?<!\\)\$',line)) % 2,0,line)
-        self.assertIn('loss on panel $i$. The coordinator computes',text)
+        self.assertIn(r'development loss $\ell_i^{\mathrm{dev}}(a,r)$',text)
 
 if __name__=='__main__':
     unittest.main()

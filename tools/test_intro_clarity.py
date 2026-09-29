@@ -19,13 +19,13 @@ class IntroClarityTests(unittest.TestCase):
 
     def test_motivation_and_per_task_predictors(self):
         intro = (PAPER / "sections/01_introduction.tex").read_text()
-        self.assertLess(intro.index("self-improving agents"), intro.index("data-sharing constraints"))
+        self.assertLess(intro.lower().index("self-improving agents"), intro.lower().index("data-sharing constraints"))
         self.assertIn("different cell types", intro)
         self.assertIn("without pooling the underlying data", intro)
         self.assertIn("extends collaboration from parameter fitting to model development", intro)
         self.assertIn("inner loop for collaborative training and evaluation", intro)
-        self.assertIn("can be restrictive when laboratories hold data with different biological or experimental characteristics", intro)
-        self.assertIn("This leaves a gap between the two settings", intro)
+        self.assertIn("limiting how local biological and experimental differences inform subsequent design choices", intro)
+        self.assertIn("Local development evidence provides a complementary research signal", intro)
         self.assertNotIn("In our implementation", intro)
         method = (PAPER / "sections/03_method.tex").read_text()
         self.assertIn("same biological prediction task", method)
@@ -34,10 +34,10 @@ class IntroClarityTests(unittest.TestCase):
 
     def test_contributions_are_bullets_and_include_findings(self):
         intro = (PAPER / "sections/01_introduction.tex").read_text()
-        contributions = intro.split("Our contributions are summarized as:", 1)[1]
+        contributions = intro.split("Our contributions are:", 1)[1]
         self.assertEqual(contributions.count(r"\item "), 3)
         self.assertIn("inner loop for collaborative training and evaluation", contributions)
-        self.assertIn("using early evaluation results to decide which models continue training can improve performance", contributions)
+        self.assertIn("improved training allocation at matched budgets", contributions)
         self.assertIn("AI-Scientist-v2 and AI-Researcher baselines", intro)
         self.assertIn("drug--target", contributions)
         self.assertNotIn("The contribution is this coupling", intro)

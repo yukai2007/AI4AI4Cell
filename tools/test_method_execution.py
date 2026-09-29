@@ -12,11 +12,11 @@ class MethodExecutionTests(unittest.TestCase):
         self.appendix = (PAPER / "sections/22_appendix_unified_protocol.tex").read_text()
 
     def test_duration_is_not_a_design_factor(self):
-        self.assertIn("assign each candidate 100 training rounds", self.method)
-        self.assertIn(r"not by \texttt{design\_id}", self.method)
+        self.assertIn("assigns each candidate 100 training rounds", self.method)
+        self.assertIn("The evaluation schedule assigns", self.method)
         self.assertIn("learning rate, weight decay, coordinator momentum", self.method)
-        self.assertIn("This separate allocation study", self.method)
-        self.assertIn("does not generate language-model proposals", self.method)
+        self.assertIn("This study evaluates allocation over a predetermined candidate set", self.method)
+        self.assertIn("independently of proposal generation", self.method)
         for phrase in ("every design for 80 rounds", "each for 20 rounds",
                        "six promoted designs restart from their initial parameters",
                        "four unpromoted designs stop after screening"):
@@ -35,7 +35,7 @@ class MethodExecutionTests(unittest.TestCase):
                       r"v_r&=\beta_a v_{r-1}+\bar w_r-w_{r-1}",
                       r"\bar s(a,r)=\frac{1}{|\mathcal P|}\sum_{i\in\mathcal P}s_i(a,r)",
                       r"\bar\ell(a,r)=\frac{1}{|\mathcal P|}\sum_{i\in\mathcal P}\ell_i^{\mathrm{dev}}(a,r)",
-                      r"\mathcal E_{t+1}=\mathcal E_t\mathbin{\|}[e_t]"):
+                      r"\mathcal E_{t+1}=\mathcal E_t\mathbin{\|}[e_{t+1}]"):
             self.assertIn(token, self.method)
         self.assertIn("earlier round retained on a complete tie", self.method)
         self.assertIn("History feedback begins with the second proposal", self.method)
@@ -47,7 +47,7 @@ class MethodExecutionTests(unittest.TestCase):
         for phrase in ("resets the predictor to its prescribed initialization",
                        "distributes it to all training laboratories",
                        "first and last development-evaluation rounds",
-                       "without fine-tuning the self-improving model",
+                       r"weights $\theta$ remain fixed throughout a run",
                        "source-specific head", "original target's development panels"):
             self.assertIn(phrase, self.method)
         self.assertIn("failed fits consume a proposal slot", self.method)
@@ -60,7 +60,7 @@ class MethodExecutionTests(unittest.TestCase):
         self.assertIn(r"evaluate the aggregated predictor $f_{a,w_r}$", self.method)
         self.assertNotRegex(self.method.lower(), r"\bworkers?\b|\bserver\b|\bclients?\b")
         self.assertNotIn(r"\operatorname{Init}(a,z)", self.method)
-        self.assertEqual(self.method.count("Appendix A"), 1)
+        self.assertEqual(self.method.count("Appendix A"), 2)
         self.assertIn("Floating-point buffers", self.appendix)
         self.assertIn("study seed", self.appendix)
 
@@ -73,8 +73,10 @@ class MethodExecutionTests(unittest.TestCase):
     def test_design_schema_does_not_execute_rationale(self):
         for key in ("hypothesis", "experiment", "expected_effect", "design_id"):
             self.assertIn('"' + key + '"', self.appendix)
-        self.assertIn("D00 denotes the starting configuration", self.appendix)
-        self.assertIn("not an additional executable instruction or a measured result", self.appendix)
+        self.assertIn("D00 is the starting configuration", self.appendix)
+        self.assertIn("identifier", self.appendix)
+        self.assertIn("determines the executed configuration", self.appendix)
+        self.assertIn("measured development performance determines selection", self.method)
         self.assertIn("same", self.appendix.split("Five-option queries and scoring.")[1])
         self.assertIn("fixed shuffled option order", self.appendix)
 

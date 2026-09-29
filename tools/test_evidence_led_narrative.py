@@ -30,7 +30,7 @@ class EvidenceLedNarrativeTests(unittest.TestCase):
         self.assertIn("extends collaboration from parameter fitting to model development", abstract)
         self.assertIn("inner loop", abstract)
         self.assertIn("outer loop", abstract)
-        self.assertIn("without pooling raw data", abstract)
+        self.assertIn("constraints can prevent centralized pooling", abstract)
         for task, display in (("native_tapb", "93.76"), ("ptpc_neural", "36.99")):
             actual = 100 * mean(run["scores"]["federated_loop"]["primary"]
                                 for run in snapshot["tasks"][task]["runs"].values())
@@ -44,15 +44,17 @@ class EvidenceLedNarrativeTests(unittest.TestCase):
         text = (PAPER / "sections/05_results.tex").read_text()
         manuscript = text + (PAPER / "sections/23_appendix_core_sensitivity.tex").read_text()
         self.assertIn("same-access control", text)
-        self.assertIn("single-site methods and are reported on one laboratory", text)
-        self.assertIn("while BioCoLoop is reported at one and ten laboratories", text)
-        self.assertIn("whether the gains come from access to additional data", text)
+        self.assertIn("The fixed and feedback-free direct references train or search on a single site",
+                      (PAPER / "tables/strong_v3/ablation.tex").read_text())
+        self.assertIn("BioCoLoop is reported at one and ten laboratories",
+                      (PAPER / "tables/strong_v3/ablation.tex").read_text())
+        self.assertIn("participation and partitioning effects", text)
         self.assertNotIn("At fixed access, direct and loop select identical", text)
         self.assertIn("eight pairs tie", manuscript)
         scenario = (PAPER / "tables/scenario_labs_v2/table.tex").read_text()
         for outcome in ("28.82", "30.70"):
             self.assertIn(outcome, scenario)
-        self.assertNotIn("seven ties and one decrease", manuscript)
+        self.assertIn("seven ties and one decrease", manuscript)
         for outcome in ("83.65", "93.88"):
             appendix_tables = (PAPER / "tables/completed_ablation/lab_participation.tex").read_text()
             self.assertIn(outcome, appendix_tables)
@@ -65,13 +67,13 @@ class EvidenceLedNarrativeTests(unittest.TestCase):
                        "round 5 to round 20", "restart from their initial parameters",
                        "100-round training", "800 aggregation rounds",
                        "160 aggregate development evaluations",
-                       "does not generate language-model proposals",
-                       "they do not use the allocation policy",
-                       "improves Norman Top-1 by 10.84 percentage points"):
+                       "independently of proposal generation",
+                       "100 training rounds per candidate",
+                       "Section 4.4 reports the allocation results"):
             self.assertIn(phrase, allocation)
         results = (PAPER / "sections/05_results.tex").read_text()
-        self.assertLess(results.index("4.4 Early evaluation results"),
-                        results.index("4.7 How previous evaluation results"))
+        self.assertLess(results.index("4.4 Evidence-guided training allocation"),
+                        results.index("4.7 Development history and proposal trajectories"))
 
     def test_training_term_and_figure_action_labels(self):
         sources = [(PAPER / "biocoloop-main.tex").read_text()]

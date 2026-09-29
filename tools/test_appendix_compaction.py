@@ -28,7 +28,7 @@ class AppendixCompactionTests(unittest.TestCase):
             self.assertNotIn(inclusion, appendix)
         self.assertIn('Tables S.1--S.2', appendix)
         self.assertIn('including zero and negative differences', appendix)
-        self.assertIn('in several cell comparisons they include zero', appendix)
+        self.assertIn('several cell comparisons include zero', appendix)
 
     def test_compact_design_mapping_recovers_all_original_configurations(self):
         original = (PAPER / 'tables/completed_ablation/menu_long24.tex').read_text()
@@ -44,7 +44,7 @@ class AppendixCompactionTests(unittest.TestCase):
         }
         self.assertEqual(actual, expected)
         appendix = (PAPER / 'sections/23_appendix_core_sensitivity.tex').read_text()
-        self.assertIn('D00--D11 configurations listed in Appendix A.2', appendix)
+        self.assertIn('D00--D11 configurations in Appendix A.2', appendix)
         for row in (
             r'Learning rate & \texttt{L} & $10^{-4}$ & $10^{-3}$ & $10^{-2}$',
             r'Weight decay & \texttt{W} & $0$ & $10^{-3}$ & $10^{-2}$',
@@ -74,8 +74,8 @@ class AppendixCompactionTests(unittest.TestCase):
         appendix_a = (PAPER / 'sections/22_appendix_unified_protocol.tex').read_text()
         for name in ('ablation', 'secondary', 'dti_endpoints'):
             self.assertIn(r'\input{tables/strong_v3/' + name + '}', appendix_a)
-        # The failed terminal direct/loop contrast and its executed-prefix table are
-        # deliberately excluded; only the search-efficiency result stays in the paper.
+        # Compact trace presentation retains all outcomes in the source tables;
+        # the main text now explicitly summarizes both gains and decreases.
         self.assertNotIn('loop_prefix', appendix_a)
         self.assertNotIn('seven ties and one decrease', appendix_a)
         appendix_b = (PAPER / 'sections/23_appendix_core_sensitivity.tex').read_text()
@@ -84,13 +84,13 @@ class AppendixCompactionTests(unittest.TestCase):
             self.assertIn(r'\input{tables/completed_ablation/' + name + '}', appendix_b)
         self.assertNotIn('seven ties and one decrease', appendix_b)
         results = (PAPER / 'sections/05_results.tex').read_text()
-        for phrase in ('Most short comparisons finish with the same test score',
-                       'do not outperform additional data drawn from the same VCC dataset',
-                       '4.4 Early evaluation results guide further training'):
+        for phrase in ('eight pairs tie',
+                       'yield lower target Top-1 than additional data from VCC',
+                       '4.4 Evidence-guided training allocation'):
             self.assertIn(phrase, results)
         scope = (PAPER / 'sections/22_appendix_unified_protocol.tex').read_text()
         self.assertIn(r'\subsection*{A.6 Scope and limitations}', scope)
-        self.assertIn('search efficiency in Section~4.7', scope)
+        self.assertIn('Section 4.7 compares search trajectories', scope)
 
     def test_conclusion_separates_design_search_from_allocation(self):
         snapshot = json.loads((PAPER / 'tables/strong_v3/snapshot.json').read_text())
@@ -103,8 +103,8 @@ class AppendixCompactionTests(unittest.TestCase):
         # The conclusion is a single qualitative paragraph that keeps the two
         # evidence-driven policies distinct without restating the numbers.
         self.assertNotIn('\n\n', conclusion)
-        self.assertIn('Design search', conclusion)
-        self.assertIn('evidence-guided allocation', conclusion)
+        self.assertIn('development history changes proposal trajectories', conclusion)
+        self.assertIn('a separate matched-budget study demonstrates improved training allocation', conclusion)
         for number in ('1.96', '6.77', '10.84'):
             self.assertNotIn(number, conclusion)
 
