@@ -10,10 +10,12 @@ Evidence-guided allocation improves held-out performance at a matched budget (Ta
 
 Across the twelve task--seed comparisons, allocation yields four wins, eight ties and no losses. Norman Top-1 increases from 11.48\% to 22.32\%, with positive gains in all three seeds. A selected low-learning-rate model continues to improve beyond the uniform schedule's stopping point. Tahoe improves in one seed and ties in two; proteomics and VCC tie in all three seeds. The policy directs more training to candidates whose early trajectories show continued improvement.
 
-Norman's mean gain is 10.84 percentage points, with a hierarchical paired-bootstrap 95\% interval of $[4.54,17.73]$. Screening retains candidates with high current scores and candidates with improving trajectories within each learning-rate group. Promoted candidates restart from initialization, and the reported budget includes both screening and full training.
+Norman's mean gain is 10.84 percentage points, with a hierarchical paired-bootstrap 95\% interval of [4.54, 17.73]. Screening retains candidates with high current scores and candidates with improving trajectories within each learning-rate group. Promoted candidates restart from initialization, and the reported budget includes both screening and full training.
 
 \subsection*{4.5 Learning from different data sources}
-Source-transfer studies use laboratories from distinct biological datasets or experimental settings. We combine BindingDB with BioSNAP, Davis and Human; VCC with three external single-cell studies; and PTPC with Lin, Ruprecht and decryptE \citep{Lin2026HDAC,Ruprecht2020Proteome,Eckert2024DecryptE}. Target development data select each model, and all configurations use the same target test set. Transfer gains depend on the source. Adding all three proteomic studies improves target AP, and Davis and Human improve DTI AUROC. With laboratory and training-condition counts matched, external single-cell studies yield lower target Top-1 than additional data from VCC. Appendix B reports the source-specific effects and matched controls.
+Source-transfer studies use laboratories from distinct biological datasets or experimental settings. We combine BindingDB with BioSNAP, Davis and Human; VCC with three external single-cell studies; and PTPC with Lin, Ruprecht and decryptE \citep{Lin2026HDAC,Ruprecht2020Proteome,Eckert2024DecryptE}. Target development data select each model, and all configurations use the same target test set.
+
+Transfer gains depend on the source. Adding all three proteomic studies improves target AP, and Davis and Human improve DTI AUROC. With laboratory and training-condition counts matched, external single-cell studies yield lower target Top-1 than additional data from VCC. Appendix B reports the source-specific effects and matched controls.
 
 In the one-study-per-laboratory proteomic protocol, adding Lin, Ruprecht and decryptE raises target AP from 34.41 to 37.53 and AUROC from 72.33 to 74.39. Shared encoders receive updates from all participating sources, while each source-specific head retains its own prediction objective. The original target development panels select checkpoints throughout this comparison. The matched cell study uses four laboratories and 60 training interventions in each arm: the same-source VCC split reaches 30.70\% Top-1, compared with 28.82\% for VCC plus external studies. Both arms share the same target anchor; measured gene panels and underlying cell counts remain source-specific.
 
@@ -27,7 +29,9 @@ Both settings use the default design and a fixed training schedule. Increasing p
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.80\linewidth]{assets/laboratory_sensitivity_v2.pdf}
-\caption{Effect of the number of laboratories. Solid lines add both laboratories and training data. Dashed lines divide the same training data across different numbers of laboratories. Full results are reported in Appendix B.}
+\caption{
+Effect of the number of laboratories. Solid lines add both laboratories and training data. Dashed lines divide the same training data across different numbers of laboratories. Full results are reported in Appendix B.
+}
 \label{fig:lab-sensitivity}
 \end{figure}
 
@@ -36,6 +40,7 @@ For DTI, AUROC increases from 83.65 to 93.88 as participation grows from one to 
 \subsection*{4.7 Development history and proposal trajectories}
 We compare direct optimization and history-guided search under the same laboratory access, registered executable design space, first proposal, training procedure and selection rule. History-guided search additionally receives the accumulated development evidence when generating subsequent proposals.
 
+\looseness=-1
 Development evidence changes search trajectories and can identify useful configurations earlier. In the extended Norman search, Luna reaches the common development target after four proposals with history, compared with 22 without it. Reducing the learning rate produces an early gain, and removing the residual head reaches the target. Both modes eventually attain the same held-out Top-1. Figures~\ref{fig:completed-short-dev} and~\ref{fig:completed-long-dev} report the complete prefix curves for the six-slot and extended protocols (Appendix B).
 
 Search efficiency is measured by the first proposal attaining a common development target, defined as the lower terminal primary score within each direct/loop pair. Both trajectories can therefore reach that target. The common target is computed retrospectively from completed searches; candidate fitting, proposal budgets and development selection follow the registered protocol throughout execution. The curves retain every prespecified prefix, and loss-based tie-breaks can retain a new configuration after the primary score has plateaued. These diagnostics distinguish when a useful configuration is first reached from the final predictor selected at the full budget.

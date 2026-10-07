@@ -1,0 +1,9 @@
+Command: /opt/conda/envs/LDA/bin/python -m unittest discover -s tools -p 'test_*.py' -q
+Result: 165 tests passed (7.171 seconds).
+
+Exact-version checks:
+- Author-supplied source PDF and canonical published PDF SHA-256 identical.
+- Native editable-source compilation: 31 pages; body lines match page by page.
+- No permitted textual errata or changed numerical results.
+- No overfull boxes or unresolved references in the native build log.
+- Native rendering is separately labeled; compiler-dependent byte identity is not claimed.

@@ -141,7 +141,7 @@ For each query, predicted candidate responses and the observed response are L2-n
 Thus each intervention receives equal weight even when it contributes a different number of query profiles. Micro Top-1, mean reciprocal rank and Top-3 average over individual queries. The development loss is cross-entropy over the five cosine scores divided by temperature 0.1. Development selection first computes these scores within each laboratory and then averages laboratories equally.
 
 \paragraph{Identification diagnostics.}
-The reported frozen-scDEBART identification diagnostics span 7.5--31.6\% macro Top-1 against a 20\% chance level and 36.00--57.00 MRR against a 45.67 chance level (scores multiplied by 100). The untrained public head scores 7.5\% on Norman. True-option positions are near-uniform across the fixed rosters, and a prototype oracle built from observed held-out responses retrieves the true option at 94.5\% on VCC and 100\% on Norman.
+The reported frozen-scDEBART identification diagnostics span 7.5--31.6\% macro Top-1 against a 20\% chance level and 36.00--57.00 MRR against a 46.00 chance level. The untrained public head scores 7.5\% on Norman. True-option positions are near-uniform across the fixed rosters, and a prototype oracle built from observed held-out responses retrieves the true option at 94.5\% on VCC and 100\% on Norman.
 
 \subsection*{A.5 Complete comparisons and uncertainty}
 The following tables report the control comparison, secondary metrics and all three drug--target test sets. Bold marks the best displayed value within a task and metric, including ties. Higher is better except for binary cross-entropy and cell cross-entropy.

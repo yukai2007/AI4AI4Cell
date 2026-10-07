@@ -1,0 +1,356 @@
+{
+  "status": "PASS",
+  "author_pdf_sha256": "3bdd4251d9b201a1e9fbf6b94ffd72fc7092b0cc33a3afdcf72b4150b4407ec8",
+  "rebuilt_pdf_sha256": "fa310aad9c55119d4baf3b9ac32c8741d1807d5dfb89657c6b6f780c14ec9f2e",
+  "page_count": 31,
+  "each_page_normalized_text_identical": true,
+  "allowed_text_errata": [],
+  "body_line_checks": [
+    {
+      "page": 1,
+      "body_lines": 48,
+      "line_text_identical": true
+    },
+    {
+      "page": 2,
+      "body_lines": 72,
+      "line_text_identical": true
+    },
+    {
+      "page": 3,
+      "body_lines": 65,
+      "line_text_identical": true
+    },
+    {
+      "page": 4,
+      "body_lines": 113,
+      "line_text_identical": true
+    },
+    {
+      "page": 5,
+      "body_lines": 56,
+      "line_text_identical": true
+    },
+    {
+      "page": 6,
+      "body_lines": 50,
+      "line_text_identical": true
+    },
+    {
+      "page": 7,
+      "body_lines": 129,
+      "line_text_identical": true
+    },
+    {
+      "page": 8,
+      "body_lines": 70,
+      "line_text_identical": true
+    },
+    {
+      "page": 9,
+      "body_lines": 87,
+      "line_text_identical": true
+    },
+    {
+      "page": 10,
+      "body_lines": 48,
+      "line_text_identical": true
+    },
+    {
+      "page": 11,
+      "body_lines": 58,
+      "line_text_identical": true
+    },
+    {
+      "page": 12,
+      "body_lines": 53,
+      "line_text_identical": true
+    },
+    {
+      "page": 13,
+      "body_lines": 55,
+      "line_text_identical": true
+    },
+    {
+      "page": 14,
+      "body_lines": 23,
+      "line_text_identical": true
+    },
+    {
+      "page": 15,
+      "body_lines": 59,
+      "line_text_identical": true
+    },
+    {
+      "page": 16,
+      "body_lines": 120,
+      "line_text_identical": true
+    },
+    {
+      "page": 17,
+      "body_lines": 86,
+      "line_text_identical": true
+    },
+    {
+      "page": 18,
+      "body_lines": 56,
+      "line_text_identical": true
+    },
+    {
+      "page": 19,
+      "body_lines": 37,
+      "line_text_identical": true
+    },
+    {
+      "page": 20,
+      "body_lines": 225,
+      "line_text_identical": true
+    },
+    {
+      "page": 21,
+      "body_lines": 21,
+      "line_text_identical": true
+    },
+    {
+      "page": 22,
+      "body_lines": 112,
+      "line_text_identical": true
+    },
+    {
+      "page": 23,
+      "body_lines": 124,
+      "line_text_identical": true
+    },
+    {
+      "page": 24,
+      "body_lines": 101,
+      "line_text_identical": true
+    },
+    {
+      "page": 25,
+      "body_lines": 69,
+      "line_text_identical": true
+    },
+    {
+      "page": 26,
+      "body_lines": 90,
+      "line_text_identical": true
+    },
+    {
+      "page": 27,
+      "body_lines": 141,
+      "line_text_identical": true
+    },
+    {
+      "page": 28,
+      "body_lines": 210,
+      "line_text_identical": true
+    },
+    {
+      "page": 29,
+      "body_lines": 106,
+      "line_text_identical": true
+    },
+    {
+      "page": 30,
+      "body_lines": 99,
+      "line_text_identical": true
+    },
+    {
+      "page": 31,
+      "body_lines": 45,
+      "line_text_identical": true
+    }
+  ],
+  "page_dimensions_identical": true,
+  "main_text_ends_page": 9,
+  "reference_producer": "xdvipdfmx (20220710)",
+  "rebuild_producer": "xdvipdfmx (0.1)",
+  "native_rebuild_byte_identical": false,
+  "raster_comparison_144dpi": [
+    {
+      "page": 1,
+      "mean_absolute_gray_difference": 0.02560377054862349,
+      "fraction_pixels_changed_over_32": 0.0003569188618208226
+    },
+    {
+      "page": 2,
+      "mean_absolute_gray_difference": 0.02684834455667789,
+      "fraction_pixels_changed_over_32": 0.00035382418960850336
+    },
+    {
+      "page": 3,
+      "mean_absolute_gray_difference": 0.0262717039677824,
+      "fraction_pixels_changed_over_32": 0.00035433996831055653
+    },
+    {
+      "page": 4,
+      "mean_absolute_gray_difference": 0.019445888624810195,
+      "fraction_pixels_changed_over_32": 0.00025582623621839306
+    },
+    {
+      "page": 5,
+      "mean_absolute_gray_difference": 0.0193587220241632,
+      "fraction_pixels_changed_over_32": 0.0002491211130917013
+    },
+    {
+      "page": 6,
+      "mean_absolute_gray_difference": 0.018604653561761404,
+      "fraction_pixels_changed_over_32": 0.0002527315640060738
+    },
+    {
+      "page": 7,
+      "mean_absolute_gray_difference": 0.036925628837393545,
+      "fraction_pixels_changed_over_32": 0.00042345431438568695
+    },
+    {
+      "page": 8,
+      "mean_absolute_gray_difference": 0.02080702861952862,
+      "fraction_pixels_changed_over_32": 0.00028728873704363903
+    },
+    {
+      "page": 9,
+      "mean_absolute_gray_difference": 0.023359617415989964,
+      "fraction_pixels_changed_over_32": 0.00031514078695451245
+    },
+    {
+      "page": 10,
+      "mean_absolute_gray_difference": 0.034088330197398826,
+      "fraction_pixels_changed_over_32": 0.00047193751237868887
+    },
+    {
+      "page": 11,
+      "mean_absolute_gray_difference": 0.053817897108338286,
+      "fraction_pixels_changed_over_32": 0.0007948149798639994
+    },
+    {
+      "page": 12,
+      "mean_absolute_gray_difference": 0.028447258533042846,
+      "fraction_pixels_changed_over_32": 0.00037600267379679143
+    },
+    {
+      "page": 13,
+      "mean_absolute_gray_difference": 0.055133648577276026,
+      "fraction_pixels_changed_over_32": 0.0007695418234633921
+    },
+    {
+      "page": 14,
+      "mean_absolute_gray_difference": 0.012596863240245592,
+      "fraction_pixels_changed_over_32": 0.0001573125041262296
+    },
+    {
+      "page": 15,
+      "mean_absolute_gray_difference": 0.028879481085363437,
+      "fraction_pixels_changed_over_32": 0.0003790973460091107
+    },
+    {
+      "page": 16,
+      "mean_absolute_gray_difference": 0.03395938552188552,
+      "fraction_pixels_changed_over_32": 0.0004043705024097181
+    },
+    {
+      "page": 17,
+      "mean_absolute_gray_difference": 0.02179268171915231,
+      "fraction_pixels_changed_over_32": 0.0002955411962764904
+    },
+    {
+      "page": 18,
+      "mean_absolute_gray_difference": 0.021764313890539382,
+      "fraction_pixels_changed_over_32": 0.0002867729583415858
+    },
+    {
+      "page": 19,
+      "mean_absolute_gray_difference": 0.011242944147355912,
+      "fraction_pixels_changed_over_32": 0.00013410246253383508
+    },
+    {
+      "page": 20,
+      "mean_absolute_gray_difference": 0.03629844193569684,
+      "fraction_pixels_changed_over_32": 0.0004662639466561035
+    },
+    {
+      "page": 21,
+      "mean_absolute_gray_difference": 0.013529906912259854,
+      "fraction_pixels_changed_over_32": 0.00016040717633854888
+    },
+    {
+      "page": 22,
+      "mean_absolute_gray_difference": 0.028795924935630816,
+      "fraction_pixels_changed_over_32": 0.0003564030831187694
+    },
+    {
+      "page": 23,
+      "mean_absolute_gray_difference": 0.027911880240311614,
+      "fraction_pixels_changed_over_32": 0.000348150623885918
+    },
+    {
+      "page": 24,
+      "mean_absolute_gray_difference": 0.033336840628507294,
+      "fraction_pixels_changed_over_32": 0.0004348014458308576
+    },
+    {
+      "page": 25,
+      "mean_absolute_gray_difference": 0.030500573545916683,
+      "fraction_pixels_changed_over_32": 0.00038477091173169604
+    },
+    {
+      "page": 26,
+      "mean_absolute_gray_difference": 0.027037119561629366,
+      "fraction_pixels_changed_over_32": 0.0003352561563345877
+    },
+    {
+      "page": 27,
+      "mean_absolute_gray_difference": 0.015286649171453092,
+      "fraction_pixels_changed_over_32": 0.00017072275037961312
+    },
+    {
+      "page": 28,
+      "mean_absolute_gray_difference": 0.12104036690433749,
+      "fraction_pixels_changed_over_32": 0.0011218186769657358
+    },
+    {
+      "page": 29,
+      "mean_absolute_gray_difference": 0.02277266125305341,
+      "fraction_pixels_changed_over_32": 0.0002785204991087344
+    },
+    {
+      "page": 30,
+      "mean_absolute_gray_difference": 0.012321437413349179,
+      "fraction_pixels_changed_over_32": 0.00012842889681124976
+    },
+    {
+      "page": 31,
+      "mean_absolute_gray_difference": 0.030235979071763387,
+      "fraction_pixels_changed_over_32": 0.0004059178385158777
+    }
+  ],
+  "qualification": "Editable-source rebuild; PDF-engine serialization and minor glyph placement differ. Canonical released PDF uses the unchanged author file.",
+  "visual_review": "Reference/rebuild paired renders reviewed for pages 2, 4, 7, 8, 9, 16 and 31; body line bounds differ by at most 0.011pt except the closing JSON brace on page 16 (1.046pt).",
+  "build_log_sha256": "b80e0c8b4bf58c0c8f1ccfb2f615a31ad8bfa6822bd259b3e08a8f5025666b76",
+  "overfull_boxes": 0,
+  "undefined_references": 0,
+  "source_sha256": {
+    "main.tex": "42ee170812615d83af2ce62d6c38fa8f273ee7c78dd8d5930303370c862ab907",
+    "biocoloop-main.tex": "78ad4195e238711a81acf74776a9b21740ec482bca5401d4aec090617f858d36",
+    "latexmkrc": "bd444eeda6dd020b3ace24c1eaf7b9b6385349bc88a6985045e02e5c54064fae",
+    "sections/01_introduction.tex": "77b8ebd4ba49f70bd645bf40c6f325d23e0b2a4f1086e94fe5143a93261fccf3",
+    "sections/02_related_work.tex": "3fef5026e432f1db4adced3d541b27f7d500cc0bbea2d15fe13741f7b7378e2c",
+    "sections/03_method.tex": "90ba59454651d71087dbcbe73b29731476d08ce260216362b30e90f257c07324",
+    "sections/04_experimental_design.tex": "6102e49a9b2fb8664b2ade3ea79348807e5401475849ffbb995415c9d73e8c6c",
+    "sections/05_results.tex": "e9707b28a7d49635b037466fb903c5b2f6423b7e4628db0588929c57b59f67cf",
+    "sections/07_conclusion.tex": "63a3a429f9b771cc2887a37e72ca3e0d601bbcad01204586ad572085327105f0",
+    "sections/08_reproducibility.tex": "af68cb1c021c8ef9ab05b943e5ed2c9865d4f16f1497d55232038d0f6fc569dc",
+    "sections/22_appendix_unified_protocol.tex": "33bfe53975fcd1cc29f74d9f2bde4675c119e5d9359dd2ba8345526a125be23f",
+    "sections/23_appendix_core_sensitivity.tex": "52bcfb800a135c175d15e8d3dcbff197ed6930636bae2cd3ce1e716dbec186a1",
+    "sections/24_appendix_public_harness.tex": "9fb985f3f4890b04be817bd2d3a454fff25c0a52374521c0ff0cdb0cddcad445",
+    "references.bib": "9786b35c20fe7360bf0aca003746a7beecbcc011c1e27f06274c69c84293f6a4",
+    "references_v2.bib": "d5a1065f61ec804bdde0b9d5e412d838a832f5615c20b60962626e17af61bf9a"
+  },
+  "preserved_reference_issues": [
+    "Equation (4) appends e_t exactly as in the submitted PDF; the later index correction is not applied.",
+    "Chance MRR remains printed as 46.00; the mathematical five-option expectation is 45.67.",
+    "Appendix C retains the historical failed Qwen example exactly as submitted, despite the completed main-table row."
+  ],
+  "canonical_published_pdf_sha256": "3bdd4251d9b201a1e9fbf6b94ffd72fc7092b0cc33a3afdcf72b4150b4407ec8",
+  "canonical_pdf_byte_identical": true
+}

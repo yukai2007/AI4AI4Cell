@@ -15,7 +15,7 @@ A scored run completes its agent's research process within the registered cap, s
 
 Four Luna AI-Researcher cells exceeded the 28,000-token admission ($F_{\mathrm{ctx}}$) and were re-run at 65,536 tokens with the same tasks, seeds, design space, six-proposal cap, training and scorer. Their completed cells carry stars, with per-seed records retained. BindingDB (DTI), the longest native refinement trajectory, remains unscored ($0/3$): one frozen seed reached 29,167 input tokens ($F_{\mathrm{ctx}}$), and two terminated in service transport ($F_{\mathrm{svc}}$). Extended-admission retries also ended in transport before held-out selection was sealed. The final table column gives mean rank across completed endpoints.
 
-Receipts distinguish native pipeline ($F_{\mathrm{pipe}}$), tool-transport ($F_{\mathrm{tool}}$), registered context-limit ($F_{\mathrm{ctx}}$) and Luna service-transport ($F_{\mathrm{svc}}$) terminations before sealed selection.
+Receipts distinguish native pipeline ($F_{\mathrm{pipe}}$), tool-transport ($F_{\mathrm{tool}}$), registered context-limit ($F_{\mathrm{ctx}}$) and Luna service-transport ($F_{\mathrm{svc}}$) terminations before sealed selection. The seed-42 Qwen AI-Scientist-v2 DTI example trains three candidates before substage schema validation fails, leaving its incumbent unsealed and unscored.
 
 Held-out scoring follows sealed development selection. An independent verifier recomputes each scored cell's metric from saved predictions and checks checkpoint and artifact hashes. DTI discrepancies are at most $10^{-15}$. Records retain raw calls, native stage history, candidate requests, selections and verification receipts.
 

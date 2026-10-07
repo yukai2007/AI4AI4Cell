@@ -2,9 +2,9 @@
 \subsection*{3.1 Problem setting and notation}
 Consider $K$ laboratories working on the same biological prediction task. Laboratory $i$ holds training data $D_i^{\mathrm{train}}$, with $n_i=|D_i^{\mathrm{train}}|$. Evaluation uses laboratory-local development panels $\{D_i^{\mathrm{dev}}\}_{i\in\mathcal P}$, where $\mathcal P$ indexes the panels specified by the evaluation protocol. A task specification $\mathcal T$ defines the prediction inputs, outputs, training loss and evaluation metric. We write the task predictor as $f_{a,w}$, where $a\in\mathcal A$ specifies its design and $w$ its trainable parameters. Given an initial design, a design space $\mathcal A$ and a research budget, BioCoLoop seeks a design and fitted predictor that perform well on the designated evaluation population. The three task families instantiate $f_{a,w}$ as task-specific predictors within this shared research procedure.
 
-The registered executable design space $\mathcal A$ contains complete candidate configurations with four editable choices: learning rate, weight decay, coordinator momentum and an optional residual prediction module. Each \texttt{design\_id} selects one configuration. The architecture choice enables or disables a zero-initialized, width-32 residual module; the task adapter supplies the backbone and prediction head.
+The \emph{registered executable design space} $\mathcal A$ contains complete candidate configurations with four editable choices: learning rate, weight decay, coordinator momentum and an optional residual prediction module. Each \texttt{design\_id} selects one configuration. The architecture choice enables or disables a zero-initialized, width-32 residual module; the task adapter supplies the backbone and prediction head.
 
-A shared coordinator is the trusted execution service used by all participating laboratories. It resolves each design identifier, initializes and broadcasts the predictor, coordinates local fitting, aggregates model states and bounded development measurements, and applies the checkpoint and design-selection rules. Laboratories receive the same candidate state and schedule while retaining raw training and development measurements locally. The coordinator supplies the aggregate evidence to research model $S$ (Figure~\ref{fig:research-interface}), a language model whose weights $\theta$ remain fixed throughout a run. We use this fitting interface to evaluate history-guided proposal revision (Section 3.3) and trajectory-guided training allocation (Section 3.4) separately.
+A \emph{shared coordinator} is the trusted execution service used by all participating laboratories. It resolves each design identifier, initializes and broadcasts the predictor, coordinates local fitting, aggregates model states and bounded development measurements, and applies the checkpoint and design-selection rules. Laboratories receive the same candidate state and schedule while retaining raw training and development measurements locally. The coordinator supplies the aggregate evidence to research model $S$ (Figure~\ref{fig:research-interface}), a language model whose weights $\theta$ remain fixed throughout a run. We use this fitting interface to evaluate history-guided proposal revision (Section 3.3) and trajectory-guided training allocation (Section 3.4) separately.
 
 \begin{figure}[t]
 \centering
@@ -34,8 +34,7 @@ Every five rounds and at the final round, laboratories evaluate the aggregated p
 \label{eq:shared-evaluation}
 \end{equation}
 The selected round $\widehat r_a$ maximizes $\bar s(a,r)$, with lower $\bar\ell(a,r)$ breaking ties and the earlier round retained on a complete tie. Its parameters are $\widehat w_a=w_{\widehat r_a}$. The pair $q(a)=(\bar s(a,\widehat r_a),-\bar\ell(a,\widehat r_a))$ ranks the design. We call $\bar s(a,\widehat r_a)$ the \emph{dev score}, labelled “highest dev score” in Figure~\ref{fig:research-interface}. Training weights examples, while selection weights the designated development panels equally. The evaluation schedule assigns each candidate 100 training rounds in the main proposal-search experiments.
-
-Each trial produces a development-evidence card. After $t$ trials, the ordered set $\mathcal E_t=\{e_1,\dots,e_t\}$ forms the accumulated development evidence. For $1\le j\le t$, card $e_j$ records the executed configuration $a_j$, hypothesis $h_j$, best development primary score and loss $(s_j,\ell_j)$, selected round $\widehat r_j$ and acceptance decision $\mathrm{dec}_j$. Endpoint diagnostics $\Delta_j$ contain the first and last development-evaluation rounds, their sample-weighted training losses, equal-laboratory development scores and losses, and the changes between those measurements, plus the optional worst-laboratory score and evaluating-laboratory count.
+Each trial produces a \emph{development-evidence card}. After $t$ trials, the ordered set $\mathcal E_t=\{e_1,\dots,e_t\}$ forms the accumulated \emph{development evidence}. For $1\le j\le t$, card $e_j$ records the executed configuration $a_j$, hypothesis $h_j$, best development primary score and loss $(s_j,\ell_j)$, selected round $\widehat r_j$ and acceptance decision $\mathrm{dec}_j$. Endpoint diagnostics $\Delta_j$ contain the first and last development-evaluation rounds, their sample-weighted training losses, equal-laboratory development scores and losses, and the changes between those measurements, plus the optional worst-laboratory score and evaluating-laboratory count.
 
 For auxiliary-source studies with different prediction targets, shared encoders follow the same update rule, while each source-specific head is aggregated only over laboratories using that prediction target. Checkpoint selection uses the original target's development panels. Each source retains its own prediction objective while contributing updates to the shared representation.
 
@@ -51,13 +50,13 @@ p_t\sim P_\theta(\,\cdot\mid\mathcal T,a_t,\mathcal E_t,\mathcal U_t),
 \end{equation}
 The proposal also contains a \texttt{hypothesis}, an \texttt{experiment} and an \texttt{expected\_effect}, recording the motivation, intended comparison and anticipated outcome. The identifier determines execution; measured development performance determines selection.
 
-After training $\widetilde a_t$, the coordinator appends the new card $e_{t+1}$ of Section 3.2 to the development evidence. Comparing $q$ lexicographically by higher score and then lower loss gives
+After training $\widetilde a_t$, the coordinator appends the card $e_t$ of Section 3.2 to the development evidence. Comparing $q$ lexicographically by higher score and then lower loss gives
 \begin{equation}
 a_{t+1}=\begin{cases}
 \widetilde a_t,&q(\widetilde a_t)>_{\mathrm{lex}}q(a_t),\\
 a_t,&\text{otherwise},
 \end{cases}
-\qquad \mathcal E_{t+1}=\mathcal E_t\mathbin{\|}[e_{t+1}],
+\qquad \mathcal E_{t+1}=\mathcal E_t\mathbin{\|}[e_t],
 \label{eq:research-update}
 \end{equation}
 where $\|$ appends a card to the evidence set. Unsuccessful trials remain in the history. Invalid proposals and numerically failed fits consume a proposal slot and leave the incumbent unchanged. Updated context carries these outcomes into subsequent proposals. After the proposal budget is exhausted, the retained design and its selected checkpoint are evaluated on the held-out task.

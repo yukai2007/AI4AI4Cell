@@ -4,18 +4,20 @@
 
 BioCoLoop combines **biology**, **collaboration** and an iterative **research loop**. Historical releases retain their original names. The existing repository URL and storage paths remain stable for Overleaf and result provenance.
 
-## Current revision — author-final PDF synchronized, 30 September 2026
+## Current revision — unchanged author-final PDF, 7 October 2026
 
-The manuscript sources now follow the author's final submitted `5046_BioCoLoop_Collaborative_A (4).pdf`, not the earlier Overleaf draft. The rebuilt [English manuscript](output/pdf/BioCoLoop_manuscript.pdf) has **31 pages, with the main text ending on page 9**. The [unaltered submitted reference](provenance/author_final_pdf_20260930/author_submitted.pdf) is retained separately.
+The canonical [English manuscript](output/pdf/BioCoLoop_manuscript.pdf) is **byte-for-byte identical** to the author's selected `5046_BioCoLoop_Collaborative_A (4).pdf`: SHA-256 `3bdd4251d9b201a1e9fbf6b94ffd72fc7092b0cc33a3afdcf72b4150b4407ec8`. It has **31 pages, with the main text ending on page 9**. The [submitted reference](provenance/author_final_pdf_20260930/author_submitted.pdf) is unchanged.
 
-The [section-by-section synchronization report](provenance/author_final_pdf_20260930/CHANGES.zh-CN.md) explains the final abstract, introduction, method, results and appendix revisions. Only three additional errata were applied: the next evidence-card index in Equation (4), the five-option random-ranking MRR expectation (45.67 on the percentage scale), and removal of a stale failed-run example inconsistent with the current completed Qwen AI-Scientist-v2 DTI row.
+The editable LaTeX sources restore the author's original wording, italics and paragraph layout, including the three passages previously changed as errata. The separately compiled [source rebuild](output/pdf/BioCoLoop_source_rebuild.pdf) matches the reference text on every page without applying corrections. It is kept distinct because the native PDF engine differs from the author's engine; byte identity is asserted only for the canonical author PDF, not for a re-serialized compilation.
+
+Known reference issues remain documented outside the manuscript in [the exact-version verification](provenance/author_exact_pdf_20261007/verification.json): the evidence-card index, the printed 46.00 chance-MRR value (mathematically 45.67), and the historical failed-run example. The [30 September synchronization report](provenance/author_final_pdf_20260930/CHANGES.zh-CN.md) is historical; its corrections are not applied to this exact-author release.
 
 No experiment was rerun and no result table, snapshot or figure asset was modified. The main table retains the Qwen2.5-7B-Instruct and GPT-5.6 Luna blocks, task-adapted AI-Scientist-v2/AI-Researcher baselines, standard deviations, and explicit partial/unscored/extended-context marks. The final text distinguishes history-guided proposal revision from the independently tested training-allocation policy; the main-table candidate schedule remains 100 rounds.
 
-[Verification](provenance/author_final_pdf_20260930/verification.json) checks the entire rebuilt PDF against the submitted reference after the three declared corrections, preserves scientific-asset hashes and records the main-text boundary. Run:
+[Verification](provenance/author_exact_pdf_20261007/verification.json) checks all 31 rebuilt pages without permitted textual corrections and records image-comparison measurements. The canonical release is also checked by its exact hash. Run:
 
 ```bash
-python tools/verify_author_final_sync.py --pdf output/pdf/BioCoLoop_manuscript.pdf
+python tools/verify_exact_author_pdf.py --pdf output/pdf/BioCoLoop_source_rebuild.pdf
 python -m unittest discover -s tools -p 'test_*.py'
 ```
 

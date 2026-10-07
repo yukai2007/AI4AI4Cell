@@ -35,7 +35,7 @@ class MethodExecutionTests(unittest.TestCase):
                       r"v_r&=\beta_a v_{r-1}+\bar w_r-w_{r-1}",
                       r"\bar s(a,r)=\frac{1}{|\mathcal P|}\sum_{i\in\mathcal P}s_i(a,r)",
                       r"\bar\ell(a,r)=\frac{1}{|\mathcal P|}\sum_{i\in\mathcal P}\ell_i^{\mathrm{dev}}(a,r)",
-                      r"\mathcal E_{t+1}=\mathcal E_t\mathbin{\|}[e_{t+1}]"):
+                      r"\mathcal E_{t+1}=\mathcal E_t\mathbin{\|}[e_t]"):
             self.assertIn(token, self.method)
         self.assertIn("earlier round retained on a complete tie", self.method)
         self.assertIn("History feedback begins with the second proposal", self.method)
