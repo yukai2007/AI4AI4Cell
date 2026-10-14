@@ -32,6 +32,9 @@ def verify(pdf, log):
     assert reproducibility_pages == [10], ("Conclusion must finish before page 10", reproducibility_pages)
     assert appendix_pages and appendix_pages[0] >= 32
     assert "Single-laboratory" in text or "SINGLE-LABORATORY" in text
+    # Unnumbered appendix headings do not populate a numeric LaTeX label.
+    # Verify the visible reference, not merely the absence of TeX warnings.
+    assert re.search(r"Additional single-laboratory random search.{0,500}\(Appendix D\)\.", re.sub(r"\s+", " ", text))
     assert not any(list(page.annots() or []) for page in document)
     assert not document.metadata.get("author")
     for identifier in ("/liziqing/", "yukai2007", "Kai Yu", "Westlake University"):
