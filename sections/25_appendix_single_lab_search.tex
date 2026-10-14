@@ -1,0 +1,31 @@
+\clearpage
+\section*{Appendix D. Single-laboratory configuration-search controls}
+\label{app:single-lab-search}
+\setcounter{table}{0}
+\renewcommand{\thetable}{D.\arabic{table}}
+\renewcommand{\theHtable}{D.\arabic{table}}
+
+\subsection*{D.1 Search protocol and primary results}
+We add conventional configuration-search controls to test whether more extensive search within one laboratory can match the collaborative framework. All new controls access only laboratory 0's training and development partitions. They use the same twelve registered designs, task-specific initialization, original GPU training implementation and held-out scorers as the main study. Each design is fitted afresh for 100 rounds at seeds 42--44. Development score, followed by development loss, selects the design and checkpoint.
+
+Random search evaluates D00 and six distinct randomly sampled designs. Bayesian optimization evaluates D00, the first two proposals from the corresponding seeded random-search sequence, and four proposals selected by Gaussian-process expected improvement. Its fixed Mat\'ern-$5/2$ kernel uses unit length scales, diagonal regularization $\alpha=10^{-6}$, normalized outcomes and an improvement offset of 0.01. Design features encode log-scaled learning rate, ordinal weight decay, normalized momentum and the binary residual flag. Both methods have a nominal budget of 700 candidate-rounds. Exhaustive enumeration evaluates all twelve registered configurations, using 1,200 candidate-rounds; this covers the registered menu rather than a full Cartesian hyperparameter grid. The search decisions are replayed using only the development results of queried configurations from the freshly trained, fixed-seed candidate cache. The BioCoLoop rows reuse the original Qwen2.5-7B-Instruct runs, with and without collaborative participation.
+
+\input{tables/single_lab_search/comparison}
+
+The ten-laboratory framework exceeds all three search strategies in mean score on all five endpoints. Relative to random search, the gains are 3.66 AUROC points on DTI, 16.86 AP points on proteomics, and 10.44, 8.15 and 4.48 Top-1 points on VCC, Norman and Tahoe. Including the fixed-model control, BioCoLoop has the highest mean on four of five endpoints; Norman's fixed model retains the best Top-1. These results show the value of the combined collaborative training and research procedure beyond increasing single-laboratory search. Same-access comparisons in Appendix A and Section 4.7 examine the research mechanism separately.
+
+\subsection*{D.2 Search variability and held-out uncertainty}
+To assess sensitivity to random proposal choices, we compute the exact expected score of random search over all $\binom{11}{6}=462$ six-design subsets. The initial design D00 is always included; ties integrate the possible proposal orders using the original development-selection rule. We average the separately scored selected models, not their predictions. Table~\ref{tab:single-lab-search-expectation} reports the expectation for each training seed, summarized across the three seeds. The collaborative framework also exceeds these expected scores on all five endpoints.
+
+\input{tables/single_lab_search/search_expectation}
+
+For these additional controls, a separate paired bootstrap uses 10,000 resamples of compounds for proteomics and interventions for the cell tasks. Each resample is shared across methods and the three trained models, and differences are averaged across seeds. These intervals quantify test-group uncertainty conditional on the trained models, complementing the seed standard deviations. The BioCoLoop-minus-random-search 95\% intervals are [1.91, 29.97] AP points for proteomics and [$-0.48$, 22.49], [$-9.53$, 26.47] and [$-3.98$, 12.94] Top-1 points for VCC, Norman and Tahoe. The cell intervals span zero despite positive mean differences. These are descriptive intervals without multiplicity adjustment; the original study's uncertainty protocol remains as specified in Appendix A.5.
+
+\subsection*{D.3 Generalization to unseen DTI entities}
+The same development-selected checkpoints are evaluated on the original random, unseen-drug and unseen-protein test sets. Exact input-identity checks confirm that none contains a training drug--protein pair; the unseen-drug and unseen-protein sets also have no exact drug-string or protein-sequence overlap with training, respectively. Scores are independently recomputed from saved, row-identified predictions.
+
+\input{tables/single_lab_search/dti_endpoints}
+
+BioCoLoop attains the highest mean AUROC and AP on all three DTI test sets. Compared with the three search controls, its AUROC gains are 3.66 points on the random split, 2.57 on unseen drugs and 3.93 on unseen proteins. The benefit therefore extends beyond the primary random-split endpoint.
+
+The additional study comprises 180 complete candidate fits and 18,000 candidate-rounds. Their recorded fit times sum to 13.02 GPU-hours, excluding feature preparation, held-out scoring and statistical analysis. This is the cost of constructing the shared evaluation cache, rather than the cost of a single search. Aggregate per-seed scores, search definitions and source hashes accompany the tables in \texttt{tables/single\_lab\_search/}.

@@ -4,11 +4,19 @@
 
 BioCoLoop combines **biology**, **collaboration** and an iterative **research loop**. Historical releases retain their original names. The existing repository URL and storage paths remain stable for Overleaf and result provenance.
 
-## Current revision — unchanged author-final PDF, 7 October 2026
+## Current revision — additional search controls, 14 October 2026
 
-The canonical [English manuscript](output/pdf/BioCoLoop_manuscript.pdf) is **byte-for-byte identical** to the author's selected `5046_BioCoLoop_Collaborative_A (4).pdf`: SHA-256 `3bdd4251d9b201a1e9fbf6b94ffd72fc7092b0cc33a3afdcf72b4150b4407ec8`. It has **31 pages, with the main text ending on page 9**. The [submitted reference](provenance/author_final_pdf_20260930/author_submitted.pdf) is unchanged.
+The [current English manuscript](output/pdf/BioCoLoop_manuscript.pdf) adds a short result paragraph in Section 4.3 and **Appendix D** to the author-final manuscript. The existing main table, Qwen/Luna comparisons, figures, abstract, methods and earlier results remain unchanged. Appendix D reports three-seed single-laboratory random search, Bayesian optimization and enumeration of the registered twelve-design menu, alongside the historical Qwen BioCoLoop references. It also includes exact random-search expectations and the three DTI test sets with AUROC and AP.
 
-The editable LaTeX sources restore the author's original wording, italics and paragraph layout, including the three passages previously changed as errata. The separately compiled [source rebuild](output/pdf/BioCoLoop_source_rebuild.pdf) matches the reference text on every page without applying corrections. It is kept distinct because the native PDF engine differs from the author's engine; byte identity is asserted only for the canonical author PDF, not for a re-serialized compilation.
+All 180 new candidate fits completed 100 rounds; the published comparisons use only laboratory 0 for the new controls. BioCoLoop's ten-laboratory reference has higher mean scores than all three search controls on all five endpoints; the fixed model remains strongest on Norman. The comparison supports the combined collaborative framework, while the earlier same-access studies continue to isolate research-loop effects.
+
+Aggregate results, source hashes and reproducible table generation are in [tables/single_lab_search/](tables/single_lab_search/) and `tools/publish_single_lab_search.py`. [Build verification](provenance/single_lab_search_20261014/build_receipt.json) records the additive source changes and checks that the original scientific assets are unchanged. The current PDF intentionally differs from the archived author-final PDF below. The previous source rebuild and Chinese companion remain historical, rather than updated translations of this addition.
+
+## Archived exact author-final revision — 7 October 2026
+
+The archived [submitted reference](provenance/author_final_pdf_20260930/author_submitted.pdf) is **byte-for-byte identical** to the author's selected `5046_BioCoLoop_Collaborative_A (4).pdf`: SHA-256 `3bdd4251d9b201a1e9fbf6b94ffd72fc7092b0cc33a3afdcf72b4150b4407ec8`. It has **31 pages, with the main text ending on page 9**, and remains unchanged.
+
+That revision restored the author's original wording, italics and paragraph layout, including the three passages previously changed as errata. Its separately compiled [archived source rebuild](output/pdf/BioCoLoop_source_rebuild.pdf) matches the reference text on every page without applying corrections. It is kept distinct because the native PDF engine differs from the author's engine; byte identity is asserted only for the archived author PDF, not for a re-serialized compilation.
 
 Known reference issues remain documented outside the manuscript in [the exact-version verification](provenance/author_exact_pdf_20261007/verification.json): the evidence-card index, the printed 46.00 chance-MRR value (mathematically 45.67), and the historical failed-run example. The [30 September synchronization report](provenance/author_final_pdf_20260930/CHANGES.zh-CN.md) is historical; its corrections are not applied to this exact-author release.
 

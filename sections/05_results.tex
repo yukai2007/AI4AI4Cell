@@ -4,6 +4,8 @@ Table~\ref{tab:public-harness-comparison-three-seed} compares BioCoLoop with the
 
 With Qwen, BioCoLoop reaches 93.76 AUROC on BindingDB and 36.99 AP on proteomics; with Luna, it reaches 93.67 and 37.11, respectively. The corresponding fixed-model scores are 82.83 and 25.05. BioCoLoop also attains the highest complete VCC and Tahoe scores in both blocks, at 31.54/31.50 and 22.39 macro Top-1. On Norman, the fixed model scores 25.56, compared with 22.25 for Qwen BioCoLoop and 22.69 for Luna BioCoLoop.
 
+Additional single-laboratory random search, Bayesian optimization and twelve-design enumeration remain below Qwen BioCoLoop's mean scores across all five endpoints (Appendix~\ref{app:single-lab-search}).
+
 \subsection*{4.4 Evidence-guided training allocation}
 Evidence-guided allocation improves held-out performance at a matched budget (Table~\ref{tab:strong-effects}). Uniform allocation trains all ten designs for 80 rounds. The evidence-guided policy screens them for 20 rounds and restarts six selected designs for 100-round training. Each schedule uses 800 aggregation rounds and 160 development evaluations.
 \input{tables/strong_v3/effects}

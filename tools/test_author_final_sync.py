@@ -19,8 +19,14 @@ class AuthorFinalSyncTests(unittest.TestCase):
         self.assertEqual(result['status'], 'PASS')
         self.assertEqual(result['allowed_text_errata'], [])
 
-    def test_canonical_published_pdf_is_byte_identical(self):
-        self.assertEqual(hashlib.sha256((PAPER / 'output/pdf/BioCoLoop_manuscript.pdf').read_bytes()).hexdigest(), AUTHOR_SHA)
+    def test_canonical_pdf_matches_the_additive_release(self):
+        # The author reference and exact rebuild remain archived unchanged;
+        # the current release additionally includes the requested search study.
+        receipt = json.loads((PAPER / 'provenance/single_lab_search_20261014/build_receipt.json').read_text())
+        self.assertEqual(receipt['status'], 'PASS')
+        self.assertEqual(receipt['preserved_author_reference_sha256'], AUTHOR_SHA)
+        self.assertTrue(receipt['original_scientific_assets_unchanged'])
+        self.assertEqual(hashlib.sha256((PAPER / 'output/pdf/BioCoLoop_manuscript.pdf').read_bytes()).hexdigest(), receipt['manuscript_sha256'])
 
     def test_scientific_artifact_hashes_are_unchanged(self):
         receipt = json.loads((FOLDER / 'verification.json').read_text())
