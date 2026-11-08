@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "archive_sha256": "833748596c10b989e57b672d8c180ff42eeaab6bdefd7ec30c5a08609e292ee0",
+  "source_sha256": {
+    "extensions/rebuttal_20261109/allocation/account_v2.py": "5780ae14082d9c3adebd7c04c3513014c909eccb4d4aa027def5637f9ff92f29",
+    "extensions/rebuttal_20261109/allocation/allocation_shared.py": "e505689891d5d8d840dbb5a9c9d04ab9fa86d8c8300eb735052948d315f06b45",
+    "extensions/rebuttal_20261109/allocation/cpu_runtime.py": "4b021bcba6f53e849ebf59a9f8f0e3401ad008960d79514066e9aa71cebfa258",
+    "extensions/rebuttal_20261109/allocation/publish_v2.py": "1ec3b53564afaed9f83429f61a9d174baeade242dcc7de440bcfab1d9f84e366",
+    "extensions/rebuttal_20261109/allocation/resource_executor_v2.py": "3e3f4ad19afae724603b1734dbc10e7ceca2101c63f2c44494ba2122fc90b8cc",
+    "extensions/rebuttal_20261109/allocation/run.py": "c9f02c0bdc8c84c03bbe151baf72195acb3a5758e57f7a907fa58a05f64f60db",
+    "extensions/rebuttal_20261109/allocation/run_v2.py": "b71e4005989731a213064c862f6907c8f73c1b3cc0009853eb488d50510960f5",
+    "extensions/rebuttal_20261109/allocation/summarize.py": "2a58f161e13a9ca8ad318129911690940d57186f1fcca458a1bed1a063a51757",
+    "extensions/rebuttal_20261109/allocation/summarize_v2.py": "f65027c0da193784dcaaa03e98bd995e874384686b06a26a2a456b62dd196855",
+    "extensions/rebuttal_20261109/allocation/test_run.py": "9959ae756786f99b349df7d02d3dbc9e7a318b26fc16a0b444583af364905d48",
+    "extensions/rebuttal_20261109/allocation/validate_v2.py": "79c14cc76a181a62278ba9f320c1cabb88fe298bdcc8433144bc6dce88b6d902",
+    "extensions/rebuttal_20261109/search_controls/export.py": "844c8f29a4648489467024994b25e03c166a63a1867c12b14dd35476ca865d9a",
+    "extensions/rebuttal_20261109/search_controls/run.py": "c6cc45a1becda19f3165059972ca175851ef02ba3ff73a1723d31f0aed7b798a",
+    "extensions/rebuttal_20261109/search_controls/test_run.py": "4b494a59329ce0a08a27f2f4ca578bcb91dc43860db231957a951b70c1c279e0",
+    "extensions/rebuttal_20261109/validation/diagnose.py": "eb40a3c23d13ef98722151e3f062af57c6ce1e5940ff75108fde7ff4e88e571c",
+    "extensions/rebuttal_20261109/validation/roster_sensitivity.py": "de3733cfb58677bb18381294befe79f13a7159dc52dfd717339edf9c51eee55b",
+    "extensions/rebuttal_20261109/validation/test_diagnose.py": "fb925e05c79c782896bb2aa17ef654ab4152486af469fbd82a617df815af932e",
+    "extensions/rebuttal_20261109/validation/test_roster.py": "e2fe95d29bc98923c86509bd8abfece285c0768a29bbcd50625448acf486eaea"
+  },
+  "source_file_count": 18,
+  "includes_biological_data": false,
+  "includes_checkpoints": false,
+  "scope": "New review experiments and tests only; not a standalone research implementation.",
+  "requirements": "Requires the existing BioCoLoop research checkout, original task adapters, registered candidate caches and locally authorized biological data. Historical dependencies are identified by the experiment provenance source hashes.",
+  "note": "The stopped v1 canary, CPU scheduling benchmark and resource-only scheduler are included for auditability; their outputs are not formal v2 allocation results."
+}

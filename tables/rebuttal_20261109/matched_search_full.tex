@@ -1,0 +1,25 @@
+\begin{table}[t]
+\centering
+\caption{\textbf{Matched-access configuration search.} All methods use the same ten laboratories, development panels and 12-design library. Searches receive six proposal slots after the common initialization, with up to 700 aggregation rounds. Scores are multiplied by 100. Random search reports its exact expectation and search-policy standard deviation, integrating all 462 six-element subsets; this is not variation across training seeds.}
+\label{tab:rebuttal-matched-search}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrr}
+\toprule
+Method & DTI & Proteomics & VCC & Norman & Tahoe \\
+ & AUROC$\uparrow$ & AP$\uparrow$ & Top-1$\uparrow$ & Top-1$\uparrow$ & Top-1$\uparrow$ \\
+\midrule
+Fixed model & 94.27 & \textbf{37.27} & \textbf{31.50} & 15.48 & 25.37 \\
+Random search, no replacement & 94.45\,{\scriptsize$\pm$}0.17 & \textbf{37.27}\,{\scriptsize$\pm$}0.00 & 27.53\,{\scriptsize$\pm$}6.48 & 22.66\,{\scriptsize$\pm$}3.41 & 26.59\,{\scriptsize$\pm$}0.58 \\
+GP--EI Bayesian optimization & \textbf{94.60} & \textbf{37.27} & \textbf{31.50} & 22.30 & 25.37 \\
+Qwen: direct search & 94.27 & \textbf{37.27} & \textbf{31.50} & 22.30 & 25.37 \\
+Qwen: history-guided search & 94.27 & \textbf{37.27} & \textbf{31.50} & 22.30 & 25.37 \\
+Luna: direct search & \textbf{94.60} & \textbf{37.27} & \textbf{31.50} & 22.30 & \textbf{26.87} \\
+Luna: history-guided search & 94.27 & \textbf{37.27} & \textbf{31.50} & \textbf{23.11} & \textbf{26.87} \\
+\bottomrule
+\end{tabular}
+\vspace{2pt}
+\begin{minipage}{\linewidth}\footnotesize
+One frozen training seed per endpoint (42 for DTI; 61 otherwise); agent and GP--EI rows each represent one search trajectory. The fixed reference uses 100 rounds. Failed proposals retain their slots: Qwen history uses 600 fitted rounds on proteomics, and both Qwen arms use 500 on Tahoe; other searches use 700. Matched-realized-fit and shared-first-proposal sensitivities are reported separately. Selection uses development scores only; the comparison reuses checkpoint-identical, fully trained candidates and previously exposed held-out panels. Bold marks the largest displayed mean, not statistical significance.
+\end{minipage}
+\end{table}

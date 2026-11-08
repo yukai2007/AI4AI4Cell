@@ -1,0 +1,78 @@
+{
+  "schema": "biocoloop-allocation-public-provenance-v2",
+  "source_sha256": {
+    "extensions/rebuttal_20261109/allocation/run_v2.py": "b71e4005989731a213064c862f6907c8f73c1b3cc0009853eb488d50510960f5",
+    "extensions/rebuttal_20261109/allocation/run.py": "c9f02c0bdc8c84c03bbe151baf72195acb3a5758e57f7a907fa58a05f64f60db",
+    "extensions/rebuttal_20261109/allocation/allocation_shared.py": "e505689891d5d8d840dbb5a9c9d04ab9fa86d8c8300eb735052948d315f06b45",
+    "extensions/unified_bio_20260918/core.py": "d358e491d07f11e27607f96d7243e844fdb9152a1c4954effbd77893b6a3370a",
+    "extensions/unified_bio_20260918/core_v3.py": "ef53be48dfe17967e7d2faa20a200bc4c6e286ad21ef5406a694d07e26b663ae",
+    "extensions/unified_bio_20260918/run_v6.py": "bc1d77cf0d7dd8522862b864e66982790479d13ec546cd49164c2cccb24b6d78",
+    "extensions/unified_bio_20260918/research_v6.py": "34c1fb3308f7ebd893158d7c552b4cc5cf4a5d1737983014b3f974fc4f00fd03",
+    "extensions/unified_bio_20260918/research_v4.py": "2e4c520881b2435a6f1a614cd2397931931d0cdfdd388421b1d9ee200dfec7a7",
+    "extensions/unified_bio_20260918/adapters.py": "af63c8d49990d862ec7e0955eb65366f03e60ad31a2f108c2d9a50302a184e92",
+    "extensions/unified_bio_20260918/native_run.py": "b878d3db04d69f96d0da5c50a3e7b029dc03e9b40c16c3e7fdece362ba58c418",
+    "extensions/unified_bio_20260918/ptpc_neural_adapter.py": "8032c6d2b68663029d1b53c41bc07b8249a2c43dd132af6af356707d5bd9ee98",
+    "extensions/unified_bio_20260918/heldout_v6.py": "2d772900d9e7433f78358ab1b73434c79cb33dec92e97dbdd6f37ff1127d2386",
+    "extensions/unified_bio_20260918/heldout_ptpc_neural.py": "fef5b93f6e0e00d86e073136469da1f8d7544763979a05ed0b7767eb3ceb69ce",
+    "extensions/unified_bio_20260918/prepare_ptpc_neural.py": "7362fcdfeb27141480cbf8a8bf68626caf9a41a3fafa36f6721e3189d3e0398f",
+    "extensions/federated_bio_20260918/scdebart.py": "25a93300ae0521154dc339c077d19ea6b6a3215eff3da9bf1a86b9b97990d5c1",
+    "extensions/federated_bio_20260918/engine.py": "63fcc6de12bfedd4b846591de1fabd77c84919f471c10da827805fdc3f353430",
+    "extensions/proteomics/scoring.py": "f5e8e19f7b4265a0c305c3c26ac2875c4db3a29655aae47e1e3beb02a0d80296",
+    "extensions/proteomics/ptpc_model.py": "1ab5e577076513af2e34c4f78fe5c02b5bf363fea2b945d31e8f640f37ece739",
+    "extensions/rebuttal_20261109/allocation/resource_executor_v2.py": "3e3f4ad19afae724603b1734dbc10e7ceca2101c63f2c44494ba2122fc90b8cc"
+  },
+  "artifact_sha256": {
+    "registration.json": "733201aca7e7e2f70027b1add508c5fec981cc138eb0d9d1cd06188028c4ef11",
+    "resource_amendment.json": "13d5d702d9606254f07a53cb741303e8155a655cd5106db59f7e027afd2fa67e",
+    "resource_resume.json": "c0e00b2bc4f44d8951bcfcede496be3bb7c0d3227e132ef82b6f24bbe23fa7e2",
+    "selection_seal.json": "585e116123ff301df84c5d755a28e04e71fbe3ba57e89133e8f55ea00dcd0be9",
+    "results.json": "a8887ef95738c7c82ee4ae14e647da76f41fc2f1a0dc28d391acb90c39d69ad5",
+    "validation.json": "6fe656efc1766652c18ac2ff927aec83a4646a5515c57c3bac67dd17cd64acaa",
+    "training_complete.json": "22ae928d085860a605917d7c279def49e2b7b5db970b01410192faabc0bec2df",
+    "cost_accounting.json": "e3225b203cc5f7d472b864e10e81ea3def2aab5ab7e088d76c2ce3251da5cc75",
+    "table.tex": "8e2cf83e752ce821eede478858147bb83f8bebc57c18c4b66ccef421a413d3a6"
+  },
+  "data_manifest_sha256": {
+    "ptpc_neural": "4cf60e630f3cf2754db61464e7f9dd6ab572ab914c87866991978d54deda4936",
+    "vcc_corrected": "0f63700ce858ac39d8486693b542d71780547c3b83023b0498b3512b45cc4e9c",
+    "norman_double_corrected": "340d9df6de0d6f05215b60c2c393f8e6a4ec3f6df14763ae10748709e6f23527",
+    "tahoe_drug_corrected": "ca6d46b952c79dbae6f323c9fe663bdb268c46eb5a594a291c62b5ebbb5133ec"
+  },
+  "validation_status": "PASS",
+  "validation_checks": [
+    "source/data bindings",
+    "disjoint resource-only schedule and completion before resume",
+    "fresh output paths",
+    "seed/config/clients/rounds",
+    "round-by-round development and checkpoint selector",
+    "no fit test access",
+    "global/stratified/evidence promotion",
+    "exact 210 random subsets",
+    "seal precedes heldout decode",
+    "heldout input hashes",
+    "prediction hashes",
+    "saved-NPZ independent sklearn AP or grouped macroTop1",
+    "sealed policy-to-checkpoint scores including uniform r80",
+    "independent random expectation/SD/range arithmetic",
+    "three-seed mean and sample SD"
+  ],
+  "fit_counts": {
+    "r20": 120,
+    "r80": 120,
+    "r100": 120
+  },
+  "scientific_runtime": {
+    "device": "CUDA",
+    "gpu_model": "NVIDIA A100-SXM4-80GB",
+    "torch": "2.6.0+cu124",
+    "cuda": "12.4"
+  },
+  "sequence": "Frozen protocol; complete fresh training; development selection seal; held-out scoring; independent validation; aggregate export.",
+  "notes": [
+    "v1 stopped at an exact-reproduction canary mismatch and contributes no fits to v2.",
+    "A CPU benchmark was used for scheduling only and contributes no scientific result.",
+    "A resource-only amendment schedules disjoint complete task-seeds on GPUs5/7 while the GPU6 coordinator pauses, then it checks the completed fits and seals selections. Original scientific registration and source are unchanged.",
+    "No absolute paths or query-level outputs are included in this publication snapshot."
+  ],
+  "public_snapshot_sha256": "c2fb729bc8bb272a85673b44ead33e604f46a5655ee26fac14d44900bfcff5b4"
+}

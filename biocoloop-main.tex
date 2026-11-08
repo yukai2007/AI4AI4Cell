@@ -20,7 +20,7 @@
 \maketitle
 \input{tables/strong_v3/snapshot_stats}
 \begin{abstract}
-Artificial intelligence is increasingly used to automate biological model development. Recent self-improving agents advance this process by iteratively proposing model changes, training and evaluating them, and using the observed results to guide subsequent proposals. However, biological data are often distributed across laboratories, where data-sharing constraints can prevent centralized pooling and limit access to training and evaluation. We introduce BioCoLoop, a collaborative research framework that extends collaboration from parameter fitting to model development itself. BioCoLoop collaboratively trains and evaluates candidate model configurations across laboratories and uses laboratory-local development evidence, alongside model updates, as a shared research signal. An inner loop fits and evaluates candidates; an outer loop uses the accumulated evidence to guide subsequent proposals. A separate allocation policy uses early evaluation trajectories to determine which models receive further training. Across drug--target interaction prediction, observed-response proteomic efficacy prediction and cell perturbation identification, BioCoLoop improves most primary endpoints. Development-history feedback changes search trajectories and can reach useful configurations earlier, while evidence-guided allocation improves performance under the same training and evaluation budget.
+Biological model development requires both fitting parameters and deciding which model configurations to investigate. When measurements are held by different laboratories, these decisions must draw on distributed training and evaluation. We introduce BioCoLoop, a collaborative research framework that connects laboratory-local fitting to a shared record of candidate designs, development trajectories and selection decisions. Task adapters implement this interface for drug--target interaction prediction, observed-response proteomic efficacy prediction and cell perturbation identification. We evaluate three distinct uses of collaboration: increasing laboratory participation, conditioning proposals on prior development outcomes, and allocating training from early learning trajectories. Source-defined laboratory experiments measure transfer across biological studies, while same-access search controls separate proposal quality from access to additional data. The combined framework improves four of five primary endpoints relative to the single-laboratory fixed model; the effect of proposal history is task-dependent. A separate allocation study improves double-gene perturbation identification by 10.84 percentage points over uniform allocation at matched training and evaluation counts, although simpler promotion also recovers much of this gain. These results establish a common experimental framework for collaborative biological model development and identify training allocation and development-to-test generalization as consequential research decisions.
 \end{abstract}
 
 \input{sections/01_introduction}
@@ -35,7 +35,6 @@ Artificial intelligence is increasingly used to automate biological model develo
 
 \input{sections/07_conclusion}
 
-\clearpage
 \input{sections/08_reproducibility}
 
 \clearpage
@@ -46,5 +45,7 @@ Artificial intelligence is increasingly used to automate biological model develo
 \input{sections/24_appendix_public_harness}
 
 \input{sections/25_appendix_single_lab_search}
+
+\input{sections/26_appendix_rebuttal}
 
 \end{document}

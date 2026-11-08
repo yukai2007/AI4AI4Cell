@@ -1,0 +1,18 @@
+\begin{table}[htbp]
+\caption{Fresh-runtime allocation controls. Scores $\times100$ are mean $\pm$ sample SD over training seeds 53--55. All policies use the same ten laboratories and ten designs, with 800 aggregation rounds and 160 aggregate development evaluations. Promotion policies screen ten designs for 20 rounds and restart six for 100; uniform allocation fits all ten for 80. Random promotion integrates all 210 six-design subsets per seed, and its displayed SD is across seed-conditional expectations. All 360 fits are newly trained; the original Table~\ref{tab:strong-effects} is retained separately. Bold marks the best unrounded mean, including ties.}
+\label{tab:rebuttal-allocation}
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrr}
+\toprule
+Allocation policy & Proteomics & VCC & Norman & Tahoe \\
+ & AP $\uparrow$ & Top-1 $\uparrow$ & Top-1 $\uparrow$ & Top-1 $\uparrow$ \\
+\midrule
+Uniform (80 rounds) & $\mathbf{37.47}\pm0.55$ & $20.01\pm0.00$ & $11.48\pm0.52$ & $20.90\pm2.99$ \\
+Random promotion & $37.37\pm0.48$ & $\mathbf{22.49}\pm1.70$ & $\mathbf{22.63}\pm0.64$ & $21.95\pm0.04$ \\
+Score only (global) & $\mathbf{37.47}\pm0.55$ & $20.01\pm0.00$ & $21.70\pm7.19$ & $20.90\pm0.00$ \\
+Score only (LR groups) & $\mathbf{37.47}\pm0.55$ & $20.01\pm0.00$ & $21.70\pm7.19$ & $20.90\pm0.00$ \\
+Score + trajectory & $\mathbf{37.47}\pm0.55$ & $20.01\pm0.00$ & $22.32\pm0.43$ & $\mathbf{22.89}\pm1.72$ \\
+\bottomrule
+\end{tabular}
+\end{table}

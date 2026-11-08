@@ -4,13 +4,30 @@
 
 BioCoLoop combines **biology**, **collaboration** and an iterative **research loop**. Historical releases retain their original names. The existing repository URL and storage paths remain stable for Overleaf and result provenance.
 
-## Current revision — additional search controls, 14 October 2026
+## Review revision — 9 November 2026
 
-The [current English manuscript](output/pdf/BioCoLoop_manuscript.pdf) adds a short result paragraph in Section 4.3 and **Appendix D** to the author-final manuscript. The existing main table, Qwen/Luna comparisons, figures, abstract, methods and earlier results remain unchanged. Appendix D reports three-seed single-laboratory random search, Bayesian optimization and enumeration of the registered twelve-design menu, alongside the historical Qwen BioCoLoop references. It also includes exact random-search expectations and the three DTI test sets with AUROC and AP.
+The review revision is maintained on **`rebuttal/20261109-review-revision`**, based on commit `7764441`; it does not replace the author-approved `main` branch. The [revised manuscript](output/pdf/BioCoLoop_revised_20261109.pdf) separates laboratory participation, proposal-history search and training allocation. Its access-scenario table preserves every original score, makes laboratory access explicit and removes the average rank over unevenly completed endpoints. A new main-text table compares random search, GP-EI and both Qwen/Luna proposal modes with the same ten-laboratory access.
+
+Appendix E explains these additional controls, reconstructs the VCC/Tahoe development-to-test divergence, tests 20 new development-option rosters, and reports the completed three-seed source-defined laboratory history comparisons. The new controls do not show a general history advantage; their mixed outcomes are retained and the abstract and conclusions are aligned with that evidence. Fixed-roster sensitivity is distinguished from robustness across new biological partitions.
+
+A fresh 360-fit allocation comparison additionally tests uniform allocation, two score-only promotion rules, exact random promotion and the original trajectory policy. It reproduces the original Norman gain over uniform allocation, while showing that simpler promotion recovers much of it. The complete five-policy results, training-seed variability, conditional random-policy variability and cost accounting are in Appendix E.5 and the aggregate allocation snapshot.
+
+Author-facing deliverables:
+
+- [Chinese revision summary](provenance/rebuttal_20261109/CHANGES.zh-CN.md) and [review-action register](provenance/rebuttal_20261109/REVIEW_ACTIONS.zh-CN.md).
+- Replies to [FBhK](provenance/rebuttal_20261109/RESPONSE_FBhK.md), [AfJB](provenance/rebuttal_20261109/RESPONSE_AfJB.md) and [cR5g](provenance/rebuttal_20261109/RESPONSE_cR5g.md), plus a [combined response PDF](output/pdf/BioCoLoop_reviewer_responses_20261109.pdf).
+- [Aggregate evidence](tables/rebuttal_20261109/) and [build receipt](provenance/rebuttal_20261109/build_receipt.json). The reference author-final PDF and original result tables remain unchanged.
+- [New experiment-source archive](provenance/rebuttal_20261109/experiment_sources.zip) and its [file manifest](provenance/rebuttal_20261109/experiment_sources.manifest.json). This is a versioned extension snapshot, not a standalone reproduction package: it requires the original research checkout, task adapters, cached fits and locally authorized data. It contains no biological arrays or checkpoints.
+
+The reply files and internal review records are for author review, not anonymous manuscript supplements. They have not been posted to OpenReview. A branch push does not change Overleaf's `main` source or confirm a submission-platform update. The Chinese companion predates this revision; use the Chinese revision summary for the new results.
+
+## Archived search-control revision — 14 October 2026
+
+The 14 October revision added a short result paragraph in Section 4.3 and **Appendix D** to the author-final manuscript. In that revision, the main table, Qwen/Luna comparisons, figures, abstract, methods and earlier results remained unchanged. Appendix D reports three-seed single-laboratory random search, Bayesian optimization and enumeration of the registered twelve-design menu, alongside the historical Qwen BioCoLoop references. It also includes exact random-search expectations and the three DTI test sets with AUROC and AP.
 
 All 180 new candidate fits completed 100 rounds; the published comparisons use only laboratory 0 for the new controls. BioCoLoop's ten-laboratory reference has higher mean scores than all three search controls on all five endpoints; the fixed model remains strongest on Norman. The comparison supports the combined collaborative framework, while the earlier same-access studies continue to isolate research-loop effects.
 
-Aggregate results, source hashes and reproducible table generation are in [tables/single_lab_search/](tables/single_lab_search/) and `tools/publish_single_lab_search.py`. [Build verification](provenance/single_lab_search_20261014/build_receipt.json) records the additive source changes and checks that the original scientific assets are unchanged. The current PDF intentionally differs from the archived author-final PDF below. The previous source rebuild and Chinese companion remain historical, rather than updated translations of this addition.
+Aggregate results, source hashes and reproducible table generation are in [tables/single_lab_search/](tables/single_lab_search/) and `tools/publish_single_lab_search.py`. [Build verification](provenance/single_lab_search_20261014/build_receipt.json) records that revision's additive source changes and original-asset checks. Later revisions intentionally differ from the archived author-final PDF below. The source rebuild and Chinese companion remain historical, rather than updated translations of the added controls.
 
 ## Archived exact author-final revision — 7 October 2026
 

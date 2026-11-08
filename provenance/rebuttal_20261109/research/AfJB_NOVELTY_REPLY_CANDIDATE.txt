@@ -1,0 +1,26 @@
+Candidate paragraph for the novelty portion of the response to Reviewer AfJB.
+Integrate only after the main manuscript edits are made. Experimental answers are intentionally
+left to the completed same-access study; this paragraph does not assert new experimental results.
+
+Thank you for identifying the relevant connections. We have expanded the related-work discussion
+to distinguish collaboration among research agents from collaboration among data holders, while
+recognizing that Helmsman already addresses automated federated-system design. The Virtual
+Biotech coordinates specialist biomedical analyses; AutoScientists studies self-organizing
+research teams with shared experimental histories; and Helmsman generates and refines federated
+learning code. BioCoLoop's focus is a common experimental interface for biological predictors:
+local parameter fitting and local development evaluation supply comparable evidence for choosing
+configurations and allocating training. Our experiments deliberately use a bounded configuration
+library so that these decisions can be evaluated under controlled access and budgets. We have
+made this scope explicit and separated the combined-system comparison from the evidence for
+each component. We agree that the ten-versus-one-laboratory main table alone cannot establish
+an advantage of proposal history; the new same-access comparison addresses that question directly.
+
+Sources to attach near the corresponding sentences:
+Zhang et al. (2026), https://doi.org/10.1126/science.aeg6779
+Gao et al. (2026), https://arxiv.org/abs/2605.28655v1
+Li et al. (2026), https://openreview.net/forum?id=Voiy13SK3r
+
+Author-use note: Replace “new same-access comparison” with its actual result and table reference
+only when verified. If it fails to show a history advantage, state that result and keep the
+contribution as the operational biological framework, source-transfer evidence and the separately
+supported allocation finding. Do not turn that negative finding into a broader superiority claim.

@@ -1,0 +1,18 @@
+\begin{table}[t]
+\caption{Search with source-defined laboratories. Protein: PTPC, Lin, Ruprecht and decryptE; cell: VCC, Replogle, Nadig and Jiang. All methods share four training sources and the target development panels. Searches use twelve designs, six proposal slots and at most 700 rounds; the fixed reference uses 100 rounds. Mean $\pm$ sample SD over training/search seeds 61--63; scores $\times100$. Random reports the exact policy expectation per seed, then its between-seed SD. Luna uses the same checkpoint cache but new proposal calls.}
+\label{tab:rebuttal-source-history}
+\centering\small
+\begin{tabular}{lrr}
+\toprule
+Method & Proteomic AP $\uparrow$ & Cell macro Top-1 $\uparrow$ \\
+\midrule
+Fixed design & $38.72\pm1.94$ & $28.82\pm0.00$ \\
+Random, exact expectation & $36.37\pm1.27$ & $24.83\pm4.23$ \\
+Qwen direct & $37.83\pm1.28$ & $22.36\pm7.20$ \\
+Qwen history & $34.31\pm4.96$ & $19.41\pm2.11$ \\
+Luna direct & $35.35\pm3.62$ & $22.88\pm6.75$ \\
+Luna history & $34.94\pm3.52$ & $22.88\pm6.75$ \\
+Luna enriched history & $35.39\pm3.67$ & $22.88\pm6.75$ \\
+\bottomrule
+\end{tabular}
+\end{table}

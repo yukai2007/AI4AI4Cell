@@ -7,6 +7,23 @@
 \setlength{\@fptop}{0pt}
 \makeatother
 
+\paragraph{How to read the supplementary experiments.}
+Appendix A specifies the shared algorithm and task scorers. Appendix B separates laboratory count, source transfer and proposal-history studies; Appendix C documents task-adapted public agents. Appendix D compares search strategies restricted to one laboratory. Appendix E holds laboratory access fixed when comparing search and training-promotion policies, and examines development--test divergence. These studies answer different questions: a ten-versus-one laboratory gain measures the complete access scenario, whereas same-access comparisons isolate the research decision.
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}lXX@{}}
+\toprule
+Study & What changes & What the comparison measures \\
+\midrule
+Access scenario & One versus ten laboratories and research workflow & Combined data-access and workflow effect \\
+Same-access search & Proposal policy; common data and menu & Configuration-search quality \\
+Source transfer & Biological study supplying local updates & Positive or negative transfer to the target \\
+Training allocation & Which candidates receive longer fitting & Use of a fixed training/evaluation budget \\
+Roster diagnostic & Development distractors and option order & Sensitivity of already selected models \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
 \subsection*{A.1 Research algorithm and optimization}
 All three task families use the parameter update, development-selection rule and proposal interface of Section 3. A task adapter defines the input representation, prediction components, training loss and development scorer. The research process below starts from the task's reference design. The fitted reference also supplies its first evidence card.
 
@@ -141,7 +158,7 @@ For each query, predicted candidate responses and the observed response are L2-n
 Thus each intervention receives equal weight even when it contributes a different number of query profiles. Micro Top-1, mean reciprocal rank and Top-3 average over individual queries. The development loss is cross-entropy over the five cosine scores divided by temperature 0.1. Development selection first computes these scores within each laboratory and then averages laboratories equally.
 
 \paragraph{Identification diagnostics.}
-The reported frozen-scDEBART identification diagnostics span 7.5--31.6\% macro Top-1 against a 20\% chance level and 36.00--57.00 MRR against a 46.00 chance level. The untrained public head scores 7.5\% on Norman. True-option positions are near-uniform across the fixed rosters, and a prototype oracle built from observed held-out responses retrieves the true option at 94.5\% on VCC and 100\% on Norman.
+The reported frozen-scDEBART identification diagnostics span 7.5--31.6\% macro Top-1 against a 20\% chance level and 36.00--57.00 MRR against a 45.67\% chance level, since a uniform five-option ranking has expected reciprocal rank $(1+1/2+1/3+1/4+1/5)/5$. The untrained public head scores 7.5\% on Norman. True-option positions are near-uniform across the fixed rosters, and a prototype oracle built from observed held-out responses retrieves the true option at 94.5\% on VCC and 100\% on Norman.
 
 \subsection*{A.5 Complete comparisons and uncertainty}
 The following tables report the control comparison, secondary metrics and all three drug--target test sets. Bold marks the best displayed value within a task and metric, including ties. Higher is better except for binary cross-entropy and cell cross-entropy.

@@ -1,0 +1,31 @@
+\providecommand{\TblPartial}{\textsuperscript{$\dagger$}}
+\providecommand{\TblZero}{--}
+\providecommand{\TblStar}{\textsuperscript{$\star$}}
+\begin{table}[t]
+\caption{Access-scenario comparison: ten participating laboratories versus one. Scores $\times100$ are mean $\pm$ sample SD over seeds 42--44. Data and local computation differ with access; this table measures complete workflows, not the isolated effect of proposal history. Bold and underline indicate the best and second-best complete scores within each block. $\dagger$: two scored seeds; --: no sealed score; $\star$: extended-context adaptation. Execution outcomes are in Appendix C; same-access search is reported separately.}
+\label{tab:public-harness-comparison-three-seed}
+\centering\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.02}
+\begin{tabular}{@{}lrccccc@{}}
+\toprule
+Method & Labs & DTI & Proteomics & \multicolumn{3}{c}{Cell perturbation (Top-1)} \\
+\cmidrule(lr){3-3}\cmidrule(lr){4-4}\cmidrule(l){5-7}
+ & & AUROC $\uparrow$ & AP $\uparrow$ & VCC $\uparrow$ & Norman $\uparrow$ & Tahoe $\uparrow$ \\
+\midrule
+\multicolumn{7}{@{}l}{\textbf{Qwen2.5-7B-Instruct}} \\
+Fixed model & 1 & 82.83 $\pm$ 1.22 & \underline{25.05} $\pm$ 4.56 & \underline{29.94} $\pm$ 0.00 & \textbf{25.56} $\pm$ 0.00 & \underline{19.40} $\pm$ 0.00 \\
+Direct & 1 & \underline{89.89} $\pm$ 1.02 & 20.13 $\pm$ 0.07 & 21.09 $\pm$ 4.38 & 14.15 $\pm$ 0.00 & 15.42 $\pm$ 6.21 \\
+AI-Scientist-v2 & 1 & 89.68 $\pm$ 0.80 & 20.18 $\pm$ 0.43 & 18.61 $\pm$ 2.78 & 14.12 $\pm$ 0.04 & 15.42 $\pm$ 6.21 \\
+AI-Researcher & 1 & 86.09 $\pm$ 0.88 & 20.12 $\pm$ 0.05 & 19.70 $\pm$ 2.87\TblPartial & 21.73 $\pm$ 6.63 & 17.41 $\pm$ 6.21 \\
+\textbf{BioCoLoop} & 10 & \textbf{93.76} $\pm$ 1.11 & \textbf{36.99} $\pm$ 0.22 & \textbf{31.54} $\pm$ 0.08 & \underline{22.25} $\pm$ 0.45 & \textbf{22.39} $\pm$ 2.59 \\
+\midrule
+\multicolumn{7}{@{}l}{\textbf{GPT-5.6 Luna (low reasoning)}} \\
+Fixed model & 1 & 82.83 $\pm$ 1.22 & \underline{25.05} $\pm$ 4.56 & \underline{29.94} $\pm$ 0.00 & \textbf{25.56} $\pm$ 0.00 & \underline{19.40} $\pm$ 0.00 \\
+Direct & 1 & \underline{89.89} $\pm$ 1.02 & 20.17 $\pm$ 0.42 & 18.61 $\pm$ 2.78 & 21.75 $\pm$ 6.59 & 15.92 $\pm$ 6.03 \\
+AI-Scientist-v2 & 1 & 89.59 $\pm$ 0.95 & 23.37 $\pm$ 5.89 & 18.61 $\pm$ 2.78 & 14.12 $\pm$ 0.04 & 11.94 $\pm$ 2.11\TblPartial \\
+AI-Researcher & 1 & \TblZero & 20.29 $\pm$ 0.27\TblStar & 18.61 $\pm$ 2.78\TblStar & 14.12 $\pm$ 0.04\TblStar & 15.42 $\pm$ 6.21\TblStar \\
+\textbf{BioCoLoop} & 10 & \textbf{93.67} $\pm$ 0.98 & \textbf{37.11} $\pm$ 0.01 & \textbf{31.50} $\pm$ 0.00 & \underline{22.69} $\pm$ 0.73 & \textbf{22.39} $\pm$ 2.59 \\
+\bottomrule
+\end{tabular}
+\end{table}

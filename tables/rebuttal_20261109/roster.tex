@@ -1,0 +1,16 @@
+\begin{table}[t]
+\caption{Development-roster sensitivity of the already selected initial and 24-proposal final checkpoints. Twenty frozen seeds resample four incorrect options within the same development-intervention pool; each comparison uses paired rosters. Entries are final-minus-initial macro Top-1 differences in percentage points. The standard deviation is across roster draws, not training seeds or new biological splits. No model is trained or reselected.}
+\label{tab:rebuttal-roster}
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llrrr}
+\toprule
+Task & Proposer / search & Original roster & New rosters & Positive draws \\
+\midrule
+VCC & Qwen / both & $+1.17$ & $-1.34\pm7.37$ & $6/20$ \\
+VCC & Luna / direct & $+4.03$ & $+2.24\pm8.15$ & $12/20$ \\
+VCC & Luna / history & $+7.28$ & $+2.89\pm7.89$ & $12/20$ \\
+Tahoe & Both / both & $+5.00$ & $-1.33\pm4.82$ & $7/20$ \\
+\bottomrule
+\end{tabular}
+\end{table}

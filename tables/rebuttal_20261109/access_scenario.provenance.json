@@ -1,0 +1,6 @@
+{
+  "source": "tables/public_harness_comparison/main_public_harness_three_seed.tex",
+  "source_sha256": "3d7089cba1a7e1d4594943f7c9fbb17eefee3a08036eeb9fd1d91f0c75d54351",
+  "numeric_score_cells_changed": 0,
+  "change": "Explicit labs column; remove incomplete-endpoint mean ranks; clarify estimand"
+}

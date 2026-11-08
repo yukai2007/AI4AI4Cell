@@ -1,0 +1,34 @@
+{
+  "date": "2026-11-09",
+  "status": "PASS",
+  "manuscript_sha256": "b696ddf9a41327c34f8a02e9a80407a566987c0b332ebf73d373a90c1a55b418",
+  "reviewer_responses_pdf_sha256": "07784e2a842d7102462f049de2ee660cf45577cf640b74d0f738da3ecab3cc78",
+  "visual_review": {
+    "manuscript_pages_rendered_and_inspected": 37,
+    "reviewer_response_pages_rendered_and_inspected": 3,
+    "main_text_ends_page": 10,
+    "checks": [
+      "All-page contact-sheet inspection",
+      "Full-resolution main and added allocation table inspection",
+      "No cropped text or overlapping table content observed",
+      "Appendix E heading precedes its tables",
+      "Each reviewer response occupies one readable page"
+    ]
+  },
+  "targeted_tests": {
+    "search_rules": {"passed": 8},
+    "validation_and_rosters": {"passed": 11},
+    "allocation_rules": {"passed": 5},
+    "publication_and_historical_result_regressions": {"passed": 33},
+    "total_passed": 57,
+    "scope": "The specified test suites were run; this is not a claim that all historical repository tests were run."
+  },
+  "independent_reviews": [
+    "Matched-search budgets, scores and reviewer coverage",
+    "Validation aggregation, roster sensitivity and aggregate-only publication",
+    "Allocation source/rule consistency and non-overlapping resource schedule",
+    "Final manuscript and response allocation claims against scored evidence"
+  ],
+  "openreview_uploaded_or_posted": false,
+  "main_branch_changed": false
+}

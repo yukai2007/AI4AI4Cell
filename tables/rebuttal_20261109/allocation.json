@@ -1,0 +1,539 @@
+{
+  "schema": "biocoloop-allocation-public-v2",
+  "status": "COMPLETE",
+  "metric_units": "fraction [0,1]",
+  "tasks": {
+    "ptpc_neural": "Proteomic average precision",
+    "vcc_corrected": "VCC macro Top-1 accuracy",
+    "norman_double_corrected": "Norman macro Top-1 accuracy",
+    "tahoe_drug_corrected": "Tahoe macro Top-1 accuracy"
+  },
+  "methods": [
+    "uniform_80",
+    "random_promotion_exact",
+    "score_only_global",
+    "score_only_stratified",
+    "evidence_guided"
+  ],
+  "training_seeds": [
+    53,
+    54,
+    55
+  ],
+  "summary": {
+    "ptpc_neural": {
+      "score_only_global": {
+        "mean": 0.37471879033338645,
+        "sample_sd": 0.0054870884954045076,
+        "n": 3
+      },
+      "score_only_stratified": {
+        "mean": 0.37471879033338645,
+        "sample_sd": 0.0054870884954045076,
+        "n": 3
+      },
+      "evidence_guided": {
+        "mean": 0.37471879033338645,
+        "sample_sd": 0.0054870884954045076,
+        "n": 3
+      },
+      "uniform_80": {
+        "mean": 0.37471879033338645,
+        "sample_sd": 0.0054870884954045076,
+        "n": 3
+      },
+      "random_promotion_exact": {
+        "mean": 0.37370248950992996,
+        "sample_sd": 0.004803694283271,
+        "n": 3
+      }
+    },
+    "vcc_corrected": {
+      "score_only_global": {
+        "mean": 0.20007014007014007,
+        "sample_sd": 0.0,
+        "n": 3
+      },
+      "score_only_stratified": {
+        "mean": 0.20007014007014007,
+        "sample_sd": 0.0,
+        "n": 3
+      },
+      "evidence_guided": {
+        "mean": 0.20007014007014007,
+        "sample_sd": 0.0,
+        "n": 3
+      },
+      "uniform_80": {
+        "mean": 0.20007014007014007,
+        "sample_sd": 0.0,
+        "n": 3
+      },
+      "random_promotion_exact": {
+        "mean": 0.22485373042787166,
+        "sample_sd": 0.016999666365218994,
+        "n": 3
+      }
+    },
+    "norman_double_corrected": {
+      "score_only_global": {
+        "mean": 0.21703703703703706,
+        "sample_sd": 0.07185185185185188,
+        "n": 3
+      },
+      "score_only_stratified": {
+        "mean": 0.21703703703703706,
+        "sample_sd": 0.07185185185185188,
+        "n": 3
+      },
+      "evidence_guided": {
+        "mean": 0.2232098765432099,
+        "sample_sd": 0.0042766686606638925,
+        "n": 3
+      },
+      "uniform_80": {
+        "mean": 0.11481481481481481,
+        "sample_sd": 0.0051851851851851824,
+        "n": 3
+      },
+      "random_promotion_exact": {
+        "mean": 0.2263480305702528,
+        "sample_sd": 0.006390251742358229,
+        "n": 3
+      }
+    },
+    "tahoe_drug_corrected": {
+      "score_only_global": {
+        "mean": 0.208955223880597,
+        "sample_sd": 0.0,
+        "n": 3
+      },
+      "score_only_stratified": {
+        "mean": 0.208955223880597,
+        "sample_sd": 0.0,
+        "n": 3
+      },
+      "evidence_guided": {
+        "mean": 0.2288557213930348,
+        "sample_sd": 0.017234336393720174,
+        "n": 3
+      },
+      "uniform_80": {
+        "mean": 0.208955223880597,
+        "sample_sd": 0.02985074626865672,
+        "n": 3
+      },
+      "random_promotion_exact": {
+        "mean": 0.21947405828002842,
+        "sample_sd": 0.0004264392324093841,
+        "n": 3
+      }
+    }
+  },
+  "paired": {
+    "ptpc_neural": {
+      "53": {
+        "scores": {
+          "uniform_80": 0.3757519561458499,
+          "random_promotion_exact": 0.3745357908856866,
+          "score_only_global": 0.3757519561458499,
+          "score_only_stratified": 0.3757519561458499,
+          "evidence_guided": 0.3757519561458499
+        },
+        "trajectory_minus_control": {
+          "uniform_80": 0.0,
+          "random_promotion_exact": 0.001216165260163271,
+          "score_only_global": 0.0,
+          "score_only_stratified": 0.0
+        }
+      },
+      "54": {
+        "scores": {
+          "uniform_80": 0.37961585374542933,
+          "random_promotion_exact": 0.3780350161592335,
+          "score_only_global": 0.37961585374542933,
+          "score_only_stratified": 0.37961585374542933,
+          "evidence_guided": 0.37961585374542933
+        },
+        "trajectory_minus_control": {
+          "uniform_80": 0.0,
+          "random_promotion_exact": 0.0015808375861958157,
+          "score_only_global": 0.0,
+          "score_only_stratified": 0.0
+        }
+      },
+      "55": {
+        "scores": {
+          "uniform_80": 0.36878856110888014,
+          "random_promotion_exact": 0.36853666148486974,
+          "score_only_global": 0.36878856110888014,
+          "score_only_stratified": 0.36878856110888014,
+          "evidence_guided": 0.36878856110888014
+        },
+        "trajectory_minus_control": {
+          "uniform_80": 0.0,
+          "random_promotion_exact": 0.0002518996240103988,
+          "score_only_global": 0.0,
+          "score_only_stratified": 0.0
+        }
+      }
+    },
+    "vcc_corrected": {
+      "53": {
+        "scores": {
+          "uniform_80": 0.20007014007014007,
+          "random_promotion_exact": 0.24340244847810133,
+          "score_only_global": 0.20007014007014007,
+          "score_only_stratified": 0.20007014007014007,
+          "evidence_guided": 0.20007014007014007
+        },
+        "trajectory_minus_control": {
+          "uniform_80": 0.0,
+          "random_promotion_exact": -0.04333230840796126,
+          "score_only_global": 0.0,
+          "score_only_stratified": 0.0
+        }
+      },
+      "54": {
+        "scores": {
+          "uniform_80": 0.20007014007014007,
+          "random_promotion_exact": 0.21001632812155085,
+          "score_only_global": 0.20007014007014007,
+          "score_only_stratified": 0.20007014007014007,
+          "evidence_guided": 0.20007014007014007
+        },
+        "trajectory_minus_control": {
+          "uniform_80": 0.0,
+          "random_promotion_exact": -0.009946188051410787,
+          "score_only_global": 0.0,
+          "score_only_stratified": 0.0
+        }
+      },
+      "55": {
+        "scores": {
+          "uniform_80": 0.20007014007014007,
+          "random_promotion_exact": 0.22114241468396276,
+          "score_only_global": 0.20007014007014007,
+          "score_only_stratified": 0.20007014007014007,
+          "evidence_guided": 0.20007014007014007
+        },
+        "trajectory_minus_control": {
+          "uniform_80": 0.0,
+          "random_promotion_exact": -0.02107227461382269,
+          "score_only_global": 0.0,
+          "score_only_stratified": 0.0
+        }
+      }
+    },
+    "norman_double_corrected": {
+      "53": {
+        "scores": {
+          "uniform_80": 0.12074074074074073,
+          "random_promotion_exact": 0.2216402116402116,
+          "score_only_global": 0.17481481481481484,
+          "score_only_stratified": 0.17481481481481484,
+          "evidence_guided": 0.22074074074074074
+        },
+        "trajectory_minus_control": {
+          "uniform_80": 0.1,
+          "random_promotion_exact": -0.0008994708994708722,
+          "score_only_global": 0.0459259259259259,
+          "score_only_stratified": 0.0459259259259259
+        }
+      },
+      "54": {
+        "scores": {
+          "uniform_80": 0.1111111111111111,
+          "random_promotion_exact": 0.22378130511463845,
+          "score_only_global": 0.17629629629629628,
+          "score_only_stratified": 0.17629629629629628,
+          "evidence_guided": 0.22814814814814816
+        },
+        "trajectory_minus_control": {
+          "uniform_80": 0.11703703703703705,
+          "random_promotion_exact": 0.004366843033509704,
+          "score_only_global": 0.05185185185185187,
+          "score_only_stratified": 0.05185185185185187
+        }
+      },
+      "55": {
+        "scores": {
+          "uniform_80": 0.11259259259259259,
+          "random_promotion_exact": 0.2336225749559083,
+          "score_only_global": 0.30000000000000004,
+          "score_only_stratified": 0.30000000000000004,
+          "evidence_guided": 0.22074074074074077
+        },
+        "trajectory_minus_control": {
+          "uniform_80": 0.10814814814814817,
+          "random_promotion_exact": -0.012881834215167531,
+          "score_only_global": -0.07925925925925928,
+          "score_only_stratified": -0.07925925925925928
+        }
+      }
+    },
+    "tahoe_drug_corrected": {
+      "53": {
+        "scores": {
+          "uniform_80": 0.208955223880597,
+          "random_promotion_exact": 0.21904761904761902,
+          "score_only_global": 0.208955223880597,
+          "score_only_stratified": 0.208955223880597,
+          "evidence_guided": 0.208955223880597
+        },
+        "trajectory_minus_control": {
+          "uniform_80": 0.0,
+          "random_promotion_exact": -0.010092395167022011,
+          "score_only_global": 0.0,
+          "score_only_stratified": 0.0
+        }
+      },
+      "54": {
+        "scores": {
+          "uniform_80": 0.23880597014925373,
+          "random_promotion_exact": 0.2199004975124378,
+          "score_only_global": 0.208955223880597,
+          "score_only_stratified": 0.208955223880597,
+          "evidence_guided": 0.23880597014925373
+        },
+        "trajectory_minus_control": {
+          "uniform_80": 0.0,
+          "random_promotion_exact": 0.01890547263681594,
+          "score_only_global": 0.02985074626865672,
+          "score_only_stratified": 0.02985074626865672
+        }
+      },
+      "55": {
+        "scores": {
+          "uniform_80": 0.1791044776119403,
+          "random_promotion_exact": 0.21947405828002842,
+          "score_only_global": 0.208955223880597,
+          "score_only_stratified": 0.208955223880597,
+          "evidence_guided": 0.23880597014925373
+        },
+        "trajectory_minus_control": {
+          "uniform_80": 0.05970149253731344,
+          "random_promotion_exact": 0.01933191186922531,
+          "score_only_global": 0.02985074626865672,
+          "score_only_stratified": 0.02985074626865672
+        }
+      }
+    }
+  },
+  "twelve_pair_wtl": {
+    "uniform_80": {
+      "wins": 4,
+      "ties": 8,
+      "losses": 0
+    },
+    "random_promotion_exact": {
+      "wins": 6,
+      "ties": 0,
+      "losses": 6
+    },
+    "score_only_global": {
+      "wins": 4,
+      "ties": 7,
+      "losses": 1
+    },
+    "score_only_stratified": {
+      "wins": 4,
+      "ties": 7,
+      "losses": 1
+    }
+  },
+  "random_promotion_distribution": {
+    "ptpc_neural": {
+      "53": {
+        "conditional_expectation": 0.3745357908856866,
+        "within_seed_policy_sd": 0.0017575736751578035,
+        "minimum": 0.367783019601857,
+        "maximum": 0.3757519561458499,
+        "subsets": 210
+      },
+      "54": {
+        "conditional_expectation": 0.3780350161592335,
+        "within_seed_policy_sd": 0.0038199408919739014,
+        "minimum": 0.3538003346562155,
+        "maximum": 0.37961585374542933,
+        "subsets": 210
+      },
+      "55": {
+        "conditional_expectation": 0.36853666148486974,
+        "within_seed_policy_sd": 0.004820895514309396,
+        "minimum": 0.29945530405050835,
+        "maximum": 0.37065424182513124,
+        "subsets": 210
+      }
+    },
+    "vcc_corrected": {
+      "53": {
+        "conditional_expectation": 0.24340244847810133,
+        "within_seed_policy_sd": 0.05560172809078692,
+        "minimum": 0.20007014007014007,
+        "maximum": 0.31630626390707034,
+        "subsets": 210
+      },
+      "54": {
+        "conditional_expectation": 0.21001632812155085,
+        "within_seed_policy_sd": 0.04134540756254554,
+        "minimum": 0.18137735637735636,
+        "maximum": 0.317454912555719,
+        "subsets": 210
+      },
+      "55": {
+        "conditional_expectation": 0.22114241468396276,
+        "within_seed_policy_sd": 0.04023441707326551,
+        "minimum": 0.17039261354014673,
+        "maximum": 0.31630626390707034,
+        "subsets": 210
+      }
+    },
+    "norman_double_corrected": {
+      "53": {
+        "conditional_expectation": 0.2216402116402116,
+        "within_seed_policy_sd": 0.017142481542687833,
+        "minimum": 0.17481481481481484,
+        "maximum": 0.23111111111111113,
+        "subsets": 210
+      },
+      "54": {
+        "conditional_expectation": 0.22378130511463845,
+        "within_seed_policy_sd": 0.01693564609909434,
+        "minimum": 0.17629629629629628,
+        "maximum": 0.23111111111111113,
+        "subsets": 210
+      },
+      "55": {
+        "conditional_expectation": 0.2336225749559083,
+        "within_seed_policy_sd": 0.02399381443970214,
+        "minimum": 0.18074074074074073,
+        "maximum": 0.30000000000000004,
+        "subsets": 210
+      }
+    },
+    "tahoe_drug_corrected": {
+      "53": {
+        "conditional_expectation": 0.21904761904761902,
+        "within_seed_policy_sd": 0.013189011658011226,
+        "minimum": 0.208955223880597,
+        "maximum": 0.2537313432835821,
+        "subsets": 210
+      },
+      "54": {
+        "conditional_expectation": 0.2199004975124378,
+        "within_seed_policy_sd": 0.014384907756020858,
+        "minimum": 0.208955223880597,
+        "maximum": 0.2537313432835821,
+        "subsets": 210
+      },
+      "55": {
+        "conditional_expectation": 0.21947405828002842,
+        "within_seed_policy_sd": 0.013574051922263443,
+        "minimum": 0.208955223880597,
+        "maximum": 0.2537313432835821,
+        "subsets": 210
+      }
+    }
+  },
+  "uncertainty": {
+    "summary_sd": "Sample SD across the three training seeds; random row uses seed-conditional expectations",
+    "within_seed_policy_sd": "SD across all 210 uniformly sampled six-subsets, conditional on the trained slate",
+    "note": "Training-seed variability and random-policy variability are distinct and are not added together"
+  },
+  "protocol": {
+    "training_labs": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "development_panels": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "rounds_per_fit": [
+      20,
+      80,
+      100
+    ],
+    "new_fit_count": 360,
+    "screening_candidates": 10,
+    "screening_rounds": 20,
+    "validation_rounds": 100,
+    "promoted_candidates": 6,
+    "restart_from_initialization": true,
+    "aggregation_rounds_per_policy": 800,
+    "aggregate_dev_evaluations_per_policy": 160,
+    "all_random_subsets": 210,
+    "uniform_policy": "10 independent 80-round fits; development selects one",
+    "random_policy": "Uniform six-subset of ten; validation order is original SLATE order",
+    "evidence_guided": "Original research_v6.promote: best score plus best remaining trajectory in each LR group",
+    "global_score_only": "Highest six screening best-primary then lowest loss; SLATE tie order",
+    "stratified_score_only": "Two per learning-rate group by screening best-primary then loss; SLATE tie order",
+    "selection": "Best full-training development primary then lower loss; retain earlier candidate on complete tie",
+    "screening_cost": "All 10 x20 screening fits plus 6 x100 fresh fits charged to every promotion policy",
+    "inference": "All selected unique r80/r100 models newly scored only after global seal",
+    "runtime": "Same original core_v3.Federation and CUDA/software runtime; A100 GPUs5/6/7, disjoint complete task-seeds by resource-only amendment",
+    "no_trajectory_truncation": true,
+    "no_historical_fit_reuse": true,
+    "retrospective": true,
+    "no_new_llm_calls": true
+  },
+  "cost": {
+    "new_fits": {
+      "r20": 120,
+      "r80": 120,
+      "r100": 120
+    },
+    "actual_fit_training_seconds": 4787.460454487242,
+    "actual_training_wall_seconds": 2335.1987087726593,
+    "actual_total_aggregation_rounds": 24000,
+    "per_policy_aggregation_rounds": 800,
+    "per_policy_development_evaluations": 160,
+    "explanation": "The complete 360-fit slate supports retrospective policy replay; 800 rounds is each policy budget, not total study cost."
+  },
+  "cost_accounting": {
+    "schema": "allocation-cost-accounting-v2",
+    "formal_fit_count": 360,
+    "formal_total_aggregation_rounds": 24000,
+    "formal_fit_elapsed_seconds_raw": 4787.460454487242,
+    "administrative_pause_seconds_bounds": [
+      1559.1819455623627,
+      1601.916149545461
+    ],
+    "formal_fit_elapsed_seconds_excluding_pause_bounds": [
+      3185.544304941781,
+      3228.278508924879
+    ],
+    "formal_training_wall_seconds": 2335.1987087726593,
+    "training_through_scoring_wall_seconds": 2417.4624099731445,
+    "preliminary_gpu_canary_fit_count": 4,
+    "preliminary_gpu_canary_elapsed_seconds": 92.40307766571641,
+    "preliminary_cpu_benchmark_fit_count": 1,
+    "preliminary_cpu_benchmark_elapsed_seconds": 67.60327142197639,
+    "all_gpu_fit_elapsed_excluding_pause_bounds": [
+      3277.9473826074973,
+      3320.6815865905955
+    ],
+    "timing_interpretation": "Fit elapsed wall times include initialization, data transfer and host work; these are not directly profiled GPU-kernel seconds. Parallel fit elapsed sums and total wall time are separate.",
+    "pause_accounting": "Long pause bracketed by last progress write and amendment freeze, then timestamped resume. Early short pause is conservatively bounded by its entire 34.06-second affected fit; the resulting interval does not pretend to recover an unlogged exact pause timestamp."
+  },
+  "scope": "Fresh-runtime rerun of the fixed-slate allocation study on original V6 task partitions; original Table2 remains unchanged. This is not the separate heterogeneous-source lab study.",
+  "no_historical_fit_reuse": true,
+  "no_cpu_benchmark_reuse": true
+}

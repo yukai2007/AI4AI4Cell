@@ -1,0 +1,16 @@
+\begin{table}[t]
+\caption{Development--test divergence in the extended search (training seed 61). Each pair is initialization $\rightarrow$ 24 proposals. CPU re-evaluation reproduces the original development scores; test scores are independently recomputed from archived query ranks. The equal-laboratory development mean equals the pooled intervention-macro mean because each laboratory contains the same number of development interventions. All scores are macro Top-1 percentages.}
+\label{tab:rebuttal-validation}
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llrr}
+\toprule
+Task & Proposer / search & Development & Held-out \\
+\midrule
+VCC & Qwen / direct and history & $23.65\to24.83$ & $31.50\to19.61$ \\
+VCC & Luna / direct & $23.65\to27.68$ & $31.50\to20.23$ \\
+VCC & Luna / history & $23.65\to30.93$ & $31.50\to20.01$ \\
+Tahoe & Both / direct and history & $30.00\to35.00$ & $25.37\to13.43$ \\
+\bottomrule
+\end{tabular}
+\end{table}

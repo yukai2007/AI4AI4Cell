@@ -1,0 +1,20 @@
+\begin{table}[t]
+\caption{Same-access search: all methods use ten laboratories and the same development panels. Searches use twelve designs, six proposal slots and at most 700 aggregation rounds, including initialization; the fixed reference uses 100 rounds. Scores $\times100$ are conditional on one training seed per task (DTI 42; others 61), not the three-seed access comparison. Random is its exact policy expectation; variability and actual-fit sensitivities are in Appendix E. Bold marks the best unrounded score, including ties.}
+\label{tab:rebuttal-matched-search-main}
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+Method & DTI & Proteomics & VCC & Norman & Tahoe \\
+ & AUROC $\uparrow$ & AP $\uparrow$ & Top-1 $\uparrow$ & Top-1 $\uparrow$ & Top-1 $\uparrow$ \\
+\midrule
+Fixed model & 94.27 & \textbf{37.27} & \textbf{31.50} & 15.48 & 25.37 \\
+Random, exact expectation & 94.45 & \textbf{37.27} & 27.53 & 22.66 & 26.59 \\
+GP--EI & \textbf{94.60} & \textbf{37.27} & \textbf{31.50} & 22.30 & 25.37 \\
+Qwen direct & 94.27 & \textbf{37.27} & \textbf{31.50} & 22.30 & 25.37 \\
+Qwen history & 94.27 & \textbf{37.27} & \textbf{31.50} & 22.30 & 25.37 \\
+Luna direct & \textbf{94.60} & \textbf{37.27} & \textbf{31.50} & 22.30 & \textbf{26.87} \\
+Luna history & 94.27 & \textbf{37.27} & \textbf{31.50} & \textbf{23.11} & \textbf{26.87} \\
+\bottomrule
+\end{tabular}
+\end{table}
