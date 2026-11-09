@@ -1,0 +1,13 @@
+{
+  "baseline_commit": "b80eeea553a5610a5819e4cc790a71287c04fb9e",
+  "legacy_suite": "tools/test_appendix_compaction.py",
+  "tests_run": 5,
+  "failures": [
+    "test_appendix_compaction.AppendixCompactionTests.test_compact_design_mapping_recovers_all_original_configurations",
+    "test_appendix_compaction.AppendixCompactionTests.test_complete_uncertainty_tables_move_without_numeric_edits",
+    "test_appendix_compaction.AppendixCompactionTests.test_conclusion_separates_design_search_from_allocation",
+    "test_appendix_compaction.AppendixCompactionTests.test_core_controls_stay_in_manuscript"
+  ],
+  "errors": [],
+  "interpretation": "The same four legacy exact-phrase/inclusion checks fail on the previous published commit. The expanded-recipe release instead verifies old numerical assets and the full compiled inclusion graph."
+}

@@ -1,0 +1,25 @@
+\begin{table}[htbp]
+\centering\footnotesize
+\setlength{\tabcolsep}{3pt}
+\caption{Expanded-recipe comparison on DTI and proteomics. Each model uses the same 36 designs, ten training laboratories, six requests and 20 rounds per valid fit. Scores are means $\pm$ sample SD over three new head-training/controller runs, conditional on one shared seed42 starting predictor per task. DTI freezes the prior TAPB encoder; protein refits the complete observed-response head or a residual from all original inputs. Both proposer models and both GP offsets are retained. Bold marks the best means, including ties, not significance. These retrospective warm-start studies are separate from the original end-to-end scores.}
+\label{tab:expanded-recipe-results}
+\begin{tabular}{lrrrr}
+\toprule
+ & \multicolumn{2}{c}{Qwen2.5-7B} & \multicolumn{2}{c}{Luna service} \\
+Policy & DTI AUROC & Protein AP & DTI AUROC & Protein AP \\
+\midrule
+Fully fitted D00 & $94.271 \pm 0.000$ & $37.109 \pm 0.000$ & $94.271 \pm 0.000$ & $37.109 \pm 0.000$ \\
+Direct & $94.334 \pm 0.054$ & $38.244 \pm 0.465$ & $\mathbf{94.368 \pm 0.006}$ & $\mathbf{39.017 \pm 0.659}$ \\
+Raw history & $\mathbf{94.368 \pm 0.006}$ & $38.533 \pm 0.886$ & $\mathbf{94.368 \pm 0.006}$ & $38.572 \pm 0.558$ \\
+Structured history & $94.351 \pm 0.036$ & $38.616 \pm 0.826$ & $\mathbf{94.368 \pm 0.006}$ & $38.572 \pm 0.558$ \\
+Random expectation & $94.316 \pm 0.007$ & $38.655 \pm 0.278$ & $94.316 \pm 0.007$ & $38.655 \pm 0.278$ \\
+GP--EI ($\xi=.01$) & $94.290 \pm 0.029$ & $\mathbf{39.017 \pm 0.659}$ & $94.290 \pm 0.029$ & $\mathbf{39.017 \pm 0.659}$ \\
+GP--EI ($\xi=0$) & $94.336 \pm 0.056$ & $37.975 \pm 0.837$ & $94.336 \pm 0.056$ & $37.975 \pm 0.837$ \\
+\midrule
+\multicolumn{5}{l}{\textit{Structured minus random; percentage points and conditional 95\% intervals}} \\
+Proposer & DTI $\Delta$ & DTI interval & Protein $\Delta$ & Protein interval \\
+Qwen & $+0.035$ & $[0.018, 0.054]$ & $-0.040$ & $[-1.616, 1.579]$ \\
+Luna & $+0.053$ & $[0.031, 0.077]$ & $-0.083$ & $[-2.025, 2.234]$ \\
+\bottomrule
+\end{tabular}
+\end{table}
