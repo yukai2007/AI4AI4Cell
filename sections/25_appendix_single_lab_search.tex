@@ -12,10 +12,10 @@ Random search evaluates D00 and six distinct randomly sampled designs. Bayesian 
 
 \input{tables/single_lab_search/comparison}
 
-The ten-laboratory framework exceeds all three search strategies in mean score on all five endpoints. Relative to random search, the gains are 3.66 AUROC points on DTI, 16.86 AP points on proteomics, and 10.44, 8.15 and 4.48 Top-1 points on VCC, Norman and Tahoe. Including the fixed-model control, BioCoLoop has the highest mean on four of five endpoints; Norman's fixed model retains the best Top-1. These results show the value of the combined collaborative training and research procedure beyond increasing single-laboratory search. Same-access comparisons in Appendix A and Section 4.7 examine the research mechanism separately.
+The ten-laboratory framework exceeds all three single-laboratory search strategies in mean score on all five endpoints. Including the fixed-model control, it leads on four endpoints; Norman's fixed model retains the best Top-1. This is an access-scenario comparison of complete workflows. Appendix A and Section 4.7 separately hold laboratory access fixed.
 
 \subsection*{D.2 Search variability and held-out uncertainty}
-To assess sensitivity to random proposal choices, we compute the exact expected score of random search over all $\binom{11}{6}=462$ six-design subsets. The initial design D00 is always included; ties integrate the possible proposal orders using the original development-selection rule. We average the separately scored selected models, not their predictions. Table~\ref{tab:single-lab-search-expectation} reports the expectation for each training seed, summarized across the three seeds. The collaborative framework also exceeds these expected scores on all five endpoints.
+Table~\ref{tab:single-lab-search-expectation} integrates random choices over all $\binom{11}{6}=462$ subsets per training seed, always including D00. Ties integrate proposal orders under the original selection rule. These are expected selected-model scores, not ensembled predictions. The collaborative framework also exceeds these expectations on all five endpoints.
 
 \input{tables/single_lab_search/search_expectation}
 
