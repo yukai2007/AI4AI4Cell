@@ -29,6 +29,7 @@ def main():
     parser.add_argument('--reviewers', nargs='+', choices=('FBhK', 'AfJB', 'cR5g'),
                         default=['FBhK', 'AfJB', 'cR5g'])
     parser.add_argument('--output', type=Path, default=DESTINATION)
+    parser.add_argument('--revision-date', default='9 November 2026')
     args = parser.parse_args()
     fonts = Path('/usr/share/fonts/truetype/liberation')
     if (fonts / 'LiberationSerif-Regular.ttf').exists():
@@ -61,7 +62,7 @@ def main():
         for para in text.strip().split('\n\n'):
             if para.startswith('# '):
                 story.append(Paragraph(markup(para[2:]), styles['title']))
-                story.append(Paragraph('BioCoLoop, submission 5046 | Revision dated 9 November 2026. '
+                story.append(Paragraph('BioCoLoop, submission 5046 | Revision dated ' + escape(args.revision_date) + '. '
                     'Prepared for author review; not posted to OpenReview.', styles['note']))
             elif para.startswith('## '):
                 story.append(Paragraph(markup(para[3:]), styles['heading']))

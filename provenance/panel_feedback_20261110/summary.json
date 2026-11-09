@@ -1,0 +1,325 @@
+{
+  "aggregate_max_abs_error": 0.0,
+  "canary_new_fits": 8,
+  "canary_rounds_per_fit": 10,
+  "checkpoint_count": 72,
+  "future_mechanism_plan": {
+    "arms": [
+      "fixed",
+      "direct",
+      "raw",
+      "structured",
+      "random",
+      "gp_ei"
+    ],
+    "checkpoint_rule": "retain unchanged all-ten-panel primary/loss rule for the payload representation contrast",
+    "design_library": {
+      "D00": {
+        "lr": 0.001,
+        "prox_mu": 0.0,
+        "residual": false,
+        "server_momentum": 0.0,
+        "weight_decay": 0.001
+      },
+      "D01": {
+        "lr": 0.0001,
+        "prox_mu": 0.0,
+        "residual": false,
+        "server_momentum": 0.0,
+        "weight_decay": 0.001
+      },
+      "D02": {
+        "lr": 0.01,
+        "prox_mu": 0.0,
+        "residual": false,
+        "server_momentum": 0.0,
+        "weight_decay": 0.001
+      },
+      "D03": {
+        "lr": 0.001,
+        "prox_mu": 0.0,
+        "residual": false,
+        "server_momentum": 0.0,
+        "weight_decay": 0.0
+      },
+      "D04": {
+        "lr": 0.001,
+        "prox_mu": 0.0,
+        "residual": false,
+        "server_momentum": 0.0,
+        "weight_decay": 0.01
+      },
+      "D05": {
+        "lr": 0.001,
+        "prox_mu": 0.0,
+        "residual": false,
+        "server_momentum": 0.9,
+        "weight_decay": 0.001
+      },
+      "D06": {
+        "lr": 0.001,
+        "prox_mu": 0.0,
+        "residual": true,
+        "server_momentum": 0.0,
+        "weight_decay": 0.001
+      },
+      "D07": {
+        "lr": 0.001,
+        "prox_mu": 0.0,
+        "residual": true,
+        "server_momentum": 0.9,
+        "weight_decay": 0.001
+      },
+      "D08": {
+        "lr": 0.0001,
+        "prox_mu": 0.0,
+        "residual": true,
+        "server_momentum": 0.0,
+        "weight_decay": 0.001
+      },
+      "D09": {
+        "lr": 0.0001,
+        "prox_mu": 0.0,
+        "residual": true,
+        "server_momentum": 0.9,
+        "weight_decay": 0.001
+      },
+      "D10": {
+        "lr": 0.01,
+        "prox_mu": 0.0,
+        "residual": false,
+        "server_momentum": 0.0,
+        "weight_decay": 0.01
+      },
+      "D11": {
+        "lr": 0.001,
+        "prox_mu": 0.0,
+        "residual": true,
+        "server_momentum": 0.0,
+        "weight_decay": 0.01
+      }
+    },
+    "generalization": "new grouped biological split required for confirmatory generalization; old exposed test is retrospective only",
+    "invalid_slots_remain_charged": true,
+    "maximum_attempts_per_slot": 2,
+    "require_new_registration_before_execution": true,
+    "rounds_per_fit": 100,
+    "same_facts_for_raw_structured": true,
+    "search_round_cap": 700,
+    "seeds": [
+      61,
+      62,
+      63
+    ],
+    "slots": 6,
+    "stability_followup": "separate checkpoint-selection study must save every development checkpoint and choose rounds/candidates on proposal panels only before confirmation",
+    "status": "DESIGN_ONLY_NOT_EXECUTED",
+    "tasks": [
+      "cell",
+      "protein"
+    ]
+  },
+  "interpretation": "Existing checkpoints were selected using all ten panels. Complementary-panel scores are descriptive, not independent confirmation; biological split is unchanged.",
+  "labelled_panel_scores": 720,
+  "new_heldout_inference": false,
+  "new_llm_calls": 0,
+  "new_main_study_training_fits": 0,
+  "nonzero_mean_worst_gaps": 72,
+  "original_source_bindings": {
+    "/liziqing/yukai/AI4AI4Cell/extensions/budget1day_20260923/contract.py": "3ea655a4f4d6420e3cb90e6e9189cca7bfec7ed98b7dfd8ba1498eb370129867",
+    "/liziqing/yukai/AI4AI4Cell/extensions/budget1day_20260923/proposer12.py": "99fa8984832b25906c34de9b922a6b9ef053fd848b94522a621ff8d23cb810f0",
+    "/liziqing/yukai/AI4AI4Cell/extensions/budget1day_20260923/run_proposer.py": "389a4c59c0d446b64c957a5e5f9e799fd0a317faadd5ea81e99b7e3962577793",
+    "/liziqing/yukai/AI4AI4Cell/extensions/federated_bio_20260918/engine.py": "63fcc6de12bfedd4b846591de1fabd77c84919f471c10da827805fdc3f353430",
+    "/liziqing/yukai/AI4AI4Cell/extensions/federated_bio_20260918/scdebart.py": "25a93300ae0521154dc339c077d19ea6b6a3215eff3da9bf1a86b9b97990d5c1",
+    "/liziqing/yukai/AI4AI4Cell/extensions/federated_bio_20260918/vendor/scDEBART-main/Finetune_perturbseq/finetune_perturbseq.py": "eeecac47ff6ec20b23c224f860538cb60b2fa496fb2f5d112c7a6e722679eae5",
+    "/liziqing/yukai/AI4AI4Cell/extensions/feedback_rebuttal_20261015/controller.py": "938bd7fccd4a305d4348c0d18251aa67d4082f43f41d5c5bf39c1807c89f0983",
+    "/liziqing/yukai/AI4AI4Cell/extensions/feedback_rebuttal_20261015/evidence.py": "fb9dd6a931f392e26286d8c13648834ac7c5b63e855c71d1b000b315668e4887",
+    "/liziqing/yukai/AI4AI4Cell/extensions/feedback_rebuttal_20261015/transport.py": "9a42b05a8219f54f6472dabd1a25f125c3482c03d25fd660d7b5b68ad8afd204",
+    "/liziqing/yukai/AI4AI4Cell/extensions/heterolab_feedback_20261019/backend.py": "02884c159860d7682014260172674bf55dcc5b44a2891782755504d764d84417",
+    "/liziqing/yukai/AI4AI4Cell/extensions/heterolab_feedback_20261019/controller.py": "bbc40787568744f14b5fe4eb36e0c4da4bd10dbc34469f3bc4fd69df18e4fb15",
+    "/liziqing/yukai/AI4AI4Cell/extensions/heterolab_feedback_20261019/runner.py": "ab8cd1593a3acef8e799696706416fd291cb2e4e40d0aa8d7e994277411ec0d3",
+    "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/evidence_cards.py": "25210f248a41fcd89248716719658880af166f42266b96562fdd41d5638874f6",
+    "/liziqing/yukai/AI4AI4Cell/extensions/panel_feedback_20261110/audit.py": "bae756bddc698930d41d918a2c5892d863d04714542a4c32104ad6d8aefbc257",
+    "/liziqing/yukai/AI4AI4Cell/extensions/panel_feedback_20261110/fitters.py": "b47fa64b5daf0338c0bbefdb84307ab0ca0fdb586e759bedfef849f15934b189",
+    "/liziqing/yukai/AI4AI4Cell/extensions/panel_feedback_20261110/payload.py": "d8cb4da2470d70796223acd880d30582ddb298d2c43eb79c6fe3dfcc9d42b8c4",
+    "/liziqing/yukai/AI4AI4Cell/extensions/panel_feedback_20261110/runtime.py": "1ded7b8940180c7bafb80382876a3a5812fffbce79ba730a1027b82dbdea3e52",
+    "/liziqing/yukai/AI4AI4Cell/extensions/panel_feedback_20261110/test_payload.py": "18a3ba019332ef4a84112d7f9e6dbea240e6ca63ac7de9fcfa170c56c7b91bef",
+    "/liziqing/yukai/AI4AI4Cell/extensions/proteomics/ptpc_release.py": "e2740a0c65813b786354710e1d133b1ba1a9781b26baf35305330d467c05b84b",
+    "/liziqing/yukai/AI4AI4Cell/extensions/proteomics/scoring.py": "f5e8e19f7b4265a0c305c3c26ac2875c4db3a29655aae47e1e3beb02a0d80296",
+    "/liziqing/yukai/AI4AI4Cell/extensions/proteomics_external_pilot_20260923/model.py": "bf67f5eb11141b16ab59d8838a900690178db3414edca3d4e01451569631989b",
+    "/liziqing/yukai/AI4AI4Cell/extensions/proteomics_scenario_labs_20260924/run.py": "39c7bcb4b2f3766cecb2654577bb1f882e5141d35ab7505d4761a93f35de38e9",
+    "/liziqing/yukai/AI4AI4Cell/extensions/proteomics_scenario_labs_20260924/test_protocol.py": "777570a23a7ea303cbed1184a0216a2c828961e32be3226507dc857d345aef63",
+    "/liziqing/yukai/AI4AI4Cell/extensions/scenario_labs_20260923/cpu_worker.py": "574b4c6189363df450ccf6887db5003add88b229026b58704d0390c1a52ca7e4",
+    "/liziqing/yukai/AI4AI4Cell/extensions/scenario_labs_20260923/run.py": "826ef1ee67ddd7a6171e4b4261408b5ff37a1889942ded410ac1f970339c247c",
+    "/liziqing/yukai/AI4AI4Cell/extensions/supplement_history_20261007/proposals.py": "da50a9d891ea345b5ba7a133d317f4915ecb118536500071d5ce6f2c89992151",
+    "/liziqing/yukai/AI4AI4Cell/extensions/supplement_history_20261007/task_runner.py": "3df95349addbe0d57f11c837b892780918c368f84b28ab9985ebff4745fcc122",
+    "/liziqing/yukai/AI4AI4Cell/extensions/supplemental_20260923/proteomics/cpu_worker.py": "c562ce5180dbc04aedce75a6776f7fff72ffaee8ffe00222db2fabb3bb32d777",
+    "/liziqing/yukai/AI4AI4Cell/extensions/supplemental_20260923/proteomics/data.py": "ab65c49874f1e04b95ca1c149b30aa6851d2f0e601866ec3bf66a70089500bda",
+    "/liziqing/yukai/AI4AI4Cell/extensions/supplemental_20260923/proteomics/model.py": "bd4dd5b2e3bce25e09c749080e19075483bc296a85ca061811adfcabe852917b",
+    "/liziqing/yukai/AI4AI4Cell/extensions/supplemental_20260923/proteomics/trainer.py": "d2ef6bf8c853a9e3f9f1989fca491c130d9acf24a2cea7536447b91f737c5e07",
+    "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/adapters.py": "af63c8d49990d862ec7e0955eb65366f03e60ad31a2f108c2d9a50302a184e92",
+    "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/core.py": "d358e491d07f11e27607f96d7243e844fdb9152a1c4954effbd77893b6a3370a",
+    "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/core_v3.py": "ef53be48dfe17967e7d2faa20a200bc4c6e286ad21ef5406a694d07e26b663ae",
+    "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/heldout_ptpc_neural.py": "fef5b93f6e0e00d86e073136469da1f8d7544763979a05ed0b7767eb3ceb69ce",
+    "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/heldout_v3.py": "d8503bdd00f2206953f4eb1c957820ba18408e362dc0eec1d56100b12d203229",
+    "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/prepare_ptpc_neural.py": "7362fcdfeb27141480cbf8a8bf68626caf9a41a3fafa36f6721e3189d3e0398f",
+    "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/ptpc_neural_adapter.py": "8032c6d2b68663029d1b53c41bc07b8249a2c43dd132af6af356707d5bd9ee98",
+    "/liziqing/yukai/AI4AI4Cell/extensions/unified_bio_20260918/research.py": "4ae128fccf0621a97ce1ac5f5bf3a5d9107093fb93c73aae42a2690a5077bb49",
+    "/liziqing/yukai/AI4AI4Cell/runtime/experiments/drugevolve_transfer/scoring.py": "2ec1689fecea7c12bdfd3b84a235883a43abaa5d1668da94bd0cfa252dc81216"
+  },
+  "paired_canary_checks": [
+    {
+      "design_id": "D00",
+      "exact_checkpoint_equality": true,
+      "task": "cell"
+    },
+    {
+      "design_id": "D07",
+      "exact_checkpoint_equality": true,
+      "task": "cell"
+    },
+    {
+      "design_id": "D00",
+      "exact_checkpoint_equality": true,
+      "task": "protein"
+    },
+    {
+      "design_id": "D07",
+      "exact_checkpoint_equality": true,
+      "task": "protein"
+    }
+  ],
+  "raw_structured_fact_checks": 72,
+  "rows": [
+    {
+      "all_panel_selected": "D07",
+      "checkpoints": 12,
+      "confirmation_delta_pp": -2.6783633033633043,
+      "exhaustive_all_panel_winner_agreement": 102,
+      "exhaustive_negative_confirmation": 151,
+      "exhaustive_partitions": 252,
+      "exhaustive_sign_reversal": 151,
+      "fixed_proposal_selected": "D07",
+      "mean_minus_worst_max_pp": 26.284688622923913,
+      "mean_minus_worst_mean_pp": 20.12589212848573,
+      "mean_minus_worst_min_pp": 18.360174392882303,
+      "proposal_delta_pp": 17.13128306878307,
+      "seed": 61,
+      "task": "cell"
+    },
+    {
+      "all_panel_selected": "D05",
+      "checkpoints": 12,
+      "confirmation_delta_pp": -8.541999666999667,
+      "exhaustive_all_panel_winner_agreement": 77,
+      "exhaustive_negative_confirmation": 169,
+      "exhaustive_partitions": 252,
+      "exhaustive_sign_reversal": 169,
+      "fixed_proposal_selected": "D07",
+      "mean_minus_worst_max_pp": 24.35523354641002,
+      "mean_minus_worst_mean_pp": 19.77069056152791,
+      "mean_minus_worst_min_pp": 18.446242096026577,
+      "proposal_delta_pp": 13.580084811702456,
+      "seed": 62,
+      "task": "cell"
+    },
+    {
+      "all_panel_selected": "D05",
+      "checkpoints": 12,
+      "confirmation_delta_pp": 13.194424828045518,
+      "exhaustive_all_panel_winner_agreement": 166,
+      "exhaustive_negative_confirmation": 85,
+      "exhaustive_partitions": 252,
+      "exhaustive_sign_reversal": 85,
+      "fixed_proposal_selected": "D05",
+      "mean_minus_worst_max_pp": 25.10489454670489,
+      "mean_minus_worst_mean_pp": 19.67099846820097,
+      "mean_minus_worst_min_pp": 18.446242096026577,
+      "proposal_delta_pp": 13.184621070650484,
+      "seed": 63,
+      "task": "cell"
+    },
+    {
+      "all_panel_selected": "D09",
+      "checkpoints": 12,
+      "confirmation_delta_pp": 0.0,
+      "exhaustive_all_panel_winner_agreement": 43,
+      "exhaustive_negative_confirmation": 114,
+      "exhaustive_partitions": 252,
+      "exhaustive_sign_reversal": 114,
+      "fixed_proposal_selected": "D04",
+      "mean_minus_worst_max_pp": 59.26190476190476,
+      "mean_minus_worst_mean_pp": 54.62835775335775,
+      "mean_minus_worst_min_pp": 45.755494505494504,
+      "proposal_delta_pp": 0.0,
+      "seed": 61,
+      "task": "protein"
+    },
+    {
+      "all_panel_selected": "D05",
+      "checkpoints": 12,
+      "confirmation_delta_pp": 0.0,
+      "exhaustive_all_panel_winner_agreement": 16,
+      "exhaustive_negative_confirmation": 154,
+      "exhaustive_partitions": 252,
+      "exhaustive_sign_reversal": 154,
+      "fixed_proposal_selected": "D03",
+      "mean_minus_worst_max_pp": 59.678571428571416,
+      "mean_minus_worst_mean_pp": 53.92504486254486,
+      "mean_minus_worst_min_pp": 42.42929292929293,
+      "proposal_delta_pp": 0.0,
+      "seed": 62,
+      "task": "protein"
+    },
+    {
+      "all_panel_selected": "D01",
+      "checkpoints": 12,
+      "confirmation_delta_pp": 0.0,
+      "exhaustive_all_panel_winner_agreement": 72,
+      "exhaustive_negative_confirmation": 154,
+      "exhaustive_partitions": 252,
+      "exhaustive_sign_reversal": 153,
+      "fixed_proposal_selected": "D01",
+      "mean_minus_worst_max_pp": 59.26190476190476,
+      "mean_minus_worst_mean_pp": 55.19907407407406,
+      "mean_minus_worst_min_pp": 45.31349206349206,
+      "proposal_delta_pp": 1.6666666666666718,
+      "seed": 63,
+      "task": "protein"
+    }
+  ],
+  "schema": "panel-feedback-development-summary-v1",
+  "source_bindings": {
+    "/liziqing/yukai/AI4AI4Cell/results/panel_feedback_20261110/dev_audit_v1/cell/canary/D00/frozen/best.pt": "05122794a0fbedb2d31ee3ef227eeeeb0c807fa3dc71871fdd5e1991c0870c9c",
+    "/liziqing/yukai/AI4AI4Cell/results/panel_feedback_20261110/dev_audit_v1/cell/canary/D00/frozen/fit.json": "2731fafe1030fe9aebd743edce3beece9fcc0128056ec8fe043ff0a691b4f58c",
+    "/liziqing/yukai/AI4AI4Cell/results/panel_feedback_20261110/dev_audit_v1/cell/canary/D00/frozen/last.pt": "574f4672d23542b4367881a8099afb7cdc27c0fa51444c220e779795c7d02db3",
+    "/liziqing/yukai/AI4AI4Cell/results/panel_feedback_20261110/dev_audit_v1/cell/canary/D00/panel_transport/best.pt": "05122794a0fbedb2d31ee3ef227eeeeb0c807fa3dc71871fdd5e1991c0870c9c",
+    "/liziqing/yukai/AI4AI4Cell/results/panel_feedback_20261110/dev_audit_v1/cell/canary/D00/panel_transport/fit.json": "2f5400237d6f16b4a3400aa813c868d960243018e1dbcbad5f0851fe5fe49993",
+    "/liziqing/yukai/AI4AI4Cell/results/panel_feedback_20261110/dev_audit_v1/cell/canary/D00/panel_transport/last.pt": "574f4672d23542b4367881a8099afb7cdc27c0fa51444c220e779795c7d02db3",
+    "/liziqing/yukai/AI4AI4Cell/results/panel_feedback_20261110/dev_audit_v1/cell/canary/D07/frozen/best.pt": "ef667d6c16dc2062222dde793b079d863f989a1afd0482f429151037a1ebb85a",
+    "/liziqing/yukai/AI4AI4Cell/results/panel_feedback_20261110/dev_audit_v1/cell/canary/D07/frozen/fit.json": "ad30182ff2cf35e9b72493f8096f9d80bfca43d931e21cacd34c6d54eda31c18",
+    "/liziqing/yukai/AI4AI4Cell/results/panel_feedback_20261110/dev_audit_v1/cell/canary/D07/frozen/last.pt": "8ae1eb576bef9499d7dc2b89c37c698044d2db5ee82a3de4fd1a06b9487ae968",
+    "/liziqing/yukai/AI4AI4Cell/results/panel_feedback_20261110/dev_audit_v1/cell/canary/D07/panel_transport/best.pt": "ef667d6c16dc2062222dde793b079d863f989a1afd0482f429151037a1ebb85a",
+    "/liziqing/yukai/AI4AI4Cell/results/panel_feedback_20261110/dev_audit_v1/cell/canary/D07/panel_transport/fit.json": "8cf61a3844c0f1d2ffb117c1330b99559b5e313f46c5b752f1840a427427f75c",
+    "/liziqing/yukai/AI4AI4Cell/results/panel_feedback_20261110/dev_audit_v1/cell/canary/D07/panel_transport/last.pt": "8ae1eb576bef9499d7dc2b89c37c698044d2db5ee82a3de4fd1a06b9487ae968",
+    "/liziqing/yukai/AI4AI4Cell/results/panel_feedback_20261110/dev_audit_v1/cell/canary_receipt.json": "8a1976e7b4b5cb3c85b1a7ea9592aacbf541e7f61d5063278a5a129d11770c7d",
+    "/liziqing/yukai/AI4AI4Cell/results/panel_feedback_20261110/dev_audit_v1/cell/development_audit.json": "702ff4cd70658e53590d7ab62f84226fd2ffc7243642212696fe6eadecaed625",
+    "/liziqing/yukai/AI4AI4Cell/results/panel_feedback_20261110/dev_audit_v1/protein/canary/D00/frozen/best.pt": "dd20a28ed9593dc0898009b221d7b4fb886e3ad592a2d48190ec3944d7581162",
+    "/liziqing/yukai/AI4AI4Cell/results/panel_feedback_20261110/dev_audit_v1/protein/canary/D00/frozen/fit.json": "925aa9717658ce86151e21981b6188ead032f8d07fe17cd1ef6f1128aa85f634",
+    "/liziqing/yukai/AI4AI4Cell/results/panel_feedback_20261110/dev_audit_v1/protein/canary/D00/frozen/last.pt": "31e1f56332985cbfa0a9950a81609bc8ff9f51743be1674693f76e87ab5b3408",
+    "/liziqing/yukai/AI4AI4Cell/results/panel_feedback_20261110/dev_audit_v1/protein/canary/D00/panel_transport/best.pt": "dd20a28ed9593dc0898009b221d7b4fb886e3ad592a2d48190ec3944d7581162",
+    "/liziqing/yukai/AI4AI4Cell/results/panel_feedback_20261110/dev_audit_v1/protein/canary/D00/panel_transport/fit.json": "82be00ab13bceafc63304dc12c98b9d827b9ad2a04b5ac12443b00490ea1afad",
+    "/liziqing/yukai/AI4AI4Cell/results/panel_feedback_20261110/dev_audit_v1/protein/canary/D00/panel_transport/last.pt": "31e1f56332985cbfa0a9950a81609bc8ff9f51743be1674693f76e87ab5b3408",
+    "/liziqing/yukai/AI4AI4Cell/results/panel_feedback_20261110/dev_audit_v1/protein/canary/D07/frozen/best.pt": "083253d3d8b4fcf6cfbb5d524dc298e0d4da18d217c6e6a907f1a092d55efed6",
+    "/liziqing/yukai/AI4AI4Cell/results/panel_feedback_20261110/dev_audit_v1/protein/canary/D07/frozen/fit.json": "1ea00f6f898adc4bf7faecc71995bac1552459a76c689e742192aa7da88212a1",
+    "/liziqing/yukai/AI4AI4Cell/results/panel_feedback_20261110/dev_audit_v1/protein/canary/D07/frozen/last.pt": "defc19fb332747cee92c868306e2d1a32412f241ba8adc397253e121b136fa18",
+    "/liziqing/yukai/AI4AI4Cell/results/panel_feedback_20261110/dev_audit_v1/protein/canary/D07/panel_transport/best.pt": "083253d3d8b4fcf6cfbb5d524dc298e0d4da18d217c6e6a907f1a092d55efed6",
+    "/liziqing/yukai/AI4AI4Cell/results/panel_feedback_20261110/dev_audit_v1/protein/canary/D07/panel_transport/fit.json": "3a607a404f95af94b65b9fc36edbadb0ec5973e288b1dccba2ea471123a795aa",
+    "/liziqing/yukai/AI4AI4Cell/results/panel_feedback_20261110/dev_audit_v1/protein/canary/D07/panel_transport/last.pt": "defc19fb332747cee92c868306e2d1a32412f241ba8adc397253e121b136fa18",
+    "/liziqing/yukai/AI4AI4Cell/results/panel_feedback_20261110/dev_audit_v1/protein/canary_receipt.json": "ba989265f08b79df5826b17ebf06dc68ea80d894edc25c61825fb622b8b97b5f",
+    "/liziqing/yukai/AI4AI4Cell/results/panel_feedback_20261110/dev_audit_v1/protein/development_audit.json": "0e77dea4167322d2a93cae38fc2233d3c44f7dd2a997bcfe7eacd6e6832454b5",
+    "/liziqing/yukai/AI4AI4Cell/results/panel_feedback_20261110/dev_audit_v1/protocol.json": "734ce81efea4c3b2335012603a10306d192d82358e1e7106693ab216c8dcc601",
+    "/liziqing/yukai/AI4AI4Cell/results/panel_feedback_20261110/dev_audit_v1/registration.json": "f2c7dea45facd6f90c46742a2e7656778b72c396414cd1c8ee07ae4f329b0bb9"
+  },
+  "status": "PASS"
+}

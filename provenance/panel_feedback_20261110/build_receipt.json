@@ -1,0 +1,315 @@
+{
+  "schema": "panel-feedback-revision-v1",
+  "status": "PASS",
+  "base_commit": "7764441764dea9d59713fe26286e84aff45aac19",
+  "created_utc": "2026-11-09T17:35:54.026766+00:00",
+  "manuscript_sha256": "2555df85cdb701495812f0f1f045f3e17dae9761fb9937ac45cf74c453797cd1",
+  "build_log_sha256": "a0ad9cdc77e97c860f6ec26c43bc69ae7f2cd865ed8162c120ac38c7aa54e522",
+  "english_reply": "provenance/rebuttal_20261109/RESPONSE_FBhK.md",
+  "english_reply_sha256": "bc32f8194e2af32e9209047ccad85ca6fdc1ec850bdc8e559cee295e2e7c3f93",
+  "main_page_limit": 10,
+  "page_limit_source": "https://iclr.cc/Conferences/2027/AuthorGuidelines",
+  "overfull_boxes": 0,
+  "undefined_references": 0,
+  "source_inputs_newer_than_pdf": [],
+  "source_sha256": {
+    "biocoloop-main.tex": "de4db980b8443c03308c01cce7c194540d132cd57953d748dc63596be4fd9741",
+    "figures/fbhk_followup_20261109/history_prefix_dev_test.pdf": "0cbfb70aad9313e2e4b232d2b438530d985f0ee57b42aa4f52723ce385af0bb3",
+    "figures/fbhk_followup_20261109/history_prefix_dev_test.png": "e05d4cc90b8f49abebdd6354323430ede8e35f1a14a0499942b09da430bb95c5",
+    "figures/fbhk_followup_20261109/history_prefix_dev_test.svg": "7756c6da58237504fce61332debea538b5774a125b4c071513f24aa2b847bb6c",
+    "main.tex": "42ee170812615d83af2ce62d6c38fa8f273ee7c78dd8d5930303370c862ab907",
+    "provenance/fbhk_followup_20261109/CHANGES.zh-CN.md": "19443e89bc55ab2955f42443f5f0e0454f5d825f6e83e231494921b2758449ee",
+    "provenance/fbhk_followup_20261109/RESPONSE_FBhK_SHORT.md": "1a19b6bcc1b9fc3e8fdd9a241c666e61fa3f00c2e08db1fe394206ea7a158809",
+    "provenance/fbhk_followup_20261109/TABLE_MAP.zh-CN.md": "c237fcd77c89b1b249de71c60fe826f8a7eb706b095ca0eb68f081d3d8796206",
+    "provenance/fbhk_followup_20261109/experiment_sources.manifest.json": "3464758659b93b72153aa728c9cc4bca7b85dd504d0c2ba3c0666e1bd9d8457f",
+    "provenance/fbhk_followup_20261109/experiment_sources.zip": "593f13cbb17dea0a775e01d57ebbc2774b5d4172e4b642cb19086ea730678b37",
+    "provenance/fbhk_followup_20261109/policy_summary.json": "2bcdfd89909a4d9b37ba739bddac76f87de4e63d9cfbe6ca385524f07231c459",
+    "provenance/rebuttal_20261109/RESPONSE_FBhK.md": "bc32f8194e2af32e9209047ccad85ca6fdc1ec850bdc8e559cee295e2e7c3f93",
+    "references.bib": "5bc27ca50b7f841f0411e8932a0230c233896c00b366305916f2b74329cbedd7",
+    "references_v2.bib": "d5a1065f61ec804bdde0b9d5e412d838a832f5615c20b60962626e17af61bf9a",
+    "sections/01_introduction.tex": "e933a008b4d97b79f9b1166290dd630b37c676f094416e803e5e2e1d359eff4b",
+    "sections/02_related_work.tex": "735bae0b2c28bffbdd9018d7abe4f754d9d15e1e8b3a2dcfa8687ea99a72536b",
+    "sections/03_method.tex": "c6b47d3835685e86aac017e86b309ae9eb00da6efd2712c7541f605f044c4156",
+    "sections/04_experimental_design.tex": "8b58fd0aa507f591a1ae7dc876fa0e1f8c8fdc2519ac29d3f029b3300019fb9e",
+    "sections/05_results.tex": "db74aa8d0937b02c2c2d0aef03fc242e214b832db4f88779be1c7091ab574710",
+    "sections/07_conclusion.tex": "ec8551747520741ad59e972ad33f7901464081f76fd97f1a2e2ccc140ff6d400",
+    "sections/08_reproducibility.tex": "ed877ef4e235eb65fd7087e67cbe39a4e9a60cbe0d58c67d2428542a100369b9",
+    "sections/22_appendix_unified_protocol.tex": "75547769e2ef911bf8fc65f6f0a2c33a1fd2af121f304e49d997663634cd4923",
+    "sections/23_appendix_core_sensitivity.tex": "119753245d9e130464c046d5d2ecd76da608580fc88f1d2e093280cf47a1e389",
+    "sections/24_appendix_public_harness.tex": "d17b6034966abdfcebebb0d8362d12f6c9ff532b4502ff5af112f713950d7f71",
+    "sections/25_appendix_single_lab_search.tex": "86ff18e5ae6264a1f71a582818734c69a2a3ee479e1c55820721c29306a34c60",
+    "sections/26_appendix_rebuttal.tex": "3a0037faf4a82bd5b00127d3be9f8054cbf3d60bae8b1e62a6ee82d64016c55f",
+    "tables/fbhk_followup_20261109/fresh_history.tex": "95d05275fa0461a0ee506394550c944ad19d2072fa79361af2b3244c355312b9",
+    "tables/fbhk_followup_20261109/fresh_history_cost.tex": "0fc595bb482e468a87691757e4a851809618e50571fa9891311e022531b6b6b4",
+    "tables/fbhk_followup_20261109/lab_identity.json": "032c95fade4152909aa6b9f5252c56be4219a132176c83e35a3211c6df8fd2fd",
+    "tables/fbhk_followup_20261109/lab_identity.provenance.json": "ffa0531849681b01b9af7f9001f04f0051a6e30d4002f2411c6cc1f4765e8cea",
+    "tables/fbhk_followup_20261109/lab_identity.tex": "62238f0301d4d39553c784d0ce20adac2834811613e395b5b9449b704f555b36",
+    "tables/fbhk_followup_20261109/proposal_dynamics_combined.tex": "93e2630e14f75f234053eaf19b17c193292937a578b1ceb6400bf0f5fb887f4f",
+    "tables/fbhk_followup_20261109/proposal_heldout_combined.tex": "0dd4844678c865986457588d6841a80d9230ee9177c3a5ee6dcb324a534d1cd7",
+    "tables/fbhk_followup_20261109/provenance.json": "25500b2327abfb9b50902c35a9b0cfb67546c80de860021e7a41e2ace40b5570",
+    "tables/fbhk_followup_20261109/snapshot.json": "5bc09b7d2e7fb8d9256b4a9259fee5be5462c22b7b53ce9b07b56b6ea8937ac1",
+    "tables/rebuttal_20261109/access_scenario.provenance.json": "808f1154b490763779ee0876b7b6a254ec84117f92de25aadb12169bb89f027b",
+    "tables/rebuttal_20261109/access_scenario.tex": "749be775ead541af7bf8e5396dafe84b04a420e0c78fb8d6c140ca193cdcd0dc",
+    "tables/rebuttal_20261109/allocation.json": "c2fb729bc8bb272a85673b44ead33e604f46a5655ee26fac14d44900bfcff5b4",
+    "tables/rebuttal_20261109/allocation.tex": "b39207247fc13240dec485ea1b18f5791e3eb0d235cc9c5e5975790127d3cb1a",
+    "tables/rebuttal_20261109/allocation_provenance.json": "2a10306c4b06c79ae7bfee7ded40817fb14f2b663bc989de8288ce330f484a58",
+    "tables/rebuttal_20261109/matched_search_full.tex": "a80f5475b3d94354b8762c64cbc804595a14d5d396e1f654f6e14dd957f77467",
+    "tables/rebuttal_20261109/matched_search_main.tex": "32e581c2fbeac9f8993eb4eed1795fd50a74e9864cc3e515860e76a9ed06b98f",
+    "tables/rebuttal_20261109/roster.tex": "1dbe29f24e8d89a378246683cbb7ea18634b3d38c467b71c720b09662312d118",
+    "tables/rebuttal_20261109/snapshot.json": "be9a92b201238d49b110839cb37615ffc06841be6b3ae855381f7a5bd1e8009a",
+    "tables/rebuttal_20261109/source_history.tex": "c35b3a077635626baa750110487d47cbc74077d0ea54dc6273ed9af401a70fe2",
+    "tables/rebuttal_20261109/validation.tex": "f362c34b5b0b775955cd3dd91ea69b2907a14d0d03ec7ad3763903383817e94a",
+    "tools/finalize_fbhk_followup.py": "1b9d928fe461db4c623fa2a5af3ed6f8db08ee86b286dd6807955ef881a1d153",
+    "tools/test_finalize_fbhk_followup.py": "545929de49c91fcb4b75a772510eb70386d7688326d708191142cfa7b254ef12",
+    "provenance/rebuttal_20261109/RESPONSE_AfJB.md": "38e04085a3f27472e580fdb6867e842e695ea0a02dcd53db80c6d241ac630acc",
+    "provenance/rebuttal_20261109/RESPONSE_cR5g.md": "ee4c3ad0b94938502a90c9cbcc51c2f26ccc52c27823bb7bbeabf838490b9948",
+    "provenance/panel_feedback_20261110/experiment_sources.zip": "06cab63350d4c4297726a4e4afd41ac923645c51b54bdff60f5c0c6cc392a774",
+    "provenance/panel_feedback_20261110/CHANGES.zh-CN.md": "fffdac2500e841b6bd75581aa7fc3e00c09abcb6dafe124d57232511a10be6c1",
+    "provenance/panel_feedback_20261110/VALIDATION.zh-CN.md": "2b4d690726699589f6509093b8eed4bfc8fbe107bbeae0648c926b19af86c605",
+    "provenance/panel_feedback_20261110/experiment_sources.manifest.json": "1b94cce1b737effba46ea944553606c781b6ca66ef9daa5f4002a1e517515951",
+    "provenance/panel_feedback_20261110/NEXT_STEPS.zh-CN.md": "9411459ec7bcfab2e32c99d95b94fd0ce6de5131a0c7b2b056040b1b9277c008",
+    "provenance/panel_feedback_20261110/summary.json": "fe3388c10136d2997467fddc908294c2aa3d7d2fc07d8e5f386679d4fe880dd5",
+    "tables/panel_feedback_20261110/development_audit.tex": "5aa38209fea216a26f5ca6319b46d576ce9422496151339b0bbcd142e08236b5",
+    "tools/publish_panel_feedback.py": "697525d9572d0d698296262e56b673d165bd26615d3ab2a40651c2eb9abad322",
+    "tools/finalize_panel_feedback.py": "6bcd62f1828fb412fa55e1761cc9733434560b39f2612946188bcc1da92ae729",
+    "tools/build_rebuttal_responses.py": "a9c30dc6feb8490c3da91ff2e54c5b19ba40be1de0c2f591a65184761a207933",
+    "output/pdf/BioCoLoop_reviewer_responses_panel_feedback_20261110.pdf": "7096bda2502e1fb02e2f92cacfd602097e993bcdc3c77f709c82f7f8988bd4dc"
+  },
+  "old_rebuttal_receipt_sha256": "b5bc7c418ff857925abef6f79bf9a77a034d39d10977dfe24901bfdefc79cc1d",
+  "compiled_aux_sha256": "8dd820b2bde678088105ea7043d978fe2a78de7b0a8942bf1b4bbc09b37708d6",
+  "openreview_posted": false,
+  "overleaf_remote_build_verified": false,
+  "total_pages": 39,
+  "anonymity_check": "PASS: text, author metadata and links",
+  "annotation_check": "PASS",
+  "page_geometry_check": "PASS",
+  "main_text_ends_page": 9,
+  "conclusion_heading_page": 9,
+  "reproducibility_starts_page": 10,
+  "main_page_rule": "Last non-header/non-line-number text before reproducibility, including continued conclusion text",
+  "original_access_score_cells_checked": 50,
+  "original_access_score_cells_changed": 0,
+  "author_submitted_reference_preserved": true,
+  "new_study_controls": "PASS: fixed/direct/raw/structured/random/GP-EI plus published sensitivities",
+  "source_archive_check": "PASS",
+  "prefix_diagnostic_sha256": "04a3103a75dfb0a76b74410b2c76d1cb5956ad0b6e5b847a3c28959d01ac4b5d",
+  "figure_sha256": "0cbfb70aad9313e2e4b232d2b438530d985f0ee57b42aa4f52723ce385af0bb3",
+  "lab_identity_fits_verified": 40,
+  "lab_identity_all_outcomes_retained": true,
+  "original_score_rows_retained": 18,
+  "original_dynamics_rows_retained": 18,
+  "compiled_followup_labels": [
+    "fig:fbhk-prefix",
+    "tab:completed-dynamics-long24",
+    "tab:completed-dynamics-short6",
+    "tab:completed-long24",
+    "tab:completed-short6",
+    "tab:fbhk-lab-identity",
+    "tab:fresh-history-comparison",
+    "tab:fresh-history-cost",
+    "tab:proposal-dynamics-combined",
+    "tab:proposal-heldout-combined"
+  ],
+  "previous_revision": "8a5d320cf303e569a4324ce6e99439ebf6da1e88",
+  "previous_assets_unchanged": 152,
+  "previous_included_files_retained": 43,
+  "old_result_cells_changed": 0,
+  "protected_versions": {
+    "output/pdf/BioCoLoop_focused_revision_20261110.pdf": "ead0141426b4301136e0e5046cc737a83a3e79524617725fa3359e8346d1861b",
+    "output/pdf/BioCoLoop_FBhK_revision_20261109.pdf": "a7fa95563541afc9b286953a7f0903fa8da03d1bcef8f66839f31ce5ff7e9e53",
+    "provenance/focused_revision_20261110/build_receipt.json": "7a0c40650a9ce89a8fe5cbe2ca1b21cde0587d0fe8647277d64ba691cd8e2246",
+    "provenance/fbhk_followup_20261109/build_receipt.json": "237c69c0fd548f5b3c01fa4458bb5867c8c48561c1b22dba3ceac4a6488514bc",
+    "provenance/fbhk_followup_20261109/experiment_sources.zip": "593f13cbb17dea0a775e01d57ebbc2774b5d4172e4b642cb19086ea730678b37"
+  },
+  "new_full_budget_search_fits": 0,
+  "new_canary_fits": 8,
+  "canary_rounds_per_fit": 10,
+  "new_llm_calls": 0,
+  "new_heldout_inference": false,
+  "repaired_checkpoint_scores_verified": 72,
+  "labelled_panel_scores": 720,
+  "compiled_number_map": {
+    "fig:paradigms": {
+      "number": "1",
+      "pdf_page": 2
+    },
+    "fig:research-interface": {
+      "number": "2",
+      "pdf_page": 4
+    },
+    "tab:public-harness-comparison-three-seed": {
+      "number": "1",
+      "pdf_page": 7
+    },
+    "tab:strong-effects": {
+      "number": "2",
+      "pdf_page": 8
+    },
+    "fig:lab-sensitivity": {
+      "number": "3",
+      "pdf_page": 8
+    },
+    "tab:rebuttal-matched-search-main": {
+      "number": "3",
+      "pdf_page": 9
+    },
+    "tab:strong-ablation": {
+      "number": "A.1",
+      "pdf_page": 18
+    },
+    "tab:strong-secondary": {
+      "number": "A.2",
+      "pdf_page": 19
+    },
+    "tab:strong-dti-endpoints": {
+      "number": "A.3",
+      "pdf_page": 19
+    },
+    "tab:completed-participation": {
+      "number": "B.1",
+      "pdf_page": 21
+    },
+    "tab:completed-partition": {
+      "number": "B.2",
+      "pdf_page": 21
+    },
+    "tab:supplemental-source-clients": {
+      "number": "B.3",
+      "pdf_page": 22
+    },
+    "tab:completed-independent-transfer": {
+      "number": "B.4",
+      "pdf_page": 22
+    },
+    "tab:scenario-labs-matched": {
+      "number": "B.5",
+      "pdf_page": 23
+    },
+    "tab:supplemental-protein-three-source": {
+      "number": "B.6",
+      "pdf_page": 24
+    },
+    "tab:proteomics-study-clients": {
+      "number": "B.7",
+      "pdf_page": 25
+    },
+    "tab:completed-context-transfer": {
+      "number": "B.8",
+      "pdf_page": 25
+    },
+    "fig:completed-short-dev": {
+      "number": "4",
+      "pdf_page": 25
+    },
+    "tab:proposal-heldout-combined": {
+      "number": "B.9",
+      "pdf_page": 26
+    },
+    "tab:completed-short6": {
+      "number": "B.9",
+      "pdf_page": 26
+    },
+    "tab:completed-long24": {
+      "number": "B.9",
+      "pdf_page": 26
+    },
+    "tab:proposal-dynamics-combined": {
+      "number": "B.10",
+      "pdf_page": 26
+    },
+    "tab:completed-dynamics-short6": {
+      "number": "B.10",
+      "pdf_page": 26
+    },
+    "tab:completed-dynamics-long24": {
+      "number": "B.10",
+      "pdf_page": 26
+    },
+    "fig:completed-long-dev": {
+      "number": "5",
+      "pdf_page": 27
+    },
+    "tab:completed-menu-long24": {
+      "number": "B.11",
+      "pdf_page": 28
+    },
+    "tab:completed-norman-events": {
+      "number": "B.12",
+      "pdf_page": 28
+    },
+    "tab:single-lab-search": {
+      "number": "D.1",
+      "pdf_page": 30
+    },
+    "tab:single-lab-search-expectation": {
+      "number": "D.2",
+      "pdf_page": 31
+    },
+    "tab:single-lab-dti-endpoints": {
+      "number": "D.3",
+      "pdf_page": 31
+    },
+    "tab:rebuttal-matched-search": {
+      "number": "E.1",
+      "pdf_page": 33
+    },
+    "tab:rebuttal-validation": {
+      "number": "E.2",
+      "pdf_page": 33
+    },
+    "tab:rebuttal-roster": {
+      "number": "E.3",
+      "pdf_page": 34
+    },
+    "tab:rebuttal-source-history": {
+      "number": "E.4",
+      "pdf_page": 34
+    },
+    "tab:rebuttal-allocation": {
+      "number": "E.5",
+      "pdf_page": 35
+    },
+    "tab:fresh-history-comparison": {
+      "number": "E.6",
+      "pdf_page": 36
+    },
+    "tab:fresh-history-cost": {
+      "number": "E.7",
+      "pdf_page": 37
+    },
+    "fig:fbhk-prefix": {
+      "number": "6",
+      "pdf_page": 37
+    },
+    "tab:fbhk-lab-identity": {
+      "number": "E.8",
+      "pdf_page": 38
+    },
+    "tab:panel-feedback-audit": {
+      "number": "E.9",
+      "pdf_page": 39
+    }
+  },
+  "reply_lengths": {
+    "FBhK": {
+      "characters": 8487,
+      "whitespace_words": 1178
+    },
+    "AfJB": {
+      "characters": 6709,
+      "whitespace_words": 860
+    },
+    "cR5g": {
+      "characters": 6983,
+      "whitespace_words": 964
+    }
+  },
+  "reply_pages": 6,
+  "reply_length_limit_verified": false,
+  "source_archive_sha256": "06cab63350d4c4297726a4e4afd41ac923645c51b54bdff60f5c0c6cc392a774",
+  "published_paths": [
+    "output/pdf/BioCoLoop_panel_feedback_revision_20261110.pdf",
+    "output/pdf/BioCoLoop_manuscript.pdf",
+    "manuscript.pdf"
+  ]
+}

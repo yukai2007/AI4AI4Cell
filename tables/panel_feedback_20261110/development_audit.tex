@@ -1,0 +1,18 @@
+\begin{table}[htbp]
+\centering
+\small
+\caption{Development-only audit after restoring target-panel feedback. Each row reconstructs all twelve saved best checkpoints. Gap is the mean across designs of primary minus the true worst-panel score, in percentage points. A/B are fixed even/odd panel subsets. The last column counts five-panel proposal subsets selecting the same design as all ten panels, out of 252. Complement scores reuse checkpoints already selected on all ten panels; they are descriptive, not independent confirmation.}
+\label{tab:panel-feedback-audit}
+\begin{tabular}{llrrrr}
+\toprule
+Task & Seed & Mean--worst gap & A gain & B gain & Winner agreement \\
+\midrule
+Cell & 61 & 20.13 & +17.13 & -2.68 & 102/252 \\
+Cell & 62 & 19.77 & +13.58 & -8.54 & 77/252 \\
+Cell & 63 & 19.67 & +13.18 & +13.19 & 166/252 \\
+Protein & 61 & 54.63 & +0.00 & +0.00 & 43/252 \\
+Protein & 62 & 53.93 & +0.00 & +0.00 & 16/252 \\
+Protein & 63 & 55.20 & +1.67 & +0.00 & 72/252 \\
+\bottomrule
+\end{tabular}
+\end{table}

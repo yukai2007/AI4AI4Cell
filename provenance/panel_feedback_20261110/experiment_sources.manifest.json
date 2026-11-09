@@ -1,0 +1,20 @@
+{
+  "archive_member_sha256": {
+    "README.txt": "9a79bf18e47ea90da81f93e629f2df793a9083fc457662bc660e7309e3e6999f",
+    "docs/panel_feedback_20261110/PROGRESS.zh-CN.md": "fffdac2500e841b6bd75581aa7fc3e00c09abcb6dafe124d57232511a10be6c1",
+    "extensions/panel_feedback_20261110/audit.py": "bae756bddc698930d41d918a2c5892d863d04714542a4c32104ad6d8aefbc257",
+    "extensions/panel_feedback_20261110/fitters.py": "b47fa64b5daf0338c0bbefdb84307ab0ca0fdb586e759bedfef849f15934b189",
+    "extensions/panel_feedback_20261110/payload.py": "d8cb4da2470d70796223acd880d30582ddb298d2c43eb79c6fe3dfcc9d42b8c4",
+    "extensions/panel_feedback_20261110/runtime.py": "1ded7b8940180c7bafb80382876a3a5812fffbce79ba730a1027b82dbdea3e52",
+    "extensions/panel_feedback_20261110/test_payload.py": "18a3ba019332ef4a84112d7f9e6dbea240e6ca63ac7de9fcfa170c56c7b91bef",
+    "metadata/protocol.json": "734ce81efea4c3b2335012603a10306d192d82358e1e7106693ab216c8dcc601",
+    "metadata/registration.json": "f2c7dea45facd6f90c46742a2e7656778b72c396414cd1c8ee07ae4f329b0bb9",
+    "paper/tools/publish_panel_feedback.py": "697525d9572d0d698296262e56b673d165bd26615d3ab2a40651c2eb9abad322",
+    "summary.json": "fe3388c10136d2997467fddc908294c2aa3d7d2fc07d8e5f386679d4fe880dd5"
+  },
+  "archive_sha256": "06cab63350d4c4297726a4e4afd41ac923645c51b54bdff60f5c0c6cc392a774",
+  "generator_sha256": "697525d9572d0d698296262e56b673d165bd26615d3ab2a40651c2eb9abad322",
+  "status": "PASS",
+  "summary_sha256": "fe3388c10136d2997467fddc908294c2aa3d7d2fc07d8e5f386679d4fe880dd5",
+  "table_sha256": "5aa38209fea216a26f5ca6319b46d576ce9422496151339b0bbcd142e08236b5"
+}
