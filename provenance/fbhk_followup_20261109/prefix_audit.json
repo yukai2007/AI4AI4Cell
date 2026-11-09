@@ -1,0 +1,4275 @@
+{
+  "schema": "fbhk-prefix-audit-v1",
+  "source_sha256": "b74f40978a4dc328a52fe335ed2cce7a10669581fedaca9248326e6ca3c62e94",
+  "status": "COMPLETE",
+  "scope": "Post-hoc frozen-selection diagnostic of already scored models; no new training, generation or held-out access",
+  "selection": "Original development primary, then lower development loss, earliest complete ties; never choose a prefix by held-out score",
+  "endpoint": "Equal-context within-context gene-macro Top-1",
+  "uncertainty": "Mean +/- sample SD of three paired training/controller seeds, not confidence intervals",
+  "random": "Exact expectation of development-selected single predictors at each prefix; not an ensemble or a single sequential trajectory",
+  "source_sha256s": {
+    "results/history_repair_20261109/search_genetic_v3/protocol.json": "20622d2ad3d445f0d2370d2622c01b84b7cdde97b1a421b17a8dc85497749dd8",
+    "results/history_repair_20261109/training_heldout_genetic_v1/policy_report.json": "bf783342ddc61604e075d1f48c8330e40833f4e11c211637d990bfab870c2de3",
+    "results/history_repair_20261109/training_heldout_genetic_v1/protocol.json": "f0bfe10894e7cdd0697d2842d54899eb701d03b4357debf75b311b63d3ce085c",
+    "results/history_repair_20261109/training_heldout_genetic_v1/verification.json": "792610f2282a4575d3307bccb42db1fcdf99803ab690fe9d6c27b96f7f8d6029",
+    "results/history_repair_20261109/search_genetic_v3/seed61/selection_seal.json": "d6680a262a7c4755c9b98a524bc5cf9a3ce4c6085313d7cf723db0fe03799a1b",
+    "results/history_repair_20261109/training_genetic_v1/seed61/development_grid.json": "9f9e82d3c700b8898e222ec8f060cd637f31f61451d59dcee107f99eb093e058",
+    "results/history_repair_20261109/search_genetic_v3/seed61/selections.json": "28055ee654b1eee8533e672cfc3866a130d8924af5485abbf282122fafe7025a",
+    "results/history_repair_20261109/search_genetic_v3/seed61/controls.json": "6e1a40eb70bc508ef221f9a787dc7dcfd2acb7eb8175621a006ff31f6b860875",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed61/D00.json": "d315e6f87d6bde2aee39fdd23f2278ae820413aaed125d166d7a3bdad76846cd",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed61/D01.json": "e0c1d053b61515b00b1b1c332ed44bd9990294ac1ab0f615d201ad43e503fa3f",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed61/D02.json": "78092f78f32b815dbdb2ff58ec34b3cce1953c38fb269297f7a11beff68a9d42",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed61/D03.json": "4bd930230c7fc859de410309447fcedee78791dc6ca108b626c434406970a44f",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed61/D04.json": "35f9df46865a7cb7eb1a715f15e2d18fa34bbdda23c166cca4056d5f93ac9cfb",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed61/D05.json": "52c7c953d80b736e82c2cccee1f6bd785797aff2e557d968d479197f917ee470",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed61/D06.json": "2ff59f9013f8db3939dab143585a74944d4438724a2fa705a0ace508b44109bf",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed61/D07.json": "1be06cb38b0faf948b26fa7fb3efd284ca24045044094feb24915188330fcc01",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed61/D08.json": "e0c179bb5a0e20dceb43e5f2d3b860b400e7c927a6fb384e9ed9f317f1e5a6e4",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed61/D09.json": "6e7ccf2219ac23a351045507360bc34aeaab8f407067e98381ba9d1e76beb14e",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed61/D10.json": "017580c89a420c7e8d8428245dbb08e5cc696166b22a50a99884bb926c413d9d",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed61/D11.json": "da600d6307fc23bbb0331cbc0ed17b06daf4e3897dc64588ae42c6962ccb3cb8",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed61/D12.json": "5f20e51ac54058097f5caa2f9bac9126452ded3b7a7faaa89a525320f0001b71",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed61/D13.json": "7d813eb6cabe94cd440db47241f97148f55fbb8e1755c65e792256c72d3d48b9",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed61/D14.json": "00cf588c52f5a23dfc9ec2f663809b15f25971adae692b33a4ac3d752f5ec507",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed61/D15.json": "9447463da9cfa0141e59e37158b1a2b42565245ac94d8cd593bf1895a0eb1c6e",
+    "results/history_repair_20261109/search_genetic_v3/seed61/direct/slot1.json": "a8eb384530366848a575a4ec232211be5de1eda4186202177d8a2a3f8c30d198",
+    "results/history_repair_20261109/search_genetic_v3/seed61/direct/slot2.json": "54b2e0e24793cd33fae5f8ffb9f2ca1a59c7de589be9812f6daf05028533afeb",
+    "results/history_repair_20261109/search_genetic_v3/seed61/direct/slot3.json": "7d2fa583658552a3f85580fc4e73639f0537678aaed0528a55179cc54175badd",
+    "results/history_repair_20261109/search_genetic_v3/seed61/direct/slot4.json": "5169cccff3914ec8a60d35b26ffa4dec62c8faad96bbd869ff4830632c41a235",
+    "results/history_repair_20261109/search_genetic_v3/seed61/direct/slot5.json": "dd19c37fd25d5ae1e8607e24fa7bf46838bc97f5a25b23a1edbd0966499c5c4a",
+    "results/history_repair_20261109/search_genetic_v3/seed61/direct/slot6.json": "cd56df61e7abba950caf3e8b7aa20f4780b59b046449c3f429dfc10d09f0c597",
+    "results/history_repair_20261109/search_genetic_v3/seed61/raw/slot1.json": "a8eb384530366848a575a4ec232211be5de1eda4186202177d8a2a3f8c30d198",
+    "results/history_repair_20261109/search_genetic_v3/seed61/raw/slot2.json": "cb9795dd8652ebcfb437d2919d299968c53b708692feef2d6f1ae8dccdc34ee0",
+    "results/history_repair_20261109/search_genetic_v3/seed61/raw/slot3.json": "5ff4565cde5544d424aac3a6b1ecbe669554085319353acf8c884ab5b0b2db49",
+    "results/history_repair_20261109/search_genetic_v3/seed61/raw/slot4.json": "4af5834f40adb4435dc249ae68600b7a0409e51ad59a81546e5b113e883f6f7d",
+    "results/history_repair_20261109/search_genetic_v3/seed61/raw/slot5.json": "43ed3469d19260558cf6bccab2e27b21a56478f0e6923489340e4b4d9ee96540",
+    "results/history_repair_20261109/search_genetic_v3/seed61/raw/slot6.json": "6fa72945a2bd4b8e5c3623261af60574220c698815a7e1395ef04cdb85f60745",
+    "results/history_repair_20261109/search_genetic_v3/seed61/structured/slot1.json": "a8eb384530366848a575a4ec232211be5de1eda4186202177d8a2a3f8c30d198",
+    "results/history_repair_20261109/search_genetic_v3/seed61/structured/slot2.json": "0e727f23b2af93b6e76f1c92fb2b9ef589e98eefaa7c3efbee92df8edec517b9",
+    "results/history_repair_20261109/search_genetic_v3/seed61/structured/slot3.json": "ac559c80e0f87e371dd61559c7e650fa06f26a1c3615482d0270209e8c493433",
+    "results/history_repair_20261109/search_genetic_v3/seed61/structured/slot4.json": "ff90c4d7afc8ca041d4bbe7bd58f3cba1d2af6d95876be25618b17a1291aef9f",
+    "results/history_repair_20261109/search_genetic_v3/seed61/structured/slot5.json": "4be2d21be4eae811eddcc9af33103e5ce61e6570910f8b1d899601881f0dd743",
+    "results/history_repair_20261109/search_genetic_v3/seed61/structured/slot6.json": "cc100495e5be0fc9a8a1a08f7dbd8e90e0aa5f8bd1c13e739598f3d0c90e2d2e",
+    "results/history_repair_20261109/search_genetic_v3/seed61/shared_first.json": "aa203c3ae19dff821af3b837293c6cfb60914d35441e9ed243af4c82fe2d527e",
+    "results/history_repair_20261109/search_genetic_v3/seed62/selection_seal.json": "cdeba5eabf260b5434697ebe201bc368e0012e0fd51ac5bab212e69294702508",
+    "results/history_repair_20261109/training_genetic_v1/seed62/development_grid.json": "fc0242f10284e7660e80d3c53fb874811783f7c2ab8bde601466a4ce9d1d8d9b",
+    "results/history_repair_20261109/search_genetic_v3/seed62/selections.json": "4c3e1b73a66acb655fe536888fa0fb931ebc0fac9a2297e8b9a45bd20256a638",
+    "results/history_repair_20261109/search_genetic_v3/seed62/controls.json": "5c1d263e358ed8687d03d066c4a2ca338ac0a6a43713144dacee1ad8851acfad",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed62/D00.json": "fb5c3f69c250a367155e82e9fda8bf3ecc1707bf14d701304660709765ffa264",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed62/D01.json": "4c726fa85ce12f825711a844cdd04f2a1d7397dfba7c69182b422684fd93faa0",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed62/D02.json": "7156bdb2389b7a6fc6f6fd62dc0421117c7c06ff27f19a9fd2fc812e7c8d3305",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed62/D03.json": "6525fc0bf16f172c32c71faa56a6f9e91bce9d4d84e9fa8e2b2b904e86e3cd7b",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed62/D04.json": "a55ae124c5f90c8532f945bef2e8598d7cdf352815c4ef8e998aea5e7d30d1d1",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed62/D05.json": "b6432d8e947d7cabf2ffe0b29f9e08afd80a60d0b61d5cf383860d3b34e1ca7e",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed62/D06.json": "11332209c23ccdfa523e3afe19dea32ef07805f452ade68d509c1efbc4cca506",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed62/D07.json": "47ee39ffb789e7f9c78813a016698000addbfe02a0ac0e2588c8c89dd48c502d",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed62/D08.json": "3dbe879f98ae43682ea0071595b1c0092719ef3d1b3b38bb43c11ac818b00e76",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed62/D09.json": "4296678d8b104212de93f92b8d6a2ccc8f6320abecd9a108c1341010f2351ef1",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed62/D10.json": "d60b3df77f05da8137aafc8093afb241fd2bcfac46258505ea7a241c7a291d52",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed62/D11.json": "fa21cec1f6974f7bc6b8adc67798824cb7489d4ee347a0835f4248fc5d9928eb",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed62/D12.json": "8c661cb0e5a685aee597182b2495f3e0c7749fed98d67bf5d7244b6440f67ac6",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed62/D13.json": "124a62d702b43b874fcfec1125272b130871193b0cd0ee8fb01fad2e7924b48e",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed62/D14.json": "4bc5431a70684b1c94b8bd227ffe7a0ab28de30f61b39a04e2bf6d87f409a224",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed62/D15.json": "ccfad7040f5032107cf6cfe97b3acd40467be0c3e7e0ab109de453300e1f40a2",
+    "results/history_repair_20261109/search_genetic_v3/seed62/direct/slot1.json": "1d2394f33ab5fa5a5bd867a8133063494399ff06f14f75bb7d2a731b3b276656",
+    "results/history_repair_20261109/search_genetic_v3/seed62/direct/slot2.json": "7d6760f96874c8fb78a5bf6379fd843fd407bbf245998a0e57d60a2b3a1a9a4f",
+    "results/history_repair_20261109/search_genetic_v3/seed62/direct/slot3.json": "77f15ded4add7e8ab3a2b2613d0901cd05cc34a689a04bfb604c3014a1ba76cd",
+    "results/history_repair_20261109/search_genetic_v3/seed62/direct/slot4.json": "082772e1c1e6db62ffbe352f21af1127129e98893e8c0ab778aa70a202263466",
+    "results/history_repair_20261109/search_genetic_v3/seed62/direct/slot5.json": "8a4dee2e756b407ba71424cc1f9c523b08f5bcad58e790024dc0b11eb69c7c5d",
+    "results/history_repair_20261109/search_genetic_v3/seed62/direct/slot6.json": "aac5028a9c752894534fb933e93bbe939a2eac9b67fc354f71180f449c50bf3e",
+    "results/history_repair_20261109/search_genetic_v3/seed62/raw/slot1.json": "1d2394f33ab5fa5a5bd867a8133063494399ff06f14f75bb7d2a731b3b276656",
+    "results/history_repair_20261109/search_genetic_v3/seed62/raw/slot2.json": "ec23f1bfce859ccd7e47470deaa1125c7749e0e1bac2d200b4c3b47ceeb07ff9",
+    "results/history_repair_20261109/search_genetic_v3/seed62/raw/slot3.json": "d731a6099fc4f97aaea39e14df88d0fdb02b0de6e509f6dd6daf590ff1edeb96",
+    "results/history_repair_20261109/search_genetic_v3/seed62/raw/slot4.json": "12bffaff6497d746030800a3f56aaf25aa614ecad66112f79a0031cdf8b2b6eb",
+    "results/history_repair_20261109/search_genetic_v3/seed62/raw/slot5.json": "af781ee817349f759f33d61da2e751e8a6a008258a05db05e4cbaa3920e51e8a",
+    "results/history_repair_20261109/search_genetic_v3/seed62/raw/slot6.json": "bfa27a5153d7dba25872940c75fde8f6e8ca036bae749fdba53d00a8b371e9da",
+    "results/history_repair_20261109/search_genetic_v3/seed62/structured/slot1.json": "1d2394f33ab5fa5a5bd867a8133063494399ff06f14f75bb7d2a731b3b276656",
+    "results/history_repair_20261109/search_genetic_v3/seed62/structured/slot2.json": "1d47e98919df9c98021e009a4c737d98b103b6837e548d21d59f1c48de07cae0",
+    "results/history_repair_20261109/search_genetic_v3/seed62/structured/slot3.json": "91d8b30976e57205ed044622c970a6c96cd98ea5d32e7c007e139afdb2d3a39e",
+    "results/history_repair_20261109/search_genetic_v3/seed62/structured/slot4.json": "d0ba2a57e38de66b058b7de2e29f86497c4e7aecfa91ace614a699d4009e131a",
+    "results/history_repair_20261109/search_genetic_v3/seed62/structured/slot5.json": "622b4dd0ba69e359d7b449e5f5c96d3bd3d60c554d5f8b989a72d2ccee5e662c",
+    "results/history_repair_20261109/search_genetic_v3/seed62/structured/slot6.json": "842c106cd02fea9eb84efdb1c3a2801da9fd8ac2228528a031ef360b304817dd",
+    "results/history_repair_20261109/search_genetic_v3/seed62/shared_first.json": "929ac0bbe35f84d854925aac06446ced15d58faa384b840ef7e3b666f40b8f28",
+    "results/history_repair_20261109/search_genetic_v3/seed63/selection_seal.json": "ae3973dddcf5669c685cc0bb480cea215b2b9c4f55cb4d5e910a91cce0676834",
+    "results/history_repair_20261109/training_genetic_v1/seed63/development_grid.json": "bcb002e70b6658c592caaada58051f3c02852df011c1e104b8b8d61a585fbb5d",
+    "results/history_repair_20261109/search_genetic_v3/seed63/selections.json": "5b952f145e55ebe06ec35855522d70f007a76c03402050dea2d6e9129a5c86fe",
+    "results/history_repair_20261109/search_genetic_v3/seed63/controls.json": "cc63279a56111365445aefd3a4a51ebf8c3a8db847f71534e4d49b15054e53c8",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed63/D00.json": "2bef343afcf340bb09be83f6be6d8eb688509b34d0c2727efe9c68075834cdff",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed63/D01.json": "7d685f05b486a8041c2eef86b8790e718fa8ca25e41f1adeeb562befe13e783e",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed63/D02.json": "25d873f3bdc97e8012cc41d95ca731947b7945528cbb8f63d5d37a85b82e2592",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed63/D03.json": "8aea8df48f6cc356d0f24d24a2476d609460531fdc84ab7dc29b6929f6df4ab0",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed63/D04.json": "4332f53d26085c6ee44250706b72933e154e0c4dd68ad6707859e90f5df31195",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed63/D05.json": "b20b78d732d341f8558fd8aeacb0ad26e71d09e71ba3a099f59c1301655433ce",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed63/D06.json": "f7809a02f24e9d7a69cc7f569c4194dd62afe3e36a996c7a607c8a899b176b92",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed63/D07.json": "a3dae6fcdbaa63c186b4642fc26db538aed5bdbb90c8834c8fed195cd139d863",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed63/D08.json": "fea115f459747741e97afa97f57eace7184d34883b92e5299a0202b9db280e3d",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed63/D09.json": "9e1a6d4c99a6fd7008b4041f6ca678e8a0a041ac517467f7df13aa1190420d84",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed63/D10.json": "120f8c14e31ccb27860d940ac3a3d53f4272693da31e2cce645b3c2df6a8099e",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed63/D11.json": "6c5df901e2806b923e8771a749f60da22475c6e69b319540a299d7803640eea4",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed63/D12.json": "941099d81b1e3f952d9eccb1066711805876bc85aec0b82517c0a4a424cfc334",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed63/D13.json": "157553bc9bb0d442a520bf893e3ccc4f0f9b4569d496555deaeeafd8f2cee9dc",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed63/D14.json": "f66ed59aec0803392d70fc1745c70e462441d91add4bdc45ec870b49e8ade0c4",
+    "results/history_repair_20261109/training_heldout_genetic_v1/scores/seed63/D15.json": "d144dc2848f41567326beb78952a5e13156281e6f58e0ffba1053392c14661ae",
+    "results/history_repair_20261109/search_genetic_v3/seed63/direct/slot1.json": "4f306988876d2e1fd391daa061aeb50ff8bc376d030623953fe6713aaf11c402",
+    "results/history_repair_20261109/search_genetic_v3/seed63/direct/slot2.json": "3232933fbf1c1e16941cbf843ad09789df2c0f2311f8ac043b6913b8170403b5",
+    "results/history_repair_20261109/search_genetic_v3/seed63/direct/slot3.json": "a2eac5205a1c597d604975cbe0a7ba4e9b21459d42045cb6209fa5a794009b60",
+    "results/history_repair_20261109/search_genetic_v3/seed63/direct/slot4.json": "1f2e16dffec22e795e7d6c362bf861ee2215ebd1ae5887e670c38d1206ea0c67",
+    "results/history_repair_20261109/search_genetic_v3/seed63/direct/slot5.json": "c5aa19678add3efb033b43f4e89ac79d83e3fd9b905820fb0b4aa4b76b3e213d",
+    "results/history_repair_20261109/search_genetic_v3/seed63/direct/slot6.json": "7ef105c30c9ec5e0c90abf2d7010bddaa80c47207d0c077704b917ba9b166509",
+    "results/history_repair_20261109/search_genetic_v3/seed63/raw/slot1.json": "4f306988876d2e1fd391daa061aeb50ff8bc376d030623953fe6713aaf11c402",
+    "results/history_repair_20261109/search_genetic_v3/seed63/raw/slot2.json": "e8ca936112c4764b20f351868441baae726391ffa846b39b098b60e4fa6c3d70",
+    "results/history_repair_20261109/search_genetic_v3/seed63/raw/slot3.json": "dde9054b6fe7dc5586a1982c73c8862c6fcad3da0caa01eade49351e4272bccd",
+    "results/history_repair_20261109/search_genetic_v3/seed63/raw/slot4.json": "eadc54f1e3ee8d44bda12591b50d1049c18c6aa6ec42673b2ca096b07519e901",
+    "results/history_repair_20261109/search_genetic_v3/seed63/raw/slot5.json": "fd6d4ed6f37a0a0f8f9fa8d029202f438de9328d93daa2eeae7af6d7047853a2",
+    "results/history_repair_20261109/search_genetic_v3/seed63/raw/slot6.json": "b77aa8ec491bea5e70f3bcb333049c632c27e645f3f6135f80098bdad22ab468",
+    "results/history_repair_20261109/search_genetic_v3/seed63/structured/slot1.json": "4f306988876d2e1fd391daa061aeb50ff8bc376d030623953fe6713aaf11c402",
+    "results/history_repair_20261109/search_genetic_v3/seed63/structured/slot2.json": "6334ee568460577ea0447c05b9f29ecfc683a13308c5b1d0529b8cf5a045d648",
+    "results/history_repair_20261109/search_genetic_v3/seed63/structured/slot3.json": "4c5473d0841720404cafa94017facb732294ed34ee24383d8642569b55c65ef2",
+    "results/history_repair_20261109/search_genetic_v3/seed63/structured/slot4.json": "0aa9baa2f9dc777f41419f2a451d1326d457279b37331d09522533420738fefa",
+    "results/history_repair_20261109/search_genetic_v3/seed63/structured/slot5.json": "002dd06c2f758f5ea9fd3f7ab61d66533c9c11a53243dee29bdda9ec5381f078",
+    "results/history_repair_20261109/search_genetic_v3/seed63/structured/slot6.json": "177fd860200d24effdb81f23658ea272a7bbd3b6dcae9cf09f7285a43f704962",
+    "results/history_repair_20261109/search_genetic_v3/seed63/shared_first.json": "2f41d9029b6d77550807e10d94e4d4b1036ccdb657c7337c69abb2e9b9d3a420"
+  },
+  "per_seed": [
+    {
+      "seed": 61,
+      "policy": "fixed",
+      "slot": 0,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22387983579978604,
+      "heldout": 0.2132542681813357,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 61,
+      "policy": "fixed",
+      "slot": 1,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22387983579978604,
+      "heldout": 0.2132542681813357,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 61,
+      "policy": "fixed",
+      "slot": 2,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22387983579978604,
+      "heldout": 0.2132542681813357,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 61,
+      "policy": "fixed",
+      "slot": 3,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22387983579978604,
+      "heldout": 0.2132542681813357,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 61,
+      "policy": "fixed",
+      "slot": 4,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22387983579978604,
+      "heldout": 0.2132542681813357,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 61,
+      "policy": "fixed",
+      "slot": 5,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22387983579978604,
+      "heldout": 0.2132542681813357,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 61,
+      "policy": "fixed",
+      "slot": 6,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22387983579978604,
+      "heldout": 0.2132542681813357,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 61,
+      "policy": "direct",
+      "slot": 0,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22387983579978604,
+      "heldout": 0.2132542681813357,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 61,
+      "policy": "direct",
+      "slot": 1,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22387983579978604,
+      "heldout": 0.2132542681813357,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 61,
+      "policy": "direct",
+      "slot": 2,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22387983579978604,
+      "heldout": 0.2132542681813357,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 61,
+      "policy": "direct",
+      "slot": 3,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22387983579978604,
+      "heldout": 0.2132542681813357,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 61,
+      "policy": "direct",
+      "slot": 4,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22387983579978604,
+      "heldout": 0.2132542681813357,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 61,
+      "policy": "direct",
+      "slot": 5,
+      "selected_weights": {
+        "D06": 1.0
+      },
+      "development": 0.22545980383127034,
+      "heldout": 0.22699546484551017,
+      "development_gain_vs_fixed_pp": 0.15799680314843023,
+      "heldout_gain_vs_fixed_pp": 1.3741196664174478
+    },
+    {
+      "seed": 61,
+      "policy": "direct",
+      "slot": 6,
+      "selected_weights": {
+        "D06": 1.0
+      },
+      "development": 0.22545980383127034,
+      "heldout": 0.22699546484551017,
+      "development_gain_vs_fixed_pp": 0.15799680314843023,
+      "heldout_gain_vs_fixed_pp": 1.3741196664174478
+    },
+    {
+      "seed": 61,
+      "policy": "raw",
+      "slot": 0,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22387983579978604,
+      "heldout": 0.2132542681813357,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 61,
+      "policy": "raw",
+      "slot": 1,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22387983579978604,
+      "heldout": 0.2132542681813357,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 61,
+      "policy": "raw",
+      "slot": 2,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22387983579978604,
+      "heldout": 0.2132542681813357,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 61,
+      "policy": "raw",
+      "slot": 3,
+      "selected_weights": {
+        "D06": 1.0
+      },
+      "development": 0.22545980383127034,
+      "heldout": 0.22699546484551017,
+      "development_gain_vs_fixed_pp": 0.15799680314843023,
+      "heldout_gain_vs_fixed_pp": 1.3741196664174478
+    },
+    {
+      "seed": 61,
+      "policy": "raw",
+      "slot": 4,
+      "selected_weights": {
+        "D06": 1.0
+      },
+      "development": 0.22545980383127034,
+      "heldout": 0.22699546484551017,
+      "development_gain_vs_fixed_pp": 0.15799680314843023,
+      "heldout_gain_vs_fixed_pp": 1.3741196664174478
+    },
+    {
+      "seed": 61,
+      "policy": "raw",
+      "slot": 5,
+      "selected_weights": {
+        "D06": 1.0
+      },
+      "development": 0.22545980383127034,
+      "heldout": 0.22699546484551017,
+      "development_gain_vs_fixed_pp": 0.15799680314843023,
+      "heldout_gain_vs_fixed_pp": 1.3741196664174478
+    },
+    {
+      "seed": 61,
+      "policy": "raw",
+      "slot": 6,
+      "selected_weights": {
+        "D06": 1.0
+      },
+      "development": 0.22545980383127034,
+      "heldout": 0.22699546484551017,
+      "development_gain_vs_fixed_pp": 0.15799680314843023,
+      "heldout_gain_vs_fixed_pp": 1.3741196664174478
+    },
+    {
+      "seed": 61,
+      "policy": "structured",
+      "slot": 0,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22387983579978604,
+      "heldout": 0.2132542681813357,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 61,
+      "policy": "structured",
+      "slot": 1,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22387983579978604,
+      "heldout": 0.2132542681813357,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 61,
+      "policy": "structured",
+      "slot": 2,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22387983579978604,
+      "heldout": 0.2132542681813357,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 61,
+      "policy": "structured",
+      "slot": 3,
+      "selected_weights": {
+        "D06": 1.0
+      },
+      "development": 0.22545980383127034,
+      "heldout": 0.22699546484551017,
+      "development_gain_vs_fixed_pp": 0.15799680314843023,
+      "heldout_gain_vs_fixed_pp": 1.3741196664174478
+    },
+    {
+      "seed": 61,
+      "policy": "structured",
+      "slot": 4,
+      "selected_weights": {
+        "D06": 1.0
+      },
+      "development": 0.22545980383127034,
+      "heldout": 0.22699546484551017,
+      "development_gain_vs_fixed_pp": 0.15799680314843023,
+      "heldout_gain_vs_fixed_pp": 1.3741196664174478
+    },
+    {
+      "seed": 61,
+      "policy": "structured",
+      "slot": 5,
+      "selected_weights": {
+        "D06": 1.0
+      },
+      "development": 0.22545980383127034,
+      "heldout": 0.22699546484551017,
+      "development_gain_vs_fixed_pp": 0.15799680314843023,
+      "heldout_gain_vs_fixed_pp": 1.3741196664174478
+    },
+    {
+      "seed": 61,
+      "policy": "structured",
+      "slot": 6,
+      "selected_weights": {
+        "D13": 1.0
+      },
+      "development": 0.23272616959602022,
+      "heldout": 0.2278742732619132,
+      "development_gain_vs_fixed_pp": 0.8846333796234174,
+      "heldout_gain_vs_fixed_pp": 1.4620005080577507
+    },
+    {
+      "seed": 61,
+      "policy": "random",
+      "slot": 0,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22387983579978604,
+      "heldout": 0.2132542681813357,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 61,
+      "policy": "random",
+      "slot": 1,
+      "selected_weights": {
+        "D00": 0.7333333333333333,
+        "D06": 0.06666666666666667,
+        "D09": 0.06666666666666667,
+        "D12": 0.06666666666666667,
+        "D13": 0.06666666666666667
+      },
+      "development": 0.2246989969055172,
+      "heldout": 0.2165430075979419,
+      "development_gain_vs_fixed_pp": 0.08191611057311587,
+      "heldout_gain_vs_fixed_pp": 0.3288739416606207
+    },
+    {
+      "seed": 61,
+      "policy": "random",
+      "slot": 2,
+      "selected_weights": {
+        "D00": 0.5238095238095238,
+        "D06": 0.12380952380952381,
+        "D09": 0.10476190476190476,
+        "D12": 0.11428571428571428,
+        "D13": 0.13333333333333333
+      },
+      "development": 0.22546186504320065,
+      "heldout": 0.21913568556285878,
+      "development_gain_vs_fixed_pp": 0.15820292434146066,
+      "heldout_gain_vs_fixed_pp": 0.5881417381523091
+    },
+    {
+      "seed": 61,
+      "policy": "random",
+      "slot": 3,
+      "selected_weights": {
+        "D00": 0.3626373626373626,
+        "D06": 0.17142857142857143,
+        "D09": 0.12087912087912088,
+        "D12": 0.14505494505494507,
+        "D13": 0.2
+      },
+      "development": 0.2261752055819623,
+      "heldout": 0.22115489733545643,
+      "development_gain_vs_fixed_pp": 0.22953697821762598,
+      "heldout_gain_vs_fixed_pp": 0.7900629154120736
+    },
+    {
+      "seed": 61,
+      "policy": "random",
+      "slot": 4,
+      "selected_weights": {
+        "D00": 0.24175824175824176,
+        "D06": 0.20952380952380953,
+        "D09": 0.12087912087912088,
+        "D12": 0.16117216117216118,
+        "D13": 0.26666666666666666
+      },
+      "development": 0.2268453380564248,
+      "heldout": 0.2227104869100833,
+      "development_gain_vs_fixed_pp": 0.2965502256638747,
+      "heldout_gain_vs_fixed_pp": 0.9456218728747606
+    },
+    {
+      "seed": 61,
+      "policy": "random",
+      "slot": 5,
+      "selected_weights": {
+        "D00": 0.15384615384615385,
+        "D06": 0.23809523809523808,
+        "D09": 0.10989010989010989,
+        "D12": 0.16483516483516483,
+        "D13": 0.3333333333333333
+      },
+      "development": 0.22747813616670745,
+      "heldout": 0.22389954701606615,
+      "development_gain_vs_fixed_pp": 0.35983003669214086,
+      "heldout_gain_vs_fixed_pp": 1.0645278834730458
+    },
+    {
+      "seed": 61,
+      "policy": "random",
+      "slot": 6,
+      "selected_weights": {
+        "D00": 0.09230769230769231,
+        "D06": 0.2571428571428571,
+        "D09": 0.09230769230769231,
+        "D12": 0.15824175824175823,
+        "D13": 0.4
+      },
+      "development": 0.22807902777842629,
+      "heldout": 0.2248064191177103,
+      "development_gain_vs_fixed_pp": 0.4199191978640243,
+      "heldout_gain_vs_fixed_pp": 1.15521509363746
+    },
+    {
+      "seed": 61,
+      "policy": "random_shared_first",
+      "slot": 0,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22387983579978604,
+      "heldout": 0.2132542681813357,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 61,
+      "policy": "random_shared_first",
+      "slot": 1,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22387983579978604,
+      "heldout": 0.2132542681813357,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 61,
+      "policy": "random_shared_first",
+      "slot": 2,
+      "selected_weights": {
+        "D00": 0.7142857142857143,
+        "D06": 0.07142857142857142,
+        "D09": 0.07142857142857142,
+        "D12": 0.07142857142857142,
+        "D13": 0.07142857142857142
+      },
+      "development": 0.22475750841306943,
+      "heldout": 0.21677791755627088,
+      "development_gain_vs_fixed_pp": 0.08776726132833923,
+      "heldout_gain_vs_fixed_pp": 0.3523649374935184
+    },
+    {
+      "seed": 61,
+      "policy": "random_shared_first",
+      "slot": 3,
+      "selected_weights": {
+        "D00": 0.4945054945054945,
+        "D06": 0.13186813186813187,
+        "D09": 0.10989010989010989,
+        "D12": 0.12087912087912088,
+        "D13": 0.14285714285714285
+      },
+      "development": 0.22557022760168235,
+      "heldout": 0.21949841910233384,
+      "development_gain_vs_fixed_pp": 0.16903918018963127,
+      "heldout_gain_vs_fixed_pp": 0.6244150920998143
+    },
+    {
+      "seed": 61,
+      "policy": "random_shared_first",
+      "slot": 4,
+      "selected_weights": {
+        "D00": 0.32967032967032966,
+        "D06": 0.1813186813186813,
+        "D09": 0.12362637362637363,
+        "D12": 0.1510989010989011,
+        "D13": 0.21428571428571427
+      },
+      "development": 0.22632645007703225,
+      "heldout": 0.22156901689373706,
+      "development_gain_vs_fixed_pp": 0.24466142772462118,
+      "heldout_gain_vs_fixed_pp": 0.8314748712401371
+    },
+    {
+      "seed": 61,
+      "policy": "random_shared_first",
+      "slot": 5,
+      "selected_weights": {
+        "D00": 0.2097902097902098,
+        "D06": 0.21978021978021978,
+        "D09": 0.11988011988011989,
+        "D12": 0.16483516483516483,
+        "D13": 0.2857142857142857
+      },
+      "development": 0.2270340245943857,
+      "heldout": 0.22312556691602736,
+      "development_gain_vs_fixed_pp": 0.3154188794599666,
+      "heldout_gain_vs_fixed_pp": 0.9871298734691669
+    },
+    {
+      "seed": 61,
+      "policy": "random_shared_first",
+      "slot": 6,
+      "selected_weights": {
+        "D00": 0.1258741258741259,
+        "D06": 0.24725274725274726,
+        "D09": 0.1048951048951049,
+        "D12": 0.16483516483516483,
+        "D13": 0.35714285714285715
+      },
+      "development": 0.22770019195286834,
+      "heldout": 0.2242865370660856,
+      "development_gain_vs_fixed_pp": 0.3820356153082294,
+      "heldout_gain_vs_fixed_pp": 1.1032268884749896
+    },
+    {
+      "seed": 61,
+      "policy": "gp_ei",
+      "slot": 0,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22387983579978604,
+      "heldout": 0.2132542681813357,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 61,
+      "policy": "gp_ei",
+      "slot": 1,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22387983579978604,
+      "heldout": 0.2132542681813357,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 61,
+      "policy": "gp_ei",
+      "slot": 2,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22387983579978604,
+      "heldout": 0.2132542681813357,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 61,
+      "policy": "gp_ei",
+      "slot": 3,
+      "selected_weights": {
+        "D13": 1.0
+      },
+      "development": 0.23272616959602022,
+      "heldout": 0.2278742732619132,
+      "development_gain_vs_fixed_pp": 0.8846333796234174,
+      "heldout_gain_vs_fixed_pp": 1.4620005080577507
+    },
+    {
+      "seed": 61,
+      "policy": "gp_ei",
+      "slot": 4,
+      "selected_weights": {
+        "D13": 1.0
+      },
+      "development": 0.23272616959602022,
+      "heldout": 0.2278742732619132,
+      "development_gain_vs_fixed_pp": 0.8846333796234174,
+      "heldout_gain_vs_fixed_pp": 1.4620005080577507
+    },
+    {
+      "seed": 61,
+      "policy": "gp_ei",
+      "slot": 5,
+      "selected_weights": {
+        "D13": 1.0
+      },
+      "development": 0.23272616959602022,
+      "heldout": 0.2278742732619132,
+      "development_gain_vs_fixed_pp": 0.8846333796234174,
+      "heldout_gain_vs_fixed_pp": 1.4620005080577507
+    },
+    {
+      "seed": 61,
+      "policy": "gp_ei",
+      "slot": 6,
+      "selected_weights": {
+        "D13": 1.0
+      },
+      "development": 0.23272616959602022,
+      "heldout": 0.2278742732619132,
+      "development_gain_vs_fixed_pp": 0.8846333796234174,
+      "heldout_gain_vs_fixed_pp": 1.4620005080577507
+    },
+    {
+      "seed": 62,
+      "policy": "fixed",
+      "slot": 0,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.2233656083885168,
+      "heldout": 0.21442228564819077,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 62,
+      "policy": "fixed",
+      "slot": 1,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.2233656083885168,
+      "heldout": 0.21442228564819077,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 62,
+      "policy": "fixed",
+      "slot": 2,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.2233656083885168,
+      "heldout": 0.21442228564819077,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 62,
+      "policy": "fixed",
+      "slot": 3,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.2233656083885168,
+      "heldout": 0.21442228564819077,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 62,
+      "policy": "fixed",
+      "slot": 4,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.2233656083885168,
+      "heldout": 0.21442228564819077,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 62,
+      "policy": "fixed",
+      "slot": 5,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.2233656083885168,
+      "heldout": 0.21442228564819077,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 62,
+      "policy": "fixed",
+      "slot": 6,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.2233656083885168,
+      "heldout": 0.21442228564819077,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 62,
+      "policy": "direct",
+      "slot": 0,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.2233656083885168,
+      "heldout": 0.21442228564819077,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 62,
+      "policy": "direct",
+      "slot": 1,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.2233656083885168,
+      "heldout": 0.21442228564819077,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 62,
+      "policy": "direct",
+      "slot": 2,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.2233656083885168,
+      "heldout": 0.21442228564819077,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 62,
+      "policy": "direct",
+      "slot": 3,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.2233656083885168,
+      "heldout": 0.21442228564819077,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 62,
+      "policy": "direct",
+      "slot": 4,
+      "selected_weights": {
+        "D06": 1.0
+      },
+      "development": 0.22964431031643934,
+      "heldout": 0.22386639837592487,
+      "development_gain_vs_fixed_pp": 0.6278701927922542,
+      "heldout_gain_vs_fixed_pp": 0.94441127277341
+    },
+    {
+      "seed": 62,
+      "policy": "direct",
+      "slot": 5,
+      "selected_weights": {
+        "D06": 1.0
+      },
+      "development": 0.22964431031643934,
+      "heldout": 0.22386639837592487,
+      "development_gain_vs_fixed_pp": 0.6278701927922542,
+      "heldout_gain_vs_fixed_pp": 0.94441127277341
+    },
+    {
+      "seed": 62,
+      "policy": "direct",
+      "slot": 6,
+      "selected_weights": {
+        "D06": 1.0
+      },
+      "development": 0.22964431031643934,
+      "heldout": 0.22386639837592487,
+      "development_gain_vs_fixed_pp": 0.6278701927922542,
+      "heldout_gain_vs_fixed_pp": 0.94441127277341
+    },
+    {
+      "seed": 62,
+      "policy": "raw",
+      "slot": 0,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.2233656083885168,
+      "heldout": 0.21442228564819077,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 62,
+      "policy": "raw",
+      "slot": 1,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.2233656083885168,
+      "heldout": 0.21442228564819077,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 62,
+      "policy": "raw",
+      "slot": 2,
+      "selected_weights": {
+        "D05": 1.0
+      },
+      "development": 0.2239344454866643,
+      "heldout": 0.21185045005316994,
+      "development_gain_vs_fixed_pp": 0.05688370981475066,
+      "heldout_gain_vs_fixed_pp": -0.25718355950208327
+    },
+    {
+      "seed": 62,
+      "policy": "raw",
+      "slot": 3,
+      "selected_weights": {
+        "D06": 1.0
+      },
+      "development": 0.22964431031643934,
+      "heldout": 0.22386639837592487,
+      "development_gain_vs_fixed_pp": 0.6278701927922542,
+      "heldout_gain_vs_fixed_pp": 0.94441127277341
+    },
+    {
+      "seed": 62,
+      "policy": "raw",
+      "slot": 4,
+      "selected_weights": {
+        "D06": 1.0
+      },
+      "development": 0.22964431031643934,
+      "heldout": 0.22386639837592487,
+      "development_gain_vs_fixed_pp": 0.6278701927922542,
+      "heldout_gain_vs_fixed_pp": 0.94441127277341
+    },
+    {
+      "seed": 62,
+      "policy": "raw",
+      "slot": 5,
+      "selected_weights": {
+        "D06": 1.0
+      },
+      "development": 0.22964431031643934,
+      "heldout": 0.22386639837592487,
+      "development_gain_vs_fixed_pp": 0.6278701927922542,
+      "heldout_gain_vs_fixed_pp": 0.94441127277341
+    },
+    {
+      "seed": 62,
+      "policy": "raw",
+      "slot": 6,
+      "selected_weights": {
+        "D06": 1.0
+      },
+      "development": 0.22964431031643934,
+      "heldout": 0.22386639837592487,
+      "development_gain_vs_fixed_pp": 0.6278701927922542,
+      "heldout_gain_vs_fixed_pp": 0.94441127277341
+    },
+    {
+      "seed": 62,
+      "policy": "structured",
+      "slot": 0,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.2233656083885168,
+      "heldout": 0.21442228564819077,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 62,
+      "policy": "structured",
+      "slot": 1,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.2233656083885168,
+      "heldout": 0.21442228564819077,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 62,
+      "policy": "structured",
+      "slot": 2,
+      "selected_weights": {
+        "D05": 1.0
+      },
+      "development": 0.2239344454866643,
+      "heldout": 0.21185045005316994,
+      "development_gain_vs_fixed_pp": 0.05688370981475066,
+      "heldout_gain_vs_fixed_pp": -0.25718355950208327
+    },
+    {
+      "seed": 62,
+      "policy": "structured",
+      "slot": 3,
+      "selected_weights": {
+        "D06": 1.0
+      },
+      "development": 0.22964431031643934,
+      "heldout": 0.22386639837592487,
+      "development_gain_vs_fixed_pp": 0.6278701927922542,
+      "heldout_gain_vs_fixed_pp": 0.94441127277341
+    },
+    {
+      "seed": 62,
+      "policy": "structured",
+      "slot": 4,
+      "selected_weights": {
+        "D06": 1.0
+      },
+      "development": 0.22964431031643934,
+      "heldout": 0.22386639837592487,
+      "development_gain_vs_fixed_pp": 0.6278701927922542,
+      "heldout_gain_vs_fixed_pp": 0.94441127277341
+    },
+    {
+      "seed": 62,
+      "policy": "structured",
+      "slot": 5,
+      "selected_weights": {
+        "D06": 1.0
+      },
+      "development": 0.22964431031643934,
+      "heldout": 0.22386639837592487,
+      "development_gain_vs_fixed_pp": 0.6278701927922542,
+      "heldout_gain_vs_fixed_pp": 0.94441127277341
+    },
+    {
+      "seed": 62,
+      "policy": "structured",
+      "slot": 6,
+      "selected_weights": {
+        "D06": 1.0
+      },
+      "development": 0.22964431031643934,
+      "heldout": 0.22386639837592487,
+      "development_gain_vs_fixed_pp": 0.6278701927922542,
+      "heldout_gain_vs_fixed_pp": 0.94441127277341
+    },
+    {
+      "seed": 62,
+      "policy": "random",
+      "slot": 0,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.2233656083885168,
+      "heldout": 0.21442228564819077,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 62,
+      "policy": "random",
+      "slot": 1,
+      "selected_weights": {
+        "D00": 0.7333333333333333,
+        "D05": 0.06666666666666667,
+        "D06": 0.06666666666666667,
+        "D09": 0.06666666666666667,
+        "D13": 0.06666666666666667
+      },
+      "development": 0.22495714158622218,
+      "heldout": 0.21716162009739653,
+      "development_gain_vs_fixed_pp": 0.1591533197705386,
+      "heldout_gain_vs_fixed_pp": 0.2739334449205766
+    },
+    {
+      "seed": 62,
+      "policy": "random",
+      "slot": 2,
+      "selected_weights": {
+        "D00": 0.5238095238095238,
+        "D05": 0.10476190476190476,
+        "D06": 0.12380952380952381,
+        "D09": 0.11428571428571428,
+        "D13": 0.13333333333333333
+      },
+      "development": 0.2263949514116533,
+      "heldout": 0.21956329697118196,
+      "development_gain_vs_fixed_pp": 0.30293430231365104,
+      "heldout_gain_vs_fixed_pp": 0.514101132299119
+    },
+    {
+      "seed": 62,
+      "policy": "random",
+      "slot": 3,
+      "selected_weights": {
+        "D00": 0.3626373626373626,
+        "D05": 0.12087912087912088,
+        "D06": 0.17142857142857143,
+        "D09": 0.14505494505494507,
+        "D13": 0.2
+      },
+      "development": 0.2276917507916841,
+      "heldout": 0.2216474200342792,
+      "development_gain_vs_fixed_pp": 0.432614240316731,
+      "heldout_gain_vs_fixed_pp": 0.7225134386088433
+    },
+    {
+      "seed": 62,
+      "policy": "random",
+      "slot": 4,
+      "selected_weights": {
+        "D00": 0.24175824175824176,
+        "D05": 0.12087912087912088,
+        "D06": 0.20952380952380953,
+        "D09": 0.16117216117216118,
+        "D13": 0.26666666666666666
+      },
+      "development": 0.22885983592271372,
+      "heldout": 0.2234359771800616,
+      "development_gain_vs_fixed_pp": 0.5494227534196927,
+      "heldout_gain_vs_fixed_pp": 0.9013691531870843
+    },
+    {
+      "seed": 62,
+      "policy": "random",
+      "slot": 5,
+      "selected_weights": {
+        "D00": 0.15384615384615385,
+        "D05": 0.10989010989010989,
+        "D06": 0.23809523809523808,
+        "D09": 0.16483516483516483,
+        "D13": 0.3333333333333333
+      },
+      "development": 0.22991108627066648,
+      "heldout": 0.2249528404305435,
+      "development_gain_vs_fixed_pp": 0.6545477882149681,
+      "heldout_gain_vs_fixed_pp": 1.0530554782352737
+    },
+    {
+      "seed": 62,
+      "policy": "random",
+      "slot": 6,
+      "selected_weights": {
+        "D00": 0.09230769230769231,
+        "D05": 0.09230769230769231,
+        "D06": 0.2571428571428571,
+        "D09": 0.15824175824175823,
+        "D13": 0.4
+      },
+      "development": 0.2308569645709919,
+      "heldout": 0.22622376593638027,
+      "development_gain_vs_fixed_pp": 0.7491356182475095,
+      "heldout_gain_vs_fixed_pp": 1.1801480288189503
+    },
+    {
+      "seed": 62,
+      "policy": "random_shared_first",
+      "slot": 0,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.2233656083885168,
+      "heldout": 0.21442228564819077,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 62,
+      "policy": "random_shared_first",
+      "slot": 1,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.2233656083885168,
+      "heldout": 0.21442228564819077,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 62,
+      "policy": "random_shared_first",
+      "slot": 2,
+      "selected_weights": {
+        "D00": 0.7142857142857143,
+        "D05": 0.07142857142857142,
+        "D06": 0.07142857142857142,
+        "D09": 0.07142857142857142,
+        "D13": 0.07142857142857142
+      },
+      "development": 0.22507082252891544,
+      "heldout": 0.2173572868437684,
+      "development_gain_vs_fixed_pp": 0.17052141403986476,
+      "heldout_gain_vs_fixed_pp": 0.293500119557763
+    },
+    {
+      "seed": 62,
+      "policy": "random_shared_first",
+      "slot": 3,
+      "selected_weights": {
+        "D00": 0.4945054945054945,
+        "D05": 0.10989010989010989,
+        "D06": 0.13186813186813187,
+        "D09": 0.12087912087912088,
+        "D13": 0.14285714285714285
+      },
+      "development": 0.22659866354745914,
+      "heldout": 0.21990268314463018,
+      "development_gain_vs_fixed_pp": 0.3233055158942344,
+      "heldout_gain_vs_fixed_pp": 0.5480397496439415
+    },
+    {
+      "seed": 62,
+      "policy": "random_shared_first",
+      "slot": 4,
+      "selected_weights": {
+        "D00": 0.32967032967032966,
+        "D05": 0.12362637362637363,
+        "D06": 0.1813186813186813,
+        "D09": 0.1510989010989011,
+        "D13": 0.21428571428571427
+      },
+      "development": 0.22796502260274032,
+      "heldout": 0.22208360425669146,
+      "development_gain_vs_fixed_pp": 0.4599414214223524,
+      "heldout_gain_vs_fixed_pp": 0.7661318608500695
+    },
+    {
+      "seed": 62,
+      "policy": "random_shared_first",
+      "slot": 5,
+      "selected_weights": {
+        "D00": 0.2097902097902098,
+        "D05": 0.11988011988011989,
+        "D06": 0.21978021978021978,
+        "D09": 0.16483516483516483,
+        "D13": 0.2857142857142857
+      },
+      "development": 0.22918522258452223,
+      "heldout": 0.2239277491521962,
+      "development_gain_vs_fixed_pp": 0.5819614196005435,
+      "heldout_gain_vs_fixed_pp": 0.950546350400544
+    },
+    {
+      "seed": 62,
+      "policy": "random_shared_first",
+      "slot": 6,
+      "selected_weights": {
+        "D00": 0.1258741258741259,
+        "D05": 0.1048951048951049,
+        "D06": 0.24725274725274726,
+        "D09": 0.16483516483516483,
+        "D13": 0.35714285714285715
+      },
+      "development": 0.23027401811373863,
+      "heldout": 0.22546538606971717,
+      "development_gain_vs_fixed_pp": 0.6908409725221831,
+      "heldout_gain_vs_fixed_pp": 1.1043100421526397
+    },
+    {
+      "seed": 62,
+      "policy": "gp_ei",
+      "slot": 0,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.2233656083885168,
+      "heldout": 0.21442228564819077,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 62,
+      "policy": "gp_ei",
+      "slot": 1,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.2233656083885168,
+      "heldout": 0.21442228564819077,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 62,
+      "policy": "gp_ei",
+      "slot": 2,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.2233656083885168,
+      "heldout": 0.21442228564819077,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 62,
+      "policy": "gp_ei",
+      "slot": 3,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.2233656083885168,
+      "heldout": 0.21442228564819077,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 62,
+      "policy": "gp_ei",
+      "slot": 4,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.2233656083885168,
+      "heldout": 0.21442228564819077,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 62,
+      "policy": "gp_ei",
+      "slot": 5,
+      "selected_weights": {
+        "D13": 1.0
+      },
+      "development": 0.2363131968948099,
+      "heldout": 0.23177730551533007,
+      "development_gain_vs_fixed_pp": 1.29475885062931,
+      "heldout_gain_vs_fixed_pp": 1.7355019867139303
+    },
+    {
+      "seed": 62,
+      "policy": "gp_ei",
+      "slot": 6,
+      "selected_weights": {
+        "D13": 1.0
+      },
+      "development": 0.2363131968948099,
+      "heldout": 0.23177730551533007,
+      "development_gain_vs_fixed_pp": 1.29475885062931,
+      "heldout_gain_vs_fixed_pp": 1.7355019867139303
+    },
+    {
+      "seed": 63,
+      "policy": "fixed",
+      "slot": 0,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22484055813072984,
+      "heldout": 0.21516096503208665,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 63,
+      "policy": "fixed",
+      "slot": 1,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22484055813072984,
+      "heldout": 0.21516096503208665,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 63,
+      "policy": "fixed",
+      "slot": 2,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22484055813072984,
+      "heldout": 0.21516096503208665,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 63,
+      "policy": "fixed",
+      "slot": 3,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22484055813072984,
+      "heldout": 0.21516096503208665,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 63,
+      "policy": "fixed",
+      "slot": 4,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22484055813072984,
+      "heldout": 0.21516096503208665,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 63,
+      "policy": "fixed",
+      "slot": 5,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22484055813072984,
+      "heldout": 0.21516096503208665,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 63,
+      "policy": "fixed",
+      "slot": 6,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22484055813072984,
+      "heldout": 0.21516096503208665,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 63,
+      "policy": "direct",
+      "slot": 0,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22484055813072984,
+      "heldout": 0.21516096503208665,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 63,
+      "policy": "direct",
+      "slot": 1,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22484055813072984,
+      "heldout": 0.21516096503208665,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 63,
+      "policy": "direct",
+      "slot": 2,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22484055813072984,
+      "heldout": 0.21516096503208665,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 63,
+      "policy": "direct",
+      "slot": 3,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22484055813072984,
+      "heldout": 0.21516096503208665,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 63,
+      "policy": "direct",
+      "slot": 4,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22484055813072984,
+      "heldout": 0.21516096503208665,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 63,
+      "policy": "direct",
+      "slot": 5,
+      "selected_weights": {
+        "D06": 1.0
+      },
+      "development": 0.22532294482012633,
+      "heldout": 0.22787775520390474,
+      "development_gain_vs_fixed_pp": 0.048238668939648566,
+      "heldout_gain_vs_fixed_pp": 1.2716790171818093
+    },
+    {
+      "seed": 63,
+      "policy": "direct",
+      "slot": 6,
+      "selected_weights": {
+        "D06": 1.0
+      },
+      "development": 0.22532294482012633,
+      "heldout": 0.22787775520390474,
+      "development_gain_vs_fixed_pp": 0.048238668939648566,
+      "heldout_gain_vs_fixed_pp": 1.2716790171818093
+    },
+    {
+      "seed": 63,
+      "policy": "raw",
+      "slot": 0,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22484055813072984,
+      "heldout": 0.21516096503208665,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 63,
+      "policy": "raw",
+      "slot": 1,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22484055813072984,
+      "heldout": 0.21516096503208665,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 63,
+      "policy": "raw",
+      "slot": 2,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22484055813072984,
+      "heldout": 0.21516096503208665,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 63,
+      "policy": "raw",
+      "slot": 3,
+      "selected_weights": {
+        "D06": 1.0
+      },
+      "development": 0.22532294482012633,
+      "heldout": 0.22787775520390474,
+      "development_gain_vs_fixed_pp": 0.048238668939648566,
+      "heldout_gain_vs_fixed_pp": 1.2716790171818093
+    },
+    {
+      "seed": 63,
+      "policy": "raw",
+      "slot": 4,
+      "selected_weights": {
+        "D06": 1.0
+      },
+      "development": 0.22532294482012633,
+      "heldout": 0.22787775520390474,
+      "development_gain_vs_fixed_pp": 0.048238668939648566,
+      "heldout_gain_vs_fixed_pp": 1.2716790171818093
+    },
+    {
+      "seed": 63,
+      "policy": "raw",
+      "slot": 5,
+      "selected_weights": {
+        "D06": 1.0
+      },
+      "development": 0.22532294482012633,
+      "heldout": 0.22787775520390474,
+      "development_gain_vs_fixed_pp": 0.048238668939648566,
+      "heldout_gain_vs_fixed_pp": 1.2716790171818093
+    },
+    {
+      "seed": 63,
+      "policy": "raw",
+      "slot": 6,
+      "selected_weights": {
+        "D06": 1.0
+      },
+      "development": 0.22532294482012633,
+      "heldout": 0.22787775520390474,
+      "development_gain_vs_fixed_pp": 0.048238668939648566,
+      "heldout_gain_vs_fixed_pp": 1.2716790171818093
+    },
+    {
+      "seed": 63,
+      "policy": "structured",
+      "slot": 0,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22484055813072984,
+      "heldout": 0.21516096503208665,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 63,
+      "policy": "structured",
+      "slot": 1,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22484055813072984,
+      "heldout": 0.21516096503208665,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 63,
+      "policy": "structured",
+      "slot": 2,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22484055813072984,
+      "heldout": 0.21516096503208665,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 63,
+      "policy": "structured",
+      "slot": 3,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22484055813072984,
+      "heldout": 0.21516096503208665,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 63,
+      "policy": "structured",
+      "slot": 4,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22484055813072984,
+      "heldout": 0.21516096503208665,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 63,
+      "policy": "structured",
+      "slot": 5,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22484055813072984,
+      "heldout": 0.21516096503208665,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 63,
+      "policy": "structured",
+      "slot": 6,
+      "selected_weights": {
+        "D13": 1.0
+      },
+      "development": 0.23910593023186305,
+      "heldout": 0.2349025960736696,
+      "development_gain_vs_fixed_pp": 1.4265372101133211,
+      "heldout_gain_vs_fixed_pp": 1.974163104158294
+    },
+    {
+      "seed": 63,
+      "policy": "random",
+      "slot": 0,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22484055813072984,
+      "heldout": 0.21516096503208665,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 63,
+      "policy": "random",
+      "slot": 1,
+      "selected_weights": {
+        "D00": 0.8,
+        "D06": 0.06666666666666667,
+        "D09": 0.06666666666666667,
+        "D13": 0.06666666666666667
+      },
+      "development": 0.2264148042281789,
+      "heldout": 0.21834683600387206,
+      "development_gain_vs_fixed_pp": 0.15742460974490502,
+      "heldout_gain_vs_fixed_pp": 0.31858709717854095
+    },
+    {
+      "seed": 63,
+      "policy": "random",
+      "slot": 2,
+      "selected_weights": {
+        "D00": 0.6285714285714286,
+        "D06": 0.11428571428571428,
+        "D09": 0.12380952380952381,
+        "D13": 0.13333333333333333
+      },
+      "development": 0.22789542455372314,
+      "heldout": 0.22114448579749538,
+      "development_gain_vs_fixed_pp": 0.30548664229932965,
+      "heldout_gain_vs_fixed_pp": 0.5983520765408729
+    },
+    {
+      "seed": 63,
+      "policy": "random",
+      "slot": 3,
+      "selected_weights": {
+        "D00": 0.4835164835164835,
+        "D06": 0.14505494505494507,
+        "D09": 0.17142857142857143,
+        "D13": 0.2
+      },
+      "development": 0.22928347929788884,
+      "heldout": 0.2235818634023453,
+      "development_gain_vs_fixed_pp": 0.44429211671589974,
+      "heldout_gain_vs_fixed_pp": 0.8420898370258639
+    },
+    {
+      "seed": 63,
+      "policy": "random",
+      "slot": 4,
+      "selected_weights": {
+        "D00": 0.3626373626373626,
+        "D06": 0.16117216117216118,
+        "D09": 0.20952380952380953,
+        "D13": 0.26666666666666666
+      },
+      "development": 0.23058002865120206,
+      "heldout": 0.2256869178078103,
+      "development_gain_vs_fixed_pp": 0.5739470520472217,
+      "heldout_gain_vs_fixed_pp": 1.0525952775723657
+    },
+    {
+      "seed": 63,
+      "policy": "random",
+      "slot": 5,
+      "selected_weights": {
+        "D00": 0.26373626373626374,
+        "D06": 0.16483516483516483,
+        "D09": 0.23809523809523808,
+        "D13": 0.3333333333333333
+      },
+      "development": 0.23178613280418897,
+      "heldout": 0.22748759800327914,
+      "development_gain_vs_fixed_pp": 0.6945574673459132,
+      "heldout_gain_vs_fixed_pp": 1.2326632971192493
+    },
+    {
+      "seed": 63,
+      "policy": "random",
+      "slot": 6,
+      "selected_weights": {
+        "D00": 0.18461538461538463,
+        "D06": 0.15824175824175823,
+        "D09": 0.2571428571428571,
+        "D13": 0.4
+      },
+      "development": 0.23290285194737573,
+      "heldout": 0.2290118529781404,
+      "development_gain_vs_fixed_pp": 0.8062293816645888,
+      "heldout_gain_vs_fixed_pp": 1.385088794605374
+    },
+    {
+      "seed": 63,
+      "policy": "random_shared_first",
+      "slot": 0,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22484055813072984,
+      "heldout": 0.21516096503208665,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 63,
+      "policy": "random_shared_first",
+      "slot": 1,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22484055813072984,
+      "heldout": 0.21516096503208665,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 63,
+      "policy": "random_shared_first",
+      "slot": 2,
+      "selected_weights": {
+        "D00": 0.7857142857142857,
+        "D06": 0.07142857142857142,
+        "D09": 0.07142857142857142,
+        "D13": 0.07142857142857142
+      },
+      "development": 0.22652725037799668,
+      "heldout": 0.21857439821614244,
+      "development_gain_vs_fixed_pp": 0.16866922472668355,
+      "heldout_gain_vs_fixed_pp": 0.3413433184055792
+    },
+    {
+      "seed": 63,
+      "policy": "random_shared_first",
+      "slot": 3,
+      "selected_weights": {
+        "D00": 0.6043956043956044,
+        "D06": 0.12087912087912088,
+        "D09": 0.13186813186813187,
+        "D13": 0.14285714285714285
+      },
+      "development": 0.2281059128884503,
+      "heldout": 0.2215398838869343,
+      "development_gain_vs_fixed_pp": 0.3265354757720468,
+      "heldout_gain_vs_fixed_pp": 0.6378918854847648
+    },
+    {
+      "seed": 63,
+      "policy": "random_shared_first",
+      "slot": 4,
+      "selected_weights": {
+        "D00": 0.4532967032967033,
+        "D06": 0.1510989010989011,
+        "D09": 0.1813186813186813,
+        "D13": 0.21428571428571427
+      },
+      "development": 0.22957787090024845,
+      "heldout": 0.224092358281198,
+      "development_gain_vs_fixed_pp": 0.4737312769518609,
+      "heldout_gain_vs_fixed_pp": 0.8931393249111352
+    },
+    {
+      "seed": 63,
+      "policy": "random_shared_first",
+      "slot": 5,
+      "selected_weights": {
+        "D00": 0.32967032967032966,
+        "D06": 0.16483516483516483,
+        "D09": 0.21978021978021978,
+        "D13": 0.2857142857142857
+      },
+      "development": 0.2309444496515488,
+      "heldout": 0.22626675763566934,
+      "development_gain_vs_fixed_pp": 0.6103891520818971,
+      "heldout_gain_vs_fixed_pp": 1.1105792603582687
+    },
+    {
+      "seed": 63,
+      "policy": "random_shared_first",
+      "slot": 6,
+      "selected_weights": {
+        "D00": 0.23076923076923078,
+        "D06": 0.16483516483516483,
+        "D09": 0.24725274725274726,
+        "D13": 0.35714285714285715
+      },
+      "development": 0.23220697438050905,
+      "heldout": 0.22809801818708406,
+      "development_gain_vs_fixed_pp": 0.7366416249779212,
+      "heldout_gain_vs_fixed_pp": 1.2937053154997407
+    },
+    {
+      "seed": 63,
+      "policy": "gp_ei",
+      "slot": 0,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22484055813072984,
+      "heldout": 0.21516096503208665,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 63,
+      "policy": "gp_ei",
+      "slot": 1,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22484055813072984,
+      "heldout": 0.21516096503208665,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 63,
+      "policy": "gp_ei",
+      "slot": 2,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22484055813072984,
+      "heldout": 0.21516096503208665,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 63,
+      "policy": "gp_ei",
+      "slot": 3,
+      "selected_weights": {
+        "D00": 1.0
+      },
+      "development": 0.22484055813072984,
+      "heldout": 0.21516096503208665,
+      "development_gain_vs_fixed_pp": 0.0,
+      "heldout_gain_vs_fixed_pp": 0.0
+    },
+    {
+      "seed": 63,
+      "policy": "gp_ei",
+      "slot": 4,
+      "selected_weights": {
+        "D13": 1.0
+      },
+      "development": 0.23910593023186305,
+      "heldout": 0.2349025960736696,
+      "development_gain_vs_fixed_pp": 1.4265372101133211,
+      "heldout_gain_vs_fixed_pp": 1.974163104158294
+    },
+    {
+      "seed": 63,
+      "policy": "gp_ei",
+      "slot": 5,
+      "selected_weights": {
+        "D13": 1.0
+      },
+      "development": 0.23910593023186305,
+      "heldout": 0.2349025960736696,
+      "development_gain_vs_fixed_pp": 1.4265372101133211,
+      "heldout_gain_vs_fixed_pp": 1.974163104158294
+    },
+    {
+      "seed": 63,
+      "policy": "gp_ei",
+      "slot": 6,
+      "selected_weights": {
+        "D13": 1.0
+      },
+      "development": 0.23910593023186305,
+      "heldout": 0.2349025960736696,
+      "development_gain_vs_fixed_pp": 1.4265372101133211,
+      "heldout_gain_vs_fixed_pp": 1.974163104158294
+    }
+  ],
+  "aggregate": [
+    {
+      "policy": "fixed",
+      "slot": 0,
+      "development": {
+        "mean": 0.22402866743967756,
+        "sample_sd": 0.0007486536771352826
+      },
+      "heldout": {
+        "mean": 0.21427917295387103,
+        "sample_sd": 0.0009613709755461168
+      }
+    },
+    {
+      "policy": "fixed",
+      "slot": 1,
+      "development": {
+        "mean": 0.22402866743967756,
+        "sample_sd": 0.0007486536771352826
+      },
+      "heldout": {
+        "mean": 0.21427917295387103,
+        "sample_sd": 0.0009613709755461168
+      }
+    },
+    {
+      "policy": "fixed",
+      "slot": 2,
+      "development": {
+        "mean": 0.22402866743967756,
+        "sample_sd": 0.0007486536771352826
+      },
+      "heldout": {
+        "mean": 0.21427917295387103,
+        "sample_sd": 0.0009613709755461168
+      }
+    },
+    {
+      "policy": "fixed",
+      "slot": 3,
+      "development": {
+        "mean": 0.22402866743967756,
+        "sample_sd": 0.0007486536771352826
+      },
+      "heldout": {
+        "mean": 0.21427917295387103,
+        "sample_sd": 0.0009613709755461168
+      }
+    },
+    {
+      "policy": "fixed",
+      "slot": 4,
+      "development": {
+        "mean": 0.22402866743967756,
+        "sample_sd": 0.0007486536771352826
+      },
+      "heldout": {
+        "mean": 0.21427917295387103,
+        "sample_sd": 0.0009613709755461168
+      }
+    },
+    {
+      "policy": "fixed",
+      "slot": 5,
+      "development": {
+        "mean": 0.22402866743967756,
+        "sample_sd": 0.0007486536771352826
+      },
+      "heldout": {
+        "mean": 0.21427917295387103,
+        "sample_sd": 0.0009613709755461168
+      }
+    },
+    {
+      "policy": "fixed",
+      "slot": 6,
+      "development": {
+        "mean": 0.22402866743967756,
+        "sample_sd": 0.0007486536771352826
+      },
+      "heldout": {
+        "mean": 0.21427917295387103,
+        "sample_sd": 0.0009613709755461168
+      }
+    },
+    {
+      "policy": "direct",
+      "slot": 0,
+      "development": {
+        "mean": 0.22402866743967756,
+        "sample_sd": 0.0007486536771352826
+      },
+      "heldout": {
+        "mean": 0.21427917295387103,
+        "sample_sd": 0.0009613709755461168
+      }
+    },
+    {
+      "policy": "direct",
+      "slot": 1,
+      "development": {
+        "mean": 0.22402866743967756,
+        "sample_sd": 0.0007486536771352826
+      },
+      "heldout": {
+        "mean": 0.21427917295387103,
+        "sample_sd": 0.0009613709755461168
+      }
+    },
+    {
+      "policy": "direct",
+      "slot": 2,
+      "development": {
+        "mean": 0.22402866743967756,
+        "sample_sd": 0.0007486536771352826
+      },
+      "heldout": {
+        "mean": 0.21427917295387103,
+        "sample_sd": 0.0009613709755461168
+      }
+    },
+    {
+      "policy": "direct",
+      "slot": 3,
+      "development": {
+        "mean": 0.22402866743967756,
+        "sample_sd": 0.0007486536771352826
+      },
+      "heldout": {
+        "mean": 0.21427917295387103,
+        "sample_sd": 0.0009613709755461168
+      }
+    },
+    {
+      "policy": "direct",
+      "slot": 4,
+      "development": {
+        "mean": 0.2261215680823184,
+        "sample_sd": 0.0030883703607789688
+      },
+      "heldout": {
+        "mean": 0.2174272105297824,
+        "sample_sd": 0.005657404732613491
+      }
+    },
+    {
+      "policy": "direct",
+      "slot": 5,
+      "development": {
+        "mean": 0.22680901965594533,
+        "sample_sd": 0.0024563870713603373
+      },
+      "heldout": {
+        "mean": 0.22624653947511325,
+        "sample_sd": 0.002107940418551553
+      }
+    },
+    {
+      "policy": "direct",
+      "slot": 6,
+      "development": {
+        "mean": 0.22680901965594533,
+        "sample_sd": 0.0024563870713603373
+      },
+      "heldout": {
+        "mean": 0.22624653947511325,
+        "sample_sd": 0.002107940418551553
+      }
+    },
+    {
+      "policy": "raw",
+      "slot": 0,
+      "development": {
+        "mean": 0.22402866743967756,
+        "sample_sd": 0.0007486536771352826
+      },
+      "heldout": {
+        "mean": 0.21427917295387103,
+        "sample_sd": 0.0009613709755461168
+      }
+    },
+    {
+      "policy": "raw",
+      "slot": 1,
+      "development": {
+        "mean": 0.22402866743967756,
+        "sample_sd": 0.0007486536771352826
+      },
+      "heldout": {
+        "mean": 0.21427917295387103,
+        "sample_sd": 0.0009613709755461168
+      }
+    },
+    {
+      "policy": "raw",
+      "slot": 2,
+      "development": {
+        "mean": 0.22421827980572673,
+        "sample_sd": 0.00053960012027588
+      },
+      "heldout": {
+        "mean": 0.21342189442219742,
+        "sample_sd": 0.0016616110477115445
+      }
+    },
+    {
+      "policy": "raw",
+      "slot": 3,
+      "development": {
+        "mean": 0.22680901965594533,
+        "sample_sd": 0.0024563870713603373
+      },
+      "heldout": {
+        "mean": 0.22624653947511325,
+        "sample_sd": 0.002107940418551553
+      }
+    },
+    {
+      "policy": "raw",
+      "slot": 4,
+      "development": {
+        "mean": 0.22680901965594533,
+        "sample_sd": 0.0024563870713603373
+      },
+      "heldout": {
+        "mean": 0.22624653947511325,
+        "sample_sd": 0.002107940418551553
+      }
+    },
+    {
+      "policy": "raw",
+      "slot": 5,
+      "development": {
+        "mean": 0.22680901965594533,
+        "sample_sd": 0.0024563870713603373
+      },
+      "heldout": {
+        "mean": 0.22624653947511325,
+        "sample_sd": 0.002107940418551553
+      }
+    },
+    {
+      "policy": "raw",
+      "slot": 6,
+      "development": {
+        "mean": 0.22680901965594533,
+        "sample_sd": 0.0024563870713603373
+      },
+      "heldout": {
+        "mean": 0.22624653947511325,
+        "sample_sd": 0.002107940418551553
+      }
+    },
+    {
+      "policy": "structured",
+      "slot": 0,
+      "development": {
+        "mean": 0.22402866743967756,
+        "sample_sd": 0.0007486536771352826
+      },
+      "heldout": {
+        "mean": 0.21427917295387103,
+        "sample_sd": 0.0009613709755461168
+      }
+    },
+    {
+      "policy": "structured",
+      "slot": 1,
+      "development": {
+        "mean": 0.22402866743967756,
+        "sample_sd": 0.0007486536771352826
+      },
+      "heldout": {
+        "mean": 0.21427917295387103,
+        "sample_sd": 0.0009613709755461168
+      }
+    },
+    {
+      "policy": "structured",
+      "slot": 2,
+      "development": {
+        "mean": 0.22421827980572673,
+        "sample_sd": 0.00053960012027588
+      },
+      "heldout": {
+        "mean": 0.21342189442219742,
+        "sample_sd": 0.0016616110477115445
+      }
+    },
+    {
+      "policy": "structured",
+      "slot": 3,
+      "development": {
+        "mean": 0.22664822409281318,
+        "sample_sd": 0.002613095062174612
+      },
+      "heldout": {
+        "mean": 0.22200760941784056,
+        "sample_sd": 0.006132305337432444
+      }
+    },
+    {
+      "policy": "structured",
+      "slot": 4,
+      "development": {
+        "mean": 0.22664822409281318,
+        "sample_sd": 0.002613095062174612
+      },
+      "heldout": {
+        "mean": 0.22200760941784056,
+        "sample_sd": 0.006132305337432444
+      }
+    },
+    {
+      "policy": "structured",
+      "slot": 5,
+      "development": {
+        "mean": 0.22664822409281318,
+        "sample_sd": 0.002613095062174612
+      },
+      "heldout": {
+        "mean": 0.22200760941784056,
+        "sample_sd": 0.006132305337432444
+      }
+    },
+    {
+      "policy": "structured",
+      "slot": 6,
+      "development": {
+        "mean": 0.23382547004810753,
+        "sample_sd": 0.004825651144556058
+      },
+      "heldout": {
+        "mean": 0.2288810892371692,
+        "sample_sd": 0.005586561886522829
+      }
+    },
+    {
+      "policy": "random",
+      "slot": 0,
+      "development": {
+        "mean": 0.22402866743967756,
+        "sample_sd": 0.0007486536771352826
+      },
+      "heldout": {
+        "mean": 0.21427917295387103,
+        "sample_sd": 0.0009613709755461168
+      }
+    },
+    {
+      "policy": "random",
+      "slot": 1,
+      "development": {
+        "mean": 0.22535698090663941,
+        "sample_sd": 0.000925149881769792
+      },
+      "heldout": {
+        "mean": 0.21735048789973682,
+        "sample_sd": 0.0009166256130944484
+      }
+    },
+    {
+      "policy": "random",
+      "slot": 2,
+      "development": {
+        "mean": 0.22658408033619237,
+        "sample_sd": 0.0012277541632536163
+      },
+      "heldout": {
+        "mean": 0.2199478227771787,
+        "sample_sd": 0.0010581657087985292
+      }
+    },
+    {
+      "policy": "random",
+      "slot": 3,
+      "development": {
+        "mean": 0.22771681189051174,
+        "sample_sd": 0.0015542883957894605
+      },
+      "heldout": {
+        "mean": 0.22212806025736032,
+        "sample_sd": 0.001282888280595814
+      }
+    },
+    {
+      "policy": "random",
+      "slot": 4,
+      "development": {
+        "mean": 0.22876173421011353,
+        "sample_sd": 0.0018692769776549342
+      },
+      "heldout": {
+        "mean": 0.22394446063265175,
+        "sample_sd": 0.0015519992875012796
+      }
+    },
+    {
+      "policy": "random",
+      "slot": 5,
+      "development": {
+        "mean": 0.2297251184138543,
+        "sample_sd": 0.0021600108309829157
+      },
+      "heldout": {
+        "mean": 0.2254466618166296,
+        "sample_sd": 0.001844294483732741
+      }
+    },
+    {
+      "policy": "random",
+      "slot": 6,
+      "development": {
+        "mean": 0.2306129480989313,
+        "sample_sd": 0.0024211521910472433
+      },
+      "heldout": {
+        "mean": 0.22668067934407699,
+        "sample_sd": 0.002139625173999587
+      }
+    },
+    {
+      "policy": "random_shared_first",
+      "slot": 0,
+      "development": {
+        "mean": 0.22402866743967756,
+        "sample_sd": 0.0007486536771352826
+      },
+      "heldout": {
+        "mean": 0.21427917295387103,
+        "sample_sd": 0.0009613709755461168
+      }
+    },
+    {
+      "policy": "random_shared_first",
+      "slot": 1,
+      "development": {
+        "mean": 0.22402866743967756,
+        "sample_sd": 0.0007486536771352826
+      },
+      "heldout": {
+        "mean": 0.21427917295387103,
+        "sample_sd": 0.0009613709755461168
+      }
+    },
+    {
+      "policy": "random_shared_first",
+      "slot": 2,
+      "development": {
+        "mean": 0.22545186043999385,
+        "sample_sd": 0.0009443987891062653
+      },
+      "heldout": {
+        "mean": 0.21756986753872723,
+        "sample_sd": 0.0009169125390270488
+      }
+    },
+    {
+      "policy": "random_shared_first",
+      "slot": 3,
+      "development": {
+        "mean": 0.2267582680125306,
+        "sample_sd": 0.0012753549142634488
+      },
+      "heldout": {
+        "mean": 0.22031366204463276,
+        "sample_sd": 0.0010810052538616334
+      }
+    },
+    {
+      "policy": "random_shared_first",
+      "slot": 4,
+      "development": {
+        "mean": 0.22795644786000702,
+        "sample_sd": 0.0016257273716926452
+      },
+      "heldout": {
+        "mean": 0.22258165981054218,
+        "sample_sd": 0.001333363206504318
+      }
+    },
+    {
+      "policy": "random_shared_first",
+      "slot": 5,
+      "development": {
+        "mean": 0.22905456561015225,
+        "sample_sd": 0.001958483971248144
+      },
+      "heldout": {
+        "mean": 0.2244400245679643,
+        "sample_sd": 0.0016320506611289655
+      }
+    },
+    {
+      "policy": "random_shared_first",
+      "slot": 6,
+      "development": {
+        "mean": 0.23006039481570534,
+        "sample_sd": 0.0022609728321277434
+      },
+      "heldout": {
+        "mean": 0.22594998044096226,
+        "sample_sd": 0.0019514022810311975
+      }
+    },
+    {
+      "policy": "gp_ei",
+      "slot": 0,
+      "development": {
+        "mean": 0.22402866743967756,
+        "sample_sd": 0.0007486536771352826
+      },
+      "heldout": {
+        "mean": 0.21427917295387103,
+        "sample_sd": 0.0009613709755461168
+      }
+    },
+    {
+      "policy": "gp_ei",
+      "slot": 1,
+      "development": {
+        "mean": 0.22402866743967756,
+        "sample_sd": 0.0007486536771352826
+      },
+      "heldout": {
+        "mean": 0.21427917295387103,
+        "sample_sd": 0.0009613709755461168
+      }
+    },
+    {
+      "policy": "gp_ei",
+      "slot": 2,
+      "development": {
+        "mean": 0.22402866743967756,
+        "sample_sd": 0.0007486536771352826
+      },
+      "heldout": {
+        "mean": 0.21427917295387103,
+        "sample_sd": 0.0009613709755461168
+      }
+    },
+    {
+      "policy": "gp_ei",
+      "slot": 3,
+      "development": {
+        "mean": 0.22697744537175563,
+        "sample_sd": 0.005032866165565954
+      },
+      "heldout": {
+        "mean": 0.21915250798073022,
+        "sample_sd": 0.007562294891306806
+      }
+    },
+    {
+      "policy": "gp_ei",
+      "slot": 4,
+      "development": {
+        "mean": 0.2317325694054667,
+        "sample_sd": 0.00791706157213848
+      },
+      "heldout": {
+        "mean": 0.22573305166125784,
+        "sample_sd": 0.010406699824551916
+      }
+    },
+    {
+      "policy": "gp_ei",
+      "slot": 5,
+      "development": {
+        "mean": 0.23604843224089772,
+        "sample_sd": 0.003198110642884853
+      },
+      "heldout": {
+        "mean": 0.2315180582836376,
+        "sample_sd": 0.003521326061573815
+      }
+    },
+    {
+      "policy": "gp_ei",
+      "slot": 6,
+      "development": {
+        "mean": 0.23604843224089772,
+        "sample_sd": 0.003198110642884853
+      },
+      "heldout": {
+        "mean": 0.2315180582836376,
+        "sample_sd": 0.003521326061573815
+      }
+    }
+  ],
+  "local_events": [
+    {
+      "seed": 61,
+      "policy": "fixed",
+      "slot": 1,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "fixed",
+      "slot": 2,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "fixed",
+      "slot": 3,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "fixed",
+      "slot": 4,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "fixed",
+      "slot": 5,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "fixed",
+      "slot": 6,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "direct",
+      "slot": 1,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "direct",
+      "slot": 2,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "direct",
+      "slot": 3,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "direct",
+      "slot": 4,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "direct",
+      "slot": 5,
+      "development_gain_pp": 0.15799680314843023,
+      "heldout_gain_pp": 1.3741196664174478,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "direct",
+      "slot": 6,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "raw",
+      "slot": 1,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "raw",
+      "slot": 2,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "raw",
+      "slot": 3,
+      "development_gain_pp": 0.15799680314843023,
+      "heldout_gain_pp": 1.3741196664174478,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "raw",
+      "slot": 4,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "raw",
+      "slot": 5,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "raw",
+      "slot": 6,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "structured",
+      "slot": 1,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "structured",
+      "slot": 2,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "structured",
+      "slot": 3,
+      "development_gain_pp": 0.15799680314843023,
+      "heldout_gain_pp": 1.3741196664174478,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "structured",
+      "slot": 4,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "structured",
+      "slot": 5,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "structured",
+      "slot": 6,
+      "development_gain_pp": 0.7266365764749871,
+      "heldout_gain_pp": 0.08788084164030319,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "random",
+      "slot": 1,
+      "development_gain_pp": 0.08191611057311587,
+      "heldout_gain_pp": 0.3288739416606207,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "random",
+      "slot": 2,
+      "development_gain_pp": 0.07628681376834479,
+      "heldout_gain_pp": 0.2592677964916884,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "random",
+      "slot": 3,
+      "development_gain_pp": 0.07133405387616532,
+      "heldout_gain_pp": 0.20192117725976455,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "random",
+      "slot": 4,
+      "development_gain_pp": 0.0670132474462487,
+      "heldout_gain_pp": 0.155558957462687,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "random",
+      "slot": 5,
+      "development_gain_pp": 0.06327981102826619,
+      "heldout_gain_pp": 0.11890601059828532,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "random",
+      "slot": 6,
+      "development_gain_pp": 0.060089161171883454,
+      "heldout_gain_pp": 0.09068721016441406,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "random_shared_first",
+      "slot": 1,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "random_shared_first",
+      "slot": 2,
+      "development_gain_pp": 0.08776726132833923,
+      "heldout_gain_pp": 0.3523649374935184,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "random_shared_first",
+      "slot": 3,
+      "development_gain_pp": 0.08127191886129204,
+      "heldout_gain_pp": 0.2720501546062959,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "random_shared_first",
+      "slot": 4,
+      "development_gain_pp": 0.07562224753498992,
+      "heldout_gain_pp": 0.2070597791403228,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "random_shared_first",
+      "slot": 5,
+      "development_gain_pp": 0.07075745173534542,
+      "heldout_gain_pp": 0.15565500222902984,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "random_shared_first",
+      "slot": 6,
+      "development_gain_pp": 0.06661673584826278,
+      "heldout_gain_pp": 0.1160970150058227,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "gp_ei",
+      "slot": 1,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "gp_ei",
+      "slot": 2,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "gp_ei",
+      "slot": 3,
+      "development_gain_pp": 0.8846333796234174,
+      "heldout_gain_pp": 1.4620005080577507,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "gp_ei",
+      "slot": 4,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "gp_ei",
+      "slot": 5,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 61,
+      "policy": "gp_ei",
+      "slot": 6,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "fixed",
+      "slot": 1,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "fixed",
+      "slot": 2,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "fixed",
+      "slot": 3,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "fixed",
+      "slot": 4,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "fixed",
+      "slot": 5,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "fixed",
+      "slot": 6,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "direct",
+      "slot": 1,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "direct",
+      "slot": 2,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "direct",
+      "slot": 3,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "direct",
+      "slot": 4,
+      "development_gain_pp": 0.6278701927922542,
+      "heldout_gain_pp": 0.94441127277341,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "direct",
+      "slot": 5,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "direct",
+      "slot": 6,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "raw",
+      "slot": 1,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "raw",
+      "slot": 2,
+      "development_gain_pp": 0.05688370981475066,
+      "heldout_gain_pp": -0.25718355950208327,
+      "development_up_test_down": true
+    },
+    {
+      "seed": 62,
+      "policy": "raw",
+      "slot": 3,
+      "development_gain_pp": 0.5709864829775035,
+      "heldout_gain_pp": 1.2015948322754932,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "raw",
+      "slot": 4,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "raw",
+      "slot": 5,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "raw",
+      "slot": 6,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "structured",
+      "slot": 1,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "structured",
+      "slot": 2,
+      "development_gain_pp": 0.05688370981475066,
+      "heldout_gain_pp": -0.25718355950208327,
+      "development_up_test_down": true
+    },
+    {
+      "seed": 62,
+      "policy": "structured",
+      "slot": 3,
+      "development_gain_pp": 0.5709864829775035,
+      "heldout_gain_pp": 1.2015948322754932,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "structured",
+      "slot": 4,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "structured",
+      "slot": 5,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "structured",
+      "slot": 6,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "random",
+      "slot": 1,
+      "development_gain_pp": 0.1591533197705386,
+      "heldout_gain_pp": 0.2739334449205766,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "random",
+      "slot": 2,
+      "development_gain_pp": 0.14378098254311245,
+      "heldout_gain_pp": 0.24016768737854244,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "random",
+      "slot": 3,
+      "development_gain_pp": 0.12967993800307998,
+      "heldout_gain_pp": 0.2084123063097243,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "random",
+      "slot": 4,
+      "development_gain_pp": 0.1168085131029617,
+      "heldout_gain_pp": 0.178855714578241,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "random",
+      "slot": 5,
+      "development_gain_pp": 0.10512503479527535,
+      "heldout_gain_pp": 0.15168632504818924,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "random",
+      "slot": 6,
+      "development_gain_pp": 0.09458783003254145,
+      "heldout_gain_pp": 0.12709255058367674,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "random_shared_first",
+      "slot": 1,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "random_shared_first",
+      "slot": 2,
+      "development_gain_pp": 0.17052141403986476,
+      "heldout_gain_pp": 0.293500119557763,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "random_shared_first",
+      "slot": 3,
+      "development_gain_pp": 0.15278410185436964,
+      "heldout_gain_pp": 0.2545396300861785,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "random_shared_first",
+      "slot": 4,
+      "development_gain_pp": 0.136635905528118,
+      "heldout_gain_pp": 0.21809211120612793,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "random_shared_first",
+      "slot": 5,
+      "development_gain_pp": 0.12201999817819109,
+      "heldout_gain_pp": 0.18441448955047457,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "random_shared_first",
+      "slot": 6,
+      "development_gain_pp": 0.10887955292163964,
+      "heldout_gain_pp": 0.1537636917520957,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "gp_ei",
+      "slot": 1,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "gp_ei",
+      "slot": 2,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "gp_ei",
+      "slot": 3,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "gp_ei",
+      "slot": 4,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "gp_ei",
+      "slot": 5,
+      "development_gain_pp": 1.29475885062931,
+      "heldout_gain_pp": 1.7355019867139303,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 62,
+      "policy": "gp_ei",
+      "slot": 6,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "fixed",
+      "slot": 1,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "fixed",
+      "slot": 2,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "fixed",
+      "slot": 3,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "fixed",
+      "slot": 4,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "fixed",
+      "slot": 5,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "fixed",
+      "slot": 6,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "direct",
+      "slot": 1,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "direct",
+      "slot": 2,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "direct",
+      "slot": 3,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "direct",
+      "slot": 4,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "direct",
+      "slot": 5,
+      "development_gain_pp": 0.048238668939648566,
+      "heldout_gain_pp": 1.2716790171818093,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "direct",
+      "slot": 6,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "raw",
+      "slot": 1,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "raw",
+      "slot": 2,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "raw",
+      "slot": 3,
+      "development_gain_pp": 0.048238668939648566,
+      "heldout_gain_pp": 1.2716790171818093,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "raw",
+      "slot": 4,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "raw",
+      "slot": 5,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "raw",
+      "slot": 6,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "structured",
+      "slot": 1,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "structured",
+      "slot": 2,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "structured",
+      "slot": 3,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "structured",
+      "slot": 4,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "structured",
+      "slot": 5,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "structured",
+      "slot": 6,
+      "development_gain_pp": 1.4265372101133211,
+      "heldout_gain_pp": 1.974163104158294,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "random",
+      "slot": 1,
+      "development_gain_pp": 0.15742460974490502,
+      "heldout_gain_pp": 0.31858709717854095,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "random",
+      "slot": 2,
+      "development_gain_pp": 0.14806203255442463,
+      "heldout_gain_pp": 0.2797649793623319,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "random",
+      "slot": 3,
+      "development_gain_pp": 0.1388054744165701,
+      "heldout_gain_pp": 0.24373776048499107,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "random",
+      "slot": 4,
+      "development_gain_pp": 0.129654935331322,
+      "heldout_gain_pp": 0.21050544054650178,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "random",
+      "slot": 5,
+      "development_gain_pp": 0.12061041529869143,
+      "heldout_gain_pp": 0.18006801954688345,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "random",
+      "slot": 6,
+      "development_gain_pp": 0.11167191431867562,
+      "heldout_gain_pp": 0.152425497486125,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "random_shared_first",
+      "slot": 1,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "random_shared_first",
+      "slot": 2,
+      "development_gain_pp": 0.16866922472668355,
+      "heldout_gain_pp": 0.3413433184055792,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "random_shared_first",
+      "slot": 3,
+      "development_gain_pp": 0.15786625104536323,
+      "heldout_gain_pp": 0.29654856707918564,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "random_shared_first",
+      "slot": 4,
+      "development_gain_pp": 0.14719580117981412,
+      "heldout_gain_pp": 0.2552474394263704,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "random_shared_first",
+      "slot": 5,
+      "development_gain_pp": 0.13665787513003624,
+      "heldout_gain_pp": 0.21743993544713347,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "random_shared_first",
+      "slot": 6,
+      "development_gain_pp": 0.12625247289602404,
+      "heldout_gain_pp": 0.18312605514147207,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "gp_ei",
+      "slot": 1,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "gp_ei",
+      "slot": 2,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "gp_ei",
+      "slot": 3,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "gp_ei",
+      "slot": 4,
+      "development_gain_pp": 1.4265372101133211,
+      "heldout_gain_pp": 1.974163104158294,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "gp_ei",
+      "slot": 5,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    },
+    {
+      "seed": 63,
+      "policy": "gp_ei",
+      "slot": 6,
+      "development_gain_pp": 0.0,
+      "heldout_gain_pp": 0.0,
+      "development_up_test_down": false
+    }
+  ],
+  "development_up_test_down_events": [
+    {
+      "seed": 62,
+      "policy": "raw",
+      "slot": 2,
+      "development_gain_pp": 0.05688370981475066,
+      "heldout_gain_pp": -0.25718355950208327,
+      "development_up_test_down": true
+    },
+    {
+      "seed": 62,
+      "policy": "structured",
+      "slot": 2,
+      "development_gain_pp": 0.05688370981475066,
+      "heldout_gain_pp": -0.25718355950208327,
+      "development_up_test_down": true
+    }
+  ],
+  "heldout_below_initial": [
+    {
+      "seed": 62,
+      "policy": "raw",
+      "slot": 2,
+      "selected_weights": {
+        "D05": 1.0
+      },
+      "development": 0.2239344454866643,
+      "heldout": 0.21185045005316994,
+      "development_gain_vs_fixed_pp": 0.05688370981475066,
+      "heldout_gain_vs_fixed_pp": -0.25718355950208327
+    },
+    {
+      "seed": 62,
+      "policy": "structured",
+      "slot": 2,
+      "selected_weights": {
+        "D05": 1.0
+      },
+      "development": 0.2239344454866643,
+      "heldout": 0.21185045005316994,
+      "development_gain_vs_fixed_pp": 0.05688370981475066,
+      "heldout_gain_vs_fixed_pp": -0.25718355950208327
+    }
+  ],
+  "final_per_context": [
+    {
+      "seed": 61,
+      "policy": "fixed",
+      "context": "Nadig:hepg2",
+      "development": 0.23194444444444448,
+      "heldout": 0.2204778156996587
+    },
+    {
+      "seed": 61,
+      "policy": "fixed",
+      "context": "Nadig:jurkat",
+      "development": 0.2065281899109792,
+      "heldout": 0.20919540229885059
+    },
+    {
+      "seed": 61,
+      "policy": "fixed",
+      "context": "Replogle:k562",
+      "development": 0.2309597523219814,
+      "heldout": 0.2303951367781155
+    },
+    {
+      "seed": 61,
+      "policy": "fixed",
+      "context": "Replogle:rpe1",
+      "development": 0.2260869565217391,
+      "heldout": 0.19294871794871796
+    },
+    {
+      "seed": 61,
+      "policy": "direct",
+      "context": "Nadig:hepg2",
+      "development": 0.22777777777777775,
+      "heldout": 0.2484641638225256
+    },
+    {
+      "seed": 61,
+      "policy": "direct",
+      "context": "Nadig:jurkat",
+      "development": 0.20118694362017803,
+      "heldout": 0.2189655172413793
+    },
+    {
+      "seed": 61,
+      "policy": "direct",
+      "context": "Replogle:k562",
+      "development": 0.2421052631578947,
+      "heldout": 0.23221884498480244
+    },
+    {
+      "seed": 61,
+      "policy": "direct",
+      "context": "Replogle:rpe1",
+      "development": 0.23076923076923078,
+      "heldout": 0.20833333333333334
+    },
+    {
+      "seed": 61,
+      "policy": "raw",
+      "context": "Nadig:hepg2",
+      "development": 0.22777777777777775,
+      "heldout": 0.2484641638225256
+    },
+    {
+      "seed": 61,
+      "policy": "raw",
+      "context": "Nadig:jurkat",
+      "development": 0.20118694362017803,
+      "heldout": 0.2189655172413793
+    },
+    {
+      "seed": 61,
+      "policy": "raw",
+      "context": "Replogle:k562",
+      "development": 0.2421052631578947,
+      "heldout": 0.23221884498480244
+    },
+    {
+      "seed": 61,
+      "policy": "raw",
+      "context": "Replogle:rpe1",
+      "development": 0.23076923076923078,
+      "heldout": 0.20833333333333334
+    },
+    {
+      "seed": 61,
+      "policy": "structured",
+      "context": "Nadig:hepg2",
+      "development": 0.23888888888888893,
+      "heldout": 0.25392491467576794
+    },
+    {
+      "seed": 61,
+      "policy": "structured",
+      "context": "Nadig:jurkat",
+      "development": 0.21543026706231458,
+      "heldout": 0.21091954022988504
+    },
+    {
+      "seed": 61,
+      "policy": "structured",
+      "context": "Replogle:k562",
+      "development": 0.26253869969040244,
+      "heldout": 0.22613981762917934
+    },
+    {
+      "seed": 61,
+      "policy": "structured",
+      "context": "Replogle:rpe1",
+      "development": 0.2140468227424749,
+      "heldout": 0.2205128205128205
+    },
+    {
+      "seed": 61,
+      "policy": "random",
+      "context": "Nadig:hepg2",
+      "development": 0.23454822954822957,
+      "heldout": 0.24262836139969246
+    },
+    {
+      "seed": 61,
+      "policy": "random",
+      "context": "Nadig:jurkat",
+      "development": 0.21000684775165487,
+      "heldout": 0.21440570923329544
+    },
+    {
+      "seed": 61,
+      "policy": "random",
+      "context": "Replogle:k562",
+      "development": 0.250499098424795,
+      "heldout": 0.2289695714619727
+    },
+    {
+      "seed": 61,
+      "policy": "random",
+      "context": "Replogle:rpe1",
+      "development": 0.2172619353890257,
+      "heldout": 0.21322203437588053
+    },
+    {
+      "seed": 61,
+      "policy": "random_shared_first",
+      "context": "Nadig:hepg2",
+      "development": 0.2343413530913531,
+      "heldout": 0.241347730767526
+    },
+    {
+      "seed": 61,
+      "policy": "random_shared_first",
+      "context": "Nadig:jurkat",
+      "development": 0.20968527021939487,
+      "heldout": 0.214414321310873
+    },
+    {
+      "seed": 61,
+      "policy": "random_shared_first",
+      "context": "Replogle:k562",
+      "development": 0.24938250603885276,
+      "heldout": 0.2290621232870473
+    },
+    {
+      "seed": 61,
+      "policy": "random_shared_first",
+      "context": "Replogle:rpe1",
+      "development": 0.2173916384618726,
+      "heldout": 0.21232197289889598
+    },
+    {
+      "seed": 61,
+      "policy": "gp_ei",
+      "context": "Nadig:hepg2",
+      "development": 0.23888888888888893,
+      "heldout": 0.25392491467576794
+    },
+    {
+      "seed": 61,
+      "policy": "gp_ei",
+      "context": "Nadig:jurkat",
+      "development": 0.21543026706231458,
+      "heldout": 0.21091954022988504
+    },
+    {
+      "seed": 61,
+      "policy": "gp_ei",
+      "context": "Replogle:k562",
+      "development": 0.26253869969040244,
+      "heldout": 0.22613981762917934
+    },
+    {
+      "seed": 61,
+      "policy": "gp_ei",
+      "context": "Replogle:rpe1",
+      "development": 0.2140468227424749,
+      "heldout": 0.2205128205128205
+    },
+    {
+      "seed": 62,
+      "policy": "fixed",
+      "context": "Nadig:hepg2",
+      "development": 0.22708333333333336,
+      "heldout": 0.21843003412969283
+    },
+    {
+      "seed": 62,
+      "policy": "fixed",
+      "context": "Nadig:jurkat",
+      "development": 0.20356083086053414,
+      "heldout": 0.21091954022988504
+    },
+    {
+      "seed": 62,
+      "policy": "fixed",
+      "context": "Replogle:k562",
+      "development": 0.23405572755417955,
+      "heldout": 0.23282674772036474
+    },
+    {
+      "seed": 62,
+      "policy": "fixed",
+      "context": "Replogle:rpe1",
+      "development": 0.2287625418060201,
+      "heldout": 0.1955128205128205
+    },
+    {
+      "seed": 62,
+      "policy": "direct",
+      "context": "Nadig:hepg2",
+      "development": 0.23541666666666672,
+      "heldout": 0.24982935153583619
+    },
+    {
+      "seed": 62,
+      "policy": "direct",
+      "context": "Nadig:jurkat",
+      "development": 0.2112759643916914,
+      "heldout": 0.21091954022988504
+    },
+    {
+      "seed": 62,
+      "policy": "direct",
+      "context": "Replogle:k562",
+      "development": 0.23777089783281738,
+      "heldout": 0.23343465045592704
+    },
+    {
+      "seed": 62,
+      "policy": "direct",
+      "context": "Replogle:rpe1",
+      "development": 0.23411371237458195,
+      "heldout": 0.2012820512820513
+    },
+    {
+      "seed": 62,
+      "policy": "raw",
+      "context": "Nadig:hepg2",
+      "development": 0.23541666666666672,
+      "heldout": 0.24982935153583619
+    },
+    {
+      "seed": 62,
+      "policy": "raw",
+      "context": "Nadig:jurkat",
+      "development": 0.2112759643916914,
+      "heldout": 0.21091954022988504
+    },
+    {
+      "seed": 62,
+      "policy": "raw",
+      "context": "Replogle:k562",
+      "development": 0.23777089783281738,
+      "heldout": 0.23343465045592704
+    },
+    {
+      "seed": 62,
+      "policy": "raw",
+      "context": "Replogle:rpe1",
+      "development": 0.23411371237458195,
+      "heldout": 0.2012820512820513
+    },
+    {
+      "seed": 62,
+      "policy": "structured",
+      "context": "Nadig:hepg2",
+      "development": 0.23541666666666672,
+      "heldout": 0.24982935153583619
+    },
+    {
+      "seed": 62,
+      "policy": "structured",
+      "context": "Nadig:jurkat",
+      "development": 0.2112759643916914,
+      "heldout": 0.21091954022988504
+    },
+    {
+      "seed": 62,
+      "policy": "structured",
+      "context": "Replogle:k562",
+      "development": 0.23777089783281738,
+      "heldout": 0.23343465045592704
+    },
+    {
+      "seed": 62,
+      "policy": "structured",
+      "context": "Replogle:rpe1",
+      "development": 0.23411371237458195,
+      "heldout": 0.2012820512820513
+    },
+    {
+      "seed": 62,
+      "policy": "random",
+      "context": "Nadig:hepg2",
+      "development": 0.23789529914529917,
+      "heldout": 0.24128117616172223
+    },
+    {
+      "seed": 62,
+      "policy": "random",
+      "context": "Nadig:jurkat",
+      "development": 0.21648547298398932,
+      "heldout": 0.22706201844132878
+    },
+    {
+      "seed": 62,
+      "policy": "random",
+      "context": "Replogle:k562",
+      "development": 0.24616201136324978,
+      "heldout": 0.22416246367614148
+    },
+    {
+      "seed": 62,
+      "policy": "random",
+      "context": "Replogle:rpe1",
+      "development": 0.22288507479142933,
+      "heldout": 0.21238940546632856
+    },
+    {
+      "seed": 62,
+      "policy": "random_shared_first",
+      "context": "Nadig:hepg2",
+      "development": 0.2373144216894217,
+      "heldout": 0.23978922101789
+    },
+    {
+      "seed": 62,
+      "policy": "random_shared_first",
+      "context": "Nadig:jurkat",
+      "development": 0.21535319280126403,
+      "heldout": 0.22627056851194782
+    },
+    {
+      "seed": 62,
+      "policy": "random_shared_first",
+      "context": "Replogle:k562",
+      "development": 0.24537258407227452,
+      "heldout": 0.22459789450670908
+    },
+    {
+      "seed": 62,
+      "policy": "random_shared_first",
+      "context": "Replogle:rpe1",
+      "development": 0.22305587389199433,
+      "heldout": 0.2112038602423218
+    },
+    {
+      "seed": 62,
+      "policy": "gp_ei",
+      "context": "Nadig:hepg2",
+      "development": 0.24305555555555555,
+      "heldout": 0.24641638225255974
+    },
+    {
+      "seed": 62,
+      "policy": "gp_ei",
+      "context": "Nadig:jurkat",
+      "development": 0.23026706231454006,
+      "heldout": 0.2367816091954023
+    },
+    {
+      "seed": 62,
+      "policy": "gp_ei",
+      "context": "Replogle:k562",
+      "development": 0.2538699690402477,
+      "heldout": 0.217629179331307
+    },
+    {
+      "seed": 62,
+      "policy": "gp_ei",
+      "context": "Replogle:rpe1",
+      "development": 0.21806020066889634,
+      "heldout": 0.22628205128205128
+    },
+    {
+      "seed": 63,
+      "policy": "fixed",
+      "context": "Nadig:hepg2",
+      "development": 0.23333333333333334,
+      "heldout": 0.22320819112627988
+    },
+    {
+      "seed": 63,
+      "policy": "fixed",
+      "context": "Nadig:jurkat",
+      "development": 0.2065281899109792,
+      "heldout": 0.20862068965517241
+    },
+    {
+      "seed": 63,
+      "policy": "fixed",
+      "context": "Replogle:k562",
+      "development": 0.22538699690402475,
+      "heldout": 0.2358662613981763
+    },
+    {
+      "seed": 63,
+      "policy": "fixed",
+      "context": "Replogle:rpe1",
+      "development": 0.23411371237458195,
+      "heldout": 0.19294871794871796
+    },
+    {
+      "seed": 63,
+      "policy": "direct",
+      "context": "Nadig:hepg2",
+      "development": 0.22847222222222222,
+      "heldout": 0.25324232081911263
+    },
+    {
+      "seed": 63,
+      "policy": "direct",
+      "context": "Nadig:jurkat",
+      "development": 0.20356083086053411,
+      "heldout": 0.21954022988505748
+    },
+    {
+      "seed": 63,
+      "policy": "direct",
+      "context": "Replogle:k562",
+      "development": 0.23715170278637773,
+      "heldout": 0.2303951367781155
+    },
+    {
+      "seed": 63,
+      "policy": "direct",
+      "context": "Replogle:rpe1",
+      "development": 0.23210702341137127,
+      "heldout": 0.20833333333333334
+    },
+    {
+      "seed": 63,
+      "policy": "raw",
+      "context": "Nadig:hepg2",
+      "development": 0.22847222222222222,
+      "heldout": 0.25324232081911263
+    },
+    {
+      "seed": 63,
+      "policy": "raw",
+      "context": "Nadig:jurkat",
+      "development": 0.20356083086053411,
+      "heldout": 0.21954022988505748
+    },
+    {
+      "seed": 63,
+      "policy": "raw",
+      "context": "Replogle:k562",
+      "development": 0.23715170278637773,
+      "heldout": 0.2303951367781155
+    },
+    {
+      "seed": 63,
+      "policy": "raw",
+      "context": "Replogle:rpe1",
+      "development": 0.23210702341137127,
+      "heldout": 0.20833333333333334
+    },
+    {
+      "seed": 63,
+      "policy": "structured",
+      "context": "Nadig:hepg2",
+      "development": 0.2555555555555556,
+      "heldout": 0.24914675767918087
+    },
+    {
+      "seed": 63,
+      "policy": "structured",
+      "context": "Nadig:jurkat",
+      "development": 0.22433234421364986,
+      "heldout": 0.24080459770114943
+    },
+    {
+      "seed": 63,
+      "policy": "structured",
+      "context": "Replogle:k562",
+      "development": 0.2631578947368421,
+      "heldout": 0.2297872340425532
+    },
+    {
+      "seed": 63,
+      "policy": "structured",
+      "context": "Replogle:rpe1",
+      "development": 0.21337792642140468,
+      "heldout": 0.21987179487179487
+    },
+    {
+      "seed": 63,
+      "policy": "random",
+      "context": "Nadig:hepg2",
+      "development": 0.24198870573870576,
+      "heldout": 0.24114465739039118
+    },
+    {
+      "seed": 63,
+      "policy": "random",
+      "context": "Nadig:jurkat",
+      "development": 0.21394332670297062,
+      "heldout": 0.2326803081975496
+    },
+    {
+      "seed": 63,
+      "policy": "random",
+      "context": "Replogle:k562",
+      "development": 0.252069540366754,
+      "heldout": 0.22881726176559003
+    },
+    {
+      "seed": 63,
+      "policy": "random",
+      "context": "Replogle:rpe1",
+      "development": 0.22360983498107245,
+      "heldout": 0.2134051845590307
+    },
+    {
+      "seed": 63,
+      "policy": "random_shared_first",
+      "context": "Nadig:hepg2",
+      "development": 0.24098366910866914,
+      "heldout": 0.2401230169148258
+    },
+    {
+      "seed": 63,
+      "policy": "random_shared_first",
+      "context": "Nadig:jurkat",
+      "development": 0.21313137900674992,
+      "heldout": 0.23100922066439308
+    },
+    {
+      "seed": 63,
+      "policy": "random_shared_first",
+      "context": "Replogle:k562",
+      "development": 0.2501547987616099,
+      "heldout": 0.22918601155683221
+    },
+    {
+      "seed": 63,
+      "policy": "random_shared_first",
+      "context": "Replogle:rpe1",
+      "development": 0.2245580506450072,
+      "heldout": 0.21207382361228516
+    },
+    {
+      "seed": 63,
+      "policy": "gp_ei",
+      "context": "Nadig:hepg2",
+      "development": 0.2555555555555556,
+      "heldout": 0.24914675767918087
+    },
+    {
+      "seed": 63,
+      "policy": "gp_ei",
+      "context": "Nadig:jurkat",
+      "development": 0.22433234421364986,
+      "heldout": 0.24080459770114943
+    },
+    {
+      "seed": 63,
+      "policy": "gp_ei",
+      "context": "Replogle:k562",
+      "development": 0.2631578947368421,
+      "heldout": 0.2297872340425532
+    },
+    {
+      "seed": 63,
+      "policy": "gp_ei",
+      "context": "Replogle:rpe1",
+      "development": 0.21337792642140468,
+      "heldout": 0.21987179487179487
+    }
+  ],
+  "candidate_rank_correlation": [
+    {
+      "seed": 61,
+      "candidates": 16,
+      "spearman": 0.5147058823529412,
+      "description": "Descriptive across 16 already-trained candidates; not independent biological replicates"
+    },
+    {
+      "seed": 62,
+      "candidates": 16,
+      "spearman": 0.5117647058823529,
+      "description": "Descriptive across 16 already-trained candidates; not independent biological replicates"
+    },
+    {
+      "seed": 63,
+      "candidates": 16,
+      "spearman": 0.6411764705882352,
+      "description": "Descriptive across 16 already-trained candidates; not independent biological replicates"
+    }
+  ],
+  "changes_from_original": "Larger gene-disjoint groups, four study-context clients, five fixed rosters per gene/context, 512 training-selected response genes, altered training/candidate library; bundled changes do not isolate a repair cause"
+}

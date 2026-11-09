@@ -1,0 +1,35 @@
+\begin{table}[htbp]
+\caption{Original and extended proposal searches, shown together without mixing configuration libraries. D and H denote direct and history-guided search, and @ denotes the number of proposal slots. Every candidate receives 100 training rounds using the same ten laboratories. Panel (a) uses DTI seed 42 and other-task seed 61; panel (b) uses seed 61. The six-slot prefixes in the two panels belong to different searches. DTI uses AUROC, proteomics uses average precision, and cell tasks use Top-1, all multiplied by 100. Bold denotes the highest displayed score in each row, including ties; dashes indicate runs not performed.}
+\label{tab:proposal-heldout-combined}
+\label{tab:completed-short6}
+\label{tab:completed-long24}
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{@{}Xlrrrrr@{}}
+\toprule
+Task & Proposer & Fixed & D@6 & H@6 & D@24 & H@24 \\
+\midrule
+\multicolumn{7}{l}{\textit{(a) 12 designs, six proposal slots}} \\
+DTI & Luna & 94.27 & \textbf{94.60} & 94.27 & -- & -- \\
+DTI & Qwen & \textbf{94.27} & \textbf{94.27} & \textbf{94.27} & -- & -- \\
+Proteomics & Luna & \textbf{37.27} & \textbf{37.27} & \textbf{37.27} & -- & -- \\
+Proteomics & Qwen & \textbf{37.27} & \textbf{37.27} & \textbf{37.27} & -- & -- \\
+VCC & Luna & \textbf{31.50} & \textbf{31.50} & \textbf{31.50} & -- & -- \\
+VCC & Qwen & \textbf{31.50} & \textbf{31.50} & \textbf{31.50} & -- & -- \\
+Norman & Luna & 15.48 & 22.30 & \textbf{23.11} & -- & -- \\
+Norman & Qwen & 15.48 & \textbf{22.30} & \textbf{22.30} & -- & -- \\
+Tahoe & Luna & 25.37 & \textbf{26.87} & \textbf{26.87} & -- & -- \\
+Tahoe & Qwen & \textbf{25.37} & \textbf{25.37} & \textbf{25.37} & -- & -- \\
+\midrule
+\multicolumn{7}{l}{\textit{(b) 36 designs, 24 proposal slots}} \\
+Proteomics & Luna & \textbf{37.27} & \textbf{37.27} & \textbf{37.27} & \textbf{37.27} & \textbf{37.27} \\
+Proteomics & Qwen & \textbf{37.27} & \textbf{37.27} & \textbf{37.27} & \textbf{37.27} & \textbf{37.27} \\
+VCC & Luna & \textbf{31.50} & 16.94 & 16.94 & 20.23 & 20.01 \\
+VCC & Qwen & \textbf{31.50} & \textbf{31.50} & \textbf{31.50} & 19.61 & 19.61 \\
+Norman & Luna & 15.48 & \textbf{35.48} & 23.11 & 23.11 & 23.11 \\
+Norman & Qwen & 15.48 & \textbf{22.30} & \textbf{22.30} & \textbf{22.30} & \textbf{22.30} \\
+Tahoe & Luna & 25.37 & 13.43 & \textbf{26.87} & 13.43 & 13.43 \\
+Tahoe & Qwen & 25.37 & \textbf{26.87} & \textbf{26.87} & 13.43 & 13.43 \\
+\bottomrule
+\end{tabularx}
+\end{table}

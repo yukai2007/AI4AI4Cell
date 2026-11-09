@@ -36,9 +36,7 @@ Two independent lung-cancer studies provide auxiliary measurements: Lin et al.\ 
 
 The Lin subset contains 28 drug conditions (20 source-training, eight source-development), spanning five training and two development drugs. Inputs are 24-hour, 10-$\mu$M protein log-fold changes, and the response is the mean of the three released CellTiter-Glo ratio measurements. The HCT16/HCT116 alias is excluded from auxiliary training. The Ruprecht subset contains 109 matched drug conditions (85 training, 24 development; 17 and five drugs respectively). Protein log-fold changes at 24 hours are paired with CellTiter-Glo EC50 values in $\log_{10}$ nM: 49 exact, 18 approximate and 42 right-censored outcomes. Squared distance to the encoded potency interval is the loss. The adapter treats explicit lower bounds and values at or above 10,000 nM as right-censored and encodes approximate values with a factor-of-two interval. These are analysis conventions. Profiling dose is not a model input, although source acquisition uses dose conditions chosen in relation to drug response. The target retains 386 training and 105 development examples, with 148 held-out observations across 92 compounds and 22 positives.
 
-All four source settings receive the same 100-round procedure. A two-proposal Luna loop is executed independently for each setting. These 12 fits and eight valid proposal calls produce eight fixed/loop evaluations, with identical held-out ranking scores within each source arm (Table~\ref{tab:completed-protein-loop}).
-
-\input{tables/completed_ablation/transfer_protein_loop}
+All four source settings receive the same 100-round procedure. A two-proposal Luna loop is executed independently for each setting. These 12 fits and eight valid proposal calls produce eight fixed/loop evaluations, with identical held-out ranking scores within each source arm. The following four source-specific scores therefore describe both selection modes; this pilot measures source transfer without an additional history-search gain.
 
 Target-only AP/AUROC are 34.98/74.75. Adding Lin yields 35.01/74.78, Ruprecht 35.50/74.28 and both 35.31/74.17. Paired compound bootstrap (1,000 resamples) gives 95\% intervals for the AP changes of [$-$0.20, 0.28], [$-$1.46, 2.64] and [$-$1.62, 2.49] points, respectively. These results measure transfer from two independent external studies and provide the source-matched controls for the two-proposal comparison.
 
@@ -72,8 +70,7 @@ The short study uses the 12 configurations in the registered executable design s
 
 Qwen uses the local sampling settings in Appendix A. The second proposer is the \texttt{gpt-5.6-luna} service, accessed in a text-only session with tool use disabled, with request metadata and responses retained. The comparison holds task messages, editable designs, training procedure and proposal budget fixed across backends. Service-level decoding controls and parameter count are not exposed by the Luna interface.
 
-\input{tables/completed_ablation/short6}
-\input{tables/completed_ablation/dynamics_short6}
+\input{tables/fbhk_followup_20261109/proposal_heldout_combined}
 
 All five endpoints have both backends and both search modes. Among the ten direct/loop pairs, Norman/Luna improves by 0.81 Top-1 points, DTI/Luna decreases by 0.33 AUROC points and eight pairs tie. The twenty DTI prefix scores were independently recomputed from saved predictions for all 5,505 test pairs, with checkpoint and output hashes verified. Figure~\ref{fig:completed-short-dev} shows the complete prespecified prefix sequence for every endpoint, alongside its development selection trajectory.
 
@@ -87,12 +84,11 @@ All five endpoints have both backends and both search modes. Among the ten direc
 \subsection*{B.4 Extended search and task-dependent saturation}
 The extended study expands the registered executable design space to 36 configurations: three learning rates, three weight decays, two coordinator-momentum values and two residual-head settings. It runs 24 proposal slots for both backends and modes on PTPC, VCC, Norman and Tahoe. Prefixes are 0, 1, 2, 4, 6, 8, 12, 16, 20 and 24. Initialization, full candidate fitting, development selection and invalid-slot accounting are unchanged. DTI's backend comparison is reported in the six-slot study in B.3.
 
-\input{tables/completed_ablation/long24}
-\input{tables/completed_ablation/dynamics_long24}
+\input{tables/fbhk_followup_20261109/proposal_dynamics_combined}
 
 Luna produces valid designs in all 192 attempted slots, and Qwen in 116 of 192. Across 16 mode trajectories, the primary development score is unchanged in the final eight slots in 12 cases, and the full score/loss selection key is unchanged in ten. Each trajectory retains 11--24 unvisited designs, so these plateaus occur before the registered executable design space is exhausted.
 
-Table~\ref{tab:completed-dynamics-long24} measures the first slot attaining the smaller terminal development score within each direct/loop pair, a common target reached by both modes. Luna reaches Norman's common target earlier with feedback (4 versus 22 slots), whereas direct search reaches Tahoe's target earlier (5 versus 13). Proteomics retains the initial design. Table~\ref{tab:completed-norman-events} connects Norman's trajectory to concrete configuration changes: reducing the learning rate to $10^{-4}$ gives an early development gain, and removing the residual head reaches the final primary-score target. Subsequent loss-tiebreak selections can change the retained design without increasing that primary score.
+Table~\ref{tab:completed-dynamics-long24} measures the first slot attaining the smaller terminal development score within each direct/loop pair, a common target reached by both modes. This target is defined after both trajectories finish: it describes their paths, not an operational stopping rule. All 24 slots were executed, so an earlier crossing does not measure saved compute. Luna reaches Norman's common target earlier with feedback (4 versus 22 slots), whereas direct search reaches Tahoe's target earlier (5 versus 13). Proteomics retains the initial design. Table~\ref{tab:completed-norman-events} connects Norman's trajectory to concrete configuration changes: reducing the learning rate to $10^{-4}$ gives an early development gain, and removing the residual head reaches the final primary-score target. Subsequent loss-tiebreak selections can change the retained design without increasing that primary score.
 
 
 Within this extended protocol, Qwen's VCC held-out Top-1 decreases from 31.50 at slot 6 to 19.61 at slot 24 while development selection improves. The development and held-out curves report this divergence alongside proposal validity and the remaining unvisited configurations.

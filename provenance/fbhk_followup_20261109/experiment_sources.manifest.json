@@ -1,0 +1,160 @@
+{
+  "archive_file_count": 44,
+  "archive_member_sha256": {
+    "README.txt": "165872d91480067a52027e2be3bbfb5f0695e73c8f22e3370d98da5abe873a65",
+    "aggregate_evidence/lab_identity_summary.json": "e6bc95040c9ce73f7a2bf06976a7a85899df545d3a2409c016b2cddbb3697060",
+    "aggregate_evidence/policy_summary.json": "2bcdfd89909a4d9b37ba739bddac76f87de4e63d9cfbe6ca385524f07231c459",
+    "extensions/fbhk_followup_20261109/lab_identity/run.py": "60b4de5415668d17b8165a6499e052e49dd51f7f33148266cacb86657643a4ab",
+    "extensions/fbhk_followup_20261109/lab_identity/test_run.py": "1c5a0dd86efd6fee2581c061077064146ba63f3566cfae7fc4fb11384c607797",
+    "extensions/fbhk_followup_20261109/lab_identity/verify_and_render.py": "6d754f9c38829c6d126063b1e0711507049305ee316593c8a77813ec48ba9dc2",
+    "extensions/fbhk_followup_20261109/tables/build_tables.py": "8279ecaf2ed1adca2fcb022b821a2c7bad785980af879a5ccd81d78403768fb6",
+    "extensions/fbhk_followup_20261109/tables/test_tables.py": "cc2da4e9425f1b22a6ae33407e5543e682bd2a2686df6e1180707e42a3cd9f7a",
+    "extensions/fbhk_followup_20261109/validation/prefix_audit.py": "b74f40978a4dc328a52fe335ed2cce7a10669581fedaca9248326e6ca3c62e94",
+    "extensions/fbhk_followup_20261109/validation/test_prefix_audit.py": "474f8be961a6e6342e7721d5114a27edf0fb2449cf6f1497c5f694f9cc2b458e",
+    "extensions/history_repair_20261109/authorize_heldout.py": "a6aa8648c1379978d93ca45a8a6df09dbaa9958e3c7ae09cf63b57a046411d2b",
+    "extensions/history_repair_20261109/backend.py": "42ebb695d0d9316502680c6e7318b6fd968cc8eccde77325328384fd473fedf3",
+    "extensions/history_repair_20261109/backend_v3.py": "13d7d42e05ede0db2b44010828994d0dfcc0a23275305807f71892675c940285",
+    "extensions/history_repair_20261109/controls.py": "87621e6c7173df366eb2f3d33a463291866c0c25345e2ee2fd8fa751e830069e",
+    "extensions/history_repair_20261109/evidence_cards.py": "25210f248a41fcd89248716719658880af166f42266b96562fdd41d5638874f6",
+    "extensions/history_repair_20261109/report_search.py": "48a080da3d1129577d417bf851ef8cd8fdb17ba5853fb081b72770680d1cd273",
+    "extensions/history_repair_20261109/search.py": "e5b038d78e9347213776f80e734fcd52c1aed855b4299f44cd64adc9f4e5195b",
+    "extensions/history_repair_20261109/search_v3.py": "318de5416f1d773f813551952d7d91d5a36fb38067b27106f794e2305b5f1967",
+    "extensions/history_repair_20261109/test_backend.py": "75df34f8b790d68c65187121bb4135656a0d7fe7e64e9ef2c88021cdea69ecd9",
+    "extensions/history_repair_20261109/test_backend_v3.py": "acf8beb202756acc776b16990f0e80c9f884147abe353e1a8d80183b4aeaf181",
+    "extensions/history_repair_20261109/test_controls.py": "a53a2db9f3490730873408bb5e528dd34a332e85f1eb2da3248ca74557b1956d",
+    "extensions/history_repair_20261109/test_evidence_cards.py": "a75ada22255dba63f9e395584fa031bbf88912320fb4ea34fb7618ad881ef5e2",
+    "extensions/history_repair_20261109/test_report_search.py": "27cc04ff33e13cdfb2359ab631fa2fba9ac7f2df814d972eb4d14f63529f4683",
+    "extensions/history_repair_20261109/test_search.py": "5c576a086fec85823f8be6b471a68eea0761cb197b984daf8d921698b785724b",
+    "extensions/history_repair_20261109/test_search_v3.py": "ccba0a20a42741665cbd2b453de9eeb85f0cc413c5e4dbcaa1d937200d555c0f",
+    "extensions/history_repair_20261109/training_cache.py": "e66abbd66a61e6c9e80efb3ed9df3c5cc20141b716d9998d22766225600136f8",
+    "extensions/history_repair_20261109/training_data.py": "d55fe7937eeb31086d497f1725f8ec4dbaae8a65dd834ecae18569eba9988a36",
+    "extensions/history_repair_20261109/training_heldout.py": "2b41f87af4575ebeea2f7a2e9fd6ccb752952b917c7b0317c15bd658ee12cbc1",
+    "extensions/history_repair_20261109/training_heldout_test.py": "505f5ea0fb9e3a69598b7b4a97582d98deef7ef21e3d66c167b41cc47e604c81",
+    "extensions/history_repair_20261109/training_heldout_verify.py": "6a862bcdeac3e21803b27332afc48dfbbd732655e3c68b880a238995e56b0197",
+    "extensions/history_repair_20261109/training_test.py": "64e159ef94ccc54e03b5f5a9466378f474c940f5ff8027e65f55b2d446e8a6c9",
+    "extensions/history_repair_20261109/training_verify.py": "f9ad035f1df8d7df9a4a12b3015a435c4bf785b29e722ff2c553381096dad985",
+    "paper/tools/package_fbhk_followup.py": "458373bc861ddc9249ed99311c23a8651cf995877d69be02e9ded20723c7185f",
+    "paper/tools/test_package_fbhk_followup.py": "07f8202ad4c5c58f4436fde5fb4e07ec71c5f0e804f637bd77d4e7e779e2530b",
+    "results/fbhk_followup_20261109/lab_identity/protocol.json": "4de5c764a9f114597474cd3880d7c1c1806e82af70a78eb18d19d8abff037d24",
+    "results/history_repair_20261109/search_genetic_v1/protocol.json": "34b6c1a33033b216d86c5dc80b15f1267d88050ea7896a6dadf8388e8507c284",
+    "results/history_repair_20261109/search_genetic_v1/registration.json": "ec4fb4ad86425e591c4b55a7756beac05aa32e85a06a9331bf0164f6f3d042db",
+    "results/history_repair_20261109/search_genetic_v2/protocol.json": "2f0179e669a3c4fa8f3bc6de169674d163bbfbac82d85c3041096bdade4f1cca",
+    "results/history_repair_20261109/search_genetic_v2/registration.json": "93bb8ebbd19f9d0518b96b5933edaa2418a9557fc9146987357da9a78f8ea60b",
+    "results/history_repair_20261109/search_genetic_v3/protocol.json": "20622d2ad3d445f0d2370d2622c01b84b7cdde97b1a421b17a8dc85497749dd8",
+    "results/history_repair_20261109/search_genetic_v3/registration.json": "6b2bf7a93fbce6e85995f8a9a6259962f63f05d9b80a5f3d8c8b7f8cac5d6d6a",
+    "results/history_repair_20261109/training_genetic_v1/training_registration.json": "7c64216c1daa258c162b0f654414e2d7649827756e327095beb95f23cbda11ab",
+    "results/history_repair_20261109/training_heldout_genetic_v1/authorization.json": "da668c00680f0584238e18f75372003f0bc358ebaae504d77dd5a927d73f0a0b",
+    "results/history_repair_20261109/training_heldout_genetic_v1/protocol.json": "f94def12bf1f54ef2db870e528477ec9140aec19659dd80b3ed78743ad71b150"
+  },
+  "archive_sha256": "593f13cbb17dea0a775e01d57ebbc2774b5d4172e4b642cb19086ea730678b37",
+  "includes_biological_measurements": false,
+  "includes_checkpoints": false,
+  "includes_credentials": false,
+  "includes_individual_gene_records": false,
+  "original_policy_report_sha256": "bf783342ddc61604e075d1f48c8330e40833f4e11c211637d990bfab870c2de3",
+  "policy_summary_sha256": "2bcdfd89909a4d9b37ba739bddac76f87de4e63d9cfbe6ca385524f07231c459",
+  "protocol_metadata": {
+    "results/fbhk_followup_20261109/lab_identity/protocol.json": {
+      "archive_sha256": "4de5c764a9f114597474cd3880d7c1c1806e82af70a78eb18d19d8abff037d24",
+      "byte_identical_to_source": true,
+      "omitted_fields": [],
+      "source_sha256": "4de5c764a9f114597474cd3880d7c1c1806e82af70a78eb18d19d8abff037d24"
+    },
+    "results/history_repair_20261109/search_genetic_v1/protocol.json": {
+      "archive_sha256": "34b6c1a33033b216d86c5dc80b15f1267d88050ea7896a6dadf8388e8507c284",
+      "byte_identical_to_source": true,
+      "omitted_fields": [],
+      "source_sha256": "34b6c1a33033b216d86c5dc80b15f1267d88050ea7896a6dadf8388e8507c284"
+    },
+    "results/history_repair_20261109/search_genetic_v1/registration.json": {
+      "archive_sha256": "ec4fb4ad86425e591c4b55a7756beac05aa32e85a06a9331bf0164f6f3d042db",
+      "byte_identical_to_source": true,
+      "omitted_fields": [],
+      "source_sha256": "ec4fb4ad86425e591c4b55a7756beac05aa32e85a06a9331bf0164f6f3d042db"
+    },
+    "results/history_repair_20261109/search_genetic_v2/protocol.json": {
+      "archive_sha256": "2f0179e669a3c4fa8f3bc6de169674d163bbfbac82d85c3041096bdade4f1cca",
+      "byte_identical_to_source": true,
+      "omitted_fields": [],
+      "source_sha256": "2f0179e669a3c4fa8f3bc6de169674d163bbfbac82d85c3041096bdade4f1cca"
+    },
+    "results/history_repair_20261109/search_genetic_v2/registration.json": {
+      "archive_sha256": "93bb8ebbd19f9d0518b96b5933edaa2418a9557fc9146987357da9a78f8ea60b",
+      "byte_identical_to_source": true,
+      "omitted_fields": [],
+      "source_sha256": "93bb8ebbd19f9d0518b96b5933edaa2418a9557fc9146987357da9a78f8ea60b"
+    },
+    "results/history_repair_20261109/search_genetic_v3/protocol.json": {
+      "archive_sha256": "20622d2ad3d445f0d2370d2622c01b84b7cdde97b1a421b17a8dc85497749dd8",
+      "byte_identical_to_source": true,
+      "omitted_fields": [],
+      "source_sha256": "20622d2ad3d445f0d2370d2622c01b84b7cdde97b1a421b17a8dc85497749dd8"
+    },
+    "results/history_repair_20261109/search_genetic_v3/registration.json": {
+      "archive_sha256": "6b2bf7a93fbce6e85995f8a9a6259962f63f05d9b80a5f3d8c8b7f8cac5d6d6a",
+      "byte_identical_to_source": true,
+      "omitted_fields": [],
+      "source_sha256": "6b2bf7a93fbce6e85995f8a9a6259962f63f05d9b80a5f3d8c8b7f8cac5d6d6a"
+    },
+    "results/history_repair_20261109/training_genetic_v1/training_registration.json": {
+      "archive_sha256": "7c64216c1daa258c162b0f654414e2d7649827756e327095beb95f23cbda11ab",
+      "byte_identical_to_source": true,
+      "omitted_fields": [],
+      "source_sha256": "7c64216c1daa258c162b0f654414e2d7649827756e327095beb95f23cbda11ab"
+    },
+    "results/history_repair_20261109/training_heldout_genetic_v1/authorization.json": {
+      "archive_sha256": "da668c00680f0584238e18f75372003f0bc358ebaae504d77dd5a927d73f0a0b",
+      "byte_identical_to_source": true,
+      "omitted_fields": [],
+      "source_sha256": "da668c00680f0584238e18f75372003f0bc358ebaae504d77dd5a927d73f0a0b"
+    },
+    "results/history_repair_20261109/training_heldout_genetic_v1/protocol.json": {
+      "archive_sha256": "f94def12bf1f54ef2db870e528477ec9140aec19659dd80b3ed78743ad71b150",
+      "byte_identical_to_source": false,
+      "omitted_fields": [
+        "/excluded_condition_ids"
+      ],
+      "source_sha256": "f0bfe10894e7cdd0697d2842d54899eb701d03b4357debf75b311b63d3ce085c"
+    }
+  },
+  "reproduce_command": "python tools/package_fbhk_followup.py --check",
+  "requirements": "Requires the existing BioCoLoop research checkout, its task adapters and scoring code, the authorized CellUMM/Replogle/Nadig and original task datasets, frozen scDEBART weights and compatible model dependencies, locally deployed Qwen2.5-7B-Instruct for controller rollouts, and registered feature/candidate caches. Python dependencies include PyTorch, NumPy, pandas, SciPy, scikit-learn, h5py and the original model libraries. Absolute local paths identify the evaluated run and must be configured in another environment. Source hashes identify dependencies; no raw biological data, predictions, memberships, checkpoints, model weights or credentials are distributed in this supplement. The lab-identity analysis additionally requires the earlier provenance/rebuttal_20261109/experiment_sources.zip (including extensions/rebuttal_20261109/allocation/cpu_runtime.py, allocation_shared.py and run.py) and the full research checkout's extensions/core_ablation_20260922/common.py, extensions/unified_bio_20260918/core_v3.py and task adapters. The earlier source archive alone does not include all these dependencies.",
+  "schema": "fbhk-followup-source-package-v1",
+  "selection": "All Python sources from both extension directories; the ten explicitly allowlisted protocol/registration/authorization JSON files, with individual-level arrays omitted; complete aggregate policy summaries.",
+  "source_file_count": 31,
+  "source_sha256": {
+    "extensions/fbhk_followup_20261109/lab_identity/run.py": "60b4de5415668d17b8165a6499e052e49dd51f7f33148266cacb86657643a4ab",
+    "extensions/fbhk_followup_20261109/lab_identity/test_run.py": "1c5a0dd86efd6fee2581c061077064146ba63f3566cfae7fc4fb11384c607797",
+    "extensions/fbhk_followup_20261109/lab_identity/verify_and_render.py": "6d754f9c38829c6d126063b1e0711507049305ee316593c8a77813ec48ba9dc2",
+    "extensions/fbhk_followup_20261109/tables/build_tables.py": "8279ecaf2ed1adca2fcb022b821a2c7bad785980af879a5ccd81d78403768fb6",
+    "extensions/fbhk_followup_20261109/tables/test_tables.py": "cc2da4e9425f1b22a6ae33407e5543e682bd2a2686df6e1180707e42a3cd9f7a",
+    "extensions/fbhk_followup_20261109/validation/prefix_audit.py": "b74f40978a4dc328a52fe335ed2cce7a10669581fedaca9248326e6ca3c62e94",
+    "extensions/fbhk_followup_20261109/validation/test_prefix_audit.py": "474f8be961a6e6342e7721d5114a27edf0fb2449cf6f1497c5f694f9cc2b458e",
+    "extensions/history_repair_20261109/authorize_heldout.py": "a6aa8648c1379978d93ca45a8a6df09dbaa9958e3c7ae09cf63b57a046411d2b",
+    "extensions/history_repair_20261109/backend.py": "42ebb695d0d9316502680c6e7318b6fd968cc8eccde77325328384fd473fedf3",
+    "extensions/history_repair_20261109/backend_v3.py": "13d7d42e05ede0db2b44010828994d0dfcc0a23275305807f71892675c940285",
+    "extensions/history_repair_20261109/controls.py": "87621e6c7173df366eb2f3d33a463291866c0c25345e2ee2fd8fa751e830069e",
+    "extensions/history_repair_20261109/evidence_cards.py": "25210f248a41fcd89248716719658880af166f42266b96562fdd41d5638874f6",
+    "extensions/history_repair_20261109/report_search.py": "48a080da3d1129577d417bf851ef8cd8fdb17ba5853fb081b72770680d1cd273",
+    "extensions/history_repair_20261109/search.py": "e5b038d78e9347213776f80e734fcd52c1aed855b4299f44cd64adc9f4e5195b",
+    "extensions/history_repair_20261109/search_v3.py": "318de5416f1d773f813551952d7d91d5a36fb38067b27106f794e2305b5f1967",
+    "extensions/history_repair_20261109/test_backend.py": "75df34f8b790d68c65187121bb4135656a0d7fe7e64e9ef2c88021cdea69ecd9",
+    "extensions/history_repair_20261109/test_backend_v3.py": "acf8beb202756acc776b16990f0e80c9f884147abe353e1a8d80183b4aeaf181",
+    "extensions/history_repair_20261109/test_controls.py": "a53a2db9f3490730873408bb5e528dd34a332e85f1eb2da3248ca74557b1956d",
+    "extensions/history_repair_20261109/test_evidence_cards.py": "a75ada22255dba63f9e395584fa031bbf88912320fb4ea34fb7618ad881ef5e2",
+    "extensions/history_repair_20261109/test_report_search.py": "27cc04ff33e13cdfb2359ab631fa2fba9ac7f2df814d972eb4d14f63529f4683",
+    "extensions/history_repair_20261109/test_search.py": "5c576a086fec85823f8be6b471a68eea0761cb197b984daf8d921698b785724b",
+    "extensions/history_repair_20261109/test_search_v3.py": "ccba0a20a42741665cbd2b453de9eeb85f0cc413c5e4dbcaa1d937200d555c0f",
+    "extensions/history_repair_20261109/training_cache.py": "e66abbd66a61e6c9e80efb3ed9df3c5cc20141b716d9998d22766225600136f8",
+    "extensions/history_repair_20261109/training_data.py": "d55fe7937eeb31086d497f1725f8ec4dbaae8a65dd834ecae18569eba9988a36",
+    "extensions/history_repair_20261109/training_heldout.py": "2b41f87af4575ebeea2f7a2e9fd6ccb752952b917c7b0317c15bd658ee12cbc1",
+    "extensions/history_repair_20261109/training_heldout_test.py": "505f5ea0fb9e3a69598b7b4a97582d98deef7ef21e3d66c167b41cc47e604c81",
+    "extensions/history_repair_20261109/training_heldout_verify.py": "6a862bcdeac3e21803b27332afc48dfbbd732655e3c68b880a238995e56b0197",
+    "extensions/history_repair_20261109/training_test.py": "64e159ef94ccc54e03b5f5a9466378f474c940f5ff8027e65f55b2d446e8a6c9",
+    "extensions/history_repair_20261109/training_verify.py": "f9ad035f1df8d7df9a4a12b3015a435c4bf785b29e722ff2c553381096dad985",
+    "paper/tools/package_fbhk_followup.py": "458373bc861ddc9249ed99311c23a8651cf995877d69be02e9ded20723c7185f",
+    "paper/tools/test_package_fbhk_followup.py": "07f8202ad4c5c58f4436fde5fb4e07ec71c5f0e804f637bd77d4e7e779e2530b"
+  },
+  "standalone": false,
+  "status": "PASS"
+}

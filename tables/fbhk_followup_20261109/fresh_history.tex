@@ -1,0 +1,26 @@
+\begin{table}[htbp]
+\caption{Fresh history-feedback comparison on the gene-disjoint, four-context cell benchmark (three paired training/controller seeds). This benchmark is separate from the original VCC, Norman and Tahoe tasks. Top-1 scores are percentages; $\pm$ reports the sample standard deviation across seeds. Search methods share the same 16 designs, four clients, development panels and six proposal slots; each valid candidate is fitted for 20 rounds. Fits include the initial-design fit. Random search integrates all size-six subsets of the 15 non-initial designs and selects using development evidence, not test scores. Raw history has three invalid slots across 18; direct and structured history complete all 18. Bold marks the best mean development or test score.}
+\label{tab:fresh-history-comparison}
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{@{}Xrrr@{}}
+\toprule
+Search method & Development & Held-out & Fits \\
+\midrule
+Fully trained fixed D00 & $22.40 \pm 0.07$ & $21.43 \pm 0.10$ & 1 \\
+Direct (no feedback) & $22.68 \pm 0.25$ & $22.62 \pm 0.21$ & 7 \\
+Raw history & $22.68 \pm 0.25$ & $22.62 \pm 0.21$ & $6 \pm 1$ \\
+Structured history & $23.38 \pm 0.48$ & $22.89 \pm 0.56$ & 7 \\
+Random without replacement & $23.06 \pm 0.24$ & $22.67 \pm 0.21$ & 7 \\
+GP--EI & $\mathbf{23.60 \pm 0.32}$ & $\mathbf{23.15 \pm 0.35}$ & 7 \\
+\midrule
+\multicolumn{4}{l}{\textit{Paired held-out contrasts (percentage points)}} \\
+Contrast & Mean difference & 95\% CI & W/T/L \\
+Structured $-$ Direct & $+0.263$ & $[-1.022, 1.568]$ & 2/1/0 \\
+Structured $-$ Random & $+0.220$ & $[-0.290, 0.738]$ & 2/0/1 \\
+Structured $-$ GP--EI & $-0.264$ & $[-0.930, 0.413]$ & 0/2/1 \\
+\midrule
+\multicolumn{4}{@{}p{\linewidth}@{}}{\footnotesize W/T/L counts paired seeds. Confidence intervals use 10,000 paired perturbation-gene bootstrap resamples and describe conditional test-gene uncertainty for the fixed selected models, rather than uncertainty over additional training or controller runs.} \\
+\bottomrule
+\end{tabularx}
+\end{table}

@@ -1,0 +1,5435 @@
+{
+  "new_study": {
+    "bootstrap": {
+      "cluster": "global perturbation gene",
+      "estimand": "equal-context mean, averaged over the three fixed training/controller seeds",
+      "interval": "two-sided 95% percentile",
+      "pairing": "same gene resample across all contexts, seeds and policies",
+      "replicates": 10000,
+      "scope": "Conditional test-gene uncertainty for fixed trained/selected models; training-seed SD is reported separately",
+      "seed": 110925
+    },
+    "contrasts": [
+      {
+        "comparison": "structured_minus_direct",
+        "difference": 0.002634549762055932,
+        "gene_cluster_ci95": [
+          -0.010222474756368281,
+          0.015676776378069836
+        ],
+        "losses": 0,
+        "per_seed_difference": {
+          "61": 0.0008788084164030319,
+          "62": 0.0,
+          "63": 0.007024840869764848
+        },
+        "ties": 1,
+        "wins": 2
+      },
+      {
+        "comparison": "structured_minus_random",
+        "difference": 0.002200409893092281,
+        "gene_cluster_ci95": [
+          -0.002896052016035038,
+          0.007381659839811642
+        ],
+        "losses": 1,
+        "per_seed_difference": {
+          "61": 0.0030678541442029084,
+          "62": -0.0023573675604554034,
+          "63": 0.0058907430955291995
+        },
+        "ties": 0,
+        "wins": 2
+      },
+      {
+        "comparison": "structured_minus_gp_ei",
+        "difference": -0.0026369690464683737,
+        "gene_cluster_ci95": [
+          -0.009295453216642015,
+          0.004128968990335201
+        ],
+        "losses": 1,
+        "per_seed_difference": {
+          "61": 0.0,
+          "62": -0.007910907139405204,
+          "63": 0.0
+        },
+        "ties": 2,
+        "wins": 0
+      }
+    ],
+    "development_prefixes": {
+      "direct": [
+        {
+          "mean": 0.22402866743967756,
+          "n": 3,
+          "sample_sd": 0.0007486536771352826
+        },
+        {
+          "mean": 0.22402866743967756,
+          "n": 3,
+          "sample_sd": 0.0007486536771352826
+        },
+        {
+          "mean": 0.22402866743967756,
+          "n": 3,
+          "sample_sd": 0.0007486536771352826
+        },
+        {
+          "mean": 0.22402866743967756,
+          "n": 3,
+          "sample_sd": 0.0007486536771352826
+        },
+        {
+          "mean": 0.2261215680823184,
+          "n": 3,
+          "sample_sd": 0.0030883703607789688
+        },
+        {
+          "mean": 0.22680901965594533,
+          "n": 3,
+          "sample_sd": 0.0024563870713603373
+        },
+        {
+          "mean": 0.22680901965594533,
+          "n": 3,
+          "sample_sd": 0.0024563870713603373
+        }
+      ],
+      "gp_ei": [
+        {
+          "mean": 0.22402866743967756,
+          "n": 3,
+          "sample_sd": 0.0007486536771352826
+        },
+        {
+          "mean": 0.22402866743967756,
+          "n": 3,
+          "sample_sd": 0.0007486536771352826
+        },
+        {
+          "mean": 0.22402866743967756,
+          "n": 3,
+          "sample_sd": 0.0007486536771352826
+        },
+        {
+          "mean": 0.22697744537175563,
+          "n": 3,
+          "sample_sd": 0.005032866165565954
+        },
+        {
+          "mean": 0.2317325694054667,
+          "n": 3,
+          "sample_sd": 0.00791706157213848
+        },
+        {
+          "mean": 0.23604843224089772,
+          "n": 3,
+          "sample_sd": 0.003198110642884853
+        },
+        {
+          "mean": 0.23604843224089772,
+          "n": 3,
+          "sample_sd": 0.003198110642884853
+        }
+      ],
+      "random": [
+        {
+          "mean": 0.22402866743967756,
+          "n": 3,
+          "sample_sd": 0.0007486536771352826
+        },
+        {
+          "mean": 0.22535698090663941,
+          "n": 3,
+          "sample_sd": 0.000925149881769792
+        },
+        {
+          "mean": 0.22658408033619237,
+          "n": 3,
+          "sample_sd": 0.0012277541632536163
+        },
+        {
+          "mean": 0.22771681189051174,
+          "n": 3,
+          "sample_sd": 0.0015542883957894605
+        },
+        {
+          "mean": 0.22876173421011353,
+          "n": 3,
+          "sample_sd": 0.0018692769776549342
+        },
+        {
+          "mean": 0.2297251184138543,
+          "n": 3,
+          "sample_sd": 0.0021600108309829157
+        },
+        {
+          "mean": 0.2306129480989313,
+          "n": 3,
+          "sample_sd": 0.0024211521910472433
+        }
+      ],
+      "raw": [
+        {
+          "mean": 0.22402866743967756,
+          "n": 3,
+          "sample_sd": 0.0007486536771352826
+        },
+        {
+          "mean": 0.22402866743967756,
+          "n": 3,
+          "sample_sd": 0.0007486536771352826
+        },
+        {
+          "mean": 0.22421827980572673,
+          "n": 3,
+          "sample_sd": 0.00053960012027588
+        },
+        {
+          "mean": 0.22680901965594533,
+          "n": 3,
+          "sample_sd": 0.0024563870713603373
+        },
+        {
+          "mean": 0.22680901965594533,
+          "n": 3,
+          "sample_sd": 0.0024563870713603373
+        },
+        {
+          "mean": 0.22680901965594533,
+          "n": 3,
+          "sample_sd": 0.0024563870713603373
+        },
+        {
+          "mean": 0.22680901965594533,
+          "n": 3,
+          "sample_sd": 0.0024563870713603373
+        }
+      ],
+      "structured": [
+        {
+          "mean": 0.22402866743967756,
+          "n": 3,
+          "sample_sd": 0.0007486536771352826
+        },
+        {
+          "mean": 0.22402866743967756,
+          "n": 3,
+          "sample_sd": 0.0007486536771352826
+        },
+        {
+          "mean": 0.22421827980572673,
+          "n": 3,
+          "sample_sd": 0.00053960012027588
+        },
+        {
+          "mean": 0.22664822409281318,
+          "n": 3,
+          "sample_sd": 0.002613095062174612
+        },
+        {
+          "mean": 0.22664822409281318,
+          "n": 3,
+          "sample_sd": 0.002613095062174612
+        },
+        {
+          "mean": 0.22664822409281318,
+          "n": 3,
+          "sample_sd": 0.002613095062174612
+        },
+        {
+          "mean": 0.23382547004810753,
+          "n": 3,
+          "sample_sd": 0.004825651144556058
+        }
+      ]
+    },
+    "interpretation": "Random expected scores integrate development-selected candidate probabilities, not held-out selection. Three-seed SD and conditional gene-cluster confidence intervals quantify different uncertainties.",
+    "results": [
+      {
+        "development": {
+          "mean": 0.22402866743967756,
+          "n": 3,
+          "sample_sd": 0.0007486536771352826
+        },
+        "fitting_cost": {
+          "candidate_fit_count": {
+            "mean": 1.0,
+            "n": 3,
+            "sample_sd": 0.0
+          },
+          "examples_seen": {
+            "mean": 76120.0,
+            "n": 3,
+            "sample_sd": 0.0
+          },
+          "measured_fit_gpu_hours_sum": {
+            "mean": 0.0031086260756408727,
+            "n": 3,
+            "sample_sd": 0.0006791176736734999
+          },
+          "measured_fit_seconds_sum": {
+            "mean": 11.191053872307142,
+            "n": 3,
+            "sample_sd": 2.4448236252246005
+          },
+          "optimizer_steps": {
+            "mean": 2420.0,
+            "n": 3,
+            "sample_sd": 0.0
+          },
+          "rounds": {
+            "mean": 20.0,
+            "n": 3,
+            "sample_sd": 0.0
+          }
+        },
+        "heldout_mean": 0.21427917295387103,
+        "heldout_per_seed": [
+          {
+            "primary": 0.2132542681813357,
+            "seed": 61
+          },
+          {
+            "primary": 0.21442228564819077,
+            "seed": 62
+          },
+          {
+            "primary": 0.21516096503208665,
+            "seed": 63
+          }
+        ],
+        "heldout_seed_sd": 0.0009613709755461168,
+        "invalid_slots": 0,
+        "label": "Fully trained fixed D00",
+        "llm_logical_usage_total": {
+          "calls": 0,
+          "generation_seconds": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "total_attempt_seconds": 0
+        },
+        "policy": "fixed_D00"
+      },
+      {
+        "development": {
+          "mean": 0.22680901965594533,
+          "n": 3,
+          "sample_sd": 0.0024563870713603373
+        },
+        "fitting_cost": {
+          "candidate_fit_count": {
+            "mean": 7.0,
+            "n": 3,
+            "sample_sd": 0.0
+          },
+          "examples_seen": {
+            "mean": 532840.0,
+            "n": 3,
+            "sample_sd": 0.0
+          },
+          "measured_fit_gpu_hours_sum": {
+            "mean": 0.021585990796383056,
+            "n": 3,
+            "sample_sd": 0.003134558428652086
+          },
+          "measured_fit_seconds_sum": {
+            "mean": 77.709566866979,
+            "n": 3,
+            "sample_sd": 11.284410343147508
+          },
+          "optimizer_steps": {
+            "mean": 16940.0,
+            "n": 3,
+            "sample_sd": 0.0
+          },
+          "rounds": {
+            "mean": 140.0,
+            "n": 3,
+            "sample_sd": 0.0
+          }
+        },
+        "heldout_mean": 0.2262465394751133,
+        "heldout_per_seed": [
+          {
+            "primary": 0.22699546484551017,
+            "seed": 61
+          },
+          {
+            "primary": 0.22386639837592487,
+            "seed": 62
+          },
+          {
+            "primary": 0.22787775520390474,
+            "seed": 63
+          }
+        ],
+        "heldout_seed_sd": 0.002107940418551553,
+        "invalid_slots": 0,
+        "label": "Direct (no feedback)",
+        "llm_logical_usage_total": {
+          "calls": 18,
+          "generation_seconds": 60.60721277631819,
+          "input_tokens": 38276,
+          "output_tokens": 2903,
+          "total_attempt_seconds": 210.09470839053392
+        },
+        "policy": "direct"
+      },
+      {
+        "development": {
+          "mean": 0.22680901965594533,
+          "n": 3,
+          "sample_sd": 0.0024563870713603373
+        },
+        "fitting_cost": {
+          "candidate_fit_count": {
+            "mean": 6.0,
+            "n": 3,
+            "sample_sd": 1.0
+          },
+          "examples_seen": {
+            "mean": 456720.0,
+            "n": 3,
+            "sample_sd": 76120.0
+          },
+          "measured_fit_gpu_hours_sum": {
+            "mean": 0.016469804365187884,
+            "n": 3,
+            "sample_sd": 0.0012365484448922878
+          },
+          "measured_fit_seconds_sum": {
+            "mean": 59.29129571467638,
+            "n": 3,
+            "sample_sd": 4.451574401612232
+          },
+          "optimizer_steps": {
+            "mean": 14520.0,
+            "n": 3,
+            "sample_sd": 2420.0
+          },
+          "rounds": {
+            "mean": 120.0,
+            "n": 3,
+            "sample_sd": 20.0
+          }
+        },
+        "heldout_mean": 0.2262465394751133,
+        "heldout_per_seed": [
+          {
+            "primary": 0.22699546484551017,
+            "seed": 61
+          },
+          {
+            "primary": 0.22386639837592487,
+            "seed": 62
+          },
+          {
+            "primary": 0.22787775520390474,
+            "seed": 63
+          }
+        ],
+        "heldout_seed_sd": 0.002107940418551553,
+        "invalid_slots": 3,
+        "label": "Raw history",
+        "llm_logical_usage_total": {
+          "calls": 24,
+          "generation_seconds": 96.47687618155032,
+          "input_tokens": 224884,
+          "output_tokens": 4036,
+          "total_attempt_seconds": 246.32969290576875
+        },
+        "policy": "raw"
+      },
+      {
+        "development": {
+          "mean": 0.23382547004810753,
+          "n": 3,
+          "sample_sd": 0.004825651144556058
+        },
+        "fitting_cost": {
+          "candidate_fit_count": {
+            "mean": 7.0,
+            "n": 3,
+            "sample_sd": 0.0
+          },
+          "examples_seen": {
+            "mean": 532840.0,
+            "n": 3,
+            "sample_sd": 0.0
+          },
+          "measured_fit_gpu_hours_sum": {
+            "mean": 0.02103673952165991,
+            "n": 3,
+            "sample_sd": 0.0024592603896373853
+          },
+          "measured_fit_seconds_sum": {
+            "mean": 75.73226227797568,
+            "n": 3,
+            "sample_sd": 8.85333740269459
+          },
+          "optimizer_steps": {
+            "mean": 16940.0,
+            "n": 3,
+            "sample_sd": 0.0
+          },
+          "rounds": {
+            "mean": 140.0,
+            "n": 3,
+            "sample_sd": 0.0
+          }
+        },
+        "heldout_mean": 0.22888108923716924,
+        "heldout_per_seed": [
+          {
+            "primary": 0.2278742732619132,
+            "seed": 61
+          },
+          {
+            "primary": 0.22386639837592487,
+            "seed": 62
+          },
+          {
+            "primary": 0.2349025960736696,
+            "seed": 63
+          }
+        ],
+        "heldout_seed_sd": 0.005586561886522829,
+        "invalid_slots": 0,
+        "label": "Structured history",
+        "llm_logical_usage_total": {
+          "calls": 21,
+          "generation_seconds": 81.68714076653123,
+          "input_tokens": 209752,
+          "output_tokens": 3318,
+          "total_attempt_seconds": 231.56926154810935
+        },
+        "policy": "structured"
+      },
+      {
+        "development": {
+          "mean": 0.2306129480989313,
+          "n": 3,
+          "sample_sd": 0.0024211521910472433
+        },
+        "fitting_cost": {
+          "candidate_fit_count": {
+            "mean": 7.0,
+            "n": 3,
+            "sample_sd": 0.0
+          },
+          "examples_seen": {
+            "mean": 532840.0,
+            "n": 3,
+            "sample_sd": 0.0
+          },
+          "measured_fit_gpu_hours_sum": {
+            "mean": 0.02042155736964196,
+            "n": 3,
+            "sample_sd": 0.0011498474858765287
+          },
+          "measured_fit_seconds_sum": {
+            "mean": 73.51760653071105,
+            "n": 3,
+            "sample_sd": 4.139450949155505
+          },
+          "optimizer_steps": {
+            "mean": 16940.0,
+            "n": 3,
+            "sample_sd": 0.0
+          },
+          "rounds": {
+            "mean": 140.0,
+            "n": 3,
+            "sample_sd": 0.0
+          }
+        },
+        "heldout_mean": 0.22668067934407696,
+        "heldout_per_seed": [
+          {
+            "primary": 0.2248064191177103,
+            "seed": 61
+          },
+          {
+            "primary": 0.22622376593638027,
+            "seed": 62
+          },
+          {
+            "primary": 0.2290118529781404,
+            "seed": 63
+          }
+        ],
+        "heldout_seed_sd": 0.002139625173999587,
+        "invalid_slots": 0,
+        "label": "Random without replacement",
+        "llm_logical_usage_total": {
+          "calls": 0,
+          "generation_seconds": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "total_attempt_seconds": 0
+        },
+        "policy": "random"
+      },
+      {
+        "development": {
+          "mean": 0.23604843224089772,
+          "n": 3,
+          "sample_sd": 0.003198110642884853
+        },
+        "fitting_cost": {
+          "candidate_fit_count": {
+            "mean": 7.0,
+            "n": 3,
+            "sample_sd": 0.0
+          },
+          "examples_seen": {
+            "mean": 532840.0,
+            "n": 3,
+            "sample_sd": 0.0
+          },
+          "measured_fit_gpu_hours_sum": {
+            "mean": 0.02204888638988551,
+            "n": 3,
+            "sample_sd": 0.0014463356289986875
+          },
+          "measured_fit_seconds_sum": {
+            "mean": 79.37599100358784,
+            "n": 3,
+            "sample_sd": 5.206808264395278
+          },
+          "optimizer_steps": {
+            "mean": 16940.0,
+            "n": 3,
+            "sample_sd": 0.0
+          },
+          "rounds": {
+            "mean": 140.0,
+            "n": 3,
+            "sample_sd": 0.0
+          }
+        },
+        "heldout_mean": 0.2315180582836376,
+        "heldout_per_seed": [
+          {
+            "primary": 0.2278742732619132,
+            "seed": 61
+          },
+          {
+            "primary": 0.23177730551533007,
+            "seed": 62
+          },
+          {
+            "primary": 0.2349025960736696,
+            "seed": 63
+          }
+        ],
+        "heldout_seed_sd": 0.003521326061573815,
+        "invalid_slots": 0,
+        "label": "GP--EI",
+        "llm_logical_usage_total": {
+          "calls": 0,
+          "generation_seconds": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "total_attempt_seconds": 0
+        },
+        "policy": "gp_ei"
+      }
+    ],
+    "training_controller_seeds": [
+      61,
+      62,
+      63
+    ]
+  },
+  "old_studies": [
+    {
+      "backend": "luna",
+      "common_development_target": 0.9470754861749521,
+      "design_count": 12,
+      "modes": {
+        "direct": {
+          "final": 0.9497312538019983,
+          "first_common_target": 0,
+          "first_higher_terminal_target": 6,
+          "last_primary_improvement": 6,
+          "last_retained": 6,
+          "retained": 1,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 0.29333661870119765,
+              "primary": 0.9470754861749521,
+              "slot": 0
+            },
+            {
+              "accepted": false,
+              "loss": 0.29333661870119765,
+              "primary": 0.9470754861749521,
+              "slot": 1
+            },
+            {
+              "accepted": false,
+              "loss": 0.29333661870119765,
+              "primary": 0.9470754861749521,
+              "slot": 2
+            },
+            {
+              "accepted": false,
+              "loss": 0.29333661870119765,
+              "primary": 0.9470754861749521,
+              "slot": 3
+            },
+            {
+              "accepted": false,
+              "loss": 0.29333661870119765,
+              "primary": 0.9470754861749521,
+              "slot": 4
+            },
+            {
+              "accepted": false,
+              "loss": 0.29333661870119765,
+              "primary": 0.9470754861749521,
+              "slot": 5
+            },
+            {
+              "accepted": true,
+              "loss": 0.3191082574532059,
+              "primary": 0.9497312538019983,
+              "slot": 6
+            }
+          ],
+          "valid": 6
+        },
+        "loop": {
+          "final": 0.9470754861749521,
+          "first_common_target": 0,
+          "first_higher_terminal_target": null,
+          "last_primary_improvement": 0,
+          "last_retained": 0,
+          "retained": 0,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 0.29333661870119765,
+              "primary": 0.9470754861749521,
+              "slot": 0
+            },
+            {
+              "accepted": false,
+              "loss": 0.29333661870119765,
+              "primary": 0.9470754861749521,
+              "slot": 1
+            },
+            {
+              "accepted": false,
+              "loss": 0.29333661870119765,
+              "primary": 0.9470754861749521,
+              "slot": 2
+            },
+            {
+              "accepted": false,
+              "loss": 0.29333661870119765,
+              "primary": 0.9470754861749521,
+              "slot": 3
+            },
+            {
+              "accepted": false,
+              "loss": 0.29333661870119765,
+              "primary": 0.9470754861749521,
+              "slot": 4
+            },
+            {
+              "accepted": false,
+              "loss": 0.29333661870119765,
+              "primary": 0.9470754861749521,
+              "slot": 5
+            },
+            {
+              "accepted": false,
+              "loss": 0.29333661870119765,
+              "primary": 0.9470754861749521,
+              "slot": 6
+            }
+          ],
+          "valid": 6
+        }
+      },
+      "prefixes": [
+        {
+          "budget": 0,
+          "direct_heldout_primary": 0.9426791655664114,
+          "loop_heldout_primary": 0.9426791655664114,
+          "loop_minus_direct_pp": 0.0
+        },
+        {
+          "budget": 1,
+          "direct_heldout_primary": 0.9426791655664114,
+          "loop_heldout_primary": 0.9426791655664114,
+          "loop_minus_direct_pp": 0.0
+        },
+        {
+          "budget": 2,
+          "direct_heldout_primary": 0.9426791655664114,
+          "loop_heldout_primary": 0.9426791655664114,
+          "loop_minus_direct_pp": 0.0
+        },
+        {
+          "budget": 4,
+          "direct_heldout_primary": 0.9426791655664114,
+          "loop_heldout_primary": 0.9426791655664114,
+          "loop_minus_direct_pp": 0.0
+        },
+        {
+          "budget": 6,
+          "direct_heldout_primary": 0.9460002640612623,
+          "loop_heldout_primary": 0.9426791655664114,
+          "loop_minus_direct_pp": -0.33210984948508493
+        }
+      ],
+      "protocol": "short6",
+      "seed": 42,
+      "slots": 6,
+      "task": "native_tapb"
+    },
+    {
+      "backend": "qwen",
+      "common_development_target": 0.9470754861749521,
+      "design_count": 12,
+      "modes": {
+        "direct": {
+          "final": 0.9470754861749521,
+          "first_common_target": 0,
+          "first_higher_terminal_target": 0,
+          "last_primary_improvement": 0,
+          "last_retained": 0,
+          "retained": 0,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 0.29333661870119765,
+              "primary": 0.9470754861749521,
+              "slot": 0
+            },
+            {
+              "accepted": false,
+              "loss": 0.29333661870119765,
+              "primary": 0.9470754861749521,
+              "slot": 1
+            },
+            {
+              "accepted": false,
+              "loss": 0.29333661870119765,
+              "primary": 0.9470754861749521,
+              "slot": 2
+            },
+            {
+              "accepted": false,
+              "loss": 0.29333661870119765,
+              "primary": 0.9470754861749521,
+              "slot": 3
+            },
+            {
+              "accepted": false,
+              "loss": 0.29333661870119765,
+              "primary": 0.9470754861749521,
+              "slot": 4
+            },
+            {
+              "accepted": false,
+              "loss": 0.29333661870119765,
+              "primary": 0.9470754861749521,
+              "slot": 5
+            },
+            {
+              "accepted": false,
+              "loss": 0.29333661870119765,
+              "primary": 0.9470754861749521,
+              "slot": 6
+            }
+          ],
+          "valid": 6
+        },
+        "loop": {
+          "final": 0.9470754861749521,
+          "first_common_target": 0,
+          "first_higher_terminal_target": 0,
+          "last_primary_improvement": 0,
+          "last_retained": 0,
+          "retained": 0,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 0.29333661870119765,
+              "primary": 0.9470754861749521,
+              "slot": 0
+            },
+            {
+              "accepted": false,
+              "loss": 0.29333661870119765,
+              "primary": 0.9470754861749521,
+              "slot": 1
+            },
+            {
+              "accepted": false,
+              "loss": 0.29333661870119765,
+              "primary": 0.9470754861749521,
+              "slot": 2
+            },
+            {
+              "accepted": false,
+              "loss": 0.29333661870119765,
+              "primary": 0.9470754861749521,
+              "slot": 3
+            },
+            {
+              "accepted": false,
+              "loss": 0.29333661870119765,
+              "primary": 0.9470754861749521,
+              "slot": 4
+            },
+            {
+              "accepted": false,
+              "loss": 0.29333661870119765,
+              "primary": 0.9470754861749521,
+              "slot": 5
+            },
+            {
+              "accepted": false,
+              "loss": 0.29333661870119765,
+              "primary": 0.9470754861749521,
+              "slot": 6
+            }
+          ],
+          "valid": 6
+        }
+      },
+      "prefixes": [
+        {
+          "budget": 0,
+          "direct_heldout_primary": 0.9426791655664114,
+          "loop_heldout_primary": 0.9426791655664114,
+          "loop_minus_direct_pp": 0.0
+        },
+        {
+          "budget": 1,
+          "direct_heldout_primary": 0.9426791655664114,
+          "loop_heldout_primary": 0.9426791655664114,
+          "loop_minus_direct_pp": 0.0
+        },
+        {
+          "budget": 2,
+          "direct_heldout_primary": 0.9426791655664114,
+          "loop_heldout_primary": 0.9426791655664114,
+          "loop_minus_direct_pp": 0.0
+        },
+        {
+          "budget": 4,
+          "direct_heldout_primary": 0.9426791655664114,
+          "loop_heldout_primary": 0.9426791655664114,
+          "loop_minus_direct_pp": 0.0
+        },
+        {
+          "budget": 6,
+          "direct_heldout_primary": 0.9426791655664114,
+          "loop_heldout_primary": 0.9426791655664114,
+          "loop_minus_direct_pp": 0.0
+        }
+      ],
+      "protocol": "short6",
+      "seed": 42,
+      "slots": 6,
+      "task": "native_tapb"
+    },
+    {
+      "backend": "luna",
+      "common_development_target": 0.6672222222222223,
+      "design_count": 12,
+      "modes": {
+        "direct": {
+          "final": 0.6672222222222223,
+          "first_common_target": 0,
+          "first_higher_terminal_target": 0,
+          "last_primary_improvement": 0,
+          "last_retained": 0,
+          "retained": 0,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 0
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 1
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 2
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 3
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 4
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 5
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 6
+            }
+          ],
+          "valid": 6
+        },
+        "loop": {
+          "final": 0.6672222222222223,
+          "first_common_target": 0,
+          "first_higher_terminal_target": 0,
+          "last_primary_improvement": 0,
+          "last_retained": 0,
+          "retained": 0,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 0
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 1
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 2
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 3
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 4
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 5
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 6
+            }
+          ],
+          "valid": 6
+        }
+      },
+      "prefixes": [
+        {
+          "budget": 0,
+          "direct_heldout_primary": 0.3727410880309333,
+          "loop_heldout_primary": 0.3727410880309333,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 1,
+          "direct_heldout_primary": 0.3727410880309333,
+          "loop_heldout_primary": 0.3727410880309333,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 2,
+          "direct_heldout_primary": 0.3727410880309333,
+          "loop_heldout_primary": 0.3727410880309333,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 4,
+          "direct_heldout_primary": 0.3727410880309333,
+          "loop_heldout_primary": 0.3727410880309333,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 6,
+          "direct_heldout_primary": 0.3727410880309333,
+          "loop_heldout_primary": 0.3727410880309333,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        }
+      ],
+      "protocol": "short6",
+      "seed": 61,
+      "slots": 6,
+      "task": "ptpc_neural"
+    },
+    {
+      "backend": "qwen",
+      "common_development_target": 0.6672222222222223,
+      "design_count": 12,
+      "modes": {
+        "direct": {
+          "final": 0.6672222222222223,
+          "first_common_target": 0,
+          "first_higher_terminal_target": 0,
+          "last_primary_improvement": 0,
+          "last_retained": 0,
+          "retained": 0,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 0
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 1
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 2
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 3
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 4
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 5
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 6
+            }
+          ],
+          "valid": 6
+        },
+        "loop": {
+          "final": 0.6672222222222223,
+          "first_common_target": 0,
+          "first_higher_terminal_target": 0,
+          "last_primary_improvement": 0,
+          "last_retained": 0,
+          "retained": 0,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 0
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 1
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 2
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 3
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 4
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 5
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 6
+            }
+          ],
+          "valid": 5
+        }
+      },
+      "prefixes": [
+        {
+          "budget": 0,
+          "direct_heldout_primary": 0.3727410880309333,
+          "loop_heldout_primary": 0.3727410880309333,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 1,
+          "direct_heldout_primary": 0.3727410880309333,
+          "loop_heldout_primary": 0.3727410880309333,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 2,
+          "direct_heldout_primary": 0.3727410880309333,
+          "loop_heldout_primary": 0.3727410880309333,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 4,
+          "direct_heldout_primary": 0.3727410880309333,
+          "loop_heldout_primary": 0.3727410880309333,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 6,
+          "direct_heldout_primary": 0.3727410880309333,
+          "loop_heldout_primary": 0.3727410880309333,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        }
+      ],
+      "protocol": "short6",
+      "seed": 61,
+      "slots": 6,
+      "task": "ptpc_neural"
+    },
+    {
+      "backend": "luna",
+      "common_development_target": 0.24035009059286444,
+      "design_count": 12,
+      "modes": {
+        "direct": {
+          "final": 0.24035009059286444,
+          "first_common_target": 3,
+          "first_higher_terminal_target": 3,
+          "last_primary_improvement": 3,
+          "last_retained": 3,
+          "retained": 1,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 0
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 1
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 2
+            },
+            {
+              "accepted": true,
+              "loss": 1.6078231767652287,
+              "primary": 0.24035009059286444,
+              "slot": 3
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078231767652287,
+              "primary": 0.24035009059286444,
+              "slot": 4
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078231767652287,
+              "primary": 0.24035009059286444,
+              "slot": 5
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078231767652287,
+              "primary": 0.24035009059286444,
+              "slot": 6
+            }
+          ],
+          "valid": 6
+        },
+        "loop": {
+          "final": 0.24035009059286444,
+          "first_common_target": 6,
+          "first_higher_terminal_target": 6,
+          "last_primary_improvement": 6,
+          "last_retained": 6,
+          "retained": 2,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 0
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 1
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 2
+            },
+            {
+              "accepted": true,
+              "loss": 1.6024725877274826,
+              "primary": 0.23741393464453808,
+              "slot": 3
+            },
+            {
+              "accepted": false,
+              "loss": 1.6024725877274826,
+              "primary": 0.23741393464453808,
+              "slot": 4
+            },
+            {
+              "accepted": false,
+              "loss": 1.6024725877274826,
+              "primary": 0.23741393464453808,
+              "slot": 5
+            },
+            {
+              "accepted": true,
+              "loss": 1.6078231767652287,
+              "primary": 0.24035009059286444,
+              "slot": 6
+            }
+          ],
+          "valid": 6
+        }
+      },
+      "prefixes": [
+        {
+          "budget": 0,
+          "direct_heldout_primary": 0.314954912555719,
+          "loop_heldout_primary": 0.314954912555719,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 1,
+          "direct_heldout_primary": 0.314954912555719,
+          "loop_heldout_primary": 0.314954912555719,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 2,
+          "direct_heldout_primary": 0.314954912555719,
+          "loop_heldout_primary": 0.314954912555719,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 4,
+          "direct_heldout_primary": 0.314954912555719,
+          "loop_heldout_primary": 0.16942325129825128,
+          "loop_minus_direct_pp": -14.553166125746772,
+          "sign": "negative"
+        },
+        {
+          "budget": 6,
+          "direct_heldout_primary": 0.314954912555719,
+          "loop_heldout_primary": 0.314954912555719,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        }
+      ],
+      "protocol": "short6",
+      "seed": 61,
+      "slots": 6,
+      "task": "vcc_corrected"
+    },
+    {
+      "backend": "qwen",
+      "common_development_target": 0.23651867296834334,
+      "design_count": 12,
+      "modes": {
+        "direct": {
+          "final": 0.23651867296834334,
+          "first_common_target": 0,
+          "first_higher_terminal_target": 0,
+          "last_primary_improvement": 0,
+          "last_retained": 0,
+          "retained": 0,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 0
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 1
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 2
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 3
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 4
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 5
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 6
+            }
+          ],
+          "valid": 6
+        },
+        "loop": {
+          "final": 0.23651867296834334,
+          "first_common_target": 0,
+          "first_higher_terminal_target": 0,
+          "last_primary_improvement": 0,
+          "last_retained": 0,
+          "retained": 0,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 0
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 1
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 2
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 3
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 4
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 5
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 6
+            }
+          ],
+          "valid": 6
+        }
+      },
+      "prefixes": [
+        {
+          "budget": 0,
+          "direct_heldout_primary": 0.314954912555719,
+          "loop_heldout_primary": 0.314954912555719,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 1,
+          "direct_heldout_primary": 0.314954912555719,
+          "loop_heldout_primary": 0.314954912555719,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 2,
+          "direct_heldout_primary": 0.314954912555719,
+          "loop_heldout_primary": 0.314954912555719,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 4,
+          "direct_heldout_primary": 0.314954912555719,
+          "loop_heldout_primary": 0.314954912555719,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 6,
+          "direct_heldout_primary": 0.314954912555719,
+          "loop_heldout_primary": 0.314954912555719,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        }
+      ],
+      "protocol": "short6",
+      "seed": 61,
+      "slots": 6,
+      "task": "vcc_corrected"
+    },
+    {
+      "backend": "luna",
+      "common_development_target": 0.517,
+      "design_count": 12,
+      "modes": {
+        "direct": {
+          "final": 0.517,
+          "first_common_target": 5,
+          "first_higher_terminal_target": null,
+          "last_primary_improvement": 5,
+          "last_retained": 5,
+          "retained": 3,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 1.5897730523249152,
+              "primary": 0.4,
+              "slot": 0
+            },
+            {
+              "accepted": true,
+              "loss": 1.5895684836728399,
+              "primary": 0.4,
+              "slot": 1
+            },
+            {
+              "accepted": true,
+              "loss": 1.5711678492336234,
+              "primary": 0.42000000000000004,
+              "slot": 2
+            },
+            {
+              "accepted": false,
+              "loss": 1.5711678492336234,
+              "primary": 0.42000000000000004,
+              "slot": 3
+            },
+            {
+              "accepted": false,
+              "loss": 1.5711678492336234,
+              "primary": 0.42000000000000004,
+              "slot": 4
+            },
+            {
+              "accepted": true,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 5
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 6
+            }
+          ],
+          "valid": 6
+        },
+        "loop": {
+          "final": 0.521,
+          "first_common_target": 5,
+          "first_higher_terminal_target": 5,
+          "last_primary_improvement": 5,
+          "last_retained": 5,
+          "retained": 3,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 1.5897730523249152,
+              "primary": 0.4,
+              "slot": 0
+            },
+            {
+              "accepted": true,
+              "loss": 1.5895684836728399,
+              "primary": 0.4,
+              "slot": 1
+            },
+            {
+              "accepted": false,
+              "loss": 1.5895684836728399,
+              "primary": 0.4,
+              "slot": 2
+            },
+            {
+              "accepted": false,
+              "loss": 1.5895684836728399,
+              "primary": 0.4,
+              "slot": 3
+            },
+            {
+              "accepted": true,
+              "loss": 1.5895083174864435,
+              "primary": 0.4,
+              "slot": 4
+            },
+            {
+              "accepted": true,
+              "loss": 1.5379087199324664,
+              "primary": 0.521,
+              "slot": 5
+            },
+            {
+              "accepted": false,
+              "loss": 1.5379087199324664,
+              "primary": 0.521,
+              "slot": 6
+            }
+          ],
+          "valid": 6
+        }
+      },
+      "prefixes": [
+        {
+          "budget": 0,
+          "direct_heldout_primary": 0.1548148148148148,
+          "loop_heldout_primary": 0.1548148148148148,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 1,
+          "direct_heldout_primary": 0.14962962962962964,
+          "loop_heldout_primary": 0.14962962962962964,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 2,
+          "direct_heldout_primary": 0.3548148148148148,
+          "loop_heldout_primary": 0.14962962962962964,
+          "loop_minus_direct_pp": -20.518518518518515,
+          "sign": "negative"
+        },
+        {
+          "budget": 4,
+          "direct_heldout_primary": 0.3548148148148148,
+          "loop_heldout_primary": 0.15259259259259259,
+          "loop_minus_direct_pp": -20.22222222222222,
+          "sign": "negative"
+        },
+        {
+          "budget": 6,
+          "direct_heldout_primary": 0.22296296296296295,
+          "loop_heldout_primary": 0.23111111111111113,
+          "loop_minus_direct_pp": 0.8148148148148182,
+          "sign": "positive"
+        }
+      ],
+      "protocol": "short6",
+      "seed": 61,
+      "slots": 6,
+      "task": "norman_double_corrected"
+    },
+    {
+      "backend": "qwen",
+      "common_development_target": 0.517,
+      "design_count": 12,
+      "modes": {
+        "direct": {
+          "final": 0.517,
+          "first_common_target": 3,
+          "first_higher_terminal_target": 3,
+          "last_primary_improvement": 3,
+          "last_retained": 3,
+          "retained": 3,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 1.5897730523249152,
+              "primary": 0.4,
+              "slot": 0
+            },
+            {
+              "accepted": true,
+              "loss": 1.5895684836728399,
+              "primary": 0.4,
+              "slot": 1
+            },
+            {
+              "accepted": true,
+              "loss": 1.5711678492336234,
+              "primary": 0.42000000000000004,
+              "slot": 2
+            },
+            {
+              "accepted": true,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 3
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 4
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 5
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 6
+            }
+          ],
+          "valid": 6
+        },
+        "loop": {
+          "final": 0.517,
+          "first_common_target": 4,
+          "first_higher_terminal_target": 4,
+          "last_primary_improvement": 4,
+          "last_retained": 4,
+          "retained": 3,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 1.5897730523249152,
+              "primary": 0.4,
+              "slot": 0
+            },
+            {
+              "accepted": true,
+              "loss": 1.5895684836728399,
+              "primary": 0.4,
+              "slot": 1
+            },
+            {
+              "accepted": true,
+              "loss": 1.5711678492336234,
+              "primary": 0.42000000000000004,
+              "slot": 2
+            },
+            {
+              "accepted": false,
+              "loss": 1.5711678492336234,
+              "primary": 0.42000000000000004,
+              "slot": 3
+            },
+            {
+              "accepted": true,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 4
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 5
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 6
+            }
+          ],
+          "valid": 6
+        }
+      },
+      "prefixes": [
+        {
+          "budget": 0,
+          "direct_heldout_primary": 0.1548148148148148,
+          "loop_heldout_primary": 0.1548148148148148,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 1,
+          "direct_heldout_primary": 0.14962962962962964,
+          "loop_heldout_primary": 0.14962962962962964,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 2,
+          "direct_heldout_primary": 0.3548148148148148,
+          "loop_heldout_primary": 0.3548148148148148,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 4,
+          "direct_heldout_primary": 0.22296296296296295,
+          "loop_heldout_primary": 0.22296296296296295,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 6,
+          "direct_heldout_primary": 0.22296296296296295,
+          "loop_heldout_primary": 0.22296296296296295,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        }
+      ],
+      "protocol": "short6",
+      "seed": 61,
+      "slots": 6,
+      "task": "norman_double_corrected"
+    },
+    {
+      "backend": "luna",
+      "common_development_target": 0.3,
+      "design_count": 12,
+      "modes": {
+        "direct": {
+          "final": 0.3,
+          "first_common_target": 0,
+          "first_higher_terminal_target": 0,
+          "last_primary_improvement": 0,
+          "last_retained": 6,
+          "retained": 1,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 1.6019410840755193,
+              "primary": 0.3,
+              "slot": 0
+            },
+            {
+              "accepted": false,
+              "loss": 1.6019410840755193,
+              "primary": 0.3,
+              "slot": 1
+            },
+            {
+              "accepted": false,
+              "loss": 1.6019410840755193,
+              "primary": 0.3,
+              "slot": 2
+            },
+            {
+              "accepted": false,
+              "loss": 1.6019410840755193,
+              "primary": 0.3,
+              "slot": 3
+            },
+            {
+              "accepted": false,
+              "loss": 1.6019410840755193,
+              "primary": 0.3,
+              "slot": 4
+            },
+            {
+              "accepted": false,
+              "loss": 1.6019410840755193,
+              "primary": 0.3,
+              "slot": 5
+            },
+            {
+              "accepted": true,
+              "loss": 1.6018909015381233,
+              "primary": 0.3,
+              "slot": 6
+            }
+          ],
+          "valid": 6
+        },
+        "loop": {
+          "final": 0.3,
+          "first_common_target": 0,
+          "first_higher_terminal_target": 0,
+          "last_primary_improvement": 0,
+          "last_retained": 3,
+          "retained": 1,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 1.6019410840755193,
+              "primary": 0.3,
+              "slot": 0
+            },
+            {
+              "accepted": false,
+              "loss": 1.6019410840755193,
+              "primary": 0.3,
+              "slot": 1
+            },
+            {
+              "accepted": false,
+              "loss": 1.6019410840755193,
+              "primary": 0.3,
+              "slot": 2
+            },
+            {
+              "accepted": true,
+              "loss": 1.6017582294551775,
+              "primary": 0.3,
+              "slot": 3
+            },
+            {
+              "accepted": false,
+              "loss": 1.6017582294551775,
+              "primary": 0.3,
+              "slot": 4
+            },
+            {
+              "accepted": false,
+              "loss": 1.6017582294551775,
+              "primary": 0.3,
+              "slot": 5
+            },
+            {
+              "accepted": false,
+              "loss": 1.6017582294551775,
+              "primary": 0.3,
+              "slot": 6
+            }
+          ],
+          "valid": 6
+        }
+      },
+      "prefixes": [
+        {
+          "budget": 0,
+          "direct_heldout_primary": 0.2537313432835821,
+          "loop_heldout_primary": 0.2537313432835821,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 1,
+          "direct_heldout_primary": 0.2537313432835821,
+          "loop_heldout_primary": 0.2537313432835821,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 2,
+          "direct_heldout_primary": 0.2537313432835821,
+          "loop_heldout_primary": 0.2537313432835821,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 4,
+          "direct_heldout_primary": 0.2537313432835821,
+          "loop_heldout_primary": 0.26865671641791045,
+          "loop_minus_direct_pp": 1.4925373134328346,
+          "sign": "positive"
+        },
+        {
+          "budget": 6,
+          "direct_heldout_primary": 0.26865671641791045,
+          "loop_heldout_primary": 0.26865671641791045,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        }
+      ],
+      "protocol": "short6",
+      "seed": 61,
+      "slots": 6,
+      "task": "tahoe_drug_corrected"
+    },
+    {
+      "backend": "qwen",
+      "common_development_target": 0.3,
+      "design_count": 12,
+      "modes": {
+        "direct": {
+          "final": 0.3,
+          "first_common_target": 0,
+          "first_higher_terminal_target": 0,
+          "last_primary_improvement": 0,
+          "last_retained": 0,
+          "retained": 0,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 1.6019410840755193,
+              "primary": 0.3,
+              "slot": 0
+            },
+            {
+              "accepted": false,
+              "loss": 1.6019410840755193,
+              "primary": 0.3,
+              "slot": 1
+            },
+            {
+              "accepted": false,
+              "loss": 1.6019410840755193,
+              "primary": 0.3,
+              "slot": 2
+            },
+            {
+              "accepted": false,
+              "loss": 1.6019410840755193,
+              "primary": 0.3,
+              "slot": 3
+            },
+            {
+              "accepted": false,
+              "loss": 1.6019410840755193,
+              "primary": 0.3,
+              "slot": 4
+            },
+            {
+              "accepted": false,
+              "loss": 1.6019410840755193,
+              "primary": 0.3,
+              "slot": 5
+            },
+            {
+              "accepted": false,
+              "loss": 1.6019410840755193,
+              "primary": 0.3,
+              "slot": 6
+            }
+          ],
+          "valid": 4
+        },
+        "loop": {
+          "final": 0.3,
+          "first_common_target": 0,
+          "first_higher_terminal_target": 0,
+          "last_primary_improvement": 0,
+          "last_retained": 0,
+          "retained": 0,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 1.6019410840755193,
+              "primary": 0.3,
+              "slot": 0
+            },
+            {
+              "accepted": false,
+              "loss": 1.6019410840755193,
+              "primary": 0.3,
+              "slot": 1
+            },
+            {
+              "accepted": false,
+              "loss": 1.6019410840755193,
+              "primary": 0.3,
+              "slot": 2
+            },
+            {
+              "accepted": false,
+              "loss": 1.6019410840755193,
+              "primary": 0.3,
+              "slot": 3
+            },
+            {
+              "accepted": false,
+              "loss": 1.6019410840755193,
+              "primary": 0.3,
+              "slot": 4
+            },
+            {
+              "accepted": false,
+              "loss": 1.6019410840755193,
+              "primary": 0.3,
+              "slot": 5
+            },
+            {
+              "accepted": false,
+              "loss": 1.6019410840755193,
+              "primary": 0.3,
+              "slot": 6
+            }
+          ],
+          "valid": 4
+        }
+      },
+      "prefixes": [
+        {
+          "budget": 0,
+          "direct_heldout_primary": 0.2537313432835821,
+          "loop_heldout_primary": 0.2537313432835821,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 1,
+          "direct_heldout_primary": 0.2537313432835821,
+          "loop_heldout_primary": 0.2537313432835821,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 2,
+          "direct_heldout_primary": 0.2537313432835821,
+          "loop_heldout_primary": 0.2537313432835821,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 4,
+          "direct_heldout_primary": 0.2537313432835821,
+          "loop_heldout_primary": 0.2537313432835821,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 6,
+          "direct_heldout_primary": 0.2537313432835821,
+          "loop_heldout_primary": 0.2537313432835821,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        }
+      ],
+      "protocol": "short6",
+      "seed": 61,
+      "slots": 6,
+      "task": "tahoe_drug_corrected"
+    },
+    {
+      "backend": "luna",
+      "common_development_target": 0.6672222222222223,
+      "design_count": 36,
+      "modes": {
+        "direct": {
+          "final": 0.6672222222222223,
+          "first_common_target": 0,
+          "first_higher_terminal_target": 0,
+          "last_primary_improvement": 0,
+          "last_retained": 0,
+          "retained": 0,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 0
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 1
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 2
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 3
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 4
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 5
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 6
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 7
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 8
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 9
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 10
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 11
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 12
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 13
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 14
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 15
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 16
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 17
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 18
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 19
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 20
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 21
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 22
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 23
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 24
+            }
+          ],
+          "valid": 24
+        },
+        "loop": {
+          "final": 0.6672222222222223,
+          "first_common_target": 0,
+          "first_higher_terminal_target": 0,
+          "last_primary_improvement": 0,
+          "last_retained": 0,
+          "retained": 0,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 0
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 1
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 2
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 3
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 4
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 5
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 6
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 7
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 8
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 9
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 10
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 11
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 12
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 13
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 14
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 15
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 16
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 17
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 18
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 19
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 20
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 21
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 22
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 23
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 24
+            }
+          ],
+          "valid": 24
+        }
+      },
+      "prefixes": [
+        {
+          "budget": 0,
+          "direct_heldout_primary": 0.3727410880309333,
+          "loop_heldout_primary": 0.3727410880309333,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 1,
+          "direct_heldout_primary": 0.3727410880309333,
+          "loop_heldout_primary": 0.3727410880309333,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 2,
+          "direct_heldout_primary": 0.3727410880309333,
+          "loop_heldout_primary": 0.3727410880309333,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 4,
+          "direct_heldout_primary": 0.3727410880309333,
+          "loop_heldout_primary": 0.3727410880309333,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 6,
+          "direct_heldout_primary": 0.3727410880309333,
+          "loop_heldout_primary": 0.3727410880309333,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 8,
+          "direct_heldout_primary": 0.3727410880309333,
+          "loop_heldout_primary": 0.3727410880309333,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 12,
+          "direct_heldout_primary": 0.3727410880309333,
+          "loop_heldout_primary": 0.3727410880309333,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 16,
+          "direct_heldout_primary": 0.3727410880309333,
+          "loop_heldout_primary": 0.3727410880309333,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 20,
+          "direct_heldout_primary": 0.3727410880309333,
+          "loop_heldout_primary": 0.3727410880309333,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 24,
+          "direct_heldout_primary": 0.3727410880309333,
+          "loop_heldout_primary": 0.3727410880309333,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        }
+      ],
+      "protocol": "long24",
+      "seed": 61,
+      "slots": 24,
+      "task": "ptpc_neural"
+    },
+    {
+      "backend": "qwen",
+      "common_development_target": 0.6672222222222223,
+      "design_count": 36,
+      "modes": {
+        "direct": {
+          "final": 0.6672222222222223,
+          "first_common_target": 0,
+          "first_higher_terminal_target": 0,
+          "last_primary_improvement": 0,
+          "last_retained": 0,
+          "retained": 0,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 0
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 1
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 2
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 3
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 4
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 5
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 6
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 7
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 8
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 9
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 10
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 11
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 12
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 13
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 14
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 15
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 16
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 17
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 18
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 19
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 20
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 21
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 22
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 23
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 24
+            }
+          ],
+          "valid": 19
+        },
+        "loop": {
+          "final": 0.6672222222222223,
+          "first_common_target": 0,
+          "first_higher_terminal_target": 0,
+          "last_primary_improvement": 0,
+          "last_retained": 0,
+          "retained": 0,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 0
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 1
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 2
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 3
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 4
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 5
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 6
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 7
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 8
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 9
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 10
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 11
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 12
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 13
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 14
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 15
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 16
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 17
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 18
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 19
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 20
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 21
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 22
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 23
+            },
+            {
+              "accepted": false,
+              "loss": 0.5173849135637283,
+              "primary": 0.6672222222222223,
+              "slot": 24
+            }
+          ],
+          "valid": 14
+        }
+      },
+      "prefixes": [
+        {
+          "budget": 0,
+          "direct_heldout_primary": 0.3727410880309333,
+          "loop_heldout_primary": 0.3727410880309333,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 1,
+          "direct_heldout_primary": 0.3727410880309333,
+          "loop_heldout_primary": 0.3727410880309333,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 2,
+          "direct_heldout_primary": 0.3727410880309333,
+          "loop_heldout_primary": 0.3727410880309333,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 4,
+          "direct_heldout_primary": 0.3727410880309333,
+          "loop_heldout_primary": 0.3727410880309333,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 6,
+          "direct_heldout_primary": 0.3727410880309333,
+          "loop_heldout_primary": 0.3727410880309333,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 8,
+          "direct_heldout_primary": 0.3727410880309333,
+          "loop_heldout_primary": 0.3727410880309333,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 12,
+          "direct_heldout_primary": 0.3727410880309333,
+          "loop_heldout_primary": 0.3727410880309333,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 16,
+          "direct_heldout_primary": 0.3727410880309333,
+          "loop_heldout_primary": 0.3727410880309333,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 20,
+          "direct_heldout_primary": 0.3727410880309333,
+          "loop_heldout_primary": 0.3727410880309333,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 24,
+          "direct_heldout_primary": 0.3727410880309333,
+          "loop_heldout_primary": 0.3727410880309333,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        }
+      ],
+      "protocol": "long24",
+      "seed": 61,
+      "slots": 24,
+      "task": "ptpc_neural"
+    },
+    {
+      "backend": "luna",
+      "common_development_target": 0.27679073241573243,
+      "design_count": 36,
+      "modes": {
+        "direct": {
+          "final": 0.27679073241573243,
+          "first_common_target": 16,
+          "first_higher_terminal_target": null,
+          "last_primary_improvement": 16,
+          "last_retained": 16,
+          "retained": 3,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 0
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 1
+            },
+            {
+              "accepted": true,
+              "loss": 1.6024725877274826,
+              "primary": 0.23741393464453808,
+              "slot": 2
+            },
+            {
+              "accepted": false,
+              "loss": 1.6024725877274826,
+              "primary": 0.23741393464453808,
+              "slot": 3
+            },
+            {
+              "accepted": false,
+              "loss": 1.6024725877274826,
+              "primary": 0.23741393464453808,
+              "slot": 4
+            },
+            {
+              "accepted": false,
+              "loss": 1.6024725877274826,
+              "primary": 0.23741393464453808,
+              "slot": 5
+            },
+            {
+              "accepted": false,
+              "loss": 1.6024725877274826,
+              "primary": 0.23741393464453808,
+              "slot": 6
+            },
+            {
+              "accepted": false,
+              "loss": 1.6024725877274826,
+              "primary": 0.23741393464453808,
+              "slot": 7
+            },
+            {
+              "accepted": false,
+              "loss": 1.6024725877274826,
+              "primary": 0.23741393464453808,
+              "slot": 8
+            },
+            {
+              "accepted": true,
+              "loss": 1.6078231767652287,
+              "primary": 0.24035009059286444,
+              "slot": 9
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078231767652287,
+              "primary": 0.24035009059286444,
+              "slot": 10
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078231767652287,
+              "primary": 0.24035009059286444,
+              "slot": 11
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078231767652287,
+              "primary": 0.24035009059286444,
+              "slot": 12
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078231767652287,
+              "primary": 0.24035009059286444,
+              "slot": 13
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078231767652287,
+              "primary": 0.24035009059286444,
+              "slot": 14
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078231767652287,
+              "primary": 0.24035009059286444,
+              "slot": 15
+            },
+            {
+              "accepted": true,
+              "loss": 1.609378786102828,
+              "primary": 0.27679073241573243,
+              "slot": 16
+            },
+            {
+              "accepted": false,
+              "loss": 1.609378786102828,
+              "primary": 0.27679073241573243,
+              "slot": 17
+            },
+            {
+              "accepted": false,
+              "loss": 1.609378786102828,
+              "primary": 0.27679073241573243,
+              "slot": 18
+            },
+            {
+              "accepted": false,
+              "loss": 1.609378786102828,
+              "primary": 0.27679073241573243,
+              "slot": 19
+            },
+            {
+              "accepted": false,
+              "loss": 1.609378786102828,
+              "primary": 0.27679073241573243,
+              "slot": 20
+            },
+            {
+              "accepted": false,
+              "loss": 1.609378786102828,
+              "primary": 0.27679073241573243,
+              "slot": 21
+            },
+            {
+              "accepted": false,
+              "loss": 1.609378786102828,
+              "primary": 0.27679073241573243,
+              "slot": 22
+            },
+            {
+              "accepted": false,
+              "loss": 1.609378786102828,
+              "primary": 0.27679073241573243,
+              "slot": 23
+            },
+            {
+              "accepted": false,
+              "loss": 1.609378786102828,
+              "primary": 0.27679073241573243,
+              "slot": 24
+            }
+          ],
+          "valid": 24
+        },
+        "loop": {
+          "final": 0.30932023994523994,
+          "first_common_target": 9,
+          "first_higher_terminal_target": 10,
+          "last_primary_improvement": 10,
+          "last_retained": 10,
+          "retained": 3,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 0
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 1
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 2
+            },
+            {
+              "accepted": true,
+              "loss": 1.6024725877274826,
+              "primary": 0.23741393464453808,
+              "slot": 3
+            },
+            {
+              "accepted": false,
+              "loss": 1.6024725877274826,
+              "primary": 0.23741393464453808,
+              "slot": 4
+            },
+            {
+              "accepted": false,
+              "loss": 1.6024725877274826,
+              "primary": 0.23741393464453808,
+              "slot": 5
+            },
+            {
+              "accepted": false,
+              "loss": 1.6024725877274826,
+              "primary": 0.23741393464453808,
+              "slot": 6
+            },
+            {
+              "accepted": false,
+              "loss": 1.6024725877274826,
+              "primary": 0.23741393464453808,
+              "slot": 7
+            },
+            {
+              "accepted": false,
+              "loss": 1.6024725877274826,
+              "primary": 0.23741393464453808,
+              "slot": 8
+            },
+            {
+              "accepted": true,
+              "loss": 1.609378786102828,
+              "primary": 0.27679073241573243,
+              "slot": 9
+            },
+            {
+              "accepted": true,
+              "loss": 1.6081874068253097,
+              "primary": 0.30932023994523994,
+              "slot": 10
+            },
+            {
+              "accepted": false,
+              "loss": 1.6081874068253097,
+              "primary": 0.30932023994523994,
+              "slot": 11
+            },
+            {
+              "accepted": false,
+              "loss": 1.6081874068253097,
+              "primary": 0.30932023994523994,
+              "slot": 12
+            },
+            {
+              "accepted": false,
+              "loss": 1.6081874068253097,
+              "primary": 0.30932023994523994,
+              "slot": 13
+            },
+            {
+              "accepted": false,
+              "loss": 1.6081874068253097,
+              "primary": 0.30932023994523994,
+              "slot": 14
+            },
+            {
+              "accepted": false,
+              "loss": 1.6081874068253097,
+              "primary": 0.30932023994523994,
+              "slot": 15
+            },
+            {
+              "accepted": false,
+              "loss": 1.6081874068253097,
+              "primary": 0.30932023994523994,
+              "slot": 16
+            },
+            {
+              "accepted": false,
+              "loss": 1.6081874068253097,
+              "primary": 0.30932023994523994,
+              "slot": 17
+            },
+            {
+              "accepted": false,
+              "loss": 1.6081874068253097,
+              "primary": 0.30932023994523994,
+              "slot": 18
+            },
+            {
+              "accepted": false,
+              "loss": 1.6081874068253097,
+              "primary": 0.30932023994523994,
+              "slot": 19
+            },
+            {
+              "accepted": false,
+              "loss": 1.6081874068253097,
+              "primary": 0.30932023994523994,
+              "slot": 20
+            },
+            {
+              "accepted": false,
+              "loss": 1.6081874068253097,
+              "primary": 0.30932023994523994,
+              "slot": 21
+            },
+            {
+              "accepted": false,
+              "loss": 1.6081874068253097,
+              "primary": 0.30932023994523994,
+              "slot": 22
+            },
+            {
+              "accepted": false,
+              "loss": 1.6081874068253097,
+              "primary": 0.30932023994523994,
+              "slot": 23
+            },
+            {
+              "accepted": false,
+              "loss": 1.6081874068253097,
+              "primary": 0.30932023994523994,
+              "slot": 24
+            }
+          ],
+          "valid": 24
+        }
+      },
+      "prefixes": [
+        {
+          "budget": 0,
+          "direct_heldout_primary": 0.314954912555719,
+          "loop_heldout_primary": 0.314954912555719,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 1,
+          "direct_heldout_primary": 0.314954912555719,
+          "loop_heldout_primary": 0.314954912555719,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 2,
+          "direct_heldout_primary": 0.16942325129825128,
+          "loop_heldout_primary": 0.314954912555719,
+          "loop_minus_direct_pp": 14.553166125746772,
+          "sign": "positive"
+        },
+        {
+          "budget": 4,
+          "direct_heldout_primary": 0.16942325129825128,
+          "loop_heldout_primary": 0.16942325129825128,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 6,
+          "direct_heldout_primary": 0.16942325129825128,
+          "loop_heldout_primary": 0.16942325129825128,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 8,
+          "direct_heldout_primary": 0.16942325129825128,
+          "loop_heldout_primary": 0.16942325129825128,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 12,
+          "direct_heldout_primary": 0.314954912555719,
+          "loop_heldout_primary": 0.20007014007014007,
+          "loop_minus_direct_pp": -11.488477248557894,
+          "sign": "negative"
+        },
+        {
+          "budget": 16,
+          "direct_heldout_primary": 0.2022985479235479,
+          "loop_heldout_primary": 0.20007014007014007,
+          "loop_minus_direct_pp": -0.22284078534078322,
+          "sign": "negative"
+        },
+        {
+          "budget": 20,
+          "direct_heldout_primary": 0.2022985479235479,
+          "loop_heldout_primary": 0.20007014007014007,
+          "loop_minus_direct_pp": -0.22284078534078322,
+          "sign": "negative"
+        },
+        {
+          "budget": 24,
+          "direct_heldout_primary": 0.2022985479235479,
+          "loop_heldout_primary": 0.20007014007014007,
+          "loop_minus_direct_pp": -0.22284078534078322,
+          "sign": "negative"
+        }
+      ],
+      "protocol": "long24",
+      "seed": 61,
+      "slots": 24,
+      "task": "vcc_corrected"
+    },
+    {
+      "backend": "qwen",
+      "common_development_target": 0.24825574449496868,
+      "design_count": 36,
+      "modes": {
+        "direct": {
+          "final": 0.24825574449496868,
+          "first_common_target": 18,
+          "first_higher_terminal_target": 18,
+          "last_primary_improvement": 18,
+          "last_retained": 18,
+          "retained": 1,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 0
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 1
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 2
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 3
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 4
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 5
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 6
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 7
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 8
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 9
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 10
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 11
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 12
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 13
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 14
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 15
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 16
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 17
+            },
+            {
+              "accepted": true,
+              "loss": 1.6118195772977035,
+              "primary": 0.24825574449496868,
+              "slot": 18
+            },
+            {
+              "accepted": false,
+              "loss": 1.6118195772977035,
+              "primary": 0.24825574449496868,
+              "slot": 19
+            },
+            {
+              "accepted": false,
+              "loss": 1.6118195772977035,
+              "primary": 0.24825574449496868,
+              "slot": 20
+            },
+            {
+              "accepted": false,
+              "loss": 1.6118195772977035,
+              "primary": 0.24825574449496868,
+              "slot": 21
+            },
+            {
+              "accepted": false,
+              "loss": 1.6118195772977035,
+              "primary": 0.24825574449496868,
+              "slot": 22
+            },
+            {
+              "accepted": false,
+              "loss": 1.6118195772977035,
+              "primary": 0.24825574449496868,
+              "slot": 23
+            },
+            {
+              "accepted": false,
+              "loss": 1.6118195772977035,
+              "primary": 0.24825574449496868,
+              "slot": 24
+            }
+          ],
+          "valid": 11
+        },
+        "loop": {
+          "final": 0.24825574449496868,
+          "first_common_target": 23,
+          "first_higher_terminal_target": 23,
+          "last_primary_improvement": 23,
+          "last_retained": 23,
+          "retained": 2,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 0
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 1
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 2
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 3
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 4
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 5
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 6
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 7
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 8
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 9
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 10
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 11
+            },
+            {
+              "accepted": false,
+              "loss": 1.6078337771627251,
+              "primary": 0.23651867296834334,
+              "slot": 12
+            },
+            {
+              "accepted": true,
+              "loss": 1.6024725877274826,
+              "primary": 0.23741393464453808,
+              "slot": 13
+            },
+            {
+              "accepted": false,
+              "loss": 1.6024725877274826,
+              "primary": 0.23741393464453808,
+              "slot": 14
+            },
+            {
+              "accepted": false,
+              "loss": 1.6024725877274826,
+              "primary": 0.23741393464453808,
+              "slot": 15
+            },
+            {
+              "accepted": false,
+              "loss": 1.6024725877274826,
+              "primary": 0.23741393464453808,
+              "slot": 16
+            },
+            {
+              "accepted": false,
+              "loss": 1.6024725877274826,
+              "primary": 0.23741393464453808,
+              "slot": 17
+            },
+            {
+              "accepted": false,
+              "loss": 1.6024725877274826,
+              "primary": 0.23741393464453808,
+              "slot": 18
+            },
+            {
+              "accepted": false,
+              "loss": 1.6024725877274826,
+              "primary": 0.23741393464453808,
+              "slot": 19
+            },
+            {
+              "accepted": false,
+              "loss": 1.6024725877274826,
+              "primary": 0.23741393464453808,
+              "slot": 20
+            },
+            {
+              "accepted": false,
+              "loss": 1.6024725877274826,
+              "primary": 0.23741393464453808,
+              "slot": 21
+            },
+            {
+              "accepted": false,
+              "loss": 1.6024725877274826,
+              "primary": 0.23741393464453808,
+              "slot": 22
+            },
+            {
+              "accepted": true,
+              "loss": 1.6118195772977035,
+              "primary": 0.24825574449496868,
+              "slot": 23
+            },
+            {
+              "accepted": false,
+              "loss": 1.6118195772977035,
+              "primary": 0.24825574449496868,
+              "slot": 24
+            }
+          ],
+          "valid": 16
+        }
+      },
+      "prefixes": [
+        {
+          "budget": 0,
+          "direct_heldout_primary": 0.314954912555719,
+          "loop_heldout_primary": 0.314954912555719,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 1,
+          "direct_heldout_primary": 0.314954912555719,
+          "loop_heldout_primary": 0.314954912555719,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 2,
+          "direct_heldout_primary": 0.314954912555719,
+          "loop_heldout_primary": 0.314954912555719,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 4,
+          "direct_heldout_primary": 0.314954912555719,
+          "loop_heldout_primary": 0.314954912555719,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 6,
+          "direct_heldout_primary": 0.314954912555719,
+          "loop_heldout_primary": 0.314954912555719,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 8,
+          "direct_heldout_primary": 0.314954912555719,
+          "loop_heldout_primary": 0.314954912555719,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 12,
+          "direct_heldout_primary": 0.314954912555719,
+          "loop_heldout_primary": 0.314954912555719,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 16,
+          "direct_heldout_primary": 0.314954912555719,
+          "loop_heldout_primary": 0.16942325129825128,
+          "loop_minus_direct_pp": -14.553166125746772,
+          "sign": "negative"
+        },
+        {
+          "budget": 20,
+          "direct_heldout_primary": 0.1960658234045331,
+          "loop_heldout_primary": 0.16942325129825128,
+          "loop_minus_direct_pp": -2.664257210628182,
+          "sign": "negative"
+        },
+        {
+          "budget": 24,
+          "direct_heldout_primary": 0.1960658234045331,
+          "loop_heldout_primary": 0.1960658234045331,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        }
+      ],
+      "protocol": "long24",
+      "seed": 61,
+      "slots": 24,
+      "task": "vcc_corrected"
+    },
+    {
+      "backend": "luna",
+      "common_development_target": 0.521,
+      "design_count": 36,
+      "modes": {
+        "direct": {
+          "final": 0.521,
+          "first_common_target": 22,
+          "first_higher_terminal_target": 22,
+          "last_primary_improvement": 22,
+          "last_retained": 22,
+          "retained": 6,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 1.5897730523249152,
+              "primary": 0.4,
+              "slot": 0
+            },
+            {
+              "accepted": true,
+              "loss": 1.5895684836728399,
+              "primary": 0.4,
+              "slot": 1
+            },
+            {
+              "accepted": true,
+              "loss": 1.5711678492336234,
+              "primary": 0.42000000000000004,
+              "slot": 2
+            },
+            {
+              "accepted": false,
+              "loss": 1.5711678492336234,
+              "primary": 0.42000000000000004,
+              "slot": 3
+            },
+            {
+              "accepted": false,
+              "loss": 1.5711678492336234,
+              "primary": 0.42000000000000004,
+              "slot": 4
+            },
+            {
+              "accepted": false,
+              "loss": 1.5711678492336234,
+              "primary": 0.42000000000000004,
+              "slot": 5
+            },
+            {
+              "accepted": false,
+              "loss": 1.5711678492336234,
+              "primary": 0.42000000000000004,
+              "slot": 6
+            },
+            {
+              "accepted": true,
+              "loss": 1.5671624953447545,
+              "primary": 0.446,
+              "slot": 7
+            },
+            {
+              "accepted": false,
+              "loss": 1.5671624953447545,
+              "primary": 0.446,
+              "slot": 8
+            },
+            {
+              "accepted": false,
+              "loss": 1.5671624953447545,
+              "primary": 0.446,
+              "slot": 9
+            },
+            {
+              "accepted": true,
+              "loss": 1.5387557648851728,
+              "primary": 0.517,
+              "slot": 10
+            },
+            {
+              "accepted": true,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 11
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 12
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 13
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 14
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 15
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 16
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 17
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 18
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 19
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 20
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 21
+            },
+            {
+              "accepted": true,
+              "loss": 1.5379087199324664,
+              "primary": 0.521,
+              "slot": 22
+            },
+            {
+              "accepted": false,
+              "loss": 1.5379087199324664,
+              "primary": 0.521,
+              "slot": 23
+            },
+            {
+              "accepted": false,
+              "loss": 1.5379087199324664,
+              "primary": 0.521,
+              "slot": 24
+            }
+          ],
+          "valid": 24
+        },
+        "loop": {
+          "final": 0.521,
+          "first_common_target": 4,
+          "first_higher_terminal_target": 4,
+          "last_primary_improvement": 4,
+          "last_retained": 7,
+          "retained": 4,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 1.5897730523249152,
+              "primary": 0.4,
+              "slot": 0
+            },
+            {
+              "accepted": true,
+              "loss": 1.5895684836728399,
+              "primary": 0.4,
+              "slot": 1
+            },
+            {
+              "accepted": true,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 2
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 3
+            },
+            {
+              "accepted": true,
+              "loss": 1.5379087199324664,
+              "primary": 0.521,
+              "slot": 4
+            },
+            {
+              "accepted": false,
+              "loss": 1.5379087199324664,
+              "primary": 0.521,
+              "slot": 5
+            },
+            {
+              "accepted": false,
+              "loss": 1.5379087199324664,
+              "primary": 0.521,
+              "slot": 6
+            },
+            {
+              "accepted": true,
+              "loss": 1.5379079874581651,
+              "primary": 0.521,
+              "slot": 7
+            },
+            {
+              "accepted": false,
+              "loss": 1.5379079874581651,
+              "primary": 0.521,
+              "slot": 8
+            },
+            {
+              "accepted": false,
+              "loss": 1.5379079874581651,
+              "primary": 0.521,
+              "slot": 9
+            },
+            {
+              "accepted": false,
+              "loss": 1.5379079874581651,
+              "primary": 0.521,
+              "slot": 10
+            },
+            {
+              "accepted": false,
+              "loss": 1.5379079874581651,
+              "primary": 0.521,
+              "slot": 11
+            },
+            {
+              "accepted": false,
+              "loss": 1.5379079874581651,
+              "primary": 0.521,
+              "slot": 12
+            },
+            {
+              "accepted": false,
+              "loss": 1.5379079874581651,
+              "primary": 0.521,
+              "slot": 13
+            },
+            {
+              "accepted": false,
+              "loss": 1.5379079874581651,
+              "primary": 0.521,
+              "slot": 14
+            },
+            {
+              "accepted": false,
+              "loss": 1.5379079874581651,
+              "primary": 0.521,
+              "slot": 15
+            },
+            {
+              "accepted": false,
+              "loss": 1.5379079874581651,
+              "primary": 0.521,
+              "slot": 16
+            },
+            {
+              "accepted": false,
+              "loss": 1.5379079874581651,
+              "primary": 0.521,
+              "slot": 17
+            },
+            {
+              "accepted": false,
+              "loss": 1.5379079874581651,
+              "primary": 0.521,
+              "slot": 18
+            },
+            {
+              "accepted": false,
+              "loss": 1.5379079874581651,
+              "primary": 0.521,
+              "slot": 19
+            },
+            {
+              "accepted": false,
+              "loss": 1.5379079874581651,
+              "primary": 0.521,
+              "slot": 20
+            },
+            {
+              "accepted": false,
+              "loss": 1.5379079874581651,
+              "primary": 0.521,
+              "slot": 21
+            },
+            {
+              "accepted": false,
+              "loss": 1.5379079874581651,
+              "primary": 0.521,
+              "slot": 22
+            },
+            {
+              "accepted": false,
+              "loss": 1.5379079874581651,
+              "primary": 0.521,
+              "slot": 23
+            },
+            {
+              "accepted": false,
+              "loss": 1.5379079874581651,
+              "primary": 0.521,
+              "slot": 24
+            }
+          ],
+          "valid": 24
+        }
+      },
+      "prefixes": [
+        {
+          "budget": 0,
+          "direct_heldout_primary": 0.1548148148148148,
+          "loop_heldout_primary": 0.1548148148148148,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 1,
+          "direct_heldout_primary": 0.14962962962962964,
+          "loop_heldout_primary": 0.14962962962962964,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 2,
+          "direct_heldout_primary": 0.3548148148148148,
+          "loop_heldout_primary": 0.22296296296296295,
+          "loop_minus_direct_pp": -13.185185185185185,
+          "sign": "negative"
+        },
+        {
+          "budget": 4,
+          "direct_heldout_primary": 0.3548148148148148,
+          "loop_heldout_primary": 0.23111111111111113,
+          "loop_minus_direct_pp": -12.370370370370368,
+          "sign": "negative"
+        },
+        {
+          "budget": 6,
+          "direct_heldout_primary": 0.3548148148148148,
+          "loop_heldout_primary": 0.23111111111111113,
+          "loop_minus_direct_pp": -12.370370370370368,
+          "sign": "negative"
+        },
+        {
+          "budget": 8,
+          "direct_heldout_primary": 0.34370370370370373,
+          "loop_heldout_primary": 0.23111111111111113,
+          "loop_minus_direct_pp": -11.259259259259261,
+          "sign": "negative"
+        },
+        {
+          "budget": 12,
+          "direct_heldout_primary": 0.22296296296296295,
+          "loop_heldout_primary": 0.23111111111111113,
+          "loop_minus_direct_pp": 0.8148148148148182,
+          "sign": "positive"
+        },
+        {
+          "budget": 16,
+          "direct_heldout_primary": 0.22296296296296295,
+          "loop_heldout_primary": 0.23111111111111113,
+          "loop_minus_direct_pp": 0.8148148148148182,
+          "sign": "positive"
+        },
+        {
+          "budget": 20,
+          "direct_heldout_primary": 0.22296296296296295,
+          "loop_heldout_primary": 0.23111111111111113,
+          "loop_minus_direct_pp": 0.8148148148148182,
+          "sign": "positive"
+        },
+        {
+          "budget": 24,
+          "direct_heldout_primary": 0.23111111111111113,
+          "loop_heldout_primary": 0.23111111111111113,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        }
+      ],
+      "protocol": "long24",
+      "seed": 61,
+      "slots": 24,
+      "task": "norman_double_corrected"
+    },
+    {
+      "backend": "qwen",
+      "common_development_target": 0.517,
+      "design_count": 36,
+      "modes": {
+        "direct": {
+          "final": 0.517,
+          "first_common_target": 2,
+          "first_higher_terminal_target": 2,
+          "last_primary_improvement": 2,
+          "last_retained": 22,
+          "retained": 4,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 1.5897730523249152,
+              "primary": 0.4,
+              "slot": 0
+            },
+            {
+              "accepted": true,
+              "loss": 1.5895684836728399,
+              "primary": 0.4,
+              "slot": 1
+            },
+            {
+              "accepted": true,
+              "loss": 1.5387557648851728,
+              "primary": 0.517,
+              "slot": 2
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387557648851728,
+              "primary": 0.517,
+              "slot": 3
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387557648851728,
+              "primary": 0.517,
+              "slot": 4
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387557648851728,
+              "primary": 0.517,
+              "slot": 5
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387557648851728,
+              "primary": 0.517,
+              "slot": 6
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387557648851728,
+              "primary": 0.517,
+              "slot": 7
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387557648851728,
+              "primary": 0.517,
+              "slot": 8
+            },
+            {
+              "accepted": true,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 9
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 10
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 11
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 12
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 13
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 14
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 15
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 16
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 17
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 18
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 19
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 20
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 21
+            },
+            {
+              "accepted": true,
+              "loss": 1.5387405894498805,
+              "primary": 0.517,
+              "slot": 22
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387405894498805,
+              "primary": 0.517,
+              "slot": 23
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387405894498805,
+              "primary": 0.517,
+              "slot": 24
+            }
+          ],
+          "valid": 15
+        },
+        "loop": {
+          "final": 0.517,
+          "first_common_target": 5,
+          "first_higher_terminal_target": 5,
+          "last_primary_improvement": 5,
+          "last_retained": 19,
+          "retained": 4,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 1.5897730523249152,
+              "primary": 0.4,
+              "slot": 0
+            },
+            {
+              "accepted": true,
+              "loss": 1.5895684836728399,
+              "primary": 0.4,
+              "slot": 1
+            },
+            {
+              "accepted": false,
+              "loss": 1.5895684836728399,
+              "primary": 0.4,
+              "slot": 2
+            },
+            {
+              "accepted": false,
+              "loss": 1.5895684836728399,
+              "primary": 0.4,
+              "slot": 3
+            },
+            {
+              "accepted": true,
+              "loss": 1.5894478182216978,
+              "primary": 0.4,
+              "slot": 4
+            },
+            {
+              "accepted": true,
+              "loss": 1.5387557648851728,
+              "primary": 0.517,
+              "slot": 5
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387557648851728,
+              "primary": 0.517,
+              "slot": 6
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387557648851728,
+              "primary": 0.517,
+              "slot": 7
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387557648851728,
+              "primary": 0.517,
+              "slot": 8
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387557648851728,
+              "primary": 0.517,
+              "slot": 9
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387557648851728,
+              "primary": 0.517,
+              "slot": 10
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387557648851728,
+              "primary": 0.517,
+              "slot": 11
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387557648851728,
+              "primary": 0.517,
+              "slot": 12
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387557648851728,
+              "primary": 0.517,
+              "slot": 13
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387557648851728,
+              "primary": 0.517,
+              "slot": 14
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387557648851728,
+              "primary": 0.517,
+              "slot": 15
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387557648851728,
+              "primary": 0.517,
+              "slot": 16
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387557648851728,
+              "primary": 0.517,
+              "slot": 17
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387557648851728,
+              "primary": 0.517,
+              "slot": 18
+            },
+            {
+              "accepted": true,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 19
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 20
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 21
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 22
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 23
+            },
+            {
+              "accepted": false,
+              "loss": 1.5387541494147046,
+              "primary": 0.517,
+              "slot": 24
+            }
+          ],
+          "valid": 12
+        }
+      },
+      "prefixes": [
+        {
+          "budget": 0,
+          "direct_heldout_primary": 0.1548148148148148,
+          "loop_heldout_primary": 0.1548148148148148,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 1,
+          "direct_heldout_primary": 0.14962962962962964,
+          "loop_heldout_primary": 0.14962962962962964,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 2,
+          "direct_heldout_primary": 0.22296296296296295,
+          "loop_heldout_primary": 0.14962962962962964,
+          "loop_minus_direct_pp": -7.33333333333333,
+          "sign": "negative"
+        },
+        {
+          "budget": 4,
+          "direct_heldout_primary": 0.22296296296296295,
+          "loop_heldout_primary": 0.14962962962962964,
+          "loop_minus_direct_pp": -7.33333333333333,
+          "sign": "negative"
+        },
+        {
+          "budget": 6,
+          "direct_heldout_primary": 0.22296296296296295,
+          "loop_heldout_primary": 0.22296296296296295,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 8,
+          "direct_heldout_primary": 0.22296296296296295,
+          "loop_heldout_primary": 0.22296296296296295,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 12,
+          "direct_heldout_primary": 0.22296296296296295,
+          "loop_heldout_primary": 0.22296296296296295,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 16,
+          "direct_heldout_primary": 0.22296296296296295,
+          "loop_heldout_primary": 0.22296296296296295,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 20,
+          "direct_heldout_primary": 0.22296296296296295,
+          "loop_heldout_primary": 0.22296296296296295,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 24,
+          "direct_heldout_primary": 0.22296296296296295,
+          "loop_heldout_primary": 0.22296296296296295,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        }
+      ],
+      "protocol": "long24",
+      "seed": 61,
+      "slots": 24,
+      "task": "norman_double_corrected"
+    },
+    {
+      "backend": "luna",
+      "common_development_target": 0.35,
+      "design_count": 36,
+      "modes": {
+        "direct": {
+          "final": 0.35,
+          "first_common_target": 5,
+          "first_higher_terminal_target": 5,
+          "last_primary_improvement": 5,
+          "last_retained": 5,
+          "retained": 2,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 1.6019410840755193,
+              "primary": 0.3,
+              "slot": 0
+            },
+            {
+              "accepted": false,
+              "loss": 1.6019410840755193,
+              "primary": 0.3,
+              "slot": 1
+            },
+            {
+              "accepted": false,
+              "loss": 1.6019410840755193,
+              "primary": 0.3,
+              "slot": 2
+            },
+            {
+              "accepted": false,
+              "loss": 1.6019410840755193,
+              "primary": 0.3,
+              "slot": 3
+            },
+            {
+              "accepted": true,
+              "loss": 1.6018909015381233,
+              "primary": 0.3,
+              "slot": 4
+            },
+            {
+              "accepted": true,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 5
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 6
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 7
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 8
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 9
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 10
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 11
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 12
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 13
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 14
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 15
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 16
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 17
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 18
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 19
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 20
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 21
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 22
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 23
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 24
+            }
+          ],
+          "valid": 24
+        },
+        "loop": {
+          "final": 0.35,
+          "first_common_target": 13,
+          "first_higher_terminal_target": 13,
+          "last_primary_improvement": 13,
+          "last_retained": 13,
+          "retained": 3,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 1.6019410840755193,
+              "primary": 0.3,
+              "slot": 0
+            },
+            {
+              "accepted": false,
+              "loss": 1.6019410840755193,
+              "primary": 0.3,
+              "slot": 1
+            },
+            {
+              "accepted": false,
+              "loss": 1.6019410840755193,
+              "primary": 0.3,
+              "slot": 2
+            },
+            {
+              "accepted": true,
+              "loss": 1.6017582294551775,
+              "primary": 0.3,
+              "slot": 3
+            },
+            {
+              "accepted": false,
+              "loss": 1.6017582294551775,
+              "primary": 0.3,
+              "slot": 4
+            },
+            {
+              "accepted": false,
+              "loss": 1.6017582294551775,
+              "primary": 0.3,
+              "slot": 5
+            },
+            {
+              "accepted": false,
+              "loss": 1.6017582294551775,
+              "primary": 0.3,
+              "slot": 6
+            },
+            {
+              "accepted": false,
+              "loss": 1.6017582294551775,
+              "primary": 0.3,
+              "slot": 7
+            },
+            {
+              "accepted": false,
+              "loss": 1.6017582294551775,
+              "primary": 0.3,
+              "slot": 8
+            },
+            {
+              "accepted": false,
+              "loss": 1.6017582294551775,
+              "primary": 0.3,
+              "slot": 9
+            },
+            {
+              "accepted": true,
+              "loss": 1.5755088405384805,
+              "primary": 0.3333333333333333,
+              "slot": 10
+            },
+            {
+              "accepted": false,
+              "loss": 1.5755088405384805,
+              "primary": 0.3333333333333333,
+              "slot": 11
+            },
+            {
+              "accepted": false,
+              "loss": 1.5755088405384805,
+              "primary": 0.3333333333333333,
+              "slot": 12
+            },
+            {
+              "accepted": true,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 13
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 14
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 15
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 16
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 17
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 18
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 19
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 20
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 21
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 22
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 23
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 24
+            }
+          ],
+          "valid": 24
+        }
+      },
+      "prefixes": [
+        {
+          "budget": 0,
+          "direct_heldout_primary": 0.2537313432835821,
+          "loop_heldout_primary": 0.2537313432835821,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 1,
+          "direct_heldout_primary": 0.2537313432835821,
+          "loop_heldout_primary": 0.2537313432835821,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 2,
+          "direct_heldout_primary": 0.2537313432835821,
+          "loop_heldout_primary": 0.2537313432835821,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 4,
+          "direct_heldout_primary": 0.26865671641791045,
+          "loop_heldout_primary": 0.26865671641791045,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 6,
+          "direct_heldout_primary": 0.13432835820895522,
+          "loop_heldout_primary": 0.26865671641791045,
+          "loop_minus_direct_pp": 13.432835820895523,
+          "sign": "positive"
+        },
+        {
+          "budget": 8,
+          "direct_heldout_primary": 0.13432835820895522,
+          "loop_heldout_primary": 0.26865671641791045,
+          "loop_minus_direct_pp": 13.432835820895523,
+          "sign": "positive"
+        },
+        {
+          "budget": 12,
+          "direct_heldout_primary": 0.13432835820895522,
+          "loop_heldout_primary": 0.19402985074626866,
+          "loop_minus_direct_pp": 5.970149253731344,
+          "sign": "positive"
+        },
+        {
+          "budget": 16,
+          "direct_heldout_primary": 0.13432835820895522,
+          "loop_heldout_primary": 0.13432835820895522,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 20,
+          "direct_heldout_primary": 0.13432835820895522,
+          "loop_heldout_primary": 0.13432835820895522,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 24,
+          "direct_heldout_primary": 0.13432835820895522,
+          "loop_heldout_primary": 0.13432835820895522,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        }
+      ],
+      "protocol": "long24",
+      "seed": 61,
+      "slots": 24,
+      "task": "tahoe_drug_corrected"
+    },
+    {
+      "backend": "qwen",
+      "common_development_target": 0.35,
+      "design_count": 36,
+      "modes": {
+        "direct": {
+          "final": 0.35,
+          "first_common_target": 18,
+          "first_higher_terminal_target": 18,
+          "last_primary_improvement": 18,
+          "last_retained": 18,
+          "retained": 3,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 1.6019410840755193,
+              "primary": 0.3,
+              "slot": 0
+            },
+            {
+              "accepted": true,
+              "loss": 1.5996415893955838,
+              "primary": 0.3,
+              "slot": 1
+            },
+            {
+              "accepted": false,
+              "loss": 1.5996415893955838,
+              "primary": 0.3,
+              "slot": 2
+            },
+            {
+              "accepted": false,
+              "loss": 1.5996415893955838,
+              "primary": 0.3,
+              "slot": 3
+            },
+            {
+              "accepted": false,
+              "loss": 1.5996415893955838,
+              "primary": 0.3,
+              "slot": 4
+            },
+            {
+              "accepted": false,
+              "loss": 1.5996415893955838,
+              "primary": 0.3,
+              "slot": 5
+            },
+            {
+              "accepted": false,
+              "loss": 1.5996415893955838,
+              "primary": 0.3,
+              "slot": 6
+            },
+            {
+              "accepted": false,
+              "loss": 1.5996415893955838,
+              "primary": 0.3,
+              "slot": 7
+            },
+            {
+              "accepted": false,
+              "loss": 1.5996415893955838,
+              "primary": 0.3,
+              "slot": 8
+            },
+            {
+              "accepted": true,
+              "loss": 1.5730195890206287,
+              "primary": 0.31666666666666665,
+              "slot": 9
+            },
+            {
+              "accepted": false,
+              "loss": 1.5730195890206287,
+              "primary": 0.31666666666666665,
+              "slot": 10
+            },
+            {
+              "accepted": false,
+              "loss": 1.5730195890206287,
+              "primary": 0.31666666666666665,
+              "slot": 11
+            },
+            {
+              "accepted": false,
+              "loss": 1.5730195890206287,
+              "primary": 0.31666666666666665,
+              "slot": 12
+            },
+            {
+              "accepted": false,
+              "loss": 1.5730195890206287,
+              "primary": 0.31666666666666665,
+              "slot": 13
+            },
+            {
+              "accepted": false,
+              "loss": 1.5730195890206287,
+              "primary": 0.31666666666666665,
+              "slot": 14
+            },
+            {
+              "accepted": false,
+              "loss": 1.5730195890206287,
+              "primary": 0.31666666666666665,
+              "slot": 15
+            },
+            {
+              "accepted": false,
+              "loss": 1.5730195890206287,
+              "primary": 0.31666666666666665,
+              "slot": 16
+            },
+            {
+              "accepted": false,
+              "loss": 1.5730195890206287,
+              "primary": 0.31666666666666665,
+              "slot": 17
+            },
+            {
+              "accepted": true,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 18
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 19
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 20
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 21
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 22
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 23
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 24
+            }
+          ],
+          "valid": 14
+        },
+        "loop": {
+          "final": 0.35,
+          "first_common_target": 14,
+          "first_higher_terminal_target": 14,
+          "last_primary_improvement": 14,
+          "last_retained": 14,
+          "retained": 3,
+          "trajectory": [
+            {
+              "accepted": true,
+              "loss": 1.6019410840755193,
+              "primary": 0.3,
+              "slot": 0
+            },
+            {
+              "accepted": true,
+              "loss": 1.5996415893955838,
+              "primary": 0.3,
+              "slot": 1
+            },
+            {
+              "accepted": false,
+              "loss": 1.5996415893955838,
+              "primary": 0.3,
+              "slot": 2
+            },
+            {
+              "accepted": false,
+              "loss": 1.5996415893955838,
+              "primary": 0.3,
+              "slot": 3
+            },
+            {
+              "accepted": false,
+              "loss": 1.5996415893955838,
+              "primary": 0.3,
+              "slot": 4
+            },
+            {
+              "accepted": false,
+              "loss": 1.5996415893955838,
+              "primary": 0.3,
+              "slot": 5
+            },
+            {
+              "accepted": false,
+              "loss": 1.5996415893955838,
+              "primary": 0.3,
+              "slot": 6
+            },
+            {
+              "accepted": false,
+              "loss": 1.5996415893955838,
+              "primary": 0.3,
+              "slot": 7
+            },
+            {
+              "accepted": true,
+              "loss": 1.60882257258665,
+              "primary": 0.31666666666666665,
+              "slot": 8
+            },
+            {
+              "accepted": false,
+              "loss": 1.60882257258665,
+              "primary": 0.31666666666666665,
+              "slot": 9
+            },
+            {
+              "accepted": false,
+              "loss": 1.60882257258665,
+              "primary": 0.31666666666666665,
+              "slot": 10
+            },
+            {
+              "accepted": false,
+              "loss": 1.60882257258665,
+              "primary": 0.31666666666666665,
+              "slot": 11
+            },
+            {
+              "accepted": false,
+              "loss": 1.60882257258665,
+              "primary": 0.31666666666666665,
+              "slot": 12
+            },
+            {
+              "accepted": false,
+              "loss": 1.60882257258665,
+              "primary": 0.31666666666666665,
+              "slot": 13
+            },
+            {
+              "accepted": true,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 14
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 15
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 16
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 17
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 18
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 19
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 20
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 21
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 22
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 23
+            },
+            {
+              "accepted": false,
+              "loss": 1.6087718665284938,
+              "primary": 0.35,
+              "slot": 24
+            }
+          ],
+          "valid": 15
+        }
+      },
+      "prefixes": [
+        {
+          "budget": 0,
+          "direct_heldout_primary": 0.2537313432835821,
+          "loop_heldout_primary": 0.2537313432835821,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 1,
+          "direct_heldout_primary": 0.26865671641791045,
+          "loop_heldout_primary": 0.26865671641791045,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 2,
+          "direct_heldout_primary": 0.26865671641791045,
+          "loop_heldout_primary": 0.26865671641791045,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 4,
+          "direct_heldout_primary": 0.26865671641791045,
+          "loop_heldout_primary": 0.26865671641791045,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 6,
+          "direct_heldout_primary": 0.26865671641791045,
+          "loop_heldout_primary": 0.26865671641791045,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 8,
+          "direct_heldout_primary": 0.26865671641791045,
+          "loop_heldout_primary": 0.29850746268656714,
+          "loop_minus_direct_pp": 2.985074626865669,
+          "sign": "positive"
+        },
+        {
+          "budget": 12,
+          "direct_heldout_primary": 0.22388059701492538,
+          "loop_heldout_primary": 0.29850746268656714,
+          "loop_minus_direct_pp": 7.462686567164176,
+          "sign": "positive"
+        },
+        {
+          "budget": 16,
+          "direct_heldout_primary": 0.22388059701492538,
+          "loop_heldout_primary": 0.13432835820895522,
+          "loop_minus_direct_pp": -8.955223880597016,
+          "sign": "negative"
+        },
+        {
+          "budget": 20,
+          "direct_heldout_primary": 0.13432835820895522,
+          "loop_heldout_primary": 0.13432835820895522,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        },
+        {
+          "budget": 24,
+          "direct_heldout_primary": 0.13432835820895522,
+          "loop_heldout_primary": 0.13432835820895522,
+          "loop_minus_direct_pp": 0.0,
+          "sign": "zero"
+        }
+      ],
+      "protocol": "long24",
+      "seed": 61,
+      "slots": 24,
+      "task": "tahoe_drug_corrected"
+    }
+  ],
+  "schema": "fbhk-complete-tables-v1",
+  "source_sha256": {
+    "paper/tables/completed_ablation/dynamics_long24.tex": "3c016b76e43219f3ce09310bad6523e5da18eb96dd9994b47f68c21f5f22036f",
+    "paper/tables/completed_ablation/dynamics_short6.tex": "f12adf39fd07a2bf71bfb66647c109fc555703037e24be99ca4738348706ceae",
+    "paper/tables/completed_ablation/long24.tex": "8440e46dbf19a0291f14a375444dd968bf7ecccade6d1c18a632b5c367b7cb0e",
+    "paper/tables/completed_ablation/short6.tex": "6c1f1346355d1f321913cc12cdd15107eec1154f82af020b466ab66c712cb297",
+    "paper/tables/completed_ablation/snapshot.json": "1300ee2702358927af215de29d7de22bf9b1d495923c2d5661a42f5abed79f23",
+    "results/history_repair_20261109/search_genetic_v3/protocol.json": "20622d2ad3d445f0d2370d2622c01b84b7cdde97b1a421b17a8dc85497749dd8",
+    "results/history_repair_20261109/search_genetic_v3/registration.json": "6b2bf7a93fbce6e85995f8a9a6259962f63f05d9b80a5f3d8c8b7f8cac5d6d6a",
+    "results/history_repair_20261109/search_genetic_v3/search_analysis.json": "4f7c4fe98d4e9866ff85de46ebe91aee58d670463a4c4b81e4d259e724060fbe",
+    "results/history_repair_20261109/training_heldout_genetic_v1/authorization.json": "da668c00680f0584238e18f75372003f0bc358ebaae504d77dd5a927d73f0a0b",
+    "results/history_repair_20261109/training_heldout_genetic_v1/policy_report.json": "bf783342ddc61604e075d1f48c8330e40833f4e11c211637d990bfab870c2de3",
+    "results/history_repair_20261109/training_heldout_genetic_v1/protocol.json": "f0bfe10894e7cdd0697d2842d54899eb701d03b4357debf75b311b63d3ce085c",
+    "results/history_repair_20261109/training_heldout_genetic_v1/verification.json": "792610f2282a4575d3307bccb42db1fcdf99803ab690fe9d6c27b96f7f8d6029"
+  }
+}

@@ -1,5 +1,6 @@
 """Build a readable response PDF from the three author-reviewable Markdown replies."""
 from pathlib import Path
+import argparse
 import re
 from xml.sax.saxutils import escape
 
@@ -24,10 +25,24 @@ def markup(text):
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--reviewers', nargs='+', choices=('FBhK', 'AfJB', 'cR5g'),
+                        default=['FBhK', 'AfJB', 'cR5g'])
+    parser.add_argument('--output', type=Path, default=DESTINATION)
+    args = parser.parse_args()
     fonts = Path('/usr/share/fonts/truetype/liberation')
+    if (fonts / 'LiberationSerif-Regular.ttf').exists():
+        files = {suffix: fonts / f'LiberationSerif-{suffix}.ttf'
+                 for suffix in ('Regular', 'Bold', 'Italic', 'BoldItalic')}
+    else:
+        from matplotlib import get_data_path
+        fonts = Path(get_data_path()) / 'fonts/ttf'
+        files = {suffix: fonts / ('DejaVuSerif.ttf' if suffix == 'Regular'
+                                  else f'DejaVuSerif-{suffix}.ttf')
+                 for suffix in ('Regular', 'Bold', 'Italic', 'BoldItalic')}
     for name, suffix in [('ReplySerif', 'Regular'), ('ReplySerif-Bold', 'Bold'),
                          ('ReplySerif-Italic', 'Italic'), ('ReplySerif-BoldItalic', 'BoldItalic')]:
-        pdfmetrics.registerFont(TTFont(name, str(fonts / f'LiberationSerif-{suffix}.ttf')))
+        pdfmetrics.registerFont(TTFont(name, str(files[suffix])))
     pdfmetrics.registerFontFamily('ReplySerif', normal='ReplySerif', bold='ReplySerif-Bold',
         italic='ReplySerif-Italic', boldItalic='ReplySerif-BoldItalic')
     styles = dict(body=ParagraphStyle('Body', fontName='ReplySerif', fontSize=10.5,
@@ -39,7 +54,7 @@ def main():
         note=ParagraphStyle('Note', fontName='ReplySerif-Italic', fontSize=9,
             leading=12, textColor=colors.HexColor('#555555'), spaceAfter=10))
     story = []
-    for index, reviewer in enumerate(('FBhK', 'AfJB', 'cR5g')):
+    for index, reviewer in enumerate(args.reviewers):
         if index:
             story.append(PageBreak())
         text = (SOURCE / f'RESPONSE_{reviewer}.md').read_text()
@@ -57,12 +72,12 @@ def main():
         canvas.setFillColor(colors.HexColor('#555555'))
         canvas.drawString(44, 27, 'BioCoLoop - reviewer responses')
         canvas.drawRightString(A4[0] - 44, 27, str(doc.page))
-    DESTINATION.parent.mkdir(parents=True, exist_ok=True)
-    document = SimpleDocTemplate(str(DESTINATION), pagesize=A4,
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    document = SimpleDocTemplate(str(args.output), pagesize=A4,
         rightMargin=44, leftMargin=44, topMargin=42, bottomMargin=42,
-        title='BioCoLoop - Responses to Reviewers FBhK, AfJB and cR5g', author='')
+        title='BioCoLoop - Responses to Reviewers ' + ', '.join(args.reviewers), author='')
     document.build(story, onFirstPage=footer, onLaterPages=footer)
-    print(DESTINATION)
+    print(args.output)
 
 
 if __name__ == '__main__':

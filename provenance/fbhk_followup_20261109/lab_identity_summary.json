@@ -1,0 +1,119 @@
+{
+  "omitted": [
+    "individual predictions",
+    "prediction_bindings",
+    "per-sample scores",
+    "labels"
+  ],
+  "report": {
+    "all_outcomes_included": true,
+    "fit_elapsed_seconds": 339.33595585729927,
+    "n_labs": 10,
+    "new_fits": 40,
+    "protocol_sha256": "4de5c764a9f114597474cd3880d7c1c1806e82af70a78eb18d19d8abff037d24",
+    "rows": [
+      {
+        "lab0": 24.010428772986643,
+        "lab_scores": [
+          24.010428772986643,
+          35.753841566575254,
+          30.603622547933067,
+          24.932098929897005,
+          14.693971110104743,
+          27.763996168458632,
+          30.629488989302,
+          37.34429351847709,
+          31.216750728849423,
+          29.915039059504515
+        ],
+        "maximum": 37.34429351847709,
+        "mean": 28.686353139208837,
+        "minimum": 14.693971110104743,
+        "sd": 6.436612245829957,
+        "task": "ptpc_neural"
+      },
+      {
+        "lab0": 29.423298933853957,
+        "lab_scores": [
+          29.423298933853957,
+          39.763412001315224,
+          33.482599726551335,
+          31.33509469206812,
+          31.464800191318215,
+          32.32747342626375,
+          30.844875421488315,
+          26.959726286457787,
+          35.185211479684924,
+          34.2408955050084
+        ],
+        "maximum": 39.763412001315224,
+        "mean": 32.502738766401,
+        "minimum": 26.959726286457787,
+        "sd": 3.4852423324930966,
+        "task": "vcc_corrected"
+      },
+      {
+        "lab0": 25.55555555555556,
+        "lab_scores": [
+          25.55555555555556,
+          22.22222222222222,
+          17.25925925925926,
+          18.51851851851852,
+          18.814814814814813,
+          14.74074074074074,
+          21.25925925925926,
+          13.62962962962963,
+          20.296296296296298,
+          4.37037037037037
+        ],
+        "maximum": 25.55555555555556,
+        "mean": 17.666666666666668,
+        "minimum": 4.37037037037037,
+        "sd": 5.837326349079229,
+        "task": "norman_double_corrected"
+      },
+      {
+        "lab0": 19.402985074626866,
+        "lab_scores": [
+          19.402985074626866,
+          13.432835820895523,
+          22.388059701492537,
+          25.37313432835821,
+          20.8955223880597,
+          20.8955223880597,
+          19.402985074626866,
+          13.432835820895523,
+          26.865671641791046,
+          14.925373134328357
+        ],
+        "maximum": 26.865671641791046,
+        "mean": 19.70149253731343,
+        "minimum": 13.432835820895523,
+        "sd": 4.65646127633735,
+        "task": "tahoe_drug_corrected"
+      }
+    ],
+    "schema": "fbhk-fixed-lab-identity-report-v1",
+    "scope": "Fixed D00 only; separate CPU sensitivity, no DTI or all-lab-controller evaluation",
+    "seed": 42,
+    "selection_seal_sha256": "284c93b989241eb43d886217b959b6b5518fc52d76b1ae214d8ae52c0a003d5a",
+    "variation": "Across simulated lab identities, not training seeds"
+  },
+  "schema": "fbhk-public-lab-identity-summary-v1",
+  "source_reports": {
+    "results/fbhk_followup_20261109/lab_identity/report.json": "032c95fade4152909aa6b9f5252c56be4219a132176c83e35a3211c6df8fd2fd",
+    "results/fbhk_followup_20261109/lab_identity/verification.json": "ffa0531849681b01b9af7f9001f04f0051a6e30d4002f2411c6cc1f4765e8cea"
+  },
+  "verification": {
+    "all_fits_sealed_before_heldout": true,
+    "new_fits_verified": 40,
+    "no_gpu_models_mixed": true,
+    "prediction_scores_verified": 40,
+    "protocol_sha256": "4de5c764a9f114597474cd3880d7c1c1806e82af70a78eb18d19d8abff037d24",
+    "renderer_sha256": "6d754f9c38829c6d126063b1e0711507049305ee316593c8a77813ec48ba9dc2",
+    "rendering_note": "Header clarifies mean over ten separate single-lab fits, not a collaboratively trained model",
+    "report_sha256": "032c95fade4152909aa6b9f5252c56be4219a132176c83e35a3211c6df8fd2fd",
+    "status": "PASS",
+    "table_sha256": "62238f0301d4d39553c784d0ce20adac2834811613e395b5b9449b704f555b36"
+  }
+}

@@ -6,6 +6,14 @@ BioCoLoop combines **biology**, **collaboration** and an iterative **research lo
 
 ## Review revision — 9 November 2026
 
+### FBhK follow-up delivery
+
+The latest [FBhK revision PDF](output/pdf/BioCoLoop_FBhK_revision_20261109.pdf) incorporates the complete three-seed history-representation study, every development/held-out search prefix, and **40 fresh fixed-design fits rotating the single participating laboratory** across four endpoints. The original short/extended outcome tables and trajectory tables are each consolidated without removing unfavorable results. The larger-data study has a positive structured-history point estimate but does not establish stable superiority over direct, random or GP-EI search. Laboratory-identity variation is reported separately from training-seed variation and from collaborative performance.
+
+Start with the [Chinese delivery/change summary](provenance/fbhk_followup_20261109/CHANGES.zh-CN.md), [complete FBhK response](provenance/rebuttal_20261109/RESPONSE_FBhK.md), or [concise posting draft](provenance/fbhk_followup_20261109/RESPONSE_FBhK_SHORT.md). [New tables](tables/fbhk_followup_20261109/), [aggregate diagnostics and extension source archive](provenance/fbhk_followup_20261109/), and the [build receipt](provenance/fbhk_followup_20261109/build_receipt.json) identify the delivered version. Every-controller/every-laboratory rotation, DTI dictionary reconstruction and repeated grouped biological splits are **not** reported as completed. This branch is for author review and does not automatically update OpenReview or Overleaf's `main`.
+
+### Earlier review revision
+
 The review revision is maintained on **`rebuttal/20261109-review-revision`**, based on commit `7764441`; it does not replace the author-approved `main` branch. The [revised manuscript](output/pdf/BioCoLoop_revised_20261109.pdf) separates laboratory participation, proposal-history search and training allocation. Its access-scenario table preserves every original score, makes laboratory access explicit and removes the average rank over unevenly completed endpoints. A new main-text table compares random search, GP-EI and both Qwen/Luna proposal modes with the same ten-laboratory access.
 
 Appendix E explains these additional controls, reconstructs the VCC/Tahoe development-to-test divergence, tests 20 new development-option rosters, and reports the completed three-seed source-defined laboratory history comparisons. The new controls do not show a general history advantage; their mixed outcomes are retained and the abstract and conclusions are aligned with that evidence. Fixed-roster sensitivity is distinguished from robustness across new biological partitions.

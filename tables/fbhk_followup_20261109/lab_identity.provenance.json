@@ -1,0 +1,300 @@
+{
+  "status": "PASS",
+  "new_fits_verified": 40,
+  "prediction_scores_verified": 40,
+  "protocol_sha256": "4de5c764a9f114597474cd3880d7c1c1806e82af70a78eb18d19d8abff037d24",
+  "report_sha256": "032c95fade4152909aa6b9f5252c56be4219a132176c83e35a3211c6df8fd2fd",
+  "prediction_bindings": {
+    "/liziqing/yukai/AI4AI4Cell/data/proteomics/ptpc_release_20260911/final/final.npz": "f6672c2f206c0c20f8c77e9b1821f56a6ffe5da3c738b50f43ca36580d234782",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/ptpc_neural/heldout/lab0_predictions.npz": "5097c552c3b1d1016dee912484c16f4a31ac7525f6c2cce33675270cb08e8f26",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/ptpc_neural/heldout/lab1_predictions.npz": "6d66e4ad9ac65faae7040eb4b93149dda6995396f6519e05f390db6fe0dfdfad",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/ptpc_neural/heldout/lab2_predictions.npz": "d974dbadcb1da4c2de96f1d326fb53a8ed109d390229505b7f71853e78afc07f",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/ptpc_neural/heldout/lab3_predictions.npz": "948e0617754b996842b2849e4ed7c4a30064256a46b85455a8bc1258db4e23d6",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/ptpc_neural/heldout/lab4_predictions.npz": "ba77894ee6ace0acd128c3bd1af89c0786bdca2fac168678e9a73ed026d862dc",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/ptpc_neural/heldout/lab5_predictions.npz": "de003278592953695969764aa2f6588f521cdae4b4331a6ed097ca1e183d0858",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/ptpc_neural/heldout/lab6_predictions.npz": "7799b32f0c8dd60343f3b668234ab4128a9af0718fd3f69f9eba26cd6c4325c9",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/ptpc_neural/heldout/lab7_predictions.npz": "22982c7feac366416381bc0f6877c540be0c9074b1e37acfbe27dad789010682",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/ptpc_neural/heldout/lab8_predictions.npz": "a5eb807c5db394a517685783af23e8185218239328ccabcbbd38a495d5e29a17",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/ptpc_neural/heldout/lab9_predictions.npz": "18bd6270afde607311d63c0ae385d67a94cf28148f7090234ab7047109f18769",
+    "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/corrected_features/vcc_corrected/data/test/query.npz": "840e48ef2ca0e28f66da5ab918890dd00f10202da1a50156e9896d40abde1234",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/vcc_corrected/heldout/lab0_predictions.json": "d8ec803c649ebf53288c54163588b6b3c3357762f27e8e28215b9a0cb576ef80",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/vcc_corrected/heldout/lab1_predictions.json": "352cf96f7a767d80dc7e491c83108f01dc105a0368f78f05a3a1ca6397631376",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/vcc_corrected/heldout/lab2_predictions.json": "61351530e69679c39e4ad9471e7db513bbba6bbedddf31108f733bf857e902d2",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/vcc_corrected/heldout/lab3_predictions.json": "96b5735b14bd86b4cf249b2ad744ab9d817143f6e6bd8f62ca0d34e4c860504a",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/vcc_corrected/heldout/lab4_predictions.json": "2fdb3548222c4fbc10abeb3db34f67ebcad391427ffee4da31ce7eb53b9145fc",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/vcc_corrected/heldout/lab5_predictions.json": "980a4fe9085d521e98d25d049a3f9c2ca7f47227437d762935486c4bb536f3d3",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/vcc_corrected/heldout/lab6_predictions.json": "82c532fa47a335bd6eeef9927767c447bdaab862cc2e4c04bd252112e9d441bc",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/vcc_corrected/heldout/lab7_predictions.json": "90ae67496eca54f14cc04a8d735c56cbfd65bed367a90e4d6bc6202f2683e4cf",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/vcc_corrected/heldout/lab8_predictions.json": "01e49bbc5ae591f870c27c17e934630b2bc4bf56e5ac11e1342ef257cfa04b7d",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/vcc_corrected/heldout/lab9_predictions.json": "e468817a3f07a865527031f563d2227279ee98d449ce3c9510fc27c5a6514a17",
+    "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/corrected_features/norman_double_corrected/data/test/query.npz": "38c3680ee5bf94afca41c6b8dffd3fb22a692f608b793fda729b93909a7c38e8",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/norman_double_corrected/heldout/lab0_predictions.json": "67f45f30e408e19b3007a5995168c903c69dcd07589a0d4519770f2025be26c9",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/norman_double_corrected/heldout/lab1_predictions.json": "cdd858322ddd4b63e22fd73b1ed3cb137842f68fc20bfe339cbf5abe0be0fbca",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/norman_double_corrected/heldout/lab2_predictions.json": "6466e938e189b83ebf29539c5fa18b53303fd2e9d569f2fee72ea58029848d86",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/norman_double_corrected/heldout/lab3_predictions.json": "75ac35d4037863d4ecf058b0ac3e7ed162c67e8062cd5afe7c238d2734c5a060",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/norman_double_corrected/heldout/lab4_predictions.json": "12c87ae871639c7c1a3db9c51225da88da4d3e67754472684cceb9d7deb74b61",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/norman_double_corrected/heldout/lab5_predictions.json": "dc5906075d5111c4ab0a2876a17dde3952310bc94e8621715d141c8288b66f9e",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/norman_double_corrected/heldout/lab6_predictions.json": "2c27f81e75b25e95c661217ef6464952d0b297a6870db903d3f85241e1e035e3",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/norman_double_corrected/heldout/lab7_predictions.json": "f975276f1564338bede5f92e86464b60d6ac81d91ffc33d857f777ecb67c5cc9",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/norman_double_corrected/heldout/lab8_predictions.json": "9b4a6ccbac9b2685c885212c578f347457cc542f34b773cbb4453f467a0d5777",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/norman_double_corrected/heldout/lab9_predictions.json": "34be8cbc401a1ee5e0cf876278edc52d8fc2eb5b37dd5f80e7d4fb74a06bb5d3",
+    "/liziqing/yukai/AI4AI4Cell/results/unified_bio_20260918/corrected_features/tahoe_drug_corrected/data/test/query.npz": "6bb5934407459f108ed06b9db45805b48aff59e974cae5c02792b2b6eb39991a",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/tahoe_drug_corrected/heldout/lab0_predictions.json": "3dc8a42deff9bca3218c9f24a0e53903349b975cb060ba2a621e1c48ee68cddc",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/tahoe_drug_corrected/heldout/lab1_predictions.json": "60e2ca82f9effafd6ab2c52248f4fef45fb631d03b72e7822b816bc0788709ec",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/tahoe_drug_corrected/heldout/lab2_predictions.json": "903c7867c1171648e9fbd33691b8347069b7793a64c18678d792f6e491f61084",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/tahoe_drug_corrected/heldout/lab3_predictions.json": "ec5eca5a822c160de3f48a834038c6f073ddf24944109c9400f765c7de173cf1",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/tahoe_drug_corrected/heldout/lab4_predictions.json": "9085ae1e4cd0621b00b380b07b6276cca74e6b3f40e6465bf2ec54d34e967c24",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/tahoe_drug_corrected/heldout/lab5_predictions.json": "d8432ac1c1770908a33ccc49232898317dbb9a3f6110278e369aebbed4b6ba65",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/tahoe_drug_corrected/heldout/lab6_predictions.json": "59853284d1ba2ebf20bf00fdc0e663b423148084fc3003034fd2b4cd4b564f0a",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/tahoe_drug_corrected/heldout/lab7_predictions.json": "75f31e887cb40f9a577a9d5c8ff886db4323e08d9bcf010c65a8384e99dbdc0d",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/tahoe_drug_corrected/heldout/lab8_predictions.json": "38164527066821cedaeab859475c58a5e8dfb49cc3588b08792030cf7a75fb11",
+    "/liziqing/yukai/AI4AI4Cell/results/fbhk_followup_20261109/lab_identity/tahoe_drug_corrected/heldout/lab9_predictions.json": "24316b6d331fa9f8b9b4a9cff99488063f035d0fb645efd40e34215a53f3a0ea"
+  },
+  "all_fits_sealed_before_heldout": true,
+  "no_gpu_models_mixed": true,
+  "checks": [
+    {
+      "task": "ptpc_neural",
+      "lab": 0,
+      "verified_primary": 0.24010428772986642,
+      "source_sha256": "5097c552c3b1d1016dee912484c16f4a31ac7525f6c2cce33675270cb08e8f26"
+    },
+    {
+      "task": "ptpc_neural",
+      "lab": 1,
+      "verified_primary": 0.35753841566575256,
+      "source_sha256": "6d66e4ad9ac65faae7040eb4b93149dda6995396f6519e05f390db6fe0dfdfad"
+    },
+    {
+      "task": "ptpc_neural",
+      "lab": 2,
+      "verified_primary": 0.3060362254793307,
+      "source_sha256": "d974dbadcb1da4c2de96f1d326fb53a8ed109d390229505b7f71853e78afc07f"
+    },
+    {
+      "task": "ptpc_neural",
+      "lab": 3,
+      "verified_primary": 0.24932098929897006,
+      "source_sha256": "948e0617754b996842b2849e4ed7c4a30064256a46b85455a8bc1258db4e23d6"
+    },
+    {
+      "task": "ptpc_neural",
+      "lab": 4,
+      "verified_primary": 0.14693971110104742,
+      "source_sha256": "ba77894ee6ace0acd128c3bd1af89c0786bdca2fac168678e9a73ed026d862dc"
+    },
+    {
+      "task": "ptpc_neural",
+      "lab": 5,
+      "verified_primary": 0.2776399616845863,
+      "source_sha256": "de003278592953695969764aa2f6588f521cdae4b4331a6ed097ca1e183d0858"
+    },
+    {
+      "task": "ptpc_neural",
+      "lab": 6,
+      "verified_primary": 0.30629488989302,
+      "source_sha256": "7799b32f0c8dd60343f3b668234ab4128a9af0718fd3f69f9eba26cd6c4325c9"
+    },
+    {
+      "task": "ptpc_neural",
+      "lab": 7,
+      "verified_primary": 0.3734429351847709,
+      "source_sha256": "22982c7feac366416381bc0f6877c540be0c9074b1e37acfbe27dad789010682"
+    },
+    {
+      "task": "ptpc_neural",
+      "lab": 8,
+      "verified_primary": 0.31216750728849424,
+      "source_sha256": "a5eb807c5db394a517685783af23e8185218239328ccabcbbd38a495d5e29a17"
+    },
+    {
+      "task": "ptpc_neural",
+      "lab": 9,
+      "verified_primary": 0.29915039059504517,
+      "source_sha256": "18bd6270afde607311d63c0ae385d67a94cf28148f7090234ab7047109f18769"
+    },
+    {
+      "task": "vcc_corrected",
+      "lab": 0,
+      "verified_primary": 0.2942329893385396,
+      "source_sha256": "d8ec803c649ebf53288c54163588b6b3c3357762f27e8e28215b9a0cb576ef80"
+    },
+    {
+      "task": "vcc_corrected",
+      "lab": 1,
+      "verified_primary": 0.39763412001315224,
+      "source_sha256": "352cf96f7a767d80dc7e491c83108f01dc105a0368f78f05a3a1ca6397631376"
+    },
+    {
+      "task": "vcc_corrected",
+      "lab": 2,
+      "verified_primary": 0.3348259972655134,
+      "source_sha256": "61351530e69679c39e4ad9471e7db513bbba6bbedddf31108f733bf857e902d2"
+    },
+    {
+      "task": "vcc_corrected",
+      "lab": 3,
+      "verified_primary": 0.3133509469206812,
+      "source_sha256": "96b5735b14bd86b4cf249b2ad744ab9d817143f6e6bd8f62ca0d34e4c860504a"
+    },
+    {
+      "task": "vcc_corrected",
+      "lab": 4,
+      "verified_primary": 0.31464800191318215,
+      "source_sha256": "2fdb3548222c4fbc10abeb3db34f67ebcad391427ffee4da31ce7eb53b9145fc"
+    },
+    {
+      "task": "vcc_corrected",
+      "lab": 5,
+      "verified_primary": 0.32327473426263753,
+      "source_sha256": "980a4fe9085d521e98d25d049a3f9c2ca7f47227437d762935486c4bb536f3d3"
+    },
+    {
+      "task": "vcc_corrected",
+      "lab": 6,
+      "verified_primary": 0.30844875421488316,
+      "source_sha256": "82c532fa47a335bd6eeef9927767c447bdaab862cc2e4c04bd252112e9d441bc"
+    },
+    {
+      "task": "vcc_corrected",
+      "lab": 7,
+      "verified_primary": 0.26959726286457786,
+      "source_sha256": "90ae67496eca54f14cc04a8d735c56cbfd65bed367a90e4d6bc6202f2683e4cf"
+    },
+    {
+      "task": "vcc_corrected",
+      "lab": 8,
+      "verified_primary": 0.35185211479684925,
+      "source_sha256": "01e49bbc5ae591f870c27c17e934630b2bc4bf56e5ac11e1342ef257cfa04b7d"
+    },
+    {
+      "task": "vcc_corrected",
+      "lab": 9,
+      "verified_primary": 0.34240895505008406,
+      "source_sha256": "e468817a3f07a865527031f563d2227279ee98d449ce3c9510fc27c5a6514a17"
+    },
+    {
+      "task": "norman_double_corrected",
+      "lab": 0,
+      "verified_primary": 0.25555555555555554,
+      "source_sha256": "67f45f30e408e19b3007a5995168c903c69dcd07589a0d4519770f2025be26c9"
+    },
+    {
+      "task": "norman_double_corrected",
+      "lab": 1,
+      "verified_primary": 0.2222222222222222,
+      "source_sha256": "cdd858322ddd4b63e22fd73b1ed3cb137842f68fc20bfe339cbf5abe0be0fbca"
+    },
+    {
+      "task": "norman_double_corrected",
+      "lab": 2,
+      "verified_primary": 0.1725925925925926,
+      "source_sha256": "6466e938e189b83ebf29539c5fa18b53303fd2e9d569f2fee72ea58029848d86"
+    },
+    {
+      "task": "norman_double_corrected",
+      "lab": 3,
+      "verified_primary": 0.18518518518518517,
+      "source_sha256": "75ac35d4037863d4ecf058b0ac3e7ed162c67e8062cd5afe7c238d2734c5a060"
+    },
+    {
+      "task": "norman_double_corrected",
+      "lab": 4,
+      "verified_primary": 0.18814814814814815,
+      "source_sha256": "12c87ae871639c7c1a3db9c51225da88da4d3e67754472684cceb9d7deb74b61"
+    },
+    {
+      "task": "norman_double_corrected",
+      "lab": 5,
+      "verified_primary": 0.1474074074074074,
+      "source_sha256": "dc5906075d5111c4ab0a2876a17dde3952310bc94e8621715d141c8288b66f9e"
+    },
+    {
+      "task": "norman_double_corrected",
+      "lab": 6,
+      "verified_primary": 0.2125925925925926,
+      "source_sha256": "2c27f81e75b25e95c661217ef6464952d0b297a6870db903d3f85241e1e035e3"
+    },
+    {
+      "task": "norman_double_corrected",
+      "lab": 7,
+      "verified_primary": 0.13629629629629628,
+      "source_sha256": "f975276f1564338bede5f92e86464b60d6ac81d91ffc33d857f777ecb67c5cc9"
+    },
+    {
+      "task": "norman_double_corrected",
+      "lab": 8,
+      "verified_primary": 0.20296296296296296,
+      "source_sha256": "9b4a6ccbac9b2685c885212c578f347457cc542f34b773cbb4453f467a0d5777"
+    },
+    {
+      "task": "norman_double_corrected",
+      "lab": 9,
+      "verified_primary": 0.0437037037037037,
+      "source_sha256": "34be8cbc401a1ee5e0cf876278edc52d8fc2eb5b37dd5f80e7d4fb74a06bb5d3"
+    },
+    {
+      "task": "tahoe_drug_corrected",
+      "lab": 0,
+      "verified_primary": 0.19402985074626866,
+      "source_sha256": "3dc8a42deff9bca3218c9f24a0e53903349b975cb060ba2a621e1c48ee68cddc"
+    },
+    {
+      "task": "tahoe_drug_corrected",
+      "lab": 1,
+      "verified_primary": 0.13432835820895522,
+      "source_sha256": "60e2ca82f9effafd6ab2c52248f4fef45fb631d03b72e7822b816bc0788709ec"
+    },
+    {
+      "task": "tahoe_drug_corrected",
+      "lab": 2,
+      "verified_primary": 0.22388059701492538,
+      "source_sha256": "903c7867c1171648e9fbd33691b8347069b7793a64c18678d792f6e491f61084"
+    },
+    {
+      "task": "tahoe_drug_corrected",
+      "lab": 3,
+      "verified_primary": 0.2537313432835821,
+      "source_sha256": "ec5eca5a822c160de3f48a834038c6f073ddf24944109c9400f765c7de173cf1"
+    },
+    {
+      "task": "tahoe_drug_corrected",
+      "lab": 4,
+      "verified_primary": 0.208955223880597,
+      "source_sha256": "9085ae1e4cd0621b00b380b07b6276cca74e6b3f40e6465bf2ec54d34e967c24"
+    },
+    {
+      "task": "tahoe_drug_corrected",
+      "lab": 5,
+      "verified_primary": 0.208955223880597,
+      "source_sha256": "d8432ac1c1770908a33ccc49232898317dbb9a3f6110278e369aebbed4b6ba65"
+    },
+    {
+      "task": "tahoe_drug_corrected",
+      "lab": 6,
+      "verified_primary": 0.19402985074626866,
+      "source_sha256": "59853284d1ba2ebf20bf00fdc0e663b423148084fc3003034fd2b4cd4b564f0a"
+    },
+    {
+      "task": "tahoe_drug_corrected",
+      "lab": 7,
+      "verified_primary": 0.13432835820895522,
+      "source_sha256": "75f31e887cb40f9a577a9d5c8ff886db4323e08d9bcf010c65a8384e99dbdc0d"
+    },
+    {
+      "task": "tahoe_drug_corrected",
+      "lab": 8,
+      "verified_primary": 0.26865671641791045,
+      "source_sha256": "38164527066821cedaeab859475c58a5e8dfb49cc3588b08792030cf7a75fb11"
+    },
+    {
+      "task": "tahoe_drug_corrected",
+      "lab": 9,
+      "verified_primary": 0.14925373134328357,
+      "source_sha256": "24316b6d331fa9f8b9b4a9cff99488063f035d0fb645efd40e34215a53f3a0ea"
+    }
+  ],
+  "rendering_note": "Header clarifies mean over ten separate single-lab fits, not a collaboratively trained model",
+  "renderer_sha256": "6d754f9c38829c6d126063b1e0711507049305ee316593c8a77813ec48ba9dc2",
+  "table_sha256": "62238f0301d4d39553c784d0ce20adac2834811613e395b5b9449b704f555b36"
+}

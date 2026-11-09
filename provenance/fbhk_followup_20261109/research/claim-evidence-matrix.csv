@@ -1,0 +1,4 @@
+claim_id,section,claim,source_ids,evidence_location,status,notes
+C1,E.2,Random search is an appropriate baseline for sequential configuration optimization,RS,Sections 1 and 2.1-2.2,reported,Our exact subset expectation is distinct from their uncertainty-weighting procedure
+C2,E.3,Finite-sample selection criteria can be overfit even with few hyperparameters,MS,Section 4.2 and Section 6,reported,Roster sensitivity does not uniquely identify adaptive overfitting
+C3,E.6,Structured history changes selections but does not establish stable superiority,local-policy-report,training_heldout_genetic_v1/policy_report.json,derived,Report all methods and paired gene-cluster intervals

@@ -1,0 +1,2 @@
+source_id,title,artifact_type,version,url,claims_supported,evidence_location,disclosure_status,notes
+local-policy-report,BioCoLoop three-seed history-feedback experiment,local experiment,search_genetic_v3,../policy_summary.json,C3,policies and paired differences,derived,Not a literature citation; original report SHA bf783342ddc61604e075d1f48c8330e40833f4e11c211637d990bfab870c2de3

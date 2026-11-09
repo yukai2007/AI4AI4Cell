@@ -1,0 +1,978 @@
+{
+  "bootstrap": {
+    "cluster": "global perturbation gene",
+    "estimand": "equal-context mean, averaged over the three fixed training/controller seeds",
+    "interval": "two-sided 95% percentile",
+    "pairing": "same gene resample across all contexts, seeds and policies",
+    "replicates": 10000,
+    "scope": "Conditional test-gene uncertainty for fixed trained/selected models; training-seed SD is reported separately",
+    "seed": 110925
+  },
+  "budget_by_policy": {
+    "direct": {
+      "development": {
+        "loss": {
+          "mean": 1.6132220725218456,
+          "n": 3,
+          "sample_sd": 0.00027988417127476644
+        },
+        "primary": {
+          "mean": 0.22680901965594533,
+          "n": 3,
+          "sample_sd": 0.0024563870713603373
+        }
+      },
+      "fitting_cost": {
+        "candidate_fit_count": {
+          "mean": 7.0,
+          "n": 3,
+          "sample_sd": 0.0
+        },
+        "examples_seen": {
+          "mean": 532840.0,
+          "n": 3,
+          "sample_sd": 0.0
+        },
+        "measured_fit_gpu_hours_sum": {
+          "mean": 0.021585990796383056,
+          "n": 3,
+          "sample_sd": 0.003134558428652086
+        },
+        "measured_fit_seconds_sum": {
+          "mean": 77.709566866979,
+          "n": 3,
+          "sample_sd": 11.284410343147508
+        },
+        "optimizer_steps": {
+          "mean": 16940.0,
+          "n": 3,
+          "sample_sd": 0.0
+        },
+        "rounds": {
+          "mean": 140.0,
+          "n": 3,
+          "sample_sd": 0.0
+        }
+      },
+      "invalid_slots": 0,
+      "llm_logical_usage_total": {
+        "calls": 18,
+        "generation_seconds": 60.60721277631819,
+        "input_tokens": 38276,
+        "output_tokens": 2903,
+        "total_attempt_seconds": 210.09470839053392
+      }
+    },
+    "fixed": {
+      "development": {
+        "loss": {
+          "mean": 1.6224284370740254,
+          "n": 3,
+          "sample_sd": 0.00247437550980182
+        },
+        "primary": {
+          "mean": 0.22402866743967756,
+          "n": 3,
+          "sample_sd": 0.0007486536771352826
+        }
+      },
+      "fitting_cost": {
+        "candidate_fit_count": {
+          "mean": 1.0,
+          "n": 3,
+          "sample_sd": 0.0
+        },
+        "examples_seen": {
+          "mean": 76120.0,
+          "n": 3,
+          "sample_sd": 0.0
+        },
+        "measured_fit_gpu_hours_sum": {
+          "mean": 0.0031086260756408727,
+          "n": 3,
+          "sample_sd": 0.0006791176736734999
+        },
+        "measured_fit_seconds_sum": {
+          "mean": 11.191053872307142,
+          "n": 3,
+          "sample_sd": 2.4448236252246005
+        },
+        "optimizer_steps": {
+          "mean": 2420.0,
+          "n": 3,
+          "sample_sd": 0.0
+        },
+        "rounds": {
+          "mean": 20.0,
+          "n": 3,
+          "sample_sd": 0.0
+        }
+      },
+      "invalid_slots": 0,
+      "llm_logical_usage_total": {
+        "calls": 0,
+        "generation_seconds": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_attempt_seconds": 0
+      }
+    },
+    "gp_ei": {
+      "development": {
+        "loss": {
+          "mean": 1.5995364288489025,
+          "n": 3,
+          "sample_sd": 0.0025031474268647955
+        },
+        "primary": {
+          "mean": 0.23604843224089772,
+          "n": 3,
+          "sample_sd": 0.003198110642884853
+        }
+      },
+      "fitting_cost": {
+        "candidate_fit_count": {
+          "mean": 7.0,
+          "n": 3,
+          "sample_sd": 0.0
+        },
+        "examples_seen": {
+          "mean": 532840.0,
+          "n": 3,
+          "sample_sd": 0.0
+        },
+        "measured_fit_gpu_hours_sum": {
+          "mean": 0.02204888638988551,
+          "n": 3,
+          "sample_sd": 0.0014463356289986875
+        },
+        "measured_fit_seconds_sum": {
+          "mean": 79.37599100358784,
+          "n": 3,
+          "sample_sd": 5.206808264395278
+        },
+        "optimizer_steps": {
+          "mean": 16940.0,
+          "n": 3,
+          "sample_sd": 0.0
+        },
+        "rounds": {
+          "mean": 140.0,
+          "n": 3,
+          "sample_sd": 0.0
+        }
+      },
+      "invalid_slots": 0,
+      "llm_logical_usage_total": {
+        "calls": 0,
+        "generation_seconds": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_attempt_seconds": 0
+      }
+    },
+    "random": {
+      "development": {
+        "loss": {
+          "mean": 1.6072915568238213,
+          "n": 3,
+          "sample_sd": 0.0008190746243526832
+        },
+        "primary": {
+          "mean": 0.2306129480989313,
+          "n": 3,
+          "sample_sd": 0.0024211521910472433
+        }
+      },
+      "fitting_cost": {
+        "candidate_fit_count": {
+          "mean": 7.0,
+          "n": 3,
+          "sample_sd": 0.0
+        },
+        "examples_seen": {
+          "mean": 532840.0,
+          "n": 3,
+          "sample_sd": 0.0
+        },
+        "measured_fit_gpu_hours_sum": {
+          "mean": 0.02042155736964196,
+          "n": 3,
+          "sample_sd": 0.0011498474858765287
+        },
+        "measured_fit_seconds_sum": {
+          "mean": 73.51760653071105,
+          "n": 3,
+          "sample_sd": 4.139450949155505
+        },
+        "optimizer_steps": {
+          "mean": 16940.0,
+          "n": 3,
+          "sample_sd": 0.0
+        },
+        "rounds": {
+          "mean": 140.0,
+          "n": 3,
+          "sample_sd": 0.0
+        }
+      },
+      "invalid_slots": 0,
+      "llm_logical_usage_total": {
+        "calls": 0,
+        "generation_seconds": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_attempt_seconds": 0
+      }
+    },
+    "random_shared_first": {
+      "development": {
+        "loss": {
+          "mean": 1.6082165483193043,
+          "n": 3,
+          "sample_sd": 0.0006737679710756754
+        },
+        "primary": {
+          "mean": 0.23006039481570534,
+          "n": 3,
+          "sample_sd": 0.0022609728321277434
+        }
+      },
+      "fitting_cost": {
+        "candidate_fit_count": {
+          "mean": 7.0,
+          "n": 3,
+          "sample_sd": 0.0
+        },
+        "examples_seen": {
+          "mean": 532840.0,
+          "n": 3,
+          "sample_sd": 0.0
+        },
+        "measured_fit_gpu_hours_sum": {
+          "mean": 0.02063259536498374,
+          "n": 3,
+          "sample_sd": 0.0013540836311174678
+        },
+        "measured_fit_seconds_sum": {
+          "mean": 74.27734331394147,
+          "n": 3,
+          "sample_sd": 4.87470107202288
+        },
+        "optimizer_steps": {
+          "mean": 16940.0,
+          "n": 3,
+          "sample_sd": 0.0
+        },
+        "rounds": {
+          "mean": 140.0,
+          "n": 3,
+          "sample_sd": 0.0
+        }
+      },
+      "invalid_slots": 0,
+      "llm_logical_usage_total": {
+        "calls": 3,
+        "generation_seconds": 10.52087139338255,
+        "input_tokens": 7146,
+        "output_tokens": 454,
+        "total_attempt_seconds": 159.89699037000537
+      }
+    },
+    "raw": {
+      "development": {
+        "loss": {
+          "mean": 1.6132220725218456,
+          "n": 3,
+          "sample_sd": 0.00027988417127476644
+        },
+        "primary": {
+          "mean": 0.22680901965594533,
+          "n": 3,
+          "sample_sd": 0.0024563870713603373
+        }
+      },
+      "fitting_cost": {
+        "candidate_fit_count": {
+          "mean": 6.0,
+          "n": 3,
+          "sample_sd": 1.0
+        },
+        "examples_seen": {
+          "mean": 456720.0,
+          "n": 3,
+          "sample_sd": 76120.0
+        },
+        "measured_fit_gpu_hours_sum": {
+          "mean": 0.016469804365187884,
+          "n": 3,
+          "sample_sd": 0.0012365484448922878
+        },
+        "measured_fit_seconds_sum": {
+          "mean": 59.29129571467638,
+          "n": 3,
+          "sample_sd": 4.451574401612232
+        },
+        "optimizer_steps": {
+          "mean": 14520.0,
+          "n": 3,
+          "sample_sd": 2420.0
+        },
+        "rounds": {
+          "mean": 120.0,
+          "n": 3,
+          "sample_sd": 20.0
+        }
+      },
+      "invalid_slots": 3,
+      "llm_logical_usage_total": {
+        "calls": 24,
+        "generation_seconds": 96.47687618155032,
+        "input_tokens": 224884,
+        "output_tokens": 4036,
+        "total_attempt_seconds": 246.32969290576875
+      }
+    },
+    "structured": {
+      "development": {
+        "loss": {
+          "mean": 1.6046532094478607,
+          "n": 3,
+          "sample_sd": 0.007850949125581267
+        },
+        "primary": {
+          "mean": 0.23382547004810753,
+          "n": 3,
+          "sample_sd": 0.004825651144556058
+        }
+      },
+      "fitting_cost": {
+        "candidate_fit_count": {
+          "mean": 7.0,
+          "n": 3,
+          "sample_sd": 0.0
+        },
+        "examples_seen": {
+          "mean": 532840.0,
+          "n": 3,
+          "sample_sd": 0.0
+        },
+        "measured_fit_gpu_hours_sum": {
+          "mean": 0.02103673952165991,
+          "n": 3,
+          "sample_sd": 0.0024592603896373853
+        },
+        "measured_fit_seconds_sum": {
+          "mean": 75.73226227797568,
+          "n": 3,
+          "sample_sd": 8.85333740269459
+        },
+        "optimizer_steps": {
+          "mean": 16940.0,
+          "n": 3,
+          "sample_sd": 0.0
+        },
+        "rounds": {
+          "mean": 140.0,
+          "n": 3,
+          "sample_sd": 0.0
+        }
+      },
+      "invalid_slots": 0,
+      "llm_logical_usage_total": {
+        "calls": 21,
+        "generation_seconds": 81.68714076653123,
+        "input_tokens": 209752,
+        "output_tokens": 3318,
+        "total_attempt_seconds": 231.56926154810935
+      }
+    }
+  },
+  "candidate_proposal_budget": 6,
+  "interpretation": "Random expected scores integrate development-selected candidate probabilities, not held-out selection. Three-seed SD and conditional gene-cluster confidence intervals quantify different uncertainties.",
+  "omitted": [
+    "individual genes/conditions",
+    "per-gene scores",
+    "predictions",
+    "raw responses",
+    "split memberships",
+    "raw prompts and responses"
+  ],
+  "paired_primary_differences": {
+    "fixed_D00_minus_direct": {
+      "difference": -0.011967366521242279,
+      "gene_cluster_ci95": [
+        -0.03168577335562171,
+        0.006768537646125438
+      ]
+    },
+    "gp_ei_minus_direct": {
+      "difference": 0.005271518808524306,
+      "gene_cluster_ci95": [
+        -0.013755741195815767,
+        0.024385801850938242
+      ]
+    },
+    "gp_ei_minus_fixed_D00": {
+      "difference": 0.017238885329766584,
+      "gene_cluster_ci95": [
+        -0.009550854136511303,
+        0.044201565613423706
+      ]
+    },
+    "random_minus_direct": {
+      "difference": 0.0004341398689636511,
+      "gene_cluster_ci95": [
+        -0.010703953977573271,
+        0.011777091056410196
+      ]
+    },
+    "random_minus_fixed_D00": {
+      "difference": 0.01240150639020593,
+      "gene_cluster_ci95": [
+        -0.00615159120158681,
+        0.03126877717648582
+      ]
+    },
+    "random_minus_gp_ei": {
+      "difference": -0.004837378939560655,
+      "gene_cluster_ci95": [
+        -0.014573430030977684,
+        0.0048141487653963425
+      ]
+    },
+    "random_shared_first_minus_direct": {
+      "difference": -0.00029655903415101714,
+      "gene_cluster_ci95": [
+        -0.011081487259437417,
+        0.010707774004513356
+      ]
+    },
+    "random_shared_first_minus_fixed_D00": {
+      "difference": 0.011670807487091261,
+      "gene_cluster_ci95": [
+        -0.005823274729496858,
+        0.029432743186406197
+      ]
+    },
+    "random_shared_first_minus_gp_ei": {
+      "difference": -0.005568077842675323,
+      "gene_cluster_ci95": [
+        -0.016307144552037897,
+        0.00506269845076257
+      ]
+    },
+    "random_shared_first_minus_random": {
+      "difference": -0.0007306989031146682,
+      "gene_cluster_ci95": [
+        -0.0018492204295520315,
+        0.00038712772364057126
+      ]
+    },
+    "random_valid_fit_count_direct_minus_direct": {
+      "difference": 0.0004341398689636511,
+      "gene_cluster_ci95": [
+        -0.010703953977573271,
+        0.011777091056410196
+      ]
+    },
+    "random_valid_fit_count_direct_minus_fixed_D00": {
+      "difference": 0.01240150639020593,
+      "gene_cluster_ci95": [
+        -0.00615159120158681,
+        0.03126877717648582
+      ]
+    },
+    "random_valid_fit_count_direct_minus_gp_ei": {
+      "difference": -0.004837378939560655,
+      "gene_cluster_ci95": [
+        -0.014573430030977684,
+        0.0048141487653963425
+      ]
+    },
+    "random_valid_fit_count_direct_minus_random": {
+      "difference": 0.0,
+      "gene_cluster_ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    "random_valid_fit_count_direct_minus_random_shared_first": {
+      "difference": 0.0007306989031146682,
+      "gene_cluster_ci95": [
+        -0.00038712772364057137,
+        0.001849220429552031
+      ]
+    },
+    "random_valid_fit_count_raw_minus_direct": {
+      "difference": -0.0006881460355242508,
+      "gene_cluster_ci95": [
+        -0.011534326325458026,
+        0.010269650404711877
+      ]
+    },
+    "random_valid_fit_count_raw_minus_fixed_D00": {
+      "difference": 0.011279220485718028,
+      "gene_cluster_ci95": [
+        -0.005493770863350772,
+        0.028319999427007338
+      ]
+    },
+    "random_valid_fit_count_raw_minus_gp_ei": {
+      "difference": -0.005959664844048557,
+      "gene_cluster_ci95": [
+        -0.017352671469719208,
+        0.00537011752214352
+      ]
+    },
+    "random_valid_fit_count_raw_minus_random": {
+      "difference": -0.0011222859044879019,
+      "gene_cluster_ci95": [
+        -0.003009527675809742,
+        0.000731872898117379
+      ]
+    },
+    "random_valid_fit_count_raw_minus_random_shared_first": {
+      "difference": -0.00039158700137323366,
+      "gene_cluster_ci95": [
+        -0.0012197798128972216,
+        0.0004188879792534162
+      ]
+    },
+    "random_valid_fit_count_raw_minus_random_valid_fit_count_direct": {
+      "difference": -0.0011222859044879019,
+      "gene_cluster_ci95": [
+        -0.003009527675809742,
+        0.000731872898117379
+      ]
+    },
+    "random_valid_fit_count_structured_minus_direct": {
+      "difference": 0.0004341398689636511,
+      "gene_cluster_ci95": [
+        -0.010703953977573271,
+        0.011777091056410196
+      ]
+    },
+    "random_valid_fit_count_structured_minus_fixed_D00": {
+      "difference": 0.01240150639020593,
+      "gene_cluster_ci95": [
+        -0.00615159120158681,
+        0.03126877717648582
+      ]
+    },
+    "random_valid_fit_count_structured_minus_gp_ei": {
+      "difference": -0.004837378939560655,
+      "gene_cluster_ci95": [
+        -0.014573430030977684,
+        0.0048141487653963425
+      ]
+    },
+    "random_valid_fit_count_structured_minus_random": {
+      "difference": 0.0,
+      "gene_cluster_ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    "random_valid_fit_count_structured_minus_random_shared_first": {
+      "difference": 0.0007306989031146682,
+      "gene_cluster_ci95": [
+        -0.00038712772364057137,
+        0.001849220429552031
+      ]
+    },
+    "random_valid_fit_count_structured_minus_random_valid_fit_count_direct": {
+      "difference": 0.0,
+      "gene_cluster_ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    "random_valid_fit_count_structured_minus_random_valid_fit_count_raw": {
+      "difference": 0.0011222859044879019,
+      "gene_cluster_ci95": [
+        -0.0007318728981173811,
+        0.003009527675809742
+      ]
+    },
+    "raw_minus_direct": {
+      "difference": 0.0,
+      "gene_cluster_ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    "raw_minus_fixed_D00": {
+      "difference": 0.011967366521242279,
+      "gene_cluster_ci95": [
+        -0.006768537646125442,
+        0.03168577335562171
+      ]
+    },
+    "raw_minus_gp_ei": {
+      "difference": -0.005271518808524306,
+      "gene_cluster_ci95": [
+        -0.024385801850938246,
+        0.013755741195815761
+      ]
+    },
+    "raw_minus_random": {
+      "difference": -0.0004341398689636511,
+      "gene_cluster_ci95": [
+        -0.011777091056410198,
+        0.010703953977573271
+      ]
+    },
+    "raw_minus_random_shared_first": {
+      "difference": 0.00029655903415101714,
+      "gene_cluster_ci95": [
+        -0.010707774004513362,
+        0.011081487259437415
+      ]
+    },
+    "raw_minus_random_valid_fit_count_direct": {
+      "difference": -0.0004341398689636511,
+      "gene_cluster_ci95": [
+        -0.011777091056410198,
+        0.010703953977573271
+      ]
+    },
+    "raw_minus_random_valid_fit_count_raw": {
+      "difference": 0.0006881460355242508,
+      "gene_cluster_ci95": [
+        -0.010269650404711877,
+        0.011534326325458023
+      ]
+    },
+    "raw_minus_random_valid_fit_count_structured": {
+      "difference": -0.0004341398689636511,
+      "gene_cluster_ci95": [
+        -0.011777091056410198,
+        0.010703953977573271
+      ]
+    },
+    "structured_minus_direct": {
+      "difference": 0.002634549762055932,
+      "gene_cluster_ci95": [
+        -0.010222474756368281,
+        0.015676776378069836
+      ]
+    },
+    "structured_minus_fixed_D00": {
+      "difference": 0.01460191628329821,
+      "gene_cluster_ci95": [
+        -0.008135982564642832,
+        0.03757126886435821
+      ]
+    },
+    "structured_minus_gp_ei": {
+      "difference": -0.0026369690464683737,
+      "gene_cluster_ci95": [
+        -0.009295453216642015,
+        0.004128968990335201
+      ]
+    },
+    "structured_minus_random": {
+      "difference": 0.002200409893092281,
+      "gene_cluster_ci95": [
+        -0.002896052016035038,
+        0.007381659839811642
+      ]
+    },
+    "structured_minus_random_shared_first": {
+      "difference": 0.0029311087962069493,
+      "gene_cluster_ci95": [
+        -0.003162526840401305,
+        0.00909412119826628
+      ]
+    },
+    "structured_minus_random_valid_fit_count_direct": {
+      "difference": 0.002200409893092281,
+      "gene_cluster_ci95": [
+        -0.002896052016035038,
+        0.007381659839811642
+      ]
+    },
+    "structured_minus_random_valid_fit_count_raw": {
+      "difference": 0.003322695797580183,
+      "gene_cluster_ci95": [
+        -0.0034477701651793352,
+        0.010251934368492503
+      ]
+    },
+    "structured_minus_random_valid_fit_count_structured": {
+      "difference": 0.002200409893092281,
+      "gene_cluster_ci95": [
+        -0.002896052016035038,
+        0.007381659839811642
+      ]
+    },
+    "structured_minus_raw": {
+      "difference": 0.002634549762055932,
+      "gene_cluster_ci95": [
+        -0.010222474756368281,
+        0.015676776378069836
+      ]
+    }
+  },
+  "physical_llm_usage_total": {
+    "calls": 57,
+    "generation_seconds": 217.72948693763465,
+    "input_tokens": 458620,
+    "output_tokens": 9349,
+    "total_attempt_seconds": 368.1996821044013
+  },
+  "physical_training_cache_cost_total": {
+    "candidate_fit_count": 48.0,
+    "examples_seen": 3653760.0,
+    "measured_fit_gpu_hours_sum": 0.13917286293193076,
+    "measured_fit_seconds_sum": 501.0223065549508,
+    "optimizer_steps": 116160.0,
+    "rounds": 960.0
+  },
+  "policies": {
+    "direct": {
+      "heldout_mrr_mean": 0.47583124907654345,
+      "heldout_primary_gene_cluster_ci95": [
+        0.20476641421580535,
+        0.2484212182059814
+      ],
+      "heldout_primary_mean": 0.2262465394751133,
+      "heldout_primary_seed_sd": 0.002107940418551553,
+      "per_seed": [
+        {
+          "heldout_primary": 0.22699546484551017,
+          "seed": 61
+        },
+        {
+          "heldout_primary": 0.22386639837592487,
+          "seed": 62
+        },
+        {
+          "heldout_primary": 0.22787775520390474,
+          "seed": 63
+        }
+      ]
+    },
+    "fixed_D00": {
+      "heldout_mrr_mean": 0.46841582908780127,
+      "heldout_primary_gene_cluster_ci95": [
+        0.196659775533312,
+        0.23186437214191763
+      ],
+      "heldout_primary_mean": 0.21427917295387103,
+      "heldout_primary_seed_sd": 0.0009613709755461168,
+      "per_seed": [
+        {
+          "heldout_primary": 0.2132542681813357,
+          "seed": 61
+        },
+        {
+          "heldout_primary": 0.21442228564819077,
+          "seed": 62
+        },
+        {
+          "heldout_primary": 0.21516096503208665,
+          "seed": 63
+        }
+      ]
+    },
+    "gp_ei": {
+      "heldout_mrr_mean": 0.4844676007074485,
+      "heldout_primary_gene_cluster_ci95": [
+        0.2088337370738938,
+        0.2542599013955505
+      ],
+      "heldout_primary_mean": 0.2315180582836376,
+      "heldout_primary_seed_sd": 0.003521326061573815,
+      "per_seed": [
+        {
+          "heldout_primary": 0.2278742732619132,
+          "seed": 61
+        },
+        {
+          "heldout_primary": 0.23177730551533007,
+          "seed": 62
+        },
+        {
+          "heldout_primary": 0.2349025960736696,
+          "seed": 63
+        }
+      ]
+    },
+    "random": {
+      "heldout_mrr_mean": 0.4789899633606866,
+      "heldout_primary_gene_cluster_ci95": [
+        0.20924634015468357,
+        0.24442957237467666
+      ],
+      "heldout_primary_mean": 0.22668067934407696,
+      "heldout_primary_seed_sd": 0.002139625173999587,
+      "per_seed": [
+        {
+          "heldout_primary": 0.2248064191177103,
+          "seed": 61
+        },
+        {
+          "heldout_primary": 0.22622376593638027,
+          "seed": 62
+        },
+        {
+          "heldout_primary": 0.2290118529781404,
+          "seed": 63
+        }
+      ]
+    },
+    "random_shared_first": {
+      "heldout_mrr_mean": 0.47832897540406405,
+      "heldout_primary_gene_cluster_ci95": [
+        0.2090501066840443,
+        0.2432439944954566
+      ],
+      "heldout_primary_mean": 0.2259499804409623,
+      "heldout_primary_seed_sd": 0.0019514022810311975,
+      "per_seed": [
+        {
+          "heldout_primary": 0.2242865370660856,
+          "seed": 61
+        },
+        {
+          "heldout_primary": 0.22546538606971717,
+          "seed": 62
+        },
+        {
+          "heldout_primary": 0.22809801818708406,
+          "seed": 63
+        }
+      ]
+    },
+    "random_valid_fit_count_direct": {
+      "heldout_mrr_mean": 0.4789899633606866,
+      "heldout_primary_gene_cluster_ci95": [
+        0.20924634015468357,
+        0.24442957237467666
+      ],
+      "heldout_primary_mean": 0.22668067934407696,
+      "heldout_primary_seed_sd": 0.002139625173999587,
+      "per_seed": [
+        {
+          "heldout_primary": 0.2248064191177103,
+          "seed": 61
+        },
+        {
+          "heldout_primary": 0.22622376593638027,
+          "seed": 62
+        },
+        {
+          "heldout_primary": 0.2290118529781404,
+          "seed": 63
+        }
+      ]
+    },
+    "random_valid_fit_count_raw": {
+      "heldout_mrr_mean": 0.4778661379220585,
+      "heldout_primary_gene_cluster_ci95": [
+        0.20898240633753865,
+        0.24265727670490114
+      ],
+      "heldout_primary_mean": 0.22555839343958906,
+      "heldout_primary_seed_sd": 0.003194029495165691,
+      "per_seed": [
+        {
+          "heldout_primary": 0.2227104869100833,
+          "seed": 61
+        },
+        {
+          "heldout_primary": 0.22495284043054353,
+          "seed": 62
+        },
+        {
+          "heldout_primary": 0.2290118529781404,
+          "seed": 63
+        }
+      ]
+    },
+    "random_valid_fit_count_structured": {
+      "heldout_mrr_mean": 0.4789899633606866,
+      "heldout_primary_gene_cluster_ci95": [
+        0.20924634015468357,
+        0.24442957237467666
+      ],
+      "heldout_primary_mean": 0.22668067934407696,
+      "heldout_primary_seed_sd": 0.002139625173999587,
+      "per_seed": [
+        {
+          "heldout_primary": 0.2248064191177103,
+          "seed": 61
+        },
+        {
+          "heldout_primary": 0.22622376593638027,
+          "seed": 62
+        },
+        {
+          "heldout_primary": 0.2290118529781404,
+          "seed": 63
+        }
+      ]
+    },
+    "raw": {
+      "heldout_mrr_mean": 0.47583124907654345,
+      "heldout_primary_gene_cluster_ci95": [
+        0.20476641421580535,
+        0.2484212182059814
+      ],
+      "heldout_primary_mean": 0.2262465394751133,
+      "heldout_primary_seed_sd": 0.002107940418551553,
+      "per_seed": [
+        {
+          "heldout_primary": 0.22699546484551017,
+          "seed": 61
+        },
+        {
+          "heldout_primary": 0.22386639837592487,
+          "seed": 62
+        },
+        {
+          "heldout_primary": 0.22787775520390474,
+          "seed": 63
+        }
+      ]
+    },
+    "structured": {
+      "heldout_mrr_mean": 0.4813320972551687,
+      "heldout_primary_gene_cluster_ci95": [
+        0.20880985003884855,
+        0.24922038398018906
+      ],
+      "heldout_primary_mean": 0.22888108923716924,
+      "heldout_primary_seed_sd": 0.005586561886522829,
+      "per_seed": [
+        {
+          "heldout_primary": 0.2278742732619132,
+          "seed": 61
+        },
+        {
+          "heldout_primary": 0.22386639837592487,
+          "seed": 62
+        },
+        {
+          "heldout_primary": 0.2349025960736696,
+          "seed": 63
+        }
+      ]
+    }
+  },
+  "schema": "fbhk-public-aggregate-policy-summary-v1",
+  "source_authorization_sha256": "da668c00680f0584238e18f75372003f0bc358ebaae504d77dd5a927d73f0a0b",
+  "source_protocol_sha256": "f0bfe10894e7cdd0697d2842d54899eb701d03b4357debf75b311b63d3ce085c",
+  "source_reports": {
+    "results/history_repair_20261109/search_genetic_v3/search_analysis.json": "4f7c4fe98d4e9866ff85de46ebe91aee58d670463a4c4b81e4d259e724060fbe",
+    "results/history_repair_20261109/training_heldout_genetic_v1/policy_report.json": "bf783342ddc61604e075d1f48c8330e40833f4e11c211637d990bfab870c2de3"
+  },
+  "status": "COMPLETE",
+  "training_controller_seeds": [
+    61,
+    62,
+    63
+  ]
+}

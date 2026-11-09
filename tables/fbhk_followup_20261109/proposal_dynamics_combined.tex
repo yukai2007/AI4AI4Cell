@@ -1,0 +1,35 @@
+\begin{table}[htbp]
+\caption{Retrospective development-trajectory diagnostics for the two proposal-search protocols. Each D/H pair gives direct/history. The target is the lower terminal development score of the two runs; First is its earliest attainment, with slot 0 denoting initialization. Last gain records the final strict primary-score increase; Last retain also includes loss-tiebreak selections. All six or 24 slots were executed: these target crossings are descriptive and did not save training budget. Valid counts report accepted proposal formats, not retained model improvements.}
+\label{tab:proposal-dynamics-combined}
+\label{tab:completed-dynamics-short6}
+\label{tab:completed-dynamics-long24}
+\centering\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{@{}Xlrrrrr@{}}
+\toprule
+Task & Proposer & \shortstack{Dev.\\target} & \shortstack{First\\D/H} & \shortstack{Last gain\\D/H} & \shortstack{Last retain\\D/H} & \shortstack{Valid\\D/H} \\
+\midrule
+\multicolumn{7}{l}{\textit{(a) 12 designs, six proposal slots}} \\
+DTI & Luna & 94.71 & 0/0 & 6/0 & 6/0 & 6/6 \\
+DTI & Qwen & 94.71 & 0/0 & 0/0 & 0/0 & 6/6 \\
+Proteomics & Luna & 66.72 & 0/0 & 0/0 & 0/0 & 6/6 \\
+Proteomics & Qwen & 66.72 & 0/0 & 0/0 & 0/0 & 6/5 \\
+VCC & Luna & 24.04 & 3/6 & 3/6 & 3/6 & 6/6 \\
+VCC & Qwen & 23.65 & 0/0 & 0/0 & 0/0 & 6/6 \\
+Norman & Luna & 51.70 & 5/5 & 5/5 & 5/5 & 6/6 \\
+Norman & Qwen & 51.70 & 3/4 & 3/4 & 3/4 & 6/6 \\
+Tahoe & Luna & 30.00 & 0/0 & 0/0 & 6/3 & 6/6 \\
+Tahoe & Qwen & 30.00 & 0/0 & 0/0 & 0/0 & 4/4 \\
+\midrule
+\multicolumn{7}{l}{\textit{(b) 36 designs, 24 proposal slots}} \\
+Proteomics & Luna & 66.72 & 0/0 & 0/0 & 0/0 & 24/24 \\
+Proteomics & Qwen & 66.72 & 0/0 & 0/0 & 0/0 & 19/14 \\
+VCC & Luna & 27.68 & 16/9 & 16/10 & 16/10 & 24/24 \\
+VCC & Qwen & 24.83 & 18/23 & 18/23 & 18/23 & 11/16 \\
+Norman & Luna & 52.10 & 22/4 & 22/4 & 22/7 & 24/24 \\
+Norman & Qwen & 51.70 & 2/5 & 2/5 & 22/19 & 15/12 \\
+Tahoe & Luna & 35.00 & 5/13 & 5/13 & 5/13 & 24/24 \\
+Tahoe & Qwen & 35.00 & 18/14 & 18/14 & 18/14 & 14/15 \\
+\bottomrule
+\end{tabularx}
+\end{table}
