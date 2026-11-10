@@ -148,6 +148,8 @@ Three-seed means and sample SDs describe training/search variability on fixed pa
 
 \emph{BioCoLoop Statistical Supplement}, Tables S.1--S.2, reports all per-seed differences and intervals for the main contrasts and three DTI test sets, including zero and negative differences. These model-conditional intervals describe test-sample uncertainty; several cell intervals include zero.
 
+\textbf{Interpreting the single-laboratory control.} The collaboration effect is defined as in federated evaluations \citep{Sheller2020,Chang2018Distributed,Terrail2022FLamby}: the same workflow with all participating laboratories versus a laboratory restricted to its own data, both scored on one held-out test that neither uses for selection. Laboratory 0 is the pre-specified local reference; Appendix E.7 reports fixed-model fits for every laboratory identity, which vary with shard composition (e.g., VCC). Federated hyperparameter studies similarly select on distributed validation and report on held-out data \citep{Holly2022FederatedHPO,Wang2023FedHPOBench}.
+
 Configurations, proposals, development histories and saved predictions support reconstruction; the reproducibility statement details their availability and verification.
 
 \input{tables/strong_v3/ablation}

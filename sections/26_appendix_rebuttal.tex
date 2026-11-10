@@ -16,7 +16,7 @@ Random search fits D00 and six distinct untried designs. Its expectation integra
 
 The complete table retains the positive Norman/Luna comparison and the tied or unfavorable endpoints. Failed requests remain charged: Qwen history uses 600 fitted rounds on protein, and both Qwen modes use 500 on Tahoe, against a 700-round cap. Realized-fit matching gives Tahoe random 26.30 versus Qwen 25.37; fixing the valid first proposal gives DTI random 94.43 versus history 94.27. Exact probabilities and all sensitivity controls remain in the aggregate record.
 
-\subsection*{E.3 Selection stability: current limitation}
+\subsection*{E.3 Selection-stability audit}
 The original extended-search audit reconstructs 14 selected checkpoints, 140 development panels and all 80 held-out prefix scores without refitting or reselection. The development and held-out interventions are disjoint, with fixed five-option rosters sampled separately within each split.
 
 \input{tables/rebuttal_20261109/validation}
@@ -27,9 +27,9 @@ We additionally freeze 20 development-roster seeds (2026110900--2026110919), red
 
 \input{tables/rebuttal_20261109/roster}
 
-Qwen's original advantage survives in 6/20 VCC and 7/20 Tahoe rosters; Luna/VCC remains positive on average, with 12/20 positive draws for each mode. These are roster draws on fixed interventions, not biological replicates. Appendix E.10 adds sealed split-panel confirmation; new biological partitions remain the main validation priority.
+Qwen's original advantage survives in 6/20 VCC and 7/20 Tahoe rosters; Luna/VCC remains positive on average, with 12/20 positive draws for each mode. These are roster draws on fixed interventions, not biological replicates; Appendix E.6 adds a separate gene-disjoint benchmark across study--cell contexts.
 
-\subsection*{E.4 History under source heterogeneity: current limitation}
+\subsection*{E.4 History under source heterogeneity}
 Using the source-defined protein/cell adapters in Appendix B.2, we hold source access fixed and compare direct, history and enriched-history proposals on twelve-design caches at three seeds. These controls isolate search from source-transfer gains; their fixed references are separate from the seed-61 transfer fits.
 
 \input{tables/rebuttal_20261109/source_history}
@@ -87,7 +87,7 @@ A frozen audit reconstructs all twelve designs at seeds 61--63 on both tasks: 72
 
 \input{tables/panel_feedback_20261110/development_audit}
 
-Even-indexed panels select among saved checkpoints and odd-indexed panels provide a complementary diagnostic. Cell seeds 61/62 improve the first subset by 17.13/13.58 points but lose 2.68/8.54 on its complement; seed 63 improves both. Over all 252 five-panel proposal subsets, the all-panel winner survives in 102/77/166 cell and 43/16/72 protein cases. Subsets overlap, loss breaks primary ties, and checkpoints were originally selected on all panels. Thus feedback transport is verified; Appendix E.10 supplies the independent confirmation that these complements cannot.
+Even-indexed panels select among saved checkpoints and odd-indexed panels provide a complementary diagnostic. Cell seeds 61/62 improve the first subset by 17.13/13.58 points but lose 2.68/8.54 on its complement; seed 63 improves both. Over all 252 five-panel proposal subsets, the all-panel winner survives in 102/77/166 cell and 43/16/72 protein cases. Subsets overlap, loss breaks primary ties, and checkpoints were originally selected on all panels, so these complementary-panel results are descriptive; they verify feedback transport.
 
 \clearpage
 \subsection*{E.9 Wider recipe choices at matched access and candidate budgets}
@@ -114,17 +114,3 @@ All twelve task/seed/proposer selections are sealed before this study's test eva
 \input{tables/recipe_expansion_20261110/resources}
 
 All-valid searches use seven complete fits and 140 full-client rounds: 28,000 optimizer steps/7,020,860 examples for DTI and 1,400/54,040 for protein. Different heads still have different FLOPs and runtime. Luna completes every logical slot; Qwen failures remain charged, with lower realized-fit random controls provided separately. The formal proposer runs use 182 Qwen and 101 Luna physical completions, including repairs. Common historical fitting, shared feature extraction, the pilot and interrupted engineering calls are additional costs, separate from each search's logical budget.
-
-\clearpage
-\subsection*{E.10 Sealed split-panel confirmation}
-This study asks whether choices made on part of the development data hold on development panels that the search never saw. It retrains the twelve source-defined designs at seeds 61--63 on both tasks, 72 fresh fits, saving a checkpoint at each of the 20 evaluated rounds. Each fit reproduces its original cache exactly: training curve, selected and final states, and all 720 audited panel scores.
-
-\paragraph{Protocol.} The ten target panels are split into even (A) and odd (B) halves. In A$\to$B, the checkpoint round of every design and the search itself see only half A; B$\to$A is the mirror image. Every arm starts from D00 and makes six further choices: fixed D00, the exact random-search expectation over all $\binom{11}{6}$ subsets, GP--EI, and Qwen and Luna in direct, raw-history and structured-history modes, with the shared first proposal, two attempts per slot and invalid slots charged. Both directions were sealed (last seal 18:52 UTC) before the first confirmation-half read (18:53 UTC). A logged access gate records 432 selection-half and 144 confirmation-half reads, each from the correct half. Confirmation scores are re-evaluated from the saved checkpoints with no mismatches. The 143 distinct selected checkpoints are then scored once on the original test set, with independent rescoring of the saved predictions. The panel partition and test set were inspected in earlier descriptive analyses, so this is an independent development confirmation, not a new biological split.
-
-\input{tables/split_panel_confirmation_20261110/results}
-
-\paragraph{Selection optimism.} Scores on the selection half overstate scores on the confirmation half. Averaged over the search arms, the gap is 20.78 (A$\to$B) and 9.81 (B$\to$A) points for cell, and 4.61 and 53.39 for protein. On protein, the two halves favor different checkpoints: half A peaks early in training, while half B keeps improving late, when half A and the test set decline. The chosen round therefore matters as much as the chosen design. On cell in A$\to$B, every search arm falls below fixed D00 on the test set (at most 22.60 versus 30.82). In B$\to$A, GP--EI and all three Luna modes choose D05 in every seed, raising confirmation from 12.93 to 21.45 and the test score from 28.36 to 28.67. On protein, GP--EI or Luna history gives the best test score in each direction, at most 2.5 points above the lowest arm.
-
-\paragraph{History versus direct search.} Each proposer has twelve task/direction/seed runs. In eight (Qwen) or nine (Luna) of them, raw and structured history choose the same predictor as direct search. Qwen history raises confirmation in four runs and lowers it in none (means $+1.73$ raw, $+1.52$ structured); on the test set it gains in two runs and loses in two ($+0.34$, $+1.14$). Luna raw history raises confirmation in one run and lowers it in two, and structured lowers it in three ($+0.51$, $-0.54$); on the test set both gain in three runs and lose in none ($+0.62$, $+0.48$). The direct and history modes also differ in proposal format: history requests must name the current best design as the reference, while direct requests name D00. Qwen history loses 26 (raw) and 16 (structured) of 72 slots to invalid proposals, against none for direct; Luna loses one in each history mode. With three seeds per direction and mixed signs, the study does not show a consistent history advantage over direct search, exact random search or GP--EI.
-
-These results confirm the panel-feedback pipeline without leakage. They also show that, on these small panel sets, the reliability of development selection limits every search policy more than the choice of feedback. Qwen and Luna record 239 and 216 model calls, including retries. Training the 72 checkpointed fits takes about 40 minutes on 24 CPU workers.
