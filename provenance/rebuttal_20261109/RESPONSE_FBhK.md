@@ -4,7 +4,7 @@ Thank you for identifying two questions that need separate evidence: whether his
 
 ## 1. Same ten laboratories, configuration library and search budget (Weakness 1; Q1)
 
-Section 4.7 and Appendix E.1-E.2 now compare random search without replacement, GP-EI, and direct/history-guided Qwen and Luna using the same ten training laboratories, ten development panels, twelve configurations, initialization and checkpoint-selection rule. Each search receives six proposal slots beyond D00, with 100 rounds per fit and a 700-round cap. Random search receives the loop's search budget, not the fixed model's single-fit budget.
+Appendix E.1-E.2 reports the original matched-access comparison of random search without replacement, GP-EI, and direct/history-guided Qwen and Luna using the same ten training laboratories, ten development panels, twelve configurations, initialization and checkpoint-selection rule. Each search receives six proposal slots beyond D00, with 100 rounds per fit and a 700-round cap. Random search receives the loop's search budget, not the fixed model's single-fit budget.
 
 We verified all 60 task/configuration fits. Enumerating all 462 six-design subsets gives the exact expected outcome of random search conditional on this cache, with selection based only on development evidence. This is not 462 independent training repetitions. Shared-first-proposal and realized-fit-count controls additionally account for failed LLM proposals; for example, four-valid-proposal random search reaches 26.30 on Tahoe versus Qwen's 25.37 under the same realized fit count.
 

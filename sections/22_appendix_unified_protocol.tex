@@ -3,9 +3,6 @@
 \setcounter{table}{0}
 \renewcommand{\thetable}{A.\arabic{table}}
 \renewcommand{\theHtable}{A.\arabic{table}}
-\makeatletter
-\setlength{\@fptop}{0pt}
-\makeatother
 
 \paragraph{How to read the supplementary experiments.}
 Appendix A specifies the algorithm and scorers; B examines laboratory count, source transfer and proposal history; C documents task-adapted public agents; D compares single-laboratory search; and E compares same-access search and training promotion and diagnoses development--test divergence. Ten-versus-one laboratory comparisons measure the complete access scenario, whereas same-access controls isolate research decisions.
@@ -49,7 +46,7 @@ Each aggregation round runs one local AdamW epoch per participating laboratory, 
 
 Full fits use 100 rounds and development evaluation every five rounds. Selection maximizes mean primary score, then minimizes mean loss over the designated panels (Section 3.2): the participating laboratories in the main experiment. Complete ties retain the earlier checkpoint or incumbent. Training counts refer to adapter rows---intervention-level profiles, not underlying cell counts, for cell tasks.
 
-\subsection*{A.2 Registered executable design space, proposals and evidence}
+\subsection*{A.2 Original executable design space, proposals and evidence}
 Each \texttt{D} identifier specifies a four-factor configuration below. Starting from D00, the main study selects six distinct designs from D01--D11. Appendix B defines the extended design space.
 
 \begin{center}\small
@@ -80,7 +77,7 @@ A proposal has exactly four fields:
 {
   "hypothesis": "why the proposed change may help",
   "experiment": "the intended controlled comparison",
-  "expected_effect": "the anticipated metric or diagnostic change",
+  "expected_effect": "expected metric or diagnostic change",
   "design_id": "D08"
 }
 \end{verbatim}
@@ -90,22 +87,6 @@ Evidence cards contain the configuration, hypothesis, best development score/los
 
 \paragraph{An observed proposal sequence.}
 For Norman with ten laboratories and seed 42, first-slot D06 ties D00's development Top-1 of 40.00 but lowers loss from 158.98 to 158.94 and is accepted. Second-slot D08 retains the residual module and reduces learning rate from $10^{-3}$ to $10^{-4}$. Between rounds 5 and 100, its Top-1 rises from 10.20 to 51.90 and loss falls from 168.12 to 153.85. It is accepted; the next design, D07, reaches only 45.00 and is rejected. Both outcomes remain in history.
-
-Three trajectories follow; scores/losses are multiplied by 100 and slots are one-indexed.
-
-\begin{center}\small
-\begin{tabular}{llrrl}
-\toprule
-Study & Selected design & Primary & Loss & First direct / loop slot \\
-\midrule
-PTPC, seed 42 & D04 & 66.58 & 52.12 & 5 / 5 \\
-VCC, seed 43 & D00 & 24.04 & 160.78 & initial baseline \\
-Norman, seed 42 & D08 & 51.90 & 153.85 & 3 / 2 \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-PTPC selects stronger weight decay by loss tie-break at equal AP; VCC retains its initial design. Section 4.7 compares matched search trajectories.
 
 \subsection*{A.3 Independent training-allocation control}
 This study varies training-round allocation over ten fixed configurations and ten laboratories, using seeds 53--55 on proteomics and the three cell settings.
@@ -133,7 +114,7 @@ Uniform allocation fits each design for 80 rounds. Trajectory-guided allocation 
 
 Both schedules use 800 aggregation rounds, $10\times80=10\times20+6\times100$, or 8,000 local epochs. Evaluation every five rounds gives 160 aggregate evaluations of ten laboratories each. Training/evaluation counts are matched; the scheduler generates no language-model proposals.
 
-The 12 task--seed held-out comparisons yield four wins, eight ties and no losses. Norman's mean gain is 10.84 Top-1 points: +10.00, +11.70 and +10.81 by seed, with hierarchical paired-bootstrap 95\% interval [4.54, 17.73]. Tahoe gains +5.97 in one seed and ties twice; VCC and PTPC tie throughout. A separate TAPB development replay over seven shared designs uses 525 uniform versus 520 trajectory-guided candidate-rounds and gains +0.39 AUROC points (two wins, one tie). It is excluded from the held-out comparison.
+Section 4.4 reports the paired held-out outcomes; Appendix E.5 gives the complete promotion controls. A separate TAPB development replay has unequal candidate-round budgets and is excluded from the held-out allocation evidence.
 
 \subsection*{A.4 Data construction and task adapters}
 \paragraph{Drug--target interaction.}
@@ -163,16 +144,12 @@ Frozen-scDEBART diagnostics span 7.5--31.6\% macro Top-1 (chance: 20\%) and 36.0
 \subsection*{A.5 Complete comparisons and uncertainty}
 The tables report controls, secondary metrics and all three DTI test sets. Bold marks the best task/metric values, including ties; higher is better except for binary and cell cross-entropy.
 
-\input{tables/strong_v3/ablation}
-\clearpage
-\input{tables/strong_v3/secondary}
-\input{tables/strong_v3/dti_endpoints}
-
 Three-seed means and sample SDs describe training/search variability on fixed partitions. Sample-level intervals use 1,000 fixed-seed paired cluster resamples of retained predictions: drug identity for random/unseen-drug DTI, protein sequence for unseen-protein DTI, compounds for proteomics, and interventions for cells. Contrasted methods share resampled clusters. Allocation uses 5,000 hierarchical paired resamples, first drawing training seeds and then compound/intervention groups within each sampled seed.
 
 \emph{BioCoLoop Statistical Supplement}, Tables S.1--S.2, reports all per-seed differences and intervals for the main contrasts and three DTI test sets, including zero and negative differences. These model-conditional intervals describe test-sample uncertainty; several cell intervals include zero.
 
 Configurations, proposals, development histories and saved predictions support reconstruction; the reproducibility statement details their availability and verification.
 
-\subsection*{A.6 Scope and limitations}
-Experiments simulate laboratories on shared compute with public data; they do not measure communication/straggler costs or provide formal privacy guarantees. Development is restricted to four registered factors, including the optional residual module. Qwen generation is seed-reproducible; Luna exposes no generation seed. Appendix C documents public-agent adaptations, component restrictions and incomplete executions. Main-table workflows lack a separately compute-matched centralized control. Appendix B's fixed-pool $K=1$ sensitivity does use all target training data, while changing local optimization and, for cells, the contrastive-negative pool relative to $K=10$.
+\input{tables/strong_v3/ablation}
+\input{tables/strong_v3/secondary}
+\input{tables/strong_v3/dti_endpoints}

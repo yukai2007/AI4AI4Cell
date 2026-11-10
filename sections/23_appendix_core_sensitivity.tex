@@ -58,7 +58,7 @@ HCC1143, HCC1806 and MDA-MB-453-1 are three contexts within mtPTDS \citep{Sun202
 \input{tables/completed_ablation/transfer_contexts}
 
 \subsection*{B.3 Research-model and six-slot proposal comparison}
-The 12-design study (Appendix A) gives direct search untried identifiers without scores; the loop additionally receives development history. Both share initialization and the first proposal. Each slot allows two attempts at the four-field schema; failures consume budget and remain recorded. Valid candidates restart from the common task/seed initialization for 100 rounds. Prefixes 0, 1, 2, 4 and 6 are scored after search; identical cached fits retain their logical budget charge. Both backends share task messages, designs, training and proposal budgets. Qwen uses Appendix A's sampling settings; \texttt{gpt-5.6-luna} uses a text-only, tool-disabled service with retained requests/responses. Its decoding controls and parameter count are not exposed.
+The original twelve-design study uses Appendix A's direct/history protocol, shared first proposal, initialization and 100-round fits. Prefixes 0/1/2/4/6 are scored after search; repeated fits retain their logical budget charge. Both proposer models share task messages, design and fitting budgets. Appendix E.2 adds conventional controls; E.9 reports the separate expanded-recipe follow-up.
 
 \input{tables/fbhk_followup_20261109/proposal_heldout_combined}
 
@@ -66,7 +66,7 @@ Across ten endpoint/backend pairs, Norman/Luna gains 0.81 Top-1 points, DTI/Luna
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.62\linewidth]{assets/completed_short6_search_v2.pdf}
+\includegraphics[width=\linewidth]{assets/completed_short6_search_v2.pdf}
 \caption{Research trajectories with and without evidence history in the six-slot protocol. Curves report development selection and held-out scores at each proposal prefix, where each candidate receives 100 rounds and slot 0 is the initial design.}
 \label{fig:completed-short-dev}
 \end{figure}
@@ -76,7 +76,7 @@ Both backends and modes run 24 slots on PTPC, VCC, Norman and Tahoe using 36 des
 
 \input{tables/fbhk_followup_20261109/proposal_dynamics_combined}
 
-Luna returns valid designs in 192/192 slots and Qwen in 116/192. Of 16 trajectories, twelve have no primary-score improvement in the final eight slots, and ten have no score/loss selection change. Each still has 11--24 unvisited designs: the observed plateaus precede library exhaustion. Table~\ref{tab:completed-dynamics-long24} records first attainment of the lower terminal development score in each direct/loop pair, a target reached by both runs. This retrospective target is not a stopping rule: all 24 slots ran, so earlier crossing is not measured compute saving. Feedback reaches Norman/Luna's target in 4 versus 22 slots; direct reaches Tahoe/Luna's in 5 versus 13. Proteomics retains the initial design. Norman's retained proposals (Table~\ref{tab:completed-norman-events}) first lower the learning rate to $10^{-4}$, then remove the residual head to reach the final primary target; later loss-tiebreak selections may change the model without increasing Top-1. Meanwhile, Qwen's VCC test Top-1 falls from 31.50 at slot 6 to 19.61 at slot 24 as development selection improves; both curves are retained below.
+Luna completes 192/192 valid slots and Qwen 116/192. Twelve of 16 trajectories have no primary-score improvement in the last eight slots, although 11--24 designs remain unvisited. Table~\ref{tab:completed-dynamics-long24} measures first crossing of the lower terminal development score in each pair. Norman/Luna history crosses in 4 versus 22 slots, while Tahoe/Luna direct crosses in 5 versus 13. All 24 slots still execute: these are retrospective trajectory differences, not realized compute savings. Table~\ref{tab:completed-norman-events} preserves the retained configurations, and Figure~\ref{fig:completed-long-dev} includes the unfavorable VCC/Tahoe held-out trajectories diagnosed in E.3.
 
 \begin{figure}[htbp]
 \centering

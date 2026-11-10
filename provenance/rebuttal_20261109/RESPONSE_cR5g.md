@@ -4,7 +4,7 @@ Thank you for the concrete concerns about conventional tuning, laboratory hetero
 
 ## 1. Conventional hyperparameter optimization
 
-The revision adds a same-access table comparing random search without replacement, fixed GP-EI Bayesian optimization, direct LLM search and history-guided LLM search. All use ten laboratories, identical development panels, the same twelve-design library and a six-proposal cap after the initial configuration. Exact enumeration of 462 candidate subsets reports random search's expected outcome and search-policy variability; it does not count these subsets as independent training seeds.
+Appendix E.1-E.2 adds the original same-access table comparing random search without replacement, fixed GP-EI Bayesian optimization, direct LLM search and history-guided LLM search. All use ten laboratories, identical development panels, the same twelve-design library and a six-proposal cap after the initial configuration. Exact enumeration of 462 candidate subsets reports random search's expected outcome and search-policy variability; it does not count these subsets as independent training seeds.
 
 For example, DTI AUROC is 94.60 for GP-EI, 94.45 in expectation for random search and 94.27 for history-guided search. On Norman, Luna history reaches 23.11 Top-1, versus 22.30 for GP-EI/direct and 22.66 for random search. Other endpoints include ties and cases where the fixed configuration is already competitive. Thus the new evidence supports task-dependent search behavior, not general superiority to conventional tuning. We also report controls matching the actual number of valid fits when an LLM proposal fails.
 

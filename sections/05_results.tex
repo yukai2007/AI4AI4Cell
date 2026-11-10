@@ -4,7 +4,7 @@ Table~\ref{tab:public-harness-comparison-three-seed} compares complete workflows
 
 With Qwen, BioCoLoop reaches 93.76 AUROC on BindingDB and 36.99 AP on proteomics, compared with fixed-model scores of 82.83 and 25.05; Luna reaches 93.67 and 37.11. BioCoLoop also leads the complete VCC and Tahoe comparisons in both blocks. Norman is the exception: the fixed model scores 25.56, versus 22.25/22.69 for Qwen/Luna BioCoLoop.
 
-Single-laboratory random search, Bayesian optimization and twelve-design enumeration also remain below the ten-laboratory Qwen workflow (Appendix D). They test whether extra search compensates for limited data access; the ten-laboratory controls in Appendix E address search quality. Appendix E.7 additionally measures fixed-model variation across all ten single-laboratory identities.
+Single-laboratory random, Bayesian and exhaustive search also remain below the ten-laboratory Qwen workflow (Appendix D). Appendix E separates matched-access search quality from fixed-model variation across laboratory identities.
 
 \subsection*{4.4 Evidence-guided training allocation}
 Evidence-guided allocation improves held-out performance at a matched budget (Table~\ref{tab:strong-effects}). Uniform allocation trains all ten designs for 80 rounds. The evidence-guided policy screens them for 20 rounds and restarts six selected designs for 100-round training. Each schedule uses 800 aggregation rounds and 160 development evaluations.
@@ -20,7 +20,7 @@ Source-transfer studies use laboratories from distinct biological datasets or ex
 With one proteomic study per laboratory, the three auxiliary sources raise target AP from 34.41 to 37.53 and AUROC from 72.33 to 74.39. Shared encoders combine local updates while source-specific heads retain their own objectives. Davis and Human also improve target DTI AUROC. Transfer depends on source compatibility: at four laboratories and 60 training interventions in both cell arms, same-source VCC reaches 30.70\% Top-1 versus 28.82\% with external studies. Appendix B reports every source comparison; Appendix E.4 tests proposal history at matched source access.
 
 \subsection*{4.6 Effect of the number of laboratories}
-We vary $K\in\{1,2,5,10\}$ by either adding laboratories and training data or repartitioning a fixed total data pool. Adding data through participation can improve performance, while fixed-pool repartitioning has task-dependent effects (Figure~\ref{fig:lab-sensitivity}). Proteomics performs best at an intermediate $K$, and Norman degrades as the fixed pool is split across more laboratories. Performance depends on both data access and the partition used for local training.
+We vary $K\in\{1,2,5,10\}$ by adding laboratories and data or repartitioning a fixed pool (Figure~\ref{fig:lab-sensitivity}). Participation can improve performance, while fixed-pool effects depend on the task. Proteomics peaks at an intermediate $K$; Norman degrades as its fixed pool is split further.
 
 Both settings use the default design and training schedule. Increasing participation adds local development panels; fixed-pool repartitioning keeps all ten original evaluation panels. In cell tasks, training groups also define contrastive-negative pools. Appendix B.1 reports these optimization and evaluation differences alongside the complete results.
 
@@ -33,13 +33,17 @@ Effect of the number of laboratories. Solid lines add both laboratories and trai
 \label{fig:lab-sensitivity}
 \end{figure}
 
+\begin{samepage}
 \subsection*{4.7 Same-access configuration search}
-Table~\ref{tab:rebuttal-matched-search-main} fixes ten-laboratory access and adds random search without replacement and Gaussian-process expected improvement (GP--EI) to the paired direct/history study. The retrospective comparison reuses all twelve complete fits per task. Development-only selection is sealed before scoring; random expectations integrate all 462 six-design subsets. Appendix E gives search-policy variability, shared-first-proposal controls and sensitivities matching realized fit counts when proposals fail.
-\input{tables/rebuttal_20261109/matched_search_main}
+Table~\ref{tab:author-review-current-search} compares separate three-seed studies at matched access and candidate budgets: 216 expanded-recipe DTI/protein fits (Appendix E.9) and 48 gene-disjoint cell fits (E.6). Each uses its own fixed protocol and complements the original end-to-end scores.
+\par\end{samepage}
+\input{tables/author_review_20261110/current_search}
 
-On Norman, Luna history reaches 23.11 Top-1 versus 22.30 for direct/GP--EI and a random expectation of 22.66. DTI instead favors direct Luna and GP--EI; proteomics ties, and VCC's language-model and GP--EI searches retain the fixed reference. Table~\ref{tab:proposal-heldout-combined} reports every short and extended comparison. Its paired trajectory diagnostics describe retrospective target crossings, not realized compute savings.
+On DTI, Luna structured history reaches 94.368 AUROC versus random's 94.316, a paired difference of $+0.053$ points with conditional 95\% interval [0.031, 0.077]; all three runs improve. Protein direct search reaches 39.017 AP versus 38.655 for random. On the cell benchmark, structured history reaches 22.888 Top-1 versus 22.668 for random and 22.625 for direct; its paired intervals span zero. Thus above-random model variants are observed in all three task families, under their respective protocols. Random scores are exact expectations of a development-selected single predictor, not ensembles. Appendix E retains all feedback modes, conventional controls and original narrow-menu results.
 
-A separate three-seed study uses 414 development perturbation genes across four source-defined contexts (Appendix E.6). Direct, structured history, random and GP--EI share 16 designs, six requests and 16,940 optimizer steps per search. Structured history reaches 22.89\% held-out Top-1 versus 22.62\% for direct and 22.67\% for random; GP--EI reaches 23.15\%. Its difference from direct is positive but the interval spans zero. A 36-recipe follow-up improves DTI history search and protein direct search over matched random search; protein history remains below it (Appendix E.9).
+\subsection*{4.8 Current limitations and improvement priorities}
+\textbf{History-specific benefit.} Protein history scores 38.572, below random; GP--EI matches protein direct and leads the cell study at 23.152. Simple promotion recovers much of the allocation gain. The history and promotion-rule benefits are task-dependent.
 
-\subsection*{4.8 Validation under extended search}
-Validation coverage affects the value of further search. Re-evaluation reproduces the original VCC/Tahoe failures: Qwen/VCC gains 1.17 development points but loses 11.89 test points, while Tahoe gains 5.00 and loses 11.94 (Table~\ref{tab:rebuttal-validation}). Equal-laboratory and pooled-intervention scores coincide; twenty paired option-roster redraws instead expose selection sensitivity (Table~\ref{tab:rebuttal-roster}). In the larger-data study, all final searches improve on their fitted references, although local reversals remain (Figure~\ref{fig:fbhk-prefix}). Appendix E.8 restores missing source-defined panel diagnostics and documents residual selection instability; new biological partitions remain untested.
+\textbf{Selection stability.} Qwen's original VCC/Tahoe extended searches lose 11.89/11.94 test points despite development gains. Roster and complementary-panel diagnostics expose sensitivity (E.3/E.8). Panel transport is repaired; independent development confirmation and new biological splits remain needed. Expanded-recipe results are retrospective on exposed tests.
+
+\textbf{Access and computation.} The main table compares access scenarios; Norman favors the single-laboratory fixed reference. Fixed-model laboratory sensitivity is measured, while controller rotation and optimizer-step-matched single-laboratory controls remain open. Search counts do not equalize head FLOPs or language-model costs. Collaboration is simulated on shared compute.

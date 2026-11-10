@@ -1,0 +1,16 @@
+\begin{table}[htbp]
+\centering\small
+\caption{Matched-access search in three separate protocols (three training/controller runs; mean $\pm$ sample SD, scores $\times100$). DTI/protein: Luna, 36 recipes, ten laboratories, one historical starting predictor per task. Cell: Qwen, 16 designs, four study--cell contexts and gene-disjoint partitions. Searches allow six requests after D00 and 20 rounds per valid fit; comparisons are within columns. Complete feedback, proposer and GP controls appear in E.6/E.9. Bold marks the best means, including ties.}
+\label{tab:author-review-current-search}
+\begin{tabular}{lrrr}
+\toprule
+Policy & DTI AUROC & Protein AP & Cell Top-1 \\
+\midrule
+Fitted D00 & $94.271 \pm 0.000$ & $37.109 \pm 0.000$ & $21.428 \pm 0.096$ \\
+Direct & $\mathbf{94.368 \pm 0.006}$ & $\mathbf{39.017 \pm 0.659}$ & $22.625 \pm 0.211$ \\
+Structured history & $\mathbf{94.368 \pm 0.006}$ & $38.572 \pm 0.558$ & $22.888 \pm 0.559$ \\
+Random expectation & $94.316 \pm 0.007$ & $38.655 \pm 0.278$ & $22.668 \pm 0.214$ \\
+GP--EI & $94.290 \pm 0.029$ & $\mathbf{39.017 \pm 0.659}$ & $\mathbf{23.152 \pm 0.352}$ \\
+\bottomrule
+\end{tabular}
+\end{table}

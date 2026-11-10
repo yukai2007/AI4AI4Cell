@@ -1,26 +1,20 @@
 \documentclass{article}
 \usepackage{xcolor}
-\usepackage{iclr2027_conference}
-\usepackage{fontspec}
-\setmainfont{texgyretermes-regular.otf}[Path=fonts/,BoldFont=texgyretermes-bold.otf,ItalicFont=texgyretermes-italic.otf,BoldItalicFont=texgyretermes-bolditalic.otf]
+\usepackage[T1]{fontenc}
+\usepackage{iclr2027_conference,times}
 \usepackage{amsmath,amssymb,booktabs,tabularx,longtable,xurl,graphicx,placeins}
 \usepackage[colorlinks=true,allcolors=blue]{hyperref}
 \usepackage{microtype}
-\setlength{\abovecaptionskip}{4pt}
-\setlength{\belowcaptionskip}{2pt}
-\setlength{\floatsep}{5pt plus 2pt minus 2pt}
-\setlength{\textfloatsep}{6pt plus 1pt minus 1pt}
-\setlength{\intextsep}{5pt plus 1pt minus 1pt}
 \hypersetup{pdftitle={BioCoLoop: Collaborative Agentic Research for Biological Model Improvement}}
 \begin{document}
-% Build with Tectonic 0.17.0 or XeLaTeX/BibTeX.
+% Build with the pinned Tectonic 0.16.0 toolchain or XeLaTeX/BibTeX.
 \title{BioCoLoop: Collaborative Agentic Research\\for Biological Model Improvement}
 \author{Anonymous}
 \date{}
 \maketitle
 \input{tables/strong_v3/snapshot_stats}
 \begin{abstract}
-Biological model development requires both fitting parameters and deciding which model configurations to investigate. When measurements are held by different laboratories, these decisions must draw on distributed training and evaluation. We introduce BioCoLoop, a collaborative research framework that connects laboratory-local fitting to a shared record of candidate designs, development trajectories and selection decisions. Task adapters implement this interface for drug--target interaction prediction, observed-response proteomic efficacy prediction and cell perturbation identification. We evaluate three distinct uses of collaboration: increasing laboratory participation, conditioning proposals on prior development outcomes, and allocating training from early learning trajectories. Source-defined laboratory experiments measure transfer across biological studies, while same-access search controls separate proposal quality from access to additional data. The combined framework improves four of five primary endpoints relative to the single-laboratory fixed model; the effect of proposal history is task-dependent. A separate allocation study improves double-gene perturbation identification by 10.84 percentage points over uniform allocation at matched training and evaluation counts, although simpler promotion also recovers much of this gain. These results establish a common experimental framework for collaborative biological model development and identify training allocation and development-to-test generalization as consequential research decisions.
+Biological model development requires both fitting parameters and choosing which configurations to investigate. We introduce BioCoLoop, a collaborative research framework connecting laboratory-local fitting to a shared record of candidate designs, development trajectories and selection decisions. Task adapters support drug--target interactions, observed-response proteomic efficacy and cell perturbation identification. Controlled studies separate three uses of collaboration: broader data access, development-history feedback and training allocation. The complete ten-laboratory workflow improves four of five primary endpoints over a single-laboratory fixed model. Across separately specified matched-access studies, model variants exceed random-search expectations in all three task families, although history-specific gains remain task-dependent and conventional search remains competitive. Selective longer fitting improves double-gene perturbation identification by 10.84 percentage points over uniform allocation at matched training and evaluation counts; simpler promotion recovers much of this gain. Compatible external studies also improve target prediction. These results establish a common experimental interface for collaborative biological model development and identify selection stability and compute-matched access controls as priorities for further improvement.
 \end{abstract}
 
 \input{sections/01_introduction}
