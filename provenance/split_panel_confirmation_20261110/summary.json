@@ -1,0 +1,692 @@
+{
+  "access": {
+    "AB": {
+      "confirmation_reads": 72,
+      "first_confirmation_utc": "2026-11-10T18:53:57.745537+00:00",
+      "last_selection_utc": "2026-11-10T18:29:51.113212+00:00",
+      "selection_reads": 216
+    },
+    "BA": {
+      "confirmation_reads": 72,
+      "first_confirmation_utc": "2026-11-10T18:54:12.834764+00:00",
+      "last_selection_utc": "2026-11-10T18:46:17.834333+00:00",
+      "selection_reads": 216
+    }
+  },
+  "fresh_fits": 72,
+  "historically_exposed_heldout": true,
+  "history_minus_direct": {
+    "luna/raw-direct/confirmation": {
+      "mean_pp": 0.5138472638472645,
+      "negative": 2,
+      "positive": 1,
+      "runs": 12,
+      "zero": 9
+    },
+    "luna/raw-direct/heldout": {
+      "mean_pp": 0.6155976137104,
+      "negative": 0,
+      "positive": 3,
+      "runs": 12,
+      "zero": 9
+    },
+    "luna/structured-direct/confirmation": {
+      "mean_pp": -0.5390627890627882,
+      "negative": 3,
+      "positive": 0,
+      "runs": 12,
+      "zero": 9
+    },
+    "luna/structured-direct/heldout": {
+      "mean_pp": 0.48114517866946227,
+      "negative": 0,
+      "positive": 3,
+      "runs": 12,
+      "zero": 9
+    },
+    "qwen/raw-direct/confirmation": {
+      "mean_pp": 1.7306166056166066,
+      "negative": 0,
+      "positive": 4,
+      "runs": 12,
+      "zero": 8
+    },
+    "qwen/raw-direct/heldout": {
+      "mean_pp": 0.3404899518390294,
+      "negative": 2,
+      "positive": 2,
+      "runs": 12,
+      "zero": 8
+    },
+    "qwen/structured-direct/confirmation": {
+      "mean_pp": 1.5242704294428435,
+      "negative": 0,
+      "positive": 4,
+      "runs": 12,
+      "zero": 8
+    },
+    "qwen/structured-direct/heldout": {
+      "mean_pp": 1.1381847188402767,
+      "negative": 2,
+      "positive": 2,
+      "runs": 12,
+      "zero": 8
+    }
+  },
+  "interpretation": "Selection and confirmation use disjoint halves of the same historical target panels; the partition and test set were previously exposed descriptively. This is not a new biological split.",
+  "invalid_slots_of_72": {
+    "luna/direct": 0,
+    "luna/raw": 1,
+    "luna/structured": 1,
+    "qwen/direct": 0,
+    "qwen/raw": 26,
+    "qwen/structured": 16
+  },
+  "last_seal_utc": "2026-11-10T18:52:42.270658+00:00",
+  "logical_llm_calls": {
+    "luna": 216,
+    "qwen": 239
+  },
+  "mean_search_optimism_pp": {
+    "cell/AB": 20.783512980631933,
+    "cell/BA": 9.805675733053276,
+    "protein/AB": 4.614012861036669,
+    "protein/BA": 53.39147287997395
+  },
+  "saved_round_checkpoints": 1440,
+  "schema": "split-panel-confirmation-summary-v1",
+  "source_bindings": {
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/AB/access_log.jsonl": "57fa0f1bb119e388b05ec60a83910fceeeea0883af1553b58615941a0aea20cf",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/AB/cell/seed61/controls/controls.json": "b18132774888111a0cdb80ce9280b0b614f5198ae686e5178cbfe985fe779c77",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/AB/cell/seed61/luna/selections.json": "f1c383212e5627f362932bc136acc08fc101cc7fa9482f26c7be8464eeda0a51",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/AB/cell/seed61/qwen/selections.json": "4000de3d4278e476b1a5a28f1748fad8696763d4cb9688708d2fd1b1fe8c4f6a",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/AB/cell/seed62/controls/controls.json": "10575cf32704d708671147266bcba74555d49571370a689d8817c1fe1e4e3e8c",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/AB/cell/seed62/luna/selections.json": "2c8cb847cb0478850d628fd8dcdef59ff87160c5f4b5ab7b7c8139c02eb96ea4",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/AB/cell/seed62/qwen/selections.json": "0f274c79f6e8673817ef18a1c274663f438f8207a5d689f70a30726332dd3d9a",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/AB/cell/seed63/controls/controls.json": "bf2acb19946d8916a95870c8f511f434f0a2c5d5fe5ba29d23f85ba0eb8b51cc",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/AB/cell/seed63/luna/selections.json": "df80896b847f3e55ecaf1b2b48665beb09d21d82da713952da4abd87001a4011",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/AB/cell/seed63/qwen/selections.json": "d6d6c0ddafd5cb045323fda2b99f09e4b51106e65bfbcfcad2746141d82e1d15",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/AB/protein/seed61/controls/controls.json": "beb8b04b07cf30fc9068333b1bb774effe5b6392e245c46b91306f3027399bcc",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/AB/protein/seed61/luna/selections.json": "40bbd5b20fe58c6085fe596a487b86784a79781d42f306eafb88b021753daf0b",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/AB/protein/seed61/qwen/selections.json": "e11ae74391a5bc83047f949c669488dd7c55eb7783cbd22aaf2460f914fddf33",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/AB/protein/seed62/controls/controls.json": "04ceceeeb6b1e6b0043e41a2fb701de0b65b81149ebd1b76fad9564ead1b2d36",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/AB/protein/seed62/luna/selections.json": "cd8719875b3099670f3c0bf0d48a8c9374a2f4138f07fcae49e2612e8db3fdfb",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/AB/protein/seed62/qwen/selections.json": "d0493391c10306ae018f335c31bb9b4af56bdf38bbef384daa9186467f40ac91",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/AB/protein/seed63/controls/controls.json": "07c665e5f5d4ef06d9bc72fd5ed99cd634fe2fbdfd6e4080c48b30796a8af633",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/AB/protein/seed63/luna/selections.json": "9b26cab9126eb004abd1ee164ccfe5746950378139a388f0903ec202a6b8fd16",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/AB/protein/seed63/qwen/selections.json": "3a052bb4877c8bbb0d7e062033c754ecdc3678b7cac5200ad0f606a1f66e68cf",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/AB/seal.json": "196dd2774a0a6cd3f50af3876dcaac2fda9db408f6fbcf92ba922309ee792258",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/BA/access_log.jsonl": "221590f6c28da124f4c0535f56802619d6fae455a975cdb5bad9dd489dbd1817",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/BA/cell/seed61/controls/controls.json": "d46c3ab575d0a88312680277d7bbf9dc87de193280adec1f58b6f75dc20e9436",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/BA/cell/seed61/luna/selections.json": "da356011a7b484dff2f46a0b0042b99cac25734c472c8373f96eb4dc7385ef32",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/BA/cell/seed61/qwen/selections.json": "ea2c2be222ebf4f4c130f4c22ba3cbf10e6076a91d811e510d4e5e2f9cc60dd5",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/BA/cell/seed62/controls/controls.json": "e9f41421a121697931bd94e6bff27addac9a57d0489f67c6bbe3daf6ca5f0f50",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/BA/cell/seed62/luna/selections.json": "0d77f288566b3cca41cbe50585419006bc696631b65d60af25432d1d261fff83",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/BA/cell/seed62/qwen/selections.json": "98d6a4b1b7974a9d06c3c7a2f82bad050a13bc51dc06d8975d01444f5357ac5c",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/BA/cell/seed63/controls/controls.json": "73595a7a90eddd1d03f6eaf5263d20e47f37c07884df93d5d92485c27798430d",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/BA/cell/seed63/luna/selections.json": "6e2540a488da513d964f3a28ead811439f124ff84b076279d6195035483bc213",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/BA/cell/seed63/qwen/selections.json": "1e7974e6231504d47fd801225c75e8a728c2fbae1b6351322baa4c434a08a31d",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/BA/protein/seed61/controls/controls.json": "00fcfe93e9af6c14d3eae1b60a585cffc7ee6ac5c9ea77b4071079f3dc3c40e6",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/BA/protein/seed61/luna/selections.json": "1762da70fb4bdf089a9e9f8a39bb41ea9c20f870a68b57b4fdbd3698fe514321",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/BA/protein/seed61/qwen/selections.json": "5e6e79253cf816b8eb5c32eeb38cd0bf6bbd0914940c7717a9662525456bfd8b",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/BA/protein/seed62/controls/controls.json": "333f497c22c87504d0baf50dd538769f71e745489aeb10d07047b012cb71952a",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/BA/protein/seed62/luna/selections.json": "604fafd0a4e6f2638b5de07a34d62386b44ca91349caf18a6403c35a6bf13bf3",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/BA/protein/seed62/qwen/selections.json": "2cd6bb9633036bde80350b4ff1072bdb375260aa0de36c69d1c219391998cb1a",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/BA/protein/seed63/controls/controls.json": "248156f1dab18167248d213045c6dcf267759fc014ac20bbac936734a622ebe9",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/BA/protein/seed63/luna/selections.json": "569d33946e9b4cfa219b38b0da2a48db57ba9299d505e24d0269329ab8764389",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/BA/protein/seed63/qwen/selections.json": "ab0b7c0468d06833316a0bc933da03a57f384cbc8cd7da484674286268d71851",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/directions/BA/seal.json": "8e41aa169f2b5baa3a5c179682e882d7e2f576ccea6d4a4b784f4902f5bbbc84",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/protocol_stage1.json": "7c1233a06d9cc4e901a257c960a9b4ee553062bd667c032982eeb91fd5beb769",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/protocol_stage2.json": "03817b8a79d4d94072d6b6535c68b5a3c6a562abb72659415eb6711eec6d11cb",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/registration_stage1.json": "f4dddfc508a708e1acbfb37dd23a405fa356a1af6b622e61f1913d693ecf3532",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/report.json": "a927fdeca17935089ee15ff7adb5b93e3daeea92750af0e1f4fadd7edc1ec54a",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/scores/cell.json": "9b71ca06338c42ed58b0f308f87fe83a3adef1233a362fd36418712f160b05d0",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/scores/protein.json": "56c25b214bfa93348b70875843037345e2b110ac6c416760d0b888706f9870de",
+    "/liziqing/yukai/AI4AI4Cell/results/split_panel_confirmation_20261110/v1/train_equivalence.json": "fb6227c3db0371534183ee270bfb4023bb62fe612d04558f4e9cd98f5362589f"
+  },
+  "status": "PASS",
+  "table": {
+    "cell/AB/fixed": {
+      "confirmation": 15.617757242757243,
+      "heldout": 30.821361315668717,
+      "per_seed_confirmation_pp": [
+        15.617757242757243,
+        15.617757242757243,
+        15.617757242757243
+      ],
+      "per_seed_heldout_pp": [
+        30.821361315668717,
+        30.821361315668717,
+        30.821361315668717
+      ],
+      "selection": 20.06604030501089
+    },
+    "cell/AB/gp_ei": {
+      "confirmation": 13.326118326118324,
+      "heldout": 20.309123540306338,
+      "per_seed_confirmation_pp": [
+        15.74242424242424,
+        12.086580086580087,
+        12.14935064935065
+      ],
+      "per_seed_heldout_pp": [
+        18.488638273742637,
+        19.725530069932347,
+        22.713202277244022
+      ],
+      "selection": 34.96213300134869
+    },
+    "cell/AB/luna/direct": {
+      "confirmation": 13.326118326118324,
+      "heldout": 20.309123540306338,
+      "per_seed_confirmation_pp": [
+        15.74242424242424,
+        12.086580086580087,
+        12.14935064935065
+      ],
+      "per_seed_heldout_pp": [
+        18.488638273742637,
+        19.725530069932347,
+        22.713202277244022
+      ],
+      "selection": 34.96213300134869
+    },
+    "cell/AB/luna/raw": {
+      "confirmation": 13.326118326118324,
+      "heldout": 20.309123540306338,
+      "per_seed_confirmation_pp": [
+        15.74242424242424,
+        12.086580086580087,
+        12.14935064935065
+      ],
+      "per_seed_heldout_pp": [
+        18.488638273742637,
+        19.725530069932347,
+        22.713202277244022
+      ],
+      "selection": 34.96213300134869
+    },
+    "cell/AB/luna/structured": {
+      "confirmation": 13.326118326118324,
+      "heldout": 20.309123540306338,
+      "per_seed_confirmation_pp": [
+        15.74242424242424,
+        12.086580086580087,
+        12.14935064935065
+      ],
+      "per_seed_heldout_pp": [
+        18.488638273742637,
+        19.725530069932347,
+        22.713202277244022
+      ],
+      "selection": 34.96213300134869
+    },
+    "cell/AB/qwen/direct": {
+      "confirmation": 11.5,
+      "heldout": 17.411552912185424,
+      "per_seed_confirmation_pp": [
+        15.74242424242424,
+        9.878787878787879,
+        8.878787878787877
+      ],
+      "per_seed_heldout_pp": [
+        18.488638273742637,
+        17.919743557314717,
+        15.826276905498915
+      ],
+      "selection": 31.59093266936404
+    },
+    "cell/AB/qwen/raw": {
+      "confirmation": 11.5,
+      "heldout": 17.411552912185424,
+      "per_seed_confirmation_pp": [
+        15.74242424242424,
+        9.878787878787879,
+        8.878787878787877
+      ],
+      "per_seed_heldout_pp": [
+        18.488638273742637,
+        17.919743557314717,
+        15.826276905498915
+      ],
+      "selection": 31.59093266936404
+    },
+    "cell/AB/qwen/structured": {
+      "confirmation": 13.518123638813293,
+      "heldout": 22.12524954705537,
+      "per_seed_confirmation_pp": [
+        15.74242424242424,
+        9.878787878787879,
+        14.93315879522776
+      ],
+      "per_seed_heldout_pp": [
+        18.488638273742637,
+        17.919743557314717,
+        29.967366810108746
+      ],
+      "selection": 33.8619475568005
+    },
+    "cell/AB/random": {
+      "confirmation": 13.325497196074892,
+      "heldout": 22.597603987128466,
+      "per_seed_confirmation_pp": [
+        15.357718381285329,
+        11.927427668862958,
+        12.69134553807639
+      ],
+      "per_seed_heldout_pp": [
+        22.626829375086377,
+        21.008465707494658,
+        24.157516878804365
+      ],
+      "selection": 32.523853083493606
+    },
+    "cell/BA/fixed": {
+      "confirmation": 12.932692307692308,
+      "heldout": 28.361731871812513,
+      "per_seed_confirmation_pp": [
+        12.932692307692308,
+        12.932692307692308,
+        12.932692307692308
+      ],
+      "per_seed_heldout_pp": [
+        28.406776916857556,
+        28.406776916857556,
+        28.271641781722423
+      ],
+      "selection": 23.63879367758678
+    },
+    "cell/BA/gp_ei": {
+      "confirmation": 21.44786155202822,
+      "heldout": 28.672753299097387,
+      "per_seed_confirmation_pp": [
+        16.73115079365079,
+        14.732142857142854,
+        32.88029100529101
+      ],
+      "per_seed_heldout_pp": [
+        25.840744108889268,
+        29.520397943785042,
+        30.657117844617844
+      ],
+      "selection": 29.761730606558196
+    },
+    "cell/BA/luna/direct": {
+      "confirmation": 21.44786155202822,
+      "heldout": 28.672753299097387,
+      "per_seed_confirmation_pp": [
+        16.73115079365079,
+        14.732142857142854,
+        32.88029100529101
+      ],
+      "per_seed_heldout_pp": [
+        25.840744108889268,
+        29.520397943785042,
+        30.657117844617844
+      ],
+      "selection": 29.761730606558196
+    },
+    "cell/BA/luna/raw": {
+      "confirmation": 21.44786155202822,
+      "heldout": 28.672753299097387,
+      "per_seed_confirmation_pp": [
+        16.73115079365079,
+        14.732142857142854,
+        32.88029100529101
+      ],
+      "per_seed_heldout_pp": [
+        25.840744108889268,
+        29.520397943785042,
+        30.657117844617844
+      ],
+      "selection": 29.761730606558196
+    },
+    "cell/BA/luna/structured": {
+      "confirmation": 21.44786155202822,
+      "heldout": 28.672753299097387,
+      "per_seed_confirmation_pp": [
+        16.73115079365079,
+        14.732142857142854,
+        32.88029100529101
+      ],
+      "per_seed_heldout_pp": [
+        25.840744108889268,
+        29.520397943785042,
+        30.657117844617844
+      ],
+      "selection": 29.761730606558196
+    },
+    "cell/BA/qwen/direct": {
+      "confirmation": 13.421419493723413,
+      "heldout": 22.078115776368463,
+      "per_seed_confirmation_pp": [
+        10.176917989417989,
+        9.804602396514161,
+        20.28273809523809
+      ],
+      "per_seed_heldout_pp": [
+        22.09956049875404,
+        17.205751604945153,
+        26.929035225406196
+      ],
+      "selection": 25.527851937334695
+    },
+    "cell/BA/qwen/raw": {
+      "confirmation": 13.421419493723413,
+      "heldout": 22.078115776368463,
+      "per_seed_confirmation_pp": [
+        10.176917989417989,
+        9.804602396514161,
+        20.28273809523809
+      ],
+      "per_seed_heldout_pp": [
+        22.09956049875404,
+        17.205751604945153,
+        26.929035225406196
+      ],
+      "selection": 25.527851937334695
+    },
+    "cell/BA/qwen/structured": {
+      "confirmation": 13.421419493723413,
+      "heldout": 22.078115776368463,
+      "per_seed_confirmation_pp": [
+        10.176917989417989,
+        9.804602396514161,
+        20.28273809523809
+      ],
+      "per_seed_heldout_pp": [
+        22.09956049875404,
+        17.205751604945153,
+        26.929035225406196
+      ],
+      "selection": 25.527851937334695
+    },
+    "cell/BA/random": {
+      "confirmation": 18.665132903286498,
+      "heldout": 26.80403932466901,
+      "per_seed_confirmation_pp": [
+        15.188811959645292,
+        13.996903378030828,
+        26.809683372183375
+      ],
+      "per_seed_heldout_pp": [
+        25.21937175346266,
+        25.89178051054884,
+        29.300965709995523
+      ],
+      "selection": 27.535765218758947
+    },
+    "protein/AB/fixed": {
+      "confirmation": 57.767195767195766,
+      "heldout": 39.49416392830586,
+      "per_seed_confirmation_pp": [
+        57.99999999999999,
+        59.0,
+        56.3015873015873
+      ],
+      "per_seed_heldout_pp": [
+        37.53201257883584,
+        40.96457646499509,
+        39.985902741086655
+      ],
+      "selection": 61.07142857142856
+    },
+    "protein/AB/gp_ei": {
+      "confirmation": 55.267195767195766,
+      "heldout": 41.34071517539662,
+      "per_seed_confirmation_pp": [
+        56.05555555555555,
+        55.77777777777777,
+        53.96825396825397
+      ],
+      "per_seed_heldout_pp": [
+        41.648586343078826,
+        41.36643625526803,
+        41.00712292784301
+      ],
+      "selection": 61.19047619047618
+    },
+    "protein/AB/luna/direct": {
+      "confirmation": 55.74074074074073,
+      "heldout": 41.00847466049958,
+      "per_seed_confirmation_pp": [
+        56.05555555555555,
+        55.77777777777777,
+        55.388888888888886
+      ],
+      "per_seed_heldout_pp": [
+        41.648586343078826,
+        41.36643625526803,
+        40.01040138315189
+      ],
+      "selection": 61.19047619047618
+    },
+    "protein/AB/luna/raw": {
+      "confirmation": 55.267195767195766,
+      "heldout": 41.34071517539662,
+      "per_seed_confirmation_pp": [
+        56.05555555555555,
+        55.77777777777777,
+        53.96825396825397
+      ],
+      "per_seed_heldout_pp": [
+        41.648586343078826,
+        41.36643625526803,
+        41.00712292784301
+      ],
+      "selection": 61.19047619047618
+    },
+    "protein/AB/luna/structured": {
+      "confirmation": 55.267195767195766,
+      "heldout": 41.34071517539662,
+      "per_seed_confirmation_pp": [
+        56.05555555555555,
+        55.77777777777777,
+        53.96825396825397
+      ],
+      "per_seed_heldout_pp": [
+        41.648586343078826,
+        41.36643625526803,
+        41.00712292784301
+      ],
+      "selection": 61.19047619047618
+    },
+    "protein/AB/qwen/direct": {
+      "confirmation": 55.74074074074073,
+      "heldout": 41.00847466049958,
+      "per_seed_confirmation_pp": [
+        56.05555555555555,
+        55.77777777777777,
+        55.388888888888886
+      ],
+      "per_seed_heldout_pp": [
+        41.648586343078826,
+        41.36643625526803,
+        40.01040138315189
+      ],
+      "selection": 61.19047619047618
+    },
+    "protein/AB/qwen/raw": {
+      "confirmation": 59.62962962962962,
+      "heldout": 40.10834567197627,
+      "per_seed_confirmation_pp": [
+        56.05555555555555,
+        57.99999999999999,
+        64.83333333333333
+      ],
+      "per_seed_heldout_pp": [
+        41.648586343078826,
+        39.87863053417936,
+        38.797820138670616
+      ],
+      "selection": 61.19047619047618
+    },
+    "protein/AB/qwen/structured": {
+      "confirmation": 59.62962962962962,
+      "heldout": 40.10834567197627,
+      "per_seed_confirmation_pp": [
+        56.05555555555555,
+        57.99999999999999,
+        64.83333333333333
+      ],
+      "per_seed_heldout_pp": [
+        41.648586343078826,
+        39.87863053417936,
+        38.797820138670616
+      ],
+      "selection": 61.19047619047618
+    },
+    "protein/AB/random": {
+      "confirmation": 56.069120914359,
+      "heldout": 40.36223333479701,
+      "per_seed_confirmation_pp": [
+        55.6125541125541,
+        56.272727272727266,
+        56.322081357795625
+      ],
+      "per_seed_heldout_pp": [
+        39.86633217458852,
+        40.886647093849135,
+        40.33372073595338
+      ],
+      "selection": 61.190218511647075
+    },
+    "protein/BA/fixed": {
+      "confirmation": 26.611351611351612,
+      "heldout": 25.643885582472777,
+      "per_seed_confirmation_pp": [
+        25.634920634920633,
+        29.246031746031747,
+        24.953102453102456
+      ],
+      "per_seed_heldout_pp": [
+        26.08426566348051,
+        24.496934805869476,
+        26.350456278068346
+      ],
+      "selection": 79.77777777777779
+    },
+    "protein/BA/gp_ei": {
+      "confirmation": 31.525881525881527,
+      "heldout": 27.445582445753026,
+      "per_seed_confirmation_pp": [
+        28.617826617826626,
+        41.0067155067155,
+        24.953102453102456
+      ],
+      "per_seed_heldout_pp": [
+        26.926523666032203,
+        29.05976739315852,
+        26.350456278068346
+      ],
+      "selection": 84.64814814814815
+    },
+    "protein/BA/luna/direct": {
+      "confirmation": 32.214285714285715,
+      "heldout": 24.95306455346006,
+      "per_seed_confirmation_pp": [
+        32.72222222222222,
+        38.02380952380952,
+        25.896825396825395
+      ],
+      "per_seed_heldout_pp": [
+        23.97120018592859,
+        26.359234315622054,
+        24.528759158829534
+      ],
+      "selection": 87.1111111111111
+    },
+    "protein/BA/luna/raw": {
+      "confirmation": 34.74321974321975,
+      "heldout": 27.08321449340462,
+      "per_seed_confirmation_pp": [
+        41.252747252747255,
+        38.02380952380952,
+        24.953102453102456
+      ],
+      "per_seed_heldout_pp": [
+        28.539952886523455,
+        26.359234315622054,
+        26.350456278068346
+      ],
+      "selection": 85.75925925925925
+    },
+    "protein/BA/luna/structured": {
+      "confirmation": 30.531579531579535,
+      "heldout": 26.54540475324087,
+      "per_seed_confirmation_pp": [
+        28.617826617826626,
+        38.02380952380952,
+        24.953102453102456
+      ],
+      "per_seed_heldout_pp": [
+        26.926523666032203,
+        26.359234315622054,
+        26.350456278068346
+      ],
+      "selection": 86.31481481481481
+    },
+    "protein/BA/qwen/direct": {
+      "confirmation": 32.214285714285715,
+      "heldout": 24.95306455346006,
+      "per_seed_confirmation_pp": [
+        32.72222222222222,
+        38.02380952380952,
+        25.896825396825395
+      ],
+      "per_seed_heldout_pp": [
+        23.97120018592859,
+        26.359234315622054,
+        24.528759158829534
+      ],
+      "selection": 87.1111111111111
+    },
+    "protein/BA/qwen/raw": {
+      "confirmation": 35.24786324786325,
+      "heldout": 27.215153349339488,
+      "per_seed_confirmation_pp": [
+        41.252747252747255,
+        38.59401709401709,
+        25.896825396825395
+      ],
+      "per_seed_heldout_pp": [
+        28.539952886523455,
+        28.576748002665475,
+        24.528759158829534
+      ],
+      "selection": 85.44444444444444
+    },
+    "protein/BA/qwen/structured": {
+      "confirmation": 32.4043549043549,
+      "heldout": 25.692235782474533,
+      "per_seed_confirmation_pp": [
+        32.72222222222222,
+        38.59401709401709,
+        25.896825396825395
+      ],
+      "per_seed_heldout_pp": [
+        23.97120018592859,
+        28.576748002665475,
+        24.528759158829534
+      ],
+      "selection": 85.44444444444444
+    },
+    "protein/BA/random": {
+      "confirmation": 31.79504498227442,
+      "heldout": 26.333372581468755,
+      "per_seed_confirmation_pp": [
+        31.747291068719647,
+        38.16998345569774,
+        25.467860422405874
+      ],
+      "per_seed_heldout_pp": [
+        26.33167361043779,
+        27.31164083003039,
+        25.35680330393808
+      ],
+      "selection": 85.97496507020315
+    }
+  },
+  "train_equivalence_all_pass": true,
+  "unique_heldout_checkpoints": 143
+}

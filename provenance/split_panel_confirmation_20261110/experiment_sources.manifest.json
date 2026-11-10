@@ -1,0 +1,25 @@
+{
+  "archive_member_sha256": {
+    "README.txt": "4ae347ea83dff7433091eaa80445008371946583828e30369702287c3138248b",
+    "extensions/split_panel_confirmation_20261110/common.py": "48f8dfd27b5ec8382949abb502dad09c3181517d13beba1897ec39f66d0ab91c",
+    "extensions/split_panel_confirmation_20261110/launch_search.sh": "2e2796426e77cec22a8bc69191ab777365b764350603dd93d47e8597dd35abc7",
+    "extensions/split_panel_confirmation_20261110/launch_train.sh": "61c7dd160bc9018d15c11d9ef7cb86a57c74e016cab91a5cadeb855296f448d0",
+    "extensions/split_panel_confirmation_20261110/mock_check.py": "ab632f6e1161ffbb0f13433bd033869cd8a813db71492e67b71928af5b5474aa",
+    "extensions/split_panel_confirmation_20261110/protocol.py": "2c3603cc3bd6f409f6888989b11124d5cb79e780a83eb8ccd143624ffe3b0984",
+    "extensions/split_panel_confirmation_20261110/report.py": "7e8b2dcaecd727c5f51f876881f2c9751dbe1f1adcb8e11754b4ce6f36f29320",
+    "extensions/split_panel_confirmation_20261110/score.py": "92f2336d15d9c316f8b6f53b836a5f127a5fa48bb918ddfda2b56996789b602e",
+    "extensions/split_panel_confirmation_20261110/search.py": "ffdcd8cbbbd54ee719755b390bc2cb0855c64da1885f57533f4ed1a139993ca8",
+    "extensions/split_panel_confirmation_20261110/train.py": "6fd8e2ecdef925c5bf7e32dd6e199663cd05d9543da38217fe909ce571eddceb",
+    "metadata/protocol_stage1.json": "7c1233a06d9cc4e901a257c960a9b4ee553062bd667c032982eeb91fd5beb769",
+    "metadata/protocol_stage2.json": "03817b8a79d4d94072d6b6535c68b5a3c6a562abb72659415eb6711eec6d11cb",
+    "metadata/registration_stage1.json": "f4dddfc508a708e1acbfb37dd23a405fa356a1af6b622e61f1913d693ecf3532",
+    "metadata/report.json": "a927fdeca17935089ee15ff7adb5b93e3daeea92750af0e1f4fadd7edc1ec54a",
+    "paper/tools/publish_split_panel_confirmation.py": "acfd74911c6330e654319fd4f8a4a9fcd164113ddce9c32a7777fde746c25adf",
+    "summary.json": "1fefdb2b5be0bb6135fd9b2a6d2bd42f54593712f3b5c661ab216333e94caa6b"
+  },
+  "archive_sha256": "d26d670dc4a6125b1e18cb8da23d33c1a1c91b34d68c8d7403e0176a572eeb4a",
+  "generator_sha256": "acfd74911c6330e654319fd4f8a4a9fcd164113ddce9c32a7777fde746c25adf",
+  "status": "PASS",
+  "summary_sha256": "1fefdb2b5be0bb6135fd9b2a6d2bd42f54593712f3b5c661ab216333e94caa6b",
+  "table_sha256": "24ef2f310f8980761252d3ff15fdc770e7d6c55c687fd3594742f5f4ca792883"
+}

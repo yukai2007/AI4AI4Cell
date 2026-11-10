@@ -1,0 +1,27 @@
+\begin{table}[htbp]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3.2pt}
+\caption{Split-panel confirmation. Each direction selects checkpoint rounds and designs on five development panels (A$\to$B: even panels; B$\to$A: odd panels), seals both directions, and only then scores the other five panels (Conf.) and the original held-out test (Test). Cell reports macro accuracy and protein AP, in points; means over seeds 61--63 with every arm, seed and direction retained. Random is the exact expectation over all $\binom{11}{6}$ six-design searches. Bold marks the best Test value in each column.}
+\label{tab:split-panel-confirmation}
+\begin{tabular}{lrrrrrrrr}
+\toprule
+ & \multicolumn{4}{c}{Cell} & \multicolumn{4}{c}{Protein} \\
+\cmidrule(lr){2-5}\cmidrule(lr){6-9}
+ & \multicolumn{2}{c}{A$\to$B} & \multicolumn{2}{c}{B$\to$A} & \multicolumn{2}{c}{A$\to$B} & \multicolumn{2}{c}{B$\to$A} \\
+Arm & Conf. & Test & Conf. & Test & Conf. & Test & Conf. & Test \\
+\midrule
+Fixed D00 & 15.62 & \textbf{30.82} & 12.93 & 28.36 & 57.77 & 39.49 & 26.61 & 25.64 \\
+Random (exact) & 13.33 & 22.60 & 18.67 & 26.80 & 56.07 & 40.36 & 31.80 & 26.33 \\
+GP--EI & 13.33 & 20.31 & 21.45 & \textbf{28.67} & 55.27 & \textbf{41.34} & 31.53 & \textbf{27.45} \\
+\addlinespace
+Qwen direct & 11.50 & 17.41 & 13.42 & 22.08 & 55.74 & 41.01 & 32.21 & 24.95 \\
+Qwen raw & 11.50 & 17.41 & 13.42 & 22.08 & 59.63 & 40.11 & 35.25 & 27.22 \\
+Qwen structured & 13.52 & 22.13 & 13.42 & 22.08 & 59.63 & 40.11 & 32.40 & 25.69 \\
+\addlinespace
+Luna direct & 13.33 & 20.31 & 21.45 & \textbf{28.67} & 55.74 & 41.01 & 32.21 & 24.95 \\
+Luna raw & 13.33 & 20.31 & 21.45 & \textbf{28.67} & 55.27 & \textbf{41.34} & 34.74 & 27.08 \\
+Luna structured & 13.33 & 20.31 & 21.45 & \textbf{28.67} & 55.27 & \textbf{41.34} & 30.53 & 26.55 \\
+\bottomrule
+\end{tabular}
+\end{table}
