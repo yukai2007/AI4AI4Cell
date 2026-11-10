@@ -8,8 +8,8 @@ A \emph{shared coordinator} is the trusted execution service used by all partici
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.92\linewidth]{figures/biocoloop_framework_v3.pdf}
-\caption{BioCoLoop's common research interface. Research model $S$ proposes an executable configuration; the coordinator fits it using updates from $K$ laboratories and summarizes development evaluation in an evidence card. The ordered history $\mathcal E_t$ conditions the next proposal. Task adapters supply biological inputs, prediction heads and losses. Sections 3.2--3.3 define fitting, evidence and selection; Section 3.4 evaluates training allocation separately.}
+\includegraphics[width=\linewidth]{figures/biocoloop_framework_v4.pdf}
+\caption{BioCoLoop's common research interface. A frozen research model $S$ proposes a configuration, which is compiled into an executable design; the coordinator fits it with updates and development scores from $K$ laboratories whose raw data stay local, and selection retains the best design. The ordered evidence history $\mathcal E_t$ conditions the next proposal, and the fitted model is then scored on the held-out test. Task adapters supply biological inputs, prediction heads and losses. Sections 3.2--3.3 define fitting, evidence and selection; Section 3.4 evaluates training allocation separately.}
 \label{fig:research-interface}
 \end{figure}
 
