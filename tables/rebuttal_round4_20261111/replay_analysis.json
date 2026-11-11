@@ -1,0 +1,2759 @@
+{
+  "status": "COMPLETE",
+  "registration": {
+    "specification": {
+      "study": "replay",
+      "status": "DRAFT; register with init before replay",
+      "scope": "E.9 fixed proposal sets and original within-fit checkpoints; retrospective exposed-test analysis",
+      "seeds": [
+        71,
+        72,
+        73,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "tasks": [
+        "dti",
+        "protein"
+      ],
+      "proposers": [
+        "qwen",
+        "luna"
+      ],
+      "candidate_sets": [
+        "direct",
+        "raw",
+        "structured",
+        "gp_ei",
+        "gp_ei_zero"
+      ],
+      "baseline": "D00 plus exactly the valid candidates in each original sealed trace; never union modes or add unqueried candidates",
+      "lab_evidence": "Ten selected-checkpoint development primaries labelled target:0 through target:9; delta_l(c)=score_l(c)-score_l(D00)",
+      "rules": {
+        "median": "Maximize median(delta_l), then lower original pooled BCE",
+        "lcb1": "Maximize mean(delta_l)-sample_SD(delta_l)/sqrt(10), then lower original pooled BCE; k=1 fixed",
+        "majority6": "Eligible iff D00, or pooled primary improves by >1e-12 and >=6/10 lab deltas exceed 1e-12; among eligible maximize original pooled primary then lower BCE"
+      },
+      "ties": "Complete key ties keep earliest candidate in original encounter order; D00 first",
+      "undefined_labs": "No lab or seed deletion and no zero imputation; stop as incomplete if any required lab primary is undefined",
+      "checkpoint_rule": "Unchanged pooled primary/loss selection among rounds 2/5/10/20; only final candidate selection changes",
+      "primary": "Separately per task: Qwen structured lcb1 minus original pooled-selection Qwen structured held-out score",
+      "secondary": [
+        "All three rules minus original pooled selection for every proposer/task/mode",
+        "Per-seed switches, wins/ties/losses, development gains and dispersion"
+      ],
+      "references": "Original exact-random, Luna and GP results remain contextual references. Original random weights must not be interpreted as weights under robust selection.",
+      "bootstrap": {
+        "replicates": 100000,
+        "seed": 2026111106,
+        "unit": "Eight paired whole seed blocks; same resamples across contrasts",
+        "interval": "Two-sided percentile 95%",
+        "tie_tolerance_pp": 1e-10
+      },
+      "inference": "No endpoint or proposer pooling. Secondary rule comparisons cannot be used to choose a winner. No tuning after rescoring.",
+      "cost": {
+        "new_training_fits": 0,
+        "new_controller_calls": 0,
+        "heldout": "Hash-check and independently rescore saved predictions using the original scorer"
+      },
+      "gate": "Seal all rule selections for all 160 proposer/task/seed/mode cells before opening held-out scores or predictions",
+      "limitations": [
+        "Laboratories are shards of fixed development populations; lcb1 is a dispersion penalty, not a calibrated confidence bound",
+        "Within-fit checkpoint selection already used all labs; this replay does not create independent confirmation panels",
+        "E.3 already contains a related incumbent-rule replay; legacy E.3/E.8 extensions require detailed server evidence and a separate locked manifest"
+      ],
+      "failures": "No exclusions or replacement seeds; missing evidence leaves analysis incomplete"
+    },
+    "registered_utc": "2026-11-11T18:32:26.680964+00:00",
+    "source_sha256": {
+      "/liziqing/yukai/AI4AI4Cell/extensions/round4_20261111/run.py": "f93509605aff39b205740d73192664e50af0dfd6eeb2ae1999f6d3ee17623d5e",
+      "/liziqing/yukai/AI4AI4Cell/extensions/recipe_expansion_20261110_v2/common.py": "a3c50a4bc04ab62343a70c82fde4568987679f8a7fb8f66dfbaf21ec9e652f9e",
+      "/liziqing/yukai/AI4AI4Cell/extensions/recipe_expansion_20261110_v2/evaluate.py": "180fbbb9a3bbcbe09dfcf1e28cfe9cef597adb4bea39cc9a5f3eb11fe6af3563",
+      "/liziqing/yukai/AI4AI4Cell/extensions/recipe_expansion_20261110_v2/models.py": "a41c8fb93a302206998c07d72f2e3d319b6c91b17aa6c9a12ebbc5d85ecf200e",
+      "/liziqing/yukai/AI4AI4Cell/extensions/recipe_expansion_20261110_v2/prepare.py": "fe1b92146db1317023d5cb045f0842cb88a3145abf99595c7cda117bbd74de9f",
+      "/liziqing/yukai/AI4AI4Cell/extensions/recipe_expansion_20261110_v2/search.py": "c4fc1d0c01199e5933f707f6d9ebe105afbbd0b67678315cb04ac506599cd03b",
+      "/liziqing/yukai/AI4AI4Cell/extensions/recipe_expansion_20261110_v2/test_recipe.py": "e3547c81dfe9c35e4d32acf5ebbff019201eb45a4c739b52562e7da8771b6192",
+      "/liziqing/yukai/AI4AI4Cell/extensions/recipe_expansion_20261110_v2/train.py": "b31fbded7b6b2b4ecc0621060d43e7271d9d8b3de8c008a5396e38ff3165f128",
+      "/liziqing/yukai/AI4AI4Cell/extensions/recipe_search_compact_20261110/controls.py": "48dd8c3953c63e6c8eb34559ff4ab8a6e132e12aa4e2856fcff8a06fabc4464a",
+      "/liziqing/yukai/AI4AI4Cell/extensions/recipe_search_compact_20261110/luna_backend.py": "2135cff202310a8b6458fb7d8d0ef10a0a785c08cde8ab2b4668621be9cfedf0",
+      "/liziqing/yukai/AI4AI4Cell/extensions/recipe_search_compact_20261110/packet.py": "549667fbeb72b8886fbb42c5f2e2bece1e0b95bd4d4bb26dfb9fd201868a2b5b",
+      "/liziqing/yukai/AI4AI4Cell/extensions/recipe_search_compact_20261110/runner.py": "d3413f614463d71e2ba99fa0057850e6a2e21065d5f4d9019c5ee67207908c1d",
+      "/liziqing/yukai/AI4AI4Cell/extensions/recipe_search_compact_20261110/test_packet.py": "3888c1919b2ad9763ab63a1236d2049a92a0b78f6a6436d0c75a85f041fd8a0e",
+      "/liziqing/yukai/AI4AI4Cell/extensions/recipe_search_compact_20261110/text_transport.py": "c7b30763158cf2967af235823156eead8ade7f53e72b6070a9bb4695a023ba54",
+      "/liziqing/yukai/AI4AI4Cell/extensions/recipe_search_compact_20261110/trajectory.py": "21f7bd35bb4d020f0247e53937d176f2aab94fb8e0824372d52bffdcc02487b7",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/authorize_heldout.py": "a6aa8648c1379978d93ca45a8a6df09dbaa9958e3c7ae09cf63b57a046411d2b",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/backend.py": "42ebb695d0d9316502680c6e7318b6fd968cc8eccde77325328384fd473fedf3",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/backend_v3.py": "13d7d42e05ede0db2b44010828994d0dfcc0a23275305807f71892675c940285",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/controls.py": "87621e6c7173df366eb2f3d33a463291866c0c25345e2ee2fd8fa751e830069e",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/evidence_cards.py": "25210f248a41fcd89248716719658880af166f42266b96562fdd41d5638874f6",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/report_search.py": "48a080da3d1129577d417bf851ef8cd8fdb17ba5853fb081b72770680d1cd273",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/search.py": "e5b038d78e9347213776f80e734fcd52c1aed855b4299f44cd64adc9f4e5195b",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/search_v3.py": "318de5416f1d773f813551952d7d91d5a36fb38067b27106f794e2305b5f1967",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/test_backend.py": "75df34f8b790d68c65187121bb4135656a0d7fe7e64e9ef2c88021cdea69ecd9",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/test_backend_v3.py": "acf8beb202756acc776b16990f0e80c9f884147abe353e1a8d80183b4aeaf181",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/test_controls.py": "a53a2db9f3490730873408bb5e528dd34a332e85f1eb2da3248ca74557b1956d",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/test_evidence_cards.py": "a75ada22255dba63f9e395584fa031bbf88912320fb4ea34fb7618ad881ef5e2",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/test_report_search.py": "27cc04ff33e13cdfb2359ab631fa2fba9ac7f2df814d972eb4d14f63529f4683",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/test_search.py": "5c576a086fec85823f8be6b471a68eea0761cb197b984daf8d921698b785724b",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/test_search_v3.py": "ccba0a20a42741665cbd2b453de9eeb85f0cc413c5e4dbcaa1d937200d555c0f",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/training_cache.py": "e66abbd66a61e6c9e80efb3ed9df3c5cc20141b716d9998d22766225600136f8",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/training_data.py": "d55fe7937eeb31086d497f1725f8ec4dbaae8a65dd834ecae18569eba9988a36",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/training_heldout.py": "2b41f87af4575ebeea2f7a2e9fd6ccb752952b917c7b0317c15bd658ee12cbc1",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/training_heldout_test.py": "505f5ea0fb9e3a69598b7b4a97582d98deef7ef21e3d66c167b41cc47e604c81",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/training_heldout_verify.py": "6a862bcdeac3e21803b27332afc48dfbbd732655e3c68b880a238995e56b0197",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/training_test.py": "64e159ef94ccc54e03b5f5a9466378f474c940f5ff8027e65f55b2d446e8a6c9",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/training_verify.py": "f9ad035f1df8d7df9a4a12b3015a435c4bf785b29e722ff2c553381096dad985"
+    },
+    "inputs_sha256": "fd90c6c6c7e0f5dae028b5d455f5a81aa6ded02c426731a8937dd0cb5520b646",
+    "execution_started": false,
+    "previously_exposed_test": true
+  },
+  "groups": {
+    "qwen/dti/direct": {
+      "seed_order": [
+        71,
+        72,
+        73,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "arms": {
+        "lcb1": {
+          "mean": 94.35890629125956,
+          "seed_sd": 0.035752183959510284,
+          "per_seed": [
+            94.27141536836547,
+            94.36895959862689,
+            94.36188935833113,
+            94.37851201478745,
+            94.36923686295219,
+            94.37378531819381,
+            94.36977818853973,
+            94.37767362027991
+          ]
+        },
+        "majority6": {
+          "mean": 94.35890629125956,
+          "seed_sd": 0.035752183959510284,
+          "per_seed": [
+            94.27141536836547,
+            94.36895959862689,
+            94.36188935833113,
+            94.37851201478745,
+            94.36923686295219,
+            94.37378531819381,
+            94.36977818853973,
+            94.37767362027991
+          ]
+        },
+        "median": {
+          "mean": 94.35890629125956,
+          "seed_sd": 0.035752183959510284,
+          "per_seed": [
+            94.27141536836547,
+            94.36895959862689,
+            94.36188935833113,
+            94.37851201478745,
+            94.36923686295219,
+            94.37378531819381,
+            94.36977818853973,
+            94.37767362027991
+          ]
+        },
+        "pooled": {
+          "mean": 94.35890629125956,
+          "seed_sd": 0.035752183959510284,
+          "per_seed": [
+            94.27141536836547,
+            94.36895959862689,
+            94.36188935833113,
+            94.37851201478745,
+            94.36923686295219,
+            94.37378531819381,
+            94.36977818853973,
+            94.37767362027991
+          ]
+        }
+      },
+      "contrasts": {
+        "median_minus_pooled": {
+          "mean_pp": 0.0,
+          "per_seed_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            0.0,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 8,
+          "losses": 0
+        },
+        "lcb1_minus_pooled": {
+          "mean_pp": 0.0,
+          "per_seed_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            0.0,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 8,
+          "losses": 0
+        },
+        "majority6_minus_pooled": {
+          "mean_pp": 0.0,
+          "per_seed_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            0.0,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 8,
+          "losses": 0
+        }
+      }
+    },
+    "qwen/dti/raw": {
+      "seed_order": [
+        71,
+        72,
+        73,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "arms": {
+        "lcb1": {
+          "mean": 94.37170666094534,
+          "seed_sd": 0.005404258627579241,
+          "per_seed": [
+            94.37381832585162,
+            94.36895959862689,
+            94.36188935833113,
+            94.37851201478745,
+            94.36923686295219,
+            94.37378531819381,
+            94.36977818853973,
+            94.37767362027991
+          ]
+        },
+        "majority6": {
+          "mean": 94.37170666094534,
+          "seed_sd": 0.005404258627579241,
+          "per_seed": [
+            94.37381832585162,
+            94.36895959862689,
+            94.36188935833113,
+            94.37851201478745,
+            94.36923686295219,
+            94.37378531819381,
+            94.36977818853973,
+            94.37767362027991
+          ]
+        },
+        "median": {
+          "mean": 94.37170666094534,
+          "seed_sd": 0.005404258627579241,
+          "per_seed": [
+            94.37381832585162,
+            94.36895959862689,
+            94.36188935833113,
+            94.37851201478745,
+            94.36923686295219,
+            94.37378531819381,
+            94.36977818853973,
+            94.37767362027991
+          ]
+        },
+        "pooled": {
+          "mean": 94.37170666094534,
+          "seed_sd": 0.005404258627579241,
+          "per_seed": [
+            94.37381832585162,
+            94.36895959862689,
+            94.36188935833113,
+            94.37851201478745,
+            94.36923686295219,
+            94.37378531819381,
+            94.36977818853973,
+            94.37767362027991
+          ]
+        }
+      },
+      "contrasts": {
+        "median_minus_pooled": {
+          "mean_pp": 0.0,
+          "per_seed_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            0.0,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 8,
+          "losses": 0
+        },
+        "lcb1_minus_pooled": {
+          "mean_pp": 0.0,
+          "per_seed_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            0.0,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 8,
+          "losses": 0
+        },
+        "majority6_minus_pooled": {
+          "mean_pp": 0.0,
+          "per_seed_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            0.0,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 8,
+          "losses": 0
+        }
+      }
+    },
+    "qwen/dti/structured": {
+      "seed_order": [
+        71,
+        72,
+        73,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "arms": {
+        "lcb1": {
+          "mean": 94.35912331660946,
+          "seed_sd": 0.0262989552062964,
+          "per_seed": [
+            94.37381832585162,
+            94.36895959862689,
+            94.309486400845,
+            94.37851201478745,
+            94.36923686295219,
+            94.32552152099288,
+            94.36977818853973,
+            94.37767362027991
+          ]
+        },
+        "majority6": {
+          "mean": 94.35912331660946,
+          "seed_sd": 0.0262989552062964,
+          "per_seed": [
+            94.37381832585162,
+            94.36895959862689,
+            94.309486400845,
+            94.37851201478745,
+            94.36923686295219,
+            94.32552152099288,
+            94.36977818853973,
+            94.37767362027991
+          ]
+        },
+        "median": {
+          "mean": 94.35912331660946,
+          "seed_sd": 0.0262989552062964,
+          "per_seed": [
+            94.37381832585162,
+            94.36895959862689,
+            94.309486400845,
+            94.37851201478745,
+            94.36923686295219,
+            94.32552152099288,
+            94.36977818853973,
+            94.37767362027991
+          ]
+        },
+        "pooled": {
+          "mean": 94.35912331660946,
+          "seed_sd": 0.0262989552062964,
+          "per_seed": [
+            94.37381832585162,
+            94.36895959862689,
+            94.309486400845,
+            94.37851201478745,
+            94.36923686295219,
+            94.32552152099288,
+            94.36977818853973,
+            94.37767362027991
+          ]
+        }
+      },
+      "contrasts": {
+        "median_minus_pooled": {
+          "mean_pp": 0.0,
+          "per_seed_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            0.0,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 8,
+          "losses": 0
+        },
+        "lcb1_minus_pooled": {
+          "mean_pp": 0.0,
+          "per_seed_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            0.0,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 8,
+          "losses": 0
+        },
+        "majority6_minus_pooled": {
+          "mean_pp": 0.0,
+          "per_seed_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            0.0,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 8,
+          "losses": 0
+        }
+      }
+    },
+    "qwen/dti/gp_ei": {
+      "seed_order": [
+        71,
+        72,
+        73,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "arms": {
+        "lcb1": {
+          "mean": 94.28547663057829,
+          "seed_sd": 0.021338636504384362,
+          "per_seed": [
+            94.32411539477158,
+            94.27154079746501,
+            94.27551491946132,
+            94.2715738051228,
+            94.27115130710325,
+            94.28442038552942,
+            94.2715870081859,
+            94.31390942698707
+          ]
+        },
+        "majority6": {
+          "mean": 94.28547663057829,
+          "seed_sd": 0.021338636504384362,
+          "per_seed": [
+            94.32411539477158,
+            94.27154079746501,
+            94.27551491946132,
+            94.2715738051228,
+            94.27115130710325,
+            94.28442038552942,
+            94.2715870081859,
+            94.31390942698707
+          ]
+        },
+        "median": {
+          "mean": 94.2852389754423,
+          "seed_sd": 0.021530697421543066,
+          "per_seed": [
+            94.32411539477158,
+            94.27154079746501,
+            94.27551491946132,
+            94.2715738051228,
+            94.26925006601532,
+            94.28442038552942,
+            94.2715870081859,
+            94.31390942698707
+          ]
+        },
+        "pooled": {
+          "mean": 94.28553934512806,
+          "seed_sd": 0.021291204119796535,
+          "per_seed": [
+            94.32411539477158,
+            94.27154079746501,
+            94.27551491946132,
+            94.2715738051228,
+            94.27165302350146,
+            94.28442038552942,
+            94.2715870081859,
+            94.31390942698707
+          ]
+        }
+      },
+      "contrasts": {
+        "median_minus_pooled": {
+          "mean_pp": -0.0003003696857675209,
+          "per_seed_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            -0.002402957486140167,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            -0.0009011090573096681,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 7,
+          "losses": 1
+        },
+        "lcb1_minus_pooled": {
+          "mean_pp": -6.271454977557767e-05,
+          "per_seed_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            -0.0005017163982046213,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            -0.0001881436493391675,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 7,
+          "losses": 1
+        },
+        "majority6_minus_pooled": {
+          "mean_pp": -6.271454977557767e-05,
+          "per_seed_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            -0.0005017163982046213,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            -0.0001881436493391675,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 7,
+          "losses": 1
+        }
+      }
+    },
+    "qwen/dti/gp_ei_zero": {
+      "seed_order": [
+        71,
+        72,
+        73,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "arms": {
+        "lcb1": {
+          "mean": 94.33943094797993,
+          "seed_sd": 0.04740835967719446,
+          "per_seed": [
+            94.37381832585162,
+            94.27154079746501,
+            94.36188935833113,
+            94.37552812252444,
+            94.30962503300763,
+            94.37378531819381,
+            94.2715870081859,
+            94.37767362027991
+          ]
+        },
+        "majority6": {
+          "mean": 94.33943094797993,
+          "seed_sd": 0.04740835967719446,
+          "per_seed": [
+            94.37381832585162,
+            94.27154079746501,
+            94.36188935833113,
+            94.37552812252444,
+            94.30962503300763,
+            94.37378531819381,
+            94.2715870081859,
+            94.37767362027991
+          ]
+        },
+        "median": {
+          "mean": 94.33943094797993,
+          "seed_sd": 0.04740835967719446,
+          "per_seed": [
+            94.37381832585162,
+            94.27154079746501,
+            94.36188935833113,
+            94.37552812252444,
+            94.30962503300763,
+            94.37378531819381,
+            94.2715870081859,
+            94.37767362027991
+          ]
+        },
+        "pooled": {
+          "mean": 94.3393674082387,
+          "seed_sd": 0.04751302334236371,
+          "per_seed": [
+            94.37381832585162,
+            94.27178505413255,
+            94.36188935833113,
+            94.37552812252444,
+            94.30962503300763,
+            94.37378531819381,
+            94.27083443358859,
+            94.37767362027991
+          ]
+        }
+      },
+      "contrasts": {
+        "median_minus_pooled": {
+          "mean_pp": 6.353974122141892e-05,
+          "per_seed_pp": [
+            0.0,
+            -0.00024425666754268605,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0007525745973140374,
+            0.0
+          ],
+          "ci95_pp": [
+            -9.159625032850727e-05,
+            0.00028221547398743496
+          ],
+          "wins": 1,
+          "ties": 6,
+          "losses": 1
+        },
+        "lcb1_minus_pooled": {
+          "mean_pp": 6.353974122141892e-05,
+          "per_seed_pp": [
+            0.0,
+            -0.00024425666754268605,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0007525745973140374,
+            0.0
+          ],
+          "ci95_pp": [
+            -9.159625032850727e-05,
+            0.00028221547398743496
+          ],
+          "wins": 1,
+          "ties": 6,
+          "losses": 1
+        },
+        "majority6_minus_pooled": {
+          "mean_pp": 6.353974122141892e-05,
+          "per_seed_pp": [
+            0.0,
+            -0.00024425666754268605,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0007525745973140374,
+            0.0
+          ],
+          "ci95_pp": [
+            -9.159625032850727e-05,
+            0.00028221547398743496
+          ],
+          "wins": 1,
+          "ties": 6,
+          "losses": 1
+        }
+      }
+    },
+    "luna/dti/direct": {
+      "seed_order": [
+        71,
+        72,
+        73,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "arms": {
+        "lcb1": {
+          "mean": 94.37170666094534,
+          "seed_sd": 0.005404258627579241,
+          "per_seed": [
+            94.37381832585162,
+            94.36895959862689,
+            94.36188935833113,
+            94.37851201478745,
+            94.36923686295219,
+            94.37378531819381,
+            94.36977818853973,
+            94.37767362027991
+          ]
+        },
+        "majority6": {
+          "mean": 94.37170666094534,
+          "seed_sd": 0.005404258627579241,
+          "per_seed": [
+            94.37381832585162,
+            94.36895959862689,
+            94.36188935833113,
+            94.37851201478745,
+            94.36923686295219,
+            94.37378531819381,
+            94.36977818853973,
+            94.37767362027991
+          ]
+        },
+        "median": {
+          "mean": 94.37043339054661,
+          "seed_sd": 0.00668600258195401,
+          "per_seed": [
+            94.37101927647214,
+            94.36895959862689,
+            94.35772379191974,
+            94.37851201478745,
+            94.36601531555321,
+            94.37378531819381,
+            94.36977818853973,
+            94.37767362027991
+          ]
+        },
+        "pooled": {
+          "mean": 94.37170666094534,
+          "seed_sd": 0.005404258627579241,
+          "per_seed": [
+            94.37381832585162,
+            94.36895959862689,
+            94.36188935833113,
+            94.37851201478745,
+            94.36923686295219,
+            94.37378531819381,
+            94.36977818853973,
+            94.37767362027991
+          ]
+        }
+      },
+      "contrasts": {
+        "median_minus_pooled": {
+          "mean_pp": -0.001273270398730375,
+          "per_seed_pp": [
+            -0.0027990493794760596,
+            0.0,
+            -0.004165566411387545,
+            0.0,
+            -0.0032215473989793963,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            -0.0024937285450192803,
+            -0.00034988117242562566
+          ],
+          "wins": 0,
+          "ties": 5,
+          "losses": 3
+        },
+        "lcb1_minus_pooled": {
+          "mean_pp": 0.0,
+          "per_seed_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            0.0,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 8,
+          "losses": 0
+        },
+        "majority6_minus_pooled": {
+          "mean_pp": 0.0,
+          "per_seed_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            0.0,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 8,
+          "losses": 0
+        }
+      }
+    },
+    "luna/dti/raw": {
+      "seed_order": [
+        71,
+        72,
+        73,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "arms": {
+        "lcb1": {
+          "mean": 94.37170666094534,
+          "seed_sd": 0.005404258627579241,
+          "per_seed": [
+            94.37381832585162,
+            94.36895959862689,
+            94.36188935833113,
+            94.37851201478745,
+            94.36923686295219,
+            94.37378531819381,
+            94.36977818853973,
+            94.37767362027991
+          ]
+        },
+        "majority6": {
+          "mean": 94.37170666094534,
+          "seed_sd": 0.005404258627579241,
+          "per_seed": [
+            94.37381832585162,
+            94.36895959862689,
+            94.36188935833113,
+            94.37851201478745,
+            94.36923686295219,
+            94.37378531819381,
+            94.36977818853973,
+            94.37767362027991
+          ]
+        },
+        "median": {
+          "mean": 94.37043339054661,
+          "seed_sd": 0.00668600258195401,
+          "per_seed": [
+            94.37101927647214,
+            94.36895959862689,
+            94.35772379191974,
+            94.37851201478745,
+            94.36601531555321,
+            94.37378531819381,
+            94.36977818853973,
+            94.37767362027991
+          ]
+        },
+        "pooled": {
+          "mean": 94.37170666094534,
+          "seed_sd": 0.005404258627579241,
+          "per_seed": [
+            94.37381832585162,
+            94.36895959862689,
+            94.36188935833113,
+            94.37851201478745,
+            94.36923686295219,
+            94.37378531819381,
+            94.36977818853973,
+            94.37767362027991
+          ]
+        }
+      },
+      "contrasts": {
+        "median_minus_pooled": {
+          "mean_pp": -0.001273270398730375,
+          "per_seed_pp": [
+            -0.0027990493794760596,
+            0.0,
+            -0.004165566411387545,
+            0.0,
+            -0.0032215473989793963,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            -0.0024937285450192803,
+            -0.00034988117242562566
+          ],
+          "wins": 0,
+          "ties": 5,
+          "losses": 3
+        },
+        "lcb1_minus_pooled": {
+          "mean_pp": 0.0,
+          "per_seed_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            0.0,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 8,
+          "losses": 0
+        },
+        "majority6_minus_pooled": {
+          "mean_pp": 0.0,
+          "per_seed_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            0.0,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 8,
+          "losses": 0
+        }
+      }
+    },
+    "luna/dti/structured": {
+      "seed_order": [
+        71,
+        72,
+        73,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "arms": {
+        "lcb1": {
+          "mean": 94.37170666094534,
+          "seed_sd": 0.005404258627579241,
+          "per_seed": [
+            94.37381832585162,
+            94.36895959862689,
+            94.36188935833113,
+            94.37851201478745,
+            94.36923686295219,
+            94.37378531819381,
+            94.36977818853973,
+            94.37767362027991
+          ]
+        },
+        "majority6": {
+          "mean": 94.37170666094534,
+          "seed_sd": 0.005404258627579241,
+          "per_seed": [
+            94.37381832585162,
+            94.36895959862689,
+            94.36188935833113,
+            94.37851201478745,
+            94.36923686295219,
+            94.37378531819381,
+            94.36977818853973,
+            94.37767362027991
+          ]
+        },
+        "median": {
+          "mean": 94.37043339054661,
+          "seed_sd": 0.00668600258195401,
+          "per_seed": [
+            94.37101927647214,
+            94.36895959862689,
+            94.35772379191974,
+            94.37851201478745,
+            94.36601531555321,
+            94.37378531819381,
+            94.36977818853973,
+            94.37767362027991
+          ]
+        },
+        "pooled": {
+          "mean": 94.37170666094534,
+          "seed_sd": 0.005404258627579241,
+          "per_seed": [
+            94.37381832585162,
+            94.36895959862689,
+            94.36188935833113,
+            94.37851201478745,
+            94.36923686295219,
+            94.37378531819381,
+            94.36977818853973,
+            94.37767362027991
+          ]
+        }
+      },
+      "contrasts": {
+        "median_minus_pooled": {
+          "mean_pp": -0.001273270398730375,
+          "per_seed_pp": [
+            -0.0027990493794760596,
+            0.0,
+            -0.004165566411387545,
+            0.0,
+            -0.0032215473989793963,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            -0.0024937285450192803,
+            -0.00034988117242562566
+          ],
+          "wins": 0,
+          "ties": 5,
+          "losses": 3
+        },
+        "lcb1_minus_pooled": {
+          "mean_pp": 0.0,
+          "per_seed_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            0.0,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 8,
+          "losses": 0
+        },
+        "majority6_minus_pooled": {
+          "mean_pp": 0.0,
+          "per_seed_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            0.0,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 8,
+          "losses": 0
+        }
+      }
+    },
+    "luna/dti/gp_ei": {
+      "seed_order": [
+        71,
+        72,
+        73,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "arms": {
+        "lcb1": {
+          "mean": 94.28547663057829,
+          "seed_sd": 0.021338636504384362,
+          "per_seed": [
+            94.32411539477158,
+            94.27154079746501,
+            94.27551491946132,
+            94.2715738051228,
+            94.27115130710325,
+            94.28442038552942,
+            94.2715870081859,
+            94.31390942698707
+          ]
+        },
+        "majority6": {
+          "mean": 94.28547663057829,
+          "seed_sd": 0.021338636504384362,
+          "per_seed": [
+            94.32411539477158,
+            94.27154079746501,
+            94.27551491946132,
+            94.2715738051228,
+            94.27115130710325,
+            94.28442038552942,
+            94.2715870081859,
+            94.31390942698707
+          ]
+        },
+        "median": {
+          "mean": 94.2852389754423,
+          "seed_sd": 0.021530697421543066,
+          "per_seed": [
+            94.32411539477158,
+            94.27154079746501,
+            94.27551491946132,
+            94.2715738051228,
+            94.26925006601532,
+            94.28442038552942,
+            94.2715870081859,
+            94.31390942698707
+          ]
+        },
+        "pooled": {
+          "mean": 94.28553934512806,
+          "seed_sd": 0.021291204119796535,
+          "per_seed": [
+            94.32411539477158,
+            94.27154079746501,
+            94.27551491946132,
+            94.2715738051228,
+            94.27165302350146,
+            94.28442038552942,
+            94.2715870081859,
+            94.31390942698707
+          ]
+        }
+      },
+      "contrasts": {
+        "median_minus_pooled": {
+          "mean_pp": -0.0003003696857675209,
+          "per_seed_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            -0.002402957486140167,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            -0.0009011090573096681,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 7,
+          "losses": 1
+        },
+        "lcb1_minus_pooled": {
+          "mean_pp": -6.271454977557767e-05,
+          "per_seed_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            -0.0005017163982046213,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            -0.0001881436493391675,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 7,
+          "losses": 1
+        },
+        "majority6_minus_pooled": {
+          "mean_pp": -6.271454977557767e-05,
+          "per_seed_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            -0.0005017163982046213,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            -0.0001881436493391675,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 7,
+          "losses": 1
+        }
+      }
+    },
+    "luna/dti/gp_ei_zero": {
+      "seed_order": [
+        71,
+        72,
+        73,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "arms": {
+        "lcb1": {
+          "mean": 94.33943094797993,
+          "seed_sd": 0.04740835967719446,
+          "per_seed": [
+            94.37381832585162,
+            94.27154079746501,
+            94.36188935833113,
+            94.37552812252444,
+            94.30962503300763,
+            94.37378531819381,
+            94.2715870081859,
+            94.37767362027991
+          ]
+        },
+        "majority6": {
+          "mean": 94.33943094797993,
+          "seed_sd": 0.04740835967719446,
+          "per_seed": [
+            94.37381832585162,
+            94.27154079746501,
+            94.36188935833113,
+            94.37552812252444,
+            94.30962503300763,
+            94.37378531819381,
+            94.2715870081859,
+            94.37767362027991
+          ]
+        },
+        "median": {
+          "mean": 94.33943094797993,
+          "seed_sd": 0.04740835967719446,
+          "per_seed": [
+            94.37381832585162,
+            94.27154079746501,
+            94.36188935833113,
+            94.37552812252444,
+            94.30962503300763,
+            94.37378531819381,
+            94.2715870081859,
+            94.37767362027991
+          ]
+        },
+        "pooled": {
+          "mean": 94.3393674082387,
+          "seed_sd": 0.04751302334236371,
+          "per_seed": [
+            94.37381832585162,
+            94.27178505413255,
+            94.36188935833113,
+            94.37552812252444,
+            94.30962503300763,
+            94.37378531819381,
+            94.27083443358859,
+            94.37767362027991
+          ]
+        }
+      },
+      "contrasts": {
+        "median_minus_pooled": {
+          "mean_pp": 6.353974122141892e-05,
+          "per_seed_pp": [
+            0.0,
+            -0.00024425666754268605,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0007525745973140374,
+            0.0
+          ],
+          "ci95_pp": [
+            -9.159625032850727e-05,
+            0.00028221547398743496
+          ],
+          "wins": 1,
+          "ties": 6,
+          "losses": 1
+        },
+        "lcb1_minus_pooled": {
+          "mean_pp": 6.353974122141892e-05,
+          "per_seed_pp": [
+            0.0,
+            -0.00024425666754268605,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0007525745973140374,
+            0.0
+          ],
+          "ci95_pp": [
+            -9.159625032850727e-05,
+            0.00028221547398743496
+          ],
+          "wins": 1,
+          "ties": 6,
+          "losses": 1
+        },
+        "majority6_minus_pooled": {
+          "mean_pp": 6.353974122141892e-05,
+          "per_seed_pp": [
+            0.0,
+            -0.00024425666754268605,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0007525745973140374,
+            0.0
+          ],
+          "ci95_pp": [
+            -9.159625032850727e-05,
+            0.00028221547398743496
+          ],
+          "wins": 1,
+          "ties": 6,
+          "losses": 1
+        }
+      }
+    },
+    "qwen/protein/direct": {
+      "seed_order": [
+        71,
+        72,
+        73,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "arms": {
+        "lcb1": {
+          "mean": 37.05589898429295,
+          "seed_sd": 0.044331270214674506,
+          "per_seed": [
+            37.023777927377054,
+            37.109434079152784,
+            37.109434079152784,
+            37.023777927377054,
+            37.023777927377054,
+            37.023777927377054,
+            37.109434079152784,
+            37.023777927377054
+          ]
+        },
+        "majority6": {
+          "mean": 37.109434079152784,
+          "seed_sd": 0.0,
+          "per_seed": [
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784
+          ]
+        },
+        "median": {
+          "mean": 38.036474473325285,
+          "seed_sd": 1.2808006514993058,
+          "per_seed": [
+            38.67873335972871,
+            37.109434079152784,
+            40.77529874855523,
+            37.023777927377054,
+            37.023777927377054,
+            38.36880500074879,
+            38.01584252410004,
+            37.29612621956261
+          ]
+        },
+        "pooled": {
+          "mean": 38.61112032105033,
+          "seed_sd": 0.745047675656697,
+          "per_seed": [
+            38.779785084778226,
+            38.012207535640044,
+            37.94032920269911,
+            39.120750811032174,
+            38.1529280048172,
+            38.36880500074879,
+            38.339019853387974,
+            40.17513707529909
+          ]
+        }
+      },
+      "contrasts": {
+        "median_minus_pooled": {
+          "mean_pp": -0.5746458477250425,
+          "per_seed_pp": [
+            -0.10105172504951554,
+            -0.9027734564872603,
+            2.8349695458561186,
+            -2.09697288365512,
+            -1.1291500774401442,
+            0.0,
+            -0.32317732928793674,
+            -2.8790108557364817
+          ],
+          "ci95_pp": [
+            -1.6040859395210632,
+            0.5947194892250778
+          ],
+          "wins": 1,
+          "ties": 1,
+          "losses": 6
+        },
+        "lcb1_minus_pooled": {
+          "mean_pp": -1.5552213367573735,
+          "per_seed_pp": [
+            -1.7560071574011715,
+            -0.9027734564872603,
+            -0.8308951235463269,
+            -2.09697288365512,
+            -1.1291500774401442,
+            -1.3450270733717389,
+            -1.2295857742351899,
+            -3.1513591479220366
+          ],
+          "ci95_pp": [
+            -2.1011019565851115,
+            -1.115888405314422
+          ],
+          "wins": 0,
+          "ties": 0,
+          "losses": 8
+        },
+        "majority6_minus_pooled": {
+          "mean_pp": -1.5016862418975423,
+          "per_seed_pp": [
+            -1.6703510056254416,
+            -0.9027734564872603,
+            -0.8308951235463269,
+            -2.01131673187939,
+            -1.0434939256644142,
+            -1.259370921596009,
+            -1.2295857742351899,
+            -3.0657029961463067
+          ],
+          "ci95_pp": [
+            -2.033697991232758,
+            -1.0818133810416768
+          ],
+          "wins": 0,
+          "ties": 0,
+          "losses": 8
+        }
+      }
+    },
+    "qwen/protein/raw": {
+      "seed_order": [
+        71,
+        72,
+        73,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "arms": {
+        "lcb1": {
+          "mean": 37.29551205965946,
+          "seed_sd": 0.1000803023135694,
+          "per_seed": [
+            37.368305725030545,
+            37.15297671837793,
+            37.225517113093645,
+            37.36709131843384,
+            37.24955152319498,
+            37.34719394402127,
+            37.444504912491226,
+            37.20895522263229
+          ]
+        },
+        "majority6": {
+          "mean": 37.109434079152784,
+          "seed_sd": 0.0,
+          "per_seed": [
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784
+          ]
+        },
+        "median": {
+          "mean": 37.697493719280885,
+          "seed_sd": 1.0025582023834725,
+          "per_seed": [
+            37.368305725030545,
+            37.15297671837793,
+            37.225517113093645,
+            37.46675153385194,
+            40.15374938911554,
+            37.559189139653945,
+            37.444504912491226,
+            37.20895522263229
+          ]
+        },
+        "pooled": {
+          "mean": 38.46641036114296,
+          "seed_sd": 0.9435006217019619,
+          "per_seed": [
+            39.55593899322747,
+            38.00832453402381,
+            38.035995464650014,
+            38.656074658230835,
+            38.1529280048172,
+            37.559189139653945,
+            37.58769501924134,
+            40.17513707529909
+          ]
+        }
+      },
+      "contrasts": {
+        "median_minus_pooled": {
+          "mean_pp": -0.7689166418620799,
+          "per_seed_pp": [
+            -2.187633268196926,
+            -0.855347815645878,
+            -0.8104783515563696,
+            -1.1893231243788946,
+            2.000821384298341,
+            0.0,
+            -0.14319010675011157,
+            -2.9661818526668
+          ],
+          "ci95_pp": [
+            -1.701001897713141,
+            0.22687867609535317
+          ],
+          "wins": 1,
+          "ties": 1,
+          "losses": 6
+        },
+        "lcb1_minus_pooled": {
+          "mean_pp": -1.1708983014834962,
+          "per_seed_pp": [
+            -2.187633268196926,
+            -0.855347815645878,
+            -0.8104783515563696,
+            -1.2889833397969923,
+            -0.9033764816222174,
+            -0.21199519563267444,
+            -0.14319010675011157,
+            -2.9661818526668
+          ],
+          "ci95_pp": [
+            -1.833940554056717,
+            -0.5946674812440733
+          ],
+          "wins": 0,
+          "ties": 0,
+          "losses": 8
+        },
+        "majority6_minus_pooled": {
+          "mean_pp": -1.3569762819901783,
+          "per_seed_pp": [
+            -2.446504914074687,
+            -0.8988904548710224,
+            -0.9265613854972301,
+            -1.5466405790780513,
+            -1.0434939256644142,
+            -0.4497550605011611,
+            -0.47826094008855335,
+            -3.0657029961463067
+          ],
+          "ci95_pp": [
+            -2.0075101698916953,
+            -0.7917130848065455
+          ],
+          "wins": 0,
+          "ties": 0,
+          "losses": 8
+        }
+      }
+    },
+    "qwen/protein/structured": {
+      "seed_order": [
+        71,
+        72,
+        73,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "arms": {
+        "lcb1": {
+          "mean": 37.248642724682135,
+          "seed_sd": 0.12625960290747562,
+          "per_seed": [
+            37.109434079152784,
+            37.15297671837793,
+            37.109434079152784,
+            37.36709131843384,
+            37.24955152319498,
+            37.34719394402127,
+            37.444504912491226,
+            37.20895522263229
+          ]
+        },
+        "majority6": {
+          "mean": 37.109434079152784,
+          "seed_sd": 0.0,
+          "per_seed": [
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784
+          ]
+        },
+        "median": {
+          "mean": 37.882187281824635,
+          "seed_sd": 0.7389370923308851,
+          "per_seed": [
+            38.108826478605955,
+            37.60001586186125,
+            37.109434079152784,
+            38.70136116496926,
+            39.22159370614103,
+            37.57563583181298,
+            37.444504912491226,
+            37.29612621956261
+          ]
+        },
+        "pooled": {
+          "mean": 38.141799001730604,
+          "seed_sd": 0.7235561214033001,
+          "per_seed": [
+            39.55593899322747,
+            38.00832453402381,
+            38.28261601303866,
+            38.67512739812077,
+            38.1529280048172,
+            37.57563583181298,
+            37.58769501924134,
+            37.29612621956261
+          ]
+        }
+      },
+      "contrasts": {
+        "median_minus_pooled": {
+          "mean_pp": -0.2596117199059673,
+          "per_seed_pp": [
+            -1.4471125146215158,
+            -0.40830867216255484,
+            -1.1731819338858784,
+            0.02623376684849177,
+            1.0686657013238303,
+            0.0,
+            -0.14319010675011157,
+            0.0
+          ],
+          "ci95_pp": [
+            -0.7636333409907601,
+            0.23620313291694117
+          ],
+          "wins": 2,
+          "ties": 2,
+          "losses": 4
+        },
+        "lcb1_minus_pooled": {
+          "mean_pp": -0.8931562770484662,
+          "per_seed_pp": [
+            -2.446504914074687,
+            -0.855347815645878,
+            -1.1731819338858784,
+            -1.3080360796869286,
+            -0.9033764816222174,
+            -0.22844188779171049,
+            -0.14319010675011157,
+            -0.08717099693031827
+          ],
+          "ci95_pp": [
+            -1.4362581028270824,
+            -0.42591049798283365
+          ],
+          "wins": 0,
+          "ties": 0,
+          "losses": 8
+        },
+        "majority6_minus_pooled": {
+          "mean_pp": -1.0323649225778206,
+          "per_seed_pp": [
+            -2.446504914074687,
+            -0.8988904548710224,
+            -1.1731819338858784,
+            -1.5656933189679876,
+            -1.0434939256644142,
+            -0.46620175266019714,
+            -0.47826094008855335,
+            -0.18669214040982496
+          ],
+          "ci95_pp": [
+            -1.5358451437083005,
+            -0.6063420027530455
+          ],
+          "wins": 0,
+          "ties": 0,
+          "losses": 8
+        }
+      }
+    },
+    "qwen/protein/gp_ei": {
+      "seed_order": [
+        71,
+        72,
+        73,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "arms": {
+        "lcb1": {
+          "mean": 37.1557432502193,
+          "seed_sd": 0.05787016643537767,
+          "per_seed": [
+            37.109434079152784,
+            37.12257163853489,
+            37.24744676341002,
+            37.12257163853489,
+            37.24955152319498,
+            37.13589936019596,
+            37.13589936019596,
+            37.12257163853489
+          ]
+        },
+        "majority6": {
+          "mean": 37.109434079152784,
+          "seed_sd": 0.0,
+          "per_seed": [
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784
+          ]
+        },
+        "median": {
+          "mean": 38.3362874033744,
+          "seed_sd": 1.2249167479140337,
+          "per_seed": [
+            37.72994316291883,
+            37.12257163853489,
+            37.262448891083125,
+            40.82248620823449,
+            39.22159370614103,
+            38.47187753328177,
+            37.61876490806845,
+            38.44061317873263
+          ]
+        },
+        "pooled": {
+          "mean": 39.0160333107186,
+          "seed_sd": 0.5441488215520396,
+          "per_seed": [
+            39.55593899322747,
+            39.211435797666084,
+            38.28261601303866,
+            39.120750811032174,
+            39.355956373268405,
+            38.47187753328177,
+            38.441259016608,
+            39.68843194762617
+          ]
+        }
+      },
+      "contrasts": {
+        "median_minus_pooled": {
+          "mean_pp": -0.6797459073441905,
+          "per_seed_pp": [
+            -1.825995830308642,
+            -2.088864159131191,
+            -1.020167121955538,
+            1.701735397202313,
+            -0.13436266712737677,
+            0.0,
+            -0.8224941085395514,
+            -1.2478187688935378
+          ],
+          "ci95_pp": [
+            -1.4002024485986126,
+            0.15462389353366035
+          ],
+          "wins": 1,
+          "ties": 1,
+          "losses": 6
+        },
+        "lcb1_minus_pooled": {
+          "mean_pp": -1.8602900604992954,
+          "per_seed_pp": [
+            -2.446504914074687,
+            -2.088864159131191,
+            -1.0351692496286446,
+            -1.9981791724972808,
+            -2.1064048500734245,
+            -1.3359781730858131,
+            -1.305359656412044,
+            -2.5658603090912777
+          ],
+          "ci95_pp": [
+            -2.2149017887727567,
+            -1.489631704980198
+          ],
+          "wins": 0,
+          "ties": 0,
+          "losses": 8
+        },
+        "majority6_minus_pooled": {
+          "mean_pp": -1.9065992315658082,
+          "per_seed_pp": [
+            -2.446504914074687,
+            -2.1020017185133,
+            -1.1731819338858784,
+            -2.01131673187939,
+            -2.2465222941156213,
+            -1.3624434541289858,
+            -1.3318249374552167,
+            -2.5789978684733867
+          ],
+          "ci95_pp": [
+            -2.2483718574110654,
+            -1.5500888338384726
+          ],
+          "wins": 0,
+          "ties": 0,
+          "losses": 8
+        }
+      }
+    },
+    "qwen/protein/gp_ei_zero": {
+      "seed_order": [
+        71,
+        72,
+        73,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "arms": {
+        "lcb1": {
+          "mean": 37.09977805779532,
+          "seed_sd": 0.0772481379484922,
+          "per_seed": [
+            37.109434079152784,
+            37.023777927377054,
+            37.12257163853489,
+            37.023777927377054,
+            37.24955152319498,
+            37.13589936019596,
+            37.023777927377054,
+            37.109434079152784
+          ]
+        },
+        "majority6": {
+          "mean": 37.109434079152784,
+          "seed_sd": 0.0,
+          "per_seed": [
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784
+          ]
+        },
+        "median": {
+          "mean": 38.78914145628825,
+          "seed_sd": 1.4515641040841578,
+          "per_seed": [
+            37.72994316291883,
+            37.023777927377054,
+            40.792214585921954,
+            40.82248620823449,
+            39.559560816609924,
+            38.36880500074879,
+            37.575730769762316,
+            38.44061317873263
+          ]
+        },
+        "pooled": {
+          "mean": 38.43960479952407,
+          "seed_sd": 0.7805433676619734,
+          "per_seed": [
+            38.779785084778226,
+            37.109434079152784,
+            38.035995464650014,
+            38.32615743405536,
+            39.12079051986834,
+            38.01498484945366,
+            38.441259016608,
+            39.68843194762617
+          ]
+        }
+      },
+      "contrasts": {
+        "median_minus_pooled": {
+          "mean_pp": 0.34953665676417867,
+          "per_seed_pp": [
+            -1.0498419218593966,
+            -0.08565615177572994,
+            2.75621912127194,
+            2.4963287741791262,
+            0.4387702967415805,
+            0.3538201512951318,
+            -0.8655282468456846,
+            -1.2478187688935378
+          ],
+          "ci95_pp": [
+            -0.579217667975894,
+            1.3922360520922865
+          ],
+          "wins": 4,
+          "ties": 0,
+          "losses": 4
+        },
+        "lcb1_minus_pooled": {
+          "mean_pp": -1.33982674172875,
+          "per_seed_pp": [
+            -1.6703510056254416,
+            -0.08565615177572994,
+            -0.9134238261151211,
+            -1.3023795066783066,
+            -1.8712389966733625,
+            -0.8790854892577045,
+            -1.4174810892309466,
+            -2.5789978684733867
+          ],
+          "ci95_pp": [
+            -1.817569492208662,
+            -0.8576590954917407
+          ],
+          "wins": 0,
+          "ties": 0,
+          "losses": 8
+        },
+        "majority6_minus_pooled": {
+          "mean_pp": -1.330170720371286,
+          "per_seed_pp": [
+            -1.6703510056254416,
+            0.0,
+            -0.9265613854972301,
+            -1.2167233549025767,
+            -2.0113564407155593,
+            -0.9055507703008772,
+            -1.3318249374552167,
+            -2.5789978684733867
+          ],
+          "ci95_pp": [
+            -1.8304605943540295,
+            -0.8240484004360411
+          ],
+          "wins": 0,
+          "ties": 1,
+          "losses": 7
+        }
+      }
+    },
+    "luna/protein/direct": {
+      "seed_order": [
+        71,
+        72,
+        73,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "arms": {
+        "lcb1": {
+          "mean": 37.227896652781496,
+          "seed_sd": 0.13722623851578153,
+          "per_seed": [
+            37.023777927377054,
+            37.15297671837793,
+            37.28000373455465,
+            37.36709131843384,
+            37.24955152319498,
+            37.195833008669524,
+            37.444504912491226,
+            37.109434079152784
+          ]
+        },
+        "majority6": {
+          "mean": 37.109434079152784,
+          "seed_sd": 0.0,
+          "per_seed": [
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784
+          ]
+        },
+        "median": {
+          "mean": 38.512904235733856,
+          "seed_sd": 1.1518453716294035,
+          "per_seed": [
+            37.72994316291883,
+            37.15297671837793,
+            40.792214585921954,
+            37.62887298747448,
+            39.22159370614103,
+            38.47187753328177,
+            38.14001150874569,
+            38.965743683009215
+          ]
+        },
+        "pooled": {
+          "mean": 38.99393289516986,
+          "seed_sd": 0.537237075054198,
+          "per_seed": [
+            39.55593899322747,
+            39.211435797666084,
+            38.28261601303866,
+            38.94628150990034,
+            39.43351122415522,
+            38.47187753328177,
+            38.441259016608,
+            39.60854307348135
+          ]
+        }
+      },
+      "contrasts": {
+        "median_minus_pooled": {
+          "mean_pp": -0.48102865943600026,
+          "per_seed_pp": [
+            -1.825995830308642,
+            -2.0584590792881556,
+            2.5095985728832915,
+            -1.3174085224258576,
+            -0.21191751801418945,
+            0.0,
+            -0.301247507862314,
+            -0.6427993904721347
+          ],
+          "ci95_pp": [
+            -1.3093432508684446,
+            0.5216842309876526
+          ],
+          "wins": 1,
+          "ties": 1,
+          "losses": 6
+        },
+        "lcb1_minus_pooled": {
+          "mean_pp": -1.7660362423883633,
+          "per_seed_pp": [
+            -2.532161065850417,
+            -2.0584590792881556,
+            -1.0026122784840155,
+            -1.5791901914664948,
+            -2.183959700960237,
+            -1.2760445246122458,
+            -0.9967541041167749,
+            -2.499108994328566
+          ],
+          "ci95_pp": [
+            -2.170753782297318,
+            -1.3585012141795474
+          ],
+          "wins": 0,
+          "ties": 0,
+          "losses": 8
+        },
+        "majority6_minus_pooled": {
+          "mean_pp": -1.8844988160170777,
+          "per_seed_pp": [
+            -2.446504914074687,
+            -2.1020017185133,
+            -1.1731819338858784,
+            -1.8368474307475537,
+            -2.324077145002434,
+            -1.3624434541289858,
+            -1.3318249374552167,
+            -2.499108994328566
+          ],
+          "ci95_pp": [
+            -2.224772114181718,
+            -1.5357003341375517
+          ],
+          "wins": 0,
+          "ties": 0,
+          "losses": 8
+        }
+      }
+    },
+    "luna/protein/raw": {
+      "seed_order": [
+        71,
+        72,
+        73,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "arms": {
+        "lcb1": {
+          "mean": 37.14976825021461,
+          "seed_sd": 0.10686839315001295,
+          "per_seed": [
+            37.023777927377054,
+            37.109434079152784,
+            37.28000373455465,
+            37.109434079152784,
+            37.109434079152784,
+            37.34719394402127,
+            37.109434079152784,
+            37.109434079152784
+          ]
+        },
+        "majority6": {
+          "mean": 37.109434079152784,
+          "seed_sd": 0.0,
+          "per_seed": [
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784
+          ]
+        },
+        "median": {
+          "mean": 38.83223585675367,
+          "seed_sd": 0.7821091829682869,
+          "per_seed": [
+            39.00155989894191,
+            40.11648329315122,
+            38.02425845136996,
+            38.95285279958824,
+            39.559560816609924,
+            38.200460580078655,
+            37.83696733128023,
+            38.965743683009215
+          ]
+        },
+        "pooled": {
+          "mean": 38.75085840897863,
+          "seed_sd": 0.7027872435858618,
+          "per_seed": [
+            38.779785084778226,
+            38.99701044880914,
+            37.94032920269911,
+            39.120750811032174,
+            39.43351122415522,
+            37.70802869934099,
+            38.339019853387974,
+            39.68843194762617
+          ]
+        }
+      },
+      "contrasts": {
+        "median_minus_pooled": {
+          "mean_pp": 0.08137744777504352,
+          "per_seed_pp": [
+            0.2217748141636875,
+            1.1194728443420772,
+            0.08392924867084872,
+            -0.16789801144393124,
+            0.12604959245470582,
+            0.4924318807376622,
+            -0.5020525221077463,
+            -0.7226882646169557
+          ],
+          "ci95_pp": [
+            -0.27710218090120264,
+            0.4651544851508193
+          ],
+          "wins": 5,
+          "ties": 0,
+          "losses": 3
+        },
+        "lcb1_minus_pooled": {
+          "mean_pp": -1.6010901587640145,
+          "per_seed_pp": [
+            -1.7560071574011715,
+            -1.887576369656358,
+            -0.6603254681444639,
+            -2.01131673187939,
+            -2.324077145002434,
+            -0.360834755319722,
+            -1.2295857742351899,
+            -2.5789978684733867
+          ],
+          "ci95_pp": [
+            -2.084064554205046,
+            -1.0782170747223745
+          ],
+          "wins": 0,
+          "ties": 0,
+          "losses": 8
+        },
+        "majority6_minus_pooled": {
+          "mean_pp": -1.641424329825842,
+          "per_seed_pp": [
+            -1.6703510056254416,
+            -1.887576369656358,
+            -0.8308951235463269,
+            -2.01131673187939,
+            -2.324077145002434,
+            -0.5985946201882086,
+            -1.2295857742351899,
+            -2.5789978684733867
+          ],
+          "ci95_pp": [
+            -2.082455506877423,
+            -1.1800730006043167
+          ],
+          "wins": 0,
+          "ties": 0,
+          "losses": 8
+        }
+      }
+    },
+    "luna/protein/structured": {
+      "seed_order": [
+        71,
+        72,
+        73,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "arms": {
+        "lcb1": {
+          "mean": 37.13225040356002,
+          "seed_sd": 0.10724757706860191,
+          "per_seed": [
+            37.109434079152784,
+            37.023777927377054,
+            37.225517113093645,
+            37.109434079152784,
+            37.109434079152784,
+            37.34719394402127,
+            37.109434079152784,
+            37.023777927377054
+          ]
+        },
+        "majority6": {
+          "mean": 37.109434079152784,
+          "seed_sd": 0.0,
+          "per_seed": [
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784
+          ]
+        },
+        "median": {
+          "mean": 38.60099796482418,
+          "seed_sd": 0.7783724455334409,
+          "per_seed": [
+            39.00155989894191,
+            39.60852485440669,
+            37.225517113093645,
+            38.95285279958824,
+            39.016357458194854,
+            38.200460580078655,
+            37.83696733128023,
+            38.965743683009215
+          ]
+        },
+        "pooled": {
+          "mean": 38.789227927742715,
+          "seed_sd": 0.6436067677852266,
+          "per_seed": [
+            38.779785084778226,
+            38.99701044880914,
+            37.94032920269911,
+            39.120750811032174,
+            39.43351122415522,
+            38.01498484945366,
+            38.339019853387974,
+            39.68843194762617
+          ]
+        }
+      },
+      "contrasts": {
+        "median_minus_pooled": {
+          "mean_pp": -0.18822996291852956,
+          "per_seed_pp": [
+            0.2217748141636875,
+            0.6115144055975463,
+            -0.7148120896054664,
+            -0.16789801144393124,
+            -0.41715376596036435,
+            0.18547573062499367,
+            -0.5020525221077463,
+            -0.7226882646169557
+          ],
+          "ci95_pp": [
+            -0.4896554314878898,
+            0.1382612236825766
+          ],
+          "wins": 3,
+          "ties": 0,
+          "losses": 5
+        },
+        "lcb1_minus_pooled": {
+          "mean_pp": -1.6569775241826896,
+          "per_seed_pp": [
+            -1.6703510056254416,
+            -1.973232521432088,
+            -0.7148120896054664,
+            -2.01131673187939,
+            -2.324077145002434,
+            -0.6677909054323905,
+            -1.2295857742351899,
+            -2.6646540202491167
+          ],
+          "ci95_pp": [
+            -2.1189836214368825,
+            -1.1776023700850828
+          ],
+          "wins": 0,
+          "ties": 0,
+          "losses": 8
+        },
+        "majority6_minus_pooled": {
+          "mean_pp": -1.6797938485899255,
+          "per_seed_pp": [
+            -1.6703510056254416,
+            -1.887576369656358,
+            -0.8308951235463269,
+            -2.01131673187939,
+            -2.324077145002434,
+            -0.9055507703008772,
+            -1.2295857742351899,
+            -2.5789978684733867
+          ],
+          "ci95_pp": [
+            -2.0896807099699686,
+            -1.2633445704386332
+          ],
+          "wins": 0,
+          "ties": 0,
+          "losses": 8
+        }
+      }
+    },
+    "luna/protein/gp_ei": {
+      "seed_order": [
+        71,
+        72,
+        73,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "arms": {
+        "lcb1": {
+          "mean": 37.1557432502193,
+          "seed_sd": 0.05787016643537767,
+          "per_seed": [
+            37.109434079152784,
+            37.12257163853489,
+            37.24744676341002,
+            37.12257163853489,
+            37.24955152319498,
+            37.13589936019596,
+            37.13589936019596,
+            37.12257163853489
+          ]
+        },
+        "majority6": {
+          "mean": 37.109434079152784,
+          "seed_sd": 0.0,
+          "per_seed": [
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784
+          ]
+        },
+        "median": {
+          "mean": 38.3362874033744,
+          "seed_sd": 1.2249167479140337,
+          "per_seed": [
+            37.72994316291883,
+            37.12257163853489,
+            37.262448891083125,
+            40.82248620823449,
+            39.22159370614103,
+            38.47187753328177,
+            37.61876490806845,
+            38.44061317873263
+          ]
+        },
+        "pooled": {
+          "mean": 39.0160333107186,
+          "seed_sd": 0.5441488215520396,
+          "per_seed": [
+            39.55593899322747,
+            39.211435797666084,
+            38.28261601303866,
+            39.120750811032174,
+            39.355956373268405,
+            38.47187753328177,
+            38.441259016608,
+            39.68843194762617
+          ]
+        }
+      },
+      "contrasts": {
+        "median_minus_pooled": {
+          "mean_pp": -0.6797459073441905,
+          "per_seed_pp": [
+            -1.825995830308642,
+            -2.088864159131191,
+            -1.020167121955538,
+            1.701735397202313,
+            -0.13436266712737677,
+            0.0,
+            -0.8224941085395514,
+            -1.2478187688935378
+          ],
+          "ci95_pp": [
+            -1.4002024485986126,
+            0.15462389353366035
+          ],
+          "wins": 1,
+          "ties": 1,
+          "losses": 6
+        },
+        "lcb1_minus_pooled": {
+          "mean_pp": -1.8602900604992954,
+          "per_seed_pp": [
+            -2.446504914074687,
+            -2.088864159131191,
+            -1.0351692496286446,
+            -1.9981791724972808,
+            -2.1064048500734245,
+            -1.3359781730858131,
+            -1.305359656412044,
+            -2.5658603090912777
+          ],
+          "ci95_pp": [
+            -2.2149017887727567,
+            -1.489631704980198
+          ],
+          "wins": 0,
+          "ties": 0,
+          "losses": 8
+        },
+        "majority6_minus_pooled": {
+          "mean_pp": -1.9065992315658082,
+          "per_seed_pp": [
+            -2.446504914074687,
+            -2.1020017185133,
+            -1.1731819338858784,
+            -2.01131673187939,
+            -2.2465222941156213,
+            -1.3624434541289858,
+            -1.3318249374552167,
+            -2.5789978684733867
+          ],
+          "ci95_pp": [
+            -2.2483718574110654,
+            -1.5500888338384726
+          ],
+          "wins": 0,
+          "ties": 0,
+          "losses": 8
+        }
+      }
+    },
+    "luna/protein/gp_ei_zero": {
+      "seed_order": [
+        71,
+        72,
+        73,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "arms": {
+        "lcb1": {
+          "mean": 37.09977805779532,
+          "seed_sd": 0.0772481379484922,
+          "per_seed": [
+            37.109434079152784,
+            37.023777927377054,
+            37.12257163853489,
+            37.023777927377054,
+            37.24955152319498,
+            37.13589936019596,
+            37.023777927377054,
+            37.109434079152784
+          ]
+        },
+        "majority6": {
+          "mean": 37.109434079152784,
+          "seed_sd": 0.0,
+          "per_seed": [
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784
+          ]
+        },
+        "median": {
+          "mean": 38.78914145628825,
+          "seed_sd": 1.4515641040841578,
+          "per_seed": [
+            37.72994316291883,
+            37.023777927377054,
+            40.792214585921954,
+            40.82248620823449,
+            39.559560816609924,
+            38.36880500074879,
+            37.575730769762316,
+            38.44061317873263
+          ]
+        },
+        "pooled": {
+          "mean": 38.43960479952407,
+          "seed_sd": 0.7805433676619734,
+          "per_seed": [
+            38.779785084778226,
+            37.109434079152784,
+            38.035995464650014,
+            38.32615743405536,
+            39.12079051986834,
+            38.01498484945366,
+            38.441259016608,
+            39.68843194762617
+          ]
+        }
+      },
+      "contrasts": {
+        "median_minus_pooled": {
+          "mean_pp": 0.34953665676417867,
+          "per_seed_pp": [
+            -1.0498419218593966,
+            -0.08565615177572994,
+            2.75621912127194,
+            2.4963287741791262,
+            0.4387702967415805,
+            0.3538201512951318,
+            -0.8655282468456846,
+            -1.2478187688935378
+          ],
+          "ci95_pp": [
+            -0.579217667975894,
+            1.3922360520922865
+          ],
+          "wins": 4,
+          "ties": 0,
+          "losses": 4
+        },
+        "lcb1_minus_pooled": {
+          "mean_pp": -1.33982674172875,
+          "per_seed_pp": [
+            -1.6703510056254416,
+            -0.08565615177572994,
+            -0.9134238261151211,
+            -1.3023795066783066,
+            -1.8712389966733625,
+            -0.8790854892577045,
+            -1.4174810892309466,
+            -2.5789978684733867
+          ],
+          "ci95_pp": [
+            -1.817569492208662,
+            -0.8576590954917407
+          ],
+          "wins": 0,
+          "ties": 0,
+          "losses": 8
+        },
+        "majority6_minus_pooled": {
+          "mean_pp": -1.330170720371286,
+          "per_seed_pp": [
+            -1.6703510056254416,
+            0.0,
+            -0.9265613854972301,
+            -1.2167233549025767,
+            -2.0113564407155593,
+            -0.9055507703008772,
+            -1.3318249374552167,
+            -2.5789978684733867
+          ],
+          "ci95_pp": [
+            -1.8304605943540295,
+            -0.8240484004360411
+          ],
+          "wins": 0,
+          "ties": 1,
+          "losses": 7
+        }
+      }
+    }
+  },
+  "rescored_predictors": 93,
+  "no_new_training": true,
+  "costs": {}
+}

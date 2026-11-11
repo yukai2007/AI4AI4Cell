@@ -1,0 +1,28 @@
+\begin{table}[htbp]
+\caption{Retrospective sensitivity analyses on the eight-run expanded-recipe study (Table~\ref{tab:recipe-expansion-eight-seed}); no new fits, all selections sealed before held-out scoring. Top: Qwen search rerun with registered canonicalization of redundant request metadata (the named design is authoritative; invalid requests over 96 slots per mode, both tasks, original$\\to$repaired, in parentheses). Bottom: three laboratory-level selection rules replayed over the sealed candidates of each structured-history search, with the paired difference from the original pooled rule (wins/ties/losses in parentheses; second line: mean difference in percentage points and seed-block 95\% interval). Means over eight runs.}
+\label{tab:round4-repair-selection}
+\centering\footnotesize
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{lcccc}
+\toprule
+ & \multicolumn{2}{c}{DTI AUROC} & \multicolumn{2}{c}{Protein AP} \\
+Qwen mode (invalid) & original & repaired & original & repaired \\
+\midrule
+Direct (36$\to$3) & $94.359$ & $94.372$ & $38.611$ & $38.984$ \\
+Raw history (36$\to$1) & $94.372$ & $94.372$ & $38.466$ & $38.817$ \\
+Structured history (30$\to$1) & $94.359$ & $94.372$ & $38.142$ & $38.323$ \\
+Random expectation & \multicolumn{2}{c}{$94.319$} & \multicolumn{2}{c}{$38.581$} \\
+GP--EI ($\xi=.01$) & \multicolumn{2}{c}{$94.286$} & \multicolumn{2}{c}{$39.016$} \\
+\midrule
+Selection rule & Qwen DTI & Qwen protein & Luna DTI & Luna protein \\
+\midrule
+Pooled (original) & $94.359$ & $38.142$ & $94.372$ & $38.789$ \\
+Median lab gain & $94.359$ (0/8/0) & $37.882$ (2/2/4) & $94.370$ (0/5/3) & $38.601$ (3/0/5) \\
+ & {\scriptsize$+0.00$ $[0.00, 0.00]$} & {\scriptsize$-0.26$ $[-0.76, 0.24]$} & {\scriptsize$-0.00$ $[-0.00, -0.00]$} & {\scriptsize$-0.19$ $[-0.49, 0.14]$} \\[1pt]
+Mean $-$ 1 SE & $94.359$ (0/8/0) & $37.249$ (0/0/8) & $94.372$ (0/8/0) & $37.132$ (0/0/8) \\
+ & {\scriptsize$+0.00$ $[0.00, 0.00]$} & {\scriptsize$-0.89$ $[-1.44, -0.43]$} & {\scriptsize$+0.00$ $[0.00, 0.00]$} & {\scriptsize$-1.66$ $[-2.12, -1.18]$} \\[1pt]
+$\geq$6/10 labs & $94.359$ (0/8/0) & $37.109$ (0/0/8) & $94.372$ (0/8/0) & $37.109$ (0/0/8) \\
+ & {\scriptsize$+0.00$ $[0.00, 0.00]$} & {\scriptsize$-1.03$ $[-1.54, -0.61]$} & {\scriptsize$+0.00$ $[0.00, 0.00]$} & {\scriptsize$-1.68$ $[-2.09, -1.26]$} \\[1pt]
+\bottomrule
+\end{tabular}
+\end{table}

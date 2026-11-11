@@ -1,0 +1,20 @@
+{
+  "generator": "build_round4.py",
+  "generator_sha256": "aa1fdf1df21745cc8119423a5ff3a530ce89aefbec2661fcd36c5ed5f65f5e57",
+  "repair_analysis_sha256": "b068cf63c5032c9f6cb30b72e1168525788a5f84629d5f66ecde7ba906efb4b5",
+  "replay_analysis_sha256": "9fb771791b0e001ef7ebc6a63b6c56676b055072de77897ffffcee772cb769b5",
+  "invalid_slots_qwen": {
+    "original": {
+      "direct": 36,
+      "raw": 36,
+      "structured": 30
+    },
+    "repaired": {
+      "direct": 3,
+      "raw": 1,
+      "structured": 1
+    }
+  },
+  "server_results": "results/round4_20261111/{repair,replay}",
+  "new_training_fits": 0
+}

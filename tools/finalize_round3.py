@@ -22,9 +22,9 @@ from publish_focused_revision import table_map
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "0416256"
-DEST = ROOT / "provenance/round3_20261111"
-VERSIONED = "output/pdf/BioCoLoop_round3_20261111.pdf"
-REPLIES = "output/pdf/BioCoLoop_reviewer_responses_round3_20261111.pdf"
+DEST = ROOT / "provenance/round4_20261111"
+VERSIONED = "output/pdf/BioCoLoop_round4_20261111.pdf"
+REPLIES = "output/pdf/BioCoLoop_reviewer_responses_round4_20261111.pdf"
 GUIDE = "https://iclr.cc/Conferences/2027/AuthorGuidelines"
 OFFICIAL_ZIP = ROOT / "provenance/author_review_20261110/iclr2027-style-files.zip"
 REGENERATED = {
@@ -35,8 +35,9 @@ REGENERATED = {
     "tables/proteomics_scenario_labs_v2/table.tex",
     "tables/author_review_20261110/current_search.tex", "tables/author_review_20261110/current_search.provenance.json",
 }
-NEW_SOURCES = {"tables/rebuttal_round3_20261111/e6_eight_seed.tex", "tables/rebuttal_round3_20261111/e9_eight_seed.tex"}
-NEW_LABELS = {"tab:fresh-history-eight-seed", "tab:recipe-expansion-eight-seed"}
+NEW_SOURCES = {"tables/rebuttal_round3_20261111/e6_eight_seed.tex", "tables/rebuttal_round3_20261111/e9_eight_seed.tex",
+               "tables/rebuttal_round4_20261111/round4.tex"}
+NEW_LABELS = {"tab:fresh-history-eight-seed", "tab:recipe-expansion-eight-seed", "tab:round4-repair-selection"}
 SEEDS = [61, 62, 63, 64, 65, 66, 67, 68]
 PROTEOMICS_ARMS = {"target_only", "plus_decrypte", "plus_existing2", "plus_all3"}
 
@@ -118,6 +119,8 @@ def verify_extensions():
 def verify(args):
     for tool in ("build_author_review_tables.py", "publish_single_lab_search.py", "publish_rebuttal_access_table.py"):
         subprocess.run([sys.executable, "tools/"+tool, "--check"], cwd=ROOT, check=True, stdout=subprocess.DEVNULL)
+    subprocess.run([sys.executable, "build_round4.py", "--check"], cwd=ROOT/"tables/rebuttal_round4_20261111",
+                   check=True, stdout=subprocess.DEVNULL)
     result = {**checks.verify_pdf(args.pdf), **integrity(), "extensions": verify_extensions()}
     log = args.log.read_text(errors="replace")
     checks.verify_log(log)
@@ -167,14 +170,15 @@ def verify(args):
     checks.require(set(labels)-set(old_labels) == NEW_LABELS, "Unexpected label set: "+str(sorted(set(labels)-set(old_labels))))
     files = [ROOT/n for n in included] + [ROOT/"references.bib", ROOT/"references_v2.bib", ROOT/REPLIES, Path(__file__)]
     files += [ROOT/n for n in sorted(REGENERATED)]
-    files += [p for p in (ROOT/"tables/rebuttal_round3_20261111").iterdir() if p.is_file() and p.suffix in (".py", ".json", ".tex")]
+    for folder in ("tables/rebuttal_round3_20261111", "tables/rebuttal_round4_20261111"):
+        files += [p for p in (ROOT/folder).iterdir() if p.is_file() and p.suffix in (".py", ".json", ".tex")]
     files += [ROOT/"tables/proteomics_scenario_labs_v2/eight_seed_analysis.json"]
     files += [p for p in DEST.iterdir() if p.is_file() and p.name not in ("build_receipt.json", "TABLE_MAP.zh-CN.md")]
     files += [ROOT/f"provenance/rebuttal_20261109/RESPONSE_{r}.md" for r in ("FBhK", "AfJB", "cR5g")]
     files += [ROOT/"tools"/t for t in ("publish_strong_snapshot.py", "publish_single_lab_search.py",
                                        "publish_rebuttal_access_table.py", "build_rebuttal_responses.py",
                                        "build_author_review_tables.py")]
-    result.update(schema="round3-rebuttal-release-v1", status="PASS", created_utc=datetime.now(timezone.utc).isoformat(),
+    result.update(schema="round4-rebuttal-release-v1", status="PASS", created_utc=datetime.now(timezone.utc).isoformat(),
         main_page_limit=10, formatting_source=GUIDE, official_style_sha256=style_hashes,
         official_style_zip_sha256=checks.sha(OFFICIAL_ZIP), body_font_10pt_characters=dict(fonts),
         custom_global_spacing=False, font_fallback=False, overfull_boxes=0, undefined_references=0,

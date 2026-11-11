@@ -1,0 +1,1494 @@
+{
+  "status": "COMPLETE",
+  "registration": {
+    "specification": {
+      "study": "repair",
+      "status": "DRAFT; register with init before controller execution",
+      "scope": "Retrospective E.9 cache; previously exposed tests; conditional on common historical seed42 starting predictors",
+      "seeds": [
+        71,
+        72,
+        73,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "tasks": [
+        "dti",
+        "protein"
+      ],
+      "arms": [
+        "qwen_repaired_direct",
+        "qwen_repaired_raw",
+        "qwen_repaired_structured",
+        "qwen_direct",
+        "qwen_raw",
+        "qwen_structured",
+        "random",
+        "gp_ei",
+        "gp_ei_zero",
+        "luna_direct",
+        "luna_raw",
+        "luna_structured",
+        "fixed_D00"
+      ],
+      "treatment": {
+        "design_id_authoritative": true,
+        "changes": [
+          "When design_id is available and reference_id correct, replace existing changed_fields with the exact menu-derived field difference",
+          "Map prediction.metric development.primary/development.loss to primary/loss",
+          "Convert finite decimal prediction.min_delta strings to the identical numeric value"
+        ],
+        "preserve": [
+          "design_id",
+          "reference_id",
+          "hypothesis",
+          "experiment",
+          "expected_effect",
+          "prediction direction and numeric value"
+        ],
+        "missing_fields": "Never invent; original validator still rejects",
+        "duplicate_or_unknown_ID": "Never substitute another design; original validator still rejects",
+        "attempts_per_slot": 2,
+        "repair_prompt": "Unchanged original backend_v3 validator-error re-prompt",
+        "new_trajectories": "Rerun sequentially; never splice repairs into unchanged downstream histories",
+        "proposer": "Same local Qwen2.5-7B, temperature 0.7, top_p 0.9, 28000 input/512 output token caps; generation seed 100000*seed+slot, second attempt +10000"
+      },
+      "fixed": {
+        "library": 36,
+        "labs": 10,
+        "baseline": "fitted D00",
+        "requests_per_mode": 6,
+        "shared_first": true,
+        "rounds": 20,
+        "checkpoint_rule": "Original pooled development primary, lower BCE, earlier round",
+        "scorer": "Unchanged DTI AUROC/protein AP",
+        "Luna_and_controls": "Reuse original arms without new calls",
+        "new_training_fits": 0
+      },
+      "primary": "Separately per task: qwen_repaired_structured minus qwen_structured, held-out percentage points",
+      "secondary": [
+        "Each repaired mode minus corresponding original Qwen, Luna, exact random, both GP-EI controls and D00",
+        "Repaired structured minus repaired direct/raw",
+        "All per-seed choices, final validity, normalization operations, physical completions and measured tokens"
+      ],
+      "bootstrap": {
+        "replicates": 100000,
+        "seed": 2026111106,
+        "unit": "Eight paired whole seed blocks",
+        "interval": "Two-sided percentile 95%",
+        "tie_tolerance_pp": 1e-10
+      },
+      "inference": "No cross-endpoint pooling. All nonprimary contrasts are secondary. A both-task improvement claim requires both primary lower bounds above zero.",
+      "failures": "No exclusions, replacement seeds or extra slots. Invalid attempts consume their slot. Infrastructure failure leaves the study incomplete.",
+      "gate": "All 16 repaired task/seed selections sealed before held-out lookup or prediction rescoring"
+    },
+    "registered_utc": "2026-11-11T18:31:41.591587+00:00",
+    "source_sha256": {
+      "/liziqing/yukai/AI4AI4Cell/extensions/round4_20261111/run.py": "f93509605aff39b205740d73192664e50af0dfd6eeb2ae1999f6d3ee17623d5e",
+      "/liziqing/yukai/AI4AI4Cell/extensions/recipe_expansion_20261110_v2/common.py": "a3c50a4bc04ab62343a70c82fde4568987679f8a7fb8f66dfbaf21ec9e652f9e",
+      "/liziqing/yukai/AI4AI4Cell/extensions/recipe_expansion_20261110_v2/evaluate.py": "180fbbb9a3bbcbe09dfcf1e28cfe9cef597adb4bea39cc9a5f3eb11fe6af3563",
+      "/liziqing/yukai/AI4AI4Cell/extensions/recipe_expansion_20261110_v2/models.py": "a41c8fb93a302206998c07d72f2e3d319b6c91b17aa6c9a12ebbc5d85ecf200e",
+      "/liziqing/yukai/AI4AI4Cell/extensions/recipe_expansion_20261110_v2/prepare.py": "fe1b92146db1317023d5cb045f0842cb88a3145abf99595c7cda117bbd74de9f",
+      "/liziqing/yukai/AI4AI4Cell/extensions/recipe_expansion_20261110_v2/search.py": "c4fc1d0c01199e5933f707f6d9ebe105afbbd0b67678315cb04ac506599cd03b",
+      "/liziqing/yukai/AI4AI4Cell/extensions/recipe_expansion_20261110_v2/test_recipe.py": "e3547c81dfe9c35e4d32acf5ebbff019201eb45a4c739b52562e7da8771b6192",
+      "/liziqing/yukai/AI4AI4Cell/extensions/recipe_expansion_20261110_v2/train.py": "b31fbded7b6b2b4ecc0621060d43e7271d9d8b3de8c008a5396e38ff3165f128",
+      "/liziqing/yukai/AI4AI4Cell/extensions/recipe_search_compact_20261110/controls.py": "48dd8c3953c63e6c8eb34559ff4ab8a6e132e12aa4e2856fcff8a06fabc4464a",
+      "/liziqing/yukai/AI4AI4Cell/extensions/recipe_search_compact_20261110/luna_backend.py": "2135cff202310a8b6458fb7d8d0ef10a0a785c08cde8ab2b4668621be9cfedf0",
+      "/liziqing/yukai/AI4AI4Cell/extensions/recipe_search_compact_20261110/packet.py": "549667fbeb72b8886fbb42c5f2e2bece1e0b95bd4d4bb26dfb9fd201868a2b5b",
+      "/liziqing/yukai/AI4AI4Cell/extensions/recipe_search_compact_20261110/runner.py": "d3413f614463d71e2ba99fa0057850e6a2e21065d5f4d9019c5ee67207908c1d",
+      "/liziqing/yukai/AI4AI4Cell/extensions/recipe_search_compact_20261110/test_packet.py": "3888c1919b2ad9763ab63a1236d2049a92a0b78f6a6436d0c75a85f041fd8a0e",
+      "/liziqing/yukai/AI4AI4Cell/extensions/recipe_search_compact_20261110/text_transport.py": "c7b30763158cf2967af235823156eead8ade7f53e72b6070a9bb4695a023ba54",
+      "/liziqing/yukai/AI4AI4Cell/extensions/recipe_search_compact_20261110/trajectory.py": "21f7bd35bb4d020f0247e53937d176f2aab94fb8e0824372d52bffdcc02487b7",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/authorize_heldout.py": "a6aa8648c1379978d93ca45a8a6df09dbaa9958e3c7ae09cf63b57a046411d2b",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/backend.py": "42ebb695d0d9316502680c6e7318b6fd968cc8eccde77325328384fd473fedf3",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/backend_v3.py": "13d7d42e05ede0db2b44010828994d0dfcc0a23275305807f71892675c940285",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/controls.py": "87621e6c7173df366eb2f3d33a463291866c0c25345e2ee2fd8fa751e830069e",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/evidence_cards.py": "25210f248a41fcd89248716719658880af166f42266b96562fdd41d5638874f6",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/report_search.py": "48a080da3d1129577d417bf851ef8cd8fdb17ba5853fb081b72770680d1cd273",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/search.py": "e5b038d78e9347213776f80e734fcd52c1aed855b4299f44cd64adc9f4e5195b",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/search_v3.py": "318de5416f1d773f813551952d7d91d5a36fb38067b27106f794e2305b5f1967",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/test_backend.py": "75df34f8b790d68c65187121bb4135656a0d7fe7e64e9ef2c88021cdea69ecd9",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/test_backend_v3.py": "acf8beb202756acc776b16990f0e80c9f884147abe353e1a8d80183b4aeaf181",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/test_controls.py": "a53a2db9f3490730873408bb5e528dd34a332e85f1eb2da3248ca74557b1956d",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/test_evidence_cards.py": "a75ada22255dba63f9e395584fa031bbf88912320fb4ea34fb7618ad881ef5e2",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/test_report_search.py": "27cc04ff33e13cdfb2359ab631fa2fba9ac7f2df814d972eb4d14f63529f4683",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/test_search.py": "5c576a086fec85823f8be6b471a68eea0761cb197b984daf8d921698b785724b",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/test_search_v3.py": "ccba0a20a42741665cbd2b453de9eeb85f0cc413c5e4dbcaa1d937200d555c0f",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/training_cache.py": "e66abbd66a61e6c9e80efb3ed9df3c5cc20141b716d9998d22766225600136f8",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/training_data.py": "d55fe7937eeb31086d497f1725f8ec4dbaae8a65dd834ecae18569eba9988a36",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/training_heldout.py": "2b41f87af4575ebeea2f7a2e9fd6ccb752952b917c7b0317c15bd658ee12cbc1",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/training_heldout_test.py": "505f5ea0fb9e3a69598b7b4a97582d98deef7ef21e3d66c167b41cc47e604c81",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/training_heldout_verify.py": "6a862bcdeac3e21803b27332afc48dfbbd732655e3c68b880a238995e56b0197",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/training_test.py": "64e159ef94ccc54e03b5f5a9466378f474c940f5ff8027e65f55b2d446e8a6c9",
+      "/liziqing/yukai/AI4AI4Cell/extensions/history_repair_20261109/training_verify.py": "f9ad035f1df8d7df9a4a12b3015a435c4bf785b29e722ff2c553381096dad985"
+    },
+    "inputs_sha256": "fd90c6c6c7e0f5dae028b5d455f5a81aa6ded02c426731a8937dd0cb5520b646",
+    "execution_started": false,
+    "previously_exposed_test": true
+  },
+  "groups": {
+    "dti": {
+      "seed_order": [
+        71,
+        72,
+        73,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "arms": {
+        "fixed_D00": {
+          "mean": 94.27141206759968,
+          "seed_sd": 0.0002360781103725704,
+          "per_seed": [
+            94.27141536836547,
+            94.27154079746501,
+            94.2709796672828,
+            94.2715738051228,
+            94.27115130710325,
+            94.27138896223923,
+            94.2715870081859,
+            94.271659625033
+          ]
+        },
+        "gp_ei": {
+          "mean": 94.28553934512806,
+          "seed_sd": 0.021291204119796535,
+          "per_seed": [
+            94.32411539477158,
+            94.27154079746501,
+            94.27551491946132,
+            94.2715738051228,
+            94.27165302350146,
+            94.28442038552942,
+            94.2715870081859,
+            94.31390942698707
+          ]
+        },
+        "gp_ei_zero": {
+          "mean": 94.3393674082387,
+          "seed_sd": 0.04751302334236371,
+          "per_seed": [
+            94.37381832585162,
+            94.27178505413255,
+            94.36188935833113,
+            94.37552812252444,
+            94.30962503300763,
+            94.37378531819381,
+            94.27083443358859,
+            94.37767362027991
+          ]
+        },
+        "luna_direct": {
+          "mean": 94.37170666094534,
+          "seed_sd": 0.005404258627579241,
+          "per_seed": [
+            94.37381832585162,
+            94.36895959862689,
+            94.36188935833113,
+            94.37851201478745,
+            94.36923686295219,
+            94.37378531819381,
+            94.36977818853973,
+            94.37767362027991
+          ]
+        },
+        "luna_raw": {
+          "mean": 94.37170666094534,
+          "seed_sd": 0.005404258627579241,
+          "per_seed": [
+            94.37381832585162,
+            94.36895959862689,
+            94.36188935833113,
+            94.37851201478745,
+            94.36923686295219,
+            94.37378531819381,
+            94.36977818853973,
+            94.37767362027991
+          ]
+        },
+        "luna_structured": {
+          "mean": 94.37170666094534,
+          "seed_sd": 0.005404258627579241,
+          "per_seed": [
+            94.37381832585162,
+            94.36895959862689,
+            94.36188935833113,
+            94.37851201478745,
+            94.36923686295219,
+            94.37378531819381,
+            94.36977818853973,
+            94.37767362027991
+          ]
+        },
+        "qwen_direct": {
+          "mean": 94.35890629125956,
+          "seed_sd": 0.035752183959510284,
+          "per_seed": [
+            94.27141536836547,
+            94.36895959862689,
+            94.36188935833113,
+            94.37851201478745,
+            94.36923686295219,
+            94.37378531819381,
+            94.36977818853973,
+            94.37767362027991
+          ]
+        },
+        "qwen_raw": {
+          "mean": 94.37170666094534,
+          "seed_sd": 0.005404258627579241,
+          "per_seed": [
+            94.37381832585162,
+            94.36895959862689,
+            94.36188935833113,
+            94.37851201478745,
+            94.36923686295219,
+            94.37378531819381,
+            94.36977818853973,
+            94.37767362027991
+          ]
+        },
+        "qwen_repaired_direct": {
+          "mean": 94.37170666094534,
+          "seed_sd": 0.005404258627579241,
+          "per_seed": [
+            94.37381832585162,
+            94.36895959862689,
+            94.36188935833113,
+            94.37851201478745,
+            94.36923686295219,
+            94.37378531819381,
+            94.36977818853973,
+            94.37767362027991
+          ]
+        },
+        "qwen_repaired_raw": {
+          "mean": 94.37170666094534,
+          "seed_sd": 0.005404258627579241,
+          "per_seed": [
+            94.37381832585162,
+            94.36895959862689,
+            94.36188935833113,
+            94.37851201478745,
+            94.36923686295219,
+            94.37378531819381,
+            94.36977818853973,
+            94.37767362027991
+          ]
+        },
+        "qwen_repaired_structured": {
+          "mean": 94.37170666094534,
+          "seed_sd": 0.005404258627579241,
+          "per_seed": [
+            94.37381832585162,
+            94.36895959862689,
+            94.36188935833113,
+            94.37851201478745,
+            94.36923686295219,
+            94.37378531819381,
+            94.36977818853973,
+            94.37767362027991
+          ]
+        },
+        "qwen_structured": {
+          "mean": 94.35912331660946,
+          "seed_sd": 0.0262989552062964,
+          "per_seed": [
+            94.37381832585162,
+            94.36895959862689,
+            94.309486400845,
+            94.37851201478745,
+            94.36923686295219,
+            94.32552152099288,
+            94.36977818853973,
+            94.37767362027991
+          ]
+        },
+        "random": {
+          "mean": 94.31907317400811,
+          "seed_sd": 0.005959834692081894,
+          "per_seed": [
+            94.32378980195702,
+            94.31145174509166,
+            94.31143983745243,
+            94.32599787312218,
+            94.31408951320999,
+            94.32461230931165,
+            94.32157449789804,
+            94.31962981402198
+          ]
+        }
+      },
+      "contrasts": {
+        "qwen_repaired_direct_minus_qwen_direct": {
+          "mean_pp": 0.012800369685768587,
+          "per_seed_pp": [
+            0.1024029574861487,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            0.0,
+            0.038401109057318195
+          ],
+          "wins": 1,
+          "ties": 7,
+          "losses": 0
+        },
+        "qwen_repaired_direct_minus_random": {
+          "mean_pp": 0.05263348693722136,
+          "per_seed_pp": [
+            0.05002852389459633,
+            0.05750785353522758,
+            0.05044952087870058,
+            0.05251414166527013,
+            0.05514734974219948,
+            0.04917300888216403,
+            0.04820369064168517,
+            0.0580438062579276
+          ],
+          "ci95_pp": [
+            0.05026310330480044,
+            0.055174844126128164
+          ],
+          "wins": 8,
+          "ties": 0,
+          "losses": 0
+        },
+        "qwen_repaired_direct_minus_gp_ei": {
+          "mean_pp": 0.08616731581727066,
+          "per_seed_pp": [
+            0.04970293108003432,
+            0.09741880116187929,
+            0.08637443886981089,
+            0.10693820966464784,
+            0.0975838394507349,
+            0.08936493266439527,
+            0.09819118035382246,
+            0.06376419329284033
+          ],
+          "ci95_pp": [
+            0.07261354634275108,
+            0.09761519672565555
+          ],
+          "wins": 8,
+          "ties": 0,
+          "losses": 0
+        },
+        "qwen_repaired_direct_minus_gp_ei_zero": {
+          "mean_pp": 0.032339252706629296,
+          "per_seed_pp": [
+            0.0,
+            0.0971745444943366,
+            0.0,
+            0.0029838922630034403,
+            0.059611829944557826,
+            0.0,
+            0.0989437549511365,
+            0.0
+          ],
+          "ci95_pp": [
+            0.007451478743064399,
+            0.06371138104040597
+          ],
+          "wins": 4,
+          "ties": 4,
+          "losses": 0
+        },
+        "qwen_repaired_direct_minus_luna_direct": {
+          "mean_pp": 0.0,
+          "per_seed_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            0.0,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 8,
+          "losses": 0
+        },
+        "qwen_repaired_direct_minus_fixed_D00": {
+          "mean_pp": 0.10029459334565693,
+          "per_seed_pp": [
+            0.1024029574861487,
+            0.09741880116187929,
+            0.09090969104832425,
+            0.10693820966464784,
+            0.09808555584893952,
+            0.10239635595458196,
+            0.09819118035382246,
+            0.10601399524691146
+          ],
+          "ci95_pp": [
+            0.09684199234222035,
+            0.1035095392131069
+          ],
+          "wins": 8,
+          "ties": 0,
+          "losses": 0
+        },
+        "qwen_repaired_raw_minus_qwen_raw": {
+          "mean_pp": 0.0,
+          "per_seed_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            0.0,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 8,
+          "losses": 0
+        },
+        "qwen_repaired_raw_minus_random": {
+          "mean_pp": 0.05263348693722136,
+          "per_seed_pp": [
+            0.05002852389459633,
+            0.05750785353522758,
+            0.05044952087870058,
+            0.05251414166527013,
+            0.05514734974219948,
+            0.04917300888216403,
+            0.04820369064168517,
+            0.0580438062579276
+          ],
+          "ci95_pp": [
+            0.05026310330480044,
+            0.055174844126128164
+          ],
+          "wins": 8,
+          "ties": 0,
+          "losses": 0
+        },
+        "qwen_repaired_raw_minus_gp_ei": {
+          "mean_pp": 0.08616731581727066,
+          "per_seed_pp": [
+            0.04970293108003432,
+            0.09741880116187929,
+            0.08637443886981089,
+            0.10693820966464784,
+            0.0975838394507349,
+            0.08936493266439527,
+            0.09819118035382246,
+            0.06376419329284033
+          ],
+          "ci95_pp": [
+            0.07261354634275108,
+            0.09761519672565555
+          ],
+          "wins": 8,
+          "ties": 0,
+          "losses": 0
+        },
+        "qwen_repaired_raw_minus_gp_ei_zero": {
+          "mean_pp": 0.032339252706629296,
+          "per_seed_pp": [
+            0.0,
+            0.0971745444943366,
+            0.0,
+            0.0029838922630034403,
+            0.059611829944557826,
+            0.0,
+            0.0989437549511365,
+            0.0
+          ],
+          "ci95_pp": [
+            0.007451478743064399,
+            0.06371138104040597
+          ],
+          "wins": 4,
+          "ties": 4,
+          "losses": 0
+        },
+        "qwen_repaired_raw_minus_luna_raw": {
+          "mean_pp": 0.0,
+          "per_seed_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            0.0,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 8,
+          "losses": 0
+        },
+        "qwen_repaired_raw_minus_fixed_D00": {
+          "mean_pp": 0.10029459334565693,
+          "per_seed_pp": [
+            0.1024029574861487,
+            0.09741880116187929,
+            0.09090969104832425,
+            0.10693820966464784,
+            0.09808555584893952,
+            0.10239635595458196,
+            0.09819118035382246,
+            0.10601399524691146
+          ],
+          "ci95_pp": [
+            0.09684199234222035,
+            0.1035095392131069
+          ],
+          "wins": 8,
+          "ties": 0,
+          "losses": 0
+        },
+        "qwen_repaired_structured_minus_qwen_structured": {
+          "mean_pp": 0.012583344335881819,
+          "per_seed_pp": [
+            0.0,
+            0.0,
+            0.052402957486123114,
+            0.0,
+            0.0,
+            0.048263797200931435,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            0.0,
+            0.030682268286227554
+          ],
+          "wins": 2,
+          "ties": 6,
+          "losses": 0
+        },
+        "qwen_repaired_structured_minus_random": {
+          "mean_pp": 0.05263348693722136,
+          "per_seed_pp": [
+            0.05002852389459633,
+            0.05750785353522758,
+            0.05044952087870058,
+            0.05251414166527013,
+            0.05514734974219948,
+            0.04917300888216403,
+            0.04820369064168517,
+            0.0580438062579276
+          ],
+          "ci95_pp": [
+            0.05026310330480044,
+            0.055174844126128164
+          ],
+          "wins": 8,
+          "ties": 0,
+          "losses": 0
+        },
+        "qwen_repaired_structured_minus_gp_ei": {
+          "mean_pp": 0.08616731581727066,
+          "per_seed_pp": [
+            0.04970293108003432,
+            0.09741880116187929,
+            0.08637443886981089,
+            0.10693820966464784,
+            0.0975838394507349,
+            0.08936493266439527,
+            0.09819118035382246,
+            0.06376419329284033
+          ],
+          "ci95_pp": [
+            0.07261354634275108,
+            0.09761519672565555
+          ],
+          "wins": 8,
+          "ties": 0,
+          "losses": 0
+        },
+        "qwen_repaired_structured_minus_gp_ei_zero": {
+          "mean_pp": 0.032339252706629296,
+          "per_seed_pp": [
+            0.0,
+            0.0971745444943366,
+            0.0,
+            0.0029838922630034403,
+            0.059611829944557826,
+            0.0,
+            0.0989437549511365,
+            0.0
+          ],
+          "ci95_pp": [
+            0.007451478743064399,
+            0.06371138104040597
+          ],
+          "wins": 4,
+          "ties": 4,
+          "losses": 0
+        },
+        "qwen_repaired_structured_minus_luna_structured": {
+          "mean_pp": 0.0,
+          "per_seed_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            0.0,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 8,
+          "losses": 0
+        },
+        "qwen_repaired_structured_minus_fixed_D00": {
+          "mean_pp": 0.10029459334565693,
+          "per_seed_pp": [
+            0.1024029574861487,
+            0.09741880116187929,
+            0.09090969104832425,
+            0.10693820966464784,
+            0.09808555584893952,
+            0.10239635595458196,
+            0.09819118035382246,
+            0.10601399524691146
+          ],
+          "ci95_pp": [
+            0.09684199234222035,
+            0.1035095392131069
+          ],
+          "wins": 8,
+          "ties": 0,
+          "losses": 0
+        },
+        "qwen_repaired_structured_minus_qwen_repaired_direct": {
+          "mean_pp": 0.0,
+          "per_seed_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            0.0,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 8,
+          "losses": 0
+        },
+        "qwen_repaired_structured_minus_qwen_repaired_raw": {
+          "mean_pp": 0.0,
+          "per_seed_pp": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            0.0,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 8,
+          "losses": 0
+        }
+      }
+    },
+    "protein": {
+      "seed_order": [
+        71,
+        72,
+        73,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "arms": {
+        "fixed_D00": {
+          "mean": 37.109434079152784,
+          "seed_sd": 0.0,
+          "per_seed": [
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784,
+            37.109434079152784
+          ]
+        },
+        "gp_ei": {
+          "mean": 39.0160333107186,
+          "seed_sd": 0.5441488215520396,
+          "per_seed": [
+            39.55593899322747,
+            39.211435797666084,
+            38.28261601303866,
+            39.120750811032174,
+            39.355956373268405,
+            38.47187753328177,
+            38.441259016608,
+            39.68843194762617
+          ]
+        },
+        "gp_ei_zero": {
+          "mean": 38.43960479952407,
+          "seed_sd": 0.7805433676619734,
+          "per_seed": [
+            38.779785084778226,
+            37.109434079152784,
+            38.035995464650014,
+            38.32615743405536,
+            39.12079051986834,
+            38.01498484945366,
+            38.441259016608,
+            39.68843194762617
+          ]
+        },
+        "luna_direct": {
+          "mean": 38.99393289516986,
+          "seed_sd": 0.537237075054198,
+          "per_seed": [
+            39.55593899322747,
+            39.211435797666084,
+            38.28261601303866,
+            38.94628150990034,
+            39.43351122415522,
+            38.47187753328177,
+            38.441259016608,
+            39.60854307348135
+          ]
+        },
+        "luna_raw": {
+          "mean": 38.75085840897863,
+          "seed_sd": 0.7027872435858618,
+          "per_seed": [
+            38.779785084778226,
+            38.99701044880914,
+            37.94032920269911,
+            39.120750811032174,
+            39.43351122415522,
+            37.70802869934099,
+            38.339019853387974,
+            39.68843194762617
+          ]
+        },
+        "luna_structured": {
+          "mean": 38.789227927742715,
+          "seed_sd": 0.6436067677852266,
+          "per_seed": [
+            38.779785084778226,
+            38.99701044880914,
+            37.94032920269911,
+            39.120750811032174,
+            39.43351122415522,
+            38.01498484945366,
+            38.339019853387974,
+            39.68843194762617
+          ]
+        },
+        "qwen_direct": {
+          "mean": 38.61112032105033,
+          "seed_sd": 0.745047675656697,
+          "per_seed": [
+            38.779785084778226,
+            38.012207535640044,
+            37.94032920269911,
+            39.120750811032174,
+            38.1529280048172,
+            38.36880500074879,
+            38.339019853387974,
+            40.17513707529909
+          ]
+        },
+        "qwen_raw": {
+          "mean": 38.46641036114296,
+          "seed_sd": 0.9435006217019619,
+          "per_seed": [
+            39.55593899322747,
+            38.00832453402381,
+            38.035995464650014,
+            38.656074658230835,
+            38.1529280048172,
+            37.559189139653945,
+            37.58769501924134,
+            40.17513707529909
+          ]
+        },
+        "qwen_repaired_direct": {
+          "mean": 38.98432438231123,
+          "seed_sd": 1.0213880900778,
+          "per_seed": [
+            38.779785084778226,
+            40.468581640535845,
+            37.94032920269911,
+            39.120750811032174,
+            39.43351122415522,
+            38.36880500074879,
+            37.58769501924134,
+            40.17513707529909
+          ]
+        },
+        "qwen_repaired_raw": {
+          "mean": 38.81732175308135,
+          "seed_sd": 1.0132609806341655,
+          "per_seed": [
+            38.80794388079267,
+            40.468581640535845,
+            38.035995464650014,
+            38.656074658230835,
+            38.1529280048172,
+            38.654218281083814,
+            37.58769501924134,
+            40.17513707529909
+          ]
+        },
+        "qwen_repaired_structured": {
+          "mean": 38.32279119693774,
+          "seed_sd": 0.9168422367487709,
+          "per_seed": [
+            38.80794388079267,
+            38.00832453402381,
+            38.035995464650014,
+            38.656074658230835,
+            38.1529280048172,
+            37.15823093844698,
+            37.58769501924134,
+            40.17513707529909
+          ]
+        },
+        "qwen_structured": {
+          "mean": 38.141799001730604,
+          "seed_sd": 0.7235561214033001,
+          "per_seed": [
+            39.55593899322747,
+            38.00832453402381,
+            38.28261601303866,
+            38.67512739812077,
+            38.1529280048172,
+            37.57563583181298,
+            37.58769501924134,
+            37.29612621956261
+          ]
+        },
+        "random": {
+          "mean": 38.58066238787306,
+          "seed_sd": 0.3806461148573996,
+          "per_seed": [
+            38.57052847712554,
+            38.96591584330777,
+            38.429862427262314,
+            38.61147131147391,
+            38.78259539083408,
+            38.04328431447209,
+            38.11621686043845,
+            39.12542447807038
+          ]
+        }
+      },
+      "contrasts": {
+        "qwen_repaired_direct_minus_qwen_direct": {
+          "mean_pp": 0.373204061260898,
+          "per_seed_pp": [
+            0.0,
+            2.4563741048958008,
+            0.0,
+            0.0,
+            1.2805832193380198,
+            0.0,
+            -0.7513248341466365,
+            0.0
+          ],
+          "ci95_pp": [
+            -0.18783120853666446,
+            1.0812131917531786
+          ],
+          "wins": 2,
+          "ties": 5,
+          "losses": 1
+        },
+        "qwen_repaired_direct_minus_random": {
+          "mean_pp": 0.4036619944381572,
+          "per_seed_pp": [
+            0.2092566076526836,
+            1.502665797228076,
+            -0.48953322456320336,
+            0.5092794995582608,
+            0.650915833321136,
+            0.32552068627670394,
+            -0.5285218411971115,
+            1.0497125972287122
+          ],
+          "ci95_pp": [
+            -0.04581371998133932,
+            0.8535641995844048
+          ],
+          "wins": 6,
+          "ties": 0,
+          "losses": 2
+        },
+        "qwen_repaired_direct_minus_gp_ei": {
+          "mean_pp": -0.03170892840736794,
+          "per_seed_pp": [
+            -0.7761539084492455,
+            1.257145842869761,
+            -0.34228681033955155,
+            0.0,
+            0.07755485088681269,
+            -0.10307253253297688,
+            -0.8535639973666633,
+            0.48670512767291996
+          ],
+          "ci95_pp": [
+            -0.44680073663794956,
+            0.4320769785195253
+          ],
+          "wins": 3,
+          "ties": 1,
+          "losses": 4
+        },
+        "qwen_repaired_direct_minus_gp_ei_zero": {
+          "mean_pp": 0.5447195827871543,
+          "per_seed_pp": [
+            0.0,
+            3.359147561383061,
+            -0.09566626195090322,
+            0.7945933769768132,
+            0.3127207042868747,
+            0.3538201512951318,
+            -0.8535639973666633,
+            0.48670512767291996
+          ],
+          "ci95_pp": [
+            -0.1156966670193853,
+            1.446974453891869
+          ],
+          "wins": 5,
+          "ties": 1,
+          "losses": 2
+        },
+        "qwen_repaired_direct_minus_luna_direct": {
+          "mean_pp": -0.009608512858637397,
+          "per_seed_pp": [
+            -0.7761539084492455,
+            1.257145842869761,
+            -0.34228681033955155,
+            0.17446930113183612,
+            0.0,
+            -0.10307253253297688,
+            -0.8535639973666633,
+            0.5665940018177409
+          ],
+          "ci95_pp": [
+            -0.43683227023485927,
+            0.45736710427402016
+          ],
+          "wins": 3,
+          "ties": 1,
+          "losses": 4
+        },
+        "qwen_repaired_direct_minus_fixed_D00": {
+          "mean_pp": 1.8748903031584403,
+          "per_seed_pp": [
+            1.6703510056254416,
+            3.359147561383061,
+            0.8308951235463269,
+            2.01131673187939,
+            2.324077145002434,
+            1.259370921596009,
+            0.47826094008855335,
+            3.0657029961463067
+          ],
+          "ci95_pp": [
+            1.2295938110006475,
+            2.538755226686547
+          ],
+          "wins": 8,
+          "ties": 0,
+          "losses": 0
+        },
+        "qwen_repaired_raw_minus_qwen_raw": {
+          "mean_pp": 0.3509113919383884,
+          "per_seed_pp": [
+            -0.7479951124348005,
+            2.4602571065120387,
+            0.0,
+            0.0,
+            0.0,
+            1.095029141429869,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            -0.1869987781087019,
+            1.0594750576207446
+          ],
+          "wins": 2,
+          "ties": 5,
+          "losses": 1
+        },
+        "qwen_repaired_raw_minus_random": {
+          "mean_pp": 0.23665936520828357,
+          "per_seed_pp": [
+            0.23741540366712854,
+            1.502665797228076,
+            -0.39386696261230014,
+            0.044603346756922235,
+            -0.6296673860168838,
+            0.610933966611725,
+            -0.5285218411971115,
+            1.0497125972287122
+          ],
+          "ci95_pp": [
+            -0.23980478060302363,
+            0.7552891065882932
+          ],
+          "wins": 5,
+          "ties": 0,
+          "losses": 3
+        },
+        "qwen_repaired_raw_minus_gp_ei": {
+          "mean_pp": -0.19871155763724158,
+          "per_seed_pp": [
+            -0.7479951124348005,
+            1.257145842869761,
+            -0.24662054838864833,
+            -0.46467615280133856,
+            -1.203028368451207,
+            0.18234074780204423,
+            -0.8535639973666633,
+            0.48670512767291996
+          ],
+          "ci95_pp": [
+            -0.6901930705162869,
+            0.34802267578552204
+          ],
+          "wins": 3,
+          "ties": 0,
+          "losses": 5
+        },
+        "qwen_repaired_raw_minus_gp_ei_zero": {
+          "mean_pp": 0.37771695355728063,
+          "per_seed_pp": [
+            0.02815879601444493,
+            3.359147561383061,
+            0.0,
+            0.32991722417547464,
+            -0.9678625150511451,
+            0.6392334316301529,
+            -0.8535639973666633,
+            0.48670512767291996
+          ],
+          "ci95_pp": [
+            -0.3576452849383216,
+            1.3466766035508704
+          ],
+          "wins": 5,
+          "ties": 1,
+          "losses": 2
+        },
+        "qwen_repaired_raw_minus_luna_raw": {
+          "mean_pp": 0.0664633441027247,
+          "per_seed_pp": [
+            0.02815879601444493,
+            1.471571191726703,
+            0.09566626195090322,
+            -0.46467615280133856,
+            -1.2805832193380198,
+            0.9461895817428214,
+            -0.7513248341466365,
+            0.48670512767291996
+          ],
+          "ci95_pp": [
+            -0.5112324655556861,
+            0.6522763986905173
+          ],
+          "wins": 5,
+          "ties": 0,
+          "losses": 3
+        },
+        "qwen_repaired_raw_minus_fixed_D00": {
+          "mean_pp": 1.7078876739285667,
+          "per_seed_pp": [
+            1.6985098016398865,
+            3.359147561383061,
+            0.9265613854972301,
+            1.5466405790780513,
+            1.0434939256644142,
+            1.54478420193103,
+            0.47826094008855335,
+            3.0657029961463067
+          ],
+          "ci95_pp": [
+            1.09837885435374,
+            2.396699014825323
+          ],
+          "wins": 8,
+          "ties": 0,
+          "losses": 0
+        },
+        "qwen_repaired_structured_minus_qwen_structured": {
+          "mean_pp": 0.1809921952071365,
+          "per_seed_pp": [
+            -0.7479951124348005,
+            0.0,
+            -0.24662054838864833,
+            -0.019052739889936277,
+            0.0,
+            -0.4174048933660046,
+            0.0,
+            2.8790108557364817
+          ],
+          "ci95_pp": [
+            -0.34691648923269724,
+            0.9966258906818553
+          ],
+          "wins": 1,
+          "ties": 3,
+          "losses": 4
+        },
+        "qwen_repaired_structured_minus_random": {
+          "mean_pp": -0.25787119093532596,
+          "per_seed_pp": [
+            0.23741540366712854,
+            -0.9575913092839627,
+            -0.39386696261230014,
+            0.044603346756922235,
+            -0.6296673860168838,
+            -0.8850533760251125,
+            -0.5285218411971115,
+            1.0497125972287122
+          ],
+          "ci95_pp": [
+            -0.6538438333163441,
+            0.20535679572519822
+          ],
+          "wins": 3,
+          "ties": 0,
+          "losses": 5
+        },
+        "qwen_repaired_structured_minus_gp_ei": {
+          "mean_pp": -0.6932421137808511,
+          "per_seed_pp": [
+            -0.7479951124348005,
+            -1.2031112636422776,
+            -0.24662054838864833,
+            -0.46467615280133856,
+            -1.203028368451207,
+            -1.3136465948347933,
+            -0.8535639973666633,
+            0.48670512767291996
+          ],
+          "ci95_pp": [
+            -1.0516643349000887,
+            -0.27277923983731256
+          ],
+          "wins": 1,
+          "ties": 0,
+          "losses": 7
+        },
+        "qwen_repaired_structured_minus_gp_ei_zero": {
+          "mean_pp": -0.11681360258632889,
+          "per_seed_pp": [
+            0.02815879601444493,
+            0.8988904548710224,
+            0.0,
+            0.32991722417547464,
+            -0.9678625150511451,
+            -0.8567539110066846,
+            -0.8535639973666633,
+            0.48670512767291996
+          ],
+          "ci95_pp": [
+            -0.5597284958884856,
+            0.3328930166877706
+          ],
+          "wins": 4,
+          "ties": 1,
+          "losses": 3
+        },
+        "qwen_repaired_structured_minus_luna_structured": {
+          "mean_pp": -0.4664367308049684,
+          "per_seed_pp": [
+            0.02815879601444493,
+            -0.9886859147853357,
+            0.09566626195090322,
+            -0.46467615280133856,
+            -1.2805832193380198,
+            -0.8567539110066846,
+            -0.7513248341466365,
+            0.48670512767291996
+          ],
+          "ci95_pp": [
+            -0.848009001806254,
+            -0.06142606978168885
+          ],
+          "wins": 3,
+          "ties": 0,
+          "losses": 5
+        },
+        "qwen_repaired_structured_minus_fixed_D00": {
+          "mean_pp": 1.2133571177849571,
+          "per_seed_pp": [
+            1.6985098016398865,
+            0.8988904548710224,
+            0.9265613854972301,
+            1.5466405790780513,
+            1.0434939256644142,
+            0.04879685929419253,
+            0.47826094008855335,
+            3.0657029961463067
+          ],
+          "ci95_pp": [
+            0.6728402748037681,
+            1.846640224922659
+          ],
+          "wins": 8,
+          "ties": 0,
+          "losses": 0
+        },
+        "qwen_repaired_structured_minus_qwen_repaired_direct": {
+          "mean_pp": -0.6615331853734832,
+          "per_seed_pp": [
+            0.02815879601444493,
+            -2.4602571065120387,
+            0.09566626195090322,
+            -0.46467615280133856,
+            -1.2805832193380198,
+            -1.2105740623018164,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            -1.288555744745345,
+            -0.1255967884241045
+          ],
+          "wins": 2,
+          "ties": 2,
+          "losses": 4
+        },
+        "qwen_repaired_structured_minus_qwen_repaired_raw": {
+          "mean_pp": -0.4945305561436095,
+          "per_seed_pp": [
+            0.0,
+            -2.4602571065120387,
+            0.0,
+            0.0,
+            0.0,
+            -1.4959873426368375,
+            0.0,
+            0.0
+          ],
+          "ci95_pp": [
+            -1.1760595301168166,
+            0.0
+          ],
+          "wins": 0,
+          "ties": 6,
+          "losses": 2
+        }
+      }
+    }
+  },
+  "rescored_predictors": 23,
+  "no_new_training": true,
+  "costs": {
+    "dti/71": {
+      "invalid_slots": {
+        "direct": 0,
+        "raw": 0,
+        "structured": 0
+      },
+      "physical_completions": 21,
+      "input_tokens": 225164,
+      "output_tokens": 3406
+    },
+    "protein/71": {
+      "invalid_slots": {
+        "direct": 0,
+        "raw": 0,
+        "structured": 0
+      },
+      "physical_completions": 20,
+      "input_tokens": 201362,
+      "output_tokens": 3227
+    },
+    "dti/72": {
+      "invalid_slots": {
+        "direct": 0,
+        "raw": 0,
+        "structured": 1
+      },
+      "physical_completions": 21,
+      "input_tokens": 236747,
+      "output_tokens": 3640
+    },
+    "protein/72": {
+      "invalid_slots": {
+        "direct": 0,
+        "raw": 0,
+        "structured": 0
+      },
+      "physical_completions": 25,
+      "input_tokens": 261037,
+      "output_tokens": 3965
+    },
+    "dti/73": {
+      "invalid_slots": {
+        "direct": 0,
+        "raw": 0,
+        "structured": 0
+      },
+      "physical_completions": 24,
+      "input_tokens": 243332,
+      "output_tokens": 3785
+    },
+    "protein/73": {
+      "invalid_slots": {
+        "direct": 0,
+        "raw": 0,
+        "structured": 0
+      },
+      "physical_completions": 22,
+      "input_tokens": 223847,
+      "output_tokens": 3392
+    },
+    "dti/64": {
+      "invalid_slots": {
+        "direct": 1,
+        "raw": 0,
+        "structured": 0
+      },
+      "physical_completions": 22,
+      "input_tokens": 235985,
+      "output_tokens": 3665
+    },
+    "protein/64": {
+      "invalid_slots": {
+        "direct": 0,
+        "raw": 0,
+        "structured": 0
+      },
+      "physical_completions": 20,
+      "input_tokens": 201865,
+      "output_tokens": 3193
+    },
+    "dti/65": {
+      "invalid_slots": {
+        "direct": 0,
+        "raw": 0,
+        "structured": 0
+      },
+      "physical_completions": 21,
+      "input_tokens": 229103,
+      "output_tokens": 3633
+    },
+    "protein/65": {
+      "invalid_slots": {
+        "direct": 0,
+        "raw": 1,
+        "structured": 0
+      },
+      "physical_completions": 22,
+      "input_tokens": 215702,
+      "output_tokens": 3716
+    },
+    "dti/66": {
+      "invalid_slots": {
+        "direct": 0,
+        "raw": 0,
+        "structured": 0
+      },
+      "physical_completions": 19,
+      "input_tokens": 202565,
+      "output_tokens": 3264
+    },
+    "protein/66": {
+      "invalid_slots": {
+        "direct": 0,
+        "raw": 0,
+        "structured": 0
+      },
+      "physical_completions": 23,
+      "input_tokens": 248019,
+      "output_tokens": 4041
+    },
+    "dti/67": {
+      "invalid_slots": {
+        "direct": 0,
+        "raw": 0,
+        "structured": 0
+      },
+      "physical_completions": 20,
+      "input_tokens": 214745,
+      "output_tokens": 3107
+    },
+    "protein/67": {
+      "invalid_slots": {
+        "direct": 1,
+        "raw": 0,
+        "structured": 0
+      },
+      "physical_completions": 23,
+      "input_tokens": 243024,
+      "output_tokens": 3891
+    },
+    "dti/68": {
+      "invalid_slots": {
+        "direct": 0,
+        "raw": 0,
+        "structured": 0
+      },
+      "physical_completions": 19,
+      "input_tokens": 202877,
+      "output_tokens": 3132
+    },
+    "protein/68": {
+      "invalid_slots": {
+        "direct": 1,
+        "raw": 0,
+        "structured": 0
+      },
+      "physical_completions": 21,
+      "input_tokens": 210948,
+      "output_tokens": 3390
+    }
+  }
+}
