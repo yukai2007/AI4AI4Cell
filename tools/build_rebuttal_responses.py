@@ -62,8 +62,8 @@ def main():
         for para in text.strip().split('\n\n'):
             if para.startswith('# '):
                 story.append(Paragraph(markup(para[2:]), styles['title']))
-                story.append(Paragraph('BioCoLoop, submission 5046 | Revision dated ' + escape(args.revision_date) + '. '
-                    'Prepared for author review; not posted to OpenReview.', styles['note']))
+                story.append(Paragraph('BioCoLoop, submission 5046 | Revision dated ' + escape(args.revision_date) + '.',
+                    styles['note']))
             elif para.startswith('## '):
                 story.append(Paragraph(markup(para[3:]), styles['heading']))
             else:

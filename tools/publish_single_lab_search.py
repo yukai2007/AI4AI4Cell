@@ -257,24 +257,49 @@ def table_end(lines):
     return "\n".join(lines + [r"\bottomrule", r"\end{tabular*}", r"\end{table}", ""])
 
 
+STRONG = PAPER / "tables/strong_v3/snapshot.json"
+
+
+def fixed_ten(snapshot):
+    """Ten-laboratory fixed-D00 arm from the committed six-arm study (same seeds, fits and scorer)."""
+    strong = read(STRONG)["tasks"]
+    rows = {}
+    for task in TASKS:
+        runs = strong[task]["runs"]
+        for seed in SEEDS:
+            require(abs(runs[str(seed)]["scores"]["federated_loop"]["primary"]
+                        - snapshot["rows"][task]["federated_loop"]["values"][str(seed)]) < 1e-12,
+                    f"Six-arm study differs from D.1 reference: {task}/{seed}")
+        values = [runs[str(seed)]["scores"]["federated_fixed"]["primary"] for seed in SEEDS]
+        rows[task] = aggregate(dict(values=dict(zip(map(str, SEEDS), values)), n=3,
+                                    mean=statistics.mean(values), sd=statistics.stdev(values)))
+    return rows
+
+
 def render(snapshot):
     validate(snapshot)
+    fixed10 = fixed_ten(snapshot)
     caption = (r"\textbf{Single-laboratory search controls.} Mean $\pm$ sample SD over three training seeds, "
                r"in percentage units. Search controls use only lab~0; the history-enabled BioCoLoop references "
                r"use Qwen2.5-7B-Instruct with one or ten laboratories. The ten-laboratory setting adds training "
-               r"and evaluation evidence. Bold marks the highest displayed mean per column.")
+               r"and evaluation evidence. The ten-laboratory fixed model is the D00 arm of the same six-arm study "
+               r"(Table~\ref{tab:strong-ablation}). Bold marks the highest displayed mean per column.")
     lines = table_start(caption, "tab:single-lab-search", "lcrrrrr")
     lines += [r"Method & Labs & DTI & Proteomics & \multicolumn{3}{c}{Cell perturbation} \\",
               r"\cmidrule(lr){5-7}",
               r" & & AUROC$\uparrow$ & AP$\uparrow$ & VCC & Norman & Tahoe \\",
               r" & & & & Top-1$\uparrow$ & Top-1$\uparrow$ & Top-1$\uparrow$ \\", r"\midrule",
               r"\multicolumn{7}{l}{\emph{LLM-free controls}} \\"]
-    best = {task: f"{max(snapshot['rows'][task][m]['mean'] for m in METHODS) * 100:.2f}" for task in TASKS}
+    best = {task: f"{max([snapshot['rows'][task][m]['mean'] for m in METHODS] + [fixed10[task]['mean']]) * 100:.2f}"
+            for task in TASKS}
     for method in METHODS:
         if method == "single_loop":
             lines += [r"\midrule", r"\multicolumn{7}{l}{\emph{History-enabled BioCoLoop references}} \\"]
         lines.append(" & ".join([LABELS[method], "10" if method == "federated_loop" else "1"] +
                      [cell(snapshot["rows"][task][method], best[task]) for task in TASKS]) + r" \\")
+        if method == "fixed":
+            lines.append(" & ".join([LABELS[method], "10"] +
+                         [cell(fixed10[task], best[task]) for task in TASKS]) + r" \\")
     comparison = table_end(lines)
     caption = (r"\textbf{Single-laboratory search across three drug--target test splits.} "
                r"AUROC and average precision (AP), mean $\pm$ sample SD over the same three seeds, expressed as percentages. "

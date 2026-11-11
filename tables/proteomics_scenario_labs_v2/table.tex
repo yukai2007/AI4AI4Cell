@@ -2,16 +2,16 @@
 \centering
 \small
 \setlength{\tabcolsep}{5pt}
-\caption{One worker per proteomic study. The target training pool is merged into one client; Lin, Ruprecht and decryptE each form one additional client. $K$ counts training clients and $N$ counts training conditions. All four fixed-design arms use 100 rounds, the same initialization (seed 61), and equal-weight evaluation over the original ten target development panels. AP and AUROC are percentages on the common target held-out set; best values are bold.}
+\caption{One worker per proteomic study. The target training pool is merged into one client; Lin, Ruprecht and decryptE each form one additional client. $K$ counts training clients and $N$ counts training conditions. All four fixed-design arms use 100 rounds, a common initialization within each seed, and equal-weight evaluation over the original ten target development panels. Scores are mean $\pm$ sample SD over seeds 61--68 on the common target held-out set, in percent; $\Delta$ is the mean paired change from the target study alone. Seeds 64--68 were added under an analysis fixed before their fits, with fresh fits for every arm in those five seeds. Best means are bold.}
 \label{tab:proteomics-study-clients}
-\begin{tabular}{lrrrr}
+\begin{tabular}{lrrrrrr}
 \toprule
-Training sources & $K$ & $N$ & AP $\uparrow$ & AUROC $\uparrow$ \\
+Training sources & $K$ & $N$ & AP $\uparrow$ & $\Delta$AP & AUROC $\uparrow$ & $\Delta$AUROC \\
 \midrule
-Target study & 1 & 386 & 34.41 & 72.33 \\
-+ decryptE & 2 & 881 & 36.58 & 73.81 \\
-+ Lin + Ruprecht & 3 & 491 & 36.09 & 72.69 \\
-+ Lin + Ruprecht + decryptE & 4 & 986 & \textbf{37.53} & \textbf{74.39} \\
+Target study & 1 & 386 & $34.60\,{\scriptstyle\pm3.73}$ & -- & $72.06\,{\scriptstyle\pm1.93}$ & -- \\
++ decryptE & 2 & 881 & $\textbf{37.39}\,{\scriptstyle\pm2.64}$ & $+2.79$ & $\textbf{74.14}\,{\scriptstyle\pm1.48}$ & $+2.09$ \\
++ Lin + Ruprecht & 3 & 491 & $34.30\,{\scriptstyle\pm4.88}$ & $-0.30$ & $72.24\,{\scriptstyle\pm2.03}$ & $+0.18$ \\
++ Lin + Ruprecht + decryptE & 4 & 986 & $36.82\,{\scriptstyle\pm2.90}$ & $+2.22$ & $74.13\,{\scriptstyle\pm1.74}$ & $+2.07$ \\
 \bottomrule
 \end{tabular}
 \end{table}

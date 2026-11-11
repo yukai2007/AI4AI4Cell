@@ -1,4 +1,4 @@
-"""Generate the current three-task search overview from immutable reports."""
+"""Generate the current three-task search overview from the registered eight-seed analyses."""
 import argparse
 import hashlib
 import json
@@ -8,6 +8,8 @@ ROOT = Path(__file__).resolve().parents[1]
 DEST = ROOT / "tables/author_review_20261110"
 EXPANDED = ROOT / "provenance/recipe_expansion_20261110/summary.json"
 CELL = ROOT / "provenance/fbhk_followup_20261109/policy_summary.json"
+EIGHT = ROOT / "tables/rebuttal_round3_20261111"
+E9, E6 = EIGHT / "e9_eight_seed_analysis.json", EIGHT / "e6_eight_seed_analysis.json"
 POLICIES = {"fixed_D00": "Fitted D00", "direct": "Direct", "structured": "Structured history",
             "random": "Random expectation", "gp_ei": "GP--EI"}
 
@@ -22,17 +24,20 @@ def build():
     assert expanded["status"] == cell["status"] == "COMPLETE"
     for policy in ("structured", "random"):
         assert abs(cell["policies"][policy]["heldout_primary_mean"] - expanded["existing_cell"][policy]["heldout_primary_mean"]) < 1e-14
-    rows = {}
+    e9, e6 = json.loads(E9.read_text()), json.loads(E6.read_text())
+    assert e9["status"] == e6["status"] == "COMPLETE" and e9["n_seeds"] == e6["n_seeds"] == 8
+    groups = (e9["groups"]["luna/dti"], e9["groups"]["luna/protein"], e6["groups"]["qwen/cell"])
+    # The first three eight-seed values must reproduce the original three-seed reports exactly.
     for policy in POLICIES:
-        values = []
-        for task in ("dti", "protein"):
-            r = expanded["models"]["luna"]["tasks"][task]["policies"][policy]
-            values.append({"mean": r["heldout_mean"], "sd": r["heldout_seed_sd"]})
-        r = cell["policies"][policy]
-        values.append({"mean": 100*r["heldout_primary_mean"], "sd": 100*r["heldout_primary_seed_sd"]})
-        rows[policy] = values
+        for task, group in zip(("dti", "protein"), groups):
+            old = expanded["models"]["luna"]["tasks"][task]["policies"][policy]["heldout_mean"]
+            assert abs(sum(group["arms"][policy]["per_seed"][:3])/3 - old) < 1e-9, (task, policy)
+        old = 100*cell["policies"][policy]["heldout_primary_mean"]
+        assert abs(sum(groups[2]["arms"][policy]["per_seed"][:3])/3 - old) < 1e-9, ("cell", policy)
+    rows = {policy: [{"mean": g["arms"][policy]["mean"], "sd": g["arms"][policy]["seed_sd"]} for g in groups]
+            for policy in POLICIES}
     lines = [r"\begin{table}[htbp]", r"\centering\small",
-        r"\caption{Matched-access search in three separate protocols (three training/controller runs; mean $\pm$ sample SD, scores $\times100$). DTI/protein: Luna, 36 recipes, ten laboratories, one historical starting predictor per task. Cell: Qwen, 16 designs, four study--cell contexts and gene-disjoint partitions. Searches allow six requests after D00 and 20 rounds per valid fit; comparisons are within columns. Complete feedback, proposer and GP controls appear in E.6/E.9. Bold marks the best means, including ties.}",
+        r"\caption{Matched-access search in three separate protocols (eight training/controller runs: the original three plus five registered extensions; mean $\pm$ sample SD, scores $\times100$). DTI/protein: Luna, 36 recipes, ten laboratories, one historical starting predictor per task. Cell: Qwen, 16 designs, four study--cell contexts and gene-disjoint partitions. Searches allow six requests after D00 and 20 rounds per valid fit; comparisons are within columns. Complete feedback, proposer and GP controls appear in E.6/E.9. Bold marks the best means, including ties.}",
         r"\label{tab:author-review-current-search}", r"\begin{tabular}{lrrr}", r"\toprule",
         r"Policy & DTI AUROC & Protein AP & Cell Top-1 \\", r"\midrule"]
     best = [max(v[i]["mean"] for v in rows.values()) for i in range(3)]
@@ -46,8 +51,8 @@ def build():
         lines.append(label+" & "+" & ".join(cells)+r" \\")
     lines += [r"\bottomrule", r"\end{tabular}", r"\end{table}", ""]
     evidence = {"source_sha256": {str(p.relative_to(ROOT) if p.is_relative_to(ROOT) else p): sha(p)
-                                  for p in (EXPANDED, CELL)}, "policies": rows,
-                "all_key_controls_retained": True, "new_training_or_scoring": False}
+                                  for p in (EXPANDED, CELL, E9, E6)}, "policies": rows,
+                "all_key_controls_retained": True, "new_training_or_scoring": "seeds 64-68 registered extensions (E.6/E.9)"}
     return "\n".join(lines), json.dumps(evidence, ensure_ascii=False, indent=2)+"\n"
 
 

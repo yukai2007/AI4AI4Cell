@@ -1,0 +1,630 @@
+{
+  "schema": "proteomics-eight-seed-results-v1",
+  "status": "COMPLETE",
+  "seeds": [
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68
+  ],
+  "n_seeds": 8,
+  "analysis": {
+    "schema": "proteomics-eight-seed-analysis-v1",
+    "seeds": [
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68
+    ],
+    "new_fit_seeds": [
+      64,
+      65,
+      66,
+      67,
+      68
+    ],
+    "arms": {
+      "target_only": [
+        0
+      ],
+      "plus_decrypte": [
+        0,
+        12
+      ],
+      "plus_existing2": [
+        0,
+        10,
+        11
+      ],
+      "plus_all3": [
+        0,
+        10,
+        11,
+        12
+      ]
+    },
+    "rounds": 100,
+    "design": "D00",
+    "config": {
+      "lr": 0.001,
+      "weight_decay": 0.001,
+      "prox_mu": 0.0,
+      "server_momentum": 0.0,
+      "residual": false
+    },
+    "proposal_slots": 0,
+    "metrics": [
+      "ap",
+      "auroc"
+    ],
+    "scale": "100 * raw score; paired differences in percentage points",
+    "data": "Exactly the original seed61 binding, source studies, prepared data and splits",
+    "scorer": "Unchanged extensions.proteomics.scoring.phenotype_scores",
+    "summary": "Arithmetic mean and sample SD (ddof=1) over all eight seeds per arm",
+    "paired": "Each arm minus target_only within each seed; report every difference, their arithmetic mean, and strict positive/negative/zero win/loss/tie counts",
+    "primary_contrast": "plus_all3 minus target_only, AP",
+    "bootstrap": {
+      "unit": "Seed block containing all four arms and both metrics",
+      "draws": 100000,
+      "rng_seed": 2026111201,
+      "generator": "numpy.random.Generator(numpy.random.PCG64)",
+      "sampling": "One int64 array of shape (100000, 8), sampled with replacement from indices 0..7 in ascending seed order 61..68; reused for all estimands",
+      "estimands": "Per-arm means and paired arm-minus-target mean differences for AP and AUROC",
+      "interval": "Two-sided percentile 95%: quantiles 0.025 and 0.975",
+      "percentile_rule": "Linear interpolation at index q * (draws - 1) in sorted bootstrap estimates"
+    },
+    "selection": "Original ten target development panels: equal AP, lower BCE tiebreak; every 5 rounds, with the final round included",
+    "initialization": "The same seed-specific four-head initializer for every arm within a seed; compare returned initial tensors across all participating clients and arms",
+    "fits": "Every arm, including plus_all3, is a NEW_FIXED_FIT for seeds 64-68; no cache",
+    "historical_results": "Seeds 61-63 retain their existing registered results and origins",
+    "no_exclusions": true,
+    "no_replacement_seeds": true,
+    "reporting": "Report all four arms and all eight seeds, including negative results. An incomplete or invalid run produces no eight-seed analysis or table",
+    "smoke": "One round per arm in a UUID subdirectory; no heldout response loading or scoring",
+    "limits": {
+      "smoke_wall_seconds": 120,
+      "full_wall_seconds": 600,
+      "first_target_fit_seconds": 120
+    },
+    "scope": "Retrospective extension on the existing historically exposed heldout; no new test split"
+  },
+  "preregistration_sha256": "229dfd6f7a3a4fac22c0ad373dbbbaaf2e24d02d19416b029a270e2c6b45dd2d",
+  "aggregator_sha256": "4477739ff525dcd9276f7534d059c4c0b5fe0e2e8058855e811fac89c9a595a6",
+  "analysis_environment": {
+    "python": "3.10.20 (main, Mar 11 2026, 17:46:40) [GCC 14.3.0]",
+    "numpy": "1.26.4"
+  },
+  "input_sha256": {
+    "/liziqing/yukai/AI4AI4Cell/results/proteomics_scenario_labs_20260924/protocol.json": "4e3f301dda42141786c761510185116348452fd21068ff3eca79c0c6984e1696",
+    "/liziqing/yukai/AI4AI4Cell/results/proteomics_scenario_labs_20260924/binding.json": "822d422931d4aca4fcd3ff066c4f82d2f56a2953c566057e06607b39255f4ec3",
+    "/liziqing/yukai/AI4AI4Cell/results/proteomics_scenario_labs_20260924/status.json": "40b77365aa918331cfed88ce2784d613fbc0d6dbe355c241e8f1ea948713b93a",
+    "/liziqing/yukai/AI4AI4Cell/results/proteomics_scenario_labs_20260924/heldout/results.json": "d65a1de425eb1f828cb4a10a9b32c964bcf7009ed4fcbc7ca91bbd8934e05dd3",
+    "/liziqing/yukai/AI4AI4Cell/results/proteomics_scenario_labs_20260924/independent_rescore.json": "c679ce2e2b4524ab4ce6f023e1c3bf74ea41e6af1fb5ca7c4a2fbd492fe99c9d",
+    "/liziqing/yukai/AI4AI4Cell/results/proteomics_scenario_labs_20260924/heldout/seal.json": "7e5f23c33f202cfbe6df7facf63e731df4782397b0d03778f2663b23f4cc106b",
+    "/liziqing/yukai/AI4AI4Cell/results/proteomics_scenario_labs_20260924/selected_development.json": "ac35baeace535da2444078544bdc8b5f30206e2dafb4ed2f35add2ce86051b98",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed62/protocol.json": "ca801ef22226cfb6681dfa056ecc5fac20bacc45b2a89ac60705240a88c1f7d8",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed62/binding.json": "a4323299ce027db5e9bc84d936150efc861ebfdfe34b6f46fce673311d4f0955",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed62/status.json": "3de8c6ea12632bdbb2eb59c306858fc1394401608b257ec9fff05ac0b4d5f30c",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed62/heldout/results.json": "27a0dff19f86c61b644d646b18c5ed3647e1c3a49efe76754830d9c5a5e7ee2c",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed62/independent_rescore.json": "8786f0e913c39376d71ff40cc5302785c2181e153c189ca1e8806659afe91e37",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed62/heldout/seal.json": "36623a64511c8f5fa4b583b9be646104fe33c25500ab376f1876133c5e0e085e",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed62/selected_development.json": "d681d6f431307828bd5212db80f521894db6948eb2fa73aede0c2f3418c9b68f",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed63/protocol.json": "37854eee132e51f12eb2f7bffbba42e05f84f4927a2372ba8c3c88f14389d24e",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed63/binding.json": "6c779df99e7181e8ec31951838f320e17b1a01a6b33ec9dc50b6fb9d6d7b4ee2",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed63/status.json": "9dbd16bfdb45f20e883d089b0478a8a319b91dc9e2d96b268b350e45abc40b40",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed63/heldout/results.json": "4f959fa2472ce6bd07c96fdf230df3dc46fdab2e7e50897d371cf4d7552f552b",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed63/independent_rescore.json": "16a8806658e85ce3867614cfbdc171404c81761000dcb9605d66e0b12b056bc1",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed63/heldout/seal.json": "a8a50a93ad8ee961c7dbfc4860c091162f6ed080d7830eff8b1953190fbf17aa",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed63/selected_development.json": "625382320c31eca9602ea9eb277875613015823099b7fc7e48937cce80e03031",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed64/protocol.json": "7713349a3ff2d19b6f297dd2e10186265d8815e5d4f2ab8239b59397ac3c6e7c",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed64/binding.json": "6fef9407da3bf1d60b5b6f3fb62084608bea23ab7b3a5e13d7e03c7684b38825",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed64/status.json": "435e778474a1bf12036414d49b6d5d9ff44e467416c576973a7082669a673410",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed64/heldout/results.json": "fe6e89e62398be69b09a56713f243e246bd9770f91a0237adb0088f9509a8dc6",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed64/independent_rescore.json": "15e32ab2ad3dcda7e90d40eef34d1ea0a26b4463bd74122057e2d3e99a688f87",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed64/heldout/seal.json": "eb529459a591041674143cb169e287e76ab7f1ed57d08116489eac491fef120b",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed64/selected_development.json": "0d39144308be4facd4de0ef2334bf7f8c494051f1adb9c2a32e4670b3ec86f38",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed65/protocol.json": "72267cb43413e7a25399139da86ffffd547ba8dd59bcd003396947588aae1935",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed65/binding.json": "23cdb07fe642923bfd08e22b299ba1a15d4dc9f31f89a4bd69a02086bd002875",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed65/status.json": "5cb7ef15ec263e5cf76f54a419fe1553295d0519f600bc16a096f9003eb227d0",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed65/heldout/results.json": "00edc614767b65831abcda1ba02043298d99b0b3e492dd6d3304b84ded8e08c3",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed65/independent_rescore.json": "ccb97936ef784b2521b02e50540a3d27d21461c401d2aa4b6c9453ce5e68ff5e",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed65/heldout/seal.json": "62d9f033f0156f96f3be4b8a6b0be914ab6f87585bb14babe25ca6da12897a66",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed65/selected_development.json": "0d91b60900947a3e2657f7e8f0ae76047dbdb75f71682f9d51c53e069012b5ca",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed66/protocol.json": "1ba91a27cc9401311283c5d310d6cad7c04bf436bc99d2994cc19998701ef804",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed66/binding.json": "6f0daaa4c34d7ef6e0e6e59288fdf2408948aab455efcf0c455e9f2f26a34bcd",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed66/status.json": "c96a86030f4ea588f3d806ee650ea88e854a67a9efc1292aa87ad06cc7b92a77",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed66/heldout/results.json": "e09e93d5a07f977e726b738d73585ba0bc07c24d06fb2672b6b47c5fe67f614d",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed66/independent_rescore.json": "034fc6c97160a9870b34434a8ea81c1790a9456c7d3825f188c5662d69387c10",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed66/heldout/seal.json": "c2e7a4d34e1cc9751697112d9b9c763c74b2dd780c55fedc120c37ee2fad99fd",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed66/selected_development.json": "89a08737c7a0b18a3f501b7c7cdb5443b8790f72c66bc533136a1de2631ee02f",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed67/protocol.json": "b4962bc02e1f8fc6291ad213495a130a5d2229ce3bd3e1321e9c9452372a8b4f",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed67/binding.json": "c7562f2f376354442a83d4b87d3b656e5a8588559a51fd12f34ecced9cb36ed0",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed67/status.json": "6d514264bc73a002cef0ed873622ebb667852e302c66d15a75ede5a82a36119b",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed67/heldout/results.json": "744265c6d9cc718cf5f03c8e75b0197dd2847891dd9ca2a8162c17757afc51b1",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed67/independent_rescore.json": "7dcc98d3d21a78636ba35c1f983e600434f6b2a817945ef5914c33a4cef69a5e",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed67/heldout/seal.json": "d9921b3ea6da996b2068a324e19e90c51fb30a118b69d598cd4f82f8e7ebd2da",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed67/selected_development.json": "0ffdaea07d34bbc28912743f879bd247e56088309eff26df1c8d7e93e0bde0d9",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed68/protocol.json": "318de5d3c90755952fa5ba3e9d877cbf87a43529b2388d43e414a78730031d57",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed68/binding.json": "dc955d45e77662cc0f6533243883f1be1cc83d90f5edc03c1fcacfda2020a6af",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed68/status.json": "ffe0a70931e0cdb2612e3d276b9ea06eb32e1ac58140997e52b589f834cb7d76",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed68/heldout/results.json": "ae1e9ead888c2fb35008dc5d72e010f804937d3a4cfb486a8cbdedc8e142178f",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed68/independent_rescore.json": "1bd041e940bfbb446d502c4bb6931518fd73ef418e38616c1825541a97151fdd",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed68/heldout/seal.json": "9dec25101b79378533150a908efaf0b83d0eb756b82cbc3251ef6dfebc789ef5",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed68/selected_development.json": "ff9c88ce4ee0fa6d0f2da3b0a3abdf8ace5a25c811a4d4d236172f60f613a861",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed64/initialization_check.json": "267553613ad6135f34bbd7ae11dc9cc95dca61400c66ac2c82ab4167c9c38a48",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed64/run_started.json": "7280a5e03e89ed56f8f9e98a7cf5a8a1e7d60afda16de1037c5cdbf210d28451",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed64/provenance.json": "08e2d24cc1054ca0066ec13d219a4eb94fdc380d2283c194f57889ee11cc6266",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed65/initialization_check.json": "40e0f6dbb5b08249e414fec6e48aa447e71140f72ba20feabbd804afd454cef3",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed65/run_started.json": "f9d7644cff9d6376f92d55787b4efc351af2a6177d2d90cda3c48145fe255bb3",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed65/provenance.json": "08e2d24cc1054ca0066ec13d219a4eb94fdc380d2283c194f57889ee11cc6266",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed66/initialization_check.json": "af6cbe76772b4b3b0f9c7a3c723e8b92ffbd7b465428ee4df1b63439eaa80d84",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed66/run_started.json": "4037af7b27b713f14515dae1a397c45f22c31346b8c636c3057f2c5da3628e68",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed66/provenance.json": "08e2d24cc1054ca0066ec13d219a4eb94fdc380d2283c194f57889ee11cc6266",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed67/initialization_check.json": "106484d1232ab2b23923a2b59748951e2ac396cbc6cd51e5f55f779de1c93472",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed67/run_started.json": "c2c721d3c6fcde1246aedca8453800bd5ef2fb3f6257a3a059a9d1c6ed82d2e7",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed67/provenance.json": "08e2d24cc1054ca0066ec13d219a4eb94fdc380d2283c194f57889ee11cc6266",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed68/initialization_check.json": "3d27ca994a6ae75a412b8b374020b741a7eb14afb3be448a35af58ce8be6faac",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed68/run_started.json": "a715cebecba533540c8e0371e1ddf6b458cded0dbce2120a94d3ef5ce4576960",
+    "/liziqing/yukai/AI4AI4Cell/results/rebuttal_round3_20261111/proteomics_sources_seed68/provenance.json": "08e2d24cc1054ca0066ec13d219a4eb94fdc380d2283c194f57889ee11cc6266"
+  },
+  "per_seed": {
+    "61": {
+      "target_only": {
+        "ap": 34.41266666003415,
+        "auroc": 72.33044733044733
+      },
+      "plus_decrypte": {
+        "ap": 36.579680384464574,
+        "auroc": 73.80952380952381
+      },
+      "plus_existing2": {
+        "ap": 36.09469630778587,
+        "auroc": 72.6911976911977
+      },
+      "plus_all3": {
+        "ap": 37.53201257883583,
+        "auroc": 74.3867243867244
+      }
+    },
+    "62": {
+      "target_only": {
+        "ap": 34.33860776800643,
+        "auroc": 71.93362193362194
+      },
+      "plus_decrypte": {
+        "ap": 41.223366424113465,
+        "auroc": 75.21645021645021
+      },
+      "plus_existing2": {
+        "ap": 35.55090425304721,
+        "auroc": 72.94372294372295
+      },
+      "plus_all3": {
+        "ap": 40.96457646499509,
+        "auroc": 75.14430014430015
+      }
+    },
+    "63": {
+      "target_only": {
+        "ap": 29.4939675868614,
+        "auroc": 70.2020202020202
+      },
+      "plus_decrypte": {
+        "ap": 39.32453892809009,
+        "auroc": 74.78354978354979
+      },
+      "plus_existing2": {
+        "ap": 29.170345019828005,
+        "auroc": 70.56277056277057
+      },
+      "plus_all3": {
+        "ap": 37.671545400280365,
+        "auroc": 74.74747474747475
+      }
+    },
+    "64": {
+      "target_only": {
+        "ap": 31.30349511952289,
+        "auroc": 71.06782106782107
+      },
+      "plus_decrypte": {
+        "ap": 40.421205140631116,
+        "auroc": 75.46897546897547
+      },
+      "plus_existing2": {
+        "ap": 44.39562768961244,
+        "auroc": 76.5873015873016
+      },
+      "plus_all3": {
+        "ap": 39.95261074508652,
+        "auroc": 75.57720057720057
+      }
+    },
+    "65": {
+      "target_only": {
+        "ap": 41.706654108253275,
+        "auroc": 75.82972582972583
+      },
+      "plus_decrypte": {
+        "ap": 36.17060014383869,
+        "auroc": 74.27849927849928
+      },
+      "plus_existing2": {
+        "ap": 29.930447280542367,
+        "auroc": 71.78932178932179
+      },
+      "plus_all3": {
+        "ap": 35.839418322507186,
+        "auroc": 74.02597402597402
+      }
+    },
+    "66": {
+      "target_only": {
+        "ap": 37.18601378868141,
+        "auroc": 73.66522366522366
+      },
+      "plus_decrypte": {
+        "ap": 36.27113881135134,
+        "auroc": 75.39682539682539
+      },
+      "plus_existing2": {
+        "ap": 35.18027789211572,
+        "auroc": 72.40259740259741
+      },
+      "plus_all3": {
+        "ap": 35.801092439491015,
+        "auroc": 75.54112554112554
+      }
+    },
+    "67": {
+      "target_only": {
+        "ap": 35.30830296433292,
+        "auroc": 71.42857142857143
+      },
+      "plus_decrypte": {
+        "ap": 35.49315696695233,
+        "auroc": 73.05194805194806
+      },
+      "plus_existing2": {
+        "ap": 30.747777299112784,
+        "auroc": 70.38239538239537
+      },
+      "plus_all3": {
+        "ap": 35.075717891685585,
+        "auroc": 73.3044733044733
+      }
+    },
+    "68": {
+      "target_only": {
+        "ap": 33.0505841797643,
+        "auroc": 69.98556998556998
+      },
+      "plus_decrypte": {
+        "ap": 33.60428094101345,
+        "auroc": 71.13997113997114
+      },
+      "plus_existing2": {
+        "ap": 33.35536914978986,
+        "auroc": 70.56277056277057
+      },
+      "plus_all3": {
+        "ap": 31.752251602163067,
+        "auroc": 70.27417027417027
+      }
+    }
+  },
+  "arms": {
+    "target_only": {
+      "label": "Target study",
+      "K": 1,
+      "n_train": 386,
+      "metrics": {
+        "ap": {
+          "mean": 34.6000365219321,
+          "sample_sd": 3.725133046568421,
+          "mean_ci95": [
+            32.3381358731133,
+            37.119954240303315
+          ],
+          "paired_minus_target_only": {
+            "by_seed_pp": {
+              "61": 0.0,
+              "62": 0.0,
+              "63": 0.0,
+              "64": 0.0,
+              "65": 0.0,
+              "66": 0.0,
+              "67": 0.0,
+              "68": 0.0
+            },
+            "mean_pp": 0.0,
+            "mean_ci95_pp": [
+              0.0,
+              0.0
+            ],
+            "wins": 0,
+            "losses": 0,
+            "ties": 8
+          }
+        },
+        "auroc": {
+          "mean": 72.05537518037518,
+          "sample_sd": 1.9278036280402664,
+          "mean_ci95": [
+            70.92352092352091,
+            73.38564213564214
+          ],
+          "paired_minus_target_only": {
+            "by_seed_pp": {
+              "61": 0.0,
+              "62": 0.0,
+              "63": 0.0,
+              "64": 0.0,
+              "65": 0.0,
+              "66": 0.0,
+              "67": 0.0,
+              "68": 0.0
+            },
+            "mean_pp": 0.0,
+            "mean_ci95_pp": [
+              0.0,
+              0.0
+            ],
+            "wins": 0,
+            "losses": 0,
+            "ties": 8
+          }
+        }
+      }
+    },
+    "plus_decrypte": {
+      "label": "+ decryptE",
+      "K": 2,
+      "n_train": 881,
+      "metrics": {
+        "ap": {
+          "mean": 37.38599596755688,
+          "sample_sd": 2.6444092477145054,
+          "mean_ci95": [
+            35.72832811794575,
+            39.11554294932871
+          ],
+          "paired_minus_target_only": {
+            "by_seed_pp": {
+              "61": 2.1670137244304257,
+              "62": 6.8847586561070315,
+              "63": 9.83057134122869,
+              "64": 9.117710021108227,
+              "65": -5.5360539644145845,
+              "66": -0.9148749773300651,
+              "67": 0.1848540026194101,
+              "68": 0.5536967612491495
+            },
+            "mean_pp": 2.7859594456247856,
+            "mean_ci95_pp": [
+              -0.6444679749594853,
+              6.2399796542601305
+            ],
+            "wins": 6,
+            "losses": 2,
+            "ties": 0
+          }
+        },
+        "auroc": {
+          "mean": 74.1432178932179,
+          "sample_sd": 1.4750802009302335,
+          "mean_ci95": [
+            73.10155122655124,
+            75.0
+          ],
+          "paired_minus_target_only": {
+            "by_seed_pp": {
+              "61": 1.4790764790764825,
+              "62": 3.2828282828282767,
+              "63": 4.581529581529594,
+              "64": 4.4011544011544,
+              "65": -1.5512265512265486,
+              "66": 1.731601731601728,
+              "67": 1.623376623376629,
+              "68": 1.1544011544011568
+            },
+            "mean_pp": 2.087842712842715,
+            "mean_ci95_pp": [
+              0.7485569985569995,
+              3.3279220779220786
+            ],
+            "wins": 7,
+            "losses": 1,
+            "ties": 0
+          }
+        }
+      }
+    },
+    "plus_existing2": {
+      "label": "+ Lin + Ruprecht",
+      "K": 3,
+      "n_train": 491,
+      "metrics": {
+        "ap": {
+          "mean": 34.30318061147928,
+          "sample_sd": 4.875583008587119,
+          "mean_ci95": [
+            31.451599633809664,
+            37.768649571481255
+          ],
+          "paired_minus_target_only": {
+            "by_seed_pp": {
+              "61": 1.682029647751719,
+              "62": 1.212296485040774,
+              "63": -0.32362256703339654,
+              "64": 13.09213257008955,
+              "65": -11.776206827710908,
+              "66": -2.005735896565689,
+              "67": -4.560525665220133,
+              "68": 0.30478497002555827
+            },
+            "mean_pp": -0.2968559104528157,
+            "mean_ci95_pp": [
+              -4.651851665656986,
+              4.463511442326649
+            ],
+            "wins": 4,
+            "losses": 4,
+            "ties": 0
+          }
+        },
+        "auroc": {
+          "mean": 72.24025974025975,
+          "sample_sd": 2.03203897388716,
+          "mean_ci95": [
+            71.07683982683983,
+            73.69227994227995
+          ],
+          "paired_minus_target_only": {
+            "by_seed_pp": {
+              "61": 0.36075036075037303,
+              "62": 1.0101010101010104,
+              "63": 0.36075036075037303,
+              "64": 5.519480519480524,
+              "65": -4.0404040404040416,
+              "66": -1.2626262626262559,
+              "67": -1.0461760461760576,
+              "68": 0.5772005772005855
+            },
+            "mean_pp": 0.18488455988456387,
+            "mean_ci95_pp": [
+              -1.470057720057719,
+              2.0247113997114035
+            ],
+            "wins": 5,
+            "losses": 3,
+            "ties": 0
+          }
+        }
+      }
+    },
+    "plus_all3": {
+      "label": "+ Lin + Ruprecht + decryptE",
+      "K": 4,
+      "n_train": 986,
+      "metrics": {
+        "ap": {
+          "mean": 36.82365318063058,
+          "sample_sd": 2.9018973057051984,
+          "mean_ci95": [
+            34.93220084801192,
+            38.67021263247679
+          ],
+          "paired_minus_target_only": {
+            "by_seed_pp": {
+              "61": 3.1193459188016845,
+              "62": 6.625968696988657,
+              "63": 8.177577813418964,
+              "64": 8.649115625563628,
+              "65": -5.8672357857460895,
+              "66": -1.3849213491903924,
+              "67": -0.23258507264733197,
+              "68": -1.2983325776012329
+            },
+            "mean_pp": 2.223616658698486,
+            "mean_ci95_pp": [
+              -1.1944074405238805,
+              5.586701019661942
+            ],
+            "wins": 4,
+            "losses": 4,
+            "ties": 0
+          }
+        },
+        "auroc": {
+          "mean": 74.12518037518038,
+          "sample_sd": 1.737042019120273,
+          "mean_ci95": [
+            72.86706349206348,
+            75.0676406926407
+          ],
+          "paired_minus_target_only": {
+            "by_seed_pp": {
+              "61": 2.056277056277068,
+              "62": 3.2106782106782106,
+              "63": 4.545454545454561,
+              "64": 4.5093795093794995,
+              "65": -1.8037518037518083,
+              "66": 1.8759018759018744,
+              "67": 1.8759018759018744,
+              "68": 0.28860028860029274
+            },
+            "mean_pp": 2.0698051948051965,
+            "mean_ci95_pp": [
+              0.6492379148629153,
+              3.377525252525256
+            ],
+            "wins": 7,
+            "losses": 1,
+            "ties": 0
+          }
+        }
+      }
+    }
+  },
+  "win_counts": {
+    "target_only": {
+      "ap": {
+        "wins": 0,
+        "losses": 0,
+        "ties": 8
+      },
+      "auroc": {
+        "wins": 0,
+        "losses": 0,
+        "ties": 8
+      }
+    },
+    "plus_decrypte": {
+      "ap": {
+        "wins": 6,
+        "losses": 2,
+        "ties": 0
+      },
+      "auroc": {
+        "wins": 7,
+        "losses": 1,
+        "ties": 0
+      }
+    },
+    "plus_existing2": {
+      "ap": {
+        "wins": 4,
+        "losses": 4,
+        "ties": 0
+      },
+      "auroc": {
+        "wins": 5,
+        "losses": 3,
+        "ties": 0
+      }
+    },
+    "plus_all3": {
+      "ap": {
+        "wins": 4,
+        "losses": 4,
+        "ties": 0
+      },
+      "auroc": {
+        "wins": 7,
+        "losses": 1,
+        "ties": 0
+      }
+    }
+  },
+  "no_exclusions": true,
+  "no_replacement_seeds": true
+}

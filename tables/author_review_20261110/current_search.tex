@@ -1,16 +1,16 @@
 \begin{table}[htbp]
 \centering\small
-\caption{Matched-access search in three separate protocols (three training/controller runs; mean $\pm$ sample SD, scores $\times100$). DTI/protein: Luna, 36 recipes, ten laboratories, one historical starting predictor per task. Cell: Qwen, 16 designs, four study--cell contexts and gene-disjoint partitions. Searches allow six requests after D00 and 20 rounds per valid fit; comparisons are within columns. Complete feedback, proposer and GP controls appear in E.6/E.9. Bold marks the best means, including ties.}
+\caption{Matched-access search in three separate protocols (eight training/controller runs: the original three plus five registered extensions; mean $\pm$ sample SD, scores $\times100$). DTI/protein: Luna, 36 recipes, ten laboratories, one historical starting predictor per task. Cell: Qwen, 16 designs, four study--cell contexts and gene-disjoint partitions. Searches allow six requests after D00 and 20 rounds per valid fit; comparisons are within columns. Complete feedback, proposer and GP controls appear in E.6/E.9. Bold marks the best means, including ties.}
 \label{tab:author-review-current-search}
 \begin{tabular}{lrrr}
 \toprule
 Policy & DTI AUROC & Protein AP & Cell Top-1 \\
 \midrule
-Fitted D00 & $94.271 \pm 0.000$ & $37.109 \pm 0.000$ & $21.428 \pm 0.096$ \\
-Direct & $\mathbf{94.368 \pm 0.006}$ & $\mathbf{39.017 \pm 0.659}$ & $22.625 \pm 0.211$ \\
-Structured history & $\mathbf{94.368 \pm 0.006}$ & $38.572 \pm 0.558$ & $22.888 \pm 0.559$ \\
-Random expectation & $94.316 \pm 0.007$ & $38.655 \pm 0.278$ & $22.668 \pm 0.214$ \\
-GP--EI & $94.290 \pm 0.029$ & $\mathbf{39.017 \pm 0.659}$ & $\mathbf{23.152 \pm 0.352}$ \\
+Fitted D00 & $94.271 \pm 0.000$ & $37.109 \pm 0.000$ & $21.370 \pm 0.217$ \\
+Direct & $\mathbf{94.372 \pm 0.005}$ & $38.994 \pm 0.537$ & $22.344 \pm 0.506$ \\
+Structured history & $\mathbf{94.372 \pm 0.005}$ & $38.789 \pm 0.644$ & $22.753 \pm 0.528$ \\
+Random expectation & $94.319 \pm 0.006$ & $38.581 \pm 0.381$ & $22.692 \pm 0.206$ \\
+GP--EI & $94.286 \pm 0.021$ & $\mathbf{39.016 \pm 0.544}$ & $\mathbf{23.278 \pm 0.344}$ \\
 \bottomrule
 \end{tabular}
 \end{table}

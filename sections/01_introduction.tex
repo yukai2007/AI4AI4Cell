@@ -7,7 +7,7 @@ Local development evidence provides a complementary research signal: it records 
 
 BioCoLoop extends collaboration from parameter fitting to model development by sharing both model updates and laboratory-local development evidence. Figure~\ref{fig:paradigms} places this framework alongside centralized self-improving agents and conventional collaborative training. An inner loop fits and evaluates candidates across laboratories. An outer loop uses the resulting evidence to revise proposals. Collaborative participation supplies training data and evaluation panels; development-history feedback uses their measured outcomes to guide search. We also evaluate a separate policy that uses early development trajectories to allocate further training.
 
-We evaluate BioCoLoop on three biological task families with two proposal models, conventional search controls and task-adapted research-agent baselines. Following the established federated-learning protocol \citep{Sheller2020,Chang2018Distributed,Terrail2022FLamby,WarnatHerresthal2021Swarm}, the central question is what laboratories gain by developing a model together rather than alone, measured on common held-out tests; same-access controls then characterize the search and allocation components. Our contributions are:
+We evaluate BioCoLoop on three biological task families with two proposal models, conventional search controls and task-adapted research-agent baselines. Following common practice in federated learning (Section~4.2), the central question is what laboratories gain by developing a model together rather than alone, measured on common held-out tests; same-access controls then characterize the search and allocation components. Our contributions are:
 
 \begin{figure}[t]
 \centering
@@ -19,6 +19,6 @@ Research settings for biological AI. A centralized bio-agent revises a model usi
 
 \begin{itemize}
 \item We introduce BioCoLoop, a collaborative model-development framework in which laboratories jointly configure, train and evaluate biological predictors through a common interface while retaining raw measurements locally.
-\item We show that collaboration yields substantially stronger models: the same BioCoLoop workflow improves all five primary endpoints with ten laboratories relative to one, beyond what single-laboratory random, Bayesian or exhaustive search attains, and laboratories holding distinct biological studies improve target prediction.
+\item We show that collaboration yields substantially stronger models: the same BioCoLoop workflow improves all five primary endpoints in mean with ten laboratories relative to one, beyond what single-laboratory random, Bayesian or exhaustive search attains, and laboratories holding distinct proteomic studies improve target ranking. A ten-laboratory fixed-design control separates the contribution of shared data from that of collaborative design search.
 \item We show that collaborative development evidence also guides training allocation at a matched budget, and use same-access controls to characterize how proposal history and promotion rules contribute.
 \end{itemize}

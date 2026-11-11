@@ -24,11 +24,9 @@ MODELS = {'native_tapb': 'TAPB; random task weights with public frozen features'
           'vcc_corrected': 'mask-corrected scDEBART adaptation',
           'norman_double_corrected': 'mask-corrected scDEBART adaptation',
           'tahoe_drug_corrected': 'mask-corrected scDEBART with drug-conditioning adapter'}
-# Every published arm table shows the committed design: the fixed and feedback-free direct references
-# train or search on a single site, so they appear only at one laboratory, and BioCoLoop appears at one
-# and ten laboratories.
-DISPLAY_ARMS = [arm for arm in ARMS if arm[0] in
-                {'single_fixed', 'single_direct', 'single_loop', 'federated_loop'}]
+# Every published arm table shows the complete factorial: fixed, feedback-free direct and BioCoLoop
+# arms at one and ten laboratories, so participation and search effects can be read separately.
+DISPLAY_ARMS = list(ARMS)
 
 TAPB_CLUSTER_UNITS = {'random': 'SMILES', 'unseen_drug': 'SMILES', 'unseen_protein': 'Protein'}
 TAPB_BOOTSTRAP_CONTRASTS = {
@@ -316,10 +314,10 @@ def table(snapshot, out, full=False):
         (out/'main.tex').write_text('\n'.join(lines)+'\n')
         return
 
-    caption=('Control comparison for the task-reference models. The fixed and feedback-free direct '
-             'references train or search on a single site, so they are reported on one laboratory; '
-             'BioCoLoop is reported at one and ten laboratories so that the effect of laboratory '
-             'participation can be read under the same research loop. '
+    caption=('Control comparison for the task-reference models. Each method is reported with one '
+             'laboratory and with ten: comparing rows within a block isolates design search, and comparing '
+             'blocks isolates laboratory participation. Direct and BioCoLoop attain the same primary score '
+             'in every ten-laboratory run; their selected predictors need not be identical. '
              'Entries are held-out mean $\\pm$ sample SD '
              'across completed training/search seeds, multiplied by 100. '
              'The data partitions remain fixed; this SD measures run-to-run variation, not dataset uncertainty. '
@@ -342,7 +340,7 @@ def table(snapshot, out, full=False):
             if value==best: text=r'\textbf{'+text+'}'
             if full and sd is not None: text+=r'{\scriptsize$\pm'+f'{100*sd:.2f}'+r'$}'
             cells.append(text)
-        if labs=='10': lines.append(r'\midrule')
+        if labs=='10' and arm.startswith('federated_fixed'): lines.append(r'\midrule')
         lines.append(f'{labs} & {name} & '+' & '.join(cells)+r' \\')
     requested = len(snapshot.get('seeds_requested', SEEDS))
     lines += [r'\midrule',r'\multicolumn{2}{l}{Completed seeds ($n/'+str(requested)+r'$)} & '+' & '.join(
@@ -520,9 +518,16 @@ def dti_endpoints(snapshot,out):
 def main():
     from publish_racing_snapshot import publish_racing
     parser=argparse.ArgumentParser(); parser.add_argument('--results',type=Path,default=ROOT/'results/unified_bio_20260918')
-    args=parser.parse_args(); snapshot=collect(args.results); out=PAPER/'tables/strong_v3'; out.mkdir(parents=True,exist_ok=True)
-    (out/'snapshot.json').write_text(json.dumps(snapshot,indent=2,allow_nan=False)+'\n')
-    table(snapshot,out); table(snapshot,out,True); publish_racing(args.results,out); effects(snapshot,out,True); secondary(snapshot,out)
+    parser.add_argument('--from-snapshot',action='store_true',help='Re-render tables from the committed snapshot without server results')
+    args=parser.parse_args(); out=PAPER/'tables/strong_v3'; out.mkdir(parents=True,exist_ok=True)
+    if args.from_snapshot:
+        snapshot=read(out/'snapshot.json')
+    else:
+        snapshot=collect(args.results)
+        (out/'snapshot.json').write_text(json.dumps(snapshot,indent=2,allow_nan=False)+'\n')
+    table(snapshot,out); table(snapshot,out,True)
+    if not args.from_snapshot: publish_racing(args.results,out)
+    effects(snapshot,out,True); secondary(snapshot,out)
     uncertainty(snapshot,out); macros(snapshot,out); dti_endpoints(snapshot,out); dti_uncertainty(snapshot,out)
     print(json.dumps(dict(completed_seeds={t:len(runs(snapshot,t)) for t,_,_ in TASKS},role=HELDOUT_ROLE)))
 

@@ -12,7 +12,9 @@ Random search evaluates D00 and six distinct randomly sampled designs. Bayesian 
 
 \input{tables/single_lab_search/comparison}
 
-The ten-laboratory framework exceeds all three single-laboratory search strategies in mean score on all five endpoints. Including the fixed-model control, it leads on four endpoints; Norman's fixed model retains the best Top-1. This is an access-scenario comparison of complete workflows. Appendix A and Section 4.7 separately hold laboratory access fixed.
+The ten-laboratory framework exceeds all three single-laboratory search strategies in mean score on all five endpoints. With one laboratory, every search strategy, including BioCoLoop, selects designs on laboratory 0's development panel alone. These designs differ across strategies and seeds but score similarly on the test set, and on proteomics and the cell tasks they fall below the single-laboratory fixed model: rankings on one laboratory's small development panel do not transfer reliably to the held-out set. Ten laboratories supply both more training data and a larger development population.
+
+The two fixed-model rows separate these sources. Training D00 on all ten laboratories raises DTI, proteomics, VCC and Tahoe but lowers Norman from 25.56 to 15.48. Ten-laboratory BioCoLoop adds 1.96 AUROC on DTI and 6.77 Top-1 points on Norman, nearly matches the fixed model on proteomics (36.99 versus 37.07 AP) and ties it on VCC, and is 3.48 points lower on Tahoe; Appendix E.3 analyzes this development--test divergence. These rows compare access scenarios of complete workflows; Appendix A and Section 4.7 separately hold laboratory access fixed.
 
 \subsection*{D.2 Search variability and held-out uncertainty}
 Table~\ref{tab:single-lab-search-expectation} integrates random choices over all $\binom{11}{6}=462$ subsets per training seed, always including D00. Ties integrate proposal orders under the original selection rule. These are expected selected-model scores, not ensembled predictions. The collaborative framework also exceeds these expectations on all five endpoints.

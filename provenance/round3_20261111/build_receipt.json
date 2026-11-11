@@ -1,0 +1,352 @@
+{
+  "total_pages": 47,
+  "anonymity_check": "PASS: text, author metadata and links",
+  "annotation_check": "PASS",
+  "page_geometry_check": "PASS",
+  "main_text_ends_page": 10,
+  "conclusion_heading_page": 10,
+  "reproducibility_starts_page": 10,
+  "main_page_rule": "Last non-header/non-line-number text before reproducibility, including continued conclusion text",
+  "base_commit": "0416256",
+  "protected_files_unchanged": 380,
+  "regenerated_files_changed": [
+    "tables/author_review_20261110/current_search.provenance.json",
+    "tables/author_review_20261110/current_search.tex",
+    "tables/proteomics_scenario_labs_v2/build_table.py",
+    "tables/proteomics_scenario_labs_v2/provenance.json",
+    "tables/proteomics_scenario_labs_v2/results.csv",
+    "tables/proteomics_scenario_labs_v2/summary.zh-CN.md",
+    "tables/proteomics_scenario_labs_v2/table.tex",
+    "tables/rebuttal_20261109/access_scenario.tex",
+    "tables/single_lab_search/comparison.tex",
+    "tables/strong_v3/ablation.tex",
+    "tables/strong_v3/dti_endpoints.tex",
+    "tables/strong_v3/secondary.tex"
+  ],
+  "added_sources": [
+    "tables/rebuttal_round3_20261111/e6_eight_seed.tex",
+    "tables/rebuttal_round3_20261111/e9_eight_seed.tex"
+  ],
+  "original_figures_retained": true,
+  "extensions": {
+    "e6": {
+      "analysis_sha256": "5f545a0b20b12173ba6c783a7650b419da5b57ca8054f8b5714acfe733cb5808",
+      "groups": [
+        "qwen/cell"
+      ]
+    },
+    "e9": {
+      "analysis_sha256": "059b9abc47f3ebc2a461e99d5c12887ad4cd6e488f3eb88257c81a349365d851",
+      "groups": [
+        "luna/dti",
+        "luna/protein",
+        "qwen/dti",
+        "qwen/protein"
+      ]
+    },
+    "proteomics": {
+      "analysis_sha256": "a65c415b253e4c02247c3267103b902e78ac8aa12789a13652024fcfaf262e83"
+    }
+  },
+  "schema": "round3-rebuttal-release-v1",
+  "status": "PASS",
+  "created_utc": "2026-11-11T01:29:22.000871+00:00",
+  "main_page_limit": 10,
+  "formatting_source": "https://iclr.cc/Conferences/2027/AuthorGuidelines",
+  "official_style_sha256": {
+    "iclr2027_conference.sty": "797deef41724e93761426ac0cbcca46279a91cc650dd1f0ce76a4f08d2098ea6",
+    "iclr2027_conference.bst": "2d67552db7ed38ccfccb5957b52f95656e25c249724761d3cf5f7922ad1844c5",
+    "natbib.sty": "88bc70c0e48461934cab5b2accef06b74a8b3ac45ad03ccd3f2a6b7e0d6d530d",
+    "fancyhdr.sty": "b56ec4434b9f4607529a4b23dc68ad8d4b94f1f631c8cddaf7da78140d53a5ea"
+  },
+  "official_style_zip_sha256": "0d940dfa9398ae99a18f24a85a8a683f367204b6af6d17d2899e60a67102529e",
+  "body_font_10pt_characters": {
+    "NimbusRomNo9L-Regu": 35117,
+    "NimbusRomNo9L-Medi": 242,
+    "CMMI10": 240,
+    "NimbusRomNo9L-ReguItal": 290,
+    "CMR10": 220,
+    "CMSY10": 90,
+    "NimbusMonL-Regu": 57,
+    "CMEX10": 23
+  },
+  "custom_global_spacing": false,
+  "font_fallback": false,
+  "overfull_boxes": 0,
+  "undefined_references": 0,
+  "compiled_number_map": {
+    "fig:paradigms": {
+      "number": "1",
+      "pdf_page": 2
+    },
+    "fig:research-interface": {
+      "number": "2",
+      "pdf_page": 4
+    },
+    "tab:public-harness-comparison-three-seed": {
+      "number": "1",
+      "pdf_page": 8
+    },
+    "tab:strong-effects": {
+      "number": "2",
+      "pdf_page": 8
+    },
+    "fig:lab-sensitivity": {
+      "number": "3",
+      "pdf_page": 9
+    },
+    "tab:author-review-current-search": {
+      "number": "3",
+      "pdf_page": 10
+    },
+    "tab:strong-secondary": {
+      "number": "A.2",
+      "pdf_page": 19
+    },
+    "tab:strong-dti-endpoints": {
+      "number": "A.3",
+      "pdf_page": 20
+    },
+    "tab:strong-ablation": {
+      "number": "A.1",
+      "pdf_page": 22
+    },
+    "tab:completed-participation": {
+      "number": "B.1",
+      "pdf_page": 23
+    },
+    "tab:completed-partition": {
+      "number": "B.2",
+      "pdf_page": 23
+    },
+    "tab:supplemental-source-clients": {
+      "number": "B.3",
+      "pdf_page": 24
+    },
+    "tab:completed-independent-transfer": {
+      "number": "B.4",
+      "pdf_page": 24
+    },
+    "tab:scenario-labs-matched": {
+      "number": "B.5",
+      "pdf_page": 25
+    },
+    "tab:supplemental-protein-three-source": {
+      "number": "B.6",
+      "pdf_page": 26
+    },
+    "tab:proteomics-study-clients": {
+      "number": "B.7",
+      "pdf_page": 27
+    },
+    "tab:completed-context-transfer": {
+      "number": "B.8",
+      "pdf_page": 27
+    },
+    "tab:proposal-heldout-combined": {
+      "number": "B.9",
+      "pdf_page": 28
+    },
+    "tab:completed-short6": {
+      "number": "B.9",
+      "pdf_page": 28
+    },
+    "tab:completed-long24": {
+      "number": "B.9",
+      "pdf_page": 28
+    },
+    "fig:completed-short-dev": {
+      "number": "4",
+      "pdf_page": 28
+    },
+    "fig:completed-long-dev": {
+      "number": "5",
+      "pdf_page": 29
+    },
+    "tab:proposal-dynamics-combined": {
+      "number": "B.10",
+      "pdf_page": 30
+    },
+    "tab:completed-dynamics-short6": {
+      "number": "B.10",
+      "pdf_page": 30
+    },
+    "tab:completed-dynamics-long24": {
+      "number": "B.10",
+      "pdf_page": 30
+    },
+    "tab:completed-menu-long24": {
+      "number": "B.11",
+      "pdf_page": 30
+    },
+    "tab:completed-norman-events": {
+      "number": "B.12",
+      "pdf_page": 31
+    },
+    "tab:single-lab-search": {
+      "number": "D.1",
+      "pdf_page": 34
+    },
+    "tab:single-lab-search-expectation": {
+      "number": "D.2",
+      "pdf_page": 35
+    },
+    "tab:single-lab-dti-endpoints": {
+      "number": "D.3",
+      "pdf_page": 35
+    },
+    "tab:rebuttal-matched-search": {
+      "number": "E.1",
+      "pdf_page": 38
+    },
+    "tab:rebuttal-validation": {
+      "number": "E.2",
+      "pdf_page": 38
+    },
+    "tab:rebuttal-roster": {
+      "number": "E.3",
+      "pdf_page": 39
+    },
+    "tab:rebuttal-source-history": {
+      "number": "E.4",
+      "pdf_page": 39
+    },
+    "tab:rebuttal-allocation": {
+      "number": "E.5",
+      "pdf_page": 39
+    },
+    "tab:fresh-history-comparison": {
+      "number": "E.6",
+      "pdf_page": 40
+    },
+    "tab:fresh-history-cost": {
+      "number": "E.7",
+      "pdf_page": 41
+    },
+    "tab:fresh-history-eight-seed": {
+      "number": "E.8",
+      "pdf_page": 41
+    },
+    "fig:fbhk-prefix": {
+      "number": "6",
+      "pdf_page": 42
+    },
+    "tab:fbhk-lab-identity": {
+      "number": "E.9",
+      "pdf_page": 43
+    },
+    "tab:panel-feedback-audit": {
+      "number": "E.10",
+      "pdf_page": 43
+    },
+    "tab:expanded-recipe-results": {
+      "number": "E.11",
+      "pdf_page": 45
+    },
+    "tab:recipe-expansion-eight-seed": {
+      "number": "E.12",
+      "pdf_page": 46
+    },
+    "tab:expanded-recipe-cost": {
+      "number": "E.13",
+      "pdf_page": 46
+    }
+  },
+  "manuscript_sha256": "477d70c326572633ebf42ad6078b233088d9ed305e66f530ef558c848356551c",
+  "build_log_sha256": "2e3fa408648e71d884c202711ca63725e8e68908d3ad4d6d505eeb7569e60b72",
+  "source_sha256": {
+    "biocoloop-main.tex": "cf167bc076fe0a7940238890a0d08f337b3cf57a9f08c4c0c59f114a8a0c1fd0",
+    "main.tex": "42ee170812615d83af2ce62d6c38fa8f273ee7c78dd8d5930303370c862ab907",
+    "output/pdf/BioCoLoop_reviewer_responses_round3_20261111.pdf": "9b59b38bc88ac1988ec26c3ff5df17d3bdc944680cd10e4d4e5c0c101f6692a2",
+    "provenance/rebuttal_20261109/RESPONSE_AfJB.md": "3c4a286b112722f79aebad12eff27cd247c0071727214213b4a765c94f26c553",
+    "provenance/rebuttal_20261109/RESPONSE_FBhK.md": "338d10b3c0e114b4595501a045c34540fd6f827e331b9babf728469ea077ce74",
+    "provenance/rebuttal_20261109/RESPONSE_cR5g.md": "2c25cfc2e4b04d8d91ba41b9bf552499d7a38310f151d29460a57a93badb55fa",
+    "references.bib": "5bc27ca50b7f841f0411e8932a0230c233896c00b366305916f2b74329cbedd7",
+    "references_v2.bib": "7f2c8d7214d7f8674ac1bffc376889675024ceaa05d8a4d1da3282c190f0e824",
+    "sections/01_introduction.tex": "1c8b72d1ad6acbd490425b1082a78504392814a0f4be3faa9196c0ca4af53788",
+    "sections/02_related_work.tex": "7770ba8c8f60881bc120993d22e79d74b1949d94c4d40bd6b694ca405f38d1d5",
+    "sections/03_method.tex": "a3913b988660d9272d44d59300447419a6a890de817a07c12568694d053945f6",
+    "sections/04_experimental_design.tex": "97a463a0ecf1bd61bb4753b8f8cef86ae614c08ecd64abfedc4976259b7ebeb2",
+    "sections/05_results.tex": "4d04a0eb55c4273fb5d1d6f2f0b17fad749905004aa955a12970b0dfce8c8b85",
+    "sections/07_conclusion.tex": "81e2f057be2855d944568a155ea96a889e3a7688fd3a2cda2ee74cfbc281c304",
+    "sections/08_reproducibility.tex": "9577e9969160ae1aa772adf46672467561bffefdb8521b3a227e5e20b46f952c",
+    "sections/22_appendix_unified_protocol.tex": "7d06d985214d21f65dcaab29f4c30867656f2635da65fca108c590cac4cdd271",
+    "sections/23_appendix_core_sensitivity.tex": "6eae56abc082313993fcd9786d962e55c21bebbdc779aade0dfe795e026046d6",
+    "sections/24_appendix_public_harness.tex": "6bff7bd7ff26423e1e6911327019102d80b20111d6a508679a3cf4e2572955c0",
+    "sections/25_appendix_single_lab_search.tex": "e6f46caa3a106849be1a159992a27fff4a8cdfac6f2d2673a0bf783fce542166",
+    "sections/26_appendix_rebuttal.tex": "d360058b46985b2d8905524cf48e8f10be09be650cd822026085a87597f8eb52",
+    "tables/author_review_20261110/current_search.provenance.json": "cc423d4bcf05a7f7b76fe4aacca15bf2605420db182ad1305e8718430e0f9764",
+    "tables/author_review_20261110/current_search.tex": "670a14d9c7d4d1858d6173cc19e4994ad050c633707d66d940a659139df4e029",
+    "tables/completed_ablation/lab_fixed_pool.tex": "8a8c151b408686c8b38b087171687063cb6a2703af96e8ba602aafc1db040069",
+    "tables/completed_ablation/lab_participation.tex": "ce6630622ecf9e642114b4a35d34284159e4423844dd4cd24d2889b3fdb1a48e",
+    "tables/completed_ablation/norman_retained_events.tex": "51a17869d49e1ce4fe0f9244298a7d38e0c237726e370b0eeb8ad7f0e114642a",
+    "tables/completed_ablation/transfer_contexts.tex": "a1f3f8bebbd14cd6a96112d5054ddc303f5efeac6b21090013556e5a396103ef",
+    "tables/completed_ablation/transfer_independent.tex": "28254e25ad7d62d702971b0ed05f879dc638de92feb61bbf61a1143132e71896",
+    "tables/fbhk_followup_20261109/fresh_history.tex": "95d05275fa0461a0ee506394550c944ad19d2072fa79361af2b3244c355312b9",
+    "tables/fbhk_followup_20261109/fresh_history_cost.tex": "0fc595bb482e468a87691757e4a851809618e50571fa9891311e022531b6b6b4",
+    "tables/fbhk_followup_20261109/lab_identity.tex": "62238f0301d4d39553c784d0ce20adac2834811613e395b5b9449b704f555b36",
+    "tables/fbhk_followup_20261109/proposal_dynamics_combined.tex": "93e2630e14f75f234053eaf19b17c193292937a578b1ceb6400bf0f5fb887f4f",
+    "tables/fbhk_followup_20261109/proposal_heldout_combined.tex": "0dd4844678c865986457588d6841a80d9230ee9177c3a5ee6dcb324a534d1cd7",
+    "tables/panel_feedback_20261110/development_audit.tex": "5aa38209fea216a26f5ca6319b46d576ce9422496151339b0bbcd142e08236b5",
+    "tables/proteomics_scenario_labs_v2/build_table.py": "2558a73ca367029ccec2a3305135851ca3a07d920ff5676295596396d2090c72",
+    "tables/proteomics_scenario_labs_v2/eight_seed_analysis.json": "a65c415b253e4c02247c3267103b902e78ac8aa12789a13652024fcfaf262e83",
+    "tables/proteomics_scenario_labs_v2/provenance.json": "041bd0d6af4d5a98b483da579752f62321ba581dd734cebb135e15c1e334fab9",
+    "tables/proteomics_scenario_labs_v2/results.csv": "2c2c7958a422aee2974df45816bbc2ed9dd58927201788ab219fb1b648b65f72",
+    "tables/proteomics_scenario_labs_v2/summary.zh-CN.md": "8eb58d75fe2f98f29f15cfe696caecd3f6143922d9e9a36e5db3fe56d5fee9b0",
+    "tables/proteomics_scenario_labs_v2/table.tex": "5e246b421b7c2e81a319a05ab6284843b26adbf04fce606940ce9b3662c519a4",
+    "tables/rebuttal_20261109/access_scenario.tex": "cb25e0e11dc2c49fae3cdb1569c12b1e879d2e76ee3e34f405e51ef21a93cad4",
+    "tables/rebuttal_20261109/allocation.tex": "b39207247fc13240dec485ea1b18f5791e3eb0d235cc9c5e5975790127d3cb1a",
+    "tables/rebuttal_20261109/matched_search_full.tex": "a80f5475b3d94354b8762c64cbc804595a14d5d396e1f654f6e14dd957f77467",
+    "tables/rebuttal_20261109/roster.tex": "1dbe29f24e8d89a378246683cbb7ea18634b3d38c467b71c720b09662312d118",
+    "tables/rebuttal_20261109/source_history.tex": "c35b3a077635626baa750110487d47cbc74077d0ea54dc6273ed9af401a70fe2",
+    "tables/rebuttal_20261109/validation.tex": "f362c34b5b0b775955cd3dd91ea69b2907a14d0d03ec7ad3763903383817e94a",
+    "tables/rebuttal_round3_20261111/build_e9.py": "e8c4f47d015cd0d28e9269d694f1a0d692dc8d9c9b3ae9e2abff96a78c66c07c",
+    "tables/rebuttal_round3_20261111/build_eight_seed.py": "9e3f057e77f4454ab7fedf732cd861909a3972b26a41e95848536edbd903f5ce",
+    "tables/rebuttal_round3_20261111/e6_eight_seed.tex": "a2e027326210d5fcd52d81087db8c575a54d13fd56d84ac09b767072154b9d8b",
+    "tables/rebuttal_round3_20261111/e6_eight_seed_analysis.json": "5f545a0b20b12173ba6c783a7650b419da5b57ca8054f8b5714acfe733cb5808",
+    "tables/rebuttal_round3_20261111/e9_eight_seed.tex": "00bc02645c10d54a6b2c5663693165e1b941d0097a4d9b3c8d477608a88e2f8e",
+    "tables/rebuttal_round3_20261111/e9_eight_seed_analysis.json": "059b9abc47f3ebc2a461e99d5c12887ad4cd6e488f3eb88257c81a349365d851",
+    "tables/rebuttal_round3_20261111/provenance.json": "5a09949487f719d39b275f7c417a23ea74bc73a1884610666ad14d7ca4bcc6aa",
+    "tables/recipe_expansion_20261110/resources.tex": "4fc866581dba81a96d8336eec55ecd7c6b3c105cebb4fd97e095bd96c25deaff",
+    "tables/recipe_expansion_20261110/results.tex": "6b590428b402d499836a57346db143edb3168dd7155566c7d5781eafc7a49ae7",
+    "tables/scenario_labs_v2/table.tex": "713d67471796a2dee9687db373fb3be6bd28b82b7e2599ca6b7a61e28ffdc99c",
+    "tables/single_lab_search/comparison.tex": "341cc69ac06fd9679a99b535f05a3368ecc28ef12ede711a6048206daba2d797",
+    "tables/single_lab_search/dti_endpoints.tex": "021cf0b0a694b21bb6b5ca336c8f5e4b3efb9981eb26407f2672e2dc9d35fac4",
+    "tables/single_lab_search/search_expectation.tex": "7b3944f54847812e8e8e0e3181e5d8eab2440bec39d25269f2f1d29d9979e113",
+    "tables/strong_v3/ablation.tex": "643f9621608f381c080846c3f91afa996f6cbf86300da56340eafee8f9d3e72f",
+    "tables/strong_v3/dti_endpoints.tex": "e8a8d5e30a8d7a931c3ef767f1df73ac81865ae2bcd9e3e96b7b635e9fbc3f6f",
+    "tables/strong_v3/effects.tex": "d0f9819c001b34cd5c690fc888636197111006ba92ea0897a9af42e2cc6c0db1",
+    "tables/strong_v3/secondary.tex": "c071591ce0925aa66c4bb1df19a105bda6cd6ba4e6b130f1e686fb19d51ec5b3",
+    "tables/strong_v3/snapshot_stats.tex": "c1ae7b5cc9c56cd481286b421a320c442bae764da7ee632f2a829a3c4a916f75",
+    "tables/supplemental_20260923/proteomics_three_source.tex": "7073adc4e255a5b1aa902ba1a6cd021af98d9e6551ec9f8a257eb8005edfe531",
+    "tables/supplemental_20260923/source_client_mapping.tex": "e836d1c73e4bec0b9895bb64a35b22f7a174d61fc46b7b4c11038cf6f2370a25",
+    "tools/build_author_review_tables.py": "df12c6a589e542880bf1c40602fb0bf0c0c4f05a75f92d5eecd3d311e40f30a0",
+    "tools/build_rebuttal_responses.py": "98545b3a81bc6daa7af2838fdcecaee19c17697becda808a58243d6093716418",
+    "tools/finalize_round3.py": "8fe17e30816d5db17af5068ae670dc9c16af1e37f143520ec5071375066e6104",
+    "tools/publish_rebuttal_access_table.py": "fbed85503ede713ab73c6801ded0e91ac2eeca1ebc84251d2414b6b446783e6a",
+    "tools/publish_single_lab_search.py": "fb0f82162f765fe40e7aeb619253b10fa0954f7c3f36a1661833eb7257cd654f",
+    "tools/publish_strong_snapshot.py": "13e57074da7b9243f14f6765c16985949b4c7c3494d3c44e86a090cff2d520d6"
+  },
+  "new_seeds": [
+    64,
+    65,
+    66,
+    67,
+    68
+  ],
+  "new_studies_extended": [
+    "E.6 cells",
+    "E.9 DTI/protein",
+    "B source-defined proteomics"
+  ],
+  "exclusions": "none; analyses registered before the new fits",
+  "reply_pages": 6,
+  "openreview_posted": false,
+  "overleaf_updated": false,
+  "main_merged": false,
+  "published_paths": [
+    "output/pdf/BioCoLoop_round3_20261111.pdf",
+    "output/pdf/BioCoLoop_manuscript.pdf",
+    "manuscript.pdf"
+  ]
+}
